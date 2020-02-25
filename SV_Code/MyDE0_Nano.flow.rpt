@@ -1,5 +1,5 @@
 Flow report for MyDE0_Nano
-Tue Feb 25 15:59:10 2020
+Tue Feb 25 23:55:24 2020
 Quartus Prime Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
 
 
@@ -40,14 +40,14 @@ refer to the applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Flow Summary                                                                     ;
 +------------------------------------+---------------------------------------------+
-; Flow Status                        ; Successful - Tue Feb 25 15:59:10 2020       ;
+; Flow Status                        ; Successful - Tue Feb 25 23:55:24 2020       ;
 ; Quartus Prime Version              ; 18.0.0 Build 614 04/24/2018 SJ Lite Edition ;
 ; Revision Name                      ; MyDE0_Nano                                  ;
 ; Top-level Entity Name              ; MyDE0_Nano                                  ;
 ; Family                             ; Cyclone IV E                                ;
 ; Device                             ; EP4CE22F17C6                                ;
 ; Timing Models                      ; Final                                       ;
-; Total logic elements               ; 1,820 / 22,320 ( 8 % )                      ;
+; Total logic elements               ; 1,828 / 22,320 ( 8 % )                      ;
 ;     Total combinational functions  ; 1,045 / 22,320 ( 5 % )                      ;
 ;     Dedicated logic registers      ; 1,469 / 22,320 ( 7 % )                      ;
 ; Total registers                    ; 1469                                        ;
@@ -64,7 +64,7 @@ refer to the applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 02/25/2020 15:58:05 ;
+; Start date & time ; 02/25/2020 23:54:21 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; MyDE0_Nano          ;
 +-------------------+---------------------+
@@ -75,7 +75,7 @@ refer to the applicable agreement for further details.
 +--------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------+-------------+------------------+
 ; Assignment Name                      ; Value                                                                                                                                                                                                                  ; Default Value ; Entity Name ; Section Id       ;
 +--------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------+-------------+------------------+
-; COMPILER_SIGNATURE_ID                ; 251485273446807.158264268414308                                                                                                                                                                                        ; --            ; --          ; --               ;
+; COMPILER_SIGNATURE_ID                ; 251485273446807.158267126121708                                                                                                                                                                                        ; --            ; --          ; --               ;
 ; EDA_DESIGN_INSTANCE_NAME             ; NA                                                                                                                                                                                                                     ; --            ; --          ; MyTestbench      ;
 ; EDA_NATIVELINK_SIMULATION_TEST_BENCH ; MyTestbench                                                                                                                                                                                                            ; --            ; --          ; eda_simulation   ;
 ; EDA_OUTPUT_DATA_FORMAT               ; Verilog Hdl                                                                                                                                                                                                            ; --            ; --          ; eda_simulation   ;
@@ -130,12 +130,12 @@ refer to the applicable agreement for further details.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:33     ; 1.0                     ; 4863 MB             ; 00:00:53                           ;
-; Fitter               ; 00:00:11     ; 1.1                     ; 5571 MB             ; 00:00:13                           ;
-; Assembler            ; 00:00:03     ; 1.0                     ; 4689 MB             ; 00:00:02                           ;
-; Timing Analyzer      ; 00:00:03     ; 1.2                     ; 4818 MB             ; 00:00:03                           ;
-; EDA Netlist Writer   ; 00:00:09     ; 1.0                     ; 4677 MB             ; 00:00:05                           ;
-; Total                ; 00:00:59     ; --                      ; --                  ; 00:01:16                           ;
+; Analysis & Synthesis ; 00:00:32     ; 1.0                     ; 4863 MB             ; 00:00:52                           ;
+; Fitter               ; 00:00:12     ; 1.1                     ; 5572 MB             ; 00:00:13                           ;
+; Assembler            ; 00:00:02     ; 1.0                     ; 4689 MB             ; 00:00:02                           ;
+; Timing Analyzer      ; 00:00:04     ; 1.2                     ; 4820 MB             ; 00:00:03                           ;
+; EDA Netlist Writer   ; 00:00:07     ; 1.0                     ; 4679 MB             ; 00:00:04                           ;
+; Total                ; 00:00:57     ; --                      ; --                  ; 00:01:14                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 

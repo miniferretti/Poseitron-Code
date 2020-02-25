@@ -86,14 +86,14 @@ assign Laser_cod_B = GPIO_1[5];
 assign Prop_motor_left_cod_A = GPIO_1[0];
 assign Prop_motor_left_cod_B = GPIO_1_IN[0];
 assign Prop_motor_right_cod_A = GPIO_1[2];
-assign Prop_motor_right_cod_B = GPIO_1[1];
+assign Prop_motor_right_cod_B = GPIO_1[3];
 assign UART_TX = GPIO_1[26];
 assign UART_RX = GPIO_1[24];
 assign UART_DIR = GPIO_1[22];
 assign reset = GPIO_0_PI[1];
 assign clk = CLOCK_50;
 
-assign LED[4:1]={GPIO_1[0],GPIO_1_IN[0],GPIO_1[2],GPIO_1[1]};
+assign LED[4:1]={GPIO_1[0],GPIO_1_IN[0],GPIO_1[2],GPIO_1[3]};
 
 quad_counter quadR(clk,Prop_motor_right_cod_A,Prop_motor_right_cod_B,countR);
 quad_counter quadL(clk,Prop_motor_left_cod_A,Prop_motor_left_cod_B,countL);

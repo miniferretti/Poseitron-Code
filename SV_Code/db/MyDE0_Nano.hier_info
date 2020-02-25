@@ -114,7 +114,7 @@ GPIO_0_PI[32] <> <UNC>
 GPIO_0_PI[33] <> <UNC>
 GPIO_0_PI_IN[0] => ~NO_FANOUT~
 GPIO_0_PI_IN[1] => ~NO_FANOUT~
-GPIO_1[3] <> <UNC>
+GPIO_1[1] <> <UNC>
 GPIO_1[6] <> <UNC>
 GPIO_1[9] <> <UNC>
 GPIO_1[10] <> <UNC>
