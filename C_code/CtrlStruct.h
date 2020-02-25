@@ -29,15 +29,4 @@ typedef struct CtrlStruct
 	CtrlOut *theCtrlOut;	   ///< controller outputs
 } CtrlStruct;
 
-typedef struct CtrlIn{
-    double t; 
-    double wheel_speed_r;
-    double wheel_speed_l;
-
-} CtrlIn;
-
-typedef struct CtrlOut{
-    double wheel_commands_l;
-    double wheel_commands_r;
-} CtrlOut;
 int size_UserStruct();

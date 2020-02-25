@@ -37,8 +37,8 @@ double Rroue = 0.03; // Valeur en m
 double omega_ref_l[6] = {0, 6.2832, 0 , 6.2832, 0, 6.2832};
 double omega_ref_r[6] = {0, 6.2832, 0 , -6.2832, 0, 6.2832};
 
-double omega_ref_now_r = 0; 
-double omega_ref_now_l = 0;
+double omega_ref_now_r = 0.0; 
+double omega_ref_now_l = 0.0;
 double dt_ref = 3;
 
 //Declaration des fonctions
@@ -134,19 +134,19 @@ void *updateCrtlIn(void *theCani)
 
 		wiringPiSPIDataRW(0, buffer, 5);
 
-		myCtrlStruct->theCtrlIn->wheel_speed_r = ((double)(int16_t)((uint16_t)buffer[3] << 8 | (uint16_t)buffer[4])) * samplingDE0 * 2 * M_PI / TicsRoue;
-		myCtrlStruct->theCtrlIn->wheel_speed_l = ((double)(int16_t)((uint16_t)buffer[1] << 8 | (uint16_t)buffer[2])) * samplingDE0 * 2 * M_PI / TicsRoue;
+		myCtrlStruct->theCtrlIn->r_wheel_speed = ((double)(int16_t)((uint16_t)buffer[3] << 8 | (uint16_t)buffer[4])) * samplingDE0 * 2 * M_PI / TicsRoue;
+		myCtrlStruct->theCtrlIn->l_wheel_speed = ((double)(int16_t)((uint16_t)buffer[1] << 8 | (uint16_t)buffer[2])) * samplingDE0 * 2 * M_PI / TicsRoue;
 
 		//printf("La vitesse de la roue est de %f ou %f\r\n",MinibotCrtlIn.l_wheel_speed,MinibotCrtlIn.r_wheel_speed);
 		//	printf("%d %d %d %d\r\n",buffer[1],buffer[2],buffer[3],buffer[4]);
 
 		//printf("%f et %f\r\n",((double)(int16_t)((uint16_t)buffer[3] << 8 | (uint16_t)buffer[4])),((double)(int16_t)((uint16_t)buffer[1] << 8 | (uint16_t)buffer[2])));
 
-		printf("%f %f \r\n", myCtrlStruct->theCtrlIn->wheel_speed_r, myCtrlStruct->theCtrlIn->wheel_speed_l);
+		printf("%f %f \r\n", myCtrlStruct->theCtrlIn->r_wheel_speed, myCtrlStruct->theCtrlIn->l_wheel_speed);
 
-		run_speed_controller(myCtrlStruct, omega_ref_l, omega_ref_r);
+		run_speed_controller(myCtrlStruct, omega_ref_now_l, omega_ref_now_r);
 
-		theCan->push_PropDC(myCtrlStruct->theCrtlOut->wheel_commands_l, myCtrlStruct->theCrtlOut->wheel_commands_r);
+		theCan->push_PropDC(myCtrlStruct->theCrtlOut->wheel_commands[L_ID], myCtrlStruct->theCrtlOut->wheel_commands[R_ID]);
 
 		//Mise a jour du pas de temps
 		t = clock() - t;
@@ -159,8 +159,8 @@ void run_speed_controller(CtrlStruct *theCtrlStruct, double omega_ref_l, double 
 {
 	double omega_ref_l = omega_ref_l * theCtrlStruct->theUserStruct->ratio;
 	double omega_ref_r = omega_ref_r * theCtrlStruct->theUserStruct->ratio;
-	double r_wheel_speed = theCtrlStruct->theCtrlIn->wheel_speed_r * 14;
-	double l_wheel_speed = theCtrlStruct->theCtrlIn->wheel_speed_l * 14;
+	double r_wheel_speed = theCtrlStruct->theCtrlIn->r_wheel_speed * 14;
+	double l_wheel_speed = theCtrlStruct->theCtrlIn->l_wheel_speed * 14;
 	double e_l = omega_ref_l - l_wheel_speed;
 	double e_r = omega_ref_r - r_wheel_speed;
 	double upperCurrentLimit = theCtrlStruct->theUserStruct->upperCurrentLimit;
@@ -199,8 +199,8 @@ void run_speed_controller(CtrlStruct *theCtrlStruct, double omega_ref_l, double 
 	theCtrlStruct->theUserStruct->sat_r = saturation(theCtrlStruct->theUserStruct->upperCurrentLimit + kphi * r_wheel_speed, theCtrlStruct->theUserStruct->lowerCurrentLimit - kphi * r_wheel_speed, &u_r);
 
 	//OUTPUT
-	theCtrlStruct->theCtrlOut->wheel_commands_l = u_l * 100 / (theCtrlStruct->theUserStruct->upperVoltageLimit);
-	theCtrlStruct->theCtrlOut->wheel_commands_r = u_r * 100 / (theCtrlStruct->theUserStruct->upperVoltageLimit);
+	theCtrlStruct->theCtrlOut->wheel_commands[L_ID] = u_l * 100 / (theCtrlStruct->theUserStruct->upperVoltageLimit);
+	theCtrlStruct->theCtrlOut->wheel_commands[R_ID] = u_r * 100 / (theCtrlStruct->theUserStruct->upperVoltageLimit);
 	theCtrlStruct->theUserStruct->t_p = t;
 	theCtrlStruct->theUserStruct->i_e_l = i_e_l;
 	theCtrlStruct->theUserStruct->i_e_r = i_e_r;
