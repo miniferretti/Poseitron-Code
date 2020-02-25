@@ -30,7 +30,7 @@ struct CtrlOut MinibotCrtlOut;
 struct UserStruct theUserStruct;
 
 //PID values for the motor controller
-double Kp1 = 0.045; //valeur Dona Nico et Aurèle 3.51e-2;
+double Kp1 = 0.045;  //valeur Dona Nico et Aurèle 3.51e-2;
 double Ki1 = 0.2071; //valeur Dona Nico et Aurèle 1.982e-1;
 
 //PID values for the Tower if needed
@@ -38,7 +38,7 @@ double Kp2 = 0;
 double Ki2 = 0;
 
 //Speed references declaration
-double omega_refR = 10;
+double omega_refR = 0;
 double omega_refL = 10;
 
 //Constant values for the updateCrtlIn() routine
@@ -76,13 +76,16 @@ int main()
 	can = new CAN(CAN_BR);
 	SPI_DE0 *deo;
 	deo = new SPI_DE0(0, 125e3);
+	delay(100);
+
 	can->configure();
+	delay(100);
 
 	can->ctrl_motor(1);
 	can->check_receive();
 
 	can->push_PropDC(0, 0);
-	can->push_TowDC(30);
+	//	can->push_TowDC(0);
 	can->check_receive();
 
 	//Creation du thread pour la fonction updateCrtlIn
@@ -96,9 +99,11 @@ int main()
 		//printf("%s\n\r", theUserStruct.beacon_detect ? "true" : "false");
 		//printf("The distance to the beacon is %f\n\r",theUserStruct.beacon_distance);
 		//getBeaconAngleAndDist(MinibotCrtlIn.last_rising_pos,MinibotCrtlIn.last_falling_pos);
-		printf("La distance est %f \r\n",theUserStruct.beacon_distance);
-		delay(100);
+		//printf("La distance est %f \r\n",theUserStruct.beacon_distance);
 
+		can->ctrl_led(1);
+		delay(100);
+		can->ctrl_led(0);
 	}
 }
 
@@ -126,9 +131,13 @@ void *updateCrtlIn(void *theCani)
 
 		wiringPiSPIDataRW(0, buffer, 5);
 
-		MinibotCrtlIn.l_wheel_speed = ((int16_t)((uint16_t)buffer[3] << 8 | (uint16_t)buffer[4])) * samplingDE0 * 2 * M_PI / TicsRoue;
-		MinibotCrtlIn.r_wheel_speed =-((int16_t)((uint16_t)buffer[1] << 8 | (uint16_t)buffer[2])) * samplingDE0 * 2 * M_PI / TicsRoue;
-	
+		MinibotCrtlIn.l_wheel_speed = ((double)(int16_t)((uint16_t)buffer[3] << 8 | (uint16_t)buffer[4])) * samplingDE0 * 2 * M_PI / TicsRoue;
+		MinibotCrtlIn.r_wheel_speed = ((double)(int16_t)((uint16_t)buffer[1] << 8 | (uint16_t)buffer[2])) * samplingDE0 * 2 * M_PI / TicsRoue;
+
+		//printf("La vitesse de la roue est de %f ou %f\r\n",MinibotCrtlIn.l_wheel_speed,MinibotCrtlIn.r_wheel_speed);
+		//	printf("%d %d %d %d\r\n",buffer[1],buffer[2],buffer[3],buffer[4]);
+
+		//printf("%f et %f\r\n",((double)(int16_t)((uint16_t)buffer[3] << 8 | (uint16_t)buffer[4])),((double)(int16_t)((uint16_t)buffer[1] << 8 | (uint16_t)buffer[2])));
 
 		//printf("%f %f \r\n", MinibotCrtlIn.r_wheel_speed, MinibotCrtlIn.l_wheel_speed);
 		delay(0.5);
@@ -142,7 +151,7 @@ void *updateCrtlIn(void *theCani)
 
 		wiringPiSPIDataRW(0, buffer, 5);
 
-		MinibotCrtlIn.tower_pos =(int32_t) ((uint32_t)buffer[1] << 24 |(uint32_t)buffer[2] << 16 |(uint32_t)buffer[3] << 8 | (uint32_t)buffer[4]); //valeur en pas
+		MinibotCrtlIn.tower_pos = (double)((uint32_t)buffer[1] << 24 | (uint32_t)buffer[2] << 16 | (uint32_t)buffer[3] << 8 | (uint32_t)buffer[4]); //valeur en pas
 
 		//printf("%f est la valeur de la postion de la tour  \r\n", MinibotCrtlIn.tower_pos);
 
@@ -156,17 +165,17 @@ void *updateCrtlIn(void *theCani)
 
 		wiringPiSPIDataRW(0, buffer, 5);
 
-		MinibotCrtlIn.last_falling_pos = ((int16_t)((uint16_t)buffer[3] << 8 | (uint16_t)buffer[4])) * 2 * M_PI / TicsTour; //valeur en radian
-		MinibotCrtlIn.last_rising_pos = ((int16_t)((uint16_t)buffer[1] << 8 | (uint16_t)buffer[2])) * 2 * M_PI / TicsTour;
+		MinibotCrtlIn.last_falling_pos = ((double)((uint16_t)buffer[3] << 8 | (uint16_t)buffer[4])) * 2 * M_PI / TicsTour; //valeur en radian
+		MinibotCrtlIn.last_rising_pos = ((double)((uint16_t)buffer[1] << 8 | (uint16_t)buffer[2])) * 2 * M_PI / TicsTour;
 
-		double riseDeg= 360*MinibotCrtlIn.last_rising_pos/(2*M_PI);
-		double fallDeg= 360*MinibotCrtlIn.last_falling_pos/(2*M_PI);
+		double riseDeg = 360 * MinibotCrtlIn.last_rising_pos / (2 * M_PI);
+		double fallDeg = 360 * MinibotCrtlIn.last_falling_pos / (2 * M_PI);
 
-		printf("%f %f \r\n", riseDeg,fallDeg);
+		//	printf("%f %f \r\n", riseDeg,fallDeg);
 
 		//Update les commandes des roues
-		run_speed_controller(omega_refL, omega_refR);
-		theCan->push_PropDC(MinibotCrtlOut.wheel_commands[0], MinibotCrtlOut.wheel_commands[1]);
+		//	run_speed_controller(omega_refL, omega_refR);
+		//theCan->push_PropDC(MinibotCrtlOut.wheel_commands[0], MinibotCrtlOut.wheel_commands[1]);
 		//printf("%f \r\n", MinibotCrtlOut.wheel_commands[0]);
 
 		//Met a jour la distance du beacon
@@ -243,7 +252,7 @@ void getBeaconAngleAndDist(double RisingEdge, double FallingEdge)
 	double thetaRise = RisingEdge;
 	double thetaFalling = FallingEdge;
 
-	theUserStruct.beacon_angle = thetaRise + (thetaFalling-thetaRise) / 2;
+	theUserStruct.beacon_angle = thetaRise + (thetaFalling - thetaRise) / 2;
 	theUserStruct.beacon_distance = RBeacon / sin(theUserStruct.beacon_angle - thetaRise); // valeur en m
 
 	if (theUserStruct.beacon_distance <= 1)
