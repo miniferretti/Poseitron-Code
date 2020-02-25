@@ -34,8 +34,8 @@ double TicsRoue = 28000;
 double samplingDE0 = 500;
 double Rroue = 0.03; // Valeur en m
 
-double omega_ref_l[6] = {0, 6.2832, 0 , 6.2832, 0, 6.2832};
-double omega_ref_r[6] = {0, 6.2832, 0 , -6.2832, 0, 6.2832};
+double omega_roue_ref_l[6] = {0, 6.2832, 0 , 6.2832, 0, 6.2832};
+double omega_roue_ref_r[6] = {0, 6.2832, 0 , -6.2832, 0, 6.2832};
 
 double omega_ref_now_r = 0.0; 
 double omega_ref_now_l = 0.0;
@@ -43,7 +43,7 @@ double dt_ref = 3;
 
 //Declaration des fonctions
 void *updateCrtlIn(void *);
-void run_speed_controller(CtrlStruct *theCtrlStruct, double omega_ref_l, double omega_ref_r);
+void run_speed_controller(CtrlStruct *theCtrlStruct);
 void init_speed_controller(CtrlStruct *theCtrlStruct);
 int saturation(double upperLimit, double lowerLimit, double *u);
 
@@ -80,8 +80,8 @@ int main()
 	while (true)
 	{
 		if ( (long double) (time_rec - clock())/CLOCKS_PER_SEC >= dt_ref){
-			omega_ref_now_l = omega_ref_l[i];
-			omega_ref_now_r = omega_ref_r[i];
+			omega_ref_now_l = omega_roue_ref_l[i];
+			omega_ref_now_r = omega_roue_ref_r[i];
 			time_rec = clock(); 
 			i++;
 		}
@@ -144,21 +144,21 @@ void *updateCrtlIn(void *theCani)
 
 		printf("%f %f \r\n", myCtrlStruct->theCtrlIn->r_wheel_speed, myCtrlStruct->theCtrlIn->l_wheel_speed);
 
-		run_speed_controller(myCtrlStruct, omega_ref_now_l, omega_ref_now_r);
+		run_speed_controller(myCtrlStruct);
 
-		theCan->push_PropDC(myCtrlStruct->theCrtlOut->wheel_commands[L_ID], myCtrlStruct->theCrtlOut->wheel_commands[R_ID]);
+		theCan->push_PropDC(myCtrlStruct->theCtrlOut->wheel_commands[L_ID], myCtrlStruct->theCtrlOut->wheel_commands[R_ID]);
 
 		//Mise a jour du pas de temps
 		t = clock() - t;
 		double time_taken = ((double)t) / CLOCKS_PER_SEC;
-		myCtrlStruct->theCrtlIn->t = time_taken; //Temps utilisé pour mettre a jour les valeurs et appeler le speed controller
+		myCtrlStruct->theCtrlIn->t = time_taken; //Temps utilisé pour mettre a jour les valeurs et appeler le speed controller
 	}
 }
 
-void run_speed_controller(CtrlStruct *theCtrlStruct, double omega_ref_l, double omega_ref_r)
+void run_speed_controller(CtrlStruct *theCtrlStruct)
 {
-	double omega_ref_l = omega_ref_l * theCtrlStruct->theUserStruct->ratio;
-	double omega_ref_r = omega_ref_r * theCtrlStruct->theUserStruct->ratio;
+	double omega_ref_l = omega_ref_now_l * theCtrlStruct->theUserStruct->ratio;
+	double omega_ref_r = omega_ref_now_r * theCtrlStruct->theUserStruct->ratio;
 	double r_wheel_speed = theCtrlStruct->theCtrlIn->r_wheel_speed * 14;
 	double l_wheel_speed = theCtrlStruct->theCtrlIn->l_wheel_speed * 14;
 	double e_l = omega_ref_l - l_wheel_speed;
