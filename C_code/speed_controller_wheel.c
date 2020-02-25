@@ -13,7 +13,7 @@ void run_speed_controller(CtrlStruct* theCtrlStruct, double* omega_ref){
 	double Ki1 = theCtrlStruct->theUserStruct->Ki1;
 	
 	//taking the gearbox in account 
-	double omega_ref_l = 14*omega_ref_lwheel;
+	double omega_ref_l = 14*omega_ref_lwheel; // espece de pute
 	double omega_ref_r = 14*omega_ref_rwheel;
 	double omega_real_l = 14*omega_real_lwheel;
 	double omega_real_r = 14*omega_real_rwheel;
