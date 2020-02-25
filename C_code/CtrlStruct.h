@@ -5,6 +5,7 @@
 typedef struct UserStruct
 {
 	//Robot parameters :
+	int ratio; 
 	//geometric and sensors
 	double positions_per_rev_beacon;
 	double positions_per_rev_roues;
