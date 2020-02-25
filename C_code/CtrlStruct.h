@@ -2,45 +2,25 @@
 
 
 
-typedef struct UserStruct
-{
-	//Robot parameters :
-	int ratio; 
-	//geometric and sensors
-	double positions_per_rev_beacon;
-	double positions_per_rev_roues;
-	double direction_ref;
-	double distance_ref;
+typedef struct UserStruct{
+	double Ra;
+	double kphi;
+	double Kp;
+	double Ki;
+    double t_p;
+    double ratio; 
+    double upperCurrentLimit;
+    double lowerCurrentLimit;
+    double upperVoltageLimit;
+    double lowerVoltageLimit;
 
+    double i_e_l;
+    double i_e_r;
 
-	//Beacon parameters
-	double diameter;
-	double beacon_angle;
-	double beacon_direction;
-	double beacon_distance;
-	double beacon_detect;
-
-	//wheel speed controller
-	double t_last;
-	double Ki1;
-	double Kp1;
-	double term2_l;
-	double term2_r;
-	double used_term2_l;
-	double used_term2_r;
-
-	//beacon distance controller
-	double t_last_dist;
-	double Ki2;
-	double Kp2;
-	double term2_dist;
-
-	//beacon direction controller
-
-	//wheel speed references
-	double *omega_ref;
-
+    int sat_l;
+    int sat_r;
 } UserStruct;
+
 
 typedef struct CtrlStruct
 {
@@ -49,4 +29,15 @@ typedef struct CtrlStruct
 	CtrlOut *theCtrlOut;	   ///< controller outputs
 } CtrlStruct;
 
+typedef struct CtrlIn{
+    double t; 
+    double wheel_speed_r;
+    double wheel_speed_l;
+
+} CtrlIn;
+
+typedef struct CtrlOut{
+    double wheel_commands_l;
+    double wheel_commands_r;
+} CtrlOut;
 int size_UserStruct();
