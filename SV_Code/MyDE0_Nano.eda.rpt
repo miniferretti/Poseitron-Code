@@ -1,5 +1,5 @@
 EDA Netlist Writer report for MyDE0_Nano
-Mon Feb 24 19:40:11 2020
+Tue Feb 25 15:59:10 2020
 Quartus Prime Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
 
 
@@ -36,7 +36,7 @@ refer to the applicable agreement for further details.
 +-------------------------------------------------------------------+
 ; EDA Netlist Writer Summary                                        ;
 +---------------------------+---------------------------------------+
-; EDA Netlist Writer Status ; Successful - Mon Feb 24 19:40:11 2020 ;
+; EDA Netlist Writer Status ; Successful - Tue Feb 25 15:59:10 2020 ;
 ; Revision Name             ; MyDE0_Nano                            ;
 ; Top-level Entity Name     ; MyDE0_Nano                            ;
 ; Family                    ; Cyclone IV E                          ;
@@ -66,20 +66,20 @@ refer to the applicable agreement for further details.
 +---------------------------------------------------------------------------------------------------+---------------------------+
 
 
-+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Simulation Generated Files                                                                                                                                                             ;
-+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Generated Files                                                                                                                                                                        ;
-+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/MiniBots/Minibot code/WhiteSpiritSV-SPITest/simulation/modelsim/MyDE0_Nano_6_1200mv_85c_slow.vo     ;
-; C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/MiniBots/Minibot code/WhiteSpiritSV-SPITest/simulation/modelsim/MyDE0_Nano_6_1200mv_0c_slow.vo      ;
-; C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/MiniBots/Minibot code/WhiteSpiritSV-SPITest/simulation/modelsim/MyDE0_Nano_min_1200mv_0c_fast.vo    ;
-; C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/MiniBots/Minibot code/WhiteSpiritSV-SPITest/simulation/modelsim/MyDE0_Nano.vo                       ;
-; C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/MiniBots/Minibot code/WhiteSpiritSV-SPITest/simulation/modelsim/MyDE0_Nano_6_1200mv_85c_v_slow.sdo  ;
-; C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/MiniBots/Minibot code/WhiteSpiritSV-SPITest/simulation/modelsim/MyDE0_Nano_6_1200mv_0c_v_slow.sdo   ;
-; C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/MiniBots/Minibot code/WhiteSpiritSV-SPITest/simulation/modelsim/MyDE0_Nano_min_1200mv_0c_v_fast.sdo ;
-; C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/MiniBots/Minibot code/WhiteSpiritSV-SPITest/simulation/modelsim/MyDE0_Nano_v.sdo                    ;
-+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Simulation Generated Files                                                                                                                                                       ;
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Generated Files                                                                                                                                                                  ;
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/simulation/modelsim/MyDE0_Nano_6_1200mv_85c_slow.vo     ;
+; C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/simulation/modelsim/MyDE0_Nano_6_1200mv_0c_slow.vo      ;
+; C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/simulation/modelsim/MyDE0_Nano_min_1200mv_0c_fast.vo    ;
+; C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/simulation/modelsim/MyDE0_Nano.vo                       ;
+; C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/simulation/modelsim/MyDE0_Nano_6_1200mv_85c_v_slow.sdo  ;
+; C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/simulation/modelsim/MyDE0_Nano_6_1200mv_0c_v_slow.sdo   ;
+; C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/simulation/modelsim/MyDE0_Nano_min_1200mv_0c_v_fast.sdo ;
+; C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/simulation/modelsim/MyDE0_Nano_v.sdo                    ;
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 
 +-----------------------------+
@@ -88,21 +88,21 @@ refer to the applicable agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus Prime EDA Netlist Writer
     Info: Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
-    Info: Processing started: Mon Feb 24 19:40:04 2020
+    Info: Processing started: Tue Feb 25 15:59:01 2020
 Info: Command: quartus_eda --read_settings_files=off --write_settings_files=off MyDE0_Nano -c MyDE0_Nano
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
-Info (204019): Generated file MyDE0_Nano_6_1200mv_85c_slow.vo in folder "C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/MiniBots/Minibot code/WhiteSpiritSV-SPITest/simulation/modelsim/" for EDA simulation tool
-Info (204019): Generated file MyDE0_Nano_6_1200mv_0c_slow.vo in folder "C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/MiniBots/Minibot code/WhiteSpiritSV-SPITest/simulation/modelsim/" for EDA simulation tool
-Info (204019): Generated file MyDE0_Nano_min_1200mv_0c_fast.vo in folder "C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/MiniBots/Minibot code/WhiteSpiritSV-SPITest/simulation/modelsim/" for EDA simulation tool
-Info (204019): Generated file MyDE0_Nano.vo in folder "C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/MiniBots/Minibot code/WhiteSpiritSV-SPITest/simulation/modelsim/" for EDA simulation tool
-Info (204019): Generated file MyDE0_Nano_6_1200mv_85c_v_slow.sdo in folder "C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/MiniBots/Minibot code/WhiteSpiritSV-SPITest/simulation/modelsim/" for EDA simulation tool
-Info (204019): Generated file MyDE0_Nano_6_1200mv_0c_v_slow.sdo in folder "C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/MiniBots/Minibot code/WhiteSpiritSV-SPITest/simulation/modelsim/" for EDA simulation tool
-Info (204019): Generated file MyDE0_Nano_min_1200mv_0c_v_fast.sdo in folder "C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/MiniBots/Minibot code/WhiteSpiritSV-SPITest/simulation/modelsim/" for EDA simulation tool
-Info (204019): Generated file MyDE0_Nano_v.sdo in folder "C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/MiniBots/Minibot code/WhiteSpiritSV-SPITest/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file MyDE0_Nano_6_1200mv_85c_slow.vo in folder "C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file MyDE0_Nano_6_1200mv_0c_slow.vo in folder "C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file MyDE0_Nano_min_1200mv_0c_fast.vo in folder "C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file MyDE0_Nano.vo in folder "C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file MyDE0_Nano_6_1200mv_85c_v_slow.sdo in folder "C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file MyDE0_Nano_6_1200mv_0c_v_slow.sdo in folder "C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file MyDE0_Nano_min_1200mv_0c_v_fast.sdo in folder "C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file MyDE0_Nano_v.sdo in folder "C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/simulation/modelsim/" for EDA simulation tool
 Info: Quartus Prime EDA Netlist Writer was successful. 0 errors, 1 warning
-    Info: Peak virtual memory: 4676 megabytes
-    Info: Processing ended: Mon Feb 24 19:40:11 2020
-    Info: Elapsed time: 00:00:07
+    Info: Peak virtual memory: 4677 megabytes
+    Info: Processing ended: Tue Feb 25 15:59:10 2020
+    Info: Elapsed time: 00:00:09
     Info: Total CPU time (on all processors): 00:00:05
 
 
