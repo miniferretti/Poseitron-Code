@@ -1,0 +1,49 @@
+
+
+
+module quad_counter(	input 			clk, 
+							input 	 quadA, quadB,
+							output 	[31:0] count
+							); 
+							// counter qui ressort une valeur incrementée si 
+							// direction avant sinon decremente direction 
+							// arriere. 
+logic [2:0] quadA_delayed, quadB_delayed;
+logic [31:0] countFB=32'd0;
+logic [7:0] clockCount=32'd0;
+
+always_ff @(posedge clk) quadA_delayed <= {quadA_delayed[1:0], quadA};
+always_ff @(posedge clk) quadB_delayed <= {quadB_delayed[1:0], quadB};
+
+logic count_enable; 
+logic count_direction;
+
+assign count_enable = quadA_delayed[1] ^ quadA_delayed[2] ^ quadB_delayed[1] ^ quadB_delayed[2];
+assign count_direction = quadA_delayed[1] ^ quadB_delayed[2];
+
+always_ff @(posedge clk)
+	begin
+			if(count_enable)
+				begin
+					if(count_direction) 	countFB<=countFB+1; 
+					else 						countFB<=countFB-1;
+				end
+				
+		clockCount<=clockCount+1;
+	end
+	
+	
+always_ff@(posedge clk)
+		begin
+			if(clockCount==32'd100000) 
+				begin
+				
+				clockCount<=32'd0;
+				countFB<=32'd0;
+				
+				end
+		end
+		
+	assign count=countFB;
+		
+endmodule			

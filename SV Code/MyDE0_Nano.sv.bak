@@ -1,0 +1,126 @@
+
+//=======================================================
+//  MyARM
+//=======================================================
+
+module MyDE0_Nano(
+
+//////////// CLOCK //////////
+input logic 		          		CLOCK_50,
+
+//////////// LED //////////
+output logic		     [7:0]		LED,
+
+//////////// KEY //////////
+input logic 		     [1:0]		KEY,
+
+//////////// SW //////////
+input logic 		     [3:0]		SW,
+
+//////////// SDRAM //////////
+output logic		    [12:0]		DRAM_ADDR,
+output logic		     [1:0]		DRAM_BA,
+output logic		          		DRAM_CAS_N,
+output logic		          		DRAM_CKE,
+output logic		          		DRAM_CLK,
+output logic		          		DRAM_CS_N,
+inout logic 		    [15:0]		DRAM_DQ,
+output logic		     [1:0]		DRAM_DQM,
+output logic		          		DRAM_RAS_N,
+output logic		          		DRAM_WE_N,
+
+//////////// EPCS //////////
+output logic		          		EPCS_ASDO,
+input logic 		          		EPCS_DATA0,
+output logic		          		EPCS_DCLK,
+output logic		          		EPCS_NCSO,
+
+//////////// Accelerometer and EEPROM //////////
+output logic		          		G_SENSOR_CS_N,
+input logic 		          		G_SENSOR_INT,
+output logic		          		I2C_SCLK,
+inout logic 		          		I2C_SDAT,
+
+//////////// ADC //////////
+output logic		          		ADC_CS_N,
+output logic		          		ADC_SADDR,
+output logic		          		ADC_SCLK,
+input logic 		          		ADC_SDAT,
+
+//////////// 2x13 GPIO Header //////////
+inout logic 		    [12:0]		GPIO_2,
+input logic 		     [2:0]		GPIO_2_IN,
+
+//////////// GPIO_0, GPIO_0 connect to GPIO Default //////////
+inout logic 		    [33:0]		GPIO_0_PI,
+input logic 		     [1:0]		GPIO_0_PI_IN,
+
+//////////// GPIO_1, GPIO_1 connect to GPIO Default //////////
+inout logic 		    [33:0]		GPIO_1,
+input logic 		     [1:0]		GPIO_1_IN
+);			 
+
+/logic Laser_signal, Laser_sync, Laser_cod_A, Laser_cod_B, 
+		Prop_motor_left_cod_A, Prop_motor_left_cod_B, Prop_motor_right_cod_A, 
+		Prop_motor_right_cod_B, UART_TX, UART_RX, UART_DIR;
+
+logic [32:0] countR,countL;
+		
+		
+assign Laser_signal = GPIO_1[8];
+assign Laser_sync = GPIO_1[7];
+assign Laser_cod_A = GPIO_1[4];
+assign Laser_cod_B = GPIO_1[5];
+assign Prop_motor_left_cod_A = GPIO_1[0];
+assign Prop_motor_left_cod_B = GPIO_1_IN[0];
+assign Prop_motor_right_cod_A = GPIO_1[2];
+assign Prop_motor_right_cod_B = GPIO_1[1];
+assign UART_TX = GPIO_1[26];
+assign UART_RX = GPIO_1[24];
+assign UART_DIR = GPIO_1[22];
+
+quad_counter quadR(CLOCK_50,Prop_motor_right_cod_A,Prop_motor_right_cod_B,countR);
+quad_counter quadL(CLOCK_50,Prop_motor_left_cod_A,Prop_motor_left_cod_B,countL);
+
+
+
+//=======================================================
+//  SPI
+//=======================================================
+
+	logic spi_clk, spi_cs, spi_mosi, spi_miso;
+	logic [31:0] DataToPI, DataFromPI;
+
+	spi_slave spi_slave_instance(
+		.sck(spi_clk),
+		.mosi(spi_mosi),
+		.miso(spi_miso),
+		.reset(),
+		.d(DataToPI),
+		.q(DataFromPI)
+	);
+
+	assign spi_clk  		= GPIO_0_PI[11];	// SCLK = pin 16 = GPIO_11
+	assign spi_cs   		= GPIO_0_PI[9];	// CE0  = pin 14 = GPIO_9
+	assign spi_mosi     	= GPIO_0_PI[15];	// MOSI = pin 20 = GPIO_15
+	
+	assign GPIO_0_PI[13] = spi_cs ? 1'bz : spi_miso;  // MISO = pin 18 = GPIO_13
+	
+	
+	
+	
+	
+	//Selection de l'info à envoyer en fonction de la variable DataFromPi: 32'b1= compteur roue droite, 32'b0= compteur roue gauche. 
+	
+	always_comb
+	 case(DataFromPI)
+				32'd0: DataToPI = countL;
+				32'd1: DataToPI = countR;
+				default: DataToPI = 32'd0;
+	 endcase
+	
+	
+endmodule
+
+
+
