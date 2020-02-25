@@ -68,9 +68,6 @@ int main()
 	printf("\t\t Please do not interchange the chips on my tower/motor PWM boards !\n");
 	printf("\t\t Try to respect the C-file interface when programming me because\n \t\t it will be the same in the robotic project (Q2) !\n");
 
-	//configure timer for the updateCrtlIn function time in milisecond
-	//timer_start(updateCrtlIn, 500);
-
 	//test the motor control
 	CAN *can;
 	can = new CAN(CAN_BR);
@@ -138,48 +135,10 @@ void *updateCrtlIn(void *theCani)
 
 		//printf("%f et %f\r\n",((double)(int16_t)((uint16_t)buffer[3] << 8 | (uint16_t)buffer[4])),((double)(int16_t)((uint16_t)buffer[1] << 8 | (uint16_t)buffer[2])));
 
-		//printf("%f %f \r\n", MinibotCrtlIn.r_wheel_speed, MinibotCrtlIn.l_wheel_speed);
+		printf("%f %f \r\n", MinibotCrtlIn.r_wheel_speed, MinibotCrtlIn.l_wheel_speed);
 		delay(0.5);
 
-		// adresse de la tour beacon_edge
-		buffer[0] = 0x02;
-		buffer[1] = 0x00;
-		buffer[2] = 0x00;
-		buffer[3] = 0x00;
-		buffer[4] = 0x00;
-
-		wiringPiSPIDataRW(0, buffer, 5);
-
-		MinibotCrtlIn.tower_pos = (double)((uint32_t)buffer[1] << 24 | (uint32_t)buffer[2] << 16 | (uint32_t)buffer[3] << 8 | (uint32_t)buffer[4]); //valeur en pas
-
-		//printf("%f est la valeur de la postion de la tour  \r\n", MinibotCrtlIn.tower_pos);
-
-		delay(0.5);
-
-		buffer[0] = 0x01;
-		buffer[1] = 0x00;
-		buffer[2] = 0x00;
-		buffer[3] = 0x00;
-		buffer[4] = 0x00;
-
-		wiringPiSPIDataRW(0, buffer, 5);
-
-		MinibotCrtlIn.last_falling_pos = ((double)((uint16_t)buffer[3] << 8 | (uint16_t)buffer[4])) * 2 * M_PI / TicsTour; //valeur en radian
-		MinibotCrtlIn.last_rising_pos = ((double)((uint16_t)buffer[1] << 8 | (uint16_t)buffer[2])) * 2 * M_PI / TicsTour;
-
-		double riseDeg = 360 * MinibotCrtlIn.last_rising_pos / (2 * M_PI);
-		double fallDeg = 360 * MinibotCrtlIn.last_falling_pos / (2 * M_PI);
-
-		//	printf("%f %f \r\n", riseDeg,fallDeg);
-
-		//Update les commandes des roues
-		//	run_speed_controller(omega_refL, omega_refR);
-		//theCan->push_PropDC(MinibotCrtlOut.wheel_commands[0], MinibotCrtlOut.wheel_commands[1]);
-		//printf("%f \r\n", MinibotCrtlOut.wheel_commands[0]);
-
-		//Met a jour la distance du beacon
-		getBeaconAngleAndDist(MinibotCrtlIn.last_rising_pos, MinibotCrtlIn.last_falling_pos);
-
+		
 		//Mise a jour du pas de temps
 		t = clock() - t;
 		double time_taken = ((double)t) / CLOCKS_PER_SEC;

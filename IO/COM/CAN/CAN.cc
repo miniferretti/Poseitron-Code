@@ -248,5 +248,5 @@ void CAN::ctrl_led(int state)
     msg.data[2] = state? 0x40 : 0x0;
 
     msg.sid = CAN_MOT;
-    sendMessage(&msg, 0);
+    sendMessage(&msg, 1);
 }
