@@ -47,27 +47,14 @@ double TicsRoue = 28000;
 double samplingDE0 = 500;
 double Rroue = 0.03; // Valeur en m
 
-//Paramètres de la conversion tics-> angle pour la tour
-double TicsTour = 1800;
-double Rtour = 0.03;   // rayon de la tour valeur en mètres
-double RBeacon = 0.04; // rayon du beacon, valeur en mètres
-double TourBias = 0;   //valeur en radiants
-
 //Declaration des fonctions
 void *updateCrtlIn(void *);
 void run_speed_controller(double omega_refLi, double omega_refRi);
-void getBeaconAngleAndDist(double RisingEdge, double FallingEdge);
 
 int main()
 {
-	printf("hello world\n");
-	printf("##############################################################################################################\n");
-	printf("\t\t\tWelcome to the Minibot project of the ELEME2002 class :)");
-	printf("##############################################################################################################\n");
-	printf("\t\t I'm White Spirit, please take care of me !\n");
-	printf("\t\t Please do not interchange the chips on my tower/motor PWM boards !\n");
-	printf("\t\t Try to respect the C-file interface when programming me because\n \t\t it will be the same in the robotic project (Q2) !\n");
-
+	printf("Welcome to the Poseitron code prototype.\r\n");
+	printf("We hope that you will be pleased with the coding and we wish you a great succes.\n\r");
 	//test the motor control
 	CAN *can;
 	can = new CAN(CAN_BR);
