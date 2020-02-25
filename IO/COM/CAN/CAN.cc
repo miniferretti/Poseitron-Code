@@ -187,9 +187,6 @@ void CAN::ctrl_motor(int state)
 	msg.sid = CAN_MOT;
     	
 	sendMessage(&msg, 0);
-
-	msg.sid = CAN_TOW;
-	sendMessage(&msg, 1);
 }
 
 void CAN::push_PropDC(int dcG, int dcD)
@@ -252,8 +249,4 @@ void CAN::ctrl_led(int state)
 
     msg.sid = CAN_MOT;
     sendMessage(&msg, 0);
-
-    msg.sid = CAN_TOW;
-    sendMessage(&msg, 1);
-
 }

@@ -85,7 +85,6 @@ int main()
 	can->check_receive();
 
 	can->push_PropDC(0, 0);
-	//	can->push_TowDC(0);
 	can->check_receive();
 
 	//Creation du thread pour la fonction updateCrtlIn
