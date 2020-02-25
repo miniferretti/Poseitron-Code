@@ -21,8 +21,6 @@ void run_speed_controller(CtrlStruct* theCtrlStruct, double* omega_ref){
 	double omega_real_l = ratio*omega_real_lwheel;
 	double omega_real_r = ratio*omega_real_rwheel;
 
-
-
 	//controller for left wheel 
 	double term1_l = Kp1 * (omega_ref_l - omega_real_l);
 	theCtrlStruct->theUserStruct->term2_l = theCtrlStruct->theUserStruct->used_term2_l + Ki1 * (omega_ref_l - omega_real_l) * t_step;
