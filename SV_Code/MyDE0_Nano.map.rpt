@@ -1,5 +1,5 @@
 Analysis & Synthesis report for MyDE0_Nano
-Tue Feb 25 15:58:39 2020
+Tue Feb 25 23:54:54 2020
 Quartus Prime Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
 
 
@@ -60,7 +60,7 @@ refer to the applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Tue Feb 25 15:58:38 2020       ;
+; Analysis & Synthesis Status        ; Successful - Tue Feb 25 23:54:54 2020       ;
 ; Quartus Prime Version              ; 18.0.0 Build 614 04/24/2018 SJ Lite Edition ;
 ; Revision Name                      ; MyDE0_Nano                                  ;
 ; Top-level Entity Name              ; MyDE0_Nano                                  ;
@@ -1084,7 +1084,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
-    Info: Processing started: Tue Feb 25 15:58:04 2020
+    Info: Processing started: Tue Feb 25 23:54:20 2020
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off MyDE0_Nano -c MyDE0_Nano
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
@@ -1251,7 +1251,7 @@ Info (12021): Found 1 design units, including 1 entities, in source file db/cmpr
     Info (12023): Found entity 1: cmpr_ngc File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/db/cmpr_ngc.tdf Line: 22
 Info (12033): Analysis and Synthesis generated Signal Tap or debug node instance "auto_signaltap_0"
 Info (11170): Starting IP generation for the debug fabric: alt_sld_fab.
-Info (11172): 2020.02.25.15:58:23 Progress: Loading sldbe248a27/alt_sld_fab_wrapper_hw.tcl
+Info (11172): 2020.02.25.23:54:40 Progress: Loading sldbe248a27/alt_sld_fab_wrapper_hw.tcl
 Info (11172): Alt_sld_fab.alt_sld_fab: SLD fabric agents which did not specify prefer_host were connected to JTAG
 Info (11172): Alt_sld_fab: Generating alt_sld_fab "alt_sld_fab" for QUARTUS_SYNTH
 Info (11172): Alt_sld_fab: "alt_sld_fab" instantiated alt_sld_fab "alt_sld_fab"
@@ -1314,8 +1314,8 @@ Warning (13039): The following bidirectional pins have no drivers
     Warning (13040): bidirectional pin "GPIO_0_PI[11]" has no driver File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 55
     Warning (13040): bidirectional pin "GPIO_0_PI[15]" has no driver File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 55
     Warning (13040): bidirectional pin "GPIO_1[0]" has no driver File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 59
-    Warning (13040): bidirectional pin "GPIO_1[1]" has no driver File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 59
     Warning (13040): bidirectional pin "GPIO_1[2]" has no driver File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 59
+    Warning (13040): bidirectional pin "GPIO_1[3]" has no driver File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 59
     Warning (13040): bidirectional pin "GPIO_1[4]" has no driver File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 59
     Warning (13040): bidirectional pin "GPIO_1[5]" has no driver File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 59
     Warning (13040): bidirectional pin "GPIO_1[7]" has no driver File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 59
@@ -1380,7 +1380,7 @@ Warning (13039): The following bidirectional pins have no drivers
     Warning (13040): bidirectional pin "GPIO_0_PI[31]" has no driver File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 55
     Warning (13040): bidirectional pin "GPIO_0_PI[32]" has no driver File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 55
     Warning (13040): bidirectional pin "GPIO_0_PI[33]" has no driver File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 55
-    Warning (13040): bidirectional pin "GPIO_1[3]" has no driver File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 59
+    Warning (13040): bidirectional pin "GPIO_1[1]" has no driver File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 59
     Warning (13040): bidirectional pin "GPIO_1[6]" has no driver File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 59
     Warning (13040): bidirectional pin "GPIO_1[9]" has no driver File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 59
     Warning (13040): bidirectional pin "GPIO_1[10]" has no driver File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 59
@@ -1607,8 +1607,8 @@ Warning (14632): Output pin "pre_syn.bp.spi_slave_instance_SPI_CS" driven by bid
 Warning (14632): Output pin "pre_syn.bp.spi_slave_instance_SPI_CLK" driven by bidirectional pin "GPIO_0_PI[11]" cannot be tri-stated File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 55
 Warning (14632): Output pin "pre_syn.bp.spi_slave_instance_SPI_MOSI" driven by bidirectional pin "GPIO_0_PI[15]" cannot be tri-stated File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 55
 Warning (14632): Output pin "LED[4]" driven by bidirectional pin "GPIO_1[0]" cannot be tri-stated File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 12
-Warning (14632): Output pin "LED[1]" driven by bidirectional pin "GPIO_1[1]" cannot be tri-stated File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 12
 Warning (14632): Output pin "LED[2]" driven by bidirectional pin "GPIO_1[2]" cannot be tri-stated File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 12
+Warning (14632): Output pin "LED[1]" driven by bidirectional pin "GPIO_1[3]" cannot be tri-stated File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 12
 Warning (14632): Output pin "LED[0]" driven by bidirectional pin "GPIO_1[7]" cannot be tri-stated File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 12
 Info (17049): 2 registers lost all their fanouts during netlist optimizations.
 Info (35024): Successfully connected in-system debug instance "auto_signaltap_0" to all 145 required data inputs, trigger inputs, acquisition clocks, and dynamic pins
@@ -1638,8 +1638,8 @@ Info (21057): Implemented 2195 device resources after synthesis - the final reso
     Info (21064): Implemented 88 RAM segments
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 350 warnings
     Info: Peak virtual memory: 4863 megabytes
-    Info: Processing ended: Tue Feb 25 15:58:39 2020
-    Info: Elapsed time: 00:00:35
+    Info: Processing ended: Tue Feb 25 23:54:54 2020
+    Info: Elapsed time: 00:00:34
     Info: Total CPU time (on all processors): 00:00:54
 
 
