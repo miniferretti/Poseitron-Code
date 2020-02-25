@@ -38,7 +38,7 @@ double Kp2 = 0;
 double Ki2 = 0;
 
 //Speed references declaration
-double omega_refR = 0;
+double omega_refR = 10;
 double omega_refL = 10;
 
 //Constant values for the updateCrtlIn() routine
@@ -55,6 +55,8 @@ int main()
 {
 	printf("Welcome to the Poseitron code prototype.\r\n");
 	printf("We hope that you will be pleased with the coding and we wish you a great succes.\n\r");
+
+
 	//test the motor control
 	CAN *can;
 	can = new CAN(CAN_BR);
@@ -84,9 +86,9 @@ int main()
 		//getBeaconAngleAndDist(MinibotCrtlIn.last_rising_pos,MinibotCrtlIn.last_falling_pos);
 		//printf("La distance est %f \r\n",theUserStruct.beacon_distance);
 
-		can->ctrl_led(1);
+		//can->ctrl_led(1);
 		delay(100);
-		can->ctrl_led(0);
+		//can->ctrl_led(0);
 	}
 }
 
@@ -114,8 +116,8 @@ void *updateCrtlIn(void *theCani)
 
 		wiringPiSPIDataRW(0, buffer, 5);
 
-		MinibotCrtlIn.l_wheel_speed = ((double)(int16_t)((uint16_t)buffer[3] << 8 | (uint16_t)buffer[4])) * samplingDE0 * 2 * M_PI / TicsRoue;
-		MinibotCrtlIn.r_wheel_speed = ((double)(int16_t)((uint16_t)buffer[1] << 8 | (uint16_t)buffer[2])) * samplingDE0 * 2 * M_PI / TicsRoue;
+		MinibotCrtlIn.r_wheel_speed = ((double)(int16_t)((uint16_t)buffer[3] << 8 | (uint16_t)buffer[4])) * samplingDE0 * 2 * M_PI / TicsRoue;
+		MinibotCrtlIn.l_wheel_speed = ((double)(int16_t)((uint16_t)buffer[1] << 8 | (uint16_t)buffer[2])) * samplingDE0 * 2 * M_PI / TicsRoue;
 
 		//printf("La vitesse de la roue est de %f ou %f\r\n",MinibotCrtlIn.l_wheel_speed,MinibotCrtlIn.r_wheel_speed);
 		//	printf("%d %d %d %d\r\n",buffer[1],buffer[2],buffer[3],buffer[4]);
@@ -123,6 +125,11 @@ void *updateCrtlIn(void *theCani)
 		//printf("%f et %f\r\n",((double)(int16_t)((uint16_t)buffer[3] << 8 | (uint16_t)buffer[4])),((double)(int16_t)((uint16_t)buffer[1] << 8 | (uint16_t)buffer[2])));
 
 		printf("%f %f \r\n", MinibotCrtlIn.r_wheel_speed, MinibotCrtlIn.l_wheel_speed);
+
+		run_speed_controller(omega_refL,omega_refR);
+
+		theCan->push_PropDC(MinibotCrtlOut.wheel_commands[0],MinibotCrtlOut.wheel_commands[1]);
+
 		delay(0.5);
 
 		
@@ -133,7 +140,7 @@ void *updateCrtlIn(void *theCani)
 	}
 }
 
-//Il faut adapter le controller pour qu'il puisse utiliser ce qu'il y ici.
+//Il faut adapter le controller pour qu'il puisse utiliser ce qu'il y a ici.
 void run_speed_controller(double omega_refLi, double omega_refRi)
 {
 	double omega_ref_lwheel = omega_refLi;
@@ -190,23 +197,3 @@ void run_speed_controller(double omega_refLi, double omega_refRi)
 	return;
 }
 
-//Fonction qui prend en arguments le nobre de pas au levé du signal et à la tombée du signal
-//pour en calculer la distance avec le Beacon.
-void getBeaconAngleAndDist(double RisingEdge, double FallingEdge)
-{
-	double thetaRise = RisingEdge;
-	double thetaFalling = FallingEdge;
-
-	theUserStruct.beacon_angle = thetaRise + (thetaFalling - thetaRise) / 2;
-	theUserStruct.beacon_distance = RBeacon / sin(theUserStruct.beacon_angle - thetaRise); // valeur en m
-
-	if (theUserStruct.beacon_distance <= 1)
-	{
-
-		theUserStruct.beacon_detect = true;
-	}
-	else
-	{
-		theUserStruct.beacon_detect = false;
-	}
-}
