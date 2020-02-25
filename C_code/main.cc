@@ -17,6 +17,8 @@
 #include <math.h>
 #include <unistd.h>
 #include <time.h>
+#include <string>
+#include <sstream>
 using namespace std;
 
 //Constantes utiles
@@ -38,8 +40,8 @@ double Kp2 = 0;
 double Ki2 = 0;
 
 //Speed references declaration
-double omega_refR = 10;
-double omega_refL = 10;
+double omega_refR = 0;
+double omega_refL = 0;
 
 //Constant values for the updateCrtlIn() routine
 //paramètre de la conversion omega->vitesse pour les roues
@@ -78,6 +80,9 @@ int main()
 	pthread_create(&t, NULL, &updateCrtlIn, can);
 
 	//********  Début du comportement du robot **********
+
+
+	
 
 	while (true)
 	{
