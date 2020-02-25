@@ -134,9 +134,6 @@ void *updateCrtlIn(void *theCani)
 		run_speed_controller(omega_refL,omega_refR);
 
 		theCan->push_PropDC(MinibotCrtlOut.wheel_commands[0],MinibotCrtlOut.wheel_commands[1]);
-
-		delay(0.5);
-
 		
 		//Mise a jour du pas de temps
 		t = clock() - t;
@@ -159,6 +156,8 @@ void run_speed_controller(double omega_refLi, double omega_refRi)
 	double omega_ref_r = 14 * omega_ref_rwheel;
 	double omega_real_l = 14 * omega_real_lwheel;
 	double omega_real_r = 14 * omega_real_rwheel;
+
+	printf("up\r\n");
 
 	//controller for left wheel
 	double term1_l = Kp1 * (omega_ref_l - omega_real_l);
