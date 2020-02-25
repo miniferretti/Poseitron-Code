@@ -11,12 +11,15 @@ void run_speed_controller(CtrlStruct* theCtrlStruct, double* omega_ref){
 	theCtrlStruct->theUserStruct->t_last = theCtrlStruct->theCtrlIn->t;
 	double Kp1 = theCtrlStruct->theUserStruct->Kp1;
 	double Ki1 = theCtrlStruct->theUserStruct->Ki1;
-	
+	int ratio = theCtrlStruct->theUserStruct->ratio; 
+
+
+ 
 	//taking the gearbox in account 
-	double omega_ref_l = 14*omega_ref_lwheel;
-	double omega_ref_r = 14*omega_ref_rwheel;
-	double omega_real_l = 14*omega_real_lwheel;
-	double omega_real_r = 14*omega_real_rwheel;
+	double omega_ref_l = ratio*omega_ref_lwheel;
+	double omega_ref_r = ratio*omega_ref_rwheel;
+	double omega_real_l = ratio*omega_real_lwheel;
+	double omega_real_r = ratio*omega_real_rwheel;
 
 
 
@@ -59,6 +62,7 @@ void init_speed_controller(CtrlStruct* theCtrlStruct){
 	theCtrlStruct->theUserStruct->term2_l = 0.0;
 	theCtrlStruct->theUserStruct->used_term2_r = 0.0;
 	theCtrlStruct->theUserStruct->used_term2_l = 0.0;
+	theCtrlStruct->theUserStruct->ratio; 
 
 	return;
 }
