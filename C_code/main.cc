@@ -76,9 +76,9 @@ int main()
 
 	can->push_PropDC(0, 0);
 	can->check_receive();
-	printf("Test du segmentation fault\r\n");
+	
 	init_speed_controller(myCtrlStruct);
-	printf("Test du segmentation fault\r\n");
+	
 	//Creation du thread pour la fonction updateCrtlIn
 	pthread_t t;
 	pthread_create(&t, NULL, &updateCrtlIn, can);
