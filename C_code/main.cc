@@ -136,6 +136,7 @@ void *updateCrtlIn(void *theCani)
 		buffer[4] = 0x00;
 
 		wiringPiSPIDataRW(0, buffer, 5);
+		delay(0.5);
 
 		myCtrlStruct->theCtrlIn->r_wheel_speed = ((double)(int16_t)((uint16_t)buffer[3] << 8 | (uint16_t)buffer[4])) * samplingDE0 * 2 * M_PI / TicsRoue;
 		myCtrlStruct->theCtrlIn->l_wheel_speed = ((double)(int16_t)((uint16_t)buffer[1] << 8 | (uint16_t)buffer[2])) * samplingDE0 * 2 * M_PI / TicsRoue;
