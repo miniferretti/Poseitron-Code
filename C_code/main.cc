@@ -131,7 +131,7 @@ int main()
 void *updateCrtlIn(void *theCani)
 {
 	
-	printf("you're in the updateCtrlIn");
+	
 	CAN *theCan = (CAN *)theCani;
 	unsigned char buffer[5] = {0};
 	clock_t t;
@@ -172,7 +172,7 @@ void *updateCrtlIn(void *theCani)
 
 void run_speed_controller(CtrlStruct *theCtrlStruct)
 {
-	printf("you're in the run_speed");
+	
 	double omega_ref_l = omega_ref_now_l * theCtrlStruct->theUserStruct->ratio;
 	double omega_ref_r = omega_ref_now_r * theCtrlStruct->theUserStruct->ratio;
 	double r_wheel_speed = theCtrlStruct->theCtrlIn->r_wheel_speed * 14;
@@ -225,7 +225,7 @@ void run_speed_controller(CtrlStruct *theCtrlStruct)
 void init_speed_controller(CtrlStruct *theCtrlStruct)
 {
 	
-	printf("you're in the init_speed");
+	
 	double Ra = 5.84;
 	double Kv = 4.3e-5;
 	double J_rotor = 12e-7;
