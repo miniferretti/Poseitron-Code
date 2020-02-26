@@ -26,7 +26,7 @@ using namespace std;
 #define CS 0
 #define RESETSPI 19
 
-CtrlStruct *myCtrlStruct;
+CtrlStruct *myCtrlStruct = new CtrlStruct;
 
 //Constant values for the updateCrtlIn() routine
 //paramètre de la conversion omega->vitesse pour les roues
@@ -67,8 +67,9 @@ int main()
 
 	can->push_PropDC(0, 0);
 	can->check_receive();
-
+	printf("Test du segmentation fault\r\n");
 	init_speed_controller(myCtrlStruct);
+	printf("Test du segmentation fault\r\n");
 	//Creation du thread pour la fonction updateCrtlIn
 	pthread_t t;
 	pthread_create(&t, NULL, &updateCrtlIn, can);
