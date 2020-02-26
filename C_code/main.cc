@@ -28,6 +28,9 @@ using namespace std;
 
 CtrlStruct *myCtrlStruct = new CtrlStruct;
 
+//CtrlStruct *myCtrlStruct ;
+
+
 //Constant values for the updateCrtlIn() routine
 //paramètre de la conversion omega->vitesse pour les roues
 double TicsRoue = 28000;
@@ -47,8 +50,14 @@ void run_speed_controller(CtrlStruct *theCtrlStruct);
 void init_speed_controller(CtrlStruct *theCtrlStruct);
 int saturation(double upperLimit, double lowerLimit, double *u);
 
+
 int main()
 {
+	//CtrlStruct *myCtrlStruct ;
+    myCtrlStruct->theUserStruct = new UserStruct;
+	myCtrlStruct->theCtrlIn = new CtrlIn;
+	myCtrlStruct->theCtrlOut = new CtrlOut;
+	
 	printf("Welcome to the Poseitron code prototype.\r\n");
 	printf("We hope that you will be pleased with the coding and we wish you a great succes.\n\r");
 
@@ -96,6 +105,7 @@ int main()
 		delay(100);
 		//can->ctrl_led(0);
 	}
+	free(myCtrlStruct) ;
 }
 
 

@@ -78,7 +78,7 @@ typedef struct CtrlIn
 	int nb_opponents; ///< number of opponents
 
 	#ifdef SIMU_PROJECT
-	/*! \brief tower for the fixed beacon
+	/*! brief tower for the fixed beacon
 	 *
 	 * These variables are similar to the same ones without the '_fixed' name, except that
 	 * they only detect the fixed beacon placed at the border of the map.
@@ -106,7 +106,7 @@ typedef struct CtrlIn
 	int keyboard_key[2];    ///< keyboard keys (space bar and enter key, see user_realtime_events.cc)
 	int joystick_button[4]; ///< joystick buttons (depend on the joystick)
 
-	/*! \brief robot ID
+	/*! brief robot ID
 	 *
 	 * These are the following robots IDs (with their corresponding teams):
 	 *    ROBOT_B (blue)  : 0 - team A
