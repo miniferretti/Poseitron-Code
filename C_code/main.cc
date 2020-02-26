@@ -79,7 +79,8 @@ int main()
 	time_rec = clock(); 
 	while (true)
 	{
-		if ( (long double) (time_rec - clock())/CLOCKS_PER_SEC >= dt_ref){
+		if ( (long double) (time_rec - clock())/CLOCKS_PER_SEC >= dt_ref && i<6){
+			printf("time_rec = %f & omega_ref_now_l = %f \r \n", (double) (time_rec - clock()), omega_ref_now_l);
 			omega_ref_now_l = omega_roue_ref_l[i];
 			omega_ref_now_r = omega_roue_ref_r[i];
 			time_rec = clock(); 
