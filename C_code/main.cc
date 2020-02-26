@@ -57,7 +57,7 @@ int main()
     myCtrlStruct->theUserStruct = new UserStruct;
 	myCtrlStruct->theCtrlIn = new CtrlIn;
 	myCtrlStruct->theCtrlOut = new CtrlOut;
-	
+
 	printf("Welcome to the Poseitron code prototype.\r\n");
 	printf("We hope that you will be pleased with the coding and we wish you a great succes.\n\r");
 
@@ -74,7 +74,7 @@ int main()
 	can->ctrl_motor(1);
 	can->check_receive();
 
-	can->push_PropDC(0, 0);
+//	can->push_PropDC(0, 0);
 	can->check_receive();
 	printf("Test du segmentation fault\r\n");
 	init_speed_controller(myCtrlStruct);
@@ -89,13 +89,13 @@ int main()
 	time_rec = clock(); 
 	while (true)
 	{
-		if ( (long double) (time_rec - clock())/CLOCKS_PER_SEC >= dt_ref && i<6){
+		/*if ( (long double) (time_rec - clock())/CLOCKS_PER_SEC >= dt_ref && i<6){
 			printf("time_rec = %f & omega_ref_now_l = %f \r \n", (double) (time_rec - clock()), omega_ref_now_l);
 			omega_ref_now_l = omega_roue_ref_l[i];
 			omega_ref_now_r = omega_roue_ref_r[i];
 			time_rec = clock(); 
 			i++;
-		}
+		}*/
 		//printf("%s\n\r", theUserStruct.beacon_detect ? "true" : "false");
 		//printf("The distance to the beacon is %f\n\r",theUserStruct.beacon_distance);
 		//getBeaconAngleAndDist(MinibotCrtlIn.last_rising_pos,MinibotCrtlIn.last_falling_pos);
@@ -131,7 +131,7 @@ int main()
 void *updateCrtlIn(void *theCani)
 {
 	
-	printf("you're in the updateCtrlIn");
+	//printf("you're in the updateCtrlIn");
 	CAN *theCan = (CAN *)theCani;
 	unsigned char buffer[5] = {0};
 	clock_t t;

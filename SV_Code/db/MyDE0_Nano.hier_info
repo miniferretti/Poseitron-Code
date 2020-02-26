@@ -1,7 +1,7 @@
 |MyDE0_Nano
 CLOCK_50 => clk.IN4
 LED[0] <= Laser_sync.DB_MAX_OUTPUT_PORT_TYPE
-LED[1] <= LED[1].DB_MAX_OUTPUT_PORT_TYPE
+LED[1] <= Prop_motor_right_cod_A.DB_MAX_OUTPUT_PORT_TYPE
 LED[2] <= LED[2].DB_MAX_OUTPUT_PORT_TYPE
 LED[3] <= Prop_motor_left_cod_B.DB_MAX_OUTPUT_PORT_TYPE
 LED[4] <= LED[4].DB_MAX_OUTPUT_PORT_TYPE
@@ -114,7 +114,8 @@ GPIO_0_PI[32] <> <UNC>
 GPIO_0_PI[33] <> <UNC>
 GPIO_0_PI_IN[0] => ~NO_FANOUT~
 GPIO_0_PI_IN[1] => ~NO_FANOUT~
-GPIO_1[1] <> <UNC>
+GPIO_1[2] <> <UNC>
+GPIO_1[3] <> <UNC>
 GPIO_1[6] <> <UNC>
 GPIO_1[9] <> <UNC>
 GPIO_1[10] <> <UNC>
@@ -142,7 +143,7 @@ GPIO_1[31] <> <UNC>
 GPIO_1[32] <> <UNC>
 GPIO_1[33] <> <UNC>
 GPIO_1_IN[0] => Prop_motor_left_cod_B.IN1
-GPIO_1_IN[1] => ~NO_FANOUT~
+GPIO_1_IN[1] => Prop_motor_right_cod_A.IN1
 
 
 |MyDE0_Nano|quad_counter:quadR
