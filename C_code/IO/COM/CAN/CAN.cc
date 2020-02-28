@@ -28,7 +28,7 @@ void CAN::configure()
 	printf("Device status: 0x%x \n", status);
 
 	// Set baud rate
-	// Due to the 16MHz clock, 8tq allows to achieve 250kbaud exactly
+	// Due to the 16MHz clock, 8tq allows to achieve 250kbaud exactly and 4tq could maybe achieve 500kbps ? 
 	spi2can->bitModify(CNF2, 0b00111000, 2 << 3);
 	double tq = 1.0/8/CAN_BD; //Desired time quanta
 	int brp = floor(tq*FOSC/2 -1); //Corresponding baudrate prescaler
