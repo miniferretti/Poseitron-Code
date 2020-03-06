@@ -55,7 +55,7 @@ void Adafruit_TCS34725::write8(uint8_t reg, uint32_t value)
     fd = wiringPiI2CSetup(_i2caddr);
     //wiringPiI2CWrite(fd, TCS34725_COMMAND_BIT | reg);
     //wiringPiI2CWrite(fd, value & 0xFF);
-    wiringPiI2CWrite8(fd, TCS34725_COMMAND_BIT | reg, value & 0xFF);
+    wiringPiI2CWriteReg8(fd, TCS34725_COMMAND_BIT | reg, value & 0xFF);
     close(fd);
 }
 
@@ -159,7 +159,7 @@ Adafruit_TCS34725::Adafruit_TCS34725(tcs34725IntegrationTime_t it,
  *          i2c address
  *  return True if initialization was successful, otherwise false.
  */
-boolean Adafruit_TCS34725::begin(uint8_t addr)
+bool Adafruit_TCS34725::begin(uint8_t addr)
 {
     _i2caddr = addr;
     // _wire = &Wire;
@@ -187,7 +187,7 @@ boolean Adafruit_TCS34725::begin(uint8_t addr)
  *  brief  Initializes I2C and configures the sensor
  *  return True if initialization was successful, otherwise false.
  */
-boolean Adafruit_TCS34725::begin()
+bool Adafruit_TCS34725::begin()
 {
     _i2caddr = TCS34725_ADDRESS;
     //  _wire = &Wire;
@@ -199,7 +199,7 @@ boolean Adafruit_TCS34725::begin()
  *  brief  Part of begin
  *  return True if initialization was successful, otherwise false.
  */
-boolean Adafruit_TCS34725::init()
+bool Adafruit_TCS34725::init()
 {
     wiringPiSetup();
 
@@ -525,7 +525,7 @@ uint16_t Adafruit_TCS34725::calculateLux(uint16_t r, uint16_t g, uint16_t b)
  *  param  i
  *          Interrupt (True/False)
  */
-void Adafruit_TCS34725::setInterrupt(boolean i)
+void Adafruit_TCS34725::setInterrupt(bool i)
 {
     uint8_t r = read8(TCS34725_ENABLE);
     if (i)
@@ -545,7 +545,7 @@ void Adafruit_TCS34725::setInterrupt(boolean i)
 void Adafruit_TCS34725::clearInterrupt()
 {
     int fd;
-    fd = wiringPiSetup(_i2caddr);
+    fd = wiringPiI2CSetup(_i2caddr);
     wiringPiI2CWrite(fd, TCS34725_COMMAND_BIT | 0x66);
     close(fd);
 }
@@ -563,4 +563,15 @@ void Adafruit_TCS34725::setIntLimits(uint16_t low, uint16_t high)
     write8(0x05, low >> 8);
     write8(0x06, high & 0xFF);
     write8(0x07, high >> 8);
+}
+
+void Adafruit_TCS34725::sensorSelect(int bus)
+{
+     wiringPiSetup();
+    int fd;
+    if (bus > 7)
+        return;
+    fd = wiringPiI2CSetup(TCA9548A_ADDRESS);
+    wiringPiI2CWrite(fd,1 << (uint8_t)bus);
+    close(fd);
 }

@@ -9,7 +9,8 @@
 #include <unistd.h>
 #include <cmath>
 
-#define TCS34725_ADDRESS (0x29)         /**< I2C address **/
+#define TCS34725_ADDRESS (0x29)  
+#define TCA9548A_ADDRESS (0x70)       /**< I2C address **/
 #define TCS34725_COMMAND_BIT (0x80)     /**< Command bit **/
 #define TCS34725_ENABLE (0x00)          /**< Interrupt Enable register */
 #define TCS34725_ENABLE_AIEN (0x10)     /**< RGBC Interrupt Enable */
@@ -114,9 +115,9 @@ public:
                       tcs34725Gain_t = TCS34725_GAIN_1X);
 
     //boolean begin(uint8_t addr, TwoWire *theWire);
-    boolean begin(uint8_t addr);
-    boolean begin();
-    boolean init();
+    bool begin(uint8_t addr);
+    bool begin();
+    bool init();
 
     void setIntegrationTime(tcs34725IntegrationTime_t it);
     void setGain(tcs34725Gain_t gain);
@@ -130,16 +131,17 @@ public:
     void write8(uint8_t reg, uint32_t value);
     uint8_t read8(uint8_t reg);
     uint16_t read16(uint8_t reg);
-    void setInterrupt(boolean flag);
+    void setInterrupt(bool flag);
     void clearInterrupt();
     void setIntLimits(uint16_t l, uint16_t h);
     void enable();
     void disable();
+    void sensorSelect(int bus);
 
 private:
     // TwoWire *_wire;
     uint8_t _i2caddr;
-    boolean _tcs34725Initialised;
+    bool _tcs34725Initialised;
     tcs34725Gain_t _tcs34725Gain;
     tcs34725IntegrationTime_t _tcs34725IntegrationTime;
 };

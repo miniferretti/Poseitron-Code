@@ -7,6 +7,7 @@
 #include "CtrlStruct.h"
 #include <iostream>
 #include <wiringPiSPI.h>
+#include <wiringPiI2C.h>
 #include <errno.h>
 #include <stdlib.h>
 #include <signal.h>
@@ -19,6 +20,8 @@
 #include <time.h>
 #include <string>
 #include <sstream>
+#include"IO/COM/TCS3472_I2C/TCS3472_I2C.hh"
+
 using namespace std;
 
 //Constantes utiles
