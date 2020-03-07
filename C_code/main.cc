@@ -20,7 +20,7 @@
 #include <time.h>
 #include <string>
 #include <sstream>
-#include"IO/COM/TCS3472_I2C/TCS3472_I2C.hh"
+#include "IO/COM/TCS3472_I2C/TCS3472_I2C.hh"
 
 using namespace std;
 
@@ -33,17 +33,16 @@ CtrlStruct *myCtrlStruct = new CtrlStruct;
 
 //CtrlStruct *myCtrlStruct ;
 
-
 //Constant values for the updateCrtlIn() routine
 //paramètre de la conversion omega->vitesse pour les roues
 double TicsRoue = 28000;
 double samplingDE0 = 500;
 double Rroue = 0.03; // Valeur en m
 
-double omega_roue_ref_l[6] = {0, 6.2832, 0 , 6.2832, 0, 6.2832};
-double omega_roue_ref_r[6] = {0, 6.2832, 0 , -6.2832, 0, 6.2832};
+double omega_roue_ref_l[6] = {0, 6.2832, 0, 6.2832, 0, 6.2832};
+double omega_roue_ref_r[6] = {0, 6.2832, 0, -6.2832, 0, 6.2832};
 
-double omega_ref_now_r = 0.0; 
+double omega_ref_now_r = 0.0;
 double omega_ref_now_l = 0.0;
 double dt_ref = 3;
 
@@ -53,11 +52,10 @@ void run_speed_controller(CtrlStruct *theCtrlStruct);
 void init_speed_controller(CtrlStruct *theCtrlStruct);
 int saturation(double upperLimit, double lowerLimit, double *u);
 
-
 int main()
 {
 	//CtrlStruct *myCtrlStruct ;
-    myCtrlStruct->theUserStruct = new UserStruct;
+	myCtrlStruct->theUserStruct = new UserStruct;
 	myCtrlStruct->theCtrlIn = new CtrlIn;
 	myCtrlStruct->theCtrlOut = new CtrlOut;
 
@@ -77,19 +75,19 @@ int main()
 	can->ctrl_motor(1);
 	can->check_receive();
 
-//	can->push_PropDC(0, 0);
+	//	can->push_PropDC(0, 0);
 	can->check_receive();
-	
+
 	init_speed_controller(myCtrlStruct);
-	
+
 	//Creation du thread pour la fonction updateCrtlIn
 	pthread_t t;
 	pthread_create(&t, NULL, &updateCrtlIn, can);
 
 	//********  Début du comportement du robot **********
-	int i = 0; 
-	clock_t time_rec; 
-	time_rec = clock(); 
+	int i = 0;
+	clock_t time_rec;
+	time_rec = clock();
 	while (true)
 	{
 		/*if ( (long double) (time_rec - clock())/CLOCKS_PER_SEC >= dt_ref && i<6){
@@ -103,38 +101,19 @@ int main()
 		//printf("The distance to the beacon is %f\n\r",theUserStruct.beacon_distance);
 		//getBeaconAngleAndDist(MinibotCrtlIn.last_rising_pos,MinibotCrtlIn.last_falling_pos);
 		//printf("La distance est %f \r\n",theUserStruct.beacon_distance);
-		
+
 		//can->ctrl_led(1);
 		delay(100);
 		//can->ctrl_led(0);
 	}
-	free(myCtrlStruct) ;
+	free(myCtrlStruct);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 //Fonction est qui appellée dans un thread, son but est de metter à jour les variables de MinibotCrtlIn et de mettre a jour la vitesse des roues
 //en utilisant le controller de vitesse run_speed_controller().
 void *updateCrtlIn(void *theCani)
 {
-	
-	
+
 	CAN *theCan = (CAN *)theCani;
 	unsigned char buffer[5] = {0};
 	clock_t t;
@@ -175,7 +154,7 @@ void *updateCrtlIn(void *theCani)
 
 void run_speed_controller(CtrlStruct *theCtrlStruct)
 {
-	
+
 	double omega_ref_l = omega_ref_now_l * theCtrlStruct->theUserStruct->ratio;
 	double omega_ref_r = omega_ref_now_r * theCtrlStruct->theUserStruct->ratio;
 	double r_wheel_speed = theCtrlStruct->theCtrlIn->r_wheel_speed * 14;
@@ -227,8 +206,7 @@ void run_speed_controller(CtrlStruct *theCtrlStruct)
 //Loading of the variable
 void init_speed_controller(CtrlStruct *theCtrlStruct)
 {
-	
-	
+
 	double Ra = 5.84;
 	double Kv = 4.3e-5;
 	double J_rotor = 12e-7;

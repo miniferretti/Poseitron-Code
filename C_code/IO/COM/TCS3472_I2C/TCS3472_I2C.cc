@@ -53,8 +53,6 @@ void Adafruit_TCS34725::write8(uint8_t reg, uint32_t value)
 {
     int fd;
     fd = wiringPiI2CSetup(_i2caddr);
-    //wiringPiI2CWrite(fd, TCS34725_COMMAND_BIT | reg);
-    //wiringPiI2CWrite(fd, value & 0xFF);
     wiringPiI2CWriteReg8(fd, TCS34725_COMMAND_BIT | reg, value & 0xFF);
     close(fd);
 }
