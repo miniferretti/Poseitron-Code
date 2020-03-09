@@ -1,5 +1,5 @@
 Analysis & Synthesis report for MyDE0_Nano
-Wed Feb 26 02:10:17 2020
+Mon Mar 09 22:29:08 2020
 Quartus Prime Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
 
 
@@ -29,12 +29,11 @@ Quartus Prime Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
  21. Parameter Settings for Inferred Entity Instance: spi_slave:spi_slave_instance|altsyncram:misoRAM_rtl_0
  22. altsyncram Parameter Settings by Entity Instance
  23. Port Connectivity Checks: "spi_slave:spi_slave_instance"
- 24. Port Connectivity Checks: "laserV1:lazer"
- 25. Signal Tap Logic Analyzer Settings
- 26. Post-Synthesis Netlist Statistics for Top Partition
- 27. Elapsed Time Per Partition
- 28. Connections to In-System Debugging Instance "auto_signaltap_0"
- 29. Analysis & Synthesis Messages
+ 24. Signal Tap Logic Analyzer Settings
+ 25. Post-Synthesis Netlist Statistics for Top Partition
+ 26. Elapsed Time Per Partition
+ 27. Connections to In-System Debugging Instance "auto_signaltap_0"
+ 28. Analysis & Synthesis Messages
 
 
 
@@ -60,15 +59,15 @@ refer to the applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Wed Feb 26 02:10:16 2020       ;
+; Analysis & Synthesis Status        ; Successful - Mon Mar 09 22:29:08 2020       ;
 ; Quartus Prime Version              ; 18.0.0 Build 614 04/24/2018 SJ Lite Edition ;
 ; Revision Name                      ; MyDE0_Nano                                  ;
 ; Top-level Entity Name              ; MyDE0_Nano                                  ;
 ; Family                             ; Cyclone IV E                                ;
-; Total logic elements               ; 1,922                                       ;
-;     Total combinational functions  ; 1,042                                       ;
-;     Dedicated logic registers      ; 1,469                                       ;
-; Total registers                    ; 1469                                        ;
+; Total logic elements               ; 1,748                                       ;
+;     Total combinational functions  ; 934                                         ;
+;     Dedicated logic registers      ; 1,387                                       ;
+; Total registers                    ; 1387                                        ;
 ; Total pins                         ; 154                                         ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 459,264                                     ;
@@ -187,7 +186,6 @@ refer to the applicable agreement for further details.
 +--------------------------------------------------------------------+-----------------+----------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------+
 ; File Name with User-Entered Path                                   ; Used in Netlist ; File Type                                    ; File Name with Absolute Path                                                                                                                                                                ; Library     ;
 +--------------------------------------------------------------------+-----------------+----------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------+
-; laser.sv                                                           ; yes             ; User SystemVerilog HDL File                  ; C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/laser.sv                                                           ;             ;
 ; quad_counter.sv                                                    ; yes             ; User SystemVerilog HDL File                  ; C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/quad_counter.sv                                                    ;             ;
 ; MyDE0_Nano.sv                                                      ; yes             ; User SystemVerilog HDL File                  ; C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv                                                      ;             ;
 ; MySPI.sv                                                           ; yes             ; User SystemVerilog HDL File                  ; C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MySPI.sv                                                           ;             ;
@@ -256,20 +254,20 @@ refer to the applicable agreement for further details.
 +---------------------------------------------+----------------+
 ; Resource                                    ; Usage          ;
 +---------------------------------------------+----------------+
-; Estimated Total logic elements              ; 1,922          ;
+; Estimated Total logic elements              ; 1,748          ;
 ;                                             ;                ;
-; Total combinational functions               ; 1042           ;
+; Total combinational functions               ; 934            ;
 ; Logic element usage by number of LUT inputs ;                ;
-;     -- 4 input functions                    ; 415            ;
-;     -- 3 input functions                    ; 387            ;
-;     -- <=2 input functions                  ; 240            ;
+;     -- 4 input functions                    ; 358            ;
+;     -- 3 input functions                    ; 308            ;
+;     -- <=2 input functions                  ; 268            ;
 ;                                             ;                ;
 ; Logic elements by mode                      ;                ;
-;     -- normal mode                          ; 861            ;
-;     -- arithmetic mode                      ; 181            ;
+;     -- normal mode                          ; 768            ;
+;     -- arithmetic mode                      ; 166            ;
 ;                                             ;                ;
-; Total registers                             ; 1469           ;
-;     -- Dedicated logic registers            ; 1469           ;
+; Total registers                             ; 1387           ;
+;     -- Dedicated logic registers            ; 1387           ;
 ;     -- I/O registers                        ; 0              ;
 ;                                             ;                ;
 ; I/O pins                                    ; 154            ;
@@ -278,9 +276,9 @@ refer to the applicable agreement for further details.
 ; Embedded Multiplier 9-bit elements          ; 0              ;
 ;                                             ;                ;
 ; Maximum fan-out node                        ; CLOCK_50~input ;
-; Maximum fan-out                             ; 939            ;
-; Total fan-out                               ; 9880           ;
-; Average fan-out                             ; 3.28           ;
+; Maximum fan-out                             ; 938            ;
+; Total fan-out                               ; 9242           ;
+; Average fan-out                             ; 3.27           ;
 +---------------------------------------------+----------------+
 
 
@@ -289,10 +287,9 @@ refer to the applicable agreement for further details.
 +-----------------------------------------------------------------------------------------------------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------+--------------+
 ; Compilation Hierarchy Node                                                                                                              ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                                                                                                                                                                                                                                    ; Entity Name                       ; Library Name ;
 +-----------------------------------------------------------------------------------------------------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------+--------------+
-; |MyDE0_Nano                                                                                                                             ; 1042 (170)          ; 1469 (36)                 ; 459264      ; 0            ; 0       ; 0         ; 154  ; 0            ; |MyDE0_Nano                                                                                                                                                                                                                                                                                                                                            ; MyDE0_Nano                        ; work         ;
-;    |laserV1:lazer|                                                                                                                      ; 27 (27)             ; 82 (82)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |MyDE0_Nano|laserV1:lazer                                                                                                                                                                                                                                                                                                                              ; laserV1                           ; work         ;
-;    |quad_counter:quadL|                                                                                                                 ; 58 (58)             ; 70 (70)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |MyDE0_Nano|quad_counter:quadL                                                                                                                                                                                                                                                                                                                         ; quad_counter                      ; work         ;
-;    |quad_counter:quadR|                                                                                                                 ; 29 (29)             ; 38 (38)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |MyDE0_Nano|quad_counter:quadR                                                                                                                                                                                                                                                                                                                         ; quad_counter                      ; work         ;
+; |MyDE0_Nano                                                                                                                             ; 934 (89)            ; 1387 (36)                 ; 459264      ; 0            ; 0       ; 0         ; 154  ; 0            ; |MyDE0_Nano                                                                                                                                                                                                                                                                                                                                            ; MyDE0_Nano                        ; work         ;
+;    |quad_counter:quadL|                                                                                                                 ; 57 (57)             ; 70 (70)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |MyDE0_Nano|quad_counter:quadL                                                                                                                                                                                                                                                                                                                         ; quad_counter                      ; work         ;
+;    |quad_counter:quadR|                                                                                                                 ; 30 (30)             ; 38 (38)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |MyDE0_Nano|quad_counter:quadR                                                                                                                                                                                                                                                                                                                         ; quad_counter                      ; work         ;
 ;    |sld_hub:auto_hub|                                                                                                                   ; 127 (1)             ; 91 (0)                    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |MyDE0_Nano|sld_hub:auto_hub                                                                                                                                                                                                                                                                                                                           ; sld_hub                           ; altera_sld   ;
 ;       |alt_sld_fab_with_jtag_input:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:with_jtag_input_gen:instrumentation_fabric| ; 126 (0)             ; 91 (0)                    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |MyDE0_Nano|sld_hub:auto_hub|alt_sld_fab_with_jtag_input:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:with_jtag_input_gen:instrumentation_fabric                                                                                                                                                                                           ; alt_sld_fab_with_jtag_input       ; altera_sld   ;
 ;          |alt_sld_fab:instrumentation_fabric|                                                                                           ; 126 (0)             ; 91 (0)                    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |MyDE0_Nano|sld_hub:auto_hub|alt_sld_fab_with_jtag_input:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:with_jtag_input_gen:instrumentation_fabric|alt_sld_fab:instrumentation_fabric                                                                                                                                                        ; alt_sld_fab                       ; alt_sld_fab  ;
@@ -452,86 +449,38 @@ Encoding Type:  One-Hot
 ; Latch Name                                          ; Latch Enable Signal  ; Free of Timing Hazards ;
 +-----------------------------------------------------+----------------------+------------------------+
 ; VitesseRoueRLPrev[31]                               ; VitesseRoueRLPrev[0] ; yes                    ;
-; beacon_edgePrev[31]                                 ; beacon_edgePrev[15]  ; yes                    ;
-; towerPosPrev[2]                                     ; towerPosPrev[31]     ; yes                    ;
-; beacon_edgePrev[2]                                  ; beacon_edgePrev[15]  ; yes                    ;
 ; VitesseRoueRLPrev[2]                                ; VitesseRoueRLPrev[0] ; yes                    ;
-; towerPosPrev[3]                                     ; towerPosPrev[31]     ; yes                    ;
-; beacon_edgePrev[3]                                  ; beacon_edgePrev[15]  ; yes                    ;
 ; VitesseRoueRLPrev[3]                                ; VitesseRoueRLPrev[0] ; yes                    ;
-; towerPosPrev[4]                                     ; towerPosPrev[31]     ; yes                    ;
-; beacon_edgePrev[4]                                  ; beacon_edgePrev[15]  ; yes                    ;
 ; VitesseRoueRLPrev[4]                                ; VitesseRoueRLPrev[0] ; yes                    ;
-; towerPosPrev[5]                                     ; towerPosPrev[31]     ; yes                    ;
-; beacon_edgePrev[5]                                  ; beacon_edgePrev[15]  ; yes                    ;
 ; VitesseRoueRLPrev[5]                                ; VitesseRoueRLPrev[0] ; yes                    ;
-; towerPosPrev[6]                                     ; towerPosPrev[31]     ; yes                    ;
-; beacon_edgePrev[6]                                  ; beacon_edgePrev[15]  ; yes                    ;
 ; VitesseRoueRLPrev[6]                                ; VitesseRoueRLPrev[0] ; yes                    ;
-; towerPosPrev[7]                                     ; towerPosPrev[31]     ; yes                    ;
-; beacon_edgePrev[7]                                  ; beacon_edgePrev[15]  ; yes                    ;
 ; VitesseRoueRLPrev[7]                                ; VitesseRoueRLPrev[0] ; yes                    ;
-; towerPosPrev[8]                                     ; towerPosPrev[31]     ; yes                    ;
-; beacon_edgePrev[8]                                  ; beacon_edgePrev[15]  ; yes                    ;
 ; VitesseRoueRLPrev[8]                                ; VitesseRoueRLPrev[0] ; yes                    ;
-; towerPosPrev[9]                                     ; towerPosPrev[31]     ; yes                    ;
-; beacon_edgePrev[9]                                  ; beacon_edgePrev[15]  ; yes                    ;
 ; VitesseRoueRLPrev[9]                                ; VitesseRoueRLPrev[0] ; yes                    ;
-; towerPosPrev[10]                                    ; towerPosPrev[31]     ; yes                    ;
-; beacon_edgePrev[10]                                 ; beacon_edgePrev[15]  ; yes                    ;
 ; VitesseRoueRLPrev[10]                               ; VitesseRoueRLPrev[0] ; yes                    ;
-; towerPosPrev[11]                                    ; towerPosPrev[31]     ; yes                    ;
-; beacon_edgePrev[11]                                 ; beacon_edgePrev[15]  ; yes                    ;
 ; VitesseRoueRLPrev[11]                               ; VitesseRoueRLPrev[0] ; yes                    ;
-; towerPosPrev[12]                                    ; towerPosPrev[31]     ; yes                    ;
-; beacon_edgePrev[12]                                 ; beacon_edgePrev[15]  ; yes                    ;
 ; VitesseRoueRLPrev[12]                               ; VitesseRoueRLPrev[0] ; yes                    ;
-; towerPosPrev[13]                                    ; towerPosPrev[31]     ; yes                    ;
-; beacon_edgePrev[13]                                 ; beacon_edgePrev[15]  ; yes                    ;
 ; VitesseRoueRLPrev[13]                               ; VitesseRoueRLPrev[0] ; yes                    ;
-; towerPosPrev[14]                                    ; towerPosPrev[31]     ; yes                    ;
-; beacon_edgePrev[14]                                 ; beacon_edgePrev[15]  ; yes                    ;
 ; VitesseRoueRLPrev[14]                               ; VitesseRoueRLPrev[0] ; yes                    ;
-; towerPosPrev[15]                                    ; towerPosPrev[31]     ; yes                    ;
-; beacon_edgePrev[15]                                 ; beacon_edgePrev[15]  ; yes                    ;
 ; VitesseRoueRLPrev[15]                               ; VitesseRoueRLPrev[0] ; yes                    ;
 ; VitesseRoueRLPrev[16]                               ; VitesseRoueRLPrev[0] ; yes                    ;
-; beacon_edgePrev[16]                                 ; beacon_edgePrev[15]  ; yes                    ;
 ; VitesseRoueRLPrev[17]                               ; VitesseRoueRLPrev[0] ; yes                    ;
-; beacon_edgePrev[17]                                 ; beacon_edgePrev[15]  ; yes                    ;
 ; VitesseRoueRLPrev[18]                               ; VitesseRoueRLPrev[0] ; yes                    ;
-; beacon_edgePrev[18]                                 ; beacon_edgePrev[15]  ; yes                    ;
 ; VitesseRoueRLPrev[19]                               ; VitesseRoueRLPrev[0] ; yes                    ;
-; beacon_edgePrev[19]                                 ; beacon_edgePrev[15]  ; yes                    ;
 ; VitesseRoueRLPrev[20]                               ; VitesseRoueRLPrev[0] ; yes                    ;
-; beacon_edgePrev[20]                                 ; beacon_edgePrev[15]  ; yes                    ;
 ; VitesseRoueRLPrev[21]                               ; VitesseRoueRLPrev[0] ; yes                    ;
-; beacon_edgePrev[21]                                 ; beacon_edgePrev[15]  ; yes                    ;
 ; VitesseRoueRLPrev[22]                               ; VitesseRoueRLPrev[0] ; yes                    ;
-; beacon_edgePrev[22]                                 ; beacon_edgePrev[15]  ; yes                    ;
 ; VitesseRoueRLPrev[23]                               ; VitesseRoueRLPrev[0] ; yes                    ;
-; beacon_edgePrev[23]                                 ; beacon_edgePrev[15]  ; yes                    ;
 ; VitesseRoueRLPrev[24]                               ; VitesseRoueRLPrev[0] ; yes                    ;
-; beacon_edgePrev[24]                                 ; beacon_edgePrev[15]  ; yes                    ;
 ; VitesseRoueRLPrev[25]                               ; VitesseRoueRLPrev[0] ; yes                    ;
-; beacon_edgePrev[25]                                 ; beacon_edgePrev[15]  ; yes                    ;
 ; VitesseRoueRLPrev[26]                               ; VitesseRoueRLPrev[0] ; yes                    ;
-; beacon_edgePrev[26]                                 ; beacon_edgePrev[15]  ; yes                    ;
 ; VitesseRoueRLPrev[27]                               ; VitesseRoueRLPrev[0] ; yes                    ;
-; beacon_edgePrev[27]                                 ; beacon_edgePrev[15]  ; yes                    ;
 ; VitesseRoueRLPrev[28]                               ; VitesseRoueRLPrev[0] ; yes                    ;
-; beacon_edgePrev[28]                                 ; beacon_edgePrev[15]  ; yes                    ;
 ; VitesseRoueRLPrev[29]                               ; VitesseRoueRLPrev[0] ; yes                    ;
-; beacon_edgePrev[29]                                 ; beacon_edgePrev[15]  ; yes                    ;
 ; VitesseRoueRLPrev[30]                               ; VitesseRoueRLPrev[0] ; yes                    ;
-; beacon_edgePrev[30]                                 ; beacon_edgePrev[15]  ; yes                    ;
-; towerPosPrev[0]                                     ; towerPosPrev[31]     ; yes                    ;
-; beacon_edgePrev[0]                                  ; beacon_edgePrev[15]  ; yes                    ;
 ; VitesseRoueRLPrev[0]                                ; VitesseRoueRLPrev[0] ; yes                    ;
-; towerPosPrev[1]                                     ; towerPosPrev[31]     ; yes                    ;
-; beacon_edgePrev[1]                                  ; beacon_edgePrev[15]  ; yes                    ;
 ; VitesseRoueRLPrev[1]                                ; VitesseRoueRLPrev[0] ; yes                    ;
-; Number of user-specified and inferred latches = 80  ;                      ;                        ;
+; Number of user-specified and inferred latches = 32  ;                      ;                        ;
 +-----------------------------------------------------+----------------------+------------------------+
 Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
 
@@ -588,12 +537,12 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 1469  ;
-; Number of registers using Synchronous Clear  ; 134   ;
-; Number of registers using Synchronous Load   ; 119   ;
+; Total registers                              ; 1387  ;
+; Number of registers using Synchronous Clear  ; 118   ;
+; Number of registers using Synchronous Load   ; 103   ;
 ; Number of registers using Asynchronous Clear ; 407   ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 635   ;
+; Number of registers using Clock Enable       ; 619   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -679,11 +628,10 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------+
 ; 3:1                ; 10 bits   ; 20 LEs        ; 10 LEs               ; 10 LEs                 ; Yes        ; |MyDE0_Nano|spi_slave:spi_slave_instance|SPI_cnt[0]  ;
 ; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; Yes        ; |MyDE0_Nano|DataAdrM[1]                              ;
-; 4:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |MyDE0_Nano|WriteDataM[17]                           ;
-; 4:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |MyDE0_Nano|WriteDataM[8]                            ;
-; 4:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |MyDE0_Nano|quad_counter:quadR|countFB[0]            ;
-; 4:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |MyDE0_Nano|quad_counter:quadL|countFB[0]            ;
-; 5:1                ; 31 bits   ; 93 LEs        ; 62 LEs               ; 31 LEs                 ; Yes        ; |MyDE0_Nano|spi_slave:spi_slave_instance|SPI_reg[18] ;
+; 4:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |MyDE0_Nano|WriteDataM[30]                           ;
+; 4:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |MyDE0_Nano|quad_counter:quadR|countFB[15]           ;
+; 4:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |MyDE0_Nano|quad_counter:quadL|countFB[10]           ;
+; 5:1                ; 31 bits   ; 93 LEs        ; 62 LEs               ; 31 LEs                 ; Yes        ; |MyDE0_Nano|spi_slave:spi_slave_instance|SPI_reg[25] ;
 ; 3:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |MyDE0_Nano|spi_slave:spi_slave_instance|SPI_reg     ;
 ; 9:1                ; 2 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; No         ; |MyDE0_Nano|spi_slave:spi_slave_instance|state       ;
 ; 9:1                ; 2 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; No         ; |MyDE0_Nano|spi_slave:spi_slave_instance|state       ;
@@ -865,16 +813,6 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------+--------+----------+-------------------------------------------------------------------------------------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "laserV1:lazer"                                                                                    ;
-+--------------------+--------+----------+-------------------------------------------------------------------------------------+
-; Port               ; Type   ; Severity ; Details                                                                             ;
-+--------------------+--------+----------+-------------------------------------------------------------------------------------+
-; position_direction ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-; beacon_detection   ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+--------------------+--------+----------+-------------------------------------------------------------------------------------+
-
-
 +-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 ; Signal Tap Logic Analyzer Settings                                                                                                                                                                                                                                      ;
 +----------------+------------------+---------------------+------------------+--------------+----------+------------------------+----------------------+--------------------+-----------------------------+-----------------+------------------+--------------------------+
@@ -890,29 +828,27 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
 ; boundary_port         ; 210                         ;
-; cycloneiii_ff         ; 318                         ;
-;     ENA               ; 52                          ;
+; cycloneiii_ff         ; 236                         ;
+;     ENA               ; 36                          ;
 ;     ENA SCLR          ; 38                          ;
 ;     ENA SCLR SLD      ; 31                          ;
-;     SCLR              ; 16                          ;
 ;     SCLR SLD          ; 1                           ;
-;     SLD               ; 16                          ;
-;     plain             ; 164                         ;
+;     plain             ; 130                         ;
 ; cycloneiii_io_obuf    ; 98                          ;
-; cycloneiii_lcell_comb ; 351                         ;
-;     arith             ; 81                          ;
-;         2 data inputs ; 39                          ;
-;         3 data inputs ; 42                          ;
-;     normal            ; 270                         ;
+; cycloneiii_lcell_comb ; 243                         ;
+;     arith             ; 66                          ;
+;         2 data inputs ; 38                          ;
+;         3 data inputs ; 28                          ;
+;     normal            ; 177                         ;
 ;         0 data inputs ; 1                           ;
 ;         1 data inputs ; 5                           ;
-;         2 data inputs ; 20                          ;
-;         3 data inputs ; 135                         ;
-;         4 data inputs ; 109                         ;
+;         2 data inputs ; 49                          ;
+;         3 data inputs ; 70                          ;
+;         4 data inputs ; 52                          ;
 ; cycloneiii_ram_block  ; 32                          ;
 ;                       ;                             ;
 ; Max LUT depth         ; 4.10                        ;
-; Average LUT depth     ; 2.07                        ;
+; Average LUT depth     ; 1.88                        ;
 +-----------------------+-----------------------------+
 
 
@@ -1084,7 +1020,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
-    Info: Processing started: Wed Feb 26 02:09:45 2020
+    Info: Processing started: Mon Mar 09 22:28:23 2020
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off MyDE0_Nano -c MyDE0_Nano
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
@@ -1097,21 +1033,30 @@ Info (12021): Found 1 design units, including 1 entities, in source file myde0_n
 Info (12021): Found 1 design units, including 1 entities, in source file myspi.sv
     Info (12023): Found entity 1: spi_slave File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MySPI.sv Line: 6
 Info (12127): Elaborating entity "MyDE0_Nano" for the top level hierarchy
+Warning (10036): Verilog HDL or VHDL warning at MyDE0_Nano.sv(63): object "Laser_signal" assigned a value but never read File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 63
+Warning (10036): Verilog HDL or VHDL warning at MyDE0_Nano.sv(63): object "Laser_cod_A" assigned a value but never read File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 63
+Warning (10036): Verilog HDL or VHDL warning at MyDE0_Nano.sv(63): object "Laser_cod_B" assigned a value but never read File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 63
 Warning (10036): Verilog HDL or VHDL warning at MyDE0_Nano.sv(65): object "UART_TX" assigned a value but never read File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 65
 Warning (10036): Verilog HDL or VHDL warning at MyDE0_Nano.sv(65): object "UART_RX" assigned a value but never read File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 65
 Warning (10036): Verilog HDL or VHDL warning at MyDE0_Nano.sv(65): object "UART_DIR" assigned a value but never read File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 65
 Warning (10036): Verilog HDL or VHDL warning at MyDE0_Nano.sv(65): object "reset" assigned a value but never read File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 65
-Warning (10235): Verilog HDL Always Construct warning at MyDE0_Nano.sv(165): variable "writeRoue" is read inside the Always Construct but isn't in the Always Construct's Event Control File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 165
-Warning (10235): Verilog HDL Always Construct warning at MyDE0_Nano.sv(168): variable "VitesseRoueRL" is read inside the Always Construct but isn't in the Always Construct's Event Control File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 168
-Warning (10235): Verilog HDL Always Construct warning at MyDE0_Nano.sv(172): variable "writeBeacon_edge" is read inside the Always Construct but isn't in the Always Construct's Event Control File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 172
-Warning (10235): Verilog HDL Always Construct warning at MyDE0_Nano.sv(175): variable "beacon_edge" is read inside the Always Construct but isn't in the Always Construct's Event Control File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 175
-Warning (10235): Verilog HDL Always Construct warning at MyDE0_Nano.sv(179): variable "writeTowerPos" is read inside the Always Construct but isn't in the Always Construct's Event Control File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 179
-Warning (10235): Verilog HDL Always Construct warning at MyDE0_Nano.sv(182): variable "towerPos" is read inside the Always Construct but isn't in the Always Construct's Event Control File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 182
-Warning (10240): Verilog HDL Always Construct warning at MyDE0_Nano.sv(160): inferring latch(es) for variable "MemWriteM", which holds its previous value in one or more paths through the always construct File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Warning (10240): Verilog HDL Always Construct warning at MyDE0_Nano.sv(160): inferring latch(es) for variable "VitesseRoueRLPrev", which holds its previous value in one or more paths through the always construct File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Warning (10240): Verilog HDL Always Construct warning at MyDE0_Nano.sv(160): inferring latch(es) for variable "beacon_edgePrev", which holds its previous value in one or more paths through the always construct File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Warning (10240): Verilog HDL Always Construct warning at MyDE0_Nano.sv(160): inferring latch(es) for variable "towerPosPrev", which holds its previous value in one or more paths through the always construct File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Warning (10034): Output port "LED[7..5]" at MyDE0_Nano.sv(12) has no driver File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 12
+Warning (10858): Verilog HDL warning at MyDE0_Nano.sv(74): object position used but never assigned File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 74
+Warning (10858): Verilog HDL warning at MyDE0_Nano.sv(74): object beacon_rising_edge used but never assigned File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 74
+Warning (10858): Verilog HDL warning at MyDE0_Nano.sv(74): object beacon_falling_edge used but never assigned File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 74
+Warning (10235): Verilog HDL Always Construct warning at MyDE0_Nano.sv(162): variable "writeRoue" is read inside the Always Construct but isn't in the Always Construct's Event Control File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 162
+Warning (10235): Verilog HDL Always Construct warning at MyDE0_Nano.sv(165): variable "VitesseRoueRL" is read inside the Always Construct but isn't in the Always Construct's Event Control File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 165
+Warning (10235): Verilog HDL Always Construct warning at MyDE0_Nano.sv(169): variable "writeBeacon_edge" is read inside the Always Construct but isn't in the Always Construct's Event Control File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 169
+Warning (10235): Verilog HDL Always Construct warning at MyDE0_Nano.sv(172): variable "beacon_edge" is read inside the Always Construct but isn't in the Always Construct's Event Control File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 172
+Warning (10235): Verilog HDL Always Construct warning at MyDE0_Nano.sv(176): variable "writeTowerPos" is read inside the Always Construct but isn't in the Always Construct's Event Control File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 176
+Warning (10235): Verilog HDL Always Construct warning at MyDE0_Nano.sv(179): variable "towerPos" is read inside the Always Construct but isn't in the Always Construct's Event Control File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 179
+Warning (10240): Verilog HDL Always Construct warning at MyDE0_Nano.sv(157): inferring latch(es) for variable "MemWriteM", which holds its previous value in one or more paths through the always construct File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Warning (10240): Verilog HDL Always Construct warning at MyDE0_Nano.sv(157): inferring latch(es) for variable "VitesseRoueRLPrev", which holds its previous value in one or more paths through the always construct File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Warning (10240): Verilog HDL Always Construct warning at MyDE0_Nano.sv(157): inferring latch(es) for variable "beacon_edgePrev", which holds its previous value in one or more paths through the always construct File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Warning (10240): Verilog HDL Always Construct warning at MyDE0_Nano.sv(157): inferring latch(es) for variable "towerPosPrev", which holds its previous value in one or more paths through the always construct File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Warning (10030): Net "position" at MyDE0_Nano.sv(74) has no driver or initial value, using a default initial value '0' File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 74
+Warning (10030): Net "beacon_rising_edge" at MyDE0_Nano.sv(74) has no driver or initial value, using a default initial value '0' File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 74
+Warning (10030): Net "beacon_falling_edge" at MyDE0_Nano.sv(74) has no driver or initial value, using a default initial value '0' File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 74
+Warning (10034): Output port "LED[7..4]" at MyDE0_Nano.sv(12) has no driver File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 12
 Warning (10034): Output port "DRAM_ADDR" at MyDE0_Nano.sv(21) has no driver File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 21
 Warning (10034): Output port "DRAM_BA" at MyDE0_Nano.sv(22) has no driver File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 22
 Warning (10034): Output port "DRAM_DQM" at MyDE0_Nano.sv(28) has no driver File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 28
@@ -1129,106 +1074,105 @@ Warning (10034): Output port "I2C_SCLK" at MyDE0_Nano.sv(41) has no driver File:
 Warning (10034): Output port "ADC_CS_N" at MyDE0_Nano.sv(45) has no driver File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 45
 Warning (10034): Output port "ADC_SADDR" at MyDE0_Nano.sv(46) has no driver File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 46
 Warning (10034): Output port "ADC_SCLK" at MyDE0_Nano.sv(47) has no driver File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 47
-Info (10041): Inferred latch for "towerPosPrev[0]" at MyDE0_Nano.sv(160) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Info (10041): Inferred latch for "towerPosPrev[1]" at MyDE0_Nano.sv(160) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Info (10041): Inferred latch for "towerPosPrev[2]" at MyDE0_Nano.sv(160) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Info (10041): Inferred latch for "towerPosPrev[3]" at MyDE0_Nano.sv(160) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Info (10041): Inferred latch for "towerPosPrev[4]" at MyDE0_Nano.sv(160) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Info (10041): Inferred latch for "towerPosPrev[5]" at MyDE0_Nano.sv(160) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Info (10041): Inferred latch for "towerPosPrev[6]" at MyDE0_Nano.sv(160) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Info (10041): Inferred latch for "towerPosPrev[7]" at MyDE0_Nano.sv(160) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Info (10041): Inferred latch for "towerPosPrev[8]" at MyDE0_Nano.sv(160) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Info (10041): Inferred latch for "towerPosPrev[9]" at MyDE0_Nano.sv(160) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Info (10041): Inferred latch for "towerPosPrev[10]" at MyDE0_Nano.sv(160) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Info (10041): Inferred latch for "towerPosPrev[11]" at MyDE0_Nano.sv(160) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Info (10041): Inferred latch for "towerPosPrev[12]" at MyDE0_Nano.sv(160) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Info (10041): Inferred latch for "towerPosPrev[13]" at MyDE0_Nano.sv(160) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Info (10041): Inferred latch for "towerPosPrev[14]" at MyDE0_Nano.sv(160) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Info (10041): Inferred latch for "towerPosPrev[15]" at MyDE0_Nano.sv(160) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Info (10041): Inferred latch for "towerPosPrev[16]" at MyDE0_Nano.sv(160) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Info (10041): Inferred latch for "towerPosPrev[17]" at MyDE0_Nano.sv(160) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Info (10041): Inferred latch for "towerPosPrev[18]" at MyDE0_Nano.sv(160) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Info (10041): Inferred latch for "towerPosPrev[19]" at MyDE0_Nano.sv(160) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Info (10041): Inferred latch for "towerPosPrev[20]" at MyDE0_Nano.sv(160) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Info (10041): Inferred latch for "towerPosPrev[21]" at MyDE0_Nano.sv(160) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Info (10041): Inferred latch for "towerPosPrev[22]" at MyDE0_Nano.sv(160) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Info (10041): Inferred latch for "towerPosPrev[23]" at MyDE0_Nano.sv(160) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Info (10041): Inferred latch for "towerPosPrev[24]" at MyDE0_Nano.sv(160) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Info (10041): Inferred latch for "towerPosPrev[25]" at MyDE0_Nano.sv(160) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Info (10041): Inferred latch for "towerPosPrev[26]" at MyDE0_Nano.sv(160) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Info (10041): Inferred latch for "towerPosPrev[27]" at MyDE0_Nano.sv(160) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Info (10041): Inferred latch for "towerPosPrev[28]" at MyDE0_Nano.sv(160) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Info (10041): Inferred latch for "towerPosPrev[29]" at MyDE0_Nano.sv(160) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Info (10041): Inferred latch for "towerPosPrev[30]" at MyDE0_Nano.sv(160) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Info (10041): Inferred latch for "towerPosPrev[31]" at MyDE0_Nano.sv(160) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Info (10041): Inferred latch for "beacon_edgePrev[0]" at MyDE0_Nano.sv(160) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Info (10041): Inferred latch for "beacon_edgePrev[1]" at MyDE0_Nano.sv(160) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Info (10041): Inferred latch for "beacon_edgePrev[2]" at MyDE0_Nano.sv(160) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Info (10041): Inferred latch for "beacon_edgePrev[3]" at MyDE0_Nano.sv(160) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Info (10041): Inferred latch for "beacon_edgePrev[4]" at MyDE0_Nano.sv(160) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Info (10041): Inferred latch for "beacon_edgePrev[5]" at MyDE0_Nano.sv(160) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Info (10041): Inferred latch for "beacon_edgePrev[6]" at MyDE0_Nano.sv(160) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Info (10041): Inferred latch for "beacon_edgePrev[7]" at MyDE0_Nano.sv(160) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Info (10041): Inferred latch for "beacon_edgePrev[8]" at MyDE0_Nano.sv(160) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Info (10041): Inferred latch for "beacon_edgePrev[9]" at MyDE0_Nano.sv(160) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Info (10041): Inferred latch for "beacon_edgePrev[10]" at MyDE0_Nano.sv(160) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Info (10041): Inferred latch for "beacon_edgePrev[11]" at MyDE0_Nano.sv(160) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Info (10041): Inferred latch for "beacon_edgePrev[12]" at MyDE0_Nano.sv(160) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Info (10041): Inferred latch for "beacon_edgePrev[13]" at MyDE0_Nano.sv(160) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Info (10041): Inferred latch for "beacon_edgePrev[14]" at MyDE0_Nano.sv(160) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Info (10041): Inferred latch for "beacon_edgePrev[15]" at MyDE0_Nano.sv(160) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Info (10041): Inferred latch for "beacon_edgePrev[16]" at MyDE0_Nano.sv(160) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Info (10041): Inferred latch for "beacon_edgePrev[17]" at MyDE0_Nano.sv(160) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Info (10041): Inferred latch for "beacon_edgePrev[18]" at MyDE0_Nano.sv(160) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Info (10041): Inferred latch for "beacon_edgePrev[19]" at MyDE0_Nano.sv(160) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Info (10041): Inferred latch for "beacon_edgePrev[20]" at MyDE0_Nano.sv(160) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Info (10041): Inferred latch for "beacon_edgePrev[21]" at MyDE0_Nano.sv(160) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Info (10041): Inferred latch for "beacon_edgePrev[22]" at MyDE0_Nano.sv(160) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Info (10041): Inferred latch for "beacon_edgePrev[23]" at MyDE0_Nano.sv(160) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Info (10041): Inferred latch for "beacon_edgePrev[24]" at MyDE0_Nano.sv(160) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Info (10041): Inferred latch for "beacon_edgePrev[25]" at MyDE0_Nano.sv(160) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Info (10041): Inferred latch for "beacon_edgePrev[26]" at MyDE0_Nano.sv(160) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Info (10041): Inferred latch for "beacon_edgePrev[27]" at MyDE0_Nano.sv(160) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Info (10041): Inferred latch for "beacon_edgePrev[28]" at MyDE0_Nano.sv(160) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Info (10041): Inferred latch for "beacon_edgePrev[29]" at MyDE0_Nano.sv(160) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Info (10041): Inferred latch for "beacon_edgePrev[30]" at MyDE0_Nano.sv(160) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Info (10041): Inferred latch for "beacon_edgePrev[31]" at MyDE0_Nano.sv(160) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Info (10041): Inferred latch for "VitesseRoueRLPrev[0]" at MyDE0_Nano.sv(160) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Info (10041): Inferred latch for "VitesseRoueRLPrev[1]" at MyDE0_Nano.sv(160) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Info (10041): Inferred latch for "VitesseRoueRLPrev[2]" at MyDE0_Nano.sv(160) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Info (10041): Inferred latch for "VitesseRoueRLPrev[3]" at MyDE0_Nano.sv(160) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Info (10041): Inferred latch for "VitesseRoueRLPrev[4]" at MyDE0_Nano.sv(160) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Info (10041): Inferred latch for "VitesseRoueRLPrev[5]" at MyDE0_Nano.sv(160) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Info (10041): Inferred latch for "VitesseRoueRLPrev[6]" at MyDE0_Nano.sv(160) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Info (10041): Inferred latch for "VitesseRoueRLPrev[7]" at MyDE0_Nano.sv(160) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Info (10041): Inferred latch for "VitesseRoueRLPrev[8]" at MyDE0_Nano.sv(160) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Info (10041): Inferred latch for "VitesseRoueRLPrev[9]" at MyDE0_Nano.sv(160) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Info (10041): Inferred latch for "VitesseRoueRLPrev[10]" at MyDE0_Nano.sv(160) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Info (10041): Inferred latch for "VitesseRoueRLPrev[11]" at MyDE0_Nano.sv(160) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Info (10041): Inferred latch for "VitesseRoueRLPrev[12]" at MyDE0_Nano.sv(160) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Info (10041): Inferred latch for "VitesseRoueRLPrev[13]" at MyDE0_Nano.sv(160) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Info (10041): Inferred latch for "VitesseRoueRLPrev[14]" at MyDE0_Nano.sv(160) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Info (10041): Inferred latch for "VitesseRoueRLPrev[15]" at MyDE0_Nano.sv(160) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Info (10041): Inferred latch for "VitesseRoueRLPrev[16]" at MyDE0_Nano.sv(160) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Info (10041): Inferred latch for "VitesseRoueRLPrev[17]" at MyDE0_Nano.sv(160) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Info (10041): Inferred latch for "VitesseRoueRLPrev[18]" at MyDE0_Nano.sv(160) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Info (10041): Inferred latch for "VitesseRoueRLPrev[19]" at MyDE0_Nano.sv(160) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Info (10041): Inferred latch for "VitesseRoueRLPrev[20]" at MyDE0_Nano.sv(160) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Info (10041): Inferred latch for "VitesseRoueRLPrev[21]" at MyDE0_Nano.sv(160) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Info (10041): Inferred latch for "VitesseRoueRLPrev[22]" at MyDE0_Nano.sv(160) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Info (10041): Inferred latch for "VitesseRoueRLPrev[23]" at MyDE0_Nano.sv(160) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Info (10041): Inferred latch for "VitesseRoueRLPrev[24]" at MyDE0_Nano.sv(160) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Info (10041): Inferred latch for "VitesseRoueRLPrev[25]" at MyDE0_Nano.sv(160) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Info (10041): Inferred latch for "VitesseRoueRLPrev[26]" at MyDE0_Nano.sv(160) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Info (10041): Inferred latch for "VitesseRoueRLPrev[27]" at MyDE0_Nano.sv(160) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Info (10041): Inferred latch for "VitesseRoueRLPrev[28]" at MyDE0_Nano.sv(160) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Info (10041): Inferred latch for "VitesseRoueRLPrev[29]" at MyDE0_Nano.sv(160) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Info (10041): Inferred latch for "VitesseRoueRLPrev[30]" at MyDE0_Nano.sv(160) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Info (10041): Inferred latch for "VitesseRoueRLPrev[31]" at MyDE0_Nano.sv(160) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Info (10041): Inferred latch for "MemWriteM" at MyDE0_Nano.sv(160) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-Info (12128): Elaborating entity "quad_counter" for hierarchy "quad_counter:quadR" File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 98
-Info (12128): Elaborating entity "laserV1" for hierarchy "laserV1:lazer" File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 100
-Info (12128): Elaborating entity "spi_slave" for hierarchy "spi_slave:spi_slave_instance" File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 213
+Info (10041): Inferred latch for "towerPosPrev[0]" at MyDE0_Nano.sv(157) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Info (10041): Inferred latch for "towerPosPrev[1]" at MyDE0_Nano.sv(157) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Info (10041): Inferred latch for "towerPosPrev[2]" at MyDE0_Nano.sv(157) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Info (10041): Inferred latch for "towerPosPrev[3]" at MyDE0_Nano.sv(157) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Info (10041): Inferred latch for "towerPosPrev[4]" at MyDE0_Nano.sv(157) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Info (10041): Inferred latch for "towerPosPrev[5]" at MyDE0_Nano.sv(157) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Info (10041): Inferred latch for "towerPosPrev[6]" at MyDE0_Nano.sv(157) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Info (10041): Inferred latch for "towerPosPrev[7]" at MyDE0_Nano.sv(157) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Info (10041): Inferred latch for "towerPosPrev[8]" at MyDE0_Nano.sv(157) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Info (10041): Inferred latch for "towerPosPrev[9]" at MyDE0_Nano.sv(157) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Info (10041): Inferred latch for "towerPosPrev[10]" at MyDE0_Nano.sv(157) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Info (10041): Inferred latch for "towerPosPrev[11]" at MyDE0_Nano.sv(157) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Info (10041): Inferred latch for "towerPosPrev[12]" at MyDE0_Nano.sv(157) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Info (10041): Inferred latch for "towerPosPrev[13]" at MyDE0_Nano.sv(157) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Info (10041): Inferred latch for "towerPosPrev[14]" at MyDE0_Nano.sv(157) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Info (10041): Inferred latch for "towerPosPrev[15]" at MyDE0_Nano.sv(157) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Info (10041): Inferred latch for "towerPosPrev[16]" at MyDE0_Nano.sv(157) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Info (10041): Inferred latch for "towerPosPrev[17]" at MyDE0_Nano.sv(157) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Info (10041): Inferred latch for "towerPosPrev[18]" at MyDE0_Nano.sv(157) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Info (10041): Inferred latch for "towerPosPrev[19]" at MyDE0_Nano.sv(157) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Info (10041): Inferred latch for "towerPosPrev[20]" at MyDE0_Nano.sv(157) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Info (10041): Inferred latch for "towerPosPrev[21]" at MyDE0_Nano.sv(157) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Info (10041): Inferred latch for "towerPosPrev[22]" at MyDE0_Nano.sv(157) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Info (10041): Inferred latch for "towerPosPrev[23]" at MyDE0_Nano.sv(157) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Info (10041): Inferred latch for "towerPosPrev[24]" at MyDE0_Nano.sv(157) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Info (10041): Inferred latch for "towerPosPrev[25]" at MyDE0_Nano.sv(157) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Info (10041): Inferred latch for "towerPosPrev[26]" at MyDE0_Nano.sv(157) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Info (10041): Inferred latch for "towerPosPrev[27]" at MyDE0_Nano.sv(157) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Info (10041): Inferred latch for "towerPosPrev[28]" at MyDE0_Nano.sv(157) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Info (10041): Inferred latch for "towerPosPrev[29]" at MyDE0_Nano.sv(157) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Info (10041): Inferred latch for "towerPosPrev[30]" at MyDE0_Nano.sv(157) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Info (10041): Inferred latch for "towerPosPrev[31]" at MyDE0_Nano.sv(157) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Info (10041): Inferred latch for "beacon_edgePrev[0]" at MyDE0_Nano.sv(157) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Info (10041): Inferred latch for "beacon_edgePrev[1]" at MyDE0_Nano.sv(157) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Info (10041): Inferred latch for "beacon_edgePrev[2]" at MyDE0_Nano.sv(157) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Info (10041): Inferred latch for "beacon_edgePrev[3]" at MyDE0_Nano.sv(157) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Info (10041): Inferred latch for "beacon_edgePrev[4]" at MyDE0_Nano.sv(157) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Info (10041): Inferred latch for "beacon_edgePrev[5]" at MyDE0_Nano.sv(157) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Info (10041): Inferred latch for "beacon_edgePrev[6]" at MyDE0_Nano.sv(157) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Info (10041): Inferred latch for "beacon_edgePrev[7]" at MyDE0_Nano.sv(157) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Info (10041): Inferred latch for "beacon_edgePrev[8]" at MyDE0_Nano.sv(157) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Info (10041): Inferred latch for "beacon_edgePrev[9]" at MyDE0_Nano.sv(157) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Info (10041): Inferred latch for "beacon_edgePrev[10]" at MyDE0_Nano.sv(157) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Info (10041): Inferred latch for "beacon_edgePrev[11]" at MyDE0_Nano.sv(157) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Info (10041): Inferred latch for "beacon_edgePrev[12]" at MyDE0_Nano.sv(157) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Info (10041): Inferred latch for "beacon_edgePrev[13]" at MyDE0_Nano.sv(157) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Info (10041): Inferred latch for "beacon_edgePrev[14]" at MyDE0_Nano.sv(157) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Info (10041): Inferred latch for "beacon_edgePrev[15]" at MyDE0_Nano.sv(157) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Info (10041): Inferred latch for "beacon_edgePrev[16]" at MyDE0_Nano.sv(157) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Info (10041): Inferred latch for "beacon_edgePrev[17]" at MyDE0_Nano.sv(157) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Info (10041): Inferred latch for "beacon_edgePrev[18]" at MyDE0_Nano.sv(157) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Info (10041): Inferred latch for "beacon_edgePrev[19]" at MyDE0_Nano.sv(157) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Info (10041): Inferred latch for "beacon_edgePrev[20]" at MyDE0_Nano.sv(157) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Info (10041): Inferred latch for "beacon_edgePrev[21]" at MyDE0_Nano.sv(157) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Info (10041): Inferred latch for "beacon_edgePrev[22]" at MyDE0_Nano.sv(157) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Info (10041): Inferred latch for "beacon_edgePrev[23]" at MyDE0_Nano.sv(157) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Info (10041): Inferred latch for "beacon_edgePrev[24]" at MyDE0_Nano.sv(157) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Info (10041): Inferred latch for "beacon_edgePrev[25]" at MyDE0_Nano.sv(157) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Info (10041): Inferred latch for "beacon_edgePrev[26]" at MyDE0_Nano.sv(157) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Info (10041): Inferred latch for "beacon_edgePrev[27]" at MyDE0_Nano.sv(157) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Info (10041): Inferred latch for "beacon_edgePrev[28]" at MyDE0_Nano.sv(157) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Info (10041): Inferred latch for "beacon_edgePrev[29]" at MyDE0_Nano.sv(157) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Info (10041): Inferred latch for "beacon_edgePrev[30]" at MyDE0_Nano.sv(157) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Info (10041): Inferred latch for "beacon_edgePrev[31]" at MyDE0_Nano.sv(157) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Info (10041): Inferred latch for "VitesseRoueRLPrev[0]" at MyDE0_Nano.sv(157) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Info (10041): Inferred latch for "VitesseRoueRLPrev[1]" at MyDE0_Nano.sv(157) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Info (10041): Inferred latch for "VitesseRoueRLPrev[2]" at MyDE0_Nano.sv(157) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Info (10041): Inferred latch for "VitesseRoueRLPrev[3]" at MyDE0_Nano.sv(157) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Info (10041): Inferred latch for "VitesseRoueRLPrev[4]" at MyDE0_Nano.sv(157) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Info (10041): Inferred latch for "VitesseRoueRLPrev[5]" at MyDE0_Nano.sv(157) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Info (10041): Inferred latch for "VitesseRoueRLPrev[6]" at MyDE0_Nano.sv(157) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Info (10041): Inferred latch for "VitesseRoueRLPrev[7]" at MyDE0_Nano.sv(157) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Info (10041): Inferred latch for "VitesseRoueRLPrev[8]" at MyDE0_Nano.sv(157) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Info (10041): Inferred latch for "VitesseRoueRLPrev[9]" at MyDE0_Nano.sv(157) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Info (10041): Inferred latch for "VitesseRoueRLPrev[10]" at MyDE0_Nano.sv(157) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Info (10041): Inferred latch for "VitesseRoueRLPrev[11]" at MyDE0_Nano.sv(157) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Info (10041): Inferred latch for "VitesseRoueRLPrev[12]" at MyDE0_Nano.sv(157) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Info (10041): Inferred latch for "VitesseRoueRLPrev[13]" at MyDE0_Nano.sv(157) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Info (10041): Inferred latch for "VitesseRoueRLPrev[14]" at MyDE0_Nano.sv(157) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Info (10041): Inferred latch for "VitesseRoueRLPrev[15]" at MyDE0_Nano.sv(157) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Info (10041): Inferred latch for "VitesseRoueRLPrev[16]" at MyDE0_Nano.sv(157) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Info (10041): Inferred latch for "VitesseRoueRLPrev[17]" at MyDE0_Nano.sv(157) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Info (10041): Inferred latch for "VitesseRoueRLPrev[18]" at MyDE0_Nano.sv(157) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Info (10041): Inferred latch for "VitesseRoueRLPrev[19]" at MyDE0_Nano.sv(157) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Info (10041): Inferred latch for "VitesseRoueRLPrev[20]" at MyDE0_Nano.sv(157) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Info (10041): Inferred latch for "VitesseRoueRLPrev[21]" at MyDE0_Nano.sv(157) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Info (10041): Inferred latch for "VitesseRoueRLPrev[22]" at MyDE0_Nano.sv(157) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Info (10041): Inferred latch for "VitesseRoueRLPrev[23]" at MyDE0_Nano.sv(157) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Info (10041): Inferred latch for "VitesseRoueRLPrev[24]" at MyDE0_Nano.sv(157) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Info (10041): Inferred latch for "VitesseRoueRLPrev[25]" at MyDE0_Nano.sv(157) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Info (10041): Inferred latch for "VitesseRoueRLPrev[26]" at MyDE0_Nano.sv(157) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Info (10041): Inferred latch for "VitesseRoueRLPrev[27]" at MyDE0_Nano.sv(157) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Info (10041): Inferred latch for "VitesseRoueRLPrev[28]" at MyDE0_Nano.sv(157) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Info (10041): Inferred latch for "VitesseRoueRLPrev[29]" at MyDE0_Nano.sv(157) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Info (10041): Inferred latch for "VitesseRoueRLPrev[30]" at MyDE0_Nano.sv(157) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Info (10041): Inferred latch for "VitesseRoueRLPrev[31]" at MyDE0_Nano.sv(157) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Info (10041): Inferred latch for "MemWriteM" at MyDE0_Nano.sv(157) File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
+Info (12128): Elaborating entity "quad_counter" for hierarchy "quad_counter:quadR" File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 97
+Info (12128): Elaborating entity "spi_slave" for hierarchy "spi_slave:spi_slave_instance" File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 210
 Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_ob24.tdf
     Info (12023): Found entity 1: altsyncram_ob24 File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/db/altsyncram_ob24.tdf Line: 27
 Info (12021): Found 1 design units, including 1 entities, in source file db/mux_vsc.tdf
@@ -1251,7 +1195,7 @@ Info (12021): Found 1 design units, including 1 entities, in source file db/cmpr
     Info (12023): Found entity 1: cmpr_ngc File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/db/cmpr_ngc.tdf Line: 22
 Info (12033): Analysis and Synthesis generated Signal Tap or debug node instance "auto_signaltap_0"
 Info (11170): Starting IP generation for the debug fabric: alt_sld_fab.
-Info (11172): 2020.02.26.02:10:03 Progress: Loading sldbe248a27/alt_sld_fab_wrapper_hw.tcl
+Info (11172): 2020.03.09.22:28:52 Progress: Loading sldbe248a27/alt_sld_fab_wrapper_hw.tcl
 Info (11172): Alt_sld_fab.alt_sld_fab: SLD fabric agents which did not specify prefer_host were connected to JTAG
 Info (11172): Alt_sld_fab: Generating alt_sld_fab "alt_sld_fab" for QUARTUS_SYNTH
 Info (11172): Alt_sld_fab: "alt_sld_fab" instantiated alt_sld_fab "alt_sld_fab"
@@ -1313,12 +1257,8 @@ Warning (13039): The following bidirectional pins have no drivers
     Warning (13040): bidirectional pin "GPIO_0_PI[9]" has no driver File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 55
     Warning (13040): bidirectional pin "GPIO_0_PI[11]" has no driver File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 55
     Warning (13040): bidirectional pin "GPIO_0_PI[15]" has no driver File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 55
-    Warning (13040): bidirectional pin "GPIO_1[0]" has no driver File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 59
-    Warning (13040): bidirectional pin "GPIO_1[1]" has no driver File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 59
+    Warning (13040): bidirectional pin "GPIO_1[2]" has no driver File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 59
     Warning (13040): bidirectional pin "GPIO_1[4]" has no driver File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 59
-    Warning (13040): bidirectional pin "GPIO_1[5]" has no driver File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 59
-    Warning (13040): bidirectional pin "GPIO_1[7]" has no driver File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 59
-    Warning (13040): bidirectional pin "GPIO_1[8]" has no driver File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 59
     Warning (13040): bidirectional pin "DRAM_DQ[0]" has no driver File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 27
     Warning (13040): bidirectional pin "DRAM_DQ[1]" has no driver File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 27
     Warning (13040): bidirectional pin "DRAM_DQ[2]" has no driver File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 27
@@ -1379,9 +1319,13 @@ Warning (13039): The following bidirectional pins have no drivers
     Warning (13040): bidirectional pin "GPIO_0_PI[31]" has no driver File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 55
     Warning (13040): bidirectional pin "GPIO_0_PI[32]" has no driver File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 55
     Warning (13040): bidirectional pin "GPIO_0_PI[33]" has no driver File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 55
-    Warning (13040): bidirectional pin "GPIO_1[2]" has no driver File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 59
+    Warning (13040): bidirectional pin "GPIO_1[0]" has no driver File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 59
+    Warning (13040): bidirectional pin "GPIO_1[1]" has no driver File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 59
     Warning (13040): bidirectional pin "GPIO_1[3]" has no driver File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 59
+    Warning (13040): bidirectional pin "GPIO_1[5]" has no driver File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 59
     Warning (13040): bidirectional pin "GPIO_1[6]" has no driver File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 59
+    Warning (13040): bidirectional pin "GPIO_1[7]" has no driver File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 59
+    Warning (13040): bidirectional pin "GPIO_1[8]" has no driver File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 59
     Warning (13040): bidirectional pin "GPIO_1[9]" has no driver File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 59
     Warning (13040): bidirectional pin "GPIO_1[10]" has no driver File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 59
     Warning (13040): bidirectional pin "GPIO_1[11]" has no driver File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 59
@@ -1407,167 +1351,72 @@ Warning (13039): The following bidirectional pins have no drivers
     Warning (13040): bidirectional pin "GPIO_1[31]" has no driver File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 59
     Warning (13040): bidirectional pin "GPIO_1[32]" has no driver File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 59
     Warning (13040): bidirectional pin "GPIO_1[33]" has no driver File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 59
-Warning (13012): Latch VitesseRoueRLPrev[31] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
+Warning (13012): Latch VitesseRoueRLPrev[31] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
     Warning (13013): Ports D and ENA on the latch are fed by the same signal quad_counter:quadL|countHelper[15] File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/quad_counter.sv Line: 34
-Warning (13012): Latch beacon_edgePrev[31] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal laserV1:lazer|beacon_rising_edge[15] File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/laser.sv Line: 72
-Warning (13012): Latch towerPosPrev[2] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal laserV1:lazer|position_count[2] File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/laser.sv Line: 40
-Warning (13012): Latch beacon_edgePrev[2] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal laserV1:lazer|beacon_falling_edge[2] File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/laser.sv Line: 72
-Warning (13012): Latch VitesseRoueRLPrev[2] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
+Warning (13012): Latch VitesseRoueRLPrev[2] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
     Warning (13013): Ports D and ENA on the latch are fed by the same signal quad_counter:quadR|countHelper[2] File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/quad_counter.sv Line: 34
-Warning (13012): Latch towerPosPrev[3] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal laserV1:lazer|position_count[3] File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/laser.sv Line: 40
-Warning (13012): Latch beacon_edgePrev[3] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal laserV1:lazer|beacon_falling_edge[3] File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/laser.sv Line: 72
-Warning (13012): Latch VitesseRoueRLPrev[3] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
+Warning (13012): Latch VitesseRoueRLPrev[3] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
     Warning (13013): Ports D and ENA on the latch are fed by the same signal quad_counter:quadR|countHelper[3] File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/quad_counter.sv Line: 34
-Warning (13012): Latch towerPosPrev[4] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal laserV1:lazer|position_count[4] File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/laser.sv Line: 40
-Warning (13012): Latch beacon_edgePrev[4] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal laserV1:lazer|beacon_falling_edge[4] File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/laser.sv Line: 72
-Warning (13012): Latch VitesseRoueRLPrev[4] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
+Warning (13012): Latch VitesseRoueRLPrev[4] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
     Warning (13013): Ports D and ENA on the latch are fed by the same signal quad_counter:quadR|countHelper[4] File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/quad_counter.sv Line: 34
-Warning (13012): Latch towerPosPrev[5] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal laserV1:lazer|position_count[5] File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/laser.sv Line: 40
-Warning (13012): Latch beacon_edgePrev[5] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal laserV1:lazer|beacon_falling_edge[5] File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/laser.sv Line: 72
-Warning (13012): Latch VitesseRoueRLPrev[5] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
+Warning (13012): Latch VitesseRoueRLPrev[5] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
     Warning (13013): Ports D and ENA on the latch are fed by the same signal quad_counter:quadR|countHelper[5] File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/quad_counter.sv Line: 34
-Warning (13012): Latch towerPosPrev[6] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal laserV1:lazer|position_count[6] File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/laser.sv Line: 40
-Warning (13012): Latch beacon_edgePrev[6] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal laserV1:lazer|beacon_falling_edge[6] File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/laser.sv Line: 72
-Warning (13012): Latch VitesseRoueRLPrev[6] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
+Warning (13012): Latch VitesseRoueRLPrev[6] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
     Warning (13013): Ports D and ENA on the latch are fed by the same signal quad_counter:quadR|countHelper[6] File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/quad_counter.sv Line: 34
-Warning (13012): Latch towerPosPrev[7] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal laserV1:lazer|position_count[7] File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/laser.sv Line: 40
-Warning (13012): Latch beacon_edgePrev[7] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal laserV1:lazer|beacon_falling_edge[7] File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/laser.sv Line: 72
-Warning (13012): Latch VitesseRoueRLPrev[7] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
+Warning (13012): Latch VitesseRoueRLPrev[7] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
     Warning (13013): Ports D and ENA on the latch are fed by the same signal quad_counter:quadR|countHelper[7] File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/quad_counter.sv Line: 34
-Warning (13012): Latch towerPosPrev[8] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal laserV1:lazer|position_count[8] File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/laser.sv Line: 40
-Warning (13012): Latch beacon_edgePrev[8] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal laserV1:lazer|beacon_falling_edge[8] File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/laser.sv Line: 72
-Warning (13012): Latch VitesseRoueRLPrev[8] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
+Warning (13012): Latch VitesseRoueRLPrev[8] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
     Warning (13013): Ports D and ENA on the latch are fed by the same signal quad_counter:quadR|countHelper[8] File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/quad_counter.sv Line: 34
-Warning (13012): Latch towerPosPrev[9] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal laserV1:lazer|position_count[9] File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/laser.sv Line: 40
-Warning (13012): Latch beacon_edgePrev[9] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal laserV1:lazer|beacon_falling_edge[9] File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/laser.sv Line: 72
-Warning (13012): Latch VitesseRoueRLPrev[9] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
+Warning (13012): Latch VitesseRoueRLPrev[9] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
     Warning (13013): Ports D and ENA on the latch are fed by the same signal quad_counter:quadR|countHelper[9] File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/quad_counter.sv Line: 34
-Warning (13012): Latch towerPosPrev[10] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal laserV1:lazer|position_count[10] File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/laser.sv Line: 40
-Warning (13012): Latch beacon_edgePrev[10] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal laserV1:lazer|beacon_falling_edge[10] File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/laser.sv Line: 72
-Warning (13012): Latch VitesseRoueRLPrev[10] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
+Warning (13012): Latch VitesseRoueRLPrev[10] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
     Warning (13013): Ports D and ENA on the latch are fed by the same signal quad_counter:quadR|countHelper[10] File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/quad_counter.sv Line: 34
-Warning (13012): Latch towerPosPrev[11] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal laserV1:lazer|position_count[11] File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/laser.sv Line: 40
-Warning (13012): Latch beacon_edgePrev[11] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal laserV1:lazer|beacon_falling_edge[11] File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/laser.sv Line: 72
-Warning (13012): Latch VitesseRoueRLPrev[11] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
+Warning (13012): Latch VitesseRoueRLPrev[11] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
     Warning (13013): Ports D and ENA on the latch are fed by the same signal quad_counter:quadR|countHelper[11] File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/quad_counter.sv Line: 34
-Warning (13012): Latch towerPosPrev[12] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal laserV1:lazer|position_count[12] File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/laser.sv Line: 40
-Warning (13012): Latch beacon_edgePrev[12] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal laserV1:lazer|beacon_falling_edge[12] File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/laser.sv Line: 72
-Warning (13012): Latch VitesseRoueRLPrev[12] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
+Warning (13012): Latch VitesseRoueRLPrev[12] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
     Warning (13013): Ports D and ENA on the latch are fed by the same signal quad_counter:quadR|countHelper[12] File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/quad_counter.sv Line: 34
-Warning (13012): Latch towerPosPrev[13] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal laserV1:lazer|position_count[13] File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/laser.sv Line: 40
-Warning (13012): Latch beacon_edgePrev[13] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal laserV1:lazer|beacon_falling_edge[13] File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/laser.sv Line: 72
-Warning (13012): Latch VitesseRoueRLPrev[13] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
+Warning (13012): Latch VitesseRoueRLPrev[13] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
     Warning (13013): Ports D and ENA on the latch are fed by the same signal quad_counter:quadR|countHelper[13] File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/quad_counter.sv Line: 34
-Warning (13012): Latch towerPosPrev[14] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal laserV1:lazer|position_count[14] File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/laser.sv Line: 40
-Warning (13012): Latch beacon_edgePrev[14] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal laserV1:lazer|beacon_falling_edge[14] File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/laser.sv Line: 72
-Warning (13012): Latch VitesseRoueRLPrev[14] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
+Warning (13012): Latch VitesseRoueRLPrev[14] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
     Warning (13013): Ports D and ENA on the latch are fed by the same signal quad_counter:quadR|countHelper[14] File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/quad_counter.sv Line: 34
-Warning (13012): Latch towerPosPrev[15] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal laserV1:lazer|position_count[15] File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/laser.sv Line: 40
-Warning (13012): Latch beacon_edgePrev[15] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal laserV1:lazer|beacon_falling_edge[15] File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/laser.sv Line: 72
-Warning (13012): Latch VitesseRoueRLPrev[15] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
+Warning (13012): Latch VitesseRoueRLPrev[15] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
     Warning (13013): Ports D and ENA on the latch are fed by the same signal quad_counter:quadR|countHelper[15] File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/quad_counter.sv Line: 34
-Warning (13012): Latch VitesseRoueRLPrev[16] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
+Warning (13012): Latch VitesseRoueRLPrev[16] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
     Warning (13013): Ports D and ENA on the latch are fed by the same signal quad_counter:quadL|countHelper[0] File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/quad_counter.sv Line: 34
-Warning (13012): Latch beacon_edgePrev[16] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal laserV1:lazer|beacon_rising_edge[0] File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/laser.sv Line: 72
-Warning (13012): Latch VitesseRoueRLPrev[17] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
+Warning (13012): Latch VitesseRoueRLPrev[17] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
     Warning (13013): Ports D and ENA on the latch are fed by the same signal quad_counter:quadL|countHelper[1] File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/quad_counter.sv Line: 34
-Warning (13012): Latch beacon_edgePrev[17] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal laserV1:lazer|beacon_rising_edge[1] File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/laser.sv Line: 72
-Warning (13012): Latch VitesseRoueRLPrev[18] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
+Warning (13012): Latch VitesseRoueRLPrev[18] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
     Warning (13013): Ports D and ENA on the latch are fed by the same signal quad_counter:quadL|countHelper[2] File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/quad_counter.sv Line: 34
-Warning (13012): Latch beacon_edgePrev[18] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal laserV1:lazer|beacon_rising_edge[2] File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/laser.sv Line: 72
-Warning (13012): Latch VitesseRoueRLPrev[19] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
+Warning (13012): Latch VitesseRoueRLPrev[19] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
     Warning (13013): Ports D and ENA on the latch are fed by the same signal quad_counter:quadL|countHelper[3] File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/quad_counter.sv Line: 34
-Warning (13012): Latch beacon_edgePrev[19] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal laserV1:lazer|beacon_rising_edge[3] File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/laser.sv Line: 72
-Warning (13012): Latch VitesseRoueRLPrev[20] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
+Warning (13012): Latch VitesseRoueRLPrev[20] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
     Warning (13013): Ports D and ENA on the latch are fed by the same signal quad_counter:quadL|countHelper[4] File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/quad_counter.sv Line: 34
-Warning (13012): Latch beacon_edgePrev[20] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal laserV1:lazer|beacon_rising_edge[4] File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/laser.sv Line: 72
-Warning (13012): Latch VitesseRoueRLPrev[21] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
+Warning (13012): Latch VitesseRoueRLPrev[21] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
     Warning (13013): Ports D and ENA on the latch are fed by the same signal quad_counter:quadL|countHelper[5] File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/quad_counter.sv Line: 34
-Warning (13012): Latch beacon_edgePrev[21] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal laserV1:lazer|beacon_rising_edge[5] File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/laser.sv Line: 72
-Warning (13012): Latch VitesseRoueRLPrev[22] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
+Warning (13012): Latch VitesseRoueRLPrev[22] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
     Warning (13013): Ports D and ENA on the latch are fed by the same signal quad_counter:quadL|countHelper[6] File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/quad_counter.sv Line: 34
-Warning (13012): Latch beacon_edgePrev[22] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal laserV1:lazer|beacon_rising_edge[6] File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/laser.sv Line: 72
-Warning (13012): Latch VitesseRoueRLPrev[23] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
+Warning (13012): Latch VitesseRoueRLPrev[23] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
     Warning (13013): Ports D and ENA on the latch are fed by the same signal quad_counter:quadL|countHelper[7] File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/quad_counter.sv Line: 34
-Warning (13012): Latch beacon_edgePrev[23] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal laserV1:lazer|beacon_rising_edge[7] File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/laser.sv Line: 72
-Warning (13012): Latch VitesseRoueRLPrev[24] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
+Warning (13012): Latch VitesseRoueRLPrev[24] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
     Warning (13013): Ports D and ENA on the latch are fed by the same signal quad_counter:quadL|countHelper[8] File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/quad_counter.sv Line: 34
-Warning (13012): Latch beacon_edgePrev[24] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal laserV1:lazer|beacon_rising_edge[8] File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/laser.sv Line: 72
-Warning (13012): Latch VitesseRoueRLPrev[25] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
+Warning (13012): Latch VitesseRoueRLPrev[25] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
     Warning (13013): Ports D and ENA on the latch are fed by the same signal quad_counter:quadL|countHelper[9] File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/quad_counter.sv Line: 34
-Warning (13012): Latch beacon_edgePrev[25] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal laserV1:lazer|beacon_rising_edge[9] File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/laser.sv Line: 72
-Warning (13012): Latch VitesseRoueRLPrev[26] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
+Warning (13012): Latch VitesseRoueRLPrev[26] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
     Warning (13013): Ports D and ENA on the latch are fed by the same signal quad_counter:quadL|countHelper[10] File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/quad_counter.sv Line: 34
-Warning (13012): Latch beacon_edgePrev[26] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal laserV1:lazer|beacon_rising_edge[10] File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/laser.sv Line: 72
-Warning (13012): Latch VitesseRoueRLPrev[27] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
+Warning (13012): Latch VitesseRoueRLPrev[27] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
     Warning (13013): Ports D and ENA on the latch are fed by the same signal quad_counter:quadL|countHelper[11] File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/quad_counter.sv Line: 34
-Warning (13012): Latch beacon_edgePrev[27] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal laserV1:lazer|beacon_rising_edge[11] File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/laser.sv Line: 72
-Warning (13012): Latch VitesseRoueRLPrev[28] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
+Warning (13012): Latch VitesseRoueRLPrev[28] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
     Warning (13013): Ports D and ENA on the latch are fed by the same signal quad_counter:quadL|countHelper[12] File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/quad_counter.sv Line: 34
-Warning (13012): Latch beacon_edgePrev[28] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal laserV1:lazer|beacon_rising_edge[12] File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/laser.sv Line: 72
-Warning (13012): Latch VitesseRoueRLPrev[29] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
+Warning (13012): Latch VitesseRoueRLPrev[29] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
     Warning (13013): Ports D and ENA on the latch are fed by the same signal quad_counter:quadL|countHelper[13] File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/quad_counter.sv Line: 34
-Warning (13012): Latch beacon_edgePrev[29] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal laserV1:lazer|beacon_rising_edge[13] File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/laser.sv Line: 72
-Warning (13012): Latch VitesseRoueRLPrev[30] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
+Warning (13012): Latch VitesseRoueRLPrev[30] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
     Warning (13013): Ports D and ENA on the latch are fed by the same signal quad_counter:quadL|countHelper[14] File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/quad_counter.sv Line: 34
-Warning (13012): Latch beacon_edgePrev[30] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal laserV1:lazer|beacon_rising_edge[14] File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/laser.sv Line: 72
-Warning (13012): Latch towerPosPrev[0] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal laserV1:lazer|position_count[0] File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/laser.sv Line: 40
-Warning (13012): Latch beacon_edgePrev[0] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal laserV1:lazer|beacon_falling_edge[0] File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/laser.sv Line: 72
-Warning (13012): Latch VitesseRoueRLPrev[0] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
+Warning (13012): Latch VitesseRoueRLPrev[0] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
     Warning (13013): Ports D and ENA on the latch are fed by the same signal quad_counter:quadR|countHelper[0] File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/quad_counter.sv Line: 34
-Warning (13012): Latch towerPosPrev[1] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal laserV1:lazer|position_count[1] File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/laser.sv Line: 40
-Warning (13012): Latch beacon_edgePrev[1] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal laserV1:lazer|beacon_falling_edge[1] File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/laser.sv Line: 72
-Warning (13012): Latch VitesseRoueRLPrev[1] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 160
+Warning (13012): Latch VitesseRoueRLPrev[1] has unsafe behavior File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 157
     Warning (13013): Ports D and ENA on the latch are fed by the same signal quad_counter:quadR|countHelper[1] File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/quad_counter.sv Line: 34
 Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "LED[4]" is stuck at GND File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 12
     Warning (13410): Pin "LED[5]" is stuck at GND File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 12
     Warning (13410): Pin "LED[6]" is stuck at GND File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 12
     Warning (13410): Pin "LED[7]" is stuck at GND File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 12
@@ -1606,9 +1455,8 @@ Info (286031): Timing-Driven Synthesis is running on partition "Top"
 Warning (14632): Output pin "pre_syn.bp.spi_slave_instance_SPI_CS" driven by bidirectional pin "GPIO_0_PI[9]" cannot be tri-stated File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 55
 Warning (14632): Output pin "pre_syn.bp.spi_slave_instance_SPI_CLK" driven by bidirectional pin "GPIO_0_PI[11]" cannot be tri-stated File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 55
 Warning (14632): Output pin "pre_syn.bp.spi_slave_instance_SPI_MOSI" driven by bidirectional pin "GPIO_0_PI[15]" cannot be tri-stated File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 55
-Warning (14632): Output pin "LED[4]" driven by bidirectional pin "GPIO_1[0]" cannot be tri-stated File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 12
-Warning (14632): Output pin "LED[2]" driven by bidirectional pin "GPIO_1[1]" cannot be tri-stated File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 12
-Warning (14632): Output pin "LED[0]" driven by bidirectional pin "GPIO_1[7]" cannot be tri-stated File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 12
+Warning (14632): Output pin "LED[2]" driven by bidirectional pin "GPIO_1[2]" cannot be tri-stated File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 12
+Warning (14632): Output pin "LED[3]" driven by bidirectional pin "GPIO_1[4]" cannot be tri-stated File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 12
 Info (17049): 2 registers lost all their fanouts during netlist optimizations.
 Info (35024): Successfully connected in-system debug instance "auto_signaltap_0" to all 145 required data inputs, trigger inputs, acquisition clocks, and dynamic pins
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
@@ -1628,16 +1476,16 @@ Warning (21074): Design contains 14 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "GPIO_2_IN[2]" File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 52
     Warning (15610): No output dependent on input pin "GPIO_0_PI_IN[0]" File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 56
     Warning (15610): No output dependent on input pin "GPIO_0_PI_IN[1]" File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 56
-Info (21057): Implemented 2195 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 2021 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 20 input pins
     Info (21059): Implemented 40 output pins
     Info (21060): Implemented 98 bidirectional pins
-    Info (21061): Implemented 1948 logic cells
+    Info (21061): Implemented 1774 logic cells
     Info (21064): Implemented 88 RAM segments
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 348 warnings
-    Info: Peak virtual memory: 4854 megabytes
-    Info: Processing ended: Wed Feb 26 02:10:17 2020
-    Info: Elapsed time: 00:00:32
-    Info: Total CPU time (on all processors): 00:00:50
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 261 warnings
+    Info: Peak virtual memory: 4863 megabytes
+    Info: Processing ended: Mon Mar 09 22:29:09 2020
+    Info: Elapsed time: 00:00:46
+    Info: Total CPU time (on all processors): 00:01:00
 
 

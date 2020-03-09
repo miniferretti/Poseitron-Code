@@ -80,24 +80,22 @@ logic 		 MemWriteM;
 logic [31:0] spi_data;
 		
 assign Laser_signal = GPIO_1[8];
-assign Laser_sync = GPIO_1[7];
 assign Laser_cod_A = GPIO_1[4];
 assign Laser_cod_B = GPIO_1[5];
-assign Prop_motor_left_cod_A = GPIO_1[0];
-assign Prop_motor_left_cod_B = GPIO_1_IN[0];
-assign Prop_motor_right_cod_A = GPIO_1_IN[1];
-assign Prop_motor_right_cod_B = GPIO_1[1];
+assign Prop_motor_left_cod_A = GPIO_1[4];
+assign Prop_motor_left_cod_B = GPIO_1[2];
+assign Prop_motor_right_cod_A = GPIO_1_IN[0];
+assign Prop_motor_right_cod_B = GPIO_1_IN[1];
 assign UART_TX = GPIO_1[26];
 assign UART_RX = GPIO_1[24];
 assign UART_DIR = GPIO_1[22];
 assign reset = GPIO_0_PI[1];
 assign clk = CLOCK_50;
 
-assign LED[4:1]={GPIO_1[0],GPIO_1_IN[0],GPIO_1[1],GPIO_1_IN[1]};
+assign LED[3:0]={GPIO_1[4],GPIO_1[2],GPIO_1_IN[0],GPIO_1_IN[1]};
 
 quad_counter quadR(clk,Prop_motor_right_cod_A,Prop_motor_right_cod_B,countR);
 quad_counter quadL(clk,Prop_motor_left_cod_A,Prop_motor_left_cod_B,countL);
-laserV1 lazer(clk,Laser_signal,Laser_sync,Laser_cod_A,Laser_cod_B,position,position_direction,beacon_rising_edge,beacon_falling_edge,beacon_detection);
 
 //32bit valeur qui contient l'info des roues
 logic [31:0] VitesseRoueRL;
@@ -125,7 +123,6 @@ assign writeBeacon_edge = ~(beacon_edge == beacon_edgePrev);
 assign writeTowerPos = ~(towerPos == towerPosPrev);
 
 
-assign LED [0] = Laser_sync;
 
 //******** debut du module de transmission d'infos au registre du SPI ******* 
 //******** A ne toucher uniquement en cas de rajout de registre a ecrire *****
