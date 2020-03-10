@@ -1,7 +1,7 @@
 
- //author Nicolas Van der Noot
- //*// \file ctrl_io.h
- //* //\brief Structures defining the inputs and the outputs of the Minibot controller
+//author Nicolas Van der Noot
+//*// \file ctrl_io.h
+//* //\brief Structures defining the inputs and the outputs of the Minibot controller
 
 #ifndef _CTRL_IO_H_
 #define _CTRL_IO_H_
@@ -13,7 +13,11 @@
 #define NB_STORE_EDGE 10
 
 // ID of the right and left sides
-enum{R_ID, L_ID};
+enum
+{
+	R_ID,
+	L_ID
+};
 
 /// Controller inputs
 typedef struct CtrlIn
@@ -29,6 +33,8 @@ typedef struct CtrlIn
 	 */
 	double r_wheel_speed; ///< right wheel speed [rad/s]
 	double l_wheel_speed; ///< left wheel speed [rad/s]
+	double r_wheel_ref;
+	double l_wheel_ref;
 
 	/*! //brief micro-switches
 	 */
@@ -62,22 +68,9 @@ typedef struct CtrlIn
 	 * in two additional integer values. To this end, a reference laser position must be defined to update this
 	 * value and to re-start the count of edges.
 	 */
-	double tower_pos; ///< tower current relative position [rad] in the range ]-pi/2 ; pi/2]
+	///< tower current relative position [rad] in the range ]-pi/2 ; pi/2]
 
-	double last_rising_pos;  ///< rotating list with the last rising edges detected [rad]
-	double last_falling_pos; ///< rotating list with the last falling edges detected [rad]
-	
-	int rising_index;  ///< index in 'last_rising' of the last element added
-	int falling_index; ///< index in 'last_falling' of the last element added
-
-	int nb_rising;  ///< number of rising edges detected during the last laser revolution
-	int nb_falling; ///< number of falling edges detected during the last laser revolution
-
-	/*! //brief number of opponents taking part in this game
-	 */
-	int nb_opponents; ///< number of opponents
-
-	#ifdef SIMU_PROJECT
+#ifdef SIMU_PROJECT
 	/*! brief tower for the fixed beacon
 	 *
 	 * These variables are similar to the same ones without the '_fixed' name, except that
@@ -86,7 +79,7 @@ typedef struct CtrlIn
 	 */
 	double last_rising_fixed[NB_STORE_EDGE];  ///< rotating list with the last rising edges detected [rad]
 	double last_falling_fixed[NB_STORE_EDGE]; ///< rotating list with the last falling edges detected [rad]
-	
+
 	int rising_index_fixed;  ///< index in 'last_rising' of the last element added
 	int falling_index_fixed; ///< index in 'last_falling' of the last element added
 
@@ -95,15 +88,15 @@ typedef struct CtrlIn
 
 	/*! \brief targets
 	 */
-	int nb_targets;      ///< number of targets carried by the robot
+	int nb_targets;		 ///< number of targets carried by the robot
 	int target_detected; ///< 1 if target currently detected under the robot, 0 otherwise
 
 	/*! \brief joystick-keyboard
 	 */
-	int keyboard_arrow[2][2];     ///< arrows keyboard or (Z,Q,S,D / W,A,S,D) (signals in the range [-100;100], see user_realtime_events.cc)
+	int keyboard_arrow[2][2];	 ///< arrows keyboard or (Z,Q,S,D / W,A,S,D) (signals in the range [-100;100], see user_realtime_events.cc)
 	double joystick_handle[4][2]; ///< joystick handle (signals in the range [-1;1])
 
-	int keyboard_key[2];    ///< keyboard keys (space bar and enter key, see user_realtime_events.cc)
+	int keyboard_key[2];	///< keyboard keys (space bar and enter key, see user_realtime_events.cc)
 	int joystick_button[4]; ///< joystick buttons (depend on the joystick)
 
 	/*! brief robot ID
@@ -115,7 +108,7 @@ typedef struct CtrlIn
 	 *    ROBOT_W (white) : 3 - team B
 	 */
 	int robot_id; ///< ID of the robot
-	#endif
+#endif
 
 } CtrlIn;
 
@@ -143,7 +136,7 @@ typedef struct CtrlOut
 	 */
 	double tower_command; ///< tower motor command [-], bounded in [-100 ; 100]
 
-	#ifdef SIMU_PROJECT
+#ifdef SIMU_PROJECT
 	/*! \brief targets release
 	 *
 	 * When this flag is set to 1, the robot automatically releases all the targets it is carrying.
@@ -151,7 +144,7 @@ typedef struct CtrlOut
 	 * Set this flag to 0 to carry targets.
 	 */
 	int flag_release;
-	#endif
+#endif
 
 } CtrlOut;
 
