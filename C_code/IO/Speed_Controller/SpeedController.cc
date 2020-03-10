@@ -1,8 +1,6 @@
 
 
 #include "SpeedController.hh"
-#include "CtrlStruct.hh"
-#include "ctrl_io.h"
 
 void run_speed_controller(CtrlStruct *theCtrlStruct)
 {

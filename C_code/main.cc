@@ -12,7 +12,6 @@
 #include <errno.h>
 #include <stdlib.h>
 #include <signal.h>
-#include "IO/Speed_Controller/ctrl_io.h"
 #include "IO/Speed_Controller/SpeedController.hh"
 //#include <chrono>
 #include <pthread.h>
@@ -31,7 +30,7 @@ using namespace std;
 #define CS 0
 #define RESETSPI 19
 
-CtrlStruct *myCtrlStruct;
+CtrlStruct *myCtrlStruct=new CtrlStruct;
 
 //Constant values for the updateCrtlIn() routine
 //paramètre de la conversion omega->vitesse pour les roues
