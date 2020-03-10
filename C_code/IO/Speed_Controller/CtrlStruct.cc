@@ -1,5 +1,4 @@
 #include "CtrlStruct.hh"
-#include "ctrl_io.h"
 
 int size_UserStruct()
 {
