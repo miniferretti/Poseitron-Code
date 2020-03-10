@@ -37,8 +37,8 @@ CtrlStruct *myCtrlStruct = new CtrlStruct;
 //Constant values for the updateCrtlIn() routine
 //paramètre de la conversion omega->vitesse pour les roues
 
-double omega_ref_now_r = 2;
-double omega_ref_now_l = 2;
+double omega_ref_now_r = 100;
+double omega_ref_now_l = 100;
 double dt_ref = 3;
 
 //Declaration des fonctions
@@ -89,10 +89,10 @@ int main()
 void *updateCrtlIn(void *unused)
 {
 
-	unsigned char buffer[5] = {0};  // create timers.
+	unsigned char buffer[5] = {0}; // create timers.
 
-       // get current time.
-	auto start = std::chrono::steady_clock::now( );
+	// get current time.
+	auto start = std::chrono::steady_clock::now();
 
 	while (true)
 	{
@@ -105,7 +105,7 @@ void *updateCrtlIn(void *unused)
 		buffer[4] = 0x00;
 
 		wiringPiSPIDataRW(0, buffer, 5);
-		delay(100);
+		delay(10);
 
 		myCtrlStruct->theCtrlIn->r_wheel_speed = ((double)(int16_t)((uint16_t)buffer[3] << 8 | (uint16_t)buffer[4])) * myCtrlStruct->theUserStruct->samplingDE0 * 2 * M_PI / myCtrlStruct->theUserStruct->tics;
 		myCtrlStruct->theCtrlIn->l_wheel_speed = ((double)(int16_t)((uint16_t)buffer[1] << 8 | (uint16_t)buffer[2])) * myCtrlStruct->theUserStruct->samplingDE0 * 2 * M_PI / myCtrlStruct->theUserStruct->tics;
@@ -114,15 +114,15 @@ void *updateCrtlIn(void *unused)
 
 		run_speed_controller(myCtrlStruct);
 
-		printf("wheels command R: %f wheels command L: %f",myCtrlStruct->theCtrlOut->wheel_commands[R_ID],myCtrlStruct->theCtrlOut->wheel_commands[L_ID]);
+		printf("wheels command R: %f wheels command L: %f", myCtrlStruct->theCtrlOut->wheel_commands[R_ID], myCtrlStruct->theCtrlOut->wheel_commands[L_ID]);
 
 		CAN0pushPropDC(myCtrlStruct->theCtrlOut->wheel_commands[L_ID], myCtrlStruct->theCtrlOut->wheel_commands[R_ID]);
 
 		//Mise a jour du pas de temps
 
-		auto elapsed = std::chrono::duration_cast<std::chrono::milliseconds>( std::chrono::steady_clock::now( ) - start );
+		auto elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now() - start);
 		double time_taken = (elapsed.count());
-		printf("time taken: %f\r\n", time_taken/1000);
-		myCtrlStruct->theCtrlIn->t = time_taken/1000; //Temps utilisé pour mettre a jour les valeurs et appeler le speed controller
+		printf("time taken: %f\r\n", time_taken / 1000);
+		myCtrlStruct->theCtrlIn->t = time_taken / 1000; //Temps utilisé pour mettre a jour les valeurs et appeler le speed controller
 	}
 }

@@ -25,7 +25,6 @@ void run_speed_controller(CtrlStruct *theCtrlStruct)
     double Ra = theCtrlStruct->theUserStruct->Ra;
     double dt = t - tp;
 
-
     double u_l = Kpl * e_l;
     double u_r = Kpr * e_r;
     double i_e_l = theCtrlStruct->theUserStruct->i_e_l;
@@ -38,9 +37,9 @@ void run_speed_controller(CtrlStruct *theCtrlStruct)
         i_e_l += dt * e_l;
     }
     u_l += i_e_l * Kil;
-  //  u_l += kphi * l_wheel_speed;
+    //  u_l += kphi * l_wheel_speed;
     theCtrlStruct->theUserStruct->sat_l = saturation(theCtrlStruct->theUserStruct->upperCurrentLimit, theCtrlStruct->theUserStruct->lowerCurrentLimit, &u_l);
-    u_l += kphi * l_wheel_speed;
+    //    u_l += kphi * l_wheel_speed;
 
     //RIGHT WHEEL
     if (!theCtrlStruct->theUserStruct->sat_r)
@@ -49,14 +48,14 @@ void run_speed_controller(CtrlStruct *theCtrlStruct)
         i_e_r += dt * e_r;
     }
     u_r += i_e_r * Kir;
-  //  u_r += kphi * r_wheel_speed;
+    //  u_r += kphi * r_wheel_speed;
     theCtrlStruct->theUserStruct->sat_r = saturation(theCtrlStruct->theUserStruct->upperCurrentLimit, theCtrlStruct->theUserStruct->lowerCurrentLimit, &u_r);
-    u_r += kphi * r_wheel_speed;
+    // u_r += kphi * r_wheel_speed;
 
     //OUTPUT
 
-    theCtrlStruct->theUserStruct->sat_l = saturation(theCtrlStruct->theUserStruct->upperVoltageLimit, theCtrlStruct->theUserStruct->lowerVoltageLimit, &u_l) ;
-    theCtrlStruct->theUserStruct->sat_r = saturation(theCtrlStruct->theUserStruct->upperVoltageLimit, theCtrlStruct->theUserStruct->lowerVoltageLimit, &u_r) ;
+    theCtrlStruct->theUserStruct->sat_l = saturation(theCtrlStruct->theUserStruct->upperVoltageLimit, theCtrlStruct->theUserStruct->lowerVoltageLimit, &u_l);
+    theCtrlStruct->theUserStruct->sat_r = saturation(theCtrlStruct->theUserStruct->upperVoltageLimit, theCtrlStruct->theUserStruct->lowerVoltageLimit, &u_r);
 
     theCtrlStruct->theCtrlOut->wheel_commands[L_ID] = u_l * 100 / (theCtrlStruct->theUserStruct->upperVoltageLimit);
     theCtrlStruct->theCtrlOut->wheel_commands[R_ID] = u_r * 100 / (theCtrlStruct->theUserStruct->upperVoltageLimit);
@@ -80,16 +79,16 @@ void init_speed_controller(CtrlStruct *theCtrlStruct)
     double Current_max = 0.78; // Ampere
     double secu = 0.95;
 
-    theCtrlStruct->theUserStruct->samplingDE0 = 250;
+    theCtrlStruct->theUserStruct->samplingDE0 = 100;
     theCtrlStruct->theUserStruct->tics = 2048;
 
     theCtrlStruct->theUserStruct->ratio = 14;
     theCtrlStruct->theUserStruct->kphi = kphi;
     theCtrlStruct->theUserStruct->Ra = Ra;
-    theCtrlStruct->theUserStruct->kir = 0;    //Ki;
-    theCtrlStruct->theUserStruct->kpr = 0.01; //Kp;
+    theCtrlStruct->theUserStruct->kir = 0;     //Ki;
+    theCtrlStruct->theUserStruct->kpr = 0.001; //Kp;
     theCtrlStruct->theUserStruct->kil = 0;
-    theCtrlStruct->theUserStruct->kpl = 0.01;
+    theCtrlStruct->theUserStruct->kpl = 0.001;
 
     theCtrlStruct->theUserStruct->t_p = 0.0;
     theCtrlStruct->theUserStruct->upperCurrentLimit = Ra * Current_max;

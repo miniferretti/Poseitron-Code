@@ -1,5 +1,5 @@
 Analysis & Synthesis report for MyDE0_Nano
-Tue Mar 10 22:30:59 2020
+Tue Mar 10 22:51:14 2020
 Quartus Prime Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
 
 
@@ -59,13 +59,13 @@ refer to the applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Tue Mar 10 22:30:59 2020       ;
+; Analysis & Synthesis Status        ; Successful - Tue Mar 10 22:51:14 2020       ;
 ; Quartus Prime Version              ; 18.0.0 Build 614 04/24/2018 SJ Lite Edition ;
 ; Revision Name                      ; MyDE0_Nano                                  ;
 ; Top-level Entity Name              ; MyDE0_Nano                                  ;
 ; Family                             ; Cyclone IV E                                ;
-; Total logic elements               ; 1,748                                       ;
-;     Total combinational functions  ; 934                                         ;
+; Total logic elements               ; 1,749                                       ;
+;     Total combinational functions  ; 935                                         ;
 ;     Dedicated logic registers      ; 1,387                                       ;
 ; Total registers                    ; 1387                                        ;
 ; Total pins                         ; 154                                         ;
@@ -254,16 +254,16 @@ refer to the applicable agreement for further details.
 +---------------------------------------------+----------------+
 ; Resource                                    ; Usage          ;
 +---------------------------------------------+----------------+
-; Estimated Total logic elements              ; 1,748          ;
+; Estimated Total logic elements              ; 1,749          ;
 ;                                             ;                ;
-; Total combinational functions               ; 934            ;
+; Total combinational functions               ; 935            ;
 ; Logic element usage by number of LUT inputs ;                ;
 ;     -- 4 input functions                    ; 358            ;
 ;     -- 3 input functions                    ; 308            ;
-;     -- <=2 input functions                  ; 268            ;
+;     -- <=2 input functions                  ; 269            ;
 ;                                             ;                ;
 ; Logic elements by mode                      ;                ;
-;     -- normal mode                          ; 768            ;
+;     -- normal mode                          ; 769            ;
 ;     -- arithmetic mode                      ; 166            ;
 ;                                             ;                ;
 ; Total registers                             ; 1387           ;
@@ -277,7 +277,7 @@ refer to the applicable agreement for further details.
 ;                                             ;                ;
 ; Maximum fan-out node                        ; CLOCK_50~input ;
 ; Maximum fan-out                             ; 938            ;
-; Total fan-out                               ; 9242           ;
+; Total fan-out                               ; 9244           ;
 ; Average fan-out                             ; 3.27           ;
 +---------------------------------------------+----------------+
 
@@ -287,8 +287,8 @@ refer to the applicable agreement for further details.
 +-----------------------------------------------------------------------------------------------------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------+--------------+
 ; Compilation Hierarchy Node                                                                                                              ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                                                                                                                                                                                                                                    ; Entity Name                       ; Library Name ;
 +-----------------------------------------------------------------------------------------------------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------+--------------+
-; |MyDE0_Nano                                                                                                                             ; 934 (89)            ; 1387 (36)                 ; 459264      ; 0            ; 0       ; 0         ; 154  ; 0            ; |MyDE0_Nano                                                                                                                                                                                                                                                                                                                                            ; MyDE0_Nano                        ; work         ;
-;    |quad_counter:quadL|                                                                                                                 ; 57 (57)             ; 70 (70)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |MyDE0_Nano|quad_counter:quadL                                                                                                                                                                                                                                                                                                                         ; quad_counter                      ; work         ;
+; |MyDE0_Nano                                                                                                                             ; 935 (89)            ; 1387 (36)                 ; 459264      ; 0            ; 0       ; 0         ; 154  ; 0            ; |MyDE0_Nano                                                                                                                                                                                                                                                                                                                                            ; MyDE0_Nano                        ; work         ;
+;    |quad_counter:quadL|                                                                                                                 ; 58 (58)             ; 70 (70)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |MyDE0_Nano|quad_counter:quadL                                                                                                                                                                                                                                                                                                                         ; quad_counter                      ; work         ;
 ;    |quad_counter:quadR|                                                                                                                 ; 30 (30)             ; 38 (38)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |MyDE0_Nano|quad_counter:quadR                                                                                                                                                                                                                                                                                                                         ; quad_counter                      ; work         ;
 ;    |sld_hub:auto_hub|                                                                                                                   ; 127 (1)             ; 91 (0)                    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |MyDE0_Nano|sld_hub:auto_hub                                                                                                                                                                                                                                                                                                                           ; sld_hub                           ; altera_sld   ;
 ;       |alt_sld_fab_with_jtag_input:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:with_jtag_input_gen:instrumentation_fabric| ; 126 (0)             ; 91 (0)                    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |MyDE0_Nano|sld_hub:auto_hub|alt_sld_fab_with_jtag_input:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:with_jtag_input_gen:instrumentation_fabric                                                                                                                                                                                           ; alt_sld_fab_with_jtag_input       ; altera_sld   ;
@@ -491,12 +491,13 @@ Note: All latches listed above may not be present at the end of synthesis due to
 ; Register name                                          ; Reason for Removal                            ;
 +--------------------------------------------------------+-----------------------------------------------+
 ; DataAdrM[3]                                            ; Merged with DataAdrM[2]                       ;
+; quad_counter:quadR|clockCount[18]                      ; Merged with quad_counter:quadL|clockCount[18] ;
 ; quad_counter:quadR|clockCount[17]                      ; Merged with quad_counter:quadL|clockCount[17] ;
 ; quad_counter:quadR|clockCount[16]                      ; Merged with quad_counter:quadL|clockCount[16] ;
-; quad_counter:quadR|clockCount[11]                      ; Merged with quad_counter:quadL|clockCount[11] ;
-; quad_counter:quadR|clockCount[10]                      ; Merged with quad_counter:quadL|clockCount[10] ;
+; quad_counter:quadR|clockCount[15]                      ; Merged with quad_counter:quadL|clockCount[15] ;
+; quad_counter:quadR|clockCount[13]                      ; Merged with quad_counter:quadL|clockCount[13] ;
 ; quad_counter:quadR|clockCount[8]                       ; Merged with quad_counter:quadL|clockCount[8]  ;
-; quad_counter:quadR|clockCount[6]                       ; Merged with quad_counter:quadL|clockCount[6]  ;
+; quad_counter:quadR|clockCount[5]                       ; Merged with quad_counter:quadL|clockCount[5]  ;
 ; quad_counter:quadR|clockCount[31]                      ; Merged with quad_counter:quadL|clockCount[31] ;
 ; quad_counter:quadR|clockCount[30]                      ; Merged with quad_counter:quadL|clockCount[30] ;
 ; quad_counter:quadR|clockCount[29]                      ; Merged with quad_counter:quadL|clockCount[29] ;
@@ -510,14 +511,13 @@ Note: All latches listed above may not be present at the end of synthesis due to
 ; quad_counter:quadR|clockCount[21]                      ; Merged with quad_counter:quadL|clockCount[21] ;
 ; quad_counter:quadR|clockCount[20]                      ; Merged with quad_counter:quadL|clockCount[20] ;
 ; quad_counter:quadR|clockCount[19]                      ; Merged with quad_counter:quadL|clockCount[19] ;
-; quad_counter:quadR|clockCount[18]                      ; Merged with quad_counter:quadL|clockCount[18] ;
-; quad_counter:quadR|clockCount[15]                      ; Merged with quad_counter:quadL|clockCount[15] ;
 ; quad_counter:quadR|clockCount[14]                      ; Merged with quad_counter:quadL|clockCount[14] ;
-; quad_counter:quadR|clockCount[13]                      ; Merged with quad_counter:quadL|clockCount[13] ;
 ; quad_counter:quadR|clockCount[12]                      ; Merged with quad_counter:quadL|clockCount[12] ;
+; quad_counter:quadR|clockCount[11]                      ; Merged with quad_counter:quadL|clockCount[11] ;
+; quad_counter:quadR|clockCount[10]                      ; Merged with quad_counter:quadL|clockCount[10] ;
 ; quad_counter:quadR|clockCount[9]                       ; Merged with quad_counter:quadL|clockCount[9]  ;
 ; quad_counter:quadR|clockCount[7]                       ; Merged with quad_counter:quadL|clockCount[7]  ;
-; quad_counter:quadR|clockCount[5]                       ; Merged with quad_counter:quadL|clockCount[5]  ;
+; quad_counter:quadR|clockCount[6]                       ; Merged with quad_counter:quadL|clockCount[6]  ;
 ; quad_counter:quadR|clockCount[4]                       ; Merged with quad_counter:quadL|clockCount[4]  ;
 ; quad_counter:quadR|clockCount[3]                       ; Merged with quad_counter:quadL|clockCount[3]  ;
 ; quad_counter:quadR|clockCount[2]                       ; Merged with quad_counter:quadL|clockCount[2]  ;
@@ -835,20 +835,20 @@ Note: In order to hide this table in the UI and the text report file, please set
 ;     SCLR SLD          ; 1                           ;
 ;     plain             ; 130                         ;
 ; cycloneiii_io_obuf    ; 98                          ;
-; cycloneiii_lcell_comb ; 243                         ;
+; cycloneiii_lcell_comb ; 244                         ;
 ;     arith             ; 66                          ;
 ;         2 data inputs ; 38                          ;
 ;         3 data inputs ; 28                          ;
-;     normal            ; 177                         ;
+;     normal            ; 178                         ;
 ;         0 data inputs ; 1                           ;
 ;         1 data inputs ; 5                           ;
-;         2 data inputs ; 49                          ;
+;         2 data inputs ; 50                          ;
 ;         3 data inputs ; 70                          ;
 ;         4 data inputs ; 52                          ;
 ; cycloneiii_ram_block  ; 32                          ;
 ;                       ;                             ;
 ; Max LUT depth         ; 4.10                        ;
-; Average LUT depth     ; 1.88                        ;
+; Average LUT depth     ; 1.89                        ;
 +-----------------------+-----------------------------+
 
 
@@ -1020,7 +1020,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
-    Info: Processing started: Tue Mar 10 22:30:20 2020
+    Info: Processing started: Tue Mar 10 22:50:40 2020
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off MyDE0_Nano -c MyDE0_Nano
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
@@ -1195,7 +1195,7 @@ Info (12021): Found 1 design units, including 1 entities, in source file db/cmpr
     Info (12023): Found entity 1: cmpr_ngc File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/db/cmpr_ngc.tdf Line: 22
 Info (12033): Analysis and Synthesis generated Signal Tap or debug node instance "auto_signaltap_0"
 Info (11170): Starting IP generation for the debug fabric: alt_sld_fab.
-Info (11172): 2020.03.10.22:30:45 Progress: Loading sldbe248a27/alt_sld_fab_wrapper_hw.tcl
+Info (11172): 2020.03.10.22:51:01 Progress: Loading sldbe248a27/alt_sld_fab_wrapper_hw.tcl
 Info (11172): Alt_sld_fab.alt_sld_fab: SLD fabric agents which did not specify prefer_host were connected to JTAG
 Info (11172): Alt_sld_fab: Generating alt_sld_fab "alt_sld_fab" for QUARTUS_SYNTH
 Info (11172): Alt_sld_fab: "alt_sld_fab" instantiated alt_sld_fab "alt_sld_fab"
@@ -1476,16 +1476,16 @@ Warning (21074): Design contains 14 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "GPIO_2_IN[2]" File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 52
     Warning (15610): No output dependent on input pin "GPIO_0_PI_IN[0]" File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 56
     Warning (15610): No output dependent on input pin "GPIO_0_PI_IN[1]" File: C:/Users/ferre/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/SV_Code/MyDE0_Nano.sv Line: 56
-Info (21057): Implemented 2021 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 2022 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 20 input pins
     Info (21059): Implemented 40 output pins
     Info (21060): Implemented 98 bidirectional pins
-    Info (21061): Implemented 1774 logic cells
+    Info (21061): Implemented 1775 logic cells
     Info (21064): Implemented 88 RAM segments
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 261 warnings
     Info: Peak virtual memory: 4864 megabytes
-    Info: Processing ended: Tue Mar 10 22:30:59 2020
-    Info: Elapsed time: 00:00:39
-    Info: Total CPU time (on all processors): 00:00:55
+    Info: Processing ended: Tue Mar 10 22:51:14 2020
+    Info: Elapsed time: 00:00:34
+    Info: Total CPU time (on all processors): 00:00:58
 
 

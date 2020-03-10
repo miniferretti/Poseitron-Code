@@ -571,5 +571,5 @@ set_global_assignment -name SDC_FILE MyDE0_Nano.SDC
 set_global_assignment -name SIGNALTAP_FILE MyDE0_Nano.stp
 set_global_assignment -name SYSTEMVERILOG_FILE MySPI.sv
 set_global_assignment -name SOURCE_FILE db/MyDE0_Nano.cmp.rdb
-set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
 set_global_assignment -name SLD_FILE db/MyDE0_Nano_auto_stripped.stp
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
