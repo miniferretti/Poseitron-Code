@@ -7,3 +7,4 @@
 
 void CAN0pushPropDC(int dcG,int dcD);
 string uint8_to_hex_string(const uint8_t *v, const size_t s);
+void CAN0ctrl_motor(int state);
