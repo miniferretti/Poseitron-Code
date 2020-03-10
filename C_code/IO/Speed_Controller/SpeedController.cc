@@ -38,8 +38,9 @@ void run_speed_controller(CtrlStruct *theCtrlStruct)
         i_e_l += dt * e_l;
     }
     u_l += i_e_l * Kil;
+  //  u_l += kphi * l_wheel_speed;
+    theCtrlStruct->theUserStruct->sat_l = saturation(theCtrlStruct->theUserStruct->upperCurrentLimit, theCtrlStruct->theUserStruct->lowerCurrentLimit, &u_l);
     u_l += kphi * l_wheel_speed;
-    theCtrlStruct->theUserStruct->sat_l = saturation(theCtrlStruct->theUserStruct->upperCurrentLimit + kphi * l_wheel_speed, theCtrlStruct->theUserStruct->lowerCurrentLimit - kphi * l_wheel_speed, &u_l);
 
     //RIGHT WHEEL
     if (!theCtrlStruct->theUserStruct->sat_r)
@@ -48,10 +49,15 @@ void run_speed_controller(CtrlStruct *theCtrlStruct)
         i_e_r += dt * e_r;
     }
     u_r += i_e_r * Kir;
+  //  u_r += kphi * r_wheel_speed;
+    theCtrlStruct->theUserStruct->sat_r = saturation(theCtrlStruct->theUserStruct->upperCurrentLimit, theCtrlStruct->theUserStruct->lowerCurrentLimit, &u_r);
     u_r += kphi * r_wheel_speed;
-    theCtrlStruct->theUserStruct->sat_r = saturation(theCtrlStruct->theUserStruct->upperCurrentLimit + kphi * r_wheel_speed, theCtrlStruct->theUserStruct->lowerCurrentLimit - kphi * r_wheel_speed, &u_r);
 
     //OUTPUT
+
+    theCtrlStruct->theUserStruct->sat_l = saturation(theCtrlStruct->theUserStruct->upperVoltageLimit, theCtrlStruct->theUserStruct->lowerVoltageLimit, &u_l) ;
+    theCtrlStruct->theUserStruct->sat_r = saturation(theCtrlStruct->theUserStruct->upperVoltageLimit, theCtrlStruct->theUserStruct->lowerVoltageLimit, &u_r) ;
+
     theCtrlStruct->theCtrlOut->wheel_commands[L_ID] = u_l * 100 / (theCtrlStruct->theUserStruct->upperVoltageLimit);
     theCtrlStruct->theCtrlOut->wheel_commands[R_ID] = u_r * 100 / (theCtrlStruct->theUserStruct->upperVoltageLimit);
     theCtrlStruct->theUserStruct->t_p = t;
@@ -62,7 +68,7 @@ void run_speed_controller(CtrlStruct *theCtrlStruct)
 void init_speed_controller(CtrlStruct *theCtrlStruct)
 {
 
-    double Ra = 5.84;
+    double Ra = 7.1;
     double Kv = 4.3e-5;
     double J_rotor = 12e-7;
     double J_robot = 3 * 7.03125e-6;
@@ -71,13 +77,13 @@ void init_speed_controller(CtrlStruct *theCtrlStruct)
     double kphi = 37.83e-3;
     double Kp = 3 * Ra * Kv / kphi;
     double Ki = Kp * ((Ra * Kv + kphi * Kp) / (J * Ra) - 3 / tau_m);
-    double Current_max = 0.82; // Ampere
+    double Current_max = 0.78; // Ampere
     double secu = 0.95;
 
-    theCtrlStruct->theUserStruct->samplingDE0 = 500;
+    theCtrlStruct->theUserStruct->samplingDE0 = 250;
     theCtrlStruct->theUserStruct->tics = 2048;
 
-    theCtrlStruct->theUserStruct->ratio = 7;
+    theCtrlStruct->theUserStruct->ratio = 14;
     theCtrlStruct->theUserStruct->kphi = kphi;
     theCtrlStruct->theUserStruct->Ra = Ra;
     theCtrlStruct->theUserStruct->kir = 0;    //Ki;
@@ -111,3 +117,9 @@ int saturation(double upperLimit, double lowerLimit, double *u)
     else
         return 0;
 }
+
+/*
+double volatgeSaturation( double V,double upperLimite){
+    if()
+}
+*/

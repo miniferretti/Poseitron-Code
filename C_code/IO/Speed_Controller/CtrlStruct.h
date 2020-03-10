@@ -11,6 +11,8 @@ typedef struct UserStruct
     double kpl;
     double kil;
 
+    double Rroue;
+
     double t_p;
     double ratio;
     double upperCurrentLimit;

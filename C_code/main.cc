@@ -37,8 +37,8 @@ CtrlStruct *myCtrlStruct = new CtrlStruct;
 //Constant values for the updateCrtlIn() routine
 //paramètre de la conversion omega->vitesse pour les roues
 
-double omega_ref_now_r = 0;
-double omega_ref_now_l = 0;
+double omega_ref_now_r = 2;
+double omega_ref_now_l = 2;
 double dt_ref = 3;
 
 //Declaration des fonctions
@@ -60,7 +60,7 @@ int main()
 
 	CAN0configure(CAN_BR);
 	delay(100);
-	CAN0ctrl_motor(0);
+	CAN0ctrl_motor(1);
 	init_speed_controller(myCtrlStruct);
 
 	//Creation du thread pour la fonction updateCrtlIn
@@ -110,11 +110,13 @@ void *updateCrtlIn(void *unused)
 		myCtrlStruct->theCtrlIn->r_wheel_speed = ((double)(int16_t)((uint16_t)buffer[3] << 8 | (uint16_t)buffer[4])) * myCtrlStruct->theUserStruct->samplingDE0 * 2 * M_PI / myCtrlStruct->theUserStruct->tics;
 		myCtrlStruct->theCtrlIn->l_wheel_speed = ((double)(int16_t)((uint16_t)buffer[1] << 8 | (uint16_t)buffer[2])) * myCtrlStruct->theUserStruct->samplingDE0 * 2 * M_PI / myCtrlStruct->theUserStruct->tics;
 
-		//printf("%f %f \r\n", myCtrlStruct->theCtrlIn->r_wheel_speed, myCtrlStruct->theCtrlIn->l_wheel_speed);
+		printf("%f %f \r\n", myCtrlStruct->theCtrlIn->r_wheel_speed, myCtrlStruct->theCtrlIn->l_wheel_speed);
 
 		run_speed_controller(myCtrlStruct);
 
-		//	CAN0pushPropDC(-myCtrlStruct->theCtrlOut->wheel_commands[L_ID], -myCtrlStruct->theCtrlOut->wheel_commands[R_ID]);
+		printf("wheels command R: %f wheels command L: %f",myCtrlStruct->theCtrlOut->wheel_commands[R_ID],myCtrlStruct->theCtrlOut->wheel_commands[L_ID]);
+
+		CAN0pushPropDC(myCtrlStruct->theCtrlOut->wheel_commands[L_ID], myCtrlStruct->theCtrlOut->wheel_commands[R_ID]);
 
 		//Mise a jour du pas de temps
 

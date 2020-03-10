@@ -32,7 +32,7 @@ assign count_direction = quadA_delayed[1] ^ quadB_delayed[2];
 //end
 
 always_ff @(posedge clk) begin
-	if(clockCount == 32'd100000) begin
+	if(clockCount == 32'd200000) begin
 		clockCount<=32'd0;
 		countHelper<=countFB;
 		countFB<=16'd0;
