@@ -1,8 +1,8 @@
 #include <cstdio>
 #include <stdio.h>
-#include "IO/COM/CAN/CAN.hh"
+//#include "IO/COM/CAN/CAN.hh"
 #include "IO/COM/CAN/CAN_Alternate.hh"
-#include "IO/COM/SPI/Specific/SPI_CAN.hh"
+//#include "IO/COM/SPI/Specific/SPI_CAN.hh"
 #include "IO/COM/SPI/SPI.hh"
 #include "IO/COM/SPI/Specific/SPI_DE0.hh"
 #include "CtrlStruct.h"
@@ -26,7 +26,7 @@
 using namespace std;
 
 //Constantes utiles
-#define CAN_BR 125e3
+#define CAN_BR 500e3
 #define CS 0
 #define RESETSPI 19
 
@@ -72,16 +72,11 @@ int main()
 	deo = new SPI_DE0(0, 125e3);
 	delay(100);
 
-//	can->configure();
+	CAN0configure(CAN_BR);
 	delay(100);
+	CAN0ctrl_motor(1);
 
 	
-//	can->check_receive(msg);
-
-//	can->push_PropDC(0, 0);
-//	if(can->check_receive(msg)){
-//		printf("Recieved something/r/n");
-//	}
 
 	init_speed_controller(myCtrlStruct);
 
@@ -107,8 +102,9 @@ int main()
 		//getBeaconAngleAndDist(MinibotCrtlIn.last_rising_pos,MinibotCrtlIn.last_falling_pos);
 		//printf("La distance est %f \r\n",theUserStruct.beacon_distance);
 
-
+		CAN0ctrl_led(0);
 		delay(100);
+		CAN0ctrl_led(1);
 		
 	}
 	free(myCtrlStruct);
