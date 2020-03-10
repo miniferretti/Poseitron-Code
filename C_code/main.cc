@@ -48,7 +48,7 @@ int saturation(double upperLimit, double lowerLimit, double *u);
 int main()
 {
 
-	//init_ctrlStruc(myCtrlStruct);
+	init_ctrlStruc(myCtrlStruct);
 	myCtrlStruct->theCtrlIn->r_wheel_ref = omega_ref_now_r;
 	myCtrlStruct->theCtrlIn->l_wheel_ref = omega_ref_now_l;
 

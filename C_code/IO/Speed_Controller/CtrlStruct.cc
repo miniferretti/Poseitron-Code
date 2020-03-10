@@ -8,7 +8,6 @@ int size_UserStruct()
 
 void init_ctrlStruc(CtrlStruct *ctrl)
 {
-
     ctrl->theCtrlIn = new CtrlIn;
     ctrl->theUserStruct = new UserStruct;
     ctrl->theCtrlOut = new CtrlOut;

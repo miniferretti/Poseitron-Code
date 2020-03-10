@@ -36,4 +36,4 @@ typedef struct CtrlStruct
 } CtrlStruct;
 
 int size_UserStruct();
-//void init_ctrlStruc(CtrlStruct *ctrl);
+void init_ctrlStruc(CtrlStruct *ctrl);
