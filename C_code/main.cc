@@ -75,7 +75,7 @@ int main()
 //	can->configure();
 	delay(100);
 
-	can->ctrl_motor(1);
+	
 //	can->check_receive(msg);
 
 //	can->push_PropDC(0, 0);
@@ -107,9 +107,9 @@ int main()
 		//getBeaconAngleAndDist(MinibotCrtlIn.last_rising_pos,MinibotCrtlIn.last_falling_pos);
 		//printf("La distance est %f \r\n",theUserStruct.beacon_distance);
 
-	//	can->ctrl_led(1);
+
 		delay(100);
-		can->ctrl_led(0);
+		
 	}
 	free(myCtrlStruct);
 }
@@ -119,7 +119,6 @@ int main()
 void *updateCrtlIn()
 {
 
-	//CAN *theCan = (CAN *)theCani;
 	unsigned char buffer[5] = {0};
 	clock_t t;
 	t = clock();
