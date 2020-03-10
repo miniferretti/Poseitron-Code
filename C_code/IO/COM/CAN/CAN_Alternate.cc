@@ -22,7 +22,7 @@ void CAN0ctrl_motor(int state)
 {
   if (state)
   {
-    system(("cansend can0 508#1E3000");
+    system("cansend can0 508#1E3000");
   }
   else
   {
