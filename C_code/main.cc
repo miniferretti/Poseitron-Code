@@ -36,8 +36,8 @@ CtrlStruct *myCtrlStruct=new CtrlStruct;
 //Constant values for the updateCrtlIn() routine
 //paramètre de la conversion omega->vitesse pour les roues
 
-double omega_ref_now_r = 10;
-double omega_ref_now_l = 10;
+double omega_ref_now_r = 0;
+double omega_ref_now_l = 0;
 double dt_ref = 3;
 
 //Declaration des fonctions
