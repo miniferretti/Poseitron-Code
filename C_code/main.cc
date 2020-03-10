@@ -5,7 +5,8 @@
 //#include "IO/COM/SPI/Specific/SPI_CAN.hh"
 #include "IO/COM/SPI/SPI.hh"
 #include "IO/COM/SPI/Specific/SPI_DE0.hh"
-#include "IO/Speed_Controller/CtrlStruct.hh"
+//#include "IO/Speed_Controller/CtrlStruct.hh"
+//#include "IO/Speed_Controller/ctrl_io.h"
 #include <iostream>
 #include <wiringPiSPI.h>
 #include <wiringPiI2C.h>
@@ -35,8 +36,8 @@ CtrlStruct *myCtrlStruct=new CtrlStruct;
 //Constant values for the updateCrtlIn() routine
 //paramètre de la conversion omega->vitesse pour les roues
 
-double omega_ref_now_r = 0;
-double omega_ref_now_l = 4;
+double omega_ref_now_r = 10;
+double omega_ref_now_l = 10;
 double dt_ref = 3;
 
 //Declaration des fonctions
@@ -60,7 +61,6 @@ int main()
 	CAN0configure(CAN_BR);
 	delay(100);
 	CAN0ctrl_motor(1);
-
 	init_speed_controller(myCtrlStruct);
 
 	//Creation du thread pour la fonction updateCrtlIn
@@ -80,6 +80,13 @@ int main()
 	}
 	free(myCtrlStruct);
 }
+
+
+
+
+
+
+
 
 //Fonction est qui appellée dans un thread, son but est de metter à jour les variables de MinibotCrtlIn et de mettre a jour la vitesse des roues
 //en utilisant le controller de vitesse run_speed_controller().

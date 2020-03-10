@@ -38,8 +38,8 @@ void CAN0pushPropDC(int dcG, int dcD)
   dcGc = dcGc >> 2;
   dcDc = dcDc >> 2;
 
-  system(("cansend can0 " + int_to_hex_string(CAN_MOT) + "#25FF" + hexStr2(&dcGc, 2)).c_str());
-  system(("cansend can0 " + int_to_hex_string(CAN_MOT) + "#26FF" + hexStr2(&dcDc, 2)).c_str());
+  system(("cansend can0 " + int_to_hex_string(CAN_MOT) + "#25FF" + hexStr2(&dcGc, 1)).c_str());
+  system(("cansend can0 " + int_to_hex_string(CAN_MOT) + "#26FF" + hexStr2(&dcDc, 1)).c_str());
   printf(("cansend can0 " + int_to_hex_string(CAN_MOT) + "#25FF" + hexStr2(&dcGc, 2)).c_str());
   printf("\r\n");
   printf(("cansend can0 " + int_to_hex_string(CAN_MOT) + "#26FF" + hexStr2(&dcDc, 2)).c_str());
