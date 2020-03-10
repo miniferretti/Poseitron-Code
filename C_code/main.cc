@@ -78,6 +78,9 @@ int main()
 		delay(100);
 		CAN0ctrl_led(1);
 	}
+	free(myCtrlStruct->theCtrlIn);
+	free(myCtrlStruct->theCtrlOut);
+	free(myCtrlStruct->theUserStruct);
 	free(myCtrlStruct);
 }
 

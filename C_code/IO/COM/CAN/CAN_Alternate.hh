@@ -15,3 +15,4 @@ void CAN0ctrl_led(int state);
 string int_to_hex_string(int theInt);
 void CAN0configure(int baud);
 string hexStr2(unsigned char *data, int len);
+string int_to_hex(int a);
