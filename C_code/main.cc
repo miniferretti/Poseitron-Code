@@ -1,6 +1,7 @@
 #include <cstdio>
 #include <stdio.h>
 #include "IO/COM/CAN/CAN.hh"
+#include "IO/COM/CAN/CAN_Alternate.hh"
 #include "IO/COM/SPI/Specific/SPI_CAN.hh"
 #include "IO/COM/SPI/SPI.hh"
 #include "IO/COM/SPI/Specific/SPI_DE0.hh"
@@ -47,7 +48,7 @@ double omega_ref_now_l = 0.0;
 double dt_ref = 3;
 
 //Declaration des fonctions
-void *updateCrtlIn(void *);
+void *updateCrtlIn();
 void run_speed_controller(CtrlStruct *theCtrlStruct);
 void init_speed_controller(CtrlStruct *theCtrlStruct);
 int saturation(double upperLimit, double lowerLimit, double *u);
@@ -58,31 +59,35 @@ int main()
 	myCtrlStruct->theUserStruct = new UserStruct;
 	myCtrlStruct->theCtrlIn = new CtrlIn;
 	myCtrlStruct->theCtrlOut = new CtrlOut;
+	
 
 	printf("Welcome to the Poseitron code prototype.\r\n");
 	printf("We hope that you will be pleased with the coding and we wish you a great succes.\n\r");
 
 	//test the motor control
-	CAN *can;
-	can = new CAN(CAN_BR);
+//	CAN *can;
+//	CANMessage *msg;
+//	can = new CAN(CAN_BR);
 	SPI_DE0 *deo;
 	deo = new SPI_DE0(0, 125e3);
 	delay(100);
 
-	can->configure();
+//	can->configure();
 	delay(100);
 
 	can->ctrl_motor(1);
-	can->check_receive();
+//	can->check_receive(msg);
 
-	//	can->push_PropDC(0, 0);
-	can->check_receive();
+//	can->push_PropDC(0, 0);
+//	if(can->check_receive(msg)){
+//		printf("Recieved something/r/n");
+//	}
 
 	init_speed_controller(myCtrlStruct);
 
 	//Creation du thread pour la fonction updateCrtlIn
 	pthread_t t;
-	pthread_create(&t, NULL, &updateCrtlIn, can);
+	pthread_create(&t, NULL, &updateCrtlIn);
 
 	//********  Début du comportement du robot **********
 	int i = 0;
@@ -102,19 +107,19 @@ int main()
 		//getBeaconAngleAndDist(MinibotCrtlIn.last_rising_pos,MinibotCrtlIn.last_falling_pos);
 		//printf("La distance est %f \r\n",theUserStruct.beacon_distance);
 
-		//can->ctrl_led(1);
+	//	can->ctrl_led(1);
 		delay(100);
-		//can->ctrl_led(0);
+		can->ctrl_led(0);
 	}
 	free(myCtrlStruct);
 }
 
 //Fonction est qui appellée dans un thread, son but est de metter à jour les variables de MinibotCrtlIn et de mettre a jour la vitesse des roues
 //en utilisant le controller de vitesse run_speed_controller().
-void *updateCrtlIn(void *theCani)
+void *updateCrtlIn()
 {
 
-	CAN *theCan = (CAN *)theCani;
+	//CAN *theCan = (CAN *)theCani;
 	unsigned char buffer[5] = {0};
 	clock_t t;
 	t = clock();
@@ -143,7 +148,7 @@ void *updateCrtlIn(void *theCani)
 
 		run_speed_controller(myCtrlStruct);
 
-		theCan->push_PropDC(myCtrlStruct->theCtrlOut->wheel_commands[L_ID], myCtrlStruct->theCtrlOut->wheel_commands[R_ID]);
+		CAN0pushPropDC(myCtrlStruct->theCtrlOut->wheel_commands[L_ID], myCtrlStruct->theCtrlOut->wheel_commands[R_ID]);
 
 		//Mise a jour du pas de temps
 		t = clock() - t;

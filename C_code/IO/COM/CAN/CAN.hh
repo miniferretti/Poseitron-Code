@@ -5,7 +5,7 @@
 #include "../SPI/Specific/SPI_CAN.hh"
 #include <cmath>
 #include <wiringPi.h>
-const int CAN_BD = 125000;
+const int CAN_BD = 500000;
 
 const int FOSC = 16000000;
 
@@ -39,7 +39,7 @@ const int EFLG = 0x2D;
 #define SWR 0
 #define SWL 1
 
-#define CAN_MOT 0x708
+#define CAN_MOT 0x508
 #define CAN_TOW 0x508
 
 
@@ -58,7 +58,7 @@ class CAN{
 		~CAN();
 
 		void configure();
-		void check_receive();
+		int check_receive(CANMessage *msg);
 		int readMessage(CANMessage *msg, uint8_t buf_nb);
 		int sendMessage(CANMessage *msg, uint8_t buf_nb);
 		void decipher_msg(CANMessage *msg);

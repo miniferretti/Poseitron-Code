@@ -28,11 +28,12 @@ void CAN::configure()
 	printf("Device status: 0x%x \n", status);
 
 	// Set baud rate
-	// Due to the 16MHz clock, 8tq allows to achieve 250kbaud exactly and 4tq could maybe achieve 500kbps ? No, doesn't work like that....
-	spi2can->bitModify(CNF2, 0b00111000, 2 << 3);
+	// Due to the 16MHz clock, 8tq allows to achieve 250kbaud exactly
+	spi2can->bitModify(CNF2, 0b11111111, 0x90);
 	double tq = 1.0/8/CAN_BD; //Desired time quanta
 	int brp = floor(tq*FOSC/2 -1); //Corresponding baudrate prescaler
-	spi2can->bitModify(CNF1, 0b111111, brp);
+	spi2can->bitModify(CNF1, 0b11111111, 0x01);
+	spi2can->bitModify(CNF3, 0b11111111, 0x02);
 
 	// Accept any message on rxb0 and rollover on rxb1 if full
 	rxb0ctrl = 0b11 << 5 | 1 << 2;
@@ -131,23 +132,26 @@ int CAN::readMessage(CANMessage *msg, uint8_t buf_nb)
 	return 1;
 }
 
-void CAN::check_receive()
+int CAN::check_receive(CANMessage *msg)
 {
 	uint8_t status, irx0, irx1;
 	spi2can->readReg(CANINTF, 1, &status);
 	irx0 = (status     )%2;
 	irx1 = (status >> 1)%2;
 	
-	CANMessage msg;
+//	CANMessage msg;
 
 	if(irx0){
-		readMessage(&msg, 0);
-		decipher_msg(&msg);
+		readMessage(msg, 0);
+		decipher_msg(msg);
+		return 1;
 	}
 	if(irx1){
-		readMessage(&msg, 1);
-		decipher_msg(&msg); 
+		readMessage(msg, 1);
+		decipher_msg(msg); 
+		return 1;
 	}	
+	return 0;
 }
 
 void CAN::decipher_msg(CANMessage *msg)
