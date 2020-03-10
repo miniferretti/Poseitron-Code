@@ -43,12 +43,12 @@ double Rroue = 0.03; // Valeur en m
 double omega_roue_ref_l[6] = {0, 6.2832, 0, 6.2832, 0, 6.2832};
 double omega_roue_ref_r[6] = {0, 6.2832, 0, -6.2832, 0, 6.2832};
 
-double omega_ref_now_r = 0.0;
-double omega_ref_now_l = 0.0;
+double omega_ref_now_r = 30*14;
+double omega_ref_now_l = 30*14;
 double dt_ref = 3;
 
 //Declaration des fonctions
-void *updateCrtlIn();
+void *updateCrtlIn(void *unused);
 void run_speed_controller(CtrlStruct *theCtrlStruct);
 void init_speed_controller(CtrlStruct *theCtrlStruct);
 int saturation(double upperLimit, double lowerLimit, double *u);
@@ -59,30 +59,27 @@ int main()
 	myCtrlStruct->theUserStruct = new UserStruct;
 	myCtrlStruct->theCtrlIn = new CtrlIn;
 	myCtrlStruct->theCtrlOut = new CtrlOut;
-	
 
 	printf("Welcome to the Poseitron code prototype.\r\n");
 	printf("We hope that you will be pleased with the coding and we wish you a great succes.\n\r");
 
 	//test the motor control
-//	CAN *can;
-//	CANMessage *msg;
-//	can = new CAN(CAN_BR);
+	//	CAN *can;
+	//	CANMessage *msg;
+	//	can = new CAN(CAN_BR);
 	SPI_DE0 *deo;
 	deo = new SPI_DE0(0, 125e3);
 	delay(100);
 
 	CAN0configure(CAN_BR);
 	delay(100);
-	CAN0ctrl_motor(1);
-
-	
+	CAN0ctrl_motor(0);
 
 	init_speed_controller(myCtrlStruct);
 
 	//Creation du thread pour la fonction updateCrtlIn
 	pthread_t t;
-	pthread_create(&t, NULL, &updateCrtlIn);
+	pthread_create(&t, NULL, &updateCrtlIn, NULL);
 
 	//********  Début du comportement du robot **********
 	int i = 0;
@@ -101,18 +98,18 @@ int main()
 		//printf("The distance to the beacon is %f\n\r",theUserStruct.beacon_distance);
 		//getBeaconAngleAndDist(MinibotCrtlIn.last_rising_pos,MinibotCrtlIn.last_falling_pos);
 		//printf("La distance est %f \r\n",theUserStruct.beacon_distance);
-
+			//CAN0pushPropDC(50,80);
+		//	CAN0ctrl_motor(0);
 		CAN0ctrl_led(0);
 		delay(100);
 		CAN0ctrl_led(1);
-		
 	}
 	free(myCtrlStruct);
 }
 
 //Fonction est qui appellée dans un thread, son but est de metter à jour les variables de MinibotCrtlIn et de mettre a jour la vitesse des roues
 //en utilisant le controller de vitesse run_speed_controller().
-void *updateCrtlIn()
+void *updateCrtlIn(void *unused)
 {
 
 	unsigned char buffer[5] = {0};
@@ -223,7 +220,7 @@ void init_speed_controller(CtrlStruct *theCtrlStruct)
 	theCtrlStruct->theUserStruct->kphi = kphi;
 	theCtrlStruct->theUserStruct->Ra = Ra;
 	theCtrlStruct->theUserStruct->Ki = Ki;
-	theCtrlStruct->theUserStruct->Kp = Kp;
+	theCtrlStruct->theUserStruct->Kp = //Kp;
 	theCtrlStruct->theUserStruct->t_p = 0.0;
 	theCtrlStruct->theUserStruct->upperCurrentLimit = Ra * Current_max;
 	theCtrlStruct->theUserStruct->lowerCurrentLimit = -Ra * Current_max;

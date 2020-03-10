@@ -2,6 +2,9 @@
 #include <sstream>
 #include <string>
 #include <iostream>
+#include <iomanip>
+#include <ctime>
+#include <vector>
 using namespace std;
 
 void CAN0configure(int baud)
@@ -32,14 +35,15 @@ void CAN0pushPropDC(int dcG, int dcD)
 {
   uint8_t dcGc = 128 * dcG / 100.0 + 128;
   uint8_t dcDc = 128 * dcD / 100.0 + 128;
-  stringstream ss1;
-  stringstream ss2;
+  dcGc = dcGc >> 2;
+  dcDc = dcDc >> 2;
 
-  uint8_t pushD = dcD >> 2;
-  uint8_t pushG = dcG >> 2;
-
-  system(("cansend can0 " + int_to_hex_string(CAN_MOT) + "#25FF" + uint8_to_hex_string(&pushD, 2)).c_str());
-  system(("cansend can0 " + int_to_hex_string(CAN_MOT) + "#25FF" + uint8_to_hex_string(&pushG, 2)).c_str());
+  system(("cansend can0 " + int_to_hex_string(CAN_MOT) + "#25FF" + hexStr2(&dcGc, 2)).c_str());
+  system(("cansend can0 " + int_to_hex_string(CAN_MOT) + "#26FF" + hexStr2(&dcDc, 2)).c_str());
+  printf(("cansend can0 " + int_to_hex_string(CAN_MOT) + "#25FF" + hexStr2(&dcGc, 2)).c_str());
+  printf("\r\n");
+  printf(("cansend can0 " + int_to_hex_string(CAN_MOT) + "#26FF" + hexStr2(&dcDc, 2)).c_str());
+  printf("\r\n");
 }
 
 void CAN0ctrl_motor(int state)
@@ -58,14 +62,27 @@ string uint8_to_hex_string(const uint8_t *v, const size_t s)
 {
   stringstream ss;
 
-  ss << hex << setfill('0');
+  ss << setfill('0');
 
-  for (int i = 0; i < s; i++)
+  ss << hex << setw(2) << v << endl;
+
+  printf((ss.str()).c_str());
+  printf("\r\n");
+
+  return (ss.str());
+}
+
+std::string hexStr2(unsigned char *data, int len)
+{
+  constexpr char hexmap[] = {'0', '1', '2', '3', '4', '5', '6', '7',
+                             '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
+  std::string s(len * 2, ' ');
+  for (int i = 0; i < len; ++i)
   {
-    ss << hex << setw(2) << static_cast<int>(v[i]);
+    s[2 * i] = hexmap[(data[i] & 0xF0) >> 4];
+    s[2 * i + 1] = hexmap[data[i] & 0x0F];
   }
-
-  return ss.str();
+  return s;
 }
 
 void CAN0ctrl_led(int state)
