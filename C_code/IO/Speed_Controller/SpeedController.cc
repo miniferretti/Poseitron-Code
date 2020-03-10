@@ -25,6 +25,7 @@ void run_speed_controller(CtrlStruct *theCtrlStruct)
     double Ra = theCtrlStruct->theUserStruct->Ra;
     double dt = t - tp;
 
+
     double u_l = Kpl * e_l;
     double u_r = Kpr * e_r;
     double i_e_l = theCtrlStruct->theUserStruct->i_e_l;
@@ -79,10 +80,10 @@ void init_speed_controller(CtrlStruct *theCtrlStruct)
     theCtrlStruct->theUserStruct->ratio = 7;
     theCtrlStruct->theUserStruct->kphi = kphi;
     theCtrlStruct->theUserStruct->Ra = Ra;
-    theCtrlStruct->theUserStruct->kir = 1;    //Ki;
-    theCtrlStruct->theUserStruct->kpr = 0.005; //Kp;
-    theCtrlStruct->theUserStruct->kil = 1;
-    theCtrlStruct->theUserStruct->kpl = 0.005;
+    theCtrlStruct->theUserStruct->kir = 0;    //Ki;
+    theCtrlStruct->theUserStruct->kpr = 0.01; //Kp;
+    theCtrlStruct->theUserStruct->kil = 0;
+    theCtrlStruct->theUserStruct->kpl = 0.01;
 
     theCtrlStruct->theUserStruct->t_p = 0.0;
     theCtrlStruct->theUserStruct->upperCurrentLimit = Ra * Current_max;

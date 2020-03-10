@@ -23,6 +23,7 @@
 #include <string>
 #include <sstream>
 #include "IO/COM/TCS3472_I2C/TCS3472_I2C.hh"
+#include <chrono>
 
 using namespace std;
 
@@ -31,7 +32,7 @@ using namespace std;
 #define CS 0
 #define RESETSPI 19
 
-CtrlStruct *myCtrlStruct=new CtrlStruct;
+CtrlStruct *myCtrlStruct = new CtrlStruct;
 
 //Constant values for the updateCrtlIn() routine
 //paramètre de la conversion omega->vitesse pour les roues
@@ -42,7 +43,6 @@ double dt_ref = 3;
 
 //Declaration des fonctions
 void *updateCrtlIn(void *unused);
-
 
 int main()
 {
@@ -60,7 +60,7 @@ int main()
 
 	CAN0configure(CAN_BR);
 	delay(100);
-	CAN0ctrl_motor(1);
+	CAN0ctrl_motor(0);
 	init_speed_controller(myCtrlStruct);
 
 	//Creation du thread pour la fonction updateCrtlIn
@@ -78,27 +78,25 @@ int main()
 		delay(100);
 		CAN0ctrl_led(1);
 	}
+	free(myCtrlStruct->theCtrlIn);
+	free(myCtrlStruct->theCtrlOut);
+	free(myCtrlStruct->theUserStruct);
 	free(myCtrlStruct);
 }
-
-
-
-
-
-
-
 
 //Fonction est qui appellée dans un thread, son but est de metter à jour les variables de MinibotCrtlIn et de mettre a jour la vitesse des roues
 //en utilisant le controller de vitesse run_speed_controller().
 void *updateCrtlIn(void *unused)
 {
 
-	unsigned char buffer[5] = {0};
-	clock_t t;
-	t = clock();
+	unsigned char buffer[5] = {0};  // create timers.
+
+       // get current time.
+	auto start = std::chrono::steady_clock::now( );
 
 	while (true)
 	{
+
 		//adresse des roues
 		buffer[0] = 0x00;
 		buffer[1] = 0x00;
@@ -112,16 +110,17 @@ void *updateCrtlIn(void *unused)
 		myCtrlStruct->theCtrlIn->r_wheel_speed = ((double)(int16_t)((uint16_t)buffer[3] << 8 | (uint16_t)buffer[4])) * myCtrlStruct->theUserStruct->samplingDE0 * 2 * M_PI / myCtrlStruct->theUserStruct->tics;
 		myCtrlStruct->theCtrlIn->l_wheel_speed = ((double)(int16_t)((uint16_t)buffer[1] << 8 | (uint16_t)buffer[2])) * myCtrlStruct->theUserStruct->samplingDE0 * 2 * M_PI / myCtrlStruct->theUserStruct->tics;
 
-		printf("%f %f \r\n", myCtrlStruct->theCtrlIn->r_wheel_speed, myCtrlStruct->theCtrlIn->l_wheel_speed);
+		//printf("%f %f \r\n", myCtrlStruct->theCtrlIn->r_wheel_speed, myCtrlStruct->theCtrlIn->l_wheel_speed);
 
 		run_speed_controller(myCtrlStruct);
 
-		CAN0pushPropDC(-myCtrlStruct->theCtrlOut->wheel_commands[L_ID], -myCtrlStruct->theCtrlOut->wheel_commands[R_ID]);
+		//	CAN0pushPropDC(-myCtrlStruct->theCtrlOut->wheel_commands[L_ID], -myCtrlStruct->theCtrlOut->wheel_commands[R_ID]);
 
 		//Mise a jour du pas de temps
-		t = clock();
 
-		double time_taken = ((double)t) / CLOCKS_PER_SEC;
-		myCtrlStruct->theCtrlIn->t = time_taken; //Temps utilisé pour mettre a jour les valeurs et appeler le speed controller
+		auto elapsed = std::chrono::duration_cast<std::chrono::milliseconds>( std::chrono::steady_clock::now( ) - start );
+		double time_taken = (elapsed.count());
+		printf("time taken: %f\r\n", time_taken/1000);
+		myCtrlStruct->theCtrlIn->t = time_taken/1000; //Temps utilisé pour mettre a jour les valeurs et appeler le speed controller
 	}
 }
