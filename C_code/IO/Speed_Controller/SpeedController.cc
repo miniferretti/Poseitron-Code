@@ -85,10 +85,10 @@ void init_speed_controller(CtrlStruct *theCtrlStruct)
     theCtrlStruct->theUserStruct->ratio = 14;
     theCtrlStruct->theUserStruct->kphi = kphi;
     theCtrlStruct->theUserStruct->Ra = Ra;
-    theCtrlStruct->theUserStruct->kir = 0.005;     //Ki;
-    theCtrlStruct->theUserStruct->kpr = 0.001; //Kp;
-    theCtrlStruct->theUserStruct->kil = 0.005;
-    theCtrlStruct->theUserStruct->kpl = 0.005;
+    theCtrlStruct->theUserStruct->kir = 0.00;     //Ki;
+    theCtrlStruct->theUserStruct->kpr = 0.05; //Kp;
+    theCtrlStruct->theUserStruct->kil = 0.00;
+    theCtrlStruct->theUserStruct->kpl = 0.05;
 
     theCtrlStruct->theUserStruct->t_p = 0.0;
     theCtrlStruct->theUserStruct->upperCurrentLimit = Ra * Current_max;
