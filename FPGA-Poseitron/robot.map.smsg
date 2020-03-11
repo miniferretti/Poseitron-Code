@@ -1,0 +1,1 @@
+Info (10281): Verilog HDL Declaration information at robot.sv(64): object "PLL_CLOCK" differs only in case from object "pll_clock" in the same scope File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 64

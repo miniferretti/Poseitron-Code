@@ -1,0 +1,77 @@
+------------------------------------------------------------
+Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Slow 1200mV 85C Model Setup 'CLOCK_50'
+Slack : 15.793
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Setup 'pll_clock|altpll_component|auto_generated|pll1|clk[0]'
+Slack : 16.039
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'CLOCK_50'
+Slack : 0.072
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'pll_clock|altpll_component|auto_generated|pll1|clk[0]'
+Slack : 0.394
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'CLOCK_50'
+Slack : 9.593
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'pll_clock|altpll_component|auto_generated|pll1|clk[0]'
+Slack : 249999.747
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Setup 'CLOCK_50'
+Slack : 16.266
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Setup 'pll_clock|altpll_component|auto_generated|pll1|clk[0]'
+Slack : 16.473
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'CLOCK_50'
+Slack : 0.168
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'pll_clock|altpll_component|auto_generated|pll1|clk[0]'
+Slack : 0.357
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'CLOCK_50'
+Slack : 9.593
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'pll_clock|altpll_component|auto_generated|pll1|clk[0]'
+Slack : 249999.744
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Setup 'CLOCK_50'
+Slack : 17.525
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Setup 'pll_clock|altpll_component|auto_generated|pll1|clk[0]'
+Slack : 17.668
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'CLOCK_50'
+Slack : -0.097
+TNS   : -0.097
+
+Type  : Fast 1200mV 0C Model Hold 'pll_clock|altpll_component|auto_generated|pll1|clk[0]'
+Slack : 0.205
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'CLOCK_50'
+Slack : 9.271
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'pll_clock|altpll_component|auto_generated|pll1|clk[0]'
+Slack : 249999.781
+TNS   : 0.000
+
+------------------------------------------------------------

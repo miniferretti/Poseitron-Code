@@ -1,0 +1,16 @@
+Fitter Status : Successful - Wed Mar 11 14:33:17 2020
+Quartus Prime Version : 18.0.0 Build 614 04/24/2018 SJ Lite Edition
+Revision Name : robot
+Top-level Entity Name : robot
+Family : Cyclone IV E
+Device : EP4CE22F17C6
+Timing Models : Final
+Total logic elements : 207 / 22,320 ( < 1 % )
+    Total combinational functions : 136 / 22,320 ( < 1 % )
+    Dedicated logic registers : 192 / 22,320 ( < 1 % )
+Total registers : 192
+Total pins : 83 / 154 ( 54 % )
+Total virtual pins : 0
+Total memory bits : 0 / 608,256 ( 0 % )
+Embedded Multiplier 9-bit elements : 0 / 132 ( 0 % )
+Total PLLs : 1 / 4 ( 25 % )
