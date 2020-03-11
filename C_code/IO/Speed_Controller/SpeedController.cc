@@ -82,7 +82,7 @@ void init_speed_controller(CtrlStruct *theCtrlStruct)
     theCtrlStruct->theUserStruct->samplingDE0 = 2000;
     theCtrlStruct->theUserStruct->tics = 2048;
 
-    theCtrlStruct->theUserStruct->ratio = 7;
+    theCtrlStruct->theUserStruct->ratio = 7;  // j'utilise déja 7 dans l'enregistrement de la vitesse donc valeur ici obselete...
     theCtrlStruct->theUserStruct->kphi = kphi;
     theCtrlStruct->theUserStruct->Ra = Ra;
     theCtrlStruct->theUserStruct->kir = 0.00;     //Ki;
