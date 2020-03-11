@@ -5,10 +5,10 @@
 void run_speed_controller(CtrlStruct *theCtrlStruct)
 {
 
-    double omega_ref_l = theCtrlStruct->theCtrlIn->l_wheel_ref * 14;
-    double omega_ref_r = theCtrlStruct->theCtrlIn->r_wheel_ref * 14;
-    double r_wheel_speed = theCtrlStruct->theCtrlIn->r_wheel_speed * 14;
-    double l_wheel_speed = theCtrlStruct->theCtrlIn->l_wheel_speed * 14;
+    double omega_ref_l = theCtrlStruct->theCtrlIn->l_wheel_ref;
+    double omega_ref_r = theCtrlStruct->theCtrlIn->r_wheel_ref;
+    double r_wheel_speed = theCtrlStruct->theCtrlIn->r_wheel_speed;
+    double l_wheel_speed = theCtrlStruct->theCtrlIn->l_wheel_speed;
     double e_l = omega_ref_l - l_wheel_speed;
     double e_r = omega_ref_r - r_wheel_speed;
     double upperCurrentLimit = theCtrlStruct->theUserStruct->upperCurrentLimit;
@@ -79,10 +79,10 @@ void init_speed_controller(CtrlStruct *theCtrlStruct)
     double Current_max = 0.78; // Ampere
     double secu = 0.95;
 
-    theCtrlStruct->theUserStruct->samplingDE0 = 100;
+    theCtrlStruct->theUserStruct->samplingDE0 = 2000;
     theCtrlStruct->theUserStruct->tics = 2048;
 
-    theCtrlStruct->theUserStruct->ratio = 14;
+    theCtrlStruct->theUserStruct->ratio = 7;
     theCtrlStruct->theUserStruct->kphi = kphi;
     theCtrlStruct->theUserStruct->Ra = Ra;
     theCtrlStruct->theUserStruct->kir = 0.00;     //Ki;

@@ -109,8 +109,8 @@ void *updateCrtlIn(void *unused)
 		wiringPiSPIDataRW(0, buffer, 5);
 		delay(100);
 
-			myCtrlStruct->theCtrlIn->l_wheel_speed = (((double)(int16_t)((uint16_t)buffer[3] << 8 | (uint16_t)buffer[4])) * myCtrlStruct->theUserStruct->samplingDE0) * 2 * M_PI / myCtrlStruct->theUserStruct->tics;
-			myCtrlStruct->theCtrlIn->r_wheel_speed = (((double)(int16_t)((uint16_t)buffer[1] << 8 | (uint16_t)buffer[2])) * myCtrlStruct->theUserStruct->samplingDE0) * 2 * M_PI / myCtrlStruct->theUserStruct->tics;
+		myCtrlStruct->theCtrlIn->l_wheel_speed = (((double)(int16_t)((uint16_t)buffer[3] << 8 | (uint16_t)buffer[4])) * myCtrlStruct->theUserStruct->samplingDE0) * 2 * M_PI / (7 * myCtrlStruct->theUserStruct->tics);
+		myCtrlStruct->theCtrlIn->r_wheel_speed = (((double)(int16_t)((uint16_t)buffer[1] << 8 | (uint16_t)buffer[2])) * myCtrlStruct->theUserStruct->samplingDE0) * 2 * M_PI / (7 * myCtrlStruct->theUserStruct->tics);
 
 		//myCtrlStruct->theCtrlIn->l_wheel_speed = get_speed(buffer[3], buffer[4]);
 		//myCtrlStruct->theCtrlIn->r_wheel_speed = get_speed(buffer[1], buffer[2]);
