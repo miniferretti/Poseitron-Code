@@ -5,8 +5,8 @@
 void run_speed_controller(CtrlStruct *theCtrlStruct)
 {
 
-    double omega_ref_l = theCtrlStruct->theCtrlIn->l_wheel_ref * theCtrlStruct->theUserStruct->ratio;
-    double omega_ref_r = theCtrlStruct->theCtrlIn->r_wheel_ref * theCtrlStruct->theUserStruct->ratio;
+    double omega_ref_l = theCtrlStruct->theCtrlIn->l_wheel_ref * 14;
+    double omega_ref_r = theCtrlStruct->theCtrlIn->r_wheel_ref * 14;
     double r_wheel_speed = theCtrlStruct->theCtrlIn->r_wheel_speed * 14;
     double l_wheel_speed = theCtrlStruct->theCtrlIn->l_wheel_speed * 14;
     double e_l = omega_ref_l - l_wheel_speed;
@@ -38,7 +38,7 @@ void run_speed_controller(CtrlStruct *theCtrlStruct)
     }
     u_l += i_e_l * Kil;
     //  u_l += kphi * l_wheel_speed;
-    theCtrlStruct->theUserStruct->sat_l = saturation(theCtrlStruct->theUserStruct->upperCurrentLimit, theCtrlStruct->theUserStruct->lowerCurrentLimit, &u_l);
+    //theCtrlStruct->theUserStruct->sat_l = saturation(theCtrlStruct->theUserStruct->upperCurrentLimit, theCtrlStruct->theUserStruct->lowerCurrentLimit, &u_l);
     //    u_l += kphi * l_wheel_speed;
 
     //RIGHT WHEEL
@@ -49,7 +49,7 @@ void run_speed_controller(CtrlStruct *theCtrlStruct)
     }
     u_r += i_e_r * Kir;
     //  u_r += kphi * r_wheel_speed;
-    theCtrlStruct->theUserStruct->sat_r = saturation(theCtrlStruct->theUserStruct->upperCurrentLimit, theCtrlStruct->theUserStruct->lowerCurrentLimit, &u_r);
+    //theCtrlStruct->theUserStruct->sat_r = saturation(theCtrlStruct->theUserStruct->upperCurrentLimit, theCtrlStruct->theUserStruct->lowerCurrentLimit, &u_r);
     // u_r += kphi * r_wheel_speed;
 
     //OUTPUT
@@ -85,10 +85,10 @@ void init_speed_controller(CtrlStruct *theCtrlStruct)
     theCtrlStruct->theUserStruct->ratio = 14;
     theCtrlStruct->theUserStruct->kphi = kphi;
     theCtrlStruct->theUserStruct->Ra = Ra;
-    theCtrlStruct->theUserStruct->kir = 0;     //Ki;
+    theCtrlStruct->theUserStruct->kir = 0.005;     //Ki;
     theCtrlStruct->theUserStruct->kpr = 0.001; //Kp;
-    theCtrlStruct->theUserStruct->kil = 0;
-    theCtrlStruct->theUserStruct->kpl = 0.001;
+    theCtrlStruct->theUserStruct->kil = 0.005;
+    theCtrlStruct->theUserStruct->kpl = 0.005;
 
     theCtrlStruct->theUserStruct->t_p = 0.0;
     theCtrlStruct->theUserStruct->upperCurrentLimit = Ra * Current_max;

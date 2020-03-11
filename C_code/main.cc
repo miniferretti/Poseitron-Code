@@ -37,8 +37,8 @@ CtrlStruct *myCtrlStruct = new CtrlStruct;
 //Constant values for the updateCrtlIn() routine
 //paramètre de la conversion omega->vitesse pour les roues
 
-double omega_ref_now_r = 100;
-double omega_ref_now_l = 100;
+double omega_ref_now_r = 0;
+double omega_ref_now_l = 0;
 double dt_ref = 3;
 
 //Declaration des fonctions
@@ -74,9 +74,9 @@ int main()
 	while (true)
 	{
 
-		CAN0ctrl_led(0);
-		delay(100);
-		CAN0ctrl_led(1);
+		//CAN0ctrl_led(0);
+		//delay(100);
+		//CAN0ctrl_led(1);
 	}
 	free(myCtrlStruct->theCtrlIn);
 	free(myCtrlStruct->theCtrlOut);
@@ -105,18 +105,20 @@ void *updateCrtlIn(void *unused)
 		buffer[4] = 0x00;
 
 		wiringPiSPIDataRW(0, buffer, 5);
-		delay(10);
+		delay(100);
 
-		myCtrlStruct->theCtrlIn->r_wheel_speed = ((double)(int16_t)((uint16_t)buffer[3] << 8 | (uint16_t)buffer[4])) * myCtrlStruct->theUserStruct->samplingDE0 * 2 * M_PI / myCtrlStruct->theUserStruct->tics;
-		myCtrlStruct->theCtrlIn->l_wheel_speed = ((double)(int16_t)((uint16_t)buffer[1] << 8 | (uint16_t)buffer[2])) * myCtrlStruct->theUserStruct->samplingDE0 * 2 * M_PI / myCtrlStruct->theUserStruct->tics;
+		myCtrlStruct->theCtrlIn->l_wheel_speed = (((double)(int16_t)((uint16_t)buffer[3] << 8 | (uint16_t)buffer[4])) * myCtrlStruct->theUserStruct->samplingDE0) * 2 * M_PI / myCtrlStruct->theUserStruct->tics;
+		myCtrlStruct->theCtrlIn->r_wheel_speed = (((double)(int16_t)((uint16_t)buffer[1] << 8 | (uint16_t)buffer[2])) * myCtrlStruct->theUserStruct->samplingDE0)* 2 * M_PI / (2*myCtrlStruct->theUserStruct->tics);
 
-		printf("%f %f \r\n", myCtrlStruct->theCtrlIn->r_wheel_speed, myCtrlStruct->theCtrlIn->l_wheel_speed);
+		printf(" l_wheel_speed %f", myCtrlStruct->theCtrlIn->l_wheel_speed) ;
+		printf(" r_wheel_speed %f\n", myCtrlStruct->theCtrlIn->r_wheel_speed) ;
 
 		run_speed_controller(myCtrlStruct);
 
-		printf("wheels command R: %f wheels command L: %f", myCtrlStruct->theCtrlOut->wheel_commands[R_ID], myCtrlStruct->theCtrlOut->wheel_commands[L_ID]);
+		printf(" commande gauche %f", myCtrlStruct->theCtrlOut->wheel_commands[L_ID]) ;
+		printf(" commande droite %f\n", myCtrlStruct->theCtrlOut->wheel_commands[R_ID]) ;
 
-		CAN0pushPropDC(myCtrlStruct->theCtrlOut->wheel_commands[L_ID], myCtrlStruct->theCtrlOut->wheel_commands[R_ID]);
+		CAN0pushPropDC(myCtrlStruct->theCtrlOut->wheel_commands[R_ID], -myCtrlStruct->theCtrlOut->wheel_commands[L_ID]);
 
 		//Mise a jour du pas de temps
 
