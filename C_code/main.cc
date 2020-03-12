@@ -70,9 +70,7 @@ int main()
 	pthread_create(&t, NULL, &updateCrtlIn, NULL);
 
 	//********  Début du comportement du robot **********
-	int i = 0;
-	clock_t time_rec;
-	time_rec = clock();
+
 	while (true)
 	{
 
@@ -132,29 +130,4 @@ void *updateCrtlIn(void *unused)
 		printf("time taken: %f\r\n", time_taken / 1000);
 		myCtrlStruct->theCtrlIn->t = time_taken / 1000; //Temps utilisé pour mettre a jour les valeurs et appeler le speed controller
 	}
-}
-
-double get_speed(char a1, char a2)
-{
-	double ratio = 14 * 4;
-	int val = get_int(a1, a2);
-
-	double max = 512;
-	double T = 1.0 / 2000;
-
-	return (2 * M_PI * ((double)val) / (max * T * ratio));
-}
-
-int get_int(char a1, char a2)
-{
-	int neg = (int)a1 / 128 == 1;
-
-	int c = (int)a1 * 256 + (int)a2;
-
-	if (neg)
-	{
-		c = -(65536 - c + 1);
-	}
-
-	return c;
 }
