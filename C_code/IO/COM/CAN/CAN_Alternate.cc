@@ -98,6 +98,81 @@ void CAN0pushPropDC(int dcG, int dcD)
   write(s, &frame, sizeof(struct can_frame));
 }
 
+void CAN0ctrl_motor(int state)
+{
+  if (state)
+  {
+    //system(("cansend can0 " + int_to_hex_string(CAN_MOT) + "#1E3000").c_str());
+
+    frame.can_id = CAN_MOT;
+    frame.can_dlc = 3;
+    frame.data[0] = 0x1E;
+    frame.data[1] = 0x30;
+    frame.data[2] = 0x00;
+
+    write(s, &frame, sizeof(struct can_frame));
+  }
+  else
+  {
+    // system(("cansend can0 " + int_to_hex_string(CAN_MOT) + "#1E30FF").c_str());
+
+    frame.can_id = CAN_MOT;
+    frame.can_dlc = 3;
+    frame.data[0] = 0x1E;
+    frame.data[1] = 0x30;
+    frame.data[2] = 0xFF;
+
+    write(s, &frame, sizeof(struct can_frame));
+  }
+}
+
+string uint8_to_hex_string(const uint8_t *v, const size_t s)
+{
+  stringstream ss;
+
+  ss << setfill('0');
+
+  ss << hex << setw(2) << v << endl;
+
+  printf((ss.str()).c_str());
+  printf("\r\n");
+
+  return (ss.str());
+}
+
+void CAN0ctrl_led(int state)
+{
+  if (state)
+  {
+    //system(("cansend can0 " + int_to_hex_string(CAN_MOT) + "#1E4040").c_str());
+
+    frame.can_id = CAN_MOT;
+    frame.can_dlc = 3;
+    frame.data[0] = 0x1E;
+    frame.data[1] = 0x40;
+    frame.data[2] = 0x40;
+
+    write(s, &frame, sizeof(struct can_frame));
+  }
+  else
+  {
+    //system(("cansend can0 " + int_to_hex_string(CAN_MOT) + "#1E4000").c_str());
+
+    frame.can_id = CAN_MOT;
+    frame.can_dlc = 3;
+    frame.data[0] = 0x1E;
+    frame.data[1] = 0x40;
+    frame.data[2] = 0x00;
+
+    write(s, &frame, sizeof(struct can_frame));
+  }
+}
+
+void CAN0close()
+{
+  close(s);
+}
+
 string int_to_hex(int a)
 {
   string str = "";
@@ -206,48 +281,6 @@ string int_to_hex(int a)
   return str;
 }
 
-void CAN0ctrl_motor(int state)
-{
-  if (state)
-  {
-    //system(("cansend can0 " + int_to_hex_string(CAN_MOT) + "#1E3000").c_str());
-
-    frame.can_id = CAN_MOT;
-    frame.can_dlc = 3;
-    frame.data[0] = 0x1E;
-    frame.data[1] = 0x30;
-    frame.data[2] = 0x00;
-
-    write(s, &frame, sizeof(struct can_frame));
-  }
-  else
-  {
-   // system(("cansend can0 " + int_to_hex_string(CAN_MOT) + "#1E30FF").c_str());
-
-    frame.can_id = CAN_MOT;
-    frame.can_dlc = 3;
-    frame.data[0] = 0x1E;
-    frame.data[1] = 0x30;
-    frame.data[2] = 0xFF;
-
-    write(s, &frame, sizeof(struct can_frame));
-  }
-}
-
-string uint8_to_hex_string(const uint8_t *v, const size_t s)
-{
-  stringstream ss;
-
-  ss << setfill('0');
-
-  ss << hex << setw(2) << v << endl;
-
-  printf((ss.str()).c_str());
-  printf("\r\n");
-
-  return (ss.str());
-}
-
 std::string hexStr2(unsigned char *data, int len)
 {
   constexpr char hexmap[] = {'0', '1', '2', '3', '4', '5', '6', '7',
@@ -261,47 +294,10 @@ std::string hexStr2(unsigned char *data, int len)
   return s;
 }
 
-void CAN0ctrl_led(int state)
-{
-  if (state)
-  {
-    //system(("cansend can0 " + int_to_hex_string(CAN_MOT) + "#1E4040").c_str());
-
-    frame.can_id = CAN_MOT;
-    frame.can_dlc = 3;
-    frame.data[0] = 0x1E;
-    frame.data[1] = 0x40;
-    frame.data[2] = 0x40;
-
-    write(s, &frame, sizeof(struct can_frame));
-
-  }
-  else
-  {
-    //system(("cansend can0 " + int_to_hex_string(CAN_MOT) + "#1E4000").c_str());
-
-    frame.can_id = CAN_MOT;
-    frame.can_dlc = 3;
-    frame.data[0] = 0x1E;
-    frame.data[1] = 0x40;
-    frame.data[2] = 0x00;
-
-    write(s, &frame, sizeof(struct can_frame));
-  }
-}
-
 string int_to_hex_string(int theInt)
 {
   stringstream ss;
   ss << hex << theInt;
   return ss.str();
 }
-
-void CAN0close()
-{
-  close(s);
-}
-
-
-
 // For fruther info on the routines visit: https://github.com/rhyttr/SocketCAN/blob/master/test/tst-raw.c
