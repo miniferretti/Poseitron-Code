@@ -5,6 +5,15 @@
 #include <iomanip>
 #include <ctime>
 #include <vector>
+
+//CAN interface headers
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <sys/ioctl.h>
+#include <net/if.h>
+#include <linux/can.h>
+#include <linux/can/raw.h>
+
 using namespace std;
 
 void CAN0configure(int baud)
@@ -29,6 +38,33 @@ void CAN0configure(int baud)
     system("sudo ip link set can0 up type can bitrate 1000000");
   else
     system("sudo ip link set can0 up type can bitrate 500000");
+
+  if ((s = socket(PF_CAN, SOCK_RAW, CAN_RAW)) < 0)
+  {
+    perror("socket");
+    return 1;
+  }
+
+  rfilter.can_id = 0x700;
+  rfilter.can_mask = 0x1FFFFFF0;
+
+  setsockopt(s, SOL_CAN_RAW, CAN_RAW_FILTER, &rfilter, sizeof(rfilter));
+
+  addr.can_family = AF_CAN;
+
+  strcpy(ifr.ifr_name, "can0");
+  if (ioctl(s, SIOCGIFINDEX, &ifr) < 0)
+  {
+    perror("SIOCGIFINDEX");
+    return 1;
+  }
+  addr.can_ifindex = ifr.ifr_ifindex;
+
+  if (bind(s, (struct sockaddr *)&addr, sizeof(addr)) < 0)
+  {
+    perror("bind");
+    return 1;
+  }
 }
 
 void CAN0pushPropDC(int dcG, int dcD)
@@ -38,12 +74,28 @@ void CAN0pushPropDC(int dcG, int dcD)
   dcGc = dcGc >> 2;
   dcDc = dcDc >> 2;
 
-  system(("cansend can0 " + int_to_hex_string(CAN_MOT) + "#25FF" + int_to_hex(dcGc)).c_str());
-  system(("cansend can0 " + int_to_hex_string(CAN_MOT) + "#26FF" + int_to_hex(dcDc)).c_str());
+  // system(("cansend can0 " + int_to_hex_string(CAN_MOT) + "#25FF" + int_to_hex(dcGc)).c_str());
+  //  system(("cansend can0 " + int_to_hex_string(CAN_MOT) + "#26FF" + int_to_hex(dcDc)).c_str());
   printf(("cansend can0 " + int_to_hex_string(CAN_MOT) + "#25FF" + int_to_hex(dcGc)).c_str());
   printf("\r\n");
   printf(("cansend can0 " + int_to_hex_string(CAN_MOT) + "#26FF" + int_to_hex(dcDc)).c_str());
   printf("\r\n");
+
+  frame.can_id = CAN_MOT;
+  frame.can_dlc = 3;
+  frame.data[0] = 0x25;
+  frame.data[1] = 0xFF;
+  frame.data[2] = dcGc;
+
+  write(s, &frame, sizeof(struct can_frame));
+
+  frame.can_id = CAN_MOT;
+  frame.can_dlc = 3;
+  frame.data[0] = 0x26;
+  frame.data[1] = 0xFF;
+  frame.data[2] = dcDc;
+
+  write(s, &frame, sizeof(struct can_frame));
 }
 
 string int_to_hex(int a)
@@ -158,11 +210,27 @@ void CAN0ctrl_motor(int state)
 {
   if (state)
   {
-    system(("cansend can0 " + int_to_hex_string(CAN_MOT) + "#1E3000").c_str());
+    //system(("cansend can0 " + int_to_hex_string(CAN_MOT) + "#1E3000").c_str());
+
+    frame.can_id = CAN_MOT;
+    frame.can_dlc = 3;
+    frame.data[0] = 0x1E;
+    frame.data[1] = 0x30;
+    frame.data[2] = 0x00;
+
+    write(s, &frame, sizeof(struct can_frame));
   }
   else
   {
-    system(("cansend can0 " + int_to_hex_string(CAN_MOT) + "#1E30FF").c_str());
+   // system(("cansend can0 " + int_to_hex_string(CAN_MOT) + "#1E30FF").c_str());
+
+    frame.can_id = CAN_MOT;
+    frame.can_dlc = 3;
+    frame.data[0] = 0x1E;
+    frame.data[1] = 0x30;
+    frame.data[2] = 0xFF;
+
+    write(s, &frame, sizeof(struct can_frame));
   }
 }
 
@@ -197,11 +265,28 @@ void CAN0ctrl_led(int state)
 {
   if (state)
   {
-    system(("cansend can0 " + int_to_hex_string(CAN_MOT) + "#1E4040").c_str());
+    //system(("cansend can0 " + int_to_hex_string(CAN_MOT) + "#1E4040").c_str());
+
+    frame.can_id = CAN_MOT;
+    frame.can_dlc = 3;
+    frame.data[0] = 0x1E;
+    frame.data[1] = 0x40;
+    frame.data[2] = 0x40;
+
+    write(s, &frame, sizeof(struct can_frame));
+
   }
   else
   {
-    system(("cansend can0 " + int_to_hex_string(CAN_MOT) + "#1E4000").c_str());
+    //system(("cansend can0 " + int_to_hex_string(CAN_MOT) + "#1E4000").c_str());
+
+    frame.can_id = CAN_MOT;
+    frame.can_dlc = 3;
+    frame.data[0] = 0x1E;
+    frame.data[1] = 0x40;
+    frame.data[2] = 0x00;
+
+    write(s, &frame, sizeof(struct can_frame));
   }
 }
 
@@ -211,3 +296,12 @@ string int_to_hex_string(int theInt)
   ss << hex << theInt;
   return ss.str();
 }
+
+void CAN0close()
+{
+  close(s);
+}
+
+
+
+// For fruther info on the routines visit: https://github.com/rhyttr/SocketCAN/blob/master/test/tst-raw.c

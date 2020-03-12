@@ -6,6 +6,7 @@
 #include <ctime>
 #include <vector>
 
+
  using namespace std;
 
 void CAN0pushPropDC(int dcG,int dcD);
@@ -16,3 +17,10 @@ string int_to_hex_string(int theInt);
 void CAN0configure(int baud);
 string hexStr2(unsigned char *data, int len);
 string int_to_hex(int a);
+void CAN0close();
+
+int s;
+struct sockaddr_can addr;
+struct can_filter rfilter;
+struct can_frame frame;
+struct ifreq ifr;
