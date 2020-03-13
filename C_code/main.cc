@@ -49,6 +49,8 @@ int main()
 	CAN0_Alternate *can = new CAN0_Alternate(CAN_BR);
 	SPI_DE0 *deo;
 	deo = new SPI_DE0(0, 125e3);
+	pthread_t tr;
+
 	delay(100);
 
 	init_ctrlStruc(myCtrlStruct);
@@ -59,6 +61,9 @@ int main()
 	myCtrlStruct->theCtrlIn->l_wheel_ref = omega_ref_now_l;
 
 	spctrl->init_speed_controller(1);
+	pthread_create(&tr, NULL, &SpeedController::updateLowCtrl, spctrl);
+
+
 	spctrl->run_speed_controller();
 
 	printf("Welcome to the Poseitron code prototype.\r\n");

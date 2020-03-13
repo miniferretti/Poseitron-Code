@@ -1,23 +1,5 @@
 #include "ctrl_io.h"
 
-typedef struct UserStruct
-{
-    // Structure of motors
-    MotStruct *theMotLeft;
-    MotStruct *theMotRight;
-    // additional param
-    double tics;
-    double samplingDE0;
-    int speed_kill;
-} UserStruct;
-
-typedef struct CtrlStruct
-{
-    UserStruct *theUserStruct; ///< user defined CtrlStruct
-    CtrlIn *theCtrlIn;         ///< controller inputs
-    CtrlOut *theCtrlOut;       ///< controller outputs
-} CtrlStruct;
-
 typedef struct MotStruct
 {
     double kp;             // Proportional param
@@ -35,6 +17,23 @@ typedef struct MotStruct
     double upperVoltageLimit;
     double lowerVoltageLimit;
 } MotStruct;
+typedef struct UserStruct
+{
+    // Structure of motors
+    MotStruct *theMotLeft;
+    MotStruct *theMotRight;
+    // additional param
+    double tics;
+    double samplingDE0;
+    int speed_kill;
+} UserStruct;
+
+typedef struct CtrlStruct
+{
+    UserStruct *theUserStruct; ///< user defined CtrlStruct
+    CtrlIn *theCtrlIn;         ///< controller inputs
+    CtrlOut *theCtrlOut;       ///< controller outputs
+} CtrlStruct;
 
 int size_UserStruct();
 void init_ctrlStruc(CtrlStruct *ctrl);

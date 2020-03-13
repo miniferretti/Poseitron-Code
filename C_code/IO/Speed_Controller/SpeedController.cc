@@ -3,6 +3,7 @@
 #include "SpeedController.hh"
 #include <pthread.h>
 #include <chrono>
+#include <wiringPiSPI.h>
 
 SpeedController::SpeedController(CtrlStruct *theCtrlStruct, CAN0_Alternate *can0)
 {
@@ -62,19 +63,19 @@ void SpeedController::speed_controller_active(int i)
     this->can0->CAN0ctrl_motor(i);
 }
 
-void SpeedController::run_speed_controller()
+void* SpeedController::run_speed_controller(void *context)
 {
-    pthread_create(&tr, NULL, &updateLowCtrl, NULL);
+    return ((SpeedController *)context)->updateLowCtrl;
 }
 
-void SpeedController::*updateLowCtrl(void *unused)
+void* SpeedController::updateLowCtrl()
 {
+    
     auto start = std::chrono::steady_clock::now();
-    unsigned char *buffer[5];
 
     while (this->theCtrlStruct->theUserStruct->speed_kill==0)
     {
-        updateSpeed(buffer);
+        updateSpeed();
         auto elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now() - start);
         double time_taken = (elapsed.count());
         printf("time taken sinds the controller is active: %f\r\n", time_taken / 1000);
@@ -83,9 +84,9 @@ void SpeedController::*updateLowCtrl(void *unused)
     }
 }
 
-void SpeedController::updateSpeed(unsigned char *buffer)
+void SpeedController::updateSpeed()
 {
-
+    unsigned char buffer[5];
     //adresse des roues
     buffer[0] = 0x00;
     buffer[1] = 0x00;
@@ -125,15 +126,15 @@ void SpeedController::PIController(MotStruct *theMot, double V_ref, double V_whe
 {
     double e = V_ref - theMot->ratio * V_wheel_mes;
     double dt = t - theMot->t_p;
-    double u = theMot->Kp * e;
+    double u = theMot->kp * e;
 
     if (!theMot->status) //The integral action is only done if there is no saturation of current.
     {
         theMot->integral_error += dt * e;
     }
-    u += theMot->integral_error * theMot->Ki; // integral action
+    u += theMot->integral_error * theMot->ki; // integral action
     u += theMot->kphi * V_wheel_mes;                // back electromotive compensation
-    theMot->status = saturation(theMot->upperCurrentLimit + theMot->kphi * V_wheel_mes, theMot->lowerCurrentLimit - theMot->kphi * V_wheel_mes, &u);
+    theMot->status = saturation(theMot->upperCurrentLimit + theMot->kphi * V_wheel_mes, theMot->lowerCurrentLimit - theMot->kphi * V_wheel_mes, u);
 
     theMot->t_p = t;
 
@@ -141,7 +142,7 @@ void SpeedController::PIController(MotStruct *theMot, double V_ref, double V_whe
     return u * (100 / theMot->upperVoltageLimit);
 }
 
-int SpeedController::saturation(double upperLimit, double lowerLimit, double *u)
+int SpeedController::saturation(double upperLimit, double lowerLimit, double u)
 {
     if (u > upperLimit)
     {
