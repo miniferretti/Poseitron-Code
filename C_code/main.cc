@@ -28,11 +28,12 @@
 using namespace std;
 
 //Constantes utiles
-#define CAN_BR 500e3
+#define CAN_BR 500000
 #define CS 0
 #define RESETSPI 19
 
 CtrlStruct *myCtrlStruct = new CtrlStruct;
+CAN0_Alternate *can = new CAN0_Alternate(CAN_BR);
 
 //Constant values for the updateCrtlIn() routine
 //paramètre de la conversion omega->vitesse pour les roues
@@ -56,27 +57,26 @@ int main()
 	printf("Welcome to the Poseitron code prototype.\r\n");
 	printf("We hope that you will be pleased with the coding and we wish you a great succes.\n\r");
 
+	delay(100);
 	SPI_DE0 *deo;
 	deo = new SPI_DE0(0, 125e3);
 	delay(100);
 
-	CAN0configure(CAN_BR);
-	delay(100);
-	CAN0ctrl_motor(1);
+	can->CAN0ctrl_motor(1);
 	init_speed_controller(myCtrlStruct);
 
 	//Creation du thread pour la fonction updateCrtlIn
-	pthread_t t;
-	pthread_create(&t, NULL, &updateCrtlIn, NULL);
+	pthread_t tr;
+	pthread_create(&tr, NULL, &updateCrtlIn, NULL);
 
 	//********  Début du comportement du robot **********
 
 	while (true)
 	{
 
-		CAN0ctrl_led(0);
+		can->CAN0ctrl_led(0);
 		delay(100);
-		CAN0ctrl_led(1);
+		can->CAN0ctrl_led(1);
 	}
 	free(myCtrlStruct->theCtrlIn);
 	free(myCtrlStruct->theCtrlOut);
@@ -121,7 +121,7 @@ void *updateCrtlIn(void *unused)
 		printf(" commande gauche %f", myCtrlStruct->theCtrlOut->wheel_commands[L_ID]);
 		printf(" commande droite %f\n", myCtrlStruct->theCtrlOut->wheel_commands[R_ID]);
 
-		CAN0pushPropDC(myCtrlStruct->theCtrlOut->wheel_commands[L_ID], myCtrlStruct->theCtrlOut->wheel_commands[R_ID]);
+		can->CAN0pushPropDC(myCtrlStruct->theCtrlOut->wheel_commands[L_ID], myCtrlStruct->theCtrlOut->wheel_commands[R_ID]);
 
 		//Mise a jour du pas de temps
 

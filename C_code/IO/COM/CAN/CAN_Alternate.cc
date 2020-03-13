@@ -16,25 +16,26 @@
 
 using namespace std;
 
-void CAN0configure(int baud)
+CAN0_Alternate::CAN0_Alternate(int baud)
 {
-  if (baud == 10000)
+  BR = baud;
+  if (BR == 10000)
     system("sudo ip link set can0 up type can bitrate 10000");
-  else if (baud == 20000)
+  else if (BR == 20000)
     system("sudo ip link set can0 up type can bitrate 20000");
-  else if (baud == 50000)
+  else if (BR == 50000)
     system("sudo ip link set can0 up type can bitrate 50000");
-  else if (baud == 100000)
+  else if (BR == 100000)
     system("sudo ip link set can0 up type can bitrate 100000");
-  else if (baud == 125000)
+  else if (BR == 125000)
     system("sudo ip link set can0 up type can bitrate 125000");
-  else if (baud == 500000)
+  else if (BR == 500000)
     system("sudo ip link set can0 up type can bitrate 500000");
-  else if (baud == 250000)
+  else if (BR == 250000)
     system("sudo ip link set can0 up type can bitrate 250000");
-  else if (baud == 800000)
+  else if (BR == 800000)
     system("sudo ip link set can0 up type can bitrate 800000");
-  else if (baud == 1000000)
+  else if (BR == 1000000)
     system("sudo ip link set can0 up type can bitrate 1000000");
   else
     system("sudo ip link set can0 up type can bitrate 500000");
@@ -42,7 +43,6 @@ void CAN0configure(int baud)
   if ((s = socket(PF_CAN, SOCK_RAW, CAN_RAW)) < 0)
   {
     perror("socket");
-    return 1;
   }
 
   rfilter.can_id = 0x700;
@@ -56,18 +56,16 @@ void CAN0configure(int baud)
   if (ioctl(s, SIOCGIFINDEX, &ifr) < 0)
   {
     perror("SIOCGIFINDEX");
-    return 1;
   }
   addr.can_ifindex = ifr.ifr_ifindex;
 
   if (bind(s, (struct sockaddr *)&addr, sizeof(addr)) < 0)
   {
     perror("bind");
-    return 1;
   }
 }
 
-void CAN0pushPropDC(int dcG, int dcD)
+void CAN0_Alternate::CAN0pushPropDC(int dcG, int dcD)
 {
   uint8_t dcGc = 128 * dcG / 100.0 + 128;
   uint8_t dcDc = 128 * dcD / 100.0 + 128;
@@ -98,7 +96,7 @@ void CAN0pushPropDC(int dcG, int dcD)
   write(s, &frame, sizeof(struct can_frame));
 }
 
-void CAN0ctrl_motor(int state)
+void CAN0_Alternate::CAN0ctrl_motor(int state)
 {
   if (state)
   {
@@ -140,7 +138,7 @@ string uint8_to_hex_string(const uint8_t *v, const size_t s)
   return (ss.str());
 }
 
-void CAN0ctrl_led(int state)
+void CAN0_Alternate::CAN0ctrl_led(int state)
 {
   if (state)
   {
@@ -168,12 +166,12 @@ void CAN0ctrl_led(int state)
   }
 }
 
-void CAN0close()
+void CAN0_Alternate::CAN0close()
 {
   close(s);
 }
 
-string int_to_hex(int a)
+/*string int_to_hex(int a)
 {
   string str = "";
   switch (a / 16)
@@ -299,5 +297,5 @@ string int_to_hex_string(int theInt)
   stringstream ss;
   ss << hex << theInt;
   return ss.str();
-}
+}*/
 // For fruther info on the routines visit: https://github.com/rhyttr/SocketCAN/blob/master/test/tst-raw.c
