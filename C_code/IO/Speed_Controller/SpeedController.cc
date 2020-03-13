@@ -1,72 +1,18 @@
 
 
 #include "SpeedController.hh"
+#include <pthread.h>
+#include <chrono>
 
-void run_speed_controller(CtrlStruct *theCtrlStruct)
+SpeedController::SpeedController(CtrlStruct *theCtrlStruct, CAN0_Alternate *can0)
 {
-
-    double omega_ref_l = theCtrlStruct->theCtrlIn->l_wheel_ref;
-    double omega_ref_r = theCtrlStruct->theCtrlIn->r_wheel_ref;
-    double r_wheel_speed = theCtrlStruct->theCtrlIn->r_wheel_speed;
-    double l_wheel_speed = theCtrlStruct->theCtrlIn->l_wheel_speed;
-    double e_l = omega_ref_l - l_wheel_speed;
-    double e_r = omega_ref_r - r_wheel_speed;
-    double upperCurrentLimit = theCtrlStruct->theUserStruct->upperCurrentLimit;
-    double lowerCurrentLimit = theCtrlStruct->theUserStruct->lowerCurrentLimit;
-    double kphi = theCtrlStruct->theUserStruct->kphi;
-
-    double Kpr = theCtrlStruct->theUserStruct->kpr;
-    double Kir = theCtrlStruct->theUserStruct->kir;
-    double Kpl = theCtrlStruct->theUserStruct->kpl;
-    double Kil = theCtrlStruct->theUserStruct->kil;
-
-    double t = theCtrlStruct->theCtrlIn->t;
-    double tp = theCtrlStruct->theUserStruct->t_p;
-    double Ra = theCtrlStruct->theUserStruct->Ra;
-    double dt = t - tp;
-
-    double u_l = Kpl * e_l;
-    double u_r = Kpr * e_r;
-    double i_e_l = theCtrlStruct->theUserStruct->i_e_l;
-    double i_e_r = theCtrlStruct->theUserStruct->i_e_r;
-
-    //LEFT WHEEL
-    if (!theCtrlStruct->theUserStruct->sat_l)
-    {
-        //The integral action is only done if there is no saturation of current.
-        i_e_l += dt * e_l;
-    }
-    u_l += i_e_l * Kil;
-    //  u_l += kphi * l_wheel_speed;
-    //theCtrlStruct->theUserStruct->sat_l = saturation(theCtrlStruct->theUserStruct->upperCurrentLimit, theCtrlStruct->theUserStruct->lowerCurrentLimit, &u_l);
-    //    u_l += kphi * l_wheel_speed;
-
-    //RIGHT WHEEL
-    if (!theCtrlStruct->theUserStruct->sat_r)
-    {
-        //The integral action is only done if there is no saturation of current.
-        i_e_r += dt * e_r;
-    }
-    u_r += i_e_r * Kir;
-    //  u_r += kphi * r_wheel_speed;
-    //theCtrlStruct->theUserStruct->sat_r = saturation(theCtrlStruct->theUserStruct->upperCurrentLimit, theCtrlStruct->theUserStruct->lowerCurrentLimit, &u_r);
-    // u_r += kphi * r_wheel_speed;
-
-    //OUTPUT
-
-    theCtrlStruct->theUserStruct->sat_l = saturation(theCtrlStruct->theUserStruct->upperVoltageLimit, theCtrlStruct->theUserStruct->lowerVoltageLimit, &u_l);
-    theCtrlStruct->theUserStruct->sat_r = saturation(theCtrlStruct->theUserStruct->upperVoltageLimit, theCtrlStruct->theUserStruct->lowerVoltageLimit, &u_r);
-
-    theCtrlStruct->theCtrlOut->wheel_commands[L_ID] = u_l * 100 / (theCtrlStruct->theUserStruct->upperVoltageLimit);
-    theCtrlStruct->theCtrlOut->wheel_commands[R_ID] = u_r * 100 / (theCtrlStruct->theUserStruct->upperVoltageLimit);
-    theCtrlStruct->theUserStruct->t_p = t;
-    theCtrlStruct->theUserStruct->i_e_l = i_e_l;
-    theCtrlStruct->theUserStruct->i_e_r = i_e_r;
+    this->can0 = can0;
+    this->theCtrlStruct = theCtrlStruct;
 }
-//Loading of the variable
-void init_speed_controller(CtrlStruct *theCtrlStruct)
-{
 
+void SpeedController::init_speed_controller(int i)
+{
+    speed_controller_active(i);
     double Ra = 7.1;
     double Kv = 4.3e-5;
     double J_rotor = 12e-7;
@@ -78,47 +24,135 @@ void init_speed_controller(CtrlStruct *theCtrlStruct)
     double Ki = Kp * ((Ra * Kv + kphi * Kp) / (J * Ra) - 3 / tau_m);
     double Current_max = 0.78; // Ampere
     double secu = 0.95;
+    double ratio = 7;
 
-    theCtrlStruct->theUserStruct->samplingDE0 = 2000;
-    theCtrlStruct->theUserStruct->tics = 2048;
+    this->theCtrlStruct->theUserStruct->samplingDE0 = 2000;
+    this->theCtrlStruct->theUserStruct->tics = 2048;
+    this->theCtrlStruct->theUserStruct->speed_kill=0;
 
-    theCtrlStruct->theUserStruct->ratio = 7;  // j'utilise déja 7 dans l'enregistrement de la vitesse donc valeur ici obselete...
-    theCtrlStruct->theUserStruct->kphi = kphi;
-    theCtrlStruct->theUserStruct->Ra = Ra;
-    theCtrlStruct->theUserStruct->kir = 0.00;     //Ki;
-    theCtrlStruct->theUserStruct->kpr = 0.05; //Kp;
-    theCtrlStruct->theUserStruct->kil = 0.00;
-    theCtrlStruct->theUserStruct->kpl = 0.05;
+    this->theCtrlStruct->theUserStruct->theMotLeft->kp = Kp;
+    this->theCtrlStruct->theUserStruct->theMotLeft->ki = Ki;
+    this->theCtrlStruct->theUserStruct->theMotLeft->integral_error = 0;
+    this->theCtrlStruct->theUserStruct->theMotLeft->status = 0;
+    this->theCtrlStruct->theUserStruct->theMotLeft->Ra = Ra;
+    this->theCtrlStruct->theUserStruct->theMotLeft->kphi = kphi;
+    this->theCtrlStruct->theUserStruct->theMotLeft->t_p = 0;
+    this->theCtrlStruct->theUserStruct->theMotLeft->ratio = 7;
+    this->theCtrlStruct->theUserStruct->theMotLeft->upperCurrentLimit = Ra * Current_max;
+    this->theCtrlStruct->theUserStruct->theMotLeft->lowerCurrentLimit = -Ra * Current_max;
+    this->theCtrlStruct->theUserStruct->theMotLeft->upperVoltageLimit = 24 * secu;
+    this->theCtrlStruct->theUserStruct->theMotLeft->lowerVoltageLimit = -24 * secu;
 
-    theCtrlStruct->theUserStruct->t_p = 0.0;
-    theCtrlStruct->theUserStruct->upperCurrentLimit = Ra * Current_max;
-    theCtrlStruct->theUserStruct->lowerCurrentLimit = -Ra * Current_max;
-    theCtrlStruct->theUserStruct->upperVoltageLimit = 24 * secu;
-    theCtrlStruct->theUserStruct->lowerVoltageLimit = -24 * secu;
-    theCtrlStruct->theUserStruct->i_e_l = 0.0;
-    theCtrlStruct->theUserStruct->i_e_r = 0.0;
-    theCtrlStruct->theUserStruct->sat_l = 0;
-    theCtrlStruct->theUserStruct->sat_r = 0;
+    this->theCtrlStruct->theUserStruct->theMotRight->kp = Kp;
+    this->theCtrlStruct->theUserStruct->theMotRight->ki = Ki;
+    this->theCtrlStruct->theUserStruct->theMotRight->integral_error = 0;
+    this->theCtrlStruct->theUserStruct->theMotRight->status = 0;
+    this->theCtrlStruct->theUserStruct->theMotRight->Ra = Ra;
+    this->theCtrlStruct->theUserStruct->theMotRight->kphi = kphi;
+    this->theCtrlStruct->theUserStruct->theMotRight->t_p = 0;
+    this->theCtrlStruct->theUserStruct->theMotRight->ratio = 7;
+    this->theCtrlStruct->theUserStruct->theMotRight->upperCurrentLimit = Ra * Current_max;
+    this->theCtrlStruct->theUserStruct->theMotRight->lowerCurrentLimit = -Ra * Current_max;
+    this->theCtrlStruct->theUserStruct->theMotRight->upperVoltageLimit = 24 * secu;
+    this->theCtrlStruct->theUserStruct->theMotRight->lowerVoltageLimit = -24 * secu;
 }
 
-int saturation(double upperLimit, double lowerLimit, double *u)
+void SpeedController::speed_controller_active(int i)
 {
-    if (*u > upperLimit)
+    this->can0->CAN0ctrl_motor(i);
+}
+
+void SpeedController::run_speed_controller()
+{
+    pthread_create(&tr, NULL, &updateLowCtrl, NULL);
+}
+
+void SpeedController::*updateLowCtrl(void *unused)
+{
+    auto start = std::chrono::steady_clock::now();
+    unsigned char *buffer[5];
+
+    while (this->theCtrlStruct->theUserStruct->speed_kill==0)
     {
-        *u = upperLimit;
+        updateSpeed(buffer);
+        auto elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now() - start);
+        double time_taken = (elapsed.count());
+        printf("time taken sinds the controller is active: %f\r\n", time_taken / 1000);
+        this->theCtrlStruct->theCtrlIn->t = time_taken / 1000; //Temps utilisé pour mettre a jour les valeurs et appeler le speed controller
+        updateCmd();
+    }
+}
+
+void SpeedController::updateSpeed(unsigned char *buffer)
+{
+
+    //adresse des roues
+    buffer[0] = 0x00;
+    buffer[1] = 0x00;
+    buffer[2] = 0x00;
+    buffer[3] = 0x00;
+    buffer[4] = 0x00;
+
+    wiringPiSPIDataRW(0, buffer, 5);
+    delay(10);
+
+    this->theCtrlStruct->theCtrlIn->l_wheel_speed = (((double)(int16_t)((uint16_t)buffer[3] << 8 | (uint16_t)buffer[4])) * this->theCtrlStruct->theUserStruct->samplingDE0) * 2 * M_PI / (this->theCtrlStruct->theUserStruct->theMotLeft->ratio * this->theCtrlStruct->theUserStruct->tics);
+    this->theCtrlStruct->theCtrlIn->r_wheel_speed = (((double)(int16_t)((uint16_t)buffer[1] << 8 | (uint16_t)buffer[2])) * this->theCtrlStruct->theUserStruct->samplingDE0) * 2 * M_PI / (this->theCtrlStruct->theUserStruct->theMotRight->ratio * this->theCtrlStruct->theUserStruct->tics);
+
+    printf(" l_wheel_speed %f", this->theCtrlStruct->theCtrlIn->l_wheel_speed);
+    printf(" r_wheel_speed %f\n", this->theCtrlStruct->theCtrlIn->r_wheel_speed);
+    //Mise a jour du pas de temps
+}
+
+void SpeedController::updateCmd()
+{
+    double omega_ref_l = this->theCtrlStruct->theCtrlIn->l_wheel_ref;
+    double omega_ref_r = this->theCtrlStruct->theCtrlIn->r_wheel_ref;
+    double r_wheel_speed = this->theCtrlStruct->theCtrlIn->r_wheel_speed;
+    double l_wheel_speed = this->theCtrlStruct->theCtrlIn->l_wheel_speed;
+    double t = this->theCtrlStruct->theCtrlIn->t;
+
+    double cmd_l = PIcontroller(this->theCtrlStruct->theUserStruct->theMotLeft, omega_ref_l, l_wheel_speed, t);
+    double cmd_r = PIcontroller(this->theCtrlStruct->theUserStruct->theMotRight, omega_ref_r, r_wheel_speed, t);
+
+    this->theCtrlStruct->theCtrlOut->wheel_commands[L_ID] = cmd_l;
+    this->theCtrlStruct->theCtrlOut->wheel_commands[R_ID] = cmd_r;
+
+    this->can0->CAN0pushPropDC(this->theCtrlStruct->theCtrlOut->wheel_commands[L_ID], this->theCtrlStruct->theCtrlOut->wheel_commands[R_ID]);
+}
+
+void SpeedController::PIController(MotStruct *theMot, double V_ref, double V_wheel_mes, double t)
+{
+    double e = V_ref - theMot->ratio * V_wheel_mes;
+    double dt = t - theMot->t_p;
+    double u = theMot->Kp * e;
+
+    if (!theMot->status) //The integral action is only done if there is no saturation of current.
+    {
+        theMot->integral_error += dt * e;
+    }
+    u += theMot->integral_error * theMot->Ki; // integral action
+    u += theMot->kphi * V_wheel_mes;                // back electromotive compensation
+    theMot->status = saturation(theMot->upperCurrentLimit + theMot->kphi * V_wheel_mes, theMot->lowerCurrentLimit - theMot->kphi * V_wheel_mes, &u);
+
+    theMot->t_p = t;
+
+    //OUTPUT
+    return u * (100 / theMot->upperVoltageLimit);
+}
+
+int SpeedController::saturation(double upperLimit, double lowerLimit, double *u)
+{
+    if (u > upperLimit)
+    {
+        u = upperLimit;
         return 1;
     }
-    else if (*u < lowerLimit)
+    else if (u < lowerLimit)
     {
-        *u = lowerLimit;
+        u = lowerLimit;
         return 1;
     }
     else
         return 0;
 }
-
-/*
-double volatgeSaturation( double V,double upperLimite){
-    if()
-}
-*/

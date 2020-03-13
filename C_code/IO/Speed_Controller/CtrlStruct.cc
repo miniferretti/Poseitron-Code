@@ -10,4 +10,7 @@ void init_ctrlStruc(CtrlStruct *ctrl)
     ctrl->theCtrlIn = new CtrlIn;
     ctrl->theUserStruct = new UserStruct;
     ctrl->theCtrlOut = new CtrlOut;
+    ctrl->theUserStruct->theMotLeft = new MotStruct;
+    ctrl->theUserStruct->theMotRight = new MotStruct;
+
 }
