@@ -1,6 +1,7 @@
 #include "CAN_Alternate.hh"
 #include <sstream>
 #include <string>
+#include <cstring>
 #include <iostream>
 #include <iomanip>
 #include <ctime>
