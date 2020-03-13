@@ -73,10 +73,12 @@ int main()
 
 	while (true)
 	{
-
-		can->CAN0ctrl_led(0);
-		delay(100);
-		can->CAN0ctrl_led(1);
+		delay(1000);
+		can->CAN0pushPropDC(20,50);
+	//	can->CAN0ctrl_led(1);
+		delay(1000);
+		//can->CAN0ctrl_led(0);
+		//can->CAN0pushPropDC(50,50);
 	}
 	free(myCtrlStruct->theCtrlIn);
 	free(myCtrlStruct->theCtrlOut);
@@ -121,7 +123,7 @@ void *updateCrtlIn(void *unused)
 		printf(" commande gauche %f", myCtrlStruct->theCtrlOut->wheel_commands[L_ID]);
 		printf(" commande droite %f\n", myCtrlStruct->theCtrlOut->wheel_commands[R_ID]);
 
-		can->CAN0pushPropDC(myCtrlStruct->theCtrlOut->wheel_commands[L_ID], myCtrlStruct->theCtrlOut->wheel_commands[R_ID]);
+	//	can->CAN0pushPropDC(myCtrlStruct->theCtrlOut->wheel_commands[L_ID], myCtrlStruct->theCtrlOut->wheel_commands[R_ID]);
 
 		//Mise a jour du pas de temps
 

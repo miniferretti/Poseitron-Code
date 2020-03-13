@@ -1,5 +1,6 @@
 
 #define CAN_MOT 0x508
+#define DELAY 0
 #include <sstream>
 #include <string>
 #include <iostream>
@@ -14,6 +15,10 @@
 #include <net/if.h>
 #include <linux/can.h>
 #include <linux/can/raw.h>
+#include <wiringPi.h>
+#include <libsocketcan.h>
+#include <wiringPi.h>
+#include <unistd.h>
 
 using namespace std;
 
@@ -30,6 +35,7 @@ public:
     // string hexStr2(unsigned char *data, int len);
     // string int_to_hex(int a);
     void CAN0close();
+    void msgClear(can_frame *fr);
 
 private:
     int s;

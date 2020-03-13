@@ -6,6 +6,7 @@
 #include <iomanip>
 #include <ctime>
 #include <vector>
+#include "time.h"
 
 //CAN interface headers
 #include <sys/types.h>
@@ -14,6 +15,9 @@
 #include <net/if.h>
 #include <linux/can.h>
 #include <linux/can/raw.h>
+#include <wiringPi.h>
+#include <libsocketcan.h>
+#include <unistd.h>
 
 using namespace std;
 
@@ -72,60 +76,67 @@ void CAN0_Alternate::CAN0pushPropDC(int dcG, int dcD)
   uint8_t dcDc = 128 * dcD / 100.0 + 128;
   dcGc = dcGc >> 2;
   dcDc = dcDc >> 2;
+  can_frame msg;
+  can_frame msg1;
 
   // system(("cansend can0 " + int_to_hex_string(CAN_MOT) + "#25FF" + int_to_hex(dcGc)).c_str());
   //  system(("cansend can0 " + int_to_hex_string(CAN_MOT) + "#26FF" + int_to_hex(dcDc)).c_str());
-  printf(("cansend can0 " + int_to_hex_string(CAN_MOT) + "#25FF" + int_to_hex(dcGc)).c_str());
-  printf("\r\n");
-  printf(("cansend can0 " + int_to_hex_string(CAN_MOT) + "#26FF" + int_to_hex(dcDc)).c_str());
-  printf("\r\n");
+  //printf(("cansend can0 " + int_to_hex_string(CAN_MOT) + "#25FF" + int_to_hex(dcGc)).c_str());
+  //printf("\r\n");
+  //printf(("cansend can0 " + int_to_hex_string(CAN_MOT) + "#26FF" + int_to_hex(dcDc)).c_str());
+  //printf("\r\n");
 
-  frame.can_id = CAN_MOT;
-  frame.can_dlc = 3;
-  frame.data[0] = 0x25;
-  frame.data[1] = 0xFF;
-  frame.data[2] = dcGc;
+  msg.can_id = CAN_MOT;
+  msg.can_dlc = 3;
+  msg.data[0] = 0x25;
+  msg.data[1] = 0xFF;
+  msg.data[2] = dcGc;
 
-  write(s, &frame, sizeof(struct can_frame));
+  write(s, &msg, sizeof(msg));
+  usleep(DELAY);
 
-  frame.can_id = CAN_MOT;
-  frame.can_dlc = 3;
-  frame.data[0] = 0x26;
-  frame.data[1] = 0xFF;
-  frame.data[2] = dcDc;
+  msg1.can_id = CAN_MOT;
+  msg1.can_dlc = 3;
+  msg1.data[0] = 0x26;
+  msg1.data[1] = 0xFF;
+  msg1.data[2] = dcDc;
 
-  write(s, &frame, sizeof(struct can_frame));
+  write(s, &msg1, sizeof(msg1));
+  usleep(DELAY);
 }
 
 void CAN0_Alternate::CAN0ctrl_motor(int state)
 {
+  can_frame msg;
+
   if (state)
   {
     //system(("cansend can0 " + int_to_hex_string(CAN_MOT) + "#1E3000").c_str());
 
-    frame.can_id = CAN_MOT;
-    frame.can_dlc = 3;
-    frame.data[0] = 0x1E;
-    frame.data[1] = 0x30;
-    frame.data[2] = 0x00;
+    msg.can_id = CAN_MOT;
+    msg.can_dlc = 3;
+    msg.data[0] = 0x1E;
+    msg.data[1] = 0x30;
+    msg.data[2] = 0x00;
 
-    write(s, &frame, sizeof(struct can_frame));
+    write(s, &msg, sizeof(msg));
+    usleep(DELAY);
   }
   else
   {
     // system(("cansend can0 " + int_to_hex_string(CAN_MOT) + "#1E30FF").c_str());
+    msg.can_id = CAN_MOT;
+    msg.can_dlc = 3;
+    msg.data[0] = 0x1E;
+    msg.data[1] = 0x30;
+    msg.data[2] = 0xFF;
 
-    frame.can_id = CAN_MOT;
-    frame.can_dlc = 3;
-    frame.data[0] = 0x1E;
-    frame.data[1] = 0x30;
-    frame.data[2] = 0xFF;
-
-    write(s, &frame, sizeof(struct can_frame));
+    write(s, &msg, sizeof(msg));
+    usleep(DELAY);
   }
 }
 
-string uint8_to_hex_string(const uint8_t *v, const size_t s)
+/*string uint8_to_hex_string(const uint8_t *v, const size_t s)
 {
   stringstream ss;
 
@@ -137,39 +148,54 @@ string uint8_to_hex_string(const uint8_t *v, const size_t s)
   printf("\r\n");
 
   return (ss.str());
-}
+}*/
 
 void CAN0_Alternate::CAN0ctrl_led(int state)
 {
+
+  can_frame msg;
+
   if (state)
   {
     //system(("cansend can0 " + int_to_hex_string(CAN_MOT) + "#1E4040").c_str());
 
-    frame.can_id = CAN_MOT;
-    frame.can_dlc = 3;
-    frame.data[0] = 0x1E;
-    frame.data[1] = 0x40;
-    frame.data[2] = 0x40;
+    msg.can_id = CAN_MOT;
+    msg.can_dlc = 3;
+    msg.data[0] = 0x1E;
+    msg.data[1] = 0x40;
+    msg.data[2] = 0x40;
 
-    write(s, &frame, sizeof(struct can_frame));
+    write(s, &msg, sizeof(msg));
+    usleep(DELAY);
   }
   else
   {
     //system(("cansend can0 " + int_to_hex_string(CAN_MOT) + "#1E4000").c_str());
 
-    frame.can_id = CAN_MOT;
-    frame.can_dlc = 3;
-    frame.data[0] = 0x1E;
-    frame.data[1] = 0x40;
-    frame.data[2] = 0x00;
+    msg.can_id = CAN_MOT;
+    msg.can_dlc = 3;
+    msg.data[0] = 0x1E;
+    msg.data[1] = 0x40;
+    msg.data[2] = 0x00;
 
-    write(s, &frame, sizeof(struct can_frame));
+    write(s, &msg, sizeof(msg));
+    usleep(DELAY);
   }
 }
 
 void CAN0_Alternate::CAN0close()
 {
   close(s);
+}
+
+void CAN0_Alternate::msgClear(can_frame *fr)
+{
+  fr->can_id = 0;
+  for (int i = 0; i < fr->can_dlc; i++)
+  {
+    fr->data[i] = 0;
+  }
+  fr->can_dlc = 0;
 }
 
 /*string int_to_hex(int a)
