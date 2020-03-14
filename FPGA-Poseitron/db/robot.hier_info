@@ -1,13 +1,13 @@
 |robot
 CLOCK_50 => CLOCK_50.IN4
-LED[0] <= quadB_RL.DB_MAX_OUTPUT_PORT_TYPE
-LED[1] <= quadA_RL.DB_MAX_OUTPUT_PORT_TYPE
-LED[2] <= speed_FR[5].DB_MAX_OUTPUT_PORT_TYPE
-LED[3] <= speed_FR[6].DB_MAX_OUTPUT_PORT_TYPE
-LED[4] <= spi_slave:spi_slave_instance.port7
-LED[5] <= spi_slave:spi_slave_instance.port7
-LED[6] <= spi_slave:spi_slave_instance.port7
-LED[7] <= spi_slave:spi_slave_instance.port7
+LED[0] << quadB_RL.DB_MAX_OUTPUT_PORT_TYPE
+LED[1] << quadA_RL.DB_MAX_OUTPUT_PORT_TYPE
+LED[2] << speed_FR[5].DB_MAX_OUTPUT_PORT_TYPE
+LED[3] << speed_FR[6].DB_MAX_OUTPUT_PORT_TYPE
+LED[4] << spi_slave:spi_slave_instance.port7
+LED[5] << spi_slave:spi_slave_instance.port7
+LED[6] << spi_slave:spi_slave_instance.port7
+LED[7] << spi_slave:spi_slave_instance.port7
 KEY[0] => ~NO_FANOUT~
 KEY[1] => ~NO_FANOUT~
 PI[0] <> <UNC>
