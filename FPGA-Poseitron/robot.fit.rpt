@@ -1,5 +1,5 @@
 Fitter report for robot
-Wed Mar 11 14:33:17 2020
+Sat Mar 14 15:22:38 2020
 Quartus Prime Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
 
 
@@ -70,7 +70,7 @@ refer to the applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Fitter Summary                                                                   ;
 +------------------------------------+---------------------------------------------+
-; Fitter Status                      ; Successful - Wed Mar 11 14:33:17 2020       ;
+; Fitter Status                      ; Successful - Sat Mar 14 15:22:38 2020       ;
 ; Quartus Prime Version              ; 18.0.0 Build 614 04/24/2018 SJ Lite Edition ;
 ; Revision Name                      ; robot                                       ;
 ; Top-level Entity Name              ; robot                                       ;
@@ -151,16 +151,16 @@ refer to the applicable agreement for further details.
 +----------------------------+-------------+
 ; Processors                 ; Number      ;
 +----------------------------+-------------+
-; Number detected on machine ; 8           ;
-; Maximum allowed            ; 4           ;
+; Number detected on machine ; 16          ;
+; Maximum allowed            ; 16          ;
 ;                            ;             ;
-; Average used               ; 1.01        ;
-; Maximum used               ; 4           ;
+; Average used               ; 1.05        ;
+; Maximum used               ; 16          ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;   0.3%      ;
-;     Processors 3-4         ;   0.3%      ;
+;     Processor 2            ;   0.4%      ;
+;     Processors 3-16        ;   0.4%      ;
 +----------------------------+-------------+
 
 
@@ -202,7 +202,7 @@ refer to the applicable agreement for further details.
 +--------------+
 ; Pin-Out File ;
 +--------------+
-The pin-out file can be found in C:/Users/ferre/Desktop/FPGA-Poseitron/robot.pin.
+The pin-out file can be found in D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.pin.
 
 
 +----------------------------------------------------------------------+
@@ -1557,12 +1557,12 @@ Note: This table only shows the top 64 path(s) that have the largest delay added
 ; Fitter Messages ;
 +-----------------+
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
-Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
+Info (20030): Parallel compilation is enabled and will use 16 of the 16 processors detected
 Info (119006): Selected device EP4CE22F17C6 for design "robot"
 Info (21076): High junction temperature operating condition is not set. Assuming a default value of '85'.
 Info (21076): Low junction temperature operating condition is not set. Assuming a default value of '0'.
-Info (15535): Implemented PLL "my_pll:pll_clock|altpll:altpll_component|my_pll_altpll:auto_generated|pll1" as Cyclone IV E PLL type File: C:/Users/ferre/Desktop/FPGA-Poseitron/db/my_pll_altpll.v Line: 43
-    Info (15099): Implementing clock multiplication of 1, clock division of 25000, and phase shift of 0 degrees (0 ps) for my_pll:pll_clock|altpll:altpll_component|my_pll_altpll:auto_generated|wire_pll1_clk[0] port File: C:/Users/ferre/Desktop/FPGA-Poseitron/db/my_pll_altpll.v Line: 43
+Info (15535): Implemented PLL "my_pll:pll_clock|altpll:altpll_component|my_pll_altpll:auto_generated|pll1" as Cyclone IV E PLL type File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/db/my_pll_altpll.v Line: 43
+    Info (15099): Implementing clock multiplication of 1, clock division of 25000, and phase shift of 0 degrees (0 ps) for my_pll:pll_clock|altpll:altpll_component|my_pll_altpll:auto_generated|wire_pll1_clk[0] port File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/db/my_pll_altpll.v Line: 43
 Info (171003): Fitter is performing an Auto Fit compilation, which may decrease Fitter effort to reduce compilation time
 Warning (292013): Feature LogicLock is only available with a valid subscription license. You can purchase a software subscription to gain full access to this feature.
 Info (176444): Device migration not selected. If you intend to use device migration later, you may need to change the pin assignments as they may be incompatible with other devices
@@ -1587,14 +1587,14 @@ Info (332111): Found 2 clocks
     Info (332111): ======== ============
     Info (332111):   20.000     CLOCK_50
     Info (332111): 500000.000 pll_clock|altpll_component|auto_generated|pll1|clk[0]
-Info (176353): Automatically promoted node CLOCK_50~input (placed in PIN R8 (CLK15, DIFFCLK_6p)) File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 36
+Info (176353): Automatically promoted node CLOCK_50~input (placed in PIN R8 (CLK15, DIFFCLK_6p)) File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 36
     Info (176355): Automatically promoted destinations to use location or clock signal Global Clock CLKCTRL_G18
-Info (176353): Automatically promoted node my_pll:pll_clock|altpll:altpll_component|my_pll_altpll:auto_generated|wire_pll1_clk[0] (placed in counter C1 of PLL_4) File: C:/Users/ferre/Desktop/FPGA-Poseitron/db/my_pll_altpll.v Line: 77
+Info (176353): Automatically promoted node my_pll:pll_clock|altpll:altpll_component|my_pll_altpll:auto_generated|wire_pll1_clk[0] (placed in counter C1 of PLL_4) File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/db/my_pll_altpll.v Line: 77
     Info (176355): Automatically promoted destinations to use location or clock signal Global Clock CLKCTRL_G19
 Info (176233): Starting register packing
 Info (176235): Finished register packing
     Extra Info (176219): No registers were packed into other blocks
-Info (171121): Fitter preparation operations ending: elapsed time is 00:00:01
+Info (171121): Fitter preparation operations ending: elapsed time is 00:00:02
 Info (14896): Fitter has disabled Advanced Physical Optimization because it is not supported for the current family.
 Info (170189): Fitter placement preparation operations beginning
 Info (170190): Fitter placement preparation operations ending: elapsed time is 00:00:00
@@ -1608,168 +1608,168 @@ Info (170199): The Fitter performed an Auto Fit compilation.  Optimizations were
     Info (170201): Optimizations that may affect the design's routability were skipped
     Info (170200): Optimizations that may affect the design's timing were skipped
 Info (170194): Fitter routing operations ending: elapsed time is 00:00:01
-Info (11888): Total time spent on timing analysis during the Fitter is 0.12 seconds.
+Info (11888): Total time spent on timing analysis during the Fitter is 0.13 seconds.
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
 Info (11218): Fitter post-fit operations ending: elapsed time is 00:00:01
 Warning (169177): 75 pins must meet Intel FPGA requirements for 3.3-, 3.0-, and 2.5-V interfaces. For more information, refer to AN 447: Interfacing Cyclone IV E Devices with 3.3/3.0/2.5-V LVTTL/LVCMOS I/O Systems.
-    Info (169178): Pin KEY[0] uses I/O standard 3.3-V LVTTL at J15 File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 42
-    Info (169178): Pin KEY[1] uses I/O standard 3.3-V LVTTL at E1 File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 42
-    Info (169178): Pin PI_IN[0] uses I/O standard 3.3-V LVTTL at A8 File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 46
-    Info (169178): Pin PI_IN[1] uses I/O standard 3.3-V LVTTL at B8 File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 46
-    Info (169178): Pin PI[0] uses I/O standard 3.3-V LVTTL at D3 File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 45
-    Info (169178): Pin PI[1] uses I/O standard 3.3-V LVTTL at C3 File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 45
-    Info (169178): Pin PI[2] uses I/O standard 3.3-V LVTTL at A2 File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 45
-    Info (169178): Pin PI[3] uses I/O standard 3.3-V LVTTL at A3 File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 45
-    Info (169178): Pin PI[4] uses I/O standard 3.3-V LVTTL at B3 File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 45
-    Info (169178): Pin PI[5] uses I/O standard 3.3-V LVTTL at B4 File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 45
-    Info (169178): Pin PI[6] uses I/O standard 3.3-V LVTTL at A4 File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 45
-    Info (169178): Pin PI[7] uses I/O standard 3.3-V LVTTL at B5 File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 45
-    Info (169178): Pin PI[8] uses I/O standard 3.3-V LVTTL at A5 File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 45
-    Info (169178): Pin PI[10] uses I/O standard 3.3-V LVTTL at B6 File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 45
-    Info (169178): Pin PI[12] uses I/O standard 3.3-V LVTTL at B7 File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 45
-    Info (169178): Pin PI[14] uses I/O standard 3.3-V LVTTL at A7 File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 45
-    Info (169178): Pin PI[16] uses I/O standard 3.3-V LVTTL at C8 File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 45
-    Info (169178): Pin PI[17] uses I/O standard 3.3-V LVTTL at E6 File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 45
-    Info (169178): Pin PI[18] uses I/O standard 3.3-V LVTTL at E7 File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 45
-    Info (169178): Pin PI[19] uses I/O standard 3.3-V LVTTL at D8 File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 45
-    Info (169178): Pin PI[20] uses I/O standard 3.3-V LVTTL at E8 File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 45
-    Info (169178): Pin PI[21] uses I/O standard 3.3-V LVTTL at F8 File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 45
-    Info (169178): Pin PI[22] uses I/O standard 3.3-V LVTTL at F9 File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 45
-    Info (169178): Pin PI[23] uses I/O standard 3.3-V LVTTL at E9 File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 45
-    Info (169178): Pin PI[24] uses I/O standard 3.3-V LVTTL at C9 File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 45
-    Info (169178): Pin PI[25] uses I/O standard 3.3-V LVTTL at D9 File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 45
-    Info (169178): Pin PI[26] uses I/O standard 3.3-V LVTTL at E11 File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 45
-    Info (169178): Pin PI[27] uses I/O standard 3.3-V LVTTL at E10 File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 45
-    Info (169178): Pin PI[28] uses I/O standard 3.3-V LVTTL at C11 File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 45
-    Info (169178): Pin PI[29] uses I/O standard 3.3-V LVTTL at B11 File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 45
-    Info (169178): Pin PI[30] uses I/O standard 3.3-V LVTTL at A12 File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 45
-    Info (169178): Pin PI[31] uses I/O standard 3.3-V LVTTL at D11 File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 45
-    Info (169178): Pin PI[32] uses I/O standard 3.3-V LVTTL at D12 File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 45
-    Info (169178): Pin PI[33] uses I/O standard 3.3-V LVTTL at B12 File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 45
-    Info (169178): Pin BRIDGE[0] uses I/O standard 3.3-V LVTTL at F13 File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 49
-    Info (169178): Pin BRIDGE[1] uses I/O standard 3.3-V LVTTL at T15 File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 49
-    Info (169178): Pin BRIDGE[3] uses I/O standard 3.3-V LVTTL at T13 File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 49
-    Info (169178): Pin BRIDGE[5] uses I/O standard 3.3-V LVTTL at T12 File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 49
-    Info (169178): Pin BRIDGE[6] uses I/O standard 3.3-V LVTTL at R12 File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 49
-    Info (169178): Pin BRIDGE[7] uses I/O standard 3.3-V LVTTL at T11 File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 49
-    Info (169178): Pin BRIDGE[8] uses I/O standard 3.3-V LVTTL at T10 File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 49
-    Info (169178): Pin BRIDGE[9] uses I/O standard 3.3-V LVTTL at R11 File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 49
-    Info (169178): Pin BRIDGE[10] uses I/O standard 3.3-V LVTTL at P11 File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 49
-    Info (169178): Pin BRIDGE[11] uses I/O standard 3.3-V LVTTL at R10 File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 49
-    Info (169178): Pin BRIDGE[12] uses I/O standard 3.3-V LVTTL at N12 File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 49
-    Info (169178): Pin BRIDGE[13] uses I/O standard 3.3-V LVTTL at P9 File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 49
-    Info (169178): Pin BRIDGE[14] uses I/O standard 3.3-V LVTTL at N9 File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 49
-    Info (169178): Pin BRIDGE[15] uses I/O standard 3.3-V LVTTL at N11 File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 49
-    Info (169178): Pin BRIDGE[16] uses I/O standard 3.3-V LVTTL at L16 File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 49
-    Info (169178): Pin BRIDGE[17] uses I/O standard 3.3-V LVTTL at K16 File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 49
-    Info (169178): Pin BRIDGE[18] uses I/O standard 3.3-V LVTTL at R16 File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 49
-    Info (169178): Pin BRIDGE[19] uses I/O standard 3.3-V LVTTL at L15 File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 49
-    Info (169178): Pin BRIDGE[20] uses I/O standard 3.3-V LVTTL at P15 File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 49
-    Info (169178): Pin BRIDGE[21] uses I/O standard 3.3-V LVTTL at P16 File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 49
-    Info (169178): Pin BRIDGE[22] uses I/O standard 3.3-V LVTTL at R14 File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 49
-    Info (169178): Pin BRIDGE[23] uses I/O standard 3.3-V LVTTL at N16 File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 49
-    Info (169178): Pin BRIDGE[24] uses I/O standard 3.3-V LVTTL at N15 File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 49
-    Info (169178): Pin BRIDGE[25] uses I/O standard 3.3-V LVTTL at P14 File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 49
-    Info (169178): Pin BRIDGE[26] uses I/O standard 3.3-V LVTTL at L14 File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 49
-    Info (169178): Pin BRIDGE[27] uses I/O standard 3.3-V LVTTL at N14 File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 49
-    Info (169178): Pin BRIDGE[28] uses I/O standard 3.3-V LVTTL at M10 File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 49
-    Info (169178): Pin BRIDGE[29] uses I/O standard 3.3-V LVTTL at L13 File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 49
-    Info (169178): Pin BRIDGE[30] uses I/O standard 3.3-V LVTTL at J16 File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 49
-    Info (169178): Pin BRIDGE[31] uses I/O standard 3.3-V LVTTL at K15 File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 49
-    Info (169178): Pin BRIDGE[32] uses I/O standard 3.3-V LVTTL at J13 File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 49
-    Info (169178): Pin BRIDGE[33] uses I/O standard 3.3-V LVTTL at J14 File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 49
-    Info (169178): Pin PI[9] uses I/O standard 3.3-V LVTTL at D5 File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 45
-    Info (169178): Pin PI[11] uses I/O standard 3.3-V LVTTL at A6 File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 45
-    Info (169178): Pin PI[13] uses I/O standard 3.3-V LVTTL at D6 File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 45
-    Info (169178): Pin PI[15] uses I/O standard 3.3-V LVTTL at C6 File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 45
-    Info (169178): Pin BRIDGE[2] uses I/O standard 3.3-V LVTTL at T14 File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 49
-    Info (169178): Pin BRIDGE[4] uses I/O standard 3.3-V LVTTL at R13 File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 49
-    Info (169178): Pin BRIDGE_IN[1] uses I/O standard 3.3-V LVTTL at R9 File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 50
-    Info (169178): Pin BRIDGE_IN[0] uses I/O standard 3.3-V LVTTL at T9 File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 50
-    Info (169178): Pin CLOCK_50 uses I/O standard 3.3-V LVTTL at R8 File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 36
+    Info (169178): Pin KEY[0] uses I/O standard 3.3-V LVTTL at J15 File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 42
+    Info (169178): Pin KEY[1] uses I/O standard 3.3-V LVTTL at E1 File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 42
+    Info (169178): Pin PI_IN[0] uses I/O standard 3.3-V LVTTL at A8 File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 46
+    Info (169178): Pin PI_IN[1] uses I/O standard 3.3-V LVTTL at B8 File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 46
+    Info (169178): Pin PI[0] uses I/O standard 3.3-V LVTTL at D3 File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 45
+    Info (169178): Pin PI[1] uses I/O standard 3.3-V LVTTL at C3 File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 45
+    Info (169178): Pin PI[2] uses I/O standard 3.3-V LVTTL at A2 File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 45
+    Info (169178): Pin PI[3] uses I/O standard 3.3-V LVTTL at A3 File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 45
+    Info (169178): Pin PI[4] uses I/O standard 3.3-V LVTTL at B3 File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 45
+    Info (169178): Pin PI[5] uses I/O standard 3.3-V LVTTL at B4 File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 45
+    Info (169178): Pin PI[6] uses I/O standard 3.3-V LVTTL at A4 File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 45
+    Info (169178): Pin PI[7] uses I/O standard 3.3-V LVTTL at B5 File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 45
+    Info (169178): Pin PI[8] uses I/O standard 3.3-V LVTTL at A5 File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 45
+    Info (169178): Pin PI[10] uses I/O standard 3.3-V LVTTL at B6 File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 45
+    Info (169178): Pin PI[12] uses I/O standard 3.3-V LVTTL at B7 File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 45
+    Info (169178): Pin PI[14] uses I/O standard 3.3-V LVTTL at A7 File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 45
+    Info (169178): Pin PI[16] uses I/O standard 3.3-V LVTTL at C8 File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 45
+    Info (169178): Pin PI[17] uses I/O standard 3.3-V LVTTL at E6 File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 45
+    Info (169178): Pin PI[18] uses I/O standard 3.3-V LVTTL at E7 File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 45
+    Info (169178): Pin PI[19] uses I/O standard 3.3-V LVTTL at D8 File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 45
+    Info (169178): Pin PI[20] uses I/O standard 3.3-V LVTTL at E8 File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 45
+    Info (169178): Pin PI[21] uses I/O standard 3.3-V LVTTL at F8 File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 45
+    Info (169178): Pin PI[22] uses I/O standard 3.3-V LVTTL at F9 File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 45
+    Info (169178): Pin PI[23] uses I/O standard 3.3-V LVTTL at E9 File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 45
+    Info (169178): Pin PI[24] uses I/O standard 3.3-V LVTTL at C9 File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 45
+    Info (169178): Pin PI[25] uses I/O standard 3.3-V LVTTL at D9 File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 45
+    Info (169178): Pin PI[26] uses I/O standard 3.3-V LVTTL at E11 File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 45
+    Info (169178): Pin PI[27] uses I/O standard 3.3-V LVTTL at E10 File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 45
+    Info (169178): Pin PI[28] uses I/O standard 3.3-V LVTTL at C11 File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 45
+    Info (169178): Pin PI[29] uses I/O standard 3.3-V LVTTL at B11 File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 45
+    Info (169178): Pin PI[30] uses I/O standard 3.3-V LVTTL at A12 File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 45
+    Info (169178): Pin PI[31] uses I/O standard 3.3-V LVTTL at D11 File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 45
+    Info (169178): Pin PI[32] uses I/O standard 3.3-V LVTTL at D12 File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 45
+    Info (169178): Pin PI[33] uses I/O standard 3.3-V LVTTL at B12 File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 45
+    Info (169178): Pin BRIDGE[0] uses I/O standard 3.3-V LVTTL at F13 File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 49
+    Info (169178): Pin BRIDGE[1] uses I/O standard 3.3-V LVTTL at T15 File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 49
+    Info (169178): Pin BRIDGE[3] uses I/O standard 3.3-V LVTTL at T13 File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 49
+    Info (169178): Pin BRIDGE[5] uses I/O standard 3.3-V LVTTL at T12 File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 49
+    Info (169178): Pin BRIDGE[6] uses I/O standard 3.3-V LVTTL at R12 File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 49
+    Info (169178): Pin BRIDGE[7] uses I/O standard 3.3-V LVTTL at T11 File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 49
+    Info (169178): Pin BRIDGE[8] uses I/O standard 3.3-V LVTTL at T10 File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 49
+    Info (169178): Pin BRIDGE[9] uses I/O standard 3.3-V LVTTL at R11 File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 49
+    Info (169178): Pin BRIDGE[10] uses I/O standard 3.3-V LVTTL at P11 File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 49
+    Info (169178): Pin BRIDGE[11] uses I/O standard 3.3-V LVTTL at R10 File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 49
+    Info (169178): Pin BRIDGE[12] uses I/O standard 3.3-V LVTTL at N12 File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 49
+    Info (169178): Pin BRIDGE[13] uses I/O standard 3.3-V LVTTL at P9 File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 49
+    Info (169178): Pin BRIDGE[14] uses I/O standard 3.3-V LVTTL at N9 File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 49
+    Info (169178): Pin BRIDGE[15] uses I/O standard 3.3-V LVTTL at N11 File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 49
+    Info (169178): Pin BRIDGE[16] uses I/O standard 3.3-V LVTTL at L16 File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 49
+    Info (169178): Pin BRIDGE[17] uses I/O standard 3.3-V LVTTL at K16 File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 49
+    Info (169178): Pin BRIDGE[18] uses I/O standard 3.3-V LVTTL at R16 File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 49
+    Info (169178): Pin BRIDGE[19] uses I/O standard 3.3-V LVTTL at L15 File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 49
+    Info (169178): Pin BRIDGE[20] uses I/O standard 3.3-V LVTTL at P15 File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 49
+    Info (169178): Pin BRIDGE[21] uses I/O standard 3.3-V LVTTL at P16 File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 49
+    Info (169178): Pin BRIDGE[22] uses I/O standard 3.3-V LVTTL at R14 File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 49
+    Info (169178): Pin BRIDGE[23] uses I/O standard 3.3-V LVTTL at N16 File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 49
+    Info (169178): Pin BRIDGE[24] uses I/O standard 3.3-V LVTTL at N15 File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 49
+    Info (169178): Pin BRIDGE[25] uses I/O standard 3.3-V LVTTL at P14 File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 49
+    Info (169178): Pin BRIDGE[26] uses I/O standard 3.3-V LVTTL at L14 File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 49
+    Info (169178): Pin BRIDGE[27] uses I/O standard 3.3-V LVTTL at N14 File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 49
+    Info (169178): Pin BRIDGE[28] uses I/O standard 3.3-V LVTTL at M10 File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 49
+    Info (169178): Pin BRIDGE[29] uses I/O standard 3.3-V LVTTL at L13 File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 49
+    Info (169178): Pin BRIDGE[30] uses I/O standard 3.3-V LVTTL at J16 File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 49
+    Info (169178): Pin BRIDGE[31] uses I/O standard 3.3-V LVTTL at K15 File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 49
+    Info (169178): Pin BRIDGE[32] uses I/O standard 3.3-V LVTTL at J13 File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 49
+    Info (169178): Pin BRIDGE[33] uses I/O standard 3.3-V LVTTL at J14 File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 49
+    Info (169178): Pin PI[9] uses I/O standard 3.3-V LVTTL at D5 File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 45
+    Info (169178): Pin PI[11] uses I/O standard 3.3-V LVTTL at A6 File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 45
+    Info (169178): Pin PI[13] uses I/O standard 3.3-V LVTTL at D6 File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 45
+    Info (169178): Pin PI[15] uses I/O standard 3.3-V LVTTL at C6 File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 45
+    Info (169178): Pin BRIDGE[2] uses I/O standard 3.3-V LVTTL at T14 File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 49
+    Info (169178): Pin BRIDGE[4] uses I/O standard 3.3-V LVTTL at R13 File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 49
+    Info (169178): Pin BRIDGE_IN[1] uses I/O standard 3.3-V LVTTL at R9 File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 50
+    Info (169178): Pin BRIDGE_IN[0] uses I/O standard 3.3-V LVTTL at T9 File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 50
+    Info (169178): Pin CLOCK_50 uses I/O standard 3.3-V LVTTL at R8 File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 36
 Warning (169064): Following 68 pins have no output enable or a GND or VCC output enable - later changes to this connectivity may change fitting results
-    Info (169065): Pin PI[0] has a permanently disabled output enable File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 45
-    Info (169065): Pin PI[1] has a permanently disabled output enable File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 45
-    Info (169065): Pin PI[2] has a permanently disabled output enable File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 45
-    Info (169065): Pin PI[3] has a permanently disabled output enable File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 45
-    Info (169065): Pin PI[4] has a permanently disabled output enable File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 45
-    Info (169065): Pin PI[5] has a permanently disabled output enable File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 45
-    Info (169065): Pin PI[6] has a permanently disabled output enable File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 45
-    Info (169065): Pin PI[7] has a permanently disabled output enable File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 45
-    Info (169065): Pin PI[8] has a permanently disabled output enable File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 45
-    Info (169065): Pin PI[10] has a permanently disabled output enable File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 45
-    Info (169065): Pin PI[12] has a permanently disabled output enable File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 45
-    Info (169065): Pin PI[14] has a permanently disabled output enable File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 45
-    Info (169065): Pin PI[16] has a permanently disabled output enable File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 45
-    Info (169065): Pin PI[17] has a permanently disabled output enable File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 45
-    Info (169065): Pin PI[18] has a permanently disabled output enable File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 45
-    Info (169065): Pin PI[19] has a permanently disabled output enable File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 45
-    Info (169065): Pin PI[20] has a permanently disabled output enable File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 45
-    Info (169065): Pin PI[21] has a permanently disabled output enable File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 45
-    Info (169065): Pin PI[22] has a permanently disabled output enable File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 45
-    Info (169065): Pin PI[23] has a permanently disabled output enable File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 45
-    Info (169065): Pin PI[24] has a permanently disabled output enable File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 45
-    Info (169065): Pin PI[25] has a permanently disabled output enable File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 45
-    Info (169065): Pin PI[26] has a permanently disabled output enable File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 45
-    Info (169065): Pin PI[27] has a permanently disabled output enable File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 45
-    Info (169065): Pin PI[28] has a permanently disabled output enable File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 45
-    Info (169065): Pin PI[29] has a permanently disabled output enable File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 45
-    Info (169065): Pin PI[30] has a permanently disabled output enable File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 45
-    Info (169065): Pin PI[31] has a permanently disabled output enable File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 45
-    Info (169065): Pin PI[32] has a permanently disabled output enable File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 45
-    Info (169065): Pin PI[33] has a permanently disabled output enable File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 45
-    Info (169065): Pin BRIDGE[0] has a permanently disabled output enable File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 49
-    Info (169065): Pin BRIDGE[1] has a permanently disabled output enable File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 49
-    Info (169065): Pin BRIDGE[3] has a permanently disabled output enable File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 49
-    Info (169065): Pin BRIDGE[5] has a permanently disabled output enable File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 49
-    Info (169065): Pin BRIDGE[6] has a permanently disabled output enable File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 49
-    Info (169065): Pin BRIDGE[7] has a permanently disabled output enable File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 49
-    Info (169065): Pin BRIDGE[8] has a permanently disabled output enable File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 49
-    Info (169065): Pin BRIDGE[9] has a permanently disabled output enable File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 49
-    Info (169065): Pin BRIDGE[10] has a permanently disabled output enable File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 49
-    Info (169065): Pin BRIDGE[11] has a permanently disabled output enable File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 49
-    Info (169065): Pin BRIDGE[12] has a permanently disabled output enable File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 49
-    Info (169065): Pin BRIDGE[13] has a permanently disabled output enable File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 49
-    Info (169065): Pin BRIDGE[14] has a permanently disabled output enable File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 49
-    Info (169065): Pin BRIDGE[15] has a permanently disabled output enable File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 49
-    Info (169065): Pin BRIDGE[16] has a permanently disabled output enable File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 49
-    Info (169065): Pin BRIDGE[17] has a permanently disabled output enable File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 49
-    Info (169065): Pin BRIDGE[18] has a permanently disabled output enable File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 49
-    Info (169065): Pin BRIDGE[19] has a permanently disabled output enable File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 49
-    Info (169065): Pin BRIDGE[20] has a permanently disabled output enable File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 49
-    Info (169065): Pin BRIDGE[21] has a permanently disabled output enable File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 49
-    Info (169065): Pin BRIDGE[22] has a permanently disabled output enable File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 49
-    Info (169065): Pin BRIDGE[23] has a permanently disabled output enable File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 49
-    Info (169065): Pin BRIDGE[24] has a permanently disabled output enable File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 49
-    Info (169065): Pin BRIDGE[25] has a permanently disabled output enable File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 49
-    Info (169065): Pin BRIDGE[26] has a permanently disabled output enable File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 49
-    Info (169065): Pin BRIDGE[27] has a permanently disabled output enable File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 49
-    Info (169065): Pin BRIDGE[28] has a permanently disabled output enable File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 49
-    Info (169065): Pin BRIDGE[29] has a permanently disabled output enable File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 49
-    Info (169065): Pin BRIDGE[30] has a permanently disabled output enable File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 49
-    Info (169065): Pin BRIDGE[31] has a permanently disabled output enable File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 49
-    Info (169065): Pin BRIDGE[32] has a permanently disabled output enable File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 49
-    Info (169065): Pin BRIDGE[33] has a permanently disabled output enable File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 49
-    Info (169065): Pin PI[9] has a permanently disabled output enable File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 45
-    Info (169065): Pin PI[11] has a permanently disabled output enable File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 45
-    Info (169065): Pin PI[13] has a permanently enabled output enable File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 45
-    Info (169065): Pin PI[15] has a permanently disabled output enable File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 45
-    Info (169065): Pin BRIDGE[2] has a permanently disabled output enable File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 49
-    Info (169065): Pin BRIDGE[4] has a permanently disabled output enable File: C:/Users/ferre/Desktop/FPGA-Poseitron/robot.sv Line: 49
-Info (144001): Generated suppressed messages file C:/Users/ferre/Desktop/FPGA-Poseitron/robot.fit.smsg
+    Info (169065): Pin PI[0] has a permanently disabled output enable File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 45
+    Info (169065): Pin PI[1] has a permanently disabled output enable File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 45
+    Info (169065): Pin PI[2] has a permanently disabled output enable File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 45
+    Info (169065): Pin PI[3] has a permanently disabled output enable File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 45
+    Info (169065): Pin PI[4] has a permanently disabled output enable File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 45
+    Info (169065): Pin PI[5] has a permanently disabled output enable File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 45
+    Info (169065): Pin PI[6] has a permanently disabled output enable File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 45
+    Info (169065): Pin PI[7] has a permanently disabled output enable File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 45
+    Info (169065): Pin PI[8] has a permanently disabled output enable File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 45
+    Info (169065): Pin PI[10] has a permanently disabled output enable File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 45
+    Info (169065): Pin PI[12] has a permanently disabled output enable File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 45
+    Info (169065): Pin PI[14] has a permanently disabled output enable File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 45
+    Info (169065): Pin PI[16] has a permanently disabled output enable File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 45
+    Info (169065): Pin PI[17] has a permanently disabled output enable File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 45
+    Info (169065): Pin PI[18] has a permanently disabled output enable File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 45
+    Info (169065): Pin PI[19] has a permanently disabled output enable File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 45
+    Info (169065): Pin PI[20] has a permanently disabled output enable File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 45
+    Info (169065): Pin PI[21] has a permanently disabled output enable File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 45
+    Info (169065): Pin PI[22] has a permanently disabled output enable File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 45
+    Info (169065): Pin PI[23] has a permanently disabled output enable File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 45
+    Info (169065): Pin PI[24] has a permanently disabled output enable File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 45
+    Info (169065): Pin PI[25] has a permanently disabled output enable File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 45
+    Info (169065): Pin PI[26] has a permanently disabled output enable File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 45
+    Info (169065): Pin PI[27] has a permanently disabled output enable File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 45
+    Info (169065): Pin PI[28] has a permanently disabled output enable File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 45
+    Info (169065): Pin PI[29] has a permanently disabled output enable File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 45
+    Info (169065): Pin PI[30] has a permanently disabled output enable File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 45
+    Info (169065): Pin PI[31] has a permanently disabled output enable File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 45
+    Info (169065): Pin PI[32] has a permanently disabled output enable File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 45
+    Info (169065): Pin PI[33] has a permanently disabled output enable File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 45
+    Info (169065): Pin BRIDGE[0] has a permanently disabled output enable File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 49
+    Info (169065): Pin BRIDGE[1] has a permanently disabled output enable File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 49
+    Info (169065): Pin BRIDGE[3] has a permanently disabled output enable File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 49
+    Info (169065): Pin BRIDGE[5] has a permanently disabled output enable File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 49
+    Info (169065): Pin BRIDGE[6] has a permanently disabled output enable File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 49
+    Info (169065): Pin BRIDGE[7] has a permanently disabled output enable File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 49
+    Info (169065): Pin BRIDGE[8] has a permanently disabled output enable File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 49
+    Info (169065): Pin BRIDGE[9] has a permanently disabled output enable File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 49
+    Info (169065): Pin BRIDGE[10] has a permanently disabled output enable File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 49
+    Info (169065): Pin BRIDGE[11] has a permanently disabled output enable File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 49
+    Info (169065): Pin BRIDGE[12] has a permanently disabled output enable File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 49
+    Info (169065): Pin BRIDGE[13] has a permanently disabled output enable File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 49
+    Info (169065): Pin BRIDGE[14] has a permanently disabled output enable File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 49
+    Info (169065): Pin BRIDGE[15] has a permanently disabled output enable File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 49
+    Info (169065): Pin BRIDGE[16] has a permanently disabled output enable File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 49
+    Info (169065): Pin BRIDGE[17] has a permanently disabled output enable File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 49
+    Info (169065): Pin BRIDGE[18] has a permanently disabled output enable File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 49
+    Info (169065): Pin BRIDGE[19] has a permanently disabled output enable File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 49
+    Info (169065): Pin BRIDGE[20] has a permanently disabled output enable File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 49
+    Info (169065): Pin BRIDGE[21] has a permanently disabled output enable File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 49
+    Info (169065): Pin BRIDGE[22] has a permanently disabled output enable File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 49
+    Info (169065): Pin BRIDGE[23] has a permanently disabled output enable File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 49
+    Info (169065): Pin BRIDGE[24] has a permanently disabled output enable File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 49
+    Info (169065): Pin BRIDGE[25] has a permanently disabled output enable File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 49
+    Info (169065): Pin BRIDGE[26] has a permanently disabled output enable File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 49
+    Info (169065): Pin BRIDGE[27] has a permanently disabled output enable File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 49
+    Info (169065): Pin BRIDGE[28] has a permanently disabled output enable File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 49
+    Info (169065): Pin BRIDGE[29] has a permanently disabled output enable File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 49
+    Info (169065): Pin BRIDGE[30] has a permanently disabled output enable File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 49
+    Info (169065): Pin BRIDGE[31] has a permanently disabled output enable File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 49
+    Info (169065): Pin BRIDGE[32] has a permanently disabled output enable File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 49
+    Info (169065): Pin BRIDGE[33] has a permanently disabled output enable File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 49
+    Info (169065): Pin PI[9] has a permanently disabled output enable File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 45
+    Info (169065): Pin PI[11] has a permanently disabled output enable File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 45
+    Info (169065): Pin PI[13] has a permanently enabled output enable File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 45
+    Info (169065): Pin PI[15] has a permanently disabled output enable File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 45
+    Info (169065): Pin BRIDGE[2] has a permanently disabled output enable File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 49
+    Info (169065): Pin BRIDGE[4] has a permanently disabled output enable File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 49
+Info (144001): Generated suppressed messages file D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.fit.smsg
 Info: Quartus Prime Fitter was successful. 0 errors, 5 warnings
-    Info: Peak virtual memory: 5557 megabytes
-    Info: Processing ended: Wed Mar 11 14:33:17 2020
+    Info: Peak virtual memory: 6514 megabytes
+    Info: Processing ended: Sat Mar 14 15:22:39 2020
     Info: Elapsed time: 00:00:09
-    Info: Total CPU time (on all processors): 00:00:09
+    Info: Total CPU time (on all processors): 00:00:10
 
 
 +----------------------------+
 ; Fitter Suppressed Messages ;
 +----------------------------+
-The suppressed messages can be found in C:/Users/ferre/Desktop/FPGA-Poseitron/robot.fit.smsg.
+The suppressed messages can be found in D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.fit.smsg.
 
 
