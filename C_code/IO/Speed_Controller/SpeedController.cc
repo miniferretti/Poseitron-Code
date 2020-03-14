@@ -4,6 +4,7 @@
 #include <pthread.h>
 #include <chrono>
 #include <wiringPiSPI.h>
+#include <math.h>
 
 SpeedController::SpeedController(CtrlStruct *theCtrlStruct, CAN0_Alternate *can0)
 {
@@ -29,7 +30,7 @@ void SpeedController::init_speed_controller(int i)
 
     this->theCtrlStruct->theUserStruct->samplingDE0 = 2000;
     this->theCtrlStruct->theUserStruct->tics = 2048;
-    this->theCtrlStruct->theUserStruct->speed_kill=0;
+    this->theCtrlStruct->theUserStruct->speed_kill = 0;
 
     this->theCtrlStruct->theUserStruct->theMotLeft->kp = Kp;
     this->theCtrlStruct->theUserStruct->theMotLeft->ki = Ki;
@@ -61,32 +62,36 @@ void SpeedController::init_speed_controller(int i)
 void SpeedController::speed_controller_active(int i)
 {
     this->can0->CAN0ctrl_motor(i);
+    this->theCtrlStruct->theUserStruct->speed_kill=!i;
 }
 
-void* SpeedController::run_speed_controller(void *context)
+void SpeedController::run_speed_controller()
 {
-    return ((SpeedController *)context)->updateLowCtrl;
+
+    //run the thread here
+    pthread_create(&tr, NULL, &updateLowCtrl, this);
 }
 
-void* SpeedController::updateLowCtrl()
+void *SpeedController::updateLowCtrl(void *daSpeedController)
 {
-    
+
     auto start = std::chrono::steady_clock::now();
+    unsigned char buffer[5];
 
-    while (this->theCtrlStruct->theUserStruct->speed_kill==0)
+    while (((SpeedController *)daSpeedController)->theCtrlStruct->theUserStruct->speed_kill == 0)
     {
-        updateSpeed();
+        ((SpeedController *)daSpeedController)->updateSpeed(buffer);
         auto elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now() - start);
         double time_taken = (elapsed.count());
         printf("time taken sinds the controller is active: %f\r\n", time_taken / 1000);
-        this->theCtrlStruct->theCtrlIn->t = time_taken / 1000; //Temps utilisé pour mettre a jour les valeurs et appeler le speed controller
-        updateCmd();
+        ((SpeedController *)daSpeedController)->theCtrlStruct->theCtrlIn->t = time_taken / 1000; //Temps utilisé pour mettre a jour les valeurs et appeler le speed controller
+        ((SpeedController *)daSpeedController)->updateCmd();
     }
 }
 
-void SpeedController::updateSpeed()
+void SpeedController::updateSpeed(unsigned char *buffer)
 {
-    unsigned char buffer[5];
+
     //adresse des roues
     buffer[0] = 0x00;
     buffer[1] = 0x00;
@@ -113,16 +118,19 @@ void SpeedController::updateCmd()
     double l_wheel_speed = this->theCtrlStruct->theCtrlIn->l_wheel_speed;
     double t = this->theCtrlStruct->theCtrlIn->t;
 
-    double cmd_l = PIcontroller(this->theCtrlStruct->theUserStruct->theMotLeft, omega_ref_l, l_wheel_speed, t);
-    double cmd_r = PIcontroller(this->theCtrlStruct->theUserStruct->theMotRight, omega_ref_r, r_wheel_speed, t);
+    double cmd_l = this->PIController(this->theCtrlStruct->theUserStruct->theMotLeft, omega_ref_l, l_wheel_speed, t);
+    double cmd_r = this->PIController(this->theCtrlStruct->theUserStruct->theMotRight, omega_ref_r, r_wheel_speed, t);
 
     this->theCtrlStruct->theCtrlOut->wheel_commands[L_ID] = cmd_l;
     this->theCtrlStruct->theCtrlOut->wheel_commands[R_ID] = cmd_r;
 
+    printf(" l_wheel_command %f", this->theCtrlStruct->theCtrlOut->wheel_commands[L_ID]);
+    printf(" r_wheel_command %f\n", this->theCtrlStruct->theCtrlOut->wheel_commands[L_ID]);
+
     this->can0->CAN0pushPropDC(this->theCtrlStruct->theCtrlOut->wheel_commands[L_ID], this->theCtrlStruct->theCtrlOut->wheel_commands[R_ID]);
 }
 
-void SpeedController::PIController(MotStruct *theMot, double V_ref, double V_wheel_mes, double t)
+double SpeedController::PIController(MotStruct *theMot, double V_ref, double V_wheel_mes, double t)
 {
     double e = V_ref - theMot->ratio * V_wheel_mes;
     double dt = t - theMot->t_p;
@@ -133,7 +141,7 @@ void SpeedController::PIController(MotStruct *theMot, double V_ref, double V_whe
         theMot->integral_error += dt * e;
     }
     u += theMot->integral_error * theMot->ki; // integral action
-    u += theMot->kphi * V_wheel_mes;                // back electromotive compensation
+    u += theMot->kphi * V_wheel_mes;          // back electromotive compensation
     theMot->status = saturation(theMot->upperCurrentLimit + theMot->kphi * V_wheel_mes, theMot->lowerCurrentLimit - theMot->kphi * V_wheel_mes, u);
 
     theMot->t_p = t;

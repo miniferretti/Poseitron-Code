@@ -38,43 +38,40 @@ double omega_ref_now_r = 10;
 double omega_ref_now_l = 10;
 double dt_ref = 3;
 
-//Declaration des fonctions
-void *updateCrtlIn(void *unused);
-double get_speed(char a1, char a2);
-int get_int(char a1, char a2);
-
 int main()
 {
 	CtrlStruct *myCtrlStruct = new CtrlStruct;
 	CAN0_Alternate *can = new CAN0_Alternate(CAN_BR);
 	SPI_DE0 *deo;
 	deo = new SPI_DE0(0, 125e3);
-	pthread_t tr;
 
 	delay(100);
 
 	init_ctrlStruc(myCtrlStruct);
 
-	SpeedController *spctrl = new SpeedController(myCtrlStruct,can);
+	SpeedController *spctrl = new SpeedController(myCtrlStruct, can);
 
 	myCtrlStruct->theCtrlIn->r_wheel_ref = omega_ref_now_r;
 	myCtrlStruct->theCtrlIn->l_wheel_ref = omega_ref_now_l;
 
 	spctrl->init_speed_controller(1);
-	pthread_create(&tr, NULL, &SpeedController::updateLowCtrl, spctrl);
-
 
 	spctrl->run_speed_controller();
 
 	printf("Welcome to the Poseitron code prototype.\r\n");
 	printf("We hope that you will be pleased with the coding and we wish you a great succes.\n\r");
 
-
 	//********  Début du comportement du robot **********
 
 	while (true)
 	{
-		
+		delay(10000);
+		myCtrlStruct->theCtrlIn->r_wheel_ref = -10;
+		myCtrlStruct->theCtrlIn->l_wheel_ref = -10;
+		printf("wallah je suis la boucle du main !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\r\n");
+		delay(10000);
+		myCtrlStruct->theCtrlIn->r_wheel_ref = omega_ref_now_r;
+		myCtrlStruct->theCtrlIn->l_wheel_ref = omega_ref_now_l;
 	}
 	free(myCtrlStruct->theCtrlIn);
 	free(myCtrlStruct->theCtrlOut);

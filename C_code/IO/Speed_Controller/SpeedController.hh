@@ -6,18 +6,19 @@
 class SpeedController
 {
 public:
-    SpeedController(CtrlStruct *theCtrlStruct, CAN0_Alternate *can0);
+    SpeedController(CtrlStruct *theCtrlStruct, CAN0_Alternate *can0); //Constructor
     void init_speed_controller(int i);
-    static void *run_speed_controller(void *context);
-    static void *updateLowCtrl();
-    void updateSpeed();
-    void updateCmd();
-    void PIController(MotStruct *theMot, double V_ref, double V_wheel_mes, double t);
+    void run_speed_controller();
+
+    //Thread launching fucntion
+    static void* updateLowCtrl(void *daSpeedController);                               //looping function inside the speedcontroller thread
+    void updateSpeed(unsigned char *buffer);                                                               //update of the speed
+    void updateCmd();                                                                 // update of the command
+    double PIController(MotStruct *theMot, double V_ref, double V_wheel_mes, double t); //PI speed regulator
     int saturation(double upperLimit, double lowerLimit, double u);
     void speed_controller_active(int i);
 
-private:
     CtrlStruct *theCtrlStruct;
     CAN0_Alternate *can0;
-    
+    pthread_t tr;
 };
