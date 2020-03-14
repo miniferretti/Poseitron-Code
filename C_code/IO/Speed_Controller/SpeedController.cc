@@ -62,7 +62,7 @@ void SpeedController::init_speed_controller(int i)
 void SpeedController::speed_controller_active(int i)
 {
     this->can0->CAN0ctrl_motor(i);
-    this->theCtrlStruct->theUserStruct->speed_kill=!i;
+    this->theCtrlStruct->theUserStruct->speed_kill = !i;
 }
 
 void SpeedController::run_speed_controller()
