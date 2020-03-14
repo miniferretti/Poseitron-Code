@@ -16,7 +16,7 @@ SpeedController::SpeedController(CtrlStruct *theCtrlStruct, CAN0_Alternate *can0
 
 void SpeedController::init_speed_controller(int i)
 {
-    speed_controller_active(i);
+    this->speed_controller_active(i);
     double Ra = 7.1;
     double Kv = 4.3e-5;
     double J_rotor = 12e-7;
@@ -34,27 +34,27 @@ void SpeedController::init_speed_controller(int i)
     this->theCtrlStruct->theUserStruct->tics = 2048;
     this->theCtrlStruct->theUserStruct->speed_kill = 0;
 
-    this->theCtrlStruct->theUserStruct->theMotLeft->kp = Kp;
-    this->theCtrlStruct->theUserStruct->theMotLeft->ki = Ki;
+    this->theCtrlStruct->theUserStruct->theMotLeft->kp = 0.115; //Kp;
+    this->theCtrlStruct->theUserStruct->theMotLeft->ki = 0.07;  // valeur a modifier si besoins est...
     this->theCtrlStruct->theUserStruct->theMotLeft->integral_error = 0;
     this->theCtrlStruct->theUserStruct->theMotLeft->status = 0;
     this->theCtrlStruct->theUserStruct->theMotLeft->Ra = Ra;
     this->theCtrlStruct->theUserStruct->theMotLeft->kphi = kphi;
     this->theCtrlStruct->theUserStruct->theMotLeft->t_p = 0;
-    this->theCtrlStruct->theUserStruct->theMotLeft->ratio = 7;
+    this->theCtrlStruct->theUserStruct->theMotLeft->ratio = ratio;
     this->theCtrlStruct->theUserStruct->theMotLeft->upperCurrentLimit = Ra * Current_max;
     this->theCtrlStruct->theUserStruct->theMotLeft->lowerCurrentLimit = -Ra * Current_max;
     this->theCtrlStruct->theUserStruct->theMotLeft->upperVoltageLimit = 24 * secu;
     this->theCtrlStruct->theUserStruct->theMotLeft->lowerVoltageLimit = -24 * secu;
 
     this->theCtrlStruct->theUserStruct->theMotRight->kp = 0.115; //Kp;
-    this->theCtrlStruct->theUserStruct->theMotRight->ki = 0.07; //Ki;
+    this->theCtrlStruct->theUserStruct->theMotRight->ki = 0.07;  //Ki;
     this->theCtrlStruct->theUserStruct->theMotRight->integral_error = 0;
     this->theCtrlStruct->theUserStruct->theMotRight->status = 0;
     this->theCtrlStruct->theUserStruct->theMotRight->Ra = Ra;
     this->theCtrlStruct->theUserStruct->theMotRight->kphi = kphi;
     this->theCtrlStruct->theUserStruct->theMotRight->t_p = 0;
-    this->theCtrlStruct->theUserStruct->theMotRight->ratio = 7;
+    this->theCtrlStruct->theUserStruct->theMotRight->ratio = ratio;
     this->theCtrlStruct->theUserStruct->theMotRight->upperCurrentLimit = Ra * Current_max;
     this->theCtrlStruct->theUserStruct->theMotRight->lowerCurrentLimit = -Ra * Current_max;
     this->theCtrlStruct->theUserStruct->theMotRight->upperVoltageLimit = 24 * secu;
@@ -69,9 +69,7 @@ void SpeedController::speed_controller_active(int i)
 
 void SpeedController::run_speed_controller()
 {
-
-    //run the thread here
-    pthread_create(&tr, NULL, &updateLowCtrl, this);
+    pthread_create(&tr, NULL, &updateLowCtrl, this); //Lancement du thread
 }
 
 void *SpeedController::updateLowCtrl(void *daSpeedController)
@@ -79,7 +77,7 @@ void *SpeedController::updateLowCtrl(void *daSpeedController)
 
     auto start = std::chrono::steady_clock::now();
     unsigned char buffer[5];
-    FILE *logFile = fopen("/home/pi/RobotCode/logFile.txt", "w");
+    FILE *logFile = fopen("/home/pi/RobotCode/logFile.txt", "w"); //Ouverture et ecrasement du fichier log pour l'historique des vitesses (pour Matlab par exemple...)
     fprintf(logFile, "Rspeed Rref Lspeed Lref\r\n");
 
     while (((SpeedController *)daSpeedController)->theCtrlStruct->theUserStruct->speed_kill == 0)
@@ -91,7 +89,6 @@ void *SpeedController::updateLowCtrl(void *daSpeedController)
         ((SpeedController *)daSpeedController)->theCtrlStruct->theCtrlIn->t = time_taken / 1000; //Temps utilisé pour mettre a jour les valeurs et appeler le speed controller
         ((SpeedController *)daSpeedController)->updateCmd();
         fprintf(logFile, "%0.1f %0.1f %0.1f %0.1f\r\n", ((SpeedController *)daSpeedController)->theCtrlStruct->theCtrlIn->r_wheel_speed, ((SpeedController *)daSpeedController)->theCtrlStruct->theCtrlIn->r_wheel_ref, ((SpeedController *)daSpeedController)->theCtrlStruct->theCtrlIn->l_wheel_speed, ((SpeedController *)daSpeedController)->theCtrlStruct->theCtrlIn->l_wheel_ref);
-        //delay(50);
     }
     fclose(logFile);
 }
