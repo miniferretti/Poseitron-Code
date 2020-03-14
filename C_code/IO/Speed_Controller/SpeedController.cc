@@ -24,7 +24,7 @@ void SpeedController::init_speed_controller(int i)
     double kphi = 37.83e-3;
     double Kp = 3 * Ra * Kv / kphi;
     double Ki = Kp * ((Ra * Kv + kphi * Kp) / (J * Ra) - 3 / tau_m);
-    double Current_max = 0.78; // Ampere
+    double Current_max = 3;//0.78; // Ampere
     double secu = 0.95;
     double ratio = 7;
 
@@ -138,10 +138,10 @@ double SpeedController::PIController(MotStruct *theMot, double V_ref, double V_w
 
     if (!theMot->status) //The integral action is only done if there is no saturation of current.
     {
-        theMot->integral_error += dt * e;
+        theMot->integral_error += dt * e * theMot->ki;
     }
-    u += theMot->integral_error * theMot->ki; // integral action
-    u += theMot->kphi * V_wheel_mes;          // back electromotive compensation
+    u += theMot->integral_error;     // integral action
+    u += theMot->kphi * V_wheel_mes; // back electromotive compensation
     theMot->status = saturation(theMot->upperCurrentLimit + theMot->kphi * V_wheel_mes, theMot->lowerCurrentLimit - theMot->kphi * V_wheel_mes, u);
 
     theMot->t_p = t;

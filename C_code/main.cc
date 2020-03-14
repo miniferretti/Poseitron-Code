@@ -34,8 +34,8 @@ using namespace std;
 //Constant values for the updateCrtlIn() routine
 //paramètre de la conversion omega->vitesse pour les roues
 
-double omega_ref_now_r = 10;
-double omega_ref_now_l = 10;
+double omega_ref_now_r = 50;
+double omega_ref_now_l = 50;
 double dt_ref = 3;
 
 int main()
@@ -66,8 +66,8 @@ int main()
 	while (true)
 	{
 		delay(10000);
-		myCtrlStruct->theCtrlIn->r_wheel_ref = -10;
-		myCtrlStruct->theCtrlIn->l_wheel_ref = -10;
+	//	myCtrlStruct->theCtrlIn->r_wheel_ref = -10;
+	//	myCtrlStruct->theCtrlIn->l_wheel_ref = -10;
 		printf("wallah je suis la boucle du main !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\r\n");
 		delay(10000);
 		myCtrlStruct->theCtrlIn->r_wheel_ref = omega_ref_now_r;
