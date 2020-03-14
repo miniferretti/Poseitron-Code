@@ -27,13 +27,8 @@ class CAN0_Alternate
 public:
     CAN0_Alternate(int baud);
     void CAN0pushPropDC(int dcG, int dcD);
-    // string uint8_to_hex_string(const uint8_t *v, const size_t s);
     void CAN0ctrl_motor(int state);
     void CAN0ctrl_led(int state);
-    //string int_to_hex_string(int theInt);
-    // void CAN0configure(int baud);
-    // string hexStr2(unsigned char *data, int len);
-    // string int_to_hex(int a);
     void CAN0close();
     void msgClear(can_frame *fr);
 
