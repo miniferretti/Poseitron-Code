@@ -79,13 +79,6 @@ void CAN0_Alternate::CAN0pushPropDC(int dcG, int dcD)
   can_frame msg;
   can_frame msg1;
 
-  // system(("cansend can0 " + int_to_hex_string(CAN_MOT) + "#25FF" + int_to_hex(dcGc)).c_str());
-  //  system(("cansend can0 " + int_to_hex_string(CAN_MOT) + "#26FF" + int_to_hex(dcDc)).c_str());
-  //printf(("cansend can0 " + int_to_hex_string(CAN_MOT) + "#25FF" + int_to_hex(dcGc)).c_str());
-  //printf("\r\n");
-  //printf(("cansend can0 " + int_to_hex_string(CAN_MOT) + "#26FF" + int_to_hex(dcDc)).c_str());
-  //printf("\r\n");
-
   msg.can_id = CAN_MOT;
   msg.can_dlc = 3;
   msg.data[0] = 0x26;
@@ -111,7 +104,6 @@ void CAN0_Alternate::CAN0ctrl_motor(int state)
 
   if (state)
   {
-    //system(("cansend can0 " + int_to_hex_string(CAN_MOT) + "#1E3000").c_str());
 
     msg.can_id = CAN_MOT;
     msg.can_dlc = 3;
@@ -124,7 +116,6 @@ void CAN0_Alternate::CAN0ctrl_motor(int state)
   }
   else
   {
-    // system(("cansend can0 " + int_to_hex_string(CAN_MOT) + "#1E30FF").c_str());
     msg.can_id = CAN_MOT;
     msg.can_dlc = 3;
     msg.data[0] = 0x1E;
@@ -136,20 +127,6 @@ void CAN0_Alternate::CAN0ctrl_motor(int state)
   }
 }
 
-/*string uint8_to_hex_string(const uint8_t *v, const size_t s)
-{
-  stringstream ss;
-
-  ss << setfill('0');
-
-  ss << hex << setw(2) << v << endl;
-
-  printf((ss.str()).c_str());
-  printf("\r\n");
-
-  return (ss.str());
-}*/
-
 void CAN0_Alternate::CAN0ctrl_led(int state)
 {
 
@@ -157,7 +134,6 @@ void CAN0_Alternate::CAN0ctrl_led(int state)
 
   if (state)
   {
-    //system(("cansend can0 " + int_to_hex_string(CAN_MOT) + "#1E4040").c_str());
 
     msg.can_id = CAN_MOT;
     msg.can_dlc = 3;
@@ -170,7 +146,6 @@ void CAN0_Alternate::CAN0ctrl_led(int state)
   }
   else
   {
-    //system(("cansend can0 " + int_to_hex_string(CAN_MOT) + "#1E4000").c_str());
 
     msg.can_id = CAN_MOT;
     msg.can_dlc = 3;
@@ -198,131 +173,4 @@ void CAN0_Alternate::msgClear(can_frame *fr)
   fr->can_dlc = 0;
 }
 
-/*string int_to_hex(int a)
-{
-  string str = "";
-  switch (a / 16)
-  {
-  case 0:
-    str += "0";
-    break;
-  case 1:
-    str += "1";
-    break;
-  case 2:
-    str += "2";
-    break;
-  case 3:
-    str += "3";
-    break;
-  case 4:
-    str += "4";
-    break;
-  case 5:
-    str += "5";
-    break;
-  case 6:
-    str += "6";
-    break;
-  case 7:
-    str += "7";
-    break;
-  case 8:
-    str += "8";
-    break;
-  case 9:
-    str += "9";
-    break;
-  case 10:
-    str += "A";
-    break;
-  case 11:
-    str += "B";
-    break;
-  case 12:
-    str += "C";
-    break;
-  case 13:
-    str += "D";
-    break;
-  case 14:
-    str += "E";
-    break;
-  case 15:
-    str += "F";
-    break;
-  }
-  switch (a % 16)
-  {
-  case 0:
-    str += "0";
-    break;
-  case 1:
-    str += "1";
-    break;
-  case 2:
-    str += "2";
-    break;
-  case 3:
-    str += "3";
-    break;
-  case 4:
-    str += "4";
-    break;
-  case 5:
-    str += "5";
-    break;
-  case 6:
-    str += "6";
-    break;
-  case 7:
-    str += "7";
-    break;
-  case 8:
-    str += "8";
-    break;
-  case 9:
-    str += "9";
-    break;
-  case 10:
-    str += "A";
-    break;
-  case 11:
-    str += "B";
-    break;
-  case 12:
-    str += "C";
-    break;
-  case 13:
-    str += "D";
-    break;
-  case 14:
-    str += "E";
-    break;
-  case 15:
-    str += "F";
-    break;
-  }
-  return str;
-}
-
-std::string hexStr2(unsigned char *data, int len)
-{
-  constexpr char hexmap[] = {'0', '1', '2', '3', '4', '5', '6', '7',
-                             '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
-  std::string s(len * 2, ' ');
-  for (int i = 0; i < len; ++i)
-  {
-    s[2 * i] = hexmap[(data[i] & 0xF0) >> 4];
-    s[2 * i + 1] = hexmap[data[i] & 0x0F];
-  }
-  return s;
-}
-
-string int_to_hex_string(int theInt)
-{
-  stringstream ss;
-  ss << hex << theInt;
-  return ss.str();
-}*/
 // For fruther info on the routines visit: https://github.com/rhyttr/SocketCAN/blob/master/test/tst-raw.c
