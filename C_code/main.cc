@@ -65,6 +65,9 @@ int main()
 		//myCtrlStruct->theCtrlIn->r_wheel_ref = omega_ref_now_r;
 		//myCtrlStruct->theCtrlIn->l_wheel_ref = omega_ref_now_l;
 	}
+	
+	free(myCtrlStruct->theUserStruct->theMotRight);
+	free(myCtrlStruct->theUserStruct->theMotLeft);
 	free(myCtrlStruct->theCtrlIn);
 	free(myCtrlStruct->theCtrlOut);
 	free(myCtrlStruct->theUserStruct);
