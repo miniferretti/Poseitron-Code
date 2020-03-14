@@ -88,7 +88,7 @@ void CAN0_Alternate::CAN0pushPropDC(int dcG, int dcD)
 
   msg.can_id = CAN_MOT;
   msg.can_dlc = 3;
-  msg.data[0] = 0x25;
+  msg.data[0] = 0x26;
   msg.data[1] = 0xFF;
   msg.data[2] = dcGc;
 
@@ -97,7 +97,7 @@ void CAN0_Alternate::CAN0pushPropDC(int dcG, int dcD)
 
   msg1.can_id = CAN_MOT;
   msg1.can_dlc = 3;
-  msg1.data[0] = 0x26;
+  msg1.data[0] = 0x25;
   msg1.data[1] = 0xFF;
   msg1.data[2] = dcDc;
 

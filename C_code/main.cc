@@ -27,8 +27,8 @@ using namespace std;
 #define CS 0
 #define RESETSPI 19
 
-double omega_ref_now_r = 50;
-double omega_ref_now_l = 50;
+double omega_ref_now_r = 110;
+double omega_ref_now_l = 100;
 
 int main()
 {
@@ -62,8 +62,8 @@ int main()
 		//	myCtrlStruct->theCtrlIn->l_wheel_ref = -10;
 		printf("wallah je suis la boucle du main !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\r\n");
 		delay(10000);
-		myCtrlStruct->theCtrlIn->r_wheel_ref = omega_ref_now_r;
-		myCtrlStruct->theCtrlIn->l_wheel_ref = omega_ref_now_l;
+		//myCtrlStruct->theCtrlIn->r_wheel_ref = omega_ref_now_r;
+		//myCtrlStruct->theCtrlIn->l_wheel_ref = omega_ref_now_l;
 	}
 	free(myCtrlStruct->theCtrlIn);
 	free(myCtrlStruct->theCtrlOut);
