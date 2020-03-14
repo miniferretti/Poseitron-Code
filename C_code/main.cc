@@ -1,11 +1,9 @@
 #include <cstdio>
 #include <stdio.h>
-//#include "IO/COM/CAN/CAN.hh"
-//#include "IO/COM/SPI/Specific/SPI_CAN.hh"
+
 #include "IO/COM/SPI/SPI.hh"
 #include "IO/COM/SPI/Specific/SPI_DE0.hh"
-//#include "IO/Speed_Controller/CtrlStruct.hh"
-//#include "IO/Speed_Controller/ctrl_io.h"
+
 #include <iostream>
 #include <wiringPiSPI.h>
 #include <wiringPiI2C.h>
@@ -13,9 +11,7 @@
 #include <stdlib.h>
 #include <signal.h>
 #include "IO/Speed_Controller/SpeedController.hh"
-//#include <chrono>
 #include <pthread.h>
-//#include <functional>
 #include <math.h>
 #include <unistd.h>
 #include <time.h>
@@ -31,12 +27,8 @@ using namespace std;
 #define CS 0
 #define RESETSPI 19
 
-//Constant values for the updateCrtlIn() routine
-//paramètre de la conversion omega->vitesse pour les roues
-
 double omega_ref_now_r = 50;
 double omega_ref_now_l = 50;
-double dt_ref = 3;
 
 int main()
 {
@@ -66,8 +58,8 @@ int main()
 	while (true)
 	{
 		delay(10000);
-	//	myCtrlStruct->theCtrlIn->r_wheel_ref = -10;
-	//	myCtrlStruct->theCtrlIn->l_wheel_ref = -10;
+		//	myCtrlStruct->theCtrlIn->r_wheel_ref = -10;
+		//	myCtrlStruct->theCtrlIn->l_wheel_ref = -10;
 		printf("wallah je suis la boucle du main !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\r\n");
 		delay(10000);
 		myCtrlStruct->theCtrlIn->r_wheel_ref = omega_ref_now_r;
