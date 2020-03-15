@@ -19,6 +19,7 @@
 #include <libsocketcan.h>
 #include <unistd.h>
 
+
 using namespace std;
 
 CAN0_Alternate::CAN0_Alternate(int baud)
@@ -171,6 +172,50 @@ void CAN0_Alternate::msgClear(can_frame *fr)
     fr->data[i] = 0;
   }
   fr->can_dlc = 0;
+}
+
+void CAN0_Alternate::getDistance(int dir, double *data)
+{
+  can_frame msg;
+  can_frame msg2;
+  int nbytes;
+
+  if (dir)
+  {
+
+    msg.can_id = CAN_SENS_ARRAY_FRONT;
+    msg.can_dlc = 3;
+    msg.data[0] = 0x00;
+    msg.data[1] = 0x00;
+    msg.data[2] = 0x00;
+
+    write(s, &msg, sizeof(msg));
+    usleep(DELAY);
+  }
+  else
+  {
+
+    msg.can_id = CAN_SENS_ARRAY_BACK;
+    msg.can_dlc = 3;
+    msg.data[0] = 0x00;
+    msg.data[1] = 0x00;
+    msg.data[2] = 0x00;
+
+    write(s, &msg, sizeof(msg));
+    usleep(DELAY);
+  }
+
+  
+  nbytes=read(s, &msg2, 0);
+ 
+
+  for (int i = 0; i < msg2.can_dlc; i++)
+  {
+    data[i] = (double)msg2.data[i];
+    
+  }
+
+  printf("%f %f %f %f %f\r\n",data[0],data[1],data[2],data[3],data[4]);
 }
 
 // For fruther info on the routines visit: https://github.com/rhyttr/SocketCAN/blob/master/test/tst-raw.c

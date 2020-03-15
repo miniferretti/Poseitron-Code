@@ -1,5 +1,7 @@
 
 #define CAN_MOT 0x508
+#define CAN_SENS_ARRAY_FRONT 0x600
+#define CAN_SENS_ARRAY_BACK 0x601
 #define DELAY 0
 #include <sstream>
 #include <string>
@@ -31,6 +33,7 @@ public:
     void CAN0ctrl_led(int state);
     void CAN0close();
     void msgClear(can_frame *fr);
+    void getDistance(int dir, double *data);
 
 private:
     int s;

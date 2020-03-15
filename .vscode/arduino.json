@@ -1,0 +1,6 @@
+{
+    "board": "arduino:avr:nano",
+    "configuration": "cpu=atmega328",
+    "programmer": "AVRISP mkII",
+    "sketch": "Arduino Code\\Proximity_Sensor_Ardino_code\\Proximity_Sensor_Ardino_code.ino"
+}
