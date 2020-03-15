@@ -27,8 +27,9 @@ using namespace std;
 #define CS 0
 #define RESETSPI 19
 
-double omega_ref_now_r = 110;
-double omega_ref_now_l = 100;
+double omega_ref_now_r[6] = {0, 10, 50, -10, -50, 0};
+double omega_ref_now_l[6] = {0, 10, 50, -10, -50, 0};
+int l = 6;
 
 int main()
 {
@@ -42,9 +43,8 @@ int main()
 	init_ctrlStruc(myCtrlStruct);
 
 	SpeedController *spctrl = new SpeedController(myCtrlStruct, can);
-
-	myCtrlStruct->theCtrlIn->r_wheel_ref = omega_ref_now_r;
-	myCtrlStruct->theCtrlIn->l_wheel_ref = omega_ref_now_l;
+	myCtrlStruct->theCtrlIn->r_wheel_ref = 0;
+	myCtrlStruct->theCtrlIn->l_wheel_ref = 0;
 
 	spctrl->init_speed_controller(1);
 
@@ -57,15 +57,14 @@ int main()
 
 	while (true)
 	{
-		delay(10000);
-		//	myCtrlStruct->theCtrlIn->r_wheel_ref = -10;
-		//	myCtrlStruct->theCtrlIn->l_wheel_ref = -10;
-		printf("wallah je suis la boucle du main !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\r\n");
-		delay(10000);
-		//myCtrlStruct->theCtrlIn->r_wheel_ref = omega_ref_now_r;
-		//myCtrlStruct->theCtrlIn->l_wheel_ref = omega_ref_now_l;
+		for (int i = 0; i < l; i++)
+		{
+			delay(1000);
+			myCtrlStruct->theCtrlIn->r_wheel_ref = omega_ref_now_r[i];
+			myCtrlStruct->theCtrlIn->l_wheel_ref = omega_ref_now_l[i];
+		}
 	}
-	
+
 	free(myCtrlStruct->theUserStruct->theMotRight);
 	free(myCtrlStruct->theUserStruct->theMotLeft);
 	free(myCtrlStruct->theCtrlIn);

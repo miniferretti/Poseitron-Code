@@ -11,23 +11,17 @@ time= A.data(:,5);
 
 
 
-close all;
-figure;
 
-subplot(2,1,1);
+figure;
 hold on;
+subplot(3,2,1);
 plot(time',refR);
 plot(time',speedR);
-xlabel("Time [sec]");
-ylabel("Speed [rad/sec]");
 title("Right wheel control log");
 
-subplot(2,1,2);
-hold on;
-plot(time',refL);
-plot(time',speedL);
-xlabel("Time [sec]");
-ylabel("Speed [rad/sec]");
-title("Left wheel control log");
+subplot(3,2,1);
+plot(time',refR);
+plot(time',speedR);
+title("Right wheel control log");
 
 
