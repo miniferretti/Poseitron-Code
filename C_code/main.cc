@@ -27,8 +27,8 @@ using namespace std;
 #define CS 0
 #define RESETSPI 19
 
-double omega_ref_now_r[6] = {0, 10, 50, -10, -50, 0};
-double omega_ref_now_l[6] = {0, 10, 50, -10, -50, 0};
+double omega_ref_now_r[6] = {0, 10, 100, -10, -50, 0};
+double omega_ref_now_l[6] = {0, 10, 100, -10, -50, 0};
 int l = 6;
 
 int main()
