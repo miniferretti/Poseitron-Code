@@ -1,5 +1,5 @@
 Analysis & Synthesis report for robot
-Sat Mar 14 15:22:30 2020
+Mon Mar 16 11:14:37 2020
 Quartus Prime Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
 
 
@@ -21,13 +21,15 @@ Quartus Prime Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
  13. Parameter Settings for User Entity Instance: my_pll:pll_clock|altpll:altpll_component
  14. altpll Parameter Settings by Entity Instance
  15. Port Connectivity Checks: "spi_slave:spi_slave_instance"
- 16. Port Connectivity Checks: "quad:encoder_RL"
- 17. Port Connectivity Checks: "quad:encoder_FL"
- 18. Port Connectivity Checks: "my_pll:pll_clock"
- 19. Post-Synthesis Netlist Statistics for Top Partition
- 20. Elapsed Time Per Partition
- 21. Analysis & Synthesis Messages
- 22. Analysis & Synthesis Suppressed Messages
+ 16. Port Connectivity Checks: "quad:odometerL"
+ 17. Port Connectivity Checks: "quad:odometerR"
+ 18. Port Connectivity Checks: "quad:encoder_RL"
+ 19. Port Connectivity Checks: "quad:encoder_FL"
+ 20. Port Connectivity Checks: "my_pll:pll_clock"
+ 21. Post-Synthesis Netlist Statistics for Top Partition
+ 22. Elapsed Time Per Partition
+ 23. Analysis & Synthesis Messages
+ 24. Analysis & Synthesis Suppressed Messages
 
 
 
@@ -53,15 +55,15 @@ refer to the applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Sat Mar 14 15:22:30 2020       ;
+; Analysis & Synthesis Status        ; Successful - Mon Mar 16 11:14:37 2020       ;
 ; Quartus Prime Version              ; 18.0.0 Build 614 04/24/2018 SJ Lite Edition ;
 ; Revision Name                      ; robot                                       ;
 ; Top-level Entity Name              ; robot                                       ;
 ; Family                             ; Cyclone IV E                                ;
-; Total logic elements               ; 214                                         ;
-;     Total combinational functions  ; 136                                         ;
-;     Dedicated logic registers      ; 192                                         ;
-; Total registers                    ; 192                                         ;
+; Total logic elements               ; 423                                         ;
+;     Total combinational functions  ; 269                                         ;
+;     Dedicated logic registers      ; 332                                         ;
+; Total registers                    ; 332                                         ;
 ; Total pins                         ; 83                                          ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 0                                           ;
@@ -196,20 +198,20 @@ refer to the applicable agreement for further details.
 +---------------------------------------------+----------------+
 ; Resource                                    ; Usage          ;
 +---------------------------------------------+----------------+
-; Estimated Total logic elements              ; 214            ;
+; Estimated Total logic elements              ; 423            ;
 ;                                             ;                ;
-; Total combinational functions               ; 136            ;
+; Total combinational functions               ; 269            ;
 ; Logic element usage by number of LUT inputs ;                ;
-;     -- 4 input functions                    ; 46             ;
-;     -- 3 input functions                    ; 72             ;
-;     -- <=2 input functions                  ; 18             ;
+;     -- 4 input functions                    ; 82             ;
+;     -- 3 input functions                    ; 134            ;
+;     -- <=2 input functions                  ; 53             ;
 ;                                             ;                ;
 ; Logic elements by mode                      ;                ;
-;     -- normal mode                          ; 71             ;
-;     -- arithmetic mode                      ; 65             ;
+;     -- normal mode                          ; 142            ;
+;     -- arithmetic mode                      ; 127            ;
 ;                                             ;                ;
-; Total registers                             ; 192            ;
-;     -- Dedicated logic registers            ; 192            ;
+; Total registers                             ; 332            ;
+;     -- Dedicated logic registers            ; 332            ;
 ;     -- I/O registers                        ; 0              ;
 ;                                             ;                ;
 ; I/O pins                                    ; 83             ;
@@ -220,9 +222,9 @@ refer to the applicable agreement for further details.
 ;     -- PLLs                                 ; 1              ;
 ;                                             ;                ;
 ; Maximum fan-out node                        ; CLOCK_50~input ;
-; Maximum fan-out                             ; 129            ;
-; Total fan-out                               ; 1072           ;
-; Average fan-out                             ; 1.90           ;
+; Maximum fan-out                             ; 269            ;
+; Total fan-out                               ; 1808           ;
+; Average fan-out                             ; 2.16           ;
 +---------------------------------------------+----------------+
 
 
@@ -231,15 +233,17 @@ refer to the applicable agreement for further details.
 +-----------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------+---------------+--------------+
 ; Compilation Hierarchy Node              ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                          ; Entity Name   ; Library Name ;
 +-----------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------+---------------+--------------+
-; |robot                                  ; 136 (0)             ; 192 (0)                   ; 0           ; 0            ; 0       ; 0         ; 83   ; 0            ; |robot                                                                       ; robot         ; work         ;
+; |robot                                  ; 269 (0)             ; 332 (0)                   ; 0           ; 0            ; 0       ; 0         ; 83   ; 0            ; |robot                                                                       ; robot         ; work         ;
 ;    |my_pll:pll_clock|                   ; 0 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |robot|my_pll:pll_clock                                                      ; my_pll        ; work         ;
 ;       |altpll:altpll_component|         ; 0 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |robot|my_pll:pll_clock|altpll:altpll_component                              ; altpll        ; work         ;
 ;          |my_pll_altpll:auto_generated| ; 0 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |robot|my_pll:pll_clock|altpll:altpll_component|my_pll_altpll:auto_generated ; my_pll_altpll ; work         ;
 ;    |quad:encoder_FL|                    ; 18 (18)             ; 22 (22)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |robot|quad:encoder_FL                                                       ; quad          ; work         ;
 ;    |quad:encoder_RL|                    ; 18 (18)             ; 22 (22)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |robot|quad:encoder_RL                                                       ; quad          ; work         ;
+;    |quad:odometerL|                     ; 34 (34)             ; 38 (38)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |robot|quad:odometerL                                                        ; quad          ; work         ;
+;    |quad:odometerR|                     ; 34 (34)             ; 38 (38)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |robot|quad:odometerR                                                        ; quad          ; work         ;
 ;    |speed:speed_counter_FL|             ; 0 (0)               ; 32 (32)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |robot|speed:speed_counter_FL                                                ; speed         ; work         ;
 ;    |speed:speed_counter_RL|             ; 0 (0)               ; 32 (32)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |robot|speed:speed_counter_RL                                                ; speed         ; work         ;
-;    |spi_slave:spi_slave_instance|       ; 100 (100)           ; 84 (84)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |robot|spi_slave:spi_slave_instance                                          ; spi_slave     ; work         ;
+;    |spi_slave:spi_slave_instance|       ; 165 (165)           ; 148 (148)                 ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |robot|spi_slave:spi_slave_instance                                          ; spi_slave     ; work         ;
 +-----------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------+---------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -257,114 +261,82 @@ Encoding Type:  One-Hot
 +----------+----------+----------+----------+---------------+
 
 
-+--------------------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                                         ;
-+---------------------------------------------+----------------------------------------------+
-; Register name                               ; Reason for Removal                           ;
-+---------------------------------------------+----------------------------------------------+
-; spi_slave:spi_slave_instance|misoRAM[1][31] ; Stuck at GND due to stuck port data_in       ;
-; spi_slave:spi_slave_instance|misoRAM[1][30] ; Stuck at GND due to stuck port data_in       ;
-; spi_slave:spi_slave_instance|misoRAM[1][29] ; Stuck at GND due to stuck port data_in       ;
-; spi_slave:spi_slave_instance|misoRAM[1][28] ; Stuck at GND due to stuck port data_in       ;
-; spi_slave:spi_slave_instance|misoRAM[1][27] ; Stuck at GND due to stuck port data_in       ;
-; spi_slave:spi_slave_instance|misoRAM[1][26] ; Stuck at GND due to stuck port data_in       ;
-; spi_slave:spi_slave_instance|misoRAM[1][25] ; Stuck at GND due to stuck port data_in       ;
-; spi_slave:spi_slave_instance|misoRAM[1][24] ; Stuck at GND due to stuck port data_in       ;
-; spi_slave:spi_slave_instance|misoRAM[1][23] ; Stuck at GND due to stuck port data_in       ;
-; spi_slave:spi_slave_instance|misoRAM[1][18] ; Stuck at GND due to stuck port data_in       ;
-; spi_slave:spi_slave_instance|misoRAM[1][17] ; Stuck at GND due to stuck port data_in       ;
-; spi_slave:spi_slave_instance|misoRAM[1][16] ; Stuck at GND due to stuck port data_in       ;
-; spi_slave:spi_slave_instance|misoRAM[1][15] ; Stuck at GND due to stuck port data_in       ;
-; spi_slave:spi_slave_instance|misoRAM[1][14] ; Stuck at GND due to stuck port data_in       ;
-; spi_slave:spi_slave_instance|misoRAM[1][13] ; Stuck at GND due to stuck port data_in       ;
-; spi_slave:spi_slave_instance|misoRAM[1][12] ; Stuck at GND due to stuck port data_in       ;
-; spi_slave:spi_slave_instance|misoRAM[1][11] ; Stuck at GND due to stuck port data_in       ;
-; spi_slave:spi_slave_instance|misoRAM[1][10] ; Stuck at GND due to stuck port data_in       ;
-; spi_slave:spi_slave_instance|misoRAM[1][9]  ; Stuck at GND due to stuck port data_in       ;
-; spi_slave:spi_slave_instance|misoRAM[1][8]  ; Stuck at GND due to stuck port data_in       ;
-; spi_slave:spi_slave_instance|misoRAM[1][7]  ; Stuck at GND due to stuck port data_in       ;
-; spi_slave:spi_slave_instance|misoRAM[1][6]  ; Stuck at GND due to stuck port data_in       ;
-; spi_slave:spi_slave_instance|misoRAM[1][5]  ; Stuck at GND due to stuck port data_in       ;
-; spi_slave:spi_slave_instance|misoRAM[1][4]  ; Stuck at GND due to stuck port data_in       ;
-; spi_slave:spi_slave_instance|misoRAM[1][3]  ; Stuck at GND due to stuck port data_in       ;
-; spi_slave:spi_slave_instance|misoRAM[1][2]  ; Stuck at GND due to stuck port data_in       ;
-; spi_slave:spi_slave_instance|misoRAM[1][1]  ; Stuck at GND due to stuck port data_in       ;
-; spi_slave:spi_slave_instance|misoRAM[1][0]  ; Stuck at GND due to stuck port data_in       ;
-; speed:speed_counter_RL|old_value[16]        ; Lost fanout                                  ;
-; speed:speed_counter_RL|new_value[16]        ; Lost fanout                                  ;
-; speed:speed_counter_RL|old_value[17]        ; Lost fanout                                  ;
-; speed:speed_counter_RL|new_value[17]        ; Lost fanout                                  ;
-; speed:speed_counter_RL|old_value[18]        ; Lost fanout                                  ;
-; speed:speed_counter_RL|new_value[18]        ; Lost fanout                                  ;
-; speed:speed_counter_RL|old_value[19]        ; Lost fanout                                  ;
-; speed:speed_counter_RL|new_value[19]        ; Lost fanout                                  ;
-; speed:speed_counter_RL|old_value[20]        ; Lost fanout                                  ;
-; speed:speed_counter_RL|new_value[20]        ; Lost fanout                                  ;
-; speed:speed_counter_RL|old_value[21]        ; Lost fanout                                  ;
-; speed:speed_counter_RL|new_value[21]        ; Lost fanout                                  ;
-; speed:speed_counter_RL|old_value[22]        ; Lost fanout                                  ;
-; speed:speed_counter_RL|new_value[22]        ; Lost fanout                                  ;
-; speed:speed_counter_RL|old_value[23]        ; Lost fanout                                  ;
-; speed:speed_counter_RL|new_value[23]        ; Lost fanout                                  ;
-; speed:speed_counter_RL|old_value[24]        ; Lost fanout                                  ;
-; speed:speed_counter_RL|new_value[24]        ; Lost fanout                                  ;
-; speed:speed_counter_RL|old_value[25]        ; Lost fanout                                  ;
-; speed:speed_counter_RL|new_value[25]        ; Lost fanout                                  ;
-; speed:speed_counter_RL|old_value[26]        ; Lost fanout                                  ;
-; speed:speed_counter_RL|new_value[26]        ; Lost fanout                                  ;
-; speed:speed_counter_RL|old_value[27]        ; Lost fanout                                  ;
-; speed:speed_counter_RL|new_value[27]        ; Lost fanout                                  ;
-; speed:speed_counter_RL|old_value[28]        ; Lost fanout                                  ;
-; speed:speed_counter_RL|new_value[28]        ; Lost fanout                                  ;
-; speed:speed_counter_RL|old_value[29]        ; Lost fanout                                  ;
-; speed:speed_counter_RL|new_value[29]        ; Lost fanout                                  ;
-; speed:speed_counter_RL|old_value[30]        ; Lost fanout                                  ;
-; speed:speed_counter_RL|new_value[30]        ; Lost fanout                                  ;
-; speed:speed_counter_RL|old_value[31]        ; Lost fanout                                  ;
-; speed:speed_counter_RL|new_value[31]        ; Lost fanout                                  ;
-; speed:speed_counter_FL|old_value[16]        ; Lost fanout                                  ;
-; speed:speed_counter_FL|new_value[16]        ; Lost fanout                                  ;
-; speed:speed_counter_FL|old_value[17]        ; Lost fanout                                  ;
-; speed:speed_counter_FL|new_value[17]        ; Lost fanout                                  ;
-; speed:speed_counter_FL|old_value[18]        ; Lost fanout                                  ;
-; speed:speed_counter_FL|new_value[18]        ; Lost fanout                                  ;
-; speed:speed_counter_FL|old_value[19]        ; Lost fanout                                  ;
-; speed:speed_counter_FL|new_value[19]        ; Lost fanout                                  ;
-; speed:speed_counter_FL|old_value[20]        ; Lost fanout                                  ;
-; speed:speed_counter_FL|new_value[20]        ; Lost fanout                                  ;
-; speed:speed_counter_FL|old_value[21]        ; Lost fanout                                  ;
-; speed:speed_counter_FL|new_value[21]        ; Lost fanout                                  ;
-; speed:speed_counter_FL|old_value[22]        ; Lost fanout                                  ;
-; speed:speed_counter_FL|new_value[22]        ; Lost fanout                                  ;
-; speed:speed_counter_FL|old_value[23]        ; Lost fanout                                  ;
-; speed:speed_counter_FL|new_value[23]        ; Lost fanout                                  ;
-; speed:speed_counter_FL|old_value[24]        ; Lost fanout                                  ;
-; speed:speed_counter_FL|new_value[24]        ; Lost fanout                                  ;
-; speed:speed_counter_FL|old_value[25]        ; Lost fanout                                  ;
-; speed:speed_counter_FL|new_value[25]        ; Lost fanout                                  ;
-; speed:speed_counter_FL|old_value[26]        ; Lost fanout                                  ;
-; speed:speed_counter_FL|new_value[26]        ; Lost fanout                                  ;
-; speed:speed_counter_FL|old_value[27]        ; Lost fanout                                  ;
-; speed:speed_counter_FL|new_value[27]        ; Lost fanout                                  ;
-; speed:speed_counter_FL|old_value[28]        ; Lost fanout                                  ;
-; speed:speed_counter_FL|new_value[28]        ; Lost fanout                                  ;
-; speed:speed_counter_FL|old_value[29]        ; Lost fanout                                  ;
-; speed:speed_counter_FL|new_value[29]        ; Lost fanout                                  ;
-; speed:speed_counter_FL|old_value[30]        ; Lost fanout                                  ;
-; speed:speed_counter_FL|new_value[30]        ; Lost fanout                                  ;
-; speed:speed_counter_FL|old_value[31]        ; Lost fanout                                  ;
-; speed:speed_counter_FL|new_value[31]        ; Lost fanout                                  ;
-; spi_slave:spi_slave_instance|misoRAM[1][22] ; Merged with quad:encoder_FL|quadA_delayed[0] ;
-; spi_slave:spi_slave_instance|misoRAM[1][21] ; Merged with quad:encoder_FL|quadB_delayed[0] ;
-; spi_slave:spi_slave_instance|misoRAM[1][20] ; Merged with quad:encoder_RL|quadA_delayed[0] ;
-; spi_slave:spi_slave_instance|misoRAM[1][19] ; Merged with quad:encoder_RL|quadB_delayed[0] ;
-; spi_slave:spi_slave_instance|state~2        ; Lost fanout                                  ;
-; spi_slave:spi_slave_instance|state~3        ; Lost fanout                                  ;
-; spi_slave:spi_slave_instance|state.S3       ; Lost fanout                                  ;
-; quad:encoder_FL|count[16..31]               ; Lost fanout                                  ;
-; quad:encoder_RL|count[16..31]               ; Lost fanout                                  ;
-; Total Number of Removed Registers = 131     ;                                              ;
-+---------------------------------------------+----------------------------------------------+
++-------------------------------------------------------------+
+; Registers Removed During Synthesis                          ;
++----------------------------------------+--------------------+
+; Register name                          ; Reason for Removal ;
++----------------------------------------+--------------------+
+; speed:speed_counter_RL|old_value[16]   ; Lost fanout        ;
+; speed:speed_counter_RL|new_value[16]   ; Lost fanout        ;
+; speed:speed_counter_RL|old_value[17]   ; Lost fanout        ;
+; speed:speed_counter_RL|new_value[17]   ; Lost fanout        ;
+; speed:speed_counter_RL|old_value[18]   ; Lost fanout        ;
+; speed:speed_counter_RL|new_value[18]   ; Lost fanout        ;
+; speed:speed_counter_RL|old_value[19]   ; Lost fanout        ;
+; speed:speed_counter_RL|new_value[19]   ; Lost fanout        ;
+; speed:speed_counter_RL|old_value[20]   ; Lost fanout        ;
+; speed:speed_counter_RL|new_value[20]   ; Lost fanout        ;
+; speed:speed_counter_RL|old_value[21]   ; Lost fanout        ;
+; speed:speed_counter_RL|new_value[21]   ; Lost fanout        ;
+; speed:speed_counter_RL|old_value[22]   ; Lost fanout        ;
+; speed:speed_counter_RL|new_value[22]   ; Lost fanout        ;
+; speed:speed_counter_RL|old_value[23]   ; Lost fanout        ;
+; speed:speed_counter_RL|new_value[23]   ; Lost fanout        ;
+; speed:speed_counter_RL|old_value[24]   ; Lost fanout        ;
+; speed:speed_counter_RL|new_value[24]   ; Lost fanout        ;
+; speed:speed_counter_RL|old_value[25]   ; Lost fanout        ;
+; speed:speed_counter_RL|new_value[25]   ; Lost fanout        ;
+; speed:speed_counter_RL|old_value[26]   ; Lost fanout        ;
+; speed:speed_counter_RL|new_value[26]   ; Lost fanout        ;
+; speed:speed_counter_RL|old_value[27]   ; Lost fanout        ;
+; speed:speed_counter_RL|new_value[27]   ; Lost fanout        ;
+; speed:speed_counter_RL|old_value[28]   ; Lost fanout        ;
+; speed:speed_counter_RL|new_value[28]   ; Lost fanout        ;
+; speed:speed_counter_RL|old_value[29]   ; Lost fanout        ;
+; speed:speed_counter_RL|new_value[29]   ; Lost fanout        ;
+; speed:speed_counter_RL|old_value[30]   ; Lost fanout        ;
+; speed:speed_counter_RL|new_value[30]   ; Lost fanout        ;
+; speed:speed_counter_RL|old_value[31]   ; Lost fanout        ;
+; speed:speed_counter_RL|new_value[31]   ; Lost fanout        ;
+; speed:speed_counter_FL|old_value[16]   ; Lost fanout        ;
+; speed:speed_counter_FL|new_value[16]   ; Lost fanout        ;
+; speed:speed_counter_FL|old_value[17]   ; Lost fanout        ;
+; speed:speed_counter_FL|new_value[17]   ; Lost fanout        ;
+; speed:speed_counter_FL|old_value[18]   ; Lost fanout        ;
+; speed:speed_counter_FL|new_value[18]   ; Lost fanout        ;
+; speed:speed_counter_FL|old_value[19]   ; Lost fanout        ;
+; speed:speed_counter_FL|new_value[19]   ; Lost fanout        ;
+; speed:speed_counter_FL|old_value[20]   ; Lost fanout        ;
+; speed:speed_counter_FL|new_value[20]   ; Lost fanout        ;
+; speed:speed_counter_FL|old_value[21]   ; Lost fanout        ;
+; speed:speed_counter_FL|new_value[21]   ; Lost fanout        ;
+; speed:speed_counter_FL|old_value[22]   ; Lost fanout        ;
+; speed:speed_counter_FL|new_value[22]   ; Lost fanout        ;
+; speed:speed_counter_FL|old_value[23]   ; Lost fanout        ;
+; speed:speed_counter_FL|new_value[23]   ; Lost fanout        ;
+; speed:speed_counter_FL|old_value[24]   ; Lost fanout        ;
+; speed:speed_counter_FL|new_value[24]   ; Lost fanout        ;
+; speed:speed_counter_FL|old_value[25]   ; Lost fanout        ;
+; speed:speed_counter_FL|new_value[25]   ; Lost fanout        ;
+; speed:speed_counter_FL|old_value[26]   ; Lost fanout        ;
+; speed:speed_counter_FL|new_value[26]   ; Lost fanout        ;
+; speed:speed_counter_FL|old_value[27]   ; Lost fanout        ;
+; speed:speed_counter_FL|new_value[27]   ; Lost fanout        ;
+; speed:speed_counter_FL|old_value[28]   ; Lost fanout        ;
+; speed:speed_counter_FL|new_value[28]   ; Lost fanout        ;
+; speed:speed_counter_FL|old_value[29]   ; Lost fanout        ;
+; speed:speed_counter_FL|new_value[29]   ; Lost fanout        ;
+; speed:speed_counter_FL|old_value[30]   ; Lost fanout        ;
+; speed:speed_counter_FL|new_value[30]   ; Lost fanout        ;
+; speed:speed_counter_FL|old_value[31]   ; Lost fanout        ;
+; speed:speed_counter_FL|new_value[31]   ; Lost fanout        ;
+; spi_slave:spi_slave_instance|state~2   ; Lost fanout        ;
+; spi_slave:spi_slave_instance|state~3   ; Lost fanout        ;
+; spi_slave:spi_slave_instance|state.S3  ; Lost fanout        ;
+; quad:encoder_FL|count[16..31]          ; Lost fanout        ;
+; quad:encoder_RL|count[16..31]          ; Lost fanout        ;
+; Total Number of Removed Registers = 99 ;                    ;
++----------------------------------------+--------------------+
 
 
 +-----------------------------------------------------------------------------------------------------------------------------+
@@ -413,12 +385,12 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 192   ;
-; Number of registers using Synchronous Clear  ; 10    ;
-; Number of registers using Synchronous Load   ; 4     ;
+; Total registers                              ; 332   ;
+; Number of registers using Synchronous Clear  ; 6     ;
+; Number of registers using Synchronous Load   ; 0     ;
 ; Number of registers using Asynchronous Clear ; 0     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 77    ;
+; Number of registers using Clock Enable       ; 141   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -429,8 +401,7 @@ Encoding Type:  One-Hot
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                      ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------+
 ; 3:1                ; 14 bits   ; 28 LEs        ; 14 LEs               ; 14 LEs                 ; Yes        ; |robot|spi_slave:spi_slave_instance|SPI_cnt[2]  ;
-; 5:1                ; 27 bits   ; 81 LEs        ; 54 LEs               ; 27 LEs                 ; Yes        ; |robot|spi_slave:spi_slave_instance|SPI_reg[10] ;
-; 19:1               ; 4 bits    ; 48 LEs        ; 8 LEs                ; 40 LEs                 ; Yes        ; |robot|spi_slave:spi_slave_instance|SPI_reg[28] ;
+; 19:1               ; 31 bits   ; 372 LEs       ; 93 LEs               ; 279 LEs                ; Yes        ; |robot|spi_slave:spi_slave_instance|SPI_reg[38] ;
 ; 9:1                ; 2 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; No         ; |robot|spi_slave:spi_slave_instance|state       ;
 ; 9:1                ; 2 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; No         ; |robot|spi_slave:spi_slave_instance|state       ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------+
@@ -836,6 +807,24 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------+--------+----------+-------------------------------------------------------------------------------------+
 
 
++--------------------------------------------+
+; Port Connectivity Checks: "quad:odometerL" ;
++-------+-------+----------+-----------------+
+; Port  ; Type  ; Severity ; Details         ;
++-------+-------+----------+-----------------+
+; reset ; Input ; Info     ; Stuck at GND    ;
++-------+-------+----------+-----------------+
+
+
++--------------------------------------------+
+; Port Connectivity Checks: "quad:odometerR" ;
++-------+-------+----------+-----------------+
+; Port  ; Type  ; Severity ; Details         ;
++-------+-------+----------+-----------------+
+; reset ; Input ; Info     ; Stuck at GND    ;
++-------+-------+----------+-----------------+
+
+
 +---------------------------------------------+
 ; Port Connectivity Checks: "quad:encoder_RL" ;
 +-------+-------+----------+------------------+
@@ -869,26 +858,24 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
 ; boundary_port         ; 83                          ;
-; cycloneiii_ff         ; 192                         ;
-;     ENA               ; 67                          ;
+; cycloneiii_ff         ; 332                         ;
+;     ENA               ; 135                         ;
 ;     ENA SCLR          ; 6                           ;
-;     ENA SCLR SLD      ; 4                           ;
-;     plain             ; 115                         ;
+;     plain             ; 191                         ;
 ; cycloneiii_io_obuf    ; 68                          ;
-; cycloneiii_lcell_comb ; 137                         ;
-;     arith             ; 65                          ;
-;         2 data inputs ; 7                           ;
-;         3 data inputs ; 58                          ;
-;     normal            ; 72                          ;
-;         0 data inputs ; 1                           ;
+; cycloneiii_lcell_comb ; 269                         ;
+;     arith             ; 127                         ;
+;         2 data inputs ; 9                           ;
+;         3 data inputs ; 118                         ;
+;     normal            ; 142                         ;
 ;         1 data inputs ; 1                           ;
-;         2 data inputs ; 10                          ;
-;         3 data inputs ; 14                          ;
-;         4 data inputs ; 46                          ;
+;         2 data inputs ; 43                          ;
+;         3 data inputs ; 16                          ;
+;         4 data inputs ; 82                          ;
 ; cycloneiii_pll        ; 1                           ;
 ;                       ;                             ;
-; Max LUT depth         ; 4.00                        ;
-; Average LUT depth     ; 1.72                        ;
+; Max LUT depth         ; 5.00                        ;
+; Average LUT depth     ; 2.74                        ;
 +-----------------------+-----------------------------+
 
 
@@ -897,7 +884,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:00     ;
+; Top            ; 00:00:01     ;
 +----------------+--------------+
 
 
@@ -907,7 +894,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
-    Info: Processing started: Sat Mar 14 15:22:18 2020
+    Info: Processing started: Mon Mar 16 11:14:25 2020
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off robot -c robot
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 16 of the 16 processors detected
@@ -921,16 +908,10 @@ Info (12021): Found 3 design units, including 3 entities, in source file encoder
     Info (12023): Found entity 1: quad File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/encoders.sv Line: 3
     Info (12023): Found entity 2: speed File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/encoders.sv Line: 23
     Info (12023): Found entity 3: delta File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/encoders.sv Line: 38
-Warning (10236): Verilog HDL Implicit Net warning at robot.sv(75): created implicit net for "speed_counter_FR" File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 75
-Warning (10236): Verilog HDL Implicit Net warning at robot.sv(76): created implicit net for "speed_counter_RR" File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 76
 Info (12127): Elaborating entity "robot" for the top level hierarchy
-Warning (10036): Verilog HDL or VHDL warning at robot.sv(75): object "speed_counter_FR" assigned a value but never read File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 75
-Warning (10036): Verilog HDL or VHDL warning at robot.sv(76): object "speed_counter_RR" assigned a value but never read File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 76
-Warning (10230): Verilog HDL assignment warning at robot.sv(75): truncated value with size 32 to match size of target (1) File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 75
-Warning (10230): Verilog HDL assignment warning at robot.sv(76): truncated value with size 32 to match size of target (1) File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 76
 Warning (12125): Using design file my_pll.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
     Info (12023): Found entity 1: my_pll File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/my_pll.v Line: 39
-Info (12128): Elaborating entity "my_pll" for hierarchy "my_pll:pll_clock" File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 65
+Info (12128): Elaborating entity "my_pll" for hierarchy "my_pll:pll_clock" File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 73
 Info (12128): Elaborating entity "altpll" for hierarchy "my_pll:pll_clock|altpll:altpll_component" File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/my_pll.v Line: 94
 Info (12130): Elaborated megafunction instantiation "my_pll:pll_clock|altpll:altpll_component" File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/my_pll.v Line: 94
 Info (12133): Instantiated megafunction "my_pll:pll_clock|altpll:altpll_component" with the following parameter: File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/my_pll.v Line: 94
@@ -995,10 +976,10 @@ Info (12133): Instantiated megafunction "my_pll:pll_clock|altpll:altpll_componen
 Info (12021): Found 1 design units, including 1 entities, in source file db/my_pll_altpll.v
     Info (12023): Found entity 1: my_pll_altpll File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/db/my_pll_altpll.v Line: 29
 Info (12128): Elaborating entity "my_pll_altpll" for hierarchy "my_pll:pll_clock|altpll:altpll_component|my_pll_altpll:auto_generated" File: c:/intelfpga_lite/18.0/quartus/libraries/megafunctions/altpll.tdf Line: 897
-Info (12128): Elaborating entity "quad" for hierarchy "quad:encoder_FL" File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 69
-Info (12128): Elaborating entity "speed" for hierarchy "speed:speed_counter_FL" File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 78
-Info (12128): Elaborating entity "spi_slave" for hierarchy "spi_slave:spi_slave_instance" File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 94
-Warning (10030): Net "misoRAM[15..2]" at MySPI.sv(32) has no driver or initial value, using a default initial value '0' File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/MySPI.sv Line: 32
+Info (12128): Elaborating entity "quad" for hierarchy "quad:encoder_FL" File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 77
+Info (12128): Elaborating entity "speed" for hierarchy "speed:speed_counter_FL" File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 88
+Info (12128): Elaborating entity "spi_slave" for hierarchy "spi_slave:spi_slave_instance" File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 104
+Warning (10030): Net "misoRAM[15..3]" at MySPI.sv(32) has no driver or initial value, using a default initial value '0' File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/MySPI.sv Line: 32
 Warning (12241): 1 hierarchies have connectivity warnings - see the Connectivity Checks report folder
 Warning (13034): The following nodes have both tri-state and non-tri-state drivers
     Warning (13035): Inserted always-enabled tri-state buffer between "PI[13]" and its non-tri-state driver. File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 45
@@ -1006,8 +987,12 @@ Warning (13039): The following bidirectional pins have no drivers
     Warning (13040): bidirectional pin "PI[9]" has no driver File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 45
     Warning (13040): bidirectional pin "PI[11]" has no driver File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 45
     Warning (13040): bidirectional pin "PI[15]" has no driver File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 45
+    Warning (13040): bidirectional pin "BRIDGE[0]" has no driver File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 49
+    Warning (13040): bidirectional pin "BRIDGE[1]" has no driver File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 49
     Warning (13040): bidirectional pin "BRIDGE[2]" has no driver File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 49
+    Warning (13040): bidirectional pin "BRIDGE[3]" has no driver File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 49
     Warning (13040): bidirectional pin "BRIDGE[4]" has no driver File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 49
+    Warning (13040): bidirectional pin "BRIDGE[5]" has no driver File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 49
     Warning (13040): bidirectional pin "PI[0]" has no driver File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 45
     Warning (13040): bidirectional pin "PI[1]" has no driver File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 45
     Warning (13040): bidirectional pin "PI[2]" has no driver File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 45
@@ -1038,10 +1023,6 @@ Warning (13039): The following bidirectional pins have no drivers
     Warning (13040): bidirectional pin "PI[31]" has no driver File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 45
     Warning (13040): bidirectional pin "PI[32]" has no driver File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 45
     Warning (13040): bidirectional pin "PI[33]" has no driver File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 45
-    Warning (13040): bidirectional pin "BRIDGE[0]" has no driver File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 49
-    Warning (13040): bidirectional pin "BRIDGE[1]" has no driver File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 49
-    Warning (13040): bidirectional pin "BRIDGE[3]" has no driver File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 49
-    Warning (13040): bidirectional pin "BRIDGE[5]" has no driver File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 49
     Warning (13040): bidirectional pin "BRIDGE[6]" has no driver File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 49
     Warning (13040): bidirectional pin "BRIDGE[7]" has no driver File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 49
     Warning (13040): bidirectional pin "BRIDGE[8]" has no driver File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 49
@@ -1072,14 +1053,13 @@ Warning (13039): The following bidirectional pins have no drivers
     Warning (13040): bidirectional pin "BRIDGE[33]" has no driver File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 49
 Warning (13009): TRI or OPNDRN buffers permanently enabled
     Warning (13010): Node "PI[13]~synth" File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 45
-Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "LED[4]" is stuck at GND File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 39
-    Warning (13410): Pin "LED[5]" is stuck at GND File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 39
-    Warning (13410): Pin "LED[6]" is stuck at GND File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 39
-    Warning (13410): Pin "LED[7]" is stuck at GND File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 39
 Info (286030): Timing-Driven Synthesis is running
-Warning (14632): Output pin "LED[1]" driven by bidirectional pin "BRIDGE[2]" cannot be tri-stated File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 39
-Warning (14632): Output pin "LED[0]" driven by bidirectional pin "BRIDGE[4]" cannot be tri-stated File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 39
+Warning (14632): Output pin "LED[1]" driven by bidirectional pin "BRIDGE[0]" cannot be tri-stated File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 39
+Warning (14632): Output pin "LED[0]" driven by bidirectional pin "BRIDGE[1]" cannot be tri-stated File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 39
+Warning (14632): Output pin "LED[5]" driven by bidirectional pin "BRIDGE[2]" cannot be tri-stated File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 39
+Warning (14632): Output pin "LED[3]" driven by bidirectional pin "BRIDGE[3]" cannot be tri-stated File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 39
+Warning (14632): Output pin "LED[4]" driven by bidirectional pin "BRIDGE[4]" cannot be tri-stated File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 39
+Warning (14632): Output pin "LED[2]" driven by bidirectional pin "BRIDGE[5]" cannot be tri-stated File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 39
 Info (17049): 99 registers lost all their fanouts during netlist optimizations.
 Info (144001): Generated suppressed messages file D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.map.smsg
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
@@ -1090,15 +1070,15 @@ Warning (21074): Design contains 4 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "KEY[1]" File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 42
     Warning (15610): No output dependent on input pin "PI_IN[0]" File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 46
     Warning (15610): No output dependent on input pin "PI_IN[1]" File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 46
-Info (21057): Implemented 298 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 507 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 7 input pins
     Info (21059): Implemented 8 output pins
     Info (21060): Implemented 68 bidirectional pins
-    Info (21061): Implemented 214 logic cells
+    Info (21061): Implemented 423 logic cells
     Info (21065): Implemented 1 PLLs
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 95 warnings
-    Info: Peak virtual memory: 4847 megabytes
-    Info: Processing ended: Sat Mar 14 15:22:30 2020
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 88 warnings
+    Info: Peak virtual memory: 4849 megabytes
+    Info: Processing ended: Mon Mar 16 11:14:37 2020
     Info: Elapsed time: 00:00:12
     Info: Total CPU time (on all processors): 00:00:24
 

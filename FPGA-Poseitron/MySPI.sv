@@ -10,7 +10,7 @@ module spi_slave(
 	input  logic 		SPI_MOSI,
 	output logic 		SPI_MISO,
 
-	input  logic [31:0]	speed_FL, speed_RL, speed_FR, speed_RR,
+	input  logic [31:0]	speed_FL, speed_RL, trace_R, trace_L,
 	output logic [31:0]	data_out
 );
 
@@ -37,8 +37,11 @@ module spi_slave(
 		// wheel data
 		misoRAM[4'h0] <= {speed_FL[15:0], speed_RL[15:0]};
 
-		// laser data
-		misoRAM[4'h1] <= {speed_FR[15:0],  speed_RR[15:0]};
+		// right odometer data
+		misoRAM[4'h1] <= {trace_R};
+
+		// left odometer data
+		misoRAM[4'h2] <= {trace_L};
 
 	end
 

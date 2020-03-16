@@ -1,12 +1,12 @@
-Analysis & Synthesis Status : Successful - Sat Mar 14 15:22:30 2020
+Analysis & Synthesis Status : Successful - Mon Mar 16 11:14:37 2020
 Quartus Prime Version : 18.0.0 Build 614 04/24/2018 SJ Lite Edition
 Revision Name : robot
 Top-level Entity Name : robot
 Family : Cyclone IV E
-Total logic elements : 214
-    Total combinational functions : 136
-    Dedicated logic registers : 192
-Total registers : 192
+Total logic elements : 423
+    Total combinational functions : 269
+    Dedicated logic registers : 332
+Total registers : 332
 Total pins : 83
 Total virtual pins : 0
 Total memory bits : 0

@@ -51,29 +51,39 @@ input 		     [1:0]		BRIDGE_IN;
 
         // F - front | R - rear
         // L - left  | R - Right
-        logic quadA_FL, quadB_FL, quadA_RL, quadB_RL, quadA_FR, quadB_FR, quadA_RR, quadB_RR;
+        logic quadA_FL, quadB_FL, quadA_RL, quadB_RL, quadA_odoR, quadB_odoR, quadA_odoL, quadB_odoL;
         assign quadA_FL = BRIDGE_IN[0];
         assign quadB_FL = BRIDGE_IN[1];
 
         assign quadA_RL = BRIDGE[2];
         assign quadB_RL = BRIDGE[4];
 
-        assign LED[3:0] = {quadA_FL,quadB_FL,quadA_RL,quadB_RL};
+        // roue odometrique droite
+        assign quadA_odoR = BRIDGE[0];
+        assign quadB_odoR = BRIDGE[1];
+
+        // roue odometrique gauche
+        assign quadA_odoL = BRIDGE[3];
+        assign quadB_odoL = BRIDGE[5];
+
+        assign LED[7:0] = {quadA_FL,quadB_FL,quadA_RL,quadB_RL,quadA_odoL,quadB_odoL,quadA_odoR,quadB_odoR};
 
         // Clocks
         logic PLL_CLOCK;
          my_pll pll_clock(CLOCK_50, PLL_CLOCK);
 
 
-        logic [31:0] count_FL, count_RL, count_FR, count_RR;
+        logic [31:0] count_FL, count_RL, count_odoR, count_odoL;
         quad encoder_FL(CLOCK_50, 1'b0, quadA_FL, quadB_FL, count_FL);
         quad encoder_RL(CLOCK_50, 1'b0, quadA_RL, quadB_RL, count_RL);
-     //   quad encoder_FR(CLOCK_50, 1'b0, quadA_FR, quadB_FR, count_FR);
+        quad odometerR(CLOCK_50,1'b0,quadA_odoR,quadB_odoR,count_odoR);
+        quad odometerL(CLOCK_50,1'b0,quadA_odoL,quadB_odoL,count_odoL);
+     //  quad encoder_FR(CLOCK_50, 1'b0, quadA_FR, quadB_FR, count_FR);
       //  quad encoder_RR(CLOCK_50, 1'b0, quadA_RR, quadB_RR, count_RR);
 
         logic [31:0] speed_FL, speed_RL, speed_FR, speed_RR;
-        assign speed_counter_FR = 32'd0;
-        assign speed_counter_RR = 32'd0;
+        //assign speed_counter_FR = 32'd0;
+        //assign speed_counter_RR = 32'd0;
 
         speed speed_counter_FL(PLL_CLOCK, count_FL, speed_FL);
         speed speed_counter_RL(PLL_CLOCK, count_RL, speed_RL);
@@ -89,7 +99,7 @@ input 		     [1:0]		BRIDGE_IN;
         logic   [3:0]   data_addr;
         spi_slave spi_slave_instance(CLOCK_50, spi_clk, spi_cs, spi_mosi, spi_miso, 
                                                                 // DATA TO SEND TO RPi :
-                                                                speed_FL, speed_RL, speed_FR, speed_RR,
+                                                                speed_FL, speed_RL, count_odoR, count_odoL,
                                                                 // DATA TO RECEIVE FROM RPi :
                                                                 data_out);
 
@@ -98,7 +108,7 @@ input 		     [1:0]		BRIDGE_IN;
         assign spi_mosi         = PI[15];   // MOSI = pin 20 = RPi_15
         assign PI[13]                       = spi_miso;     // MISO = pin 18 = RPi_13 
 
-        assign LED = speed_FR[10:3];
+       // assign LED = speed_FR[10:3];
 
 
 endmodule

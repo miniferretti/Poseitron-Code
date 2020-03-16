@@ -20,6 +20,22 @@
 					"strict" : false
 				},
 				{
+					"name" : "LED[4]",
+					"strict" : false
+				},
+				{
+					"name" : "LED[5]",
+					"strict" : false
+				},
+				{
+					"name" : "LED[6]",
+					"strict" : false
+				},
+				{
+					"name" : "LED[7]",
+					"strict" : false
+				},
+				{
 					"name" : "PI[9]",
 					"strict" : false
 				},
@@ -36,11 +52,27 @@
 					"strict" : false
 				},
 				{
+					"name" : "BRIDGE[0]",
+					"strict" : false
+				},
+				{
+					"name" : "BRIDGE[1]",
+					"strict" : false
+				},
+				{
 					"name" : "BRIDGE[2]",
 					"strict" : false
 				},
 				{
+					"name" : "BRIDGE[3]",
+					"strict" : false
+				},
+				{
 					"name" : "BRIDGE[4]",
+					"strict" : false
+				},
+				{
+					"name" : "BRIDGE[5]",
 					"strict" : false
 				},
 				{
