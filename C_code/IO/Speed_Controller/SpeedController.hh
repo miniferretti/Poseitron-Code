@@ -15,7 +15,7 @@ public:
     void updateSpeed(unsigned char *buffer);                                            //update of the speed
     void updateCmd();                                                                   // update of the command
     double PIController(MotStruct *theMot, double V_ref, double V_wheel_mes, double t); //PI speed regulator
-    int saturation(double upperLimit, double lowerLimit, double u);
+    int saturation(double upperLimit, double lowerLimit, double *u);
     void speed_controller_active(int i);
 
     CtrlStruct *theCtrlStruct;

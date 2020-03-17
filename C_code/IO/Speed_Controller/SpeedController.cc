@@ -148,7 +148,7 @@ double SpeedController::PIController(MotStruct *theMot, double V_ref, double V_w
     }
     u += theMot->integral_error;     // integral action
     u += theMot->kphi * V_wheel_mes; // back electromotive compensation
-    theMot->status = saturation(theMot->upperCurrentLimit + theMot->kphi * V_wheel_mes, theMot->lowerCurrentLimit - theMot->kphi * V_wheel_mes, u);
+    theMot->status = saturation(theMot->upperCurrentLimit + theMot->kphi * V_wheel_mes, theMot->lowerCurrentLimit - theMot->kphi * V_wheel_mes, &u);
 
     theMot->t_p = t;
 
@@ -156,7 +156,7 @@ double SpeedController::PIController(MotStruct *theMot, double V_ref, double V_w
     return u * (100 / theMot->upperVoltageLimit);
 }
 
-int SpeedController::saturation(double upperLimit, double lowerLimit, double u)
+int SpeedController::saturation(double upperLimit, double lowerLimit, double *u)
 {
     if (u > upperLimit)
     {
