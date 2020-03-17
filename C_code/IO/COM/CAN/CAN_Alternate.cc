@@ -206,7 +206,7 @@ void CAN0_Alternate::getDistance(int dir, double *data)
   }
 
   
-  nbytes=read(s, &msg2, 0);
+  nbytes=read(s, &msg2, sizeof(msg2));
  
 
   for (int i = 0; i < msg2.can_dlc; i++)

@@ -35,7 +35,10 @@ typedef struct CtrlIn
 	double l_wheel_speed; ///< left wheel speed [rad/s]
 	double r_wheel_ref;
 	double l_wheel_ref;
-
+	double r_odo_dist;
+	double l_odo_dist;
+	double radar_val_front[5];
+	double radar_val_back[5];
 	/*! //brief micro-switches
 	 */
 	int u_switch[NB_U_SWITCH]; ///< 1 if corresponding u_switch (R_ID or L_ID) is activated, 0 otherwise
