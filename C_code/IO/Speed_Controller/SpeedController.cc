@@ -88,7 +88,7 @@ void *SpeedController::updateLowCtrl(void *daSpeedController)
         //  printf("time taken sinds the controller is active: %f\r\n", time_taken / 1000);
         ((SpeedController *)daSpeedController)->theCtrlStruct->theCtrlIn->t = time_taken / 1000; //Temps utilisé pour mettre a jour les valeurs et appeler le speed controller
         ((SpeedController *)daSpeedController)->updateCmd();
-        fprintf(logFile, "%0.1f %0.1f %0.1f %0.1f %0.3f\r\n", ((SpeedController *)daSpeedController)->theCtrlStruct->theCtrlIn->r_wheel_speed, ((SpeedController *)daSpeedController)->theCtrlStruct->theCtrlIn->r_wheel_ref, ((SpeedController *)daSpeedController)->theCtrlStruct->theCtrlIn->l_wheel_speed, ((SpeedController *)daSpeedController)->theCtrlStruct->theCtrlIn->l_wheel_ref,((SpeedController *)daSpeedController)->theCtrlStruct->theCtrlIn->t);
+        fprintf(logFile, "%0.1f %0.1f %0.1f %0.1f %0.3f\r\n", ((SpeedController *)daSpeedController)->theCtrlStruct->theCtrlIn->r_wheel_speed, -((SpeedController *)daSpeedController)->theCtrlStruct->theCtrlIn->r_wheel_ref, ((SpeedController *)daSpeedController)->theCtrlStruct->theCtrlIn->l_wheel_speed, ((SpeedController *)daSpeedController)->theCtrlStruct->theCtrlIn->l_wheel_ref,((SpeedController *)daSpeedController)->theCtrlStruct->theCtrlIn->t);
     }
     fclose(logFile);
 }
@@ -106,20 +106,20 @@ void SpeedController::updateSpeed(unsigned char *buffer)
     wiringPiSPIDataRW(0, buffer, 5);
     delay(10);
 
-    this->theCtrlStruct->theCtrlIn->r_wheel_speed = -(((double)(int16_t)((uint16_t)buffer[3] << 8 | (uint16_t)buffer[4])) * this->theCtrlStruct->theUserStruct->samplingDE0) * 2 * M_PI / (this->theCtrlStruct->theUserStruct->theMotLeft->ratio * this->theCtrlStruct->theUserStruct->tics);
-    this->theCtrlStruct->theCtrlIn->l_wheel_speed = -(((double)(int16_t)((uint16_t)buffer[1] << 8 | (uint16_t)buffer[2])) * this->theCtrlStruct->theUserStruct->samplingDE0) * 2 * M_PI / (this->theCtrlStruct->theUserStruct->theMotRight->ratio * this->theCtrlStruct->theUserStruct->tics);
+    this->theCtrlStruct->theCtrlIn->l_wheel_speed = -(((double)(int16_t)((uint16_t)buffer[3] << 8 | (uint16_t)buffer[4])) * this->theCtrlStruct->theUserStruct->samplingDE0) * 2 * M_PI / (this->theCtrlStruct->theUserStruct->theMotLeft->ratio * this->theCtrlStruct->theUserStruct->tics);
+    this->theCtrlStruct->theCtrlIn->r_wheel_speed = -(((double)(int16_t)((uint16_t)buffer[1] << 8 | (uint16_t)buffer[2])) * this->theCtrlStruct->theUserStruct->samplingDE0) * 2 * M_PI / (this->theCtrlStruct->theUserStruct->theMotRight->ratio * this->theCtrlStruct->theUserStruct->tics);
 
     
 
-    //printf(" l_wheel_speed %f", this->theCtrlStruct->theCtrlIn->l_wheel_speed);
-  //  printf(" r_wheel_speed %f\n", this->theCtrlStruct->theCtrlIn->r_wheel_speed);
+    printf(" l_wheel_speed %f", this->theCtrlStruct->theCtrlIn->l_wheel_speed);
+    printf(" r_wheel_speed %f\n", this->theCtrlStruct->theCtrlIn->r_wheel_speed);
 
 }
 
 void SpeedController::updateCmd()
 {
     double omega_ref_l = this->theCtrlStruct->theCtrlIn->l_wheel_ref;
-    double omega_ref_r = this->theCtrlStruct->theCtrlIn->r_wheel_ref;
+    double omega_ref_r = -this->theCtrlStruct->theCtrlIn->r_wheel_ref;
     double r_wheel_speed = this->theCtrlStruct->theCtrlIn->r_wheel_speed;
     double l_wheel_speed = this->theCtrlStruct->theCtrlIn->l_wheel_speed;
     double t = this->theCtrlStruct->theCtrlIn->t;
@@ -130,8 +130,8 @@ void SpeedController::updateCmd()
     this->theCtrlStruct->theCtrlOut->wheel_commands[L_ID] = cmd_l;
     this->theCtrlStruct->theCtrlOut->wheel_commands[R_ID] = cmd_r;
 
- //  printf(" l_wheel_command %f", this->theCtrlStruct->theCtrlOut->wheel_commands[L_ID]);
-   // printf(" r_wheel_command %f\n", this->theCtrlStruct->theCtrlOut->wheel_commands[R_ID]);
+  printf(" l_wheel_command %f", this->theCtrlStruct->theCtrlOut->wheel_commands[L_ID]);
+    printf(" r_wheel_command %f\n", this->theCtrlStruct->theCtrlOut->wheel_commands[R_ID]);
 
     this->can0->CAN0pushPropDC(this->theCtrlStruct->theCtrlOut->wheel_commands[L_ID], this->theCtrlStruct->theCtrlOut->wheel_commands[R_ID]);
 }

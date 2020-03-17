@@ -27,8 +27,8 @@ using namespace std;
 #define CS 0
 #define RESETSPI 19
 
-double omega_ref_now_r[6] = {0, 10, 150, -10, -50, 0};
-double omega_ref_now_l[6] = {0, 10, 150, -10, -50, 0};
+double omega_ref_now_r[6] = {0, 50, 50, -50, -50, 0};
+double omega_ref_now_l[6] = {0, 50, 50, 50, -50, 0};
 
 int l = 6;
 
@@ -44,7 +44,7 @@ int main()
 	init_ctrlStruc(myCtrlStruct);
 
 	SpeedController *spctrl = new SpeedController(myCtrlStruct, can);
-	myCtrlStruct->theCtrlIn->r_wheel_ref = 0;
+	myCtrlStruct->theCtrlIn->r_wheel_ref = 30;
 	myCtrlStruct->theCtrlIn->l_wheel_ref = 30;
 
 	spctrl->init_speed_controller(1);
