@@ -52,19 +52,7 @@
 					"strict" : false
 				},
 				{
-					"name" : "BRIDGE[0]",
-					"strict" : false
-				},
-				{
-					"name" : "BRIDGE[1]",
-					"strict" : false
-				},
-				{
 					"name" : "BRIDGE[2]",
-					"strict" : false
-				},
-				{
-					"name" : "BRIDGE[3]",
 					"strict" : false
 				},
 				{
@@ -72,7 +60,19 @@
 					"strict" : false
 				},
 				{
-					"name" : "BRIDGE[5]",
+					"name" : "BRIDGE[9]",
+					"strict" : false
+				},
+				{
+					"name" : "BRIDGE[11]",
+					"strict" : false
+				},
+				{
+					"name" : "BRIDGE[13]",
+					"strict" : false
+				},
+				{
+					"name" : "BRIDGE[15]",
 					"strict" : false
 				},
 				{

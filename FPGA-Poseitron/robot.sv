@@ -59,12 +59,12 @@ input 		     [1:0]		BRIDGE_IN;
         assign quadB_RL = BRIDGE[4];
 
         // roue odometrique droite
-        assign quadA_odoR = BRIDGE[0];
-        assign quadB_odoR = BRIDGE[1];
+        assign quadA_odoR = BRIDGE[9];
+        assign quadB_odoR = BRIDGE[11];
 
         // roue odometrique gauche
-        assign quadA_odoL = BRIDGE[3];
-        assign quadB_odoL = BRIDGE[5];
+        assign quadA_odoL = BRIDGE[13];
+        assign quadB_odoL = BRIDGE[15];
 
         assign LED[7:0] = {quadA_FL,quadB_FL,quadA_RL,quadB_RL,quadA_odoL,quadB_odoL,quadA_odoR,quadB_odoR};
 
