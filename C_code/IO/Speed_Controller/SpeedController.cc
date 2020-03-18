@@ -34,8 +34,8 @@ void SpeedController::init_speed_controller(int i)
     this->theCtrlStruct->theUserStruct->tics = 2048;
     this->theCtrlStruct->theUserStruct->speed_kill = 0;
 
-    this->theCtrlStruct->theUserStruct->theMotLeft->kp = 0.07; //Kp;
-    this->theCtrlStruct->theUserStruct->theMotLeft->ki = 0.5;  // valeur a modifier si besoins est...
+    this->theCtrlStruct->theUserStruct->theMotLeft->kp = 0.068; //Kp;
+    this->theCtrlStruct->theUserStruct->theMotLeft->ki = 0.185;  // valeur a modifier si besoins est...
     this->theCtrlStruct->theUserStruct->theMotLeft->integral_error = 0;
     this->theCtrlStruct->theUserStruct->theMotLeft->status = 0;
     this->theCtrlStruct->theUserStruct->theMotLeft->Ra = Ra;
@@ -47,8 +47,8 @@ void SpeedController::init_speed_controller(int i)
     this->theCtrlStruct->theUserStruct->theMotLeft->upperVoltageLimit = 24 * secu;
     this->theCtrlStruct->theUserStruct->theMotLeft->lowerVoltageLimit = -24 * secu;
 
-    this->theCtrlStruct->theUserStruct->theMotRight->kp = 0.07; //Kp;
-    this->theCtrlStruct->theUserStruct->theMotRight->ki = 0.5;  //Ki;
+    this->theCtrlStruct->theUserStruct->theMotRight->kp = 0.075; //Kp;
+    this->theCtrlStruct->theUserStruct->theMotRight->ki = 0.45;  //Ki;
     this->theCtrlStruct->theUserStruct->theMotRight->integral_error = 0;
     this->theCtrlStruct->theUserStruct->theMotRight->status = 0;
     this->theCtrlStruct->theUserStruct->theMotRight->Ra = Ra;
@@ -158,14 +158,14 @@ double SpeedController::PIController(MotStruct *theMot, double V_ref, double V_w
 
 int SpeedController::saturation(double upperLimit, double lowerLimit, double *u)
 {
-    if (u > upperLimit)
+    if (*u > upperLimit)
     {
-        u = upperLimit;
+        *u = upperLimit;
         return 1;
     }
-    else if (u < lowerLimit)
+    else if (*u < lowerLimit)
     {
-        u = lowerLimit;
+        *u = lowerLimit;
         return 1;
     }
     else
