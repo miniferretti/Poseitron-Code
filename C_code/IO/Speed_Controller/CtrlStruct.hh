@@ -1,3 +1,6 @@
+#ifndef CTRLSTRUCT_HH
+#define CTRLSTRUCT_HH
+
 #include "ctrl_io.h"
 
 typedef struct MotStruct
@@ -38,3 +41,4 @@ typedef struct CtrlStruct
 
 int size_UserStruct();
 void init_ctrlStruc(CtrlStruct *ctrl);
+#endif

@@ -26,7 +26,7 @@ void SpeedController::init_speed_controller(int i)
     double kphi = 37.83e-3;
     double Kp = 3 * Ra * Kv / kphi;
     double Ki = Kp * ((Ra * Kv + kphi * Kp) / (J * Ra) - 3 / tau_m);
-    double Current_max = 2; //0.78; // Ampere
+    double Current_max = 0.78; //0.78; // Ampere
     double secu = 0.95;
     double ratio = 7;
 
@@ -34,8 +34,8 @@ void SpeedController::init_speed_controller(int i)
     this->theCtrlStruct->theUserStruct->tics = 2048;
     this->theCtrlStruct->theUserStruct->speed_kill = 0;
 
-    this->theCtrlStruct->theUserStruct->theMotLeft->kp = 0.068; //Kp;
-    this->theCtrlStruct->theUserStruct->theMotLeft->ki = 0.185;  // valeur a modifier si besoins est...
+    this->theCtrlStruct->theUserStruct->theMotLeft->kp = 0.08; //Kp;
+    this->theCtrlStruct->theUserStruct->theMotLeft->ki = 0.25;  // valeur a modifier si besoins est...
     this->theCtrlStruct->theUserStruct->theMotLeft->integral_error = 0;
     this->theCtrlStruct->theUserStruct->theMotLeft->status = 0;
     this->theCtrlStruct->theUserStruct->theMotLeft->Ra = Ra;
@@ -47,8 +47,8 @@ void SpeedController::init_speed_controller(int i)
     this->theCtrlStruct->theUserStruct->theMotLeft->upperVoltageLimit = 24 * secu;
     this->theCtrlStruct->theUserStruct->theMotLeft->lowerVoltageLimit = -24 * secu;
 
-    this->theCtrlStruct->theUserStruct->theMotRight->kp = 0.075; //Kp;
-    this->theCtrlStruct->theUserStruct->theMotRight->ki = 0.45;  //Ki;
+    this->theCtrlStruct->theUserStruct->theMotRight->kp = 0.065; //Kp;
+    this->theCtrlStruct->theUserStruct->theMotRight->ki = 0.3;  //Ki;
     this->theCtrlStruct->theUserStruct->theMotRight->integral_error = 0;
     this->theCtrlStruct->theUserStruct->theMotRight->status = 0;
     this->theCtrlStruct->theUserStruct->theMotRight->Ra = Ra;
@@ -59,12 +59,22 @@ void SpeedController::init_speed_controller(int i)
     this->theCtrlStruct->theUserStruct->theMotRight->lowerCurrentLimit = -Ra * Current_max;
     this->theCtrlStruct->theUserStruct->theMotRight->upperVoltageLimit = 24 * secu;
     this->theCtrlStruct->theUserStruct->theMotRight->lowerVoltageLimit = -24 * secu;
+
+    for (int i = 0; i < MVG_LENG; i++)
+    {
+        this->avgL[i] = 0;
+        this->avgR[i] = 0;
+    }
 }
 
 void SpeedController::speed_controller_active(int i)
 {
-    this->can0->CAN0ctrl_motor(i);
     this->theCtrlStruct->theUserStruct->speed_kill = !i;
+    if (i == 0)
+    {
+        pthread_join(this->tr, NULL);
+    }
+    this->can0->CAN0ctrl_motor(i);
 }
 
 void SpeedController::run_speed_controller()
@@ -86,9 +96,14 @@ void *SpeedController::updateLowCtrl(void *daSpeedController)
         auto elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now() - start);
         double time_taken = (elapsed.count());
         //  printf("time taken sinds the controller is active: %f\r\n", time_taken / 1000);
-        ((SpeedController *)daSpeedController)->theCtrlStruct->theCtrlIn->t = time_taken / 1000; //Temps utilisé pour mettre a jour les valeurs et appeler le speed controller
+        ((SpeedController *)daSpeedController)->theCtrlStruct->theCtrlIn->t = time_taken / 1000.0; //Temps utilisé pour mettre a jour les valeurs et appeler le speed controller
         ((SpeedController *)daSpeedController)->updateCmd();
-        fprintf(logFile, "%0.1f %0.1f %0.1f %0.1f %0.3f\r\n", ((SpeedController *)daSpeedController)->theCtrlStruct->theCtrlIn->r_wheel_speed, -((SpeedController *)daSpeedController)->theCtrlStruct->theCtrlIn->r_wheel_ref, ((SpeedController *)daSpeedController)->theCtrlStruct->theCtrlIn->l_wheel_speed, ((SpeedController *)daSpeedController)->theCtrlStruct->theCtrlIn->l_wheel_ref,((SpeedController *)daSpeedController)->theCtrlStruct->theCtrlIn->t);
+        fprintf(logFile, "%0.1f %0.1f %0.1f %0.1f %f\r\n",
+                -((SpeedController *)daSpeedController)->theCtrlStruct->theCtrlIn->r_wheel_speed,
+                ((SpeedController *)daSpeedController)->theCtrlStruct->theCtrlIn->r_wheel_ref,
+                ((SpeedController *)daSpeedController)->theCtrlStruct->theCtrlIn->l_wheel_speed,
+                ((SpeedController *)daSpeedController)->theCtrlStruct->theCtrlIn->l_wheel_ref,
+                ((SpeedController *)daSpeedController)->theCtrlStruct->theCtrlIn->t);
     }
     fclose(logFile);
 }
@@ -104,16 +119,18 @@ void SpeedController::updateSpeed(unsigned char *buffer)
     buffer[4] = 0x00;
 
     wiringPiSPIDataRW(0, buffer, 5);
-    delay(5);
+
+    /*  double speedL = -(((double)(int16_t)((uint16_t)buffer[3] << 8 | (uint16_t)buffer[4])) * this->theCtrlStruct->theUserStruct->samplingDE0) * 2 * M_PI / (this->theCtrlStruct->theUserStruct->theMotLeft->ratio * this->theCtrlStruct->theUserStruct->tics);
+    double speedR = -(((double)(int16_t)((uint16_t)buffer[1] << 8 | (uint16_t)buffer[2])) * this->theCtrlStruct->theUserStruct->samplingDE0) * 2 * M_PI / (this->theCtrlStruct->theUserStruct->theMotRight->ratio * this->theCtrlStruct->theUserStruct->tics);
+
+    this->theCtrlStruct->theCtrlIn->l_wheel_speed = this->Moving_Average(speedL, this->avgL, MVG_LENG);
+    this->theCtrlStruct->theCtrlIn->r_wheel_speed = this->Moving_Average(speedR, this->avgR, MVG_LENG);*/
 
     this->theCtrlStruct->theCtrlIn->l_wheel_speed = -(((double)(int16_t)((uint16_t)buffer[3] << 8 | (uint16_t)buffer[4])) * this->theCtrlStruct->theUserStruct->samplingDE0) * 2 * M_PI / (this->theCtrlStruct->theUserStruct->theMotLeft->ratio * this->theCtrlStruct->theUserStruct->tics);
     this->theCtrlStruct->theCtrlIn->r_wheel_speed = -(((double)(int16_t)((uint16_t)buffer[1] << 8 | (uint16_t)buffer[2])) * this->theCtrlStruct->theUserStruct->samplingDE0) * 2 * M_PI / (this->theCtrlStruct->theUserStruct->theMotRight->ratio * this->theCtrlStruct->theUserStruct->tics);
 
-    
-
     printf(" l_wheel_speed %f", this->theCtrlStruct->theCtrlIn->l_wheel_speed);
-    printf(" r_wheel_speed %f\n", this->theCtrlStruct->theCtrlIn->r_wheel_speed);
-
+    printf(" r_wheel_speed %f\n", -this->theCtrlStruct->theCtrlIn->r_wheel_speed);
 }
 
 void SpeedController::updateCmd()
@@ -130,9 +147,8 @@ void SpeedController::updateCmd()
     this->theCtrlStruct->theCtrlOut->wheel_commands[L_ID] = cmd_l;
     this->theCtrlStruct->theCtrlOut->wheel_commands[R_ID] = cmd_r;
 
-  printf(" l_wheel_command %f", this->theCtrlStruct->theCtrlOut->wheel_commands[L_ID]);
-    printf(" r_wheel_command %f\n", this->theCtrlStruct->theCtrlOut->wheel_commands[R_ID]);
-
+    printf(" l_wheel_command %f", this->theCtrlStruct->theCtrlOut->wheel_commands[L_ID]);
+    printf(" r_wheel_command %f\n", -this->theCtrlStruct->theCtrlOut->wheel_commands[R_ID]);
     this->can0->CAN0pushPropDC(this->theCtrlStruct->theCtrlOut->wheel_commands[L_ID], this->theCtrlStruct->theCtrlOut->wheel_commands[R_ID]);
 }
 
@@ -145,8 +161,9 @@ double SpeedController::PIController(MotStruct *theMot, double V_ref, double V_w
     if (!theMot->status) //The integral action is only done if there is no saturation of current.
     {
         theMot->integral_error += dt * e * theMot->ki;
+        u += theMot->integral_error;
     }
-    u += theMot->integral_error;     // integral action
+    // integral action
     u += theMot->kphi * V_wheel_mes; // back electromotive compensation
     theMot->status = saturation(theMot->upperCurrentLimit + theMot->kphi * V_wheel_mes, theMot->lowerCurrentLimit - theMot->kphi * V_wheel_mes, &u);
 
@@ -170,4 +187,34 @@ int SpeedController::saturation(double upperLimit, double lowerLimit, double *u)
     }
     else
         return 0;
+}
+
+double SpeedController::Moving_Average(double speed, double *buff, int leng)
+{
+
+    int count = 0;
+    double sum = 0;
+
+    for (int i = 0; i < leng; i++)
+    {
+        if (i == leng - 1)
+        {
+            buff[leng - 1 - i] = speed;
+            sum += buff[leng - 1 - i];
+        }
+        else
+        {
+            if (buff[leng - 1 - i] == 0)
+            {
+                buff[leng - 1 - i] = speed;
+            }
+            else
+            {
+                buff[leng - 1 - i] = buff[leng - 1 - i - 1];
+            }
+            sum += buff[leng - 1 - i];
+        }
+    }
+
+    return (sum / ((double)leng));
 }

@@ -5,8 +5,8 @@
 #include "IO/COM/SPI/Specific/SPI_DE0.hh"
 
 #include <iostream>
-#include <wiringPiSPI.h>
-#include <wiringPiI2C.h>
+//#include <wiringPiSPI.h>
+//#include <wiringPiI2C.h>
 #include <errno.h>
 #include <stdlib.h>
 #include <signal.h>
@@ -45,16 +45,14 @@ int main()
 	init_ctrlStruc(myCtrlStruct);
 
 	SpeedController *spctrl = new SpeedController(myCtrlStruct, can);
-	myCtrlStruct->theCtrlIn->r_wheel_ref = 30;
-	myCtrlStruct->theCtrlIn->l_wheel_ref = 30;
+	Odometry *myOdometry = new Odometry(myCtrlStruct);
 
+	myCtrlStruct->theCtrlIn->r_wheel_ref = 0;
+	myCtrlStruct->theCtrlIn->l_wheel_ref = 0;
 	spctrl->init_speed_controller(1);
-
 	spctrl->run_speed_controller();
-
-	Odometry *myOdometry= new Odometry(myCtrlStruct);
-
-
+	myOdometry->Odometry_init();
+	myOdometry->Odometry_start();
 
 	printf("Welcome to the Poseitron code prototype.\r\n");
 	printf("We hope that you will be pleased with the coding and we wish you a great succes.\n\r");
@@ -65,15 +63,16 @@ int main()
 	{
 		for (int i = 0; i < l; i++)
 		{
+
+			myCtrlStruct->theCtrlIn->r_wheel_ref = omega_ref_now_r[i];
+			myCtrlStruct->theCtrlIn->l_wheel_ref = omega_ref_now_l[i];
 			delay(5000);
-			
-			
-			
 		}
-
-
+		break;
 	}
 
+	myOdometry->Odometry_stop();
+	spctrl->speed_controller_active(0);
 	free(myCtrlStruct->theUserStruct->theMotRight);
 	free(myCtrlStruct->theUserStruct->theMotLeft);
 	free(myCtrlStruct->theCtrlIn);

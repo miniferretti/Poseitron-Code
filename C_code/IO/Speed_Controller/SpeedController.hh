@@ -1,7 +1,11 @@
 
+#ifndef SPEEDCONTROLLER_HH
+#define SPEEDCONTROLLER_HH
+
 #include "CtrlStruct.hh"
 #include "IO/COM/CAN/CAN_Alternate.hh"
 #include <pthread.h>
+#define MVG_LENG 1
 
 class SpeedController
 {
@@ -17,8 +21,13 @@ public:
     double PIController(MotStruct *theMot, double V_ref, double V_wheel_mes, double t); //PI speed regulator
     int saturation(double upperLimit, double lowerLimit, double *u);
     void speed_controller_active(int i);
+    double Moving_Average(double speed, double *buff, int leng);
 
     CtrlStruct *theCtrlStruct;
     CAN0_Alternate *can0;
     pthread_t tr;
+    double avgR[MVG_LENG];
+    double avgL[MVG_LENG];
 };
+
+#endif

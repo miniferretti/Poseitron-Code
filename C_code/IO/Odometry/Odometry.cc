@@ -1,25 +1,24 @@
 #include "Odometry.hh"
-#include <math.h>
-#include <iostream>
-#include "stdio.h"
 
 Odometry::Odometry(CtrlStruct *theCtrlStruct)
 {
     this->theCtrlStruct = theCtrlStruct;
-    this->mutex1 = PTHREAD_MUTEX_INITIALIZER;
 }
 
 void Odometry::Odometry_init()
 {
-    this->theCtrlStruct->theCtrlIn->odo_radius = 44.5 / 2000; //radius of the wheel in meters
-    this->theCtrlStruct->theCtrlIn->l_odo_dist_prev = 0;
-    this->theCtrlStruct->theCtrlIn->r_odo_dist_prev = 0;
-    this->theCtrlStruct->theCtrlIn->x = 0;
-    this->theCtrlStruct->theCtrlIn->y = 0;
-    this->theCtrlStruct->theCtrlIn->theta = 0;
-    this->theCtrlStruct->theCtrlIn->odo_tics_per_rot = 2048;
-    this->theCtrlStruct->theCtrlIn->robot_width = 22.3 / 100; //value in meters
-    this->theCtrlStruct->theUserStruct->Odo_kill = 0;
+    unsigned char buffer[5];
+    this->theCtrlStruct->theCtrlIn->odo_radius = 45.0 / 2000.0; //radius of the wheel in meters
+    this->theCtrlStruct->theCtrlIn->l_odo_dist_prev = 0.0;
+    this->theCtrlStruct->theCtrlIn->r_odo_dist_prev = 0.0;
+    this->theCtrlStruct->theCtrlIn->x = 0.0;
+    this->theCtrlStruct->theCtrlIn->y = 0.0;
+    this->theCtrlStruct->theCtrlIn->theta = 0.0;
+    this->theCtrlStruct->theCtrlIn->odo_tics_per_rot = 2048.0;
+    this->theCtrlStruct->theCtrlIn->robot_width = 22.3 / 100.0; //value in meters
+    this->theCtrlStruct->theUserStruct->Odo_kill = 0.0;
+    this->mutex1 = PTHREAD_MUTEX_INITIALIZER;
+    this->update_rot(buffer);
 }
 
 void Odometry::Odometry_start()
@@ -38,7 +37,7 @@ void *Odometry::Odometry_update(void *daOdometry)
     double y;
 
     FILE *logFile = fopen("/home/pi/RobotCode/LogFileOdometry.txt", "w");
-    fprintf(logFile, "X Y Theta Time\r\n");
+    fprintf(logFile, "X Y Theta dr dl Time\r\n");
 
     while (((Odometry *)daOdometry)->theCtrlStruct->theUserStruct->Odo_kill == 0)
     {
@@ -49,12 +48,17 @@ void *Odometry::Odometry_update(void *daOdometry)
         y = ((Odometry *)daOdometry)->theCtrlStruct->theCtrlIn->y;
         theta = ((Odometry *)daOdometry)->theCtrlStruct->theCtrlIn->theta;
 
-        ((Odometry *)daOdometry)->theCtrlStruct->theCtrlIn->x = x + ((dr+dl)/2)*cos(theta+((dr-dl)/(2*l)));
-        ((Odometry *)daOdometry)->theCtrlStruct->theCtrlIn->y = y + ((dr+dl)/2)*sin(theta+((dr-dl)/(2*l)));
-        ((Odometry *)daOdometry)->theCtrlStruct->theCtrlIn->theta = theta + ((dr-dl)/l);
+        ((Odometry *)daOdometry)->theCtrlStruct->theCtrlIn->x = x + ((dr + dl) / 2) * cos(theta + ((dr - dl) / (2 * l)));
+        ((Odometry *)daOdometry)->theCtrlStruct->theCtrlIn->y = y + ((dr + dl) / 2) * sin(theta + ((dr - dl) / (2 * l)));
+        ((Odometry *)daOdometry)->theCtrlStruct->theCtrlIn->theta = theta + ((dr - dl) / l);
 
-        fprintf(logFile, "%0.001f %0.001f %0.001f %0.001f", ((Odometry *)daOdometry)->theCtrlStruct->theCtrlIn->x, ((Odometry *)daOdometry)->theCtrlStruct->theCtrlIn->y, ((Odometry *)daOdometry)->theCtrlStruct->theCtrlIn->theta, ((Odometry *)daOdometry)->theCtrlStruct->theCtrlIn->t);
-        delay(STEP);
+        fprintf(logFile, "%f %f %f %f %f %f\r\n",
+                ((Odometry *)daOdometry)->theCtrlStruct->theCtrlIn->x,
+                ((Odometry *)daOdometry)->theCtrlStruct->theCtrlIn->y,
+                ((Odometry *)daOdometry)->theCtrlStruct->theCtrlIn->theta,
+                dr,
+                dl,
+                ((Odometry *)daOdometry)->theCtrlStruct->theCtrlIn->t);
     }
 
     fclose(logFile);
@@ -74,7 +78,7 @@ void Odometry::update_rot(unsigned char *buffer)
     wiringPiSPIDataRW(0, buffer, 5);
 
     this->theCtrlStruct->theCtrlIn->r_odo_dist_prev = this->theCtrlStruct->theCtrlIn->r_odo_dist;
-    this->theCtrlStruct->theCtrlIn->r_odo_dist = (((double)((uint32_t)buffer[1] << 24 | (uint32_t)buffer[2] << 16 | (uint32_t)buffer[3] << 8 | (uint32_t)buffer[4])) / this->theCtrlStruct->theCtrlIn->odo_tics_per_rot) * 2 * M_PI * this->theCtrlStruct->theCtrlIn->odo_radius;
+    this->theCtrlStruct->theCtrlIn->r_odo_dist = (((double)(int32_t)((uint32_t)buffer[1] << 24 | (uint32_t)buffer[2] << 16 | (uint32_t)buffer[3] << 8 | (uint32_t)buffer[4])) / this->theCtrlStruct->theCtrlIn->odo_tics_per_rot) * 2 * M_PI * this->theCtrlStruct->theCtrlIn->odo_radius;
 
     //Roue gauche
     buffer[0] = 0x02;
@@ -86,5 +90,11 @@ void Odometry::update_rot(unsigned char *buffer)
     wiringPiSPIDataRW(0, buffer, 5);
 
     this->theCtrlStruct->theCtrlIn->l_odo_dist_prev = this->theCtrlStruct->theCtrlIn->l_odo_dist;
-    this->theCtrlStruct->theCtrlIn->l_odo_dist = (((double)((uint32_t)buffer[1] << 24 | (uint32_t)buffer[2] << 16 | (uint32_t)buffer[3] << 8 | (uint32_t)buffer[4])) / this->theCtrlStruct->theCtrlIn->odo_tics_per_rot) * 2 * M_PI * this->theCtrlStruct->theCtrlIn->odo_radius;
+    this->theCtrlStruct->theCtrlIn->l_odo_dist = -(((double)(int32_t)((uint32_t)buffer[1] << 24 | (uint32_t)buffer[2] << 16 | (uint32_t)buffer[3] << 8 | (uint32_t)buffer[4])) / this->theCtrlStruct->theCtrlIn->odo_tics_per_rot) * 2 * M_PI * this->theCtrlStruct->theCtrlIn->odo_radius;
+    
+}
+
+void Odometry::Odometry_stop()
+{
+    this->theCtrlStruct->theUserStruct->Odo_kill = 1;
 }
