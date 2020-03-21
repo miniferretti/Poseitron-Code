@@ -26,6 +26,7 @@ typedef struct UserStruct
     double tics;
     double samplingDE0;
     int speed_kill;
+    int Odo_kill;
 } UserStruct;
 
 typedef struct CtrlStruct

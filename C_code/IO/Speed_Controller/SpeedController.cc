@@ -77,7 +77,7 @@ void *SpeedController::updateLowCtrl(void *daSpeedController)
 
     auto start = std::chrono::steady_clock::now();
     unsigned char buffer[5];
-    FILE *logFile = fopen("/home/pi/RobotCode/logFile.txt", "w"); //Ouverture et ecrasement du fichier log pour l'historique des vitesses (pour Matlab par exemple...)
+    FILE *logFile = fopen("/home/pi/RobotCode/logFileSpeed.txt", "w"); //Ouverture et ecrasement du fichier log pour l'historique des vitesses (pour Matlab par exemple...)
     fprintf(logFile, "Rspeed Rref Lspeed Lref Time\r\n");
 
     while (((SpeedController *)daSpeedController)->theCtrlStruct->theUserStruct->speed_kill == 0)
@@ -104,7 +104,7 @@ void SpeedController::updateSpeed(unsigned char *buffer)
     buffer[4] = 0x00;
 
     wiringPiSPIDataRW(0, buffer, 5);
-    delay(10);
+    delay(5);
 
     this->theCtrlStruct->theCtrlIn->l_wheel_speed = -(((double)(int16_t)((uint16_t)buffer[3] << 8 | (uint16_t)buffer[4])) * this->theCtrlStruct->theUserStruct->samplingDE0) * 2 * M_PI / (this->theCtrlStruct->theUserStruct->theMotLeft->ratio * this->theCtrlStruct->theUserStruct->tics);
     this->theCtrlStruct->theCtrlIn->r_wheel_speed = -(((double)(int16_t)((uint16_t)buffer[1] << 8 | (uint16_t)buffer[2])) * this->theCtrlStruct->theUserStruct->samplingDE0) * 2 * M_PI / (this->theCtrlStruct->theUserStruct->theMotRight->ratio * this->theCtrlStruct->theUserStruct->tics);

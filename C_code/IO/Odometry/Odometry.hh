@@ -6,6 +6,8 @@
 #include <iostream>
 #include "stdio.h"
 
+#define STEP 50 
+
 class Odometry
 {
 public:
@@ -20,4 +22,5 @@ public:
 private:
     CtrlStruct *theCtrlStruct;
     pthread_t tr;
+    pthread_mutex_t mutex1;
 };

@@ -41,6 +41,7 @@ typedef struct CtrlIn
 
 	double odo_radius;
 	double odo_tics_per_rot;
+	double robot_width; 
 	double r_odo_dist;
 	double r_odo_dist_prev;
 	double l_odo_dist;

@@ -11,6 +11,7 @@
 #include <stdlib.h>
 #include <signal.h>
 #include "IO/Speed_Controller/SpeedController.hh"
+#include "IO/Odometry/Odometry.hh"
 #include <pthread.h>
 #include <math.h>
 #include <unistd.h>
@@ -51,6 +52,10 @@ int main()
 
 	spctrl->run_speed_controller();
 
+	Odometry *myOdometry= new Odometry(myCtrlStruct);
+
+
+
 	printf("Welcome to the Poseitron code prototype.\r\n");
 	printf("We hope that you will be pleased with the coding and we wish you a great succes.\n\r");
 
@@ -61,8 +66,7 @@ int main()
 		for (int i = 0; i < l; i++)
 		{
 			delay(5000);
-			myCtrlStruct->theCtrlIn->r_wheel_ref = omega_ref_now_r[i];
-			myCtrlStruct->theCtrlIn->l_wheel_ref = omega_ref_now_l[i];
+			
 			
 			
 		}
@@ -76,6 +80,7 @@ int main()
 	free(myCtrlStruct->theCtrlOut);
 	free(myCtrlStruct->theUserStruct);
 	free(myCtrlStruct);
+	exit(0);
 }
 
 //Fonction est qui appellée dans un thread, son but est de metter à jour les variables de MinibotCrtlIn et de mettre a jour la vitesse des roues
