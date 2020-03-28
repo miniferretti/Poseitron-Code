@@ -28,7 +28,7 @@ class CAN0_Alternate
 {
 public:
     CAN0_Alternate(int baud);
-    void CAN0pushPropDC(int dcG, int dcD);
+    void CAN0pushPropDC(double dcG, double dcD);
     void CAN0ctrl_motor(int state);
     void CAN0ctrl_led(int state);
     void CAN0close();

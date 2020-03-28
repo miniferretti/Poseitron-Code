@@ -35,9 +35,9 @@ void SpeedController::init_speed_controller(int i)
     this->theCtrlStruct->theUserStruct->tics = 2048;
     this->theCtrlStruct->theUserStruct->speed_kill = 0;
 
-    this->theCtrlStruct->theUserStruct->theMotLeft->kp = 0.01; //Kp;
-    this->theCtrlStruct->theUserStruct->theMotLeft->ki = 0.0;  // valeur a modifier si besoins est...
-    this->theCtrlStruct->theUserStruct->theMotLeft->kd = 0.0;
+    this->theCtrlStruct->theUserStruct->theMotLeft->kp = 0.05; //Kp;
+    this->theCtrlStruct->theUserStruct->theMotLeft->ki = 0.6;  // valeur a modifier si besoins est...
+    this->theCtrlStruct->theUserStruct->theMotLeft->kd = 0.0004;
     this->theCtrlStruct->theUserStruct->theMotLeft->integral_error = 0;
     this->theCtrlStruct->theUserStruct->theMotLeft->status = 0;
     this->theCtrlStruct->theUserStruct->theMotLeft->Ra = Ra;
@@ -49,9 +49,9 @@ void SpeedController::init_speed_controller(int i)
     this->theCtrlStruct->theUserStruct->theMotLeft->upperVoltageLimit = 24 * secu;
     this->theCtrlStruct->theUserStruct->theMotLeft->lowerVoltageLimit = -24 * secu;
 
-    this->theCtrlStruct->theUserStruct->theMotRight->kp = 0.01; //Kp;
-    this->theCtrlStruct->theUserStruct->theMotRight->ki = 0.05; //Ki;
-    this->theCtrlStruct->theUserStruct->theMotRight->kd = 0.0;
+    this->theCtrlStruct->theUserStruct->theMotRight->kp = 0.025; //Kp;
+    this->theCtrlStruct->theUserStruct->theMotRight->ki = 0.5; //Ki;
+    this->theCtrlStruct->theUserStruct->theMotRight->kd = 0.0005;
     this->theCtrlStruct->theUserStruct->theMotRight->integral_error = 0;
     this->theCtrlStruct->theUserStruct->theMotRight->status = 0;
     this->theCtrlStruct->theUserStruct->theMotRight->Ra = Ra;
@@ -109,7 +109,7 @@ void *SpeedController::updateLowCtrl(void *daSpeedController)
                 ((SpeedController *)daSpeedController)->theCtrlStruct->theCtrlIn->l_wheel_speed,
                 ((SpeedController *)daSpeedController)->theCtrlStruct->theCtrlIn->l_wheel_ref,
                 ((SpeedController *)daSpeedController)->theCtrlStruct->theCtrlIn->t);
-        usleep(50000);
+        usleep(10000);
     }
     fclose(logFile);
 }

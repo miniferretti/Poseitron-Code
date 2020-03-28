@@ -19,7 +19,6 @@
 #include <libsocketcan.h>
 #include <unistd.h>
 
-
 using namespace std;
 
 CAN0_Alternate::CAN0_Alternate(int baud)
@@ -71,10 +70,10 @@ CAN0_Alternate::CAN0_Alternate(int baud)
   }
 }
 
-void CAN0_Alternate::CAN0pushPropDC(int dcG, int dcD)
+void CAN0_Alternate::CAN0pushPropDC(double  dcG, double dcD)
 {
-  uint8_t dcGc = 128 * dcG / 100.0 + 128;
-  uint8_t dcDc = 128 * dcD / 100.0 + 128;
+  uint8_t dcGc = (uint8_t)(128.0 * dcG / 100.0 + 128.0);
+  uint8_t dcDc = (uint8_t)(128.0 * dcD / 100.0 + 128.0);
   dcGc = dcGc >> 2;
   dcDc = dcDc >> 2;
   can_frame msg;
@@ -87,7 +86,7 @@ void CAN0_Alternate::CAN0pushPropDC(int dcG, int dcD)
   msg.data[2] = dcGc;
 
   write(s, &msg, sizeof(msg));
- // usleep(DELAY);
+  // usleep(DELAY);
 
   msg1.can_id = CAN_MOT;
   msg1.can_dlc = 3;
@@ -205,17 +204,14 @@ void CAN0_Alternate::getDistance(int dir, double *data)
     usleep(DELAY);
   }
 
-  
-  nbytes=read(s, &msg2, sizeof(msg2));
- 
+  nbytes = read(s, &msg2, sizeof(msg2));
 
   for (int i = 0; i < msg2.can_dlc; i++)
   {
     data[i] = (double)msg2.data[i];
-    
   }
 
-  printf("%f %f %f %f %f\r\n",data[0],data[1],data[2],data[3],data[4]);
+  printf("%f %f %f %f %f\r\n", data[0], data[1], data[2], data[3], data[4]);
 }
 
 // For fruther info on the routines visit: https://github.com/rhyttr/SocketCAN/blob/master/test/tst-raw.c
