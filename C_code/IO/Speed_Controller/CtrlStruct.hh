@@ -3,10 +3,49 @@
 
 #include "ctrl_io.h"
 
+enum
+{
+    CALIB_STATE,
+    RUN_STATE,
+    STOP_STATE
+};
+
+//Behavior states
+enum
+{
+    BAV_STATE_1
+};
+
+//Behavior structure (Rudimentary)
+enum
+{
+    FOLOW_STATE,
+    AVOID_STATE
+};
+
+//Structure for the odometry
+typedef struct RobotPosition
+{
+    double x;
+    double y;
+    double theta;
+
+    double t_used;
+
+} RobotPosition;
+
+typedef struct RobotParameters
+{
+    double odo_radius;
+    double odo_tics_per_rot;
+    double robot_width; //Length between the two odometers
+} RobotParameters;
+
 typedef struct MotStruct
 {
     double kp;             // Proportional param
     double ki;             // Integral param
+    double kd;
     double integral_error; // last integral error
     double status;         // Is or not in saturation
 
@@ -37,6 +76,9 @@ typedef struct CtrlStruct
     UserStruct *theUserStruct; ///< user defined CtrlStruct
     CtrlIn *theCtrlIn;         ///< controller inputs
     CtrlOut *theCtrlOut;       ///< controller outputs
+    RobotPosition *rob_pos;
+    RobotParameters *robot;
+    int main_states;
 } CtrlStruct;
 
 int size_UserStruct();

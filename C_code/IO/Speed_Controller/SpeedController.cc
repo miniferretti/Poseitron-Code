@@ -8,10 +8,11 @@
 #include <iostream>
 #include "stdio.h"
 
-SpeedController::SpeedController(CtrlStruct *theCtrlStruct, CAN0_Alternate *can0)
+SpeedController::SpeedController(CtrlStruct *theCtrlStruct, CAN0_Alternate *can0, pthread_mutex_t *theMutex)
 {
     this->can0 = can0;
     this->theCtrlStruct = theCtrlStruct;
+    this->theMutex = theMutex;
 }
 
 void SpeedController::init_speed_controller(int i)
@@ -34,8 +35,9 @@ void SpeedController::init_speed_controller(int i)
     this->theCtrlStruct->theUserStruct->tics = 2048;
     this->theCtrlStruct->theUserStruct->speed_kill = 0;
 
-    this->theCtrlStruct->theUserStruct->theMotLeft->kp = 0.08; //Kp;
-    this->theCtrlStruct->theUserStruct->theMotLeft->ki = 0.25;  // valeur a modifier si besoins est...
+    this->theCtrlStruct->theUserStruct->theMotLeft->kp = 0.01; //Kp;
+    this->theCtrlStruct->theUserStruct->theMotLeft->ki = 0.0;  // valeur a modifier si besoins est...
+    this->theCtrlStruct->theUserStruct->theMotLeft->kd = 0.0;
     this->theCtrlStruct->theUserStruct->theMotLeft->integral_error = 0;
     this->theCtrlStruct->theUserStruct->theMotLeft->status = 0;
     this->theCtrlStruct->theUserStruct->theMotLeft->Ra = Ra;
@@ -47,8 +49,9 @@ void SpeedController::init_speed_controller(int i)
     this->theCtrlStruct->theUserStruct->theMotLeft->upperVoltageLimit = 24 * secu;
     this->theCtrlStruct->theUserStruct->theMotLeft->lowerVoltageLimit = -24 * secu;
 
-    this->theCtrlStruct->theUserStruct->theMotRight->kp = 0.065; //Kp;
-    this->theCtrlStruct->theUserStruct->theMotRight->ki = 0.3;  //Ki;
+    this->theCtrlStruct->theUserStruct->theMotRight->kp = 0.01; //Kp;
+    this->theCtrlStruct->theUserStruct->theMotRight->ki = 0.05; //Ki;
+    this->theCtrlStruct->theUserStruct->theMotRight->kd = 0.0;
     this->theCtrlStruct->theUserStruct->theMotRight->integral_error = 0;
     this->theCtrlStruct->theUserStruct->theMotRight->status = 0;
     this->theCtrlStruct->theUserStruct->theMotRight->Ra = Ra;
@@ -86,16 +89,18 @@ void *SpeedController::updateLowCtrl(void *daSpeedController)
 {
 
     auto start = std::chrono::steady_clock::now();
+
+    double time_taken;
     unsigned char buffer[5];
     FILE *logFile = fopen("/home/pi/RobotCode/logFileSpeed.txt", "w"); //Ouverture et ecrasement du fichier log pour l'historique des vitesses (pour Matlab par exemple...)
     fprintf(logFile, "Rspeed Rref Lspeed Lref Time\r\n");
 
     while (((SpeedController *)daSpeedController)->theCtrlStruct->theUserStruct->speed_kill == 0)
     {
+
         ((SpeedController *)daSpeedController)->updateSpeed(buffer);
         auto elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now() - start);
-        double time_taken = (elapsed.count());
-        //  printf("time taken sinds the controller is active: %f\r\n", time_taken / 1000);
+        time_taken = (elapsed.count());
         ((SpeedController *)daSpeedController)->theCtrlStruct->theCtrlIn->t = time_taken / 1000.0; //Temps utilisé pour mettre a jour les valeurs et appeler le speed controller
         ((SpeedController *)daSpeedController)->updateCmd();
         fprintf(logFile, "%0.1f %0.1f %0.1f %0.1f %f\r\n",
@@ -104,13 +109,14 @@ void *SpeedController::updateLowCtrl(void *daSpeedController)
                 ((SpeedController *)daSpeedController)->theCtrlStruct->theCtrlIn->l_wheel_speed,
                 ((SpeedController *)daSpeedController)->theCtrlStruct->theCtrlIn->l_wheel_ref,
                 ((SpeedController *)daSpeedController)->theCtrlStruct->theCtrlIn->t);
+        usleep(50000);
     }
     fclose(logFile);
 }
 
 void SpeedController::updateSpeed(unsigned char *buffer)
 {
-
+    pthread_mutex_lock(this->theMutex);
     //adresse des roues
     buffer[0] = 0x00;
     buffer[1] = 0x00;
@@ -130,11 +136,13 @@ void SpeedController::updateSpeed(unsigned char *buffer)
     this->theCtrlStruct->theCtrlIn->r_wheel_speed = -(((double)(int16_t)((uint16_t)buffer[1] << 8 | (uint16_t)buffer[2])) * this->theCtrlStruct->theUserStruct->samplingDE0) * 2 * M_PI / (this->theCtrlStruct->theUserStruct->theMotRight->ratio * this->theCtrlStruct->theUserStruct->tics);
 
     printf(" l_wheel_speed %f", this->theCtrlStruct->theCtrlIn->l_wheel_speed);
-    printf(" r_wheel_speed %f\n", -this->theCtrlStruct->theCtrlIn->r_wheel_speed);
+    printf(" r_wheel_speed %f", -this->theCtrlStruct->theCtrlIn->r_wheel_speed);
+    pthread_mutex_unlock(this->theMutex);
 }
 
 void SpeedController::updateCmd()
 {
+
     double omega_ref_l = this->theCtrlStruct->theCtrlIn->l_wheel_ref;
     double omega_ref_r = -this->theCtrlStruct->theCtrlIn->r_wheel_ref;
     double r_wheel_speed = this->theCtrlStruct->theCtrlIn->r_wheel_speed;
@@ -149,6 +157,7 @@ void SpeedController::updateCmd()
 
     printf(" l_wheel_command %f", this->theCtrlStruct->theCtrlOut->wheel_commands[L_ID]);
     printf(" r_wheel_command %f\n", -this->theCtrlStruct->theCtrlOut->wheel_commands[R_ID]);
+
     this->can0->CAN0pushPropDC(this->theCtrlStruct->theCtrlOut->wheel_commands[L_ID], this->theCtrlStruct->theCtrlOut->wheel_commands[R_ID]);
 }
 
@@ -158,19 +167,22 @@ double SpeedController::PIController(MotStruct *theMot, double V_ref, double V_w
     double dt = t - theMot->t_p;
     double u = theMot->kp * e;
 
+    printf(" dt = %f\r\n", dt);
+
     if (!theMot->status) //The integral action is only done if there is no saturation of current.
     {
-        theMot->integral_error += dt * e * theMot->ki;
-        u += theMot->integral_error;
+        theMot->integral_error += dt * e;
     }
     // integral action
+    u += theMot->integral_error * theMot->ki;
     u += theMot->kphi * V_wheel_mes; // back electromotive compensation
-    theMot->status = saturation(theMot->upperCurrentLimit + theMot->kphi * V_wheel_mes, theMot->lowerCurrentLimit - theMot->kphi * V_wheel_mes, &u);
+    u += theMot->kd * e / dt;
+    theMot->status = saturation(theMot->upperVoltageLimit, theMot->lowerVoltageLimit, &u);
 
     theMot->t_p = t;
 
     //OUTPUT
-    return u * (100 / theMot->upperVoltageLimit);
+    return u * (100 / theMot->upperVoltageLimit) * 0.98;
 }
 
 int SpeedController::saturation(double upperLimit, double lowerLimit, double *u)

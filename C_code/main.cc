@@ -30,7 +30,6 @@ using namespace std;
 
 double omega_ref_now_r[6] = {0, 50, 50, -50, -50, 0};
 double omega_ref_now_l[6] = {0, 50, 50, 50, -50, 0};
-
 int l = 6;
 
 int main()
@@ -39,13 +38,14 @@ int main()
 	CAN0_Alternate *can = new CAN0_Alternate(CAN_BR);
 	SPI_DE0 *deo;
 	deo = new SPI_DE0(0, 125e3);
+	pthread_mutex_t theMutex = PTHREAD_MUTEX_INITIALIZER;
 
 	delay(100);
 
 	init_ctrlStruc(myCtrlStruct);
 
-	SpeedController *spctrl = new SpeedController(myCtrlStruct, can);
-	Odometry *myOdometry = new Odometry(myCtrlStruct);
+	SpeedController *spctrl = new SpeedController(myCtrlStruct, can, &theMutex);
+	Odometry *myOdometry = new Odometry(myCtrlStruct, &theMutex);
 
 	myCtrlStruct->theCtrlIn->r_wheel_ref = 0;
 	myCtrlStruct->theCtrlIn->l_wheel_ref = 0;

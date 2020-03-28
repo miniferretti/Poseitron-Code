@@ -87,7 +87,7 @@ void CAN0_Alternate::CAN0pushPropDC(int dcG, int dcD)
   msg.data[2] = dcGc;
 
   write(s, &msg, sizeof(msg));
-  usleep(DELAY);
+ // usleep(DELAY);
 
   msg1.can_id = CAN_MOT;
   msg1.can_dlc = 3;
@@ -96,7 +96,7 @@ void CAN0_Alternate::CAN0pushPropDC(int dcG, int dcD)
   msg1.data[2] = dcDc;
 
   write(s, &msg1, sizeof(msg1));
-  usleep(DELAY);
+  // usleep(DELAY);
 }
 
 void CAN0_Alternate::CAN0ctrl_motor(int state)
@@ -113,7 +113,7 @@ void CAN0_Alternate::CAN0ctrl_motor(int state)
     msg.data[2] = 0x00;
 
     write(s, &msg, sizeof(msg));
-    usleep(DELAY);
+    delay(DELAY);
   }
   else
   {
@@ -124,7 +124,7 @@ void CAN0_Alternate::CAN0ctrl_motor(int state)
     msg.data[2] = 0xFF;
 
     write(s, &msg, sizeof(msg));
-    usleep(DELAY);
+    delay(DELAY);
   }
 }
 
