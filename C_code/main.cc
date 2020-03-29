@@ -5,8 +5,6 @@
 #include "IO/COM/SPI/Specific/SPI_DE0.hh"
 
 #include <iostream>
-//#include <wiringPiSPI.h>
-//#include <wiringPiI2C.h>
 #include <errno.h>
 #include <stdlib.h>
 #include <signal.h>
@@ -39,13 +37,11 @@ int main()
 	SPI_DE0 *deo;
 	deo = new SPI_DE0(0, 125e3);
 	pthread_mutex_t theMutex = PTHREAD_MUTEX_INITIALIZER;
-
-	delay(100);
-
 	init_ctrlStruc(myCtrlStruct);
 
 	SpeedController *spctrl = new SpeedController(myCtrlStruct, can, &theMutex);
 	Odometry *myOdometry = new Odometry(myCtrlStruct, &theMutex);
+	Adafruit_TCS34725 *myColorSensor = new Adafruit_TCS34725();
 
 	myCtrlStruct->theCtrlIn->r_wheel_ref = 0;
 	myCtrlStruct->theCtrlIn->l_wheel_ref = 0;
@@ -78,9 +74,8 @@ int main()
 	free(myCtrlStruct->theCtrlIn);
 	free(myCtrlStruct->theCtrlOut);
 	free(myCtrlStruct->theUserStruct);
+	free(myCtrlStruct->rob_pos);
+	free(myCtrlStruct->robot);
 	free(myCtrlStruct);
 	exit(0);
 }
-
-//Fonction est qui appellée dans un thread, son but est de metter à jour les variables de MinibotCrtlIn et de mettre a jour la vitesse des roues
-//en utilisant le controller de vitesse run_speed_controller().

@@ -50,7 +50,7 @@ void SpeedController::init_speed_controller(int i)
     this->theCtrlStruct->theUserStruct->theMotLeft->lowerVoltageLimit = -24 * secu;
 
     this->theCtrlStruct->theUserStruct->theMotRight->kp = 0.025; //Kp;
-    this->theCtrlStruct->theUserStruct->theMotRight->ki = 0.5; //Ki;
+    this->theCtrlStruct->theUserStruct->theMotRight->ki = 0.5;   //Ki;
     this->theCtrlStruct->theUserStruct->theMotRight->kd = 0.0005;
     this->theCtrlStruct->theUserStruct->theMotRight->integral_error = 0;
     this->theCtrlStruct->theUserStruct->theMotRight->status = 0;
@@ -158,7 +158,9 @@ void SpeedController::updateCmd()
     printf(" l_wheel_command %f", this->theCtrlStruct->theCtrlOut->wheel_commands[L_ID]);
     printf(" r_wheel_command %f\n", -this->theCtrlStruct->theCtrlOut->wheel_commands[R_ID]);
 
+    pthread_mutex_lock(this->theMutex);
     this->can0->CAN0pushPropDC(this->theCtrlStruct->theCtrlOut->wheel_commands[L_ID], this->theCtrlStruct->theCtrlOut->wheel_commands[R_ID]);
+    pthread_mutex_unlock(this->theMutex);
 }
 
 double SpeedController::PIController(MotStruct *theMot, double V_ref, double V_wheel_mes, double t)

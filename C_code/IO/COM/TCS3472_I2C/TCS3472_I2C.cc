@@ -565,11 +565,11 @@ void Adafruit_TCS34725::setIntLimits(uint16_t low, uint16_t high)
 
 void Adafruit_TCS34725::sensorSelect(int bus)
 {
-     wiringPiSetup();
+    wiringPiSetup();
     int fd;
     if (bus > 7)
         return;
     fd = wiringPiI2CSetup(TCA9548A_ADDRESS);
-    wiringPiI2CWrite(fd,1 << (uint8_t)bus);
+    wiringPiI2CWrite(fd, 1 << (uint8_t)bus);
     close(fd);
 }

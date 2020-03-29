@@ -1,4 +1,8 @@
 
+
+#ifndef _CAN_ALTERANTE_HH_
+#define _CAN_ALTERNATE_HH_
+
 #define CAN_MOT 0x508
 #define CAN_SENS_ARRAY_FRONT 0x600
 #define CAN_SENS_ARRAY_BACK 0x601
@@ -43,3 +47,5 @@ private:
     struct ifreq ifr;
     int BR;
 };
+
+#endif

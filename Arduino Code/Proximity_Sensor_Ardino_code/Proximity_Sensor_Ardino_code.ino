@@ -50,6 +50,21 @@ void setup()
 
 void loop()
 {
+//  for (int i = 0; i < num; i++) {
+//    canMsg.data[i] = mesure(pin[i]) / 10;
+//  }
+//
+//  Serial.print(canMsg.data[0]);
+//  Serial.print(" ");
+//  Serial.print(canMsg.data[1]);
+//  Serial.print(" ");
+//  Serial.print(canMsg.data[2]);
+//  Serial.print(" ");
+//  Serial.print(canMsg.data[3]);
+//  Serial.print(" ");
+//  Serial.print(canMsg.data[4]);
+//  Serial.print("\r\n");
+
 
 
   if (mcp2515.readMessage(&canMsg) == MCP2515::ERROR_OK) {
@@ -60,7 +75,7 @@ void loop()
       Serial.print("Recieved message \r\n");
       for (int i = 0; i < num; i++) {
         canMsg.data[i] = mesure(pin[i]) / 10;
-        // Serial.println(data[i]);
+        
       }
       canMsg.can_id = CAN_ID_RASP;
       canMsg.can_dlc = 5;

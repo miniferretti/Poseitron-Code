@@ -1,5 +1,5 @@
-#ifndef _TCS34725_H_
-#define _TCS34725_H_
+#ifndef _TCS34725_HH_
+#define _TCS34725_HH_
 
 #include <wiringPiI2C.h>
 #include <wiringPi.h>
