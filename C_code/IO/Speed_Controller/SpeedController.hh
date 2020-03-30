@@ -24,6 +24,7 @@ public:
     int saturation(double upperLimit, double lowerLimit, double *u);
     void speed_controller_active(int i);
     double Moving_Average(double speed, double *buff, int leng);
+    void set_speed(double left, double right);
 
     CtrlStruct *theCtrlStruct;
     CAN0_Alternate *can0;

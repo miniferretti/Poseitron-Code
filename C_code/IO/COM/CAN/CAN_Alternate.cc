@@ -1,4 +1,4 @@
-#include "CAN_Alternate.hh"
+#include "IO/COM/CAN/CAN_Alternate.hh"
 #include <sstream>
 #include <string>
 #include <cstring>
@@ -70,7 +70,7 @@ CAN0_Alternate::CAN0_Alternate(int baud)
   }
 }
 
-void CAN0_Alternate::CAN0pushPropDC(double  dcG, double dcD)
+void CAN0_Alternate::CAN0pushPropDC(double dcG, double dcD)
 {
   uint8_t dcGc = (uint8_t)(128.0 * dcG / 100.0 + 128.0);
   uint8_t dcDc = (uint8_t)(128.0 * dcD / 100.0 + 128.0);
@@ -112,7 +112,7 @@ void CAN0_Alternate::CAN0ctrl_motor(int state)
     msg.data[2] = 0x00;
 
     write(s, &msg, sizeof(msg));
-    delay(DELAY);
+    usleep(DELAY);
   }
   else
   {
@@ -123,7 +123,7 @@ void CAN0_Alternate::CAN0ctrl_motor(int state)
     msg.data[2] = 0xFF;
 
     write(s, &msg, sizeof(msg));
-    delay(DELAY);
+    usleep(DELAY);
   }
 }
 
@@ -189,7 +189,7 @@ void CAN0_Alternate::getDistance(int dir, double *data)
     msg.data[2] = 0x00;
 
     write(s, &msg, sizeof(msg));
-    usleep(DELAY);
+    //usleep(DELAY);
   }
   else
   {
@@ -201,10 +201,20 @@ void CAN0_Alternate::getDistance(int dir, double *data)
     msg.data[2] = 0x00;
 
     write(s, &msg, sizeof(msg));
-    usleep(DELAY);
+    //usleep(DELAY);
   }
 
-  nbytes = read(s, &msg2, sizeof(msg2));
+  while (1)
+  {
+    if ((nbytes = read(s, &msg2, sizeof(struct can_frame))) < 0)
+    {
+      printf("Data not read\r\n");
+    }
+    else
+    {
+      break;
+    }
+  }
 
   for (int i = 0; i < msg2.can_dlc; i++)
   {

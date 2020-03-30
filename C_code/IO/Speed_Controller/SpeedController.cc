@@ -135,8 +135,8 @@ void SpeedController::updateSpeed(unsigned char *buffer)
     this->theCtrlStruct->theCtrlIn->l_wheel_speed = -(((double)(int16_t)((uint16_t)buffer[3] << 8 | (uint16_t)buffer[4])) * this->theCtrlStruct->theUserStruct->samplingDE0) * 2 * M_PI / (this->theCtrlStruct->theUserStruct->theMotLeft->ratio * this->theCtrlStruct->theUserStruct->tics);
     this->theCtrlStruct->theCtrlIn->r_wheel_speed = -(((double)(int16_t)((uint16_t)buffer[1] << 8 | (uint16_t)buffer[2])) * this->theCtrlStruct->theUserStruct->samplingDE0) * 2 * M_PI / (this->theCtrlStruct->theUserStruct->theMotRight->ratio * this->theCtrlStruct->theUserStruct->tics);
 
-    printf(" l_wheel_speed %f", this->theCtrlStruct->theCtrlIn->l_wheel_speed);
-    printf(" r_wheel_speed %f", -this->theCtrlStruct->theCtrlIn->r_wheel_speed);
+  //  printf(" l_wheel_speed %f", this->theCtrlStruct->theCtrlIn->l_wheel_speed);
+  //  printf(" r_wheel_speed %f", -this->theCtrlStruct->theCtrlIn->r_wheel_speed);
     pthread_mutex_unlock(this->theMutex);
 }
 
@@ -155,8 +155,8 @@ void SpeedController::updateCmd()
     this->theCtrlStruct->theCtrlOut->wheel_commands[L_ID] = cmd_l;
     this->theCtrlStruct->theCtrlOut->wheel_commands[R_ID] = cmd_r;
 
-    printf(" l_wheel_command %f", this->theCtrlStruct->theCtrlOut->wheel_commands[L_ID]);
-    printf(" r_wheel_command %f\n", -this->theCtrlStruct->theCtrlOut->wheel_commands[R_ID]);
+  //  printf(" l_wheel_command %f", this->theCtrlStruct->theCtrlOut->wheel_commands[L_ID]);
+  //  printf(" r_wheel_command %f\n", -this->theCtrlStruct->theCtrlOut->wheel_commands[R_ID]);
 
     pthread_mutex_lock(this->theMutex);
     this->can0->CAN0pushPropDC(this->theCtrlStruct->theCtrlOut->wheel_commands[L_ID], this->theCtrlStruct->theCtrlOut->wheel_commands[R_ID]);
@@ -169,7 +169,7 @@ double SpeedController::PIController(MotStruct *theMot, double V_ref, double V_w
     double dt = t - theMot->t_p;
     double u = theMot->kp * e;
 
-    printf(" dt = %f\r\n", dt);
+  //  printf(" dt = %f\r\n", dt);
 
     if (!theMot->status) //The integral action is only done if there is no saturation of current.
     {
@@ -231,4 +231,10 @@ double SpeedController::Moving_Average(double speed, double *buff, int leng)
     }
 
     return (sum / ((double)leng));
+}
+
+void SpeedController::set_speed(double left, double right)
+{
+    this->theCtrlStruct->theCtrlIn->l_wheel_ref = left;
+    this->theCtrlStruct->theCtrlIn->r_wheel_ref = right;
 }

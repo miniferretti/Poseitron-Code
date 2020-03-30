@@ -1,6 +1,6 @@
 
-#ifndef _CTRL_IO_H_
-#define _CTRL_IO_H_
+#ifndef CTRL_IO_H
+#define CTRL_IO_H
 
 // number of micro-switches
 #define NB_U_SWITCH 2

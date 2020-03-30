@@ -1,4 +1,4 @@
-#include "Odometry.hh"
+#include "IO/Odometry/Odometry.hh"
 
 Odometry::Odometry(CtrlStruct *theCtrlStruct, pthread_mutex_t *theMutex)
 {

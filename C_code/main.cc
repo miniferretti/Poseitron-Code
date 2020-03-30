@@ -18,6 +18,7 @@
 #include <sstream>
 #include "IO/COM/TCS3472_I2C/TCS3472_I2C.hh"
 #include <chrono>
+#include "IO/Calibration/Calibration.hh"
 
 using namespace std;
 
@@ -39,36 +40,57 @@ int main()
 	pthread_mutex_t theMutex = PTHREAD_MUTEX_INITIALIZER;
 	init_ctrlStruc(myCtrlStruct);
 
-	SpeedController *spctrl = new SpeedController(myCtrlStruct, can, &theMutex);
+	SpeedController *spdctrl = new SpeedController(myCtrlStruct, can, &theMutex);
 	Odometry *myOdometry = new Odometry(myCtrlStruct, &theMutex);
 	Adafruit_TCS34725 *myColorSensor = new Adafruit_TCS34725();
 
-	myCtrlStruct->theCtrlIn->r_wheel_ref = 0;
-	myCtrlStruct->theCtrlIn->l_wheel_ref = 0;
-	spctrl->init_speed_controller(1);
-	spctrl->run_speed_controller();
+	spdctrl->set_speed(0, 0);
+	spdctrl->init_speed_controller(1);
+	spdctrl->run_speed_controller();
 	myOdometry->Odometry_init();
 	myOdometry->Odometry_start();
+	myCtrlStruct->main_states = WAIT_STATE;
 
 	printf("Welcome to the Poseitron code prototype.\r\n");
 	printf("We hope that you will be pleased with the coding and we wish you a great succes.\n\r");
 
 	//********  Début du comportement du robot **********
 
-	while (true)
+	while (myCtrlStruct->main_states != STOP_STATE)
 	{
-		for (int i = 0; i < l; i++)
+		switch (myCtrlStruct->main_states)
 		{
+		case WAIT_STATE:
+			printf("C'est la WAIT_STATE\r\n");
+			spdctrl->set_speed(0, 0);
+			if (myCtrlStruct->theCtrlIn->t > 30)
+			{
+				myCtrlStruct->main_states = CALIB_STATE;
+			}
+			break;
 
-			myCtrlStruct->theCtrlIn->r_wheel_ref = omega_ref_now_r[i];
-			myCtrlStruct->theCtrlIn->l_wheel_ref = omega_ref_now_l[i];
-			delay(5000);
+		case CALIB_STATE:
+			printf("C'est la CALIB_STATE\r\n");
+			myCtrlStruct->calib_states = CALIB_1;
+			calibration(myCtrlStruct, spdctrl);
+			break;
+
+		case STOP_STATE:
+			printf("STOP_STATE\r\n");
+			spdctrl->set_speed(0, 0);
+			break;
+
+		default:
+			break;
 		}
-		break;
 	}
 
+	spdctrl->set_speed(0, 0);
+
+	//********** Liberation de la mémoire  **************
+
 	myOdometry->Odometry_stop();
-	spctrl->speed_controller_active(0);
+	spdctrl->speed_controller_active(0);
 	free(myCtrlStruct->theUserStruct->theMotRight);
 	free(myCtrlStruct->theUserStruct->theMotLeft);
 	free(myCtrlStruct->theCtrlIn);

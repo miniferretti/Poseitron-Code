@@ -1,5 +1,5 @@
-#ifndef _COLOR_ARRAY_HH_
-#define _COLOR_ARRAY_HH_
+#ifndef COLOR_ARRAY_HH
+#define COLOR_ARRAY_HH
 
 #include "IO/Speed_Controller/CtrlStruct.hh"
 #include "IO/COM/TCS3472_I2C/TCS3472_I2C.hh"

@@ -29,7 +29,7 @@
 #include <stdlib.h>
 #include <stdint.h>
 #include <unistd.h>
-#include "TCS3472_I2C.hh"
+#include "IO/COM/TCS3472_I2C/TCS3472_I2C.hh"
 
 /*!
  *  brief  Implements missing powf function

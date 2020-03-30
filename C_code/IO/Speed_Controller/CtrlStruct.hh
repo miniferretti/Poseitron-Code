@@ -5,6 +5,7 @@
 
 enum
 {
+    WAIT_STATE,
     CALIB_STATE,
     RUN_STATE,
     STOP_STATE
@@ -22,6 +23,13 @@ enum
     FOLOW_STATE,
     AVOID_STATE
 };
+
+enum{
+    CALIB_1,
+    CALIB_2,
+    CALIB_3
+};
+
 
 //Structure for the odometry
 typedef struct RobotPosition
@@ -43,8 +51,8 @@ typedef struct RobotParameters
 
 typedef struct MotStruct
 {
-    double kp;             // Proportional param
-    double ki;             // Integral param
+    double kp; // Proportional param
+    double ki; // Integral param
     double kd;
     double integral_error; // last integral error
     double status;         // Is or not in saturation
@@ -79,8 +87,11 @@ typedef struct CtrlStruct
     RobotPosition *rob_pos;
     RobotParameters *robot;
     int main_states;
+    int calib_states;
 } CtrlStruct;
 
 int size_UserStruct();
 void init_ctrlStruc(CtrlStruct *ctrl);
+
+
 #endif

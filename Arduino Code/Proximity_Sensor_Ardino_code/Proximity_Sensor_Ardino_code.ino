@@ -12,7 +12,7 @@
 #define CAN_ID 0x600      // CAN id of the board
 #define CAN_ID_RASP 0x701 //CAN id of the ras-pi
 #define TRIGGER_PIN 9
-const unsigned long MEASURE_TIMEOUT = 25000UL;
+const unsigned long MEASURE_TIMEOUT = 5000UL; //25 ms 8m
 const float SOUND_SPEED = 340.0 / 1000;
 
 int pin[5] = {4, 8, 7, 6, 5};
@@ -44,28 +44,27 @@ void setup()
   }
 
 
+  cli();//stop interrupts
 
+  //set timer1 interrupt at 1Hz
+  TCCR1A = 0;// set entire TCCR1A register to 0
+  TCCR1B = 0;// same for TCCR1B
+  TCNT1  = 0;//initialize counter value to 0
+  // set compare match register for 1hz increments
+  OCR1A = 15624;// = (16*10^6) / (1*1024) - 1 (must be <65536)
+  // turn on CTC mode
+  TCCR1B |= (1 << WGM12);
+  // Set CS12 and CS10 bits for 1024 prescaler
+  TCCR1B |= (1 << CS12) | (1 << CS10);
+  // enable timer compare interrupt
+  TIMSK1 |= (1 << OCIE1A);
+
+  sei();//allow interrupts
 
 }
 
 void loop()
 {
-//  for (int i = 0; i < num; i++) {
-//    canMsg.data[i] = mesure(pin[i]) / 10;
-//  }
-//
-//  Serial.print(canMsg.data[0]);
-//  Serial.print(" ");
-//  Serial.print(canMsg.data[1]);
-//  Serial.print(" ");
-//  Serial.print(canMsg.data[2]);
-//  Serial.print(" ");
-//  Serial.print(canMsg.data[3]);
-//  Serial.print(" ");
-//  Serial.print(canMsg.data[4]);
-//  Serial.print("\r\n");
-
-
 
   if (mcp2515.readMessage(&canMsg) == MCP2515::ERROR_OK) {
 
@@ -74,8 +73,8 @@ void loop()
     {
       Serial.print("Recieved message \r\n");
       for (int i = 0; i < num; i++) {
-        canMsg.data[i] = mesure(pin[i]) / 10;
-        
+        canMsg.data[i] = (uint8_t)data[i];
+
       }
       canMsg.can_id = CAN_ID_RASP;
       canMsg.can_dlc = 5;
@@ -103,10 +102,32 @@ float mesure(int pina)
   long measure = pulseIn(pina, HIGH, MEASURE_TIMEOUT);
 
   /* 3. Calcul la distance à partir du temps mesuré */
-  float distance_mm = measure / 2.0 * SOUND_SPEED;
+  float distance_mm =  measure / 2.0 * SOUND_SPEED;
 
 
   return measure;
 
 
+}
+
+
+
+ISR(TIMER1_COMPA_vect) { //timer1 interrupt 1Hz toggles pin 13 (LED)
+  //generates pulse wave of frequency 1Hz/2 = 0.5kHz (takes two cycles for full wave- toggle high then toggle low)
+  for (int i = 0; i < num; i++) {
+    data[i] = mesure(pin[i]) / 10;
+  }
+
+
+
+  Serial.print(data[0]);
+  Serial.print(" ");
+  Serial.print(data[1]);
+  Serial.print(" ");
+  Serial.print(data[2]);
+  Serial.print(" ");
+  Serial.print(data[3]);
+  Serial.print(" ");
+  Serial.print(data[4]);
+  Serial.print("\r\n");
 }

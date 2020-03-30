@@ -1,12 +1,14 @@
 
 
-#ifndef _CAN_ALTERANTE_HH_
-#define _CAN_ALTERNATE_HH_
+
+#pragma once
+//#ifndef CAN_ALTERANTE_HH
+//#define CAN_ALTERNATE_HH
 
 #define CAN_MOT 0x508
 #define CAN_SENS_ARRAY_FRONT 0x600
 #define CAN_SENS_ARRAY_BACK 0x601
-#define DELAY 1
+#define DELAY 50
 #include <sstream>
 #include <string>
 #include <iostream>
@@ -48,4 +50,4 @@ private:
     int BR;
 };
 
-#endif
+//#endif
