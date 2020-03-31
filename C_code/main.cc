@@ -19,6 +19,7 @@
 #include "IO/COM/TCS3472_I2C/TCS3472_I2C.hh"
 #include <chrono>
 #include "IO/Calibration/Calibration.hh"
+#include "IO/Mid_level_controller/Avoid150.hh"
 
 using namespace std;
 
@@ -37,47 +38,60 @@ int main()
 	CAN0_Alternate *can = new CAN0_Alternate(CAN_BR);
 	SPI_DE0 *deo;
 	deo = new SPI_DE0(0, 125e3);
-	pthread_mutex_t theMutex = PTHREAD_MUTEX_INITIALIZER;
 	init_ctrlStruc(myCtrlStruct);
 
-	SpeedController *spdctrl = new SpeedController(myCtrlStruct, can, &theMutex);
-	Odometry *myOdometry = new Odometry(myCtrlStruct, &theMutex);
+	SpeedController *spdctrl = new SpeedController(myCtrlStruct, can);
+	Odometry *myOdometry = new Odometry(myCtrlStruct);
 	Adafruit_TCS34725 *myColorSensor = new Adafruit_TCS34725();
 
-	spdctrl->set_speed(0, 0);
 	spdctrl->init_speed_controller(1);
-	spdctrl->run_speed_controller();
+	spdctrl->set_speed(0, 0);
 	myOdometry->Odometry_init();
-	myOdometry->Odometry_start();
 	myCtrlStruct->main_states = WAIT_STATE;
+	auto start = std::chrono::steady_clock::now();
+	double time_taken;
+	int run = 1;
 
 	printf("Welcome to the Poseitron code prototype.\r\n");
 	printf("We hope that you will be pleased with the coding and we wish you a great succes.\n\r");
 
 	//********  Début du comportement du robot **********
 
-	while (myCtrlStruct->main_states != STOP_STATE)
+	while (run)
 	{
+		auto elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now() - start);
+		time_taken = (elapsed.count());
+		myCtrlStruct->theCtrlIn->t = time_taken / 1000.0;
+		spdctrl->updateLowCtrl();
+		myOdometry->Odometry_update();
+
 		switch (myCtrlStruct->main_states)
 		{
 		case WAIT_STATE:
-			printf("C'est la WAIT_STATE\r\n");
-			spdctrl->set_speed(0, 0);
-			if (myCtrlStruct->theCtrlIn->t > 30)
+			printf("WAIT_STATE\r\n");
+
+			if (myCtrlStruct->theCtrlIn->t > 15)
 			{
 				myCtrlStruct->main_states = CALIB_STATE;
+				myCtrlStruct->calib_states = CALIB_1;
 			}
 			break;
 
 		case CALIB_STATE:
-			printf("C'est la CALIB_STATE\r\n");
-			myCtrlStruct->calib_states = CALIB_1;
-			calibration(myCtrlStruct, spdctrl);
+			printf("CALIB_STATE\r\n");
+			calibration(myCtrlStruct, spdctrl, myOdometry);
+			break;
+
+		case AVOID150_STATE:
+			printf("AVOID150_STATE\r\n");
+			avoid150(myCtrlStruct, spdctrl, myOdometry);
 			break;
 
 		case STOP_STATE:
 			printf("STOP_STATE\r\n");
+			printf("Left = %f Right = %f\r\n", myCtrlStruct->stopvalues[0], myCtrlStruct->stopvalues[1]);
 			spdctrl->set_speed(0, 0);
+			run = 0;
 			break;
 
 		default:
@@ -90,7 +104,7 @@ int main()
 	//********** Liberation de la mémoire  **************
 
 	myOdometry->Odometry_stop();
-	spdctrl->speed_controller_active(0);
+	spdctrl->Speed_controller_stop();
 	free(myCtrlStruct->theUserStruct->theMotRight);
 	free(myCtrlStruct->theUserStruct->theMotLeft);
 	free(myCtrlStruct->theCtrlIn);

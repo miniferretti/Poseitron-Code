@@ -1,39 +1,61 @@
 #include "IO/Calibration/Calibration.hh"
 
-void calibration(CtrlStruct *cvs, SpeedController *spc)
+void calibration(CtrlStruct *cvs, SpeedController *spc, Odometry *odo)
 {
     CtrlIn *myCtrlIn = cvs->theCtrlIn;
+    double limit = 30;
+    
 
     switch (cvs->calib_states)
     {
     case CALIB_1:
         printf("CALIB_1\r\n");
-        spc->set_speed(10, 10);
-        get_prox(spc->can0, cvs);
+        spc->set_speed(30, 30);
+        //  flag = get_prox(spc->can0, cvs);
 
-        if (((0 < myCtrlIn->sens_array_front[1]) && (myCtrlIn->sens_array_front[1] < 80)) || ((0 < myCtrlIn->sens_array_front[3]) && (myCtrlIn->sens_array_front[3] < 80)))
+        printf("left dist = %f right dist = %f\r\n", myCtrlIn->sens_array_front[1], myCtrlIn->sens_array_front[3]);
+        if ((((0 < myCtrlIn->sens_array_front[1]) && (myCtrlIn->sens_array_front[1] < limit)) || ((0 < myCtrlIn->sens_array_front[3]) && (myCtrlIn->sens_array_front[3] < limit))) && cvs->theCtrlIn->sens_flag == 1)
         {
-            spc->set_speed(0, 0);
             cvs->calib_states = CALIB_2;
+            printf("Obstacle ptn !\r\n");
         }
 
         break;
 
     case CALIB_2:
         printf("CALIB_2\r\n");
-        get_prox(spc->can0, cvs);
-        if (abs((myCtrlIn->sens_array_front[1] - myCtrlIn->sens_array_front[3])) < 10)
+        printf("left dist = %f right dist = %f\r\n", myCtrlIn->sens_array_front[1], myCtrlIn->sens_array_front[3]);
+        //  flag = get_prox(spc->can0, cvs);
+        if ((abs((myCtrlIn->sens_array_front[1] - myCtrlIn->sens_array_front[3])) < 2))
         {
-            spc->set_speed(0, 0);
-            cvs->calib_states = CALIB_3;
+
+            if ((myCtrlIn->sens_array_front[1] > limit) && (myCtrlIn->sens_array_front[3] > limit))
+            {
+                cvs->calib_states = CALIB_1;
+            }
+            else
+            {
+                spc->set_speed(0, 0);
+                cvs->stopvalues[0] = myCtrlIn->sens_array_front[1];
+                cvs->stopvalues[1] = myCtrlIn->sens_array_front[3];
+                cvs->calib_states = CALIB_3;
+            }
         }
-        else if ((myCtrlIn->sens_array_front[1] - myCtrlIn->sens_array_front[3]) > 0)
+        else if (((myCtrlIn->sens_array_front[1] - myCtrlIn->sens_array_front[3]) > 0))
         {
-            spc->set_speed(5, 0);
+            spc->set_speed(0, 10);
+            if (myCtrlIn->sens_array_front[1] > limit && myCtrlIn->sens_array_front[3] > limit)
+            {
+                cvs->calib_states = CALIB_1;
+            }
         }
         else
         {
-            spc->set_speed(0, 5);
+            spc->set_speed(10, 0);
+            if (myCtrlIn->sens_array_front[1] > limit && myCtrlIn->sens_array_front[3] > limit)
+            {
+                cvs->calib_states = CALIB_1;
+            }
         }
 
         break;
@@ -41,7 +63,8 @@ void calibration(CtrlStruct *cvs, SpeedController *spc)
     case CALIB_3:
         printf("CALIB_3\n\r");
         cvs->calib_states = CALIB_1;
-        cvs->main_states = STOP_STATE;
+        cvs->main_states = AVOID150_STATE;
+        cvs->avoid150_states = AVOID150_STATE1;
         break;
 
     default:

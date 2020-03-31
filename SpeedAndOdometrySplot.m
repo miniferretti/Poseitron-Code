@@ -40,8 +40,10 @@ xlabel("Time [sec]");
 ylabel("Speed [rad/sec]");
 title("Left wheel control log");
 
-% figure;
-% plot(X,Y);
-% axis equal;
+ figure;
+ plot(X,Y);
+ xlabel("X [m]");
+ ylabel("Y [m]");
+ axis equal;
 
 

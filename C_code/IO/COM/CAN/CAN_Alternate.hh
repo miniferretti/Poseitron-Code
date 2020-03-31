@@ -1,6 +1,5 @@
 
 
-
 #pragma once
 //#ifndef CAN_ALTERANTE_HH
 //#define CAN_ALTERNATE_HH
@@ -27,6 +26,7 @@
 #include <libsocketcan.h>
 #include <wiringPi.h>
 #include <unistd.h>
+#include <fcntl.h>
 
 using namespace std;
 
@@ -39,7 +39,8 @@ public:
     void CAN0ctrl_led(int state);
     void CAN0close();
     void msgClear(can_frame *fr);
-    void getDistance(int dir, double *data);
+    int getDistance(int dir, double *data);
+    int fd_set_blocking(int fd, int blocking);
 
 private:
     int s;

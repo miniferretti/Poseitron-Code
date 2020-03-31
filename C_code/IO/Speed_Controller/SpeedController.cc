@@ -1,18 +1,16 @@
 
 
 #include "SpeedController.hh"
-#include <pthread.h>
 #include <chrono>
 #include <wiringPiSPI.h>
 #include <math.h>
 #include <iostream>
 #include "stdio.h"
 
-SpeedController::SpeedController(CtrlStruct *theCtrlStruct, CAN0_Alternate *can0, pthread_mutex_t *theMutex)
+SpeedController::SpeedController(CtrlStruct *theCtrlStruct, CAN0_Alternate *can0)
 {
     this->can0 = can0;
     this->theCtrlStruct = theCtrlStruct;
-    this->theMutex = theMutex;
 }
 
 void SpeedController::init_speed_controller(int i)
@@ -35,9 +33,9 @@ void SpeedController::init_speed_controller(int i)
     this->theCtrlStruct->theUserStruct->tics = 2048;
     this->theCtrlStruct->theUserStruct->speed_kill = 0;
 
-    this->theCtrlStruct->theUserStruct->theMotLeft->kp = 0.05; //Kp;
-    this->theCtrlStruct->theUserStruct->theMotLeft->ki = 0.6;  // valeur a modifier si besoins est...
-    this->theCtrlStruct->theUserStruct->theMotLeft->kd = 0.0004;
+    this->theCtrlStruct->theUserStruct->theMotLeft->kp = 0.04; //Kp;
+    this->theCtrlStruct->theUserStruct->theMotLeft->ki = 0.7;  // valeur a modifier si besoins est...
+    this->theCtrlStruct->theUserStruct->theMotLeft->kd = 0.00004;
     this->theCtrlStruct->theUserStruct->theMotLeft->integral_error = 0;
     this->theCtrlStruct->theUserStruct->theMotLeft->status = 0;
     this->theCtrlStruct->theUserStruct->theMotLeft->Ra = Ra;
@@ -49,9 +47,9 @@ void SpeedController::init_speed_controller(int i)
     this->theCtrlStruct->theUserStruct->theMotLeft->upperVoltageLimit = 24 * secu;
     this->theCtrlStruct->theUserStruct->theMotLeft->lowerVoltageLimit = -24 * secu;
 
-    this->theCtrlStruct->theUserStruct->theMotRight->kp = 0.025; //Kp;
-    this->theCtrlStruct->theUserStruct->theMotRight->ki = 0.5;   //Ki;
-    this->theCtrlStruct->theUserStruct->theMotRight->kd = 0.0005;
+    this->theCtrlStruct->theUserStruct->theMotRight->kp = 0.04; //Kp;
+    this->theCtrlStruct->theUserStruct->theMotRight->ki =0.7;   //Ki;
+    this->theCtrlStruct->theUserStruct->theMotRight->kd = 0.00004;
     this->theCtrlStruct->theUserStruct->theMotRight->integral_error = 0;
     this->theCtrlStruct->theUserStruct->theMotRight->status = 0;
     this->theCtrlStruct->theUserStruct->theMotRight->Ra = Ra;
@@ -68,6 +66,8 @@ void SpeedController::init_speed_controller(int i)
         this->avgL[i] = 0;
         this->avgR[i] = 0;
     }
+    this->logFile = fopen("/home/pi/RobotCode/logFileSpeed.txt", "w");
+    fprintf(logFile, "Rspeed Rref Lspeed Lref Time\r\n");
 }
 
 void SpeedController::speed_controller_active(int i)
@@ -75,48 +75,31 @@ void SpeedController::speed_controller_active(int i)
     this->theCtrlStruct->theUserStruct->speed_kill = !i;
     if (i == 0)
     {
-        pthread_join(this->tr, NULL);
+        fclose(logFile);
     }
     this->can0->CAN0ctrl_motor(i);
 }
 
-void SpeedController::run_speed_controller()
-{
-    pthread_create(&tr, NULL, &updateLowCtrl, this); //Lancement du thread
-}
-
-void *SpeedController::updateLowCtrl(void *daSpeedController)
+void SpeedController::updateLowCtrl()
 {
 
-    auto start = std::chrono::steady_clock::now();
-
-    double time_taken;
     unsigned char buffer[5];
-    FILE *logFile = fopen("/home/pi/RobotCode/logFileSpeed.txt", "w"); //Ouverture et ecrasement du fichier log pour l'historique des vitesses (pour Matlab par exemple...)
-    fprintf(logFile, "Rspeed Rref Lspeed Lref Time\r\n");
 
-    while (((SpeedController *)daSpeedController)->theCtrlStruct->theUserStruct->speed_kill == 0)
+    if (this->theCtrlStruct->theUserStruct->speed_kill == 0)
     {
-
-        ((SpeedController *)daSpeedController)->updateSpeed(buffer);
-        auto elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now() - start);
-        time_taken = (elapsed.count());
-        ((SpeedController *)daSpeedController)->theCtrlStruct->theCtrlIn->t = time_taken / 1000.0; //Temps utilisé pour mettre a jour les valeurs et appeler le speed controller
-        ((SpeedController *)daSpeedController)->updateCmd();
+        this->updateSpeed(buffer);
+        this->updateCmd();
         fprintf(logFile, "%0.1f %0.1f %0.1f %0.1f %f\r\n",
-                -((SpeedController *)daSpeedController)->theCtrlStruct->theCtrlIn->r_wheel_speed,
-                ((SpeedController *)daSpeedController)->theCtrlStruct->theCtrlIn->r_wheel_ref,
-                ((SpeedController *)daSpeedController)->theCtrlStruct->theCtrlIn->l_wheel_speed,
-                ((SpeedController *)daSpeedController)->theCtrlStruct->theCtrlIn->l_wheel_ref,
-                ((SpeedController *)daSpeedController)->theCtrlStruct->theCtrlIn->t);
-        usleep(10000);
+                -this->theCtrlStruct->theCtrlIn->r_wheel_speed,
+                this->theCtrlStruct->theCtrlIn->r_wheel_ref,
+                this->theCtrlStruct->theCtrlIn->l_wheel_speed,
+                this->theCtrlStruct->theCtrlIn->l_wheel_ref,
+                this->theCtrlStruct->theCtrlIn->t);
     }
-    fclose(logFile);
 }
 
 void SpeedController::updateSpeed(unsigned char *buffer)
 {
-    pthread_mutex_lock(this->theMutex);
     //adresse des roues
     buffer[0] = 0x00;
     buffer[1] = 0x00;
@@ -135,9 +118,8 @@ void SpeedController::updateSpeed(unsigned char *buffer)
     this->theCtrlStruct->theCtrlIn->l_wheel_speed = -(((double)(int16_t)((uint16_t)buffer[3] << 8 | (uint16_t)buffer[4])) * this->theCtrlStruct->theUserStruct->samplingDE0) * 2 * M_PI / (this->theCtrlStruct->theUserStruct->theMotLeft->ratio * this->theCtrlStruct->theUserStruct->tics);
     this->theCtrlStruct->theCtrlIn->r_wheel_speed = -(((double)(int16_t)((uint16_t)buffer[1] << 8 | (uint16_t)buffer[2])) * this->theCtrlStruct->theUserStruct->samplingDE0) * 2 * M_PI / (this->theCtrlStruct->theUserStruct->theMotRight->ratio * this->theCtrlStruct->theUserStruct->tics);
 
-  //  printf(" l_wheel_speed %f", this->theCtrlStruct->theCtrlIn->l_wheel_speed);
-  //  printf(" r_wheel_speed %f", -this->theCtrlStruct->theCtrlIn->r_wheel_speed);
-    pthread_mutex_unlock(this->theMutex);
+     // printf(" l_wheel_speed %f", this->theCtrlStruct->theCtrlIn->l_wheel_speed);
+     // printf(" r_wheel_speed %f", -this->theCtrlStruct->theCtrlIn->r_wheel_speed);
 }
 
 void SpeedController::updateCmd()
@@ -155,12 +137,11 @@ void SpeedController::updateCmd()
     this->theCtrlStruct->theCtrlOut->wheel_commands[L_ID] = cmd_l;
     this->theCtrlStruct->theCtrlOut->wheel_commands[R_ID] = cmd_r;
 
-  //  printf(" l_wheel_command %f", this->theCtrlStruct->theCtrlOut->wheel_commands[L_ID]);
-  //  printf(" r_wheel_command %f\n", -this->theCtrlStruct->theCtrlOut->wheel_commands[R_ID]);
+     // printf(" l_wheel_command %f", this->theCtrlStruct->theCtrlOut->wheel_commands[L_ID]);
+     // printf(" r_wheel_command %f\n", -this->theCtrlStruct->theCtrlOut->wheel_commands[R_ID]);
 
-    pthread_mutex_lock(this->theMutex);
     this->can0->CAN0pushPropDC(this->theCtrlStruct->theCtrlOut->wheel_commands[L_ID], this->theCtrlStruct->theCtrlOut->wheel_commands[R_ID]);
-    pthread_mutex_unlock(this->theMutex);
+    this->theCtrlStruct->theCtrlIn->sens_flag = this->can0->getDistance(1, this->theCtrlStruct->theCtrlIn->sens_array_front);
 }
 
 double SpeedController::PIController(MotStruct *theMot, double V_ref, double V_wheel_mes, double t)
@@ -169,7 +150,7 @@ double SpeedController::PIController(MotStruct *theMot, double V_ref, double V_w
     double dt = t - theMot->t_p;
     double u = theMot->kp * e;
 
-  //  printf(" dt = %f\r\n", dt);
+    printf(" dt = %f\r\n", dt);
 
     if (!theMot->status) //The integral action is only done if there is no saturation of current.
     {
@@ -177,7 +158,7 @@ double SpeedController::PIController(MotStruct *theMot, double V_ref, double V_w
     }
     // integral action
     u += theMot->integral_error * theMot->ki;
-    u += theMot->kphi * V_wheel_mes; // back electromotive compensation
+  //  u += theMot->kphi * V_wheel_mes; // back electromotive compensation
     u += theMot->kd * e / dt;
     theMot->status = saturation(theMot->upperVoltageLimit, theMot->lowerVoltageLimit, &u);
 
@@ -237,4 +218,13 @@ void SpeedController::set_speed(double left, double right)
 {
     this->theCtrlStruct->theCtrlIn->l_wheel_ref = left;
     this->theCtrlStruct->theCtrlIn->r_wheel_ref = right;
+}
+
+void SpeedController::Speed_controller_stop()
+{
+    this->theCtrlStruct->theUserStruct->speed_kill = 1;
+
+    fclose(this->logFile);
+
+    this->can0->CAN0ctrl_motor(0);
 }

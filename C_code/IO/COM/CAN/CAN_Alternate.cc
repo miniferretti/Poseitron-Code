@@ -51,7 +51,7 @@ CAN0_Alternate::CAN0_Alternate(int baud)
   }
 
   rfilter.can_id = 0x700;
-  rfilter.can_mask = 0x1FFFFFF0;
+  rfilter.can_mask = 0x1FFFF000;
 
   setsockopt(s, SOL_CAN_RAW, CAN_RAW_FILTER, &rfilter, sizeof(rfilter));
 
@@ -68,6 +68,8 @@ CAN0_Alternate::CAN0_Alternate(int baud)
   {
     perror("bind");
   }
+
+  fd_set_blocking(s, 0);
 }
 
 void CAN0_Alternate::CAN0pushPropDC(double dcG, double dcD)
@@ -76,8 +78,8 @@ void CAN0_Alternate::CAN0pushPropDC(double dcG, double dcD)
   uint8_t dcDc = (uint8_t)(128.0 * dcD / 100.0 + 128.0);
   dcGc = dcGc >> 2;
   dcDc = dcDc >> 2;
-  can_frame msg;
-  can_frame msg1;
+  struct can_frame msg;
+  struct can_frame msg1;
 
   msg.can_id = CAN_MOT;
   msg.can_dlc = 3;
@@ -100,7 +102,7 @@ void CAN0_Alternate::CAN0pushPropDC(double dcG, double dcD)
 
 void CAN0_Alternate::CAN0ctrl_motor(int state)
 {
-  can_frame msg;
+  struct can_frame msg;
 
   if (state)
   {
@@ -130,7 +132,7 @@ void CAN0_Alternate::CAN0ctrl_motor(int state)
 void CAN0_Alternate::CAN0ctrl_led(int state)
 {
 
-  can_frame msg;
+  struct can_frame msg;
 
   if (state)
   {
@@ -173,10 +175,10 @@ void CAN0_Alternate::msgClear(can_frame *fr)
   fr->can_dlc = 0;
 }
 
-void CAN0_Alternate::getDistance(int dir, double *data)
+int CAN0_Alternate::getDistance(int dir, double *data)
 {
-  can_frame msg;
-  can_frame msg2;
+  struct can_frame msg;
+  struct can_frame msg2;
   int nbytes;
 
   if (dir)
@@ -189,7 +191,7 @@ void CAN0_Alternate::getDistance(int dir, double *data)
     msg.data[2] = 0x00;
 
     write(s, &msg, sizeof(msg));
-    //usleep(DELAY);
+    // usleep(DELAY);
   }
   else
   {
@@ -201,27 +203,45 @@ void CAN0_Alternate::getDistance(int dir, double *data)
     msg.data[2] = 0x00;
 
     write(s, &msg, sizeof(msg));
-    //usleep(DELAY);
+    //  usleep(DELAY);
   }
 
-  while (1)
+  if ((nbytes = read(s, &msg2, sizeof(struct can_frame))) < 0)
   {
-    if ((nbytes = read(s, &msg2, sizeof(struct can_frame))) < 0)
-    {
-      printf("Data not read\r\n");
-    }
-    else
-    {
-      break;
-    }
+    printf("Data not ready\r\n");
+    return 0;
   }
-
-  for (int i = 0; i < msg2.can_dlc; i++)
+  else
   {
-    data[i] = (double)msg2.data[i];
-  }
+    for (int i = 0; i < msg2.can_dlc; i++)
+    {
+      if (msg2.data[i] == 0)
+      {
+        data[i] = 250;
+      }
+      else
+      {
+        data[i] = (double)msg2.data[i];
+      }
+    }
 
-  printf("%f %f %f %f %f\r\n", data[0], data[1], data[2], data[3], data[4]);
+    printf("%f %f %f %f %f\r\n", data[0], data[1], data[2], data[3], data[4]);
+    return 1;
+  }
 }
 
 // For fruther info on the routines visit: https://github.com/rhyttr/SocketCAN/blob/master/test/tst-raw.c
+
+int CAN0_Alternate::fd_set_blocking(int fd, int blocking)
+{
+  /* Save the current flags */
+  int flags = fcntl(fd, F_GETFL, 0);
+  if (flags == -1)
+    return 0;
+
+  if (blocking)
+    flags &= ~O_NONBLOCK;
+  else
+    flags |= O_NONBLOCK;
+  return fcntl(fd, F_SETFL, flags) != -1;
+}

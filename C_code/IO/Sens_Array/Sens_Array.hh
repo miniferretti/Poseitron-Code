@@ -5,6 +5,6 @@
 #include "IO/Speed_Controller/CtrlStruct.hh"
 
 
-void get_prox(CAN0_Alternate *can0, CtrlStruct *cvs);
+int get_prox(CAN0_Alternate *can0, CtrlStruct *cvs);
 
 #endif

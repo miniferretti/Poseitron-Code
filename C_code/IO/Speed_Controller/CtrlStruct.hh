@@ -7,14 +7,17 @@ enum
 {
     WAIT_STATE,
     CALIB_STATE,
+    AVOID150_STATE,
     RUN_STATE,
     STOP_STATE
 };
 
-//Behavior states
+//AVOID150 states
 enum
 {
-    BAV_STATE_1
+    AVOID150_STATE1,
+    AVOID150_STATE2,
+    AVOID150_STATE3
 };
 
 //Behavior structure (Rudimentary)
@@ -27,7 +30,8 @@ enum
 enum{
     CALIB_1,
     CALIB_2,
-    CALIB_3
+    CALIB_3,
+    CALIB_4
 };
 
 
@@ -37,6 +41,7 @@ typedef struct RobotPosition
     double x;
     double y;
     double theta;
+    double thetaref;
 
     double t_used;
 
@@ -88,6 +93,8 @@ typedef struct CtrlStruct
     RobotParameters *robot;
     int main_states;
     int calib_states;
+    int avoid150_states;
+    double stopvalues[2];
 } CtrlStruct;
 
 int size_UserStruct();

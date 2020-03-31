@@ -1,5 +1,5 @@
-#ifndef CALIBRATION_HH
-#define CALIBRATION_HH
+#ifndef BEHAVIOR_HH
+#define BEHAVIOR_HH
 
 #include "IO/Speed_Controller/CtrlStruct.hh"
 #include "IO/Sens_Array/Sens_Array.hh"
@@ -8,6 +8,5 @@
 #include "IO/Odometry/Odometry.hh"
 #include "math.h"
 
-void calibration(CtrlStruct *cvs, SpeedController *spc, Odometry *odo);
-
+    void avoid150(CtrlStruct *cvs, SpeedController *spc, Odometry *odo);
 #endif

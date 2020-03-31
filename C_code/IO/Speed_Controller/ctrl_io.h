@@ -46,6 +46,7 @@ typedef struct CtrlIn
 	//array for the proximity sensors
 	double sens_array_front[5]; // [0] left side [1-3] front [5] right side
 	double sens_array_back[5];	// [0] left side [1-3] front [5] right side
+	int sens_flag;
 
 	//array for the color sensors
 	double color_array_right[3];
