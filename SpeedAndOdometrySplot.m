@@ -45,5 +45,6 @@ title("Left wheel control log");
  xlabel("X [m]");
  ylabel("Y [m]");
  axis equal;
+ title("Travel of the robot in XY coordinates")
 
 
