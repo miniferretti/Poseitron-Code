@@ -52,6 +52,12 @@ input 		     [1:0]		BRIDGE_IN;
         // F - front | R - rear
         // L - left  | R - Right
         logic quadA_FL, quadB_FL, quadA_RL, quadB_RL, quadA_odoR, quadB_odoR, quadA_odoL, quadB_odoL;
+		  
+		 // logic reset = 1'b1;
+		  logic i2c_ack_error;
+		  logic transmit_ready;
+		  logic [15:0] clear,red,green,blue;
+		  
         assign quadA_FL = BRIDGE_IN[0];
         assign quadB_FL = BRIDGE_IN[1];
 
@@ -66,7 +72,7 @@ input 		     [1:0]		BRIDGE_IN;
         assign quadA_odoL = BRIDGE[13];
         assign quadB_odoL = BRIDGE[15];
 
-        assign LED[7:0] = {quadA_FL,quadB_FL,quadA_RL,quadB_RL,quadA_odoL,quadB_odoL,quadA_odoR,quadB_odoR};
+        assign LED[7:0] =data_out[7:0];//data_out[7:0];//{quadA_FL,quadB_FL,quadA_RL,quadB_RL,quadA_odoL,quadB_odoL,quadA_odoR,quadB_odoR};
 
         // Clocks
         logic PLL_CLOCK;
@@ -97,9 +103,10 @@ input 		     [1:0]		BRIDGE_IN;
         logic                   spi_clk, spi_cs, spi_mosi, spi_miso;
         logic   [31:0]  data_write, data_read;
         logic   [3:0]   data_addr;
-        spi_slave spi_slave_instance(CLOCK_50, spi_clk, spi_cs, spi_mosi, spi_miso, 
+        spi_slave_mu spi_slave_instance(CLOCK_50, spi_clk, spi_cs, spi_mosi, spi_miso, 
                                                                 // DATA TO SEND TO RPi :
                                                                 speed_FL, speed_RL, count_odoR, count_odoL,
+                                                                red,green,blue,clear,
                                                                 // DATA TO RECEIVE FROM RPi :
                                                                 data_out);
 
@@ -108,7 +115,25 @@ input 		     [1:0]		BRIDGE_IN;
         assign spi_mosi         = PI[15];   // MOSI = pin 20 = RPi_15
         assign PI[13]                       = spi_miso;     // MISO = pin 18 = RPi_13 
 
-       // assign LED = speed_FR[10:3];
+		  logic                   spi_clk1, spi_cs1, spi_mosi1, spi_miso1;
+     // assign spi_clk1 = PI_IN[0];
+      assign spi_miso1 = PI[1];
+     // assign spi_mosi1 = PI_IN[1];
+      assign spi_cs1 = PI[2];
+		  
+		  
+		
+		  
+		  
+		  
+		  
+	 // BRIDGE[31] = SDA; //SDA
+	 // BRIDGE[33] = SCL; //SCL
+		 
+  
+	   //Controller I2C	 
+		pmod_color_sensor daColorSensor(.clk(CLOCK_50), .reset_n(PI[7]), .scl(BRIDGE[33]), .sda(BRIDGE[31]), .i2c_ack_err(i2c_ack_error), .clear(clear), .red(red), .green(green), .blue(blue), .sensor_select(data_out[7:0]));
+		 
 
 
 endmodule

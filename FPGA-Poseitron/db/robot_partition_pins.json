@@ -36,6 +36,10 @@
 					"strict" : false
 				},
 				{
+					"name" : "PI[7]",
+					"strict" : false
+				},
+				{
 					"name" : "PI[9]",
 					"strict" : false
 				},
@@ -76,7 +80,15 @@
 					"strict" : false
 				},
 				{
-					"name" : "BRIDGE_IN[1]",
+					"name" : "BRIDGE[31]",
+					"strict" : false
+				},
+				{
+					"name" : "BRIDGE[33]",
+					"strict" : false
+				},
+				{
+					"name" : "CLOCK_50",
 					"strict" : false
 				},
 				{
@@ -84,7 +96,7 @@
 					"strict" : false
 				},
 				{
-					"name" : "CLOCK_50",
+					"name" : "BRIDGE_IN[1]",
 					"strict" : false
 				}
 			]

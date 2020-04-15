@@ -3,7 +3,7 @@
 // SPI Module
 // 
 
-module spi_slave(
+module spi_slave_mu(
 	input  logic		clk,
 	input  logic 		SPI_CLK,
 	input  logic		SPI_CS,
@@ -11,6 +11,7 @@ module spi_slave(
 	output logic 		SPI_MISO,
 
 	input  logic [31:0]	speed_FL, speed_RL, trace_R, trace_L,
+	input  logic [15:0] red, green, blue, clear,
 	output logic [31:0]	data_out
 );
 
@@ -21,7 +22,7 @@ module spi_slave(
 	logic [31:0] mosiRAM[15:0];
 	logic 		 mosiRAM_we;
     
-	assign data_out = mosiRAM[4'h0];
+	assign data_out = mosiRAM[4'h7];
 		// If needed, we have 16 RAM slots.
 
 	always_ff @(posedge clk) begin
@@ -42,6 +43,18 @@ module spi_slave(
 
 		// left odometer data
 		misoRAM[4'h2] <= {trace_L};
+
+		//Red color value
+		misoRAM[4'h3] <= {16'b0, red};
+
+		//Green color value
+		misoRAM[4'h4] <={16'b0, green};
+
+		//Blue color value
+		misoRAM[4'h5] <={16'b0, blue};
+
+		//Clear color value
+		misoRAM[4'h6] <={16'b0, clear};
 
 	end
 

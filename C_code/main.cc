@@ -3,7 +3,7 @@
 
 #include "IO/COM/SPI/SPI.hh"
 #include "IO/COM/SPI/Specific/SPI_DE0.hh"
-
+#include "IO/COM/TCS3472_I2C/TCS3472_FPGA.hh"
 #include <iostream>
 #include <errno.h>
 #include <stdlib.h>
@@ -16,7 +16,6 @@
 #include <time.h>
 #include <string>
 #include <sstream>
-#include "IO/COM/TCS3472_I2C/TCS3472_I2C.hh"
 #include <chrono>
 #include "IO/Calibration/Calibration.hh"
 #include "IO/Mid_level_controller/Avoid150.hh"
@@ -34,6 +33,7 @@ int l = 6;
 
 int main()
 {
+	wiringPiSetup();
 	CtrlStruct *myCtrlStruct = new CtrlStruct;
 	CAN0_Alternate *can = new CAN0_Alternate(CAN_BR);
 	SPI_DE0 *deo;
@@ -42,7 +42,7 @@ int main()
 
 	SpeedController *spdctrl = new SpeedController(myCtrlStruct, can);
 	Odometry *myOdometry = new Odometry(myCtrlStruct);
-	Adafruit_TCS34725 *myColorSensor = new Adafruit_TCS34725();
+	sensorSelect(2);
 
 	spdctrl->init_speed_controller(1);
 	spdctrl->set_speed(0, 0);
@@ -51,6 +51,8 @@ int main()
 	auto start = std::chrono::steady_clock::now();
 	double time_taken;
 	int run = 1;
+	colorSensorReset();
+	uint16_t r, g, b, c;
 
 	printf("Welcome to the Poseitron code prototype.\r\n");
 	printf("We hope that you will be pleased with the coding and we wish you a great succes.\n\r");
@@ -64,15 +66,19 @@ int main()
 		myCtrlStruct->theCtrlIn->t = time_taken / 1000.0;
 		spdctrl->updateLowCtrl();
 		myOdometry->Odometry_update();
+		sensorSelect(0);
+		getRawData(&r, &g, &b, &c);
+
+		printf("red = %d green = %d blue = %d \r\n", r, g, b);
 
 		switch (myCtrlStruct->main_states)
 		{
 		case WAIT_STATE:
-			printf("WAIT_STATE\r\n");
+			//printf("WAIT_STATE\r\n");
 
 			if (myCtrlStruct->theCtrlIn->t > 15)
 			{
-				myCtrlStruct->main_states = CALIB_STATE;
+				myCtrlStruct->main_states = WAIT_STATE;
 				myCtrlStruct->calib_states = CALIB_1;
 			}
 			break;

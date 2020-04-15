@@ -22,13 +22,14 @@
  *  v1.0 - First release
  */
 
-#include <wiringPiI2C.h>
-#include <wiringPi.h>
+//#include <wiringPiI2C.h>
+//#include <wiringPi.h>
 #include <cmath>
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
 #include <unistd.h>
+#include "wiringPi.h"
 #include "IO/COM/TCS3472_I2C/TCS3472_I2C.hh"
 
 /*!
@@ -51,12 +52,13 @@ float powf(const float x, const float y)
  */
 void Adafruit_TCS34725::write8(uint8_t reg, uint32_t value)
 {
-    int fd;
+      int fd;
     fd = wiringPiI2CSetup(_i2caddr);
     wiringPiI2CWriteReg8(fd, TCS34725_COMMAND_BIT | reg, value & 0xFF);
-    close(fd);
-}
+    close(fd); 
 
+    
+}
 /*!
  *  brief  Reads an 8 bit value over I2C
  *  param  reg
@@ -64,12 +66,16 @@ void Adafruit_TCS34725::write8(uint8_t reg, uint32_t value)
  */
 uint8_t Adafruit_TCS34725::read8(uint8_t reg)
 {
-
-    int fd;
     uint8_t data;
+
+      int fd;
+    
     fd = wiringPiI2CSetup(_i2caddr);
     data = (uint8_t)wiringPiI2CReadReg8(fd, TCS34725_COMMAND_BIT | reg);
-    close(fd);
+    close(fd); 
+
+    
+
     return data;
 }
 
@@ -80,11 +86,14 @@ uint8_t Adafruit_TCS34725::read8(uint8_t reg)
  */
 uint16_t Adafruit_TCS34725::read16(uint8_t reg)
 {
-    int fd;
     uint16_t data;
+     int fd;
     fd = wiringPiI2CSetup(_i2caddr);
     data = (uint16_t)wiringPiI2CReadReg16(fd, TCS34725_COMMAND_BIT | reg);
-    close(fd);
+    close(fd); 
+
+    
+
     return data;
 }
 
@@ -149,6 +158,7 @@ Adafruit_TCS34725::Adafruit_TCS34725(tcs34725IntegrationTime_t it,
     _tcs34725Initialised = false;
     _tcs34725IntegrationTime = it;
     _tcs34725Gain = gain;
+    myI2CBus = new i2cBitBangingBus(MYSDA, MYSCL, 0);
 }
 
 /*!
@@ -199,7 +209,7 @@ bool Adafruit_TCS34725::begin()
  */
 bool Adafruit_TCS34725::init()
 {
-    wiringPiSetup();
+    // wiringPiSetup();
 
     /* Make sure we're actually connected */
     uint8_t x = read8(TCS34725_ID);
@@ -546,6 +556,7 @@ void Adafruit_TCS34725::clearInterrupt()
     fd = wiringPiI2CSetup(_i2caddr);
     wiringPiI2CWrite(fd, TCS34725_COMMAND_BIT | 0x66);
     close(fd);
+    
 }
 
 /*!
@@ -565,11 +576,12 @@ void Adafruit_TCS34725::setIntLimits(uint16_t low, uint16_t high)
 
 void Adafruit_TCS34725::sensorSelect(int bus)
 {
-    wiringPiSetup();
+     wiringPiSetup();
     int fd;
     if (bus > 7)
         return;
     fd = wiringPiI2CSetup(TCA9548A_ADDRESS);
     wiringPiI2CWrite(fd, 1 << (uint8_t)bus);
-    close(fd);
+    close(fd); 
+
 }
