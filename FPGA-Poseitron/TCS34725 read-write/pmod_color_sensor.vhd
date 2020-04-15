@@ -231,8 +231,8 @@ BEGIN
           END CASE; 
 
 
-
-        WHEN ports_to_output =>                        --This state is used to put all the output of the GPIO expader to output mode
+        --This state is used to put all the output of the GPIO expader to output mode
+        WHEN ports_to_output =>                        
           busy_prev <= i2c_busy;                       --capture the value of the previous i2c busy signal
           IF(busy_prev = '0' AND i2c_busy = '1') THEN  --i2c busy just went high
             busy_cnt := busy_cnt + 1;                   --counts the times busy has gone from low to high during transaction
@@ -325,7 +325,7 @@ BEGIN
 
 
 
-
+          --Change the color sensor in the multiplexer
           WHEN change_sensor =>
             busy_prev <= i2c_busy;                       --capture the value of the previous i2c busy signal
             IF(busy_prev = '0' AND i2c_busy = '1') THEN  --i2c busy just went high
@@ -347,7 +347,7 @@ BEGIN
             END CASE;
 
 
-
+          --This state is used to control the output state of the GPIO of the MCP23017
           WHEN ports_control =>
             busy_prev <= i2c_busy;                       --capture the value of the previous i2c busy signal
             IF(busy_prev = '0' AND i2c_busy = '1') THEN  --i2c busy just went high
