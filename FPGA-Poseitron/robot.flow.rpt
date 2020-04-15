@@ -1,5 +1,5 @@
 Flow report for robot
-Wed Apr 15 17:05:07 2020
+Thu Apr 16 00:40:33 2020
 Quartus Prime Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
 
 
@@ -40,17 +40,17 @@ refer to the applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Flow Summary                                                                     ;
 +------------------------------------+---------------------------------------------+
-; Flow Status                        ; Successful - Wed Apr 15 17:05:04 2020       ;
+; Flow Status                        ; Successful - Thu Apr 16 00:40:29 2020       ;
 ; Quartus Prime Version              ; 18.0.0 Build 614 04/24/2018 SJ Lite Edition ;
 ; Revision Name                      ; robot                                       ;
 ; Top-level Entity Name              ; robot                                       ;
 ; Family                             ; Cyclone IV E                                ;
 ; Device                             ; EP4CE22F17C6                                ;
 ; Timing Models                      ; Final                                       ;
-; Total logic elements               ; 834 / 22,320 ( 4 % )                        ;
-;     Total combinational functions  ; 580 / 22,320 ( 3 % )                        ;
-;     Dedicated logic registers      ; 652 / 22,320 ( 3 % )                        ;
-; Total registers                    ; 652                                         ;
+; Total logic elements               ; 878 / 22,320 ( 4 % )                        ;
+;     Total combinational functions  ; 623 / 22,320 ( 3 % )                        ;
+;     Dedicated logic registers      ; 670 / 22,320 ( 3 % )                        ;
+; Total registers                    ; 670                                         ;
 ; Total pins                         ; 83 / 154 ( 54 % )                           ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 0 / 608,256 ( 0 % )                         ;
@@ -64,7 +64,7 @@ refer to the applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 04/15/2020 17:04:41 ;
+; Start date & time ; 04/16/2020 00:40:01 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; robot               ;
 +-------------------+---------------------+
@@ -75,7 +75,7 @@ refer to the applicable agreement for further details.
 +-------------------------------------+----------------------------------------+---------------+-------------+------------+
 ; Assignment Name                     ; Value                                  ; Default Value ; Entity Name ; Section Id ;
 +-------------------------------------+----------------------------------------+---------------+-------------+------------+
-; COMPILER_SIGNATURE_ID               ; 84440852126581.158696308122644         ; --            ; --          ; --         ;
+; COMPILER_SIGNATURE_ID               ; 84440852126581.158699040114480         ; --            ; --          ; --         ;
 ; MAX_CORE_JUNCTION_TEMP              ; 85                                     ; --            ; --          ; --         ;
 ; MIN_CORE_JUNCTION_TEMP              ; 0                                      ; --            ; --          ; --         ;
 ; PARTITION_COLOR                     ; -- (Not supported for targeted family) ; --            ; --          ; Top        ;
@@ -91,11 +91,11 @@ refer to the applicable agreement for further details.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:12     ; 1.0                     ; 4866 MB             ; 00:00:26                           ;
-; Fitter               ; 00:00:07     ; 1.2                     ; 6526 MB             ; 00:00:14                           ;
-; Assembler            ; 00:00:02     ; 1.0                     ; 4680 MB             ; 00:00:01                           ;
-; Timing Analyzer      ; 00:00:03     ; 1.2                     ; 4936 MB             ; 00:00:03                           ;
-; Total                ; 00:00:24     ; --                      ; --                  ; 00:00:44                           ;
+; Analysis & Synthesis ; 00:00:14     ; 1.0                     ; 4868 MB             ; 00:00:26                           ;
+; Fitter               ; 00:00:11     ; 1.2                     ; 6528 MB             ; 00:00:15                           ;
+; Assembler            ; 00:00:02     ; 1.0                     ; 4683 MB             ; 00:00:01                           ;
+; Timing Analyzer      ; 00:00:03     ; 1.2                     ; 4942 MB             ; 00:00:03                           ;
+; Total                ; 00:00:30     ; --                      ; --                  ; 00:00:45                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 

@@ -57,6 +57,7 @@ input 		     [1:0]		BRIDGE_IN;
 		  logic i2c_ack_error;
 		  logic transmit_ready;
 		  logic [15:0] clear,red,green,blue;
+      logic [31:0] ports_control;
 		  
         assign quadA_FL = BRIDGE_IN[0];
         assign quadB_FL = BRIDGE_IN[1];
@@ -108,7 +109,7 @@ input 		     [1:0]		BRIDGE_IN;
                                                                 speed_FL, speed_RL, count_odoR, count_odoL,
                                                                 red,green,blue,clear,
                                                                 // DATA TO RECEIVE FROM RPi :
-                                                                data_out);
+                                                                data_out, ports_control);
 
         assign spi_clk                  = PI[11];   // SCLK = pin 16 = RPi_11
         assign spi_cs                   = PI[9];    // CE0  = pin 14 = RPi_9
@@ -132,7 +133,7 @@ input 		     [1:0]		BRIDGE_IN;
 		 
   
 	   //Controller I2C	 
-		pmod_color_sensor daColorSensor(.clk(CLOCK_50), .reset_n(PI[7]), .scl(BRIDGE[33]), .sda(BRIDGE[31]), .i2c_ack_err(i2c_ack_error), .clear(clear), .red(red), .green(green), .blue(blue), .sensor_select(data_out[7:0]));
+		pmod_color_sensor daColorSensor(.clk(CLOCK_50), .reset_n(PI[7]), .scl(BRIDGE[33]), .sda(BRIDGE[31]), .i2c_ack_err(i2c_ack_error), .clear(clear), .red(red), .green(green), .blue(blue), .sensor_select(data_out[7:0]), .portA_output_select(ports_control[7:0]), .portB_output_select(ports_control[15:8]));
 		 
 
 

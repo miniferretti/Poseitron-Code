@@ -1,5 +1,5 @@
 Analysis & Synthesis report for robot
-Wed Apr 15 17:04:53 2020
+Thu Apr 16 00:40:14 2020
 Quartus Prime Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
 
 
@@ -61,15 +61,15 @@ refer to the applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Wed Apr 15 17:04:53 2020       ;
+; Analysis & Synthesis Status        ; Successful - Thu Apr 16 00:40:14 2020       ;
 ; Quartus Prime Version              ; 18.0.0 Build 614 04/24/2018 SJ Lite Edition ;
 ; Revision Name                      ; robot                                       ;
 ; Top-level Entity Name              ; robot                                       ;
 ; Family                             ; Cyclone IV E                                ;
-; Total logic elements               ; 957                                         ;
-;     Total combinational functions  ; 580                                         ;
-;     Dedicated logic registers      ; 652                                         ;
-; Total registers                    ; 652                                         ;
+; Total logic elements               ; 1,015                                       ;
+;     Total combinational functions  ; 623                                         ;
+;     Dedicated logic registers      ; 670                                         ;
+; Total registers                    ; 670                                         ;
 ; Total pins                         ; 83                                          ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 0                                           ;
@@ -213,20 +213,20 @@ refer to the applicable agreement for further details.
 +---------------------------------------------+----------------+
 ; Resource                                    ; Usage          ;
 +---------------------------------------------+----------------+
-; Estimated Total logic elements              ; 957            ;
+; Estimated Total logic elements              ; 1,015          ;
 ;                                             ;                ;
-; Total combinational functions               ; 580            ;
+; Total combinational functions               ; 623            ;
 ; Logic element usage by number of LUT inputs ;                ;
-;     -- 4 input functions                    ; 285            ;
-;     -- 3 input functions                    ; 175            ;
-;     -- <=2 input functions                  ; 120            ;
+;     -- 4 input functions                    ; 325            ;
+;     -- 3 input functions                    ; 177            ;
+;     -- <=2 input functions                  ; 121            ;
 ;                                             ;                ;
 ; Logic elements by mode                      ;                ;
-;     -- normal mode                          ; 408            ;
+;     -- normal mode                          ; 451            ;
 ;     -- arithmetic mode                      ; 172            ;
 ;                                             ;                ;
-; Total registers                             ; 652            ;
-;     -- Dedicated logic registers            ; 652            ;
+; Total registers                             ; 670            ;
+;     -- Dedicated logic registers            ; 670            ;
 ;     -- I/O registers                        ; 0              ;
 ;                                             ;                ;
 ; I/O pins                                    ; 83             ;
@@ -237,9 +237,9 @@ refer to the applicable agreement for further details.
 ;     -- PLLs                                 ; 1              ;
 ;                                             ;                ;
 ; Maximum fan-out node                        ; CLOCK_50~input ;
-; Maximum fan-out                             ; 589            ;
-; Total fan-out                               ; 3921           ;
-; Average fan-out                             ; 2.67           ;
+; Maximum fan-out                             ; 607            ;
+; Total fan-out                               ; 4141           ;
+; Average fan-out                             ; 2.71           ;
 +---------------------------------------------+----------------+
 
 
@@ -248,38 +248,40 @@ refer to the applicable agreement for further details.
 +-----------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------+-------------------+--------------+
 ; Compilation Hierarchy Node              ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                          ; Entity Name       ; Library Name ;
 +-----------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------+-------------------+--------------+
-; |robot                                  ; 580 (0)             ; 652 (0)                   ; 0           ; 0            ; 0       ; 0         ; 83   ; 0            ; |robot                                                                       ; robot             ; work         ;
+; |robot                                  ; 623 (0)             ; 670 (0)                   ; 0           ; 0            ; 0       ; 0         ; 83   ; 0            ; |robot                                                                       ; robot             ; work         ;
 ;    |my_pll:pll_clock|                   ; 0 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |robot|my_pll:pll_clock                                                      ; my_pll            ; work         ;
 ;       |altpll:altpll_component|         ; 0 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |robot|my_pll:pll_clock|altpll:altpll_component                              ; altpll            ; work         ;
 ;          |my_pll_altpll:auto_generated| ; 0 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |robot|my_pll:pll_clock|altpll:altpll_component|my_pll_altpll:auto_generated ; my_pll_altpll     ; work         ;
-;    |pmod_color_sensor:daColorSensor|    ; 271 (163)           ; 248 (195)                 ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |robot|pmod_color_sensor:daColorSensor                                       ; pmod_color_sensor ; work         ;
-;       |i2c_master:i2c_master_0|         ; 108 (108)           ; 53 (53)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |robot|pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0               ; i2c_master        ; work         ;
+;    |pmod_color_sensor:daColorSensor|    ; 314 (207)           ; 250 (197)                 ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |robot|pmod_color_sensor:daColorSensor                                       ; pmod_color_sensor ; work         ;
+;       |i2c_master:i2c_master_0|         ; 107 (107)           ; 53 (53)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |robot|pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0               ; i2c_master        ; work         ;
 ;    |quad:encoder_FL|                    ; 18 (18)             ; 22 (22)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |robot|quad:encoder_FL                                                       ; quad              ; work         ;
 ;    |quad:encoder_RL|                    ; 18 (18)             ; 22 (22)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |robot|quad:encoder_RL                                                       ; quad              ; work         ;
 ;    |quad:odometerL|                     ; 34 (34)             ; 38 (38)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |robot|quad:odometerL                                                        ; quad              ; work         ;
 ;    |quad:odometerR|                     ; 34 (34)             ; 38 (38)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |robot|quad:odometerR                                                        ; quad              ; work         ;
 ;    |speed:speed_counter_FL|             ; 0 (0)               ; 32 (32)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |robot|speed:speed_counter_FL                                                ; speed             ; work         ;
 ;    |speed:speed_counter_RL|             ; 0 (0)               ; 32 (32)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |robot|speed:speed_counter_RL                                                ; speed             ; work         ;
-;    |spi_slave_mu:spi_slave_instance|    ; 205 (205)           ; 220 (220)                 ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |robot|spi_slave_mu:spi_slave_instance                                       ; spi_slave_mu      ; work         ;
+;    |spi_slave_mu:spi_slave_instance|    ; 205 (205)           ; 236 (236)                 ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |robot|spi_slave_mu:spi_slave_instance                                       ; spi_slave_mu      ; work         ;
 +-----------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------+-------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
 Encoding Type:  One-Hot
-+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; State Machine - |robot|pmod_color_sensor:daColorSensor|state                                                                                                         ;
-+---------------------+---------------------+---------------------+-----------------+-------------+-------------------+-----------------+----------------+-------------+
-; Name                ; state.change_sensor ; state.output_result ; state.read_data ; state.pause ; state.set_pon_aen ; state.set_atime ; state.set_gain ; state.start ;
-+---------------------+---------------------+---------------------+-----------------+-------------+-------------------+-----------------+----------------+-------------+
-; state.start         ; 0                   ; 0                   ; 0               ; 0           ; 0                 ; 0               ; 0              ; 0           ;
-; state.set_gain      ; 0                   ; 0                   ; 0               ; 0           ; 0                 ; 0               ; 1              ; 1           ;
-; state.set_atime     ; 0                   ; 0                   ; 0               ; 0           ; 0                 ; 1               ; 0              ; 1           ;
-; state.set_pon_aen   ; 0                   ; 0                   ; 0               ; 0           ; 1                 ; 0               ; 0              ; 1           ;
-; state.pause         ; 0                   ; 0                   ; 0               ; 1           ; 0                 ; 0               ; 0              ; 1           ;
-; state.read_data     ; 0                   ; 0                   ; 1               ; 0           ; 0                 ; 0               ; 0              ; 1           ;
-; state.output_result ; 0                   ; 1                   ; 0               ; 0           ; 0                 ; 0               ; 0              ; 1           ;
-; state.change_sensor ; 1                   ; 0                   ; 0               ; 0           ; 0                 ; 0               ; 0              ; 1           ;
-+---------------------+---------------------+---------------------+-----------------+-------------+-------------------+-----------------+----------------+-------------+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |robot|pmod_color_sensor:daColorSensor|state                                                                                                                                                         ;
++-----------------------+---------------------+-----------------------+---------------------+---------------------+-----------------+-------------+-------------------+-----------------+----------------+-------------+
+; Name                  ; state.ports_control ; state.ports_to_output ; state.change_sensor ; state.output_result ; state.read_data ; state.pause ; state.set_pon_aen ; state.set_atime ; state.set_gain ; state.start ;
++-----------------------+---------------------+-----------------------+---------------------+---------------------+-----------------+-------------+-------------------+-----------------+----------------+-------------+
+; state.start           ; 0                   ; 0                     ; 0                   ; 0                   ; 0               ; 0           ; 0                 ; 0               ; 0              ; 0           ;
+; state.set_gain        ; 0                   ; 0                     ; 0                   ; 0                   ; 0               ; 0           ; 0                 ; 0               ; 1              ; 1           ;
+; state.set_atime       ; 0                   ; 0                     ; 0                   ; 0                   ; 0               ; 0           ; 0                 ; 1               ; 0              ; 1           ;
+; state.set_pon_aen     ; 0                   ; 0                     ; 0                   ; 0                   ; 0               ; 0           ; 1                 ; 0               ; 0              ; 1           ;
+; state.pause           ; 0                   ; 0                     ; 0                   ; 0                   ; 0               ; 1           ; 0                 ; 0               ; 0              ; 1           ;
+; state.read_data       ; 0                   ; 0                     ; 0                   ; 0                   ; 1               ; 0           ; 0                 ; 0               ; 0              ; 1           ;
+; state.output_result   ; 0                   ; 0                     ; 0                   ; 1                   ; 0               ; 0           ; 0                 ; 0               ; 0              ; 1           ;
+; state.change_sensor   ; 0                   ; 0                     ; 1                   ; 0                   ; 0               ; 0           ; 0                 ; 0               ; 0              ; 1           ;
+; state.ports_to_output ; 0                   ; 1                     ; 0                   ; 0                   ; 0               ; 0           ; 0                 ; 0               ; 0              ; 1           ;
+; state.ports_control   ; 1                   ; 0                     ; 0                   ; 0                   ; 0               ; 0           ; 0                 ; 0               ; 0              ; 1           ;
++-----------------------+---------------------+-----------------------+---------------------+---------------------+-----------------+-------------+-------------------+-----------------+----------------+-------------+
 
 
 Encoding Type:  One-Hot
@@ -515,12 +517,12 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 652   ;
-; Number of registers using Synchronous Clear  ; 47    ;
-; Number of registers using Synchronous Load   ; 2     ;
-; Number of registers using Asynchronous Clear ; 132   ;
+; Total registers                              ; 670   ;
+; Number of registers using Synchronous Clear  ; 48    ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 134   ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 371   ;
+; Number of registers using Clock Enable       ; 387   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -534,7 +536,7 @@ Encoding Type:  One-Hot
 ; pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|bit_cnt[2] ; 20      ;
 ; pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|bit_cnt[1] ; 29      ;
 ; pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|bit_cnt[0] ; 27      ;
-; pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|busy       ; 14      ;
+; pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|busy       ; 18      ;
 ; Total number of inverted registers = 5                             ;         ;
 +--------------------------------------------------------------------+---------+
 
@@ -544,26 +546,26 @@ Encoding Type:  One-Hot
 +--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------------------+
-; 3:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |robot|pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|data_tx[6] ;
-; 3:1                ; 14 bits   ; 28 LEs        ; 14 LEs               ; 14 LEs                 ; Yes        ; |robot|spi_slave_mu:spi_slave_instance|SPI_reg[7]                         ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |robot|pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|data_tx[0] ;
+; 3:1                ; 14 bits   ; 28 LEs        ; 14 LEs               ; 14 LEs                 ; Yes        ; |robot|spi_slave_mu:spi_slave_instance|SPI_cnt[2]                         ;
 ; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |robot|pmod_color_sensor:daColorSensor|blue_data[11]                      ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |robot|pmod_color_sensor:daColorSensor|clear_data[15]                     ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |robot|pmod_color_sensor:daColorSensor|green_data[10]                     ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |robot|pmod_color_sensor:daColorSensor|red_data[10]                       ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |robot|pmod_color_sensor:daColorSensor|clear_data[7]                      ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |robot|pmod_color_sensor:daColorSensor|blue_data[4]                       ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |robot|pmod_color_sensor:daColorSensor|green_data[7]                      ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |robot|pmod_color_sensor:daColorSensor|red_data[2]                        ;
-; 19:1               ; 15 bits   ; 180 LEs       ; 45 LEs               ; 135 LEs                ; Yes        ; |robot|spi_slave_mu:spi_slave_instance|SPI_reg[35]                        ;
-; 19:1               ; 16 bits   ; 192 LEs       ; 96 LEs               ; 96 LEs                 ; Yes        ; |robot|spi_slave_mu:spi_slave_instance|SPI_reg[14]                        ;
-; 6:1                ; 4 bits    ; 16 LEs        ; 4 LEs                ; 12 LEs                 ; Yes        ; |robot|pmod_color_sensor:daColorSensor|busy_cnt[3]                        ;
-; 15:1               ; 3 bits    ; 30 LEs        ; 0 LEs                ; 30 LEs                 ; Yes        ; |robot|pmod_color_sensor:daColorSensor|i2c_addr[1]                        ;
-; 13:1               ; 4 bits    ; 32 LEs        ; 8 LEs                ; 24 LEs                 ; Yes        ; |robot|pmod_color_sensor:daColorSensor|i2c_addr[3]                        ;
-; 16:1               ; 2 bits    ; 20 LEs        ; 4 LEs                ; 16 LEs                 ; Yes        ; |robot|pmod_color_sensor:daColorSensor|i2c_data_wr[7]                     ;
-; 3:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |robot|pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|bit_cnt[2] ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |robot|pmod_color_sensor:daColorSensor|clear_data[4]                      ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |robot|pmod_color_sensor:daColorSensor|blue_data[3]                       ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |robot|pmod_color_sensor:daColorSensor|green_data[5]                      ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |robot|pmod_color_sensor:daColorSensor|red_data[5]                        ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |robot|pmod_color_sensor:daColorSensor|clear_data[14]                     ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |robot|pmod_color_sensor:daColorSensor|green_data[12]                     ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |robot|pmod_color_sensor:daColorSensor|red_data[12]                       ;
+; 19:1               ; 15 bits   ; 180 LEs       ; 45 LEs               ; 135 LEs                ; Yes        ; |robot|spi_slave_mu:spi_slave_instance|SPI_reg[32]                        ;
+; 19:1               ; 16 bits   ; 192 LEs       ; 96 LEs               ; 96 LEs                 ; Yes        ; |robot|spi_slave_mu:spi_slave_instance|SPI_reg[8]                         ;
+; 7:1                ; 4 bits    ; 16 LEs        ; 4 LEs                ; 12 LEs                 ; Yes        ; |robot|pmod_color_sensor:daColorSensor|busy_cnt[0]                        ;
+; 17:1               ; 3 bits    ; 33 LEs        ; 0 LEs                ; 33 LEs                 ; Yes        ; |robot|pmod_color_sensor:daColorSensor|i2c_addr[5]                        ;
+; 15:1               ; 4 bits    ; 40 LEs        ; 8 LEs                ; 32 LEs                 ; Yes        ; |robot|pmod_color_sensor:daColorSensor|i2c_addr[3]                        ;
+; 24:1               ; 2 bits    ; 32 LEs        ; 10 LEs               ; 22 LEs                 ; Yes        ; |robot|pmod_color_sensor:daColorSensor|i2c_data_wr[5]                     ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |robot|pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|bit_cnt[0] ;
 ; 9:1                ; 2 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; No         ; |robot|spi_slave_mu:spi_slave_instance|state                              ;
 ; 9:1                ; 2 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; No         ; |robot|spi_slave_mu:spi_slave_instance|state                              ;
-; 12:1               ; 4 bits    ; 32 LEs        ; 12 LEs               ; 20 LEs                 ; No         ; |robot|pmod_color_sensor:daColorSensor|Selector7                          ;
+; 13:1               ; 4 bits    ; 32 LEs        ; 12 LEs               ; 20 LEs                 ; No         ; |robot|pmod_color_sensor:daColorSensor|Selector1                          ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------------------+
 
 
@@ -990,13 +992,14 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-------------+--------+----------+-------------------------------------------------------------------------------------+
 
 
-+---------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "spi_slave_mu:spi_slave_instance"                                                               ;
-+-----------------+--------+----------+-------------------------------------------------------------------------------------+
-; Port            ; Type   ; Severity ; Details                                                                             ;
-+-----------------+--------+----------+-------------------------------------------------------------------------------------+
-; data_out[31..8] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+-----------------+--------+----------+-------------------------------------------------------------------------------------+
++---------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "spi_slave_mu:spi_slave_instance"                                                                     ;
++-----------------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port                  ; Type   ; Severity ; Details                                                                             ;
++-----------------------+--------+----------+-------------------------------------------------------------------------------------+
+; data_out[31..8]       ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; ports_control[31..16] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++-----------------------+--------+----------+-------------------------------------------------------------------------------------+
 
 
 +--------------------------------------------+
@@ -1050,28 +1053,27 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
 ; boundary_port         ; 83                          ;
-; cycloneiii_ff         ; 652                         ;
-;     CLR               ; 17                          ;
-;     ENA               ; 230                         ;
-;     ENA CLR           ; 92                          ;
-;     ENA CLR SCLR      ; 23                          ;
+; cycloneiii_ff         ; 670                         ;
+;     CLR               ; 19                          ;
+;     ENA               ; 248                         ;
+;     ENA CLR           ; 91                          ;
+;     ENA CLR SCLR      ; 24                          ;
 ;     ENA SCLR          ; 24                          ;
-;     ENA SLD           ; 2                           ;
 ;     plain             ; 264                         ;
 ; cycloneiii_io_obuf    ; 68                          ;
-; cycloneiii_lcell_comb ; 580                         ;
+; cycloneiii_lcell_comb ; 623                         ;
 ;     arith             ; 172                         ;
 ;         2 data inputs ; 53                          ;
 ;         3 data inputs ; 119                         ;
-;     normal            ; 408                         ;
-;         1 data inputs ; 6                           ;
-;         2 data inputs ; 61                          ;
-;         3 data inputs ; 56                          ;
-;         4 data inputs ; 285                         ;
+;     normal            ; 451                         ;
+;         1 data inputs ; 5                           ;
+;         2 data inputs ; 63                          ;
+;         3 data inputs ; 58                          ;
+;         4 data inputs ; 325                         ;
 ; cycloneiii_pll        ; 1                           ;
 ;                       ;                             ;
 ; Max LUT depth         ; 7.00                        ;
-; Average LUT depth     ; 2.94                        ;
+; Average LUT depth     ; 3.01                        ;
 +-----------------------+-----------------------------+
 
 
@@ -1090,7 +1092,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
-    Info: Processing started: Wed Apr 15 17:04:41 2020
+    Info: Processing started: Thu Apr 16 00:40:00 2020
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off robot -c robot
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 16 of the 16 processors detected
@@ -1105,17 +1107,17 @@ Info (12021): Found 3 design units, including 3 entities, in source file encoder
     Info (12023): Found entity 2: speed File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/encoders.sv Line: 23
     Info (12023): Found entity 3: delta File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/encoders.sv Line: 38
 Info (12021): Found 2 design units, including 1 entities, in source file tcs34725 read-write/pmod_color_sensor.vhd
-    Info (12022): Found design unit 1: pmod_color_sensor-behavior File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/TCS34725 read-write/pmod_color_sensor.vhd Line: 45
+    Info (12022): Found design unit 1: pmod_color_sensor-behavior File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/TCS34725 read-write/pmod_color_sensor.vhd Line: 47
     Info (12023): Found entity 1: pmod_color_sensor File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/TCS34725 read-write/pmod_color_sensor.vhd Line: 27
 Info (12021): Found 2 design units, including 1 entities, in source file tcs34725 read-write/i2c_master.vhd
     Info (12022): Found design unit 1: i2c_master-logic File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/TCS34725 read-write/i2c_master.vhd Line: 54
     Info (12023): Found entity 1: i2c_master File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/TCS34725 read-write/i2c_master.vhd Line: 36
 Info (12127): Elaborating entity "robot" for the top level hierarchy
-Warning (10036): Verilog HDL or VHDL warning at robot.sv(118): object "spi_cs1" assigned a value but never read File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 118
-Warning (10036): Verilog HDL or VHDL warning at robot.sv(118): object "spi_miso1" assigned a value but never read File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 118
+Warning (10036): Verilog HDL or VHDL warning at robot.sv(119): object "spi_cs1" assigned a value but never read File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 119
+Warning (10036): Verilog HDL or VHDL warning at robot.sv(119): object "spi_miso1" assigned a value but never read File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 119
 Warning (12125): Using design file my_pll.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
     Info (12023): Found entity 1: my_pll File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/my_pll.v Line: 39
-Info (12128): Elaborating entity "my_pll" for hierarchy "my_pll:pll_clock" File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 79
+Info (12128): Elaborating entity "my_pll" for hierarchy "my_pll:pll_clock" File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 80
 Info (12128): Elaborating entity "altpll" for hierarchy "my_pll:pll_clock|altpll:altpll_component" File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/my_pll.v Line: 94
 Info (12130): Elaborated megafunction instantiation "my_pll:pll_clock|altpll:altpll_component" File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/my_pll.v Line: 94
 Info (12133): Instantiated megafunction "my_pll:pll_clock|altpll:altpll_component" with the following parameter: File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/my_pll.v Line: 94
@@ -1180,12 +1182,12 @@ Info (12133): Instantiated megafunction "my_pll:pll_clock|altpll:altpll_componen
 Info (12021): Found 1 design units, including 1 entities, in source file db/my_pll_altpll.v
     Info (12023): Found entity 1: my_pll_altpll File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/db/my_pll_altpll.v Line: 29
 Info (12128): Elaborating entity "my_pll_altpll" for hierarchy "my_pll:pll_clock|altpll:altpll_component|my_pll_altpll:auto_generated" File: c:/intelfpga_lite/18.0/quartus/libraries/megafunctions/altpll.tdf Line: 897
-Info (12128): Elaborating entity "quad" for hierarchy "quad:encoder_FL" File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 83
-Info (12128): Elaborating entity "speed" for hierarchy "speed:speed_counter_FL" File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 94
-Info (12128): Elaborating entity "spi_slave_mu" for hierarchy "spi_slave_mu:spi_slave_instance" File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 111
-Warning (10030): Net "misoRAM[15..7]" at MySPI.sv(33) has no driver or initial value, using a default initial value '0' File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/MySPI.sv Line: 33
-Info (12128): Elaborating entity "pmod_color_sensor" for hierarchy "pmod_color_sensor:daColorSensor" File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 152
-Info (12128): Elaborating entity "i2c_master" for hierarchy "pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0" File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/TCS34725 read-write/pmod_color_sensor.vhd Line: 85
+Info (12128): Elaborating entity "quad" for hierarchy "quad:encoder_FL" File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 84
+Info (12128): Elaborating entity "speed" for hierarchy "speed:speed_counter_FL" File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 95
+Info (12128): Elaborating entity "spi_slave_mu" for hierarchy "spi_slave_mu:spi_slave_instance" File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 112
+Warning (10030): Net "misoRAM[15..7]" at MySPI.sv(35) has no driver or initial value, using a default initial value '0' File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/MySPI.sv Line: 35
+Info (12128): Elaborating entity "pmod_color_sensor" for hierarchy "pmod_color_sensor:daColorSensor" File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 136
+Info (12128): Elaborating entity "i2c_master" for hierarchy "pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0" File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/TCS34725 read-write/pmod_color_sensor.vhd Line: 89
 Warning (12241): 1 hierarchies have connectivity warnings - see the Connectivity Checks report folder
 Warning (13034): The following nodes have both tri-state and non-tri-state drivers
     Warning (13035): Inserted always-enabled tri-state buffer between "PI[13]" and its non-tri-state driver. File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 45
@@ -1270,16 +1272,16 @@ Warning (21074): Design contains 4 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "KEY[1]" File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 42
     Warning (15610): No output dependent on input pin "PI_IN[0]" File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 46
     Warning (15610): No output dependent on input pin "PI_IN[1]" File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 46
-Info (21057): Implemented 1047 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 1104 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 7 input pins
     Info (21059): Implemented 8 output pins
     Info (21060): Implemented 68 bidirectional pins
-    Info (21061): Implemented 963 logic cells
+    Info (21061): Implemented 1020 logic cells
     Info (21065): Implemented 1 PLLs
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 82 warnings
-    Info: Peak virtual memory: 4866 megabytes
-    Info: Processing ended: Wed Apr 15 17:04:53 2020
-    Info: Elapsed time: 00:00:12
+    Info: Peak virtual memory: 4868 megabytes
+    Info: Processing ended: Thu Apr 16 00:40:14 2020
+    Info: Elapsed time: 00:00:14
     Info: Total CPU time (on all processors): 00:00:26
 
 

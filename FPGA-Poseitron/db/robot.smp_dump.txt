@@ -1,14 +1,16 @@
 
 State Machine - |robot|pmod_color_sensor:daColorSensor|state
-Name state.change_sensor state.output_result state.read_data state.pause state.set_pon_aen state.set_atime state.set_gain state.start 
-state.start 0 0 0 0 0 0 0 0 
-state.set_gain 0 0 0 0 0 0 1 1 
-state.set_atime 0 0 0 0 0 1 0 1 
-state.set_pon_aen 0 0 0 0 1 0 0 1 
-state.pause 0 0 0 1 0 0 0 1 
-state.read_data 0 0 1 0 0 0 0 1 
-state.output_result 0 1 0 0 0 0 0 1 
-state.change_sensor 1 0 0 0 0 0 0 1 
+Name state.ports_control state.ports_to_output state.change_sensor state.output_result state.read_data state.pause state.set_pon_aen state.set_atime state.set_gain state.start 
+state.start 0 0 0 0 0 0 0 0 0 0 
+state.set_gain 0 0 0 0 0 0 0 0 1 1 
+state.set_atime 0 0 0 0 0 0 0 1 0 1 
+state.set_pon_aen 0 0 0 0 0 0 1 0 0 1 
+state.pause 0 0 0 0 0 1 0 0 0 1 
+state.read_data 0 0 0 0 1 0 0 0 0 1 
+state.output_result 0 0 0 1 0 0 0 0 0 1 
+state.change_sensor 0 0 1 0 0 0 0 0 0 1 
+state.ports_to_output 0 1 0 0 0 0 0 0 0 1 
+state.ports_control 1 0 0 0 0 0 0 0 0 1 
 
 State Machine - |robot|pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|state
 Name state.stop state.mstr_ack state.slv_ack2 state.rd state.wr state.slv_ack1 state.command state.start state.ready 

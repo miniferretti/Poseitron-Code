@@ -12,7 +12,8 @@ module spi_slave_mu(
 
 	input  logic [31:0]	speed_FL, speed_RL, trace_R, trace_L,
 	input  logic [15:0] red, green, blue, clear,
-	output logic [31:0]	data_out
+	output logic [31:0]	data_out,
+	output logic [31:0] ports_control
 );
 
 	logic [39:0] SPI_reg;
@@ -23,6 +24,7 @@ module spi_slave_mu(
 	logic 		 mosiRAM_we;
     
 	assign data_out = mosiRAM[4'h7];
+	assign ports_control = mosiRAM[4'h8];
 		// If needed, we have 16 RAM slots.
 
 	always_ff @(posedge clk) begin

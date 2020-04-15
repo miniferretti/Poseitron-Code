@@ -39,14 +39,18 @@ ENTITY pmod_color_sensor IS
     red           : OUT   STD_LOGIC_VECTOR(15 DOWNTO 0);   --red color value obtained
     green         : OUT   STD_LOGIC_VECTOR(15 DOWNTO 0);   --green color value obtained
     blue          : OUT   STD_LOGIC_VECTOR(15 DOWNTO 0);  --blue color value obtained
-    sensor_select : IN    STD_LOGIC_VECTOR(7 DOWNTO 0));
+    sensor_select : IN    STD_LOGIC_VECTOR(7 DOWNTO 0);
+    portA_output_select : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
+    portB_output_select : IN STD_LOGIC_VECTOR(7 DOWNTO 0));
 END pmod_color_sensor;
 
 ARCHITECTURE behavior OF pmod_color_sensor IS
   CONSTANT color_sensor_addr   : STD_LOGIC_VECTOR(6 DOWNTO 0) := "0101001"; --I2C address of the color sensor pmod
   CONSTANT I2C_multiplexer_addr: STD_LOGIC_VECTOR(6 DOWNTO 0) := "1110000"; --I2C address of the I2C multiplexer
+  CONSTANT I2C_expander_addr   : STD_LOGIC_VECTOR(6 DOWNTO 0) := "0100000"; --I2C address of the I2C GPIO expander
   CONSTANT sensor_num          : INTEGER := 2;                              --Number of sensors to read and write from (Change if needed)
-  TYPE machine IS(start, set_gain, set_atime, set_pon_aen, pause, read_data, output_result, change_sensor); --needed states
+  CONSTANT bit_shift           : STD_LOGIC_VECTOR(7 DOWNTO 0) := "00000001";--Base value for the selection of the sensor
+  TYPE machine IS(start, set_gain, set_atime, set_pon_aen, pause, read_data, output_result, change_sensor, ports_to_output, ports_control); --needed states
   SIGNAL state       : machine;                       --state machine
   SIGNAL gain_bits   : STD_LOGIC_VECTOR(1 DOWNTO 0);  --code to set the sensor's analog gain
   SIGNAL i2c_ena     : STD_LOGIC;                     --i2c enable signal
@@ -135,7 +139,7 @@ BEGIN
               i2c_ena <='1';
               i2c_addr <= I2C_multiplexer_addr;
               i2c_rw <= '0';
-              i2c_data_wr <= std_logic_vector(to_unsigned(sensor, 8));
+              i2c_data_wr <=  std_logic_vector(unsigned(bit_shift) sll sensor); --   "00000001" sll sensor;
             WHEN 1 =>                                    --no command latched in yet
               i2c_ena <= '1';                              --initiate the transaction
               i2c_addr <= color_sensor_addr;               --set the address of the color sensor
@@ -169,7 +173,7 @@ BEGIN
               i2c_ena <='1';
               i2c_addr <= I2C_multiplexer_addr;
               i2c_rw <= '0';
-              i2c_data_wr <= std_logic_vector(to_unsigned(sensor, 8));
+              i2c_data_wr <= std_logic_vector(unsigned(bit_shift) sll sensor); --   "00000001" sll sensor;
             WHEN 1 =>                                    --no command latched in yet
               i2c_ena <= '1';                              --initiate the transaction
               i2c_addr <= color_sensor_addr;               --set the address of the color sensor
@@ -203,7 +207,7 @@ BEGIN
               i2c_ena <='1';
               i2c_addr <= I2C_multiplexer_addr;
               i2c_rw <= '0';
-              i2c_data_wr <= std_logic_vector(to_unsigned(sensor, 8));
+              i2c_data_wr <= std_logic_vector(unsigned(bit_shift) sll sensor); --   "00000001" sll sensor;
             WHEN 1 =>                                    --no command latched in yet
               i2c_ena <= '1';                              --initiate the transaction
               i2c_addr <= color_sensor_addr;               --set the address of the color sensor
@@ -216,15 +220,47 @@ BEGIN
               IF(i2c_busy = '0') THEN                      --transaction complete
                IF(sensor = sensor_num-1) THEN
                 busy_cnt := 0;                               --reset busy_cnt for next transaction
-                state <= pause;                              --advance to setting the ADC integration time
+                state <= ports_to_output;                              --advance to setting the ADC integration time
                 sensor := 0;
-                ELSE
+               ELSE
                 busy_cnt := 0;
                 sensor := sensor + 1;
-                END IF;
+               END IF;
               END IF;
             WHEN OTHERS => NULL;
           END CASE; 
+
+
+
+        WHEN ports_to_output =>                        --This state is used to put all the output of the GPIO expader to output mode
+          busy_prev <= i2c_busy;                       --capture the value of the previous i2c busy signal
+          IF(busy_prev = '0' AND i2c_busy = '1') THEN  --i2c busy just went high
+            busy_cnt := busy_cnt + 1;                   --counts the times busy has gone from low to high during transaction
+          END IF;  
+          CASE busy_cnt IS 
+            WHEN 0 =>                                  --This step set the register pointer to Port A of the MCP23017
+              i2c_ena <= '1';
+              i2c_addr <= I2C_expander_addr;
+              i2c_rw <= '0';
+              i2c_data_wr <= "00000000";
+            WHEN 1 =>                                 --Set the GPIO to Output mode
+              i2c_data_wr <= "00000000";              
+            WHEN 2 =>                                 --This step set the register pointer to Port B of the MCP23017
+              i2c_ena <= '1';
+              i2c_addr <= I2C_expander_addr;
+              i2c_rw <= '0';
+              i2c_data_wr <= "00000001";
+            WHEN 3 =>                                --Set the GPIO to Output mode
+              i2c_data_wr <= "00000000";
+            WHEN 4 =>
+              i2c_ena <= '0';
+              IF(i2c_busy = '0') THEN
+                busy_cnt := 0;
+                state <= pause;
+              END IF;
+            WHEN OTHERS => NULL;
+          END CASE;
+
 
         --wait 2.4ms
         WHEN pause =>
@@ -297,11 +333,42 @@ BEGIN
             END IF;
             CASE busy_cnt IS
               WHEN 0 =>  
-                i2c_ena <='1';
-                i2c_addr <= I2C_multiplexer_addr;
-                i2c_rw <= '0';
-                i2c_data_wr <= sensor_select;
+                i2c_ena <='1';                           --start transaction
+                i2c_addr <= I2C_multiplexer_addr;        --Multiplexer address   
+                i2c_rw <= '0';                           --Write type transaction
+                i2c_data_wr <= sensor_select;            --Input the targeted color sensor
               WHEN 1 =>
+                i2c_ena <= '0';
+                IF(i2c_busy = '0') THEN
+                  busy_cnt := 0;
+                  state <= ports_control;
+                END IF;
+              WHEN OTHERS => NULL;
+            END CASE;
+
+
+
+          WHEN ports_control =>
+            busy_prev <= i2c_busy;                       --capture the value of the previous i2c busy signal
+            IF(busy_prev = '0' AND i2c_busy = '1') THEN  --i2c busy just went high
+              busy_cnt := busy_cnt + 1;                    --counts the times busy has gone from low to high during transaction
+            END IF;
+            CASE busy_cnt IS 
+              WHEN 0 =>                                  --This step set the register pointer to Port A of the MCP23017
+                i2c_ena <= '1';
+                i2c_addr <= I2C_expander_addr;
+                i2c_rw <= '0';
+                i2c_data_wr <= "00010010";               
+              WHEN 1 =>                                  --Writes the desired states of the GPIO's of port A of the MCP23017
+                i2c_data_wr <= portA_output_select;
+              WHEN 2 =>                                  --This step set the register pointer to Port B of the MCP23017
+                i2c_ena <= '1';
+                i2c_addr <= I2C_expander_addr;
+                i2c_rw <= '0';
+                i2c_data_wr <= "00010011";
+              WHEN 3 =>                                  --Writes the desired states of the GPIO's of port B of the MCP23017
+                i2c_data_wr <= portB_output_select;
+              WHEN 4 =>
                 i2c_ena <= '0';
                 IF(i2c_busy = '0') THEN
                   busy_cnt := 0;
@@ -309,6 +376,8 @@ BEGIN
                 END IF;
               WHEN OTHERS => NULL;
             END CASE;
+
+
 
 
 
