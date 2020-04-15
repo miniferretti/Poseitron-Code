@@ -49,11 +49,11 @@ input 		     [1:0]		PI_IN;
 inout 		    [33:0]		BRIDGE;
 input 		     [1:0]		BRIDGE_IN;
 
-        // F - front | R - rear
-        // L - left  | R - Right
-        logic quadA_FL, quadB_FL, quadA_RL, quadB_RL, quadA_odoR, quadB_odoR, quadA_odoL, quadB_odoL;
+      // F - front | R - rear
+      // L - left  | R - Right
+      logic quadA_FL, quadB_FL, quadA_RL, quadB_RL, quadA_odoR, quadB_odoR, quadA_odoL, quadB_odoL;
 		  
-		 // logic reset = 1'b1;
+		  // logic reset = 1'b1;
 		  logic i2c_ack_error;
 		  logic transmit_ready;
 		  logic [15:0] clear,red,green,blue;
@@ -77,7 +77,7 @@ input 		     [1:0]		BRIDGE_IN;
 
         // Clocks
         logic PLL_CLOCK;
-         my_pll pll_clock(CLOCK_50, PLL_CLOCK);
+        my_pll pll_clock(CLOCK_50, PLL_CLOCK);
 
 
         logic [31:0] count_FL, count_RL, count_odoR, count_odoL;
@@ -85,38 +85,47 @@ input 		     [1:0]		BRIDGE_IN;
         quad encoder_RL(CLOCK_50, 1'b0, quadA_RL, quadB_RL, count_RL);
         quad odometerR(CLOCK_50,1'b0,quadA_odoR,quadB_odoR,count_odoR);
         quad odometerL(CLOCK_50,1'b0,quadA_odoL,quadB_odoL,count_odoL);
-     //  quad encoder_FR(CLOCK_50, 1'b0, quadA_FR, quadB_FR, count_FR);
-      //  quad encoder_RR(CLOCK_50, 1'b0, quadA_RR, quadB_RR, count_RR);
-
+    
         logic [31:0] speed_FL, speed_RL, speed_FR, speed_RR;
-        //assign speed_counter_FR = 32'd0;
-        //assign speed_counter_RR = 32'd0;
+      
 
         speed speed_counter_FL(PLL_CLOCK, count_FL, speed_FL);
         speed speed_counter_RL(PLL_CLOCK, count_RL, speed_RL);
-      //  speed speed_counter_FR(PLL_CLOCK, count_FR, speed_FR);
-      //  speed speed_counter_RR(PLL_CLOCK, count_RR, speed_RR);
+      
 
         // Data from RPi
         logic   [31:0]  data_out;
 
-        // SPI
+        //-----------------------------controller SPI ---------------------//
         logic                   spi_clk, spi_cs, spi_mosi, spi_miso;
         logic   [31:0]  data_write, data_read;
         logic   [3:0]   data_addr;
-        spi_slave_mu spi_slave_instance(CLOCK_50, spi_clk, spi_cs, spi_mosi, spi_miso, 
-                                                                // DATA TO SEND TO RPi :
-                                                                speed_FL, speed_RL, count_odoR, count_odoL,
-                                                                red,green,blue,clear,
-                                                                // DATA TO RECEIVE FROM RPi :
-                                                                data_out, ports_control);
+
+        spi_slave_mu spi_slave_instance(CLOCK_50, 
+                                        spi_clk, 
+                                        spi_cs, 
+                                        spi_mosi, 
+                                        spi_miso, 
+                                        // DATA TO SEND TO RPi :
+                                        speed_FL, 
+                                        speed_RL, 
+                                        count_odoR, 
+                                        count_odoL,
+                                        red,
+                                        green,
+                                        blue,
+                                        clear,
+                                        // DATA TO RECEIVE FROM RPi :
+                                        data_out, 
+                                        ports_control
+                                        );
 
         assign spi_clk                  = PI[11];   // SCLK = pin 16 = RPi_11
         assign spi_cs                   = PI[9];    // CE0  = pin 14 = RPi_9
-        assign spi_mosi         = PI[15];   // MOSI = pin 20 = RPi_15
-        assign PI[13]                       = spi_miso;     // MISO = pin 18 = RPi_13 
+        assign spi_mosi                 = PI[15];   // MOSI = pin 20 = RPi_15
+        assign PI[13]                   = spi_miso;     // MISO = pin 18 = RPi_13 
 
-		  logic                   spi_clk1, spi_cs1, spi_mosi1, spi_miso1;
+		  logic spi_clk1, spi_cs1, spi_mosi1, spi_miso1;
      // assign spi_clk1 = PI_IN[0];
       assign spi_miso1 = PI[1];
      // assign spi_mosi1 = PI_IN[1];
@@ -132,8 +141,20 @@ input 		     [1:0]		BRIDGE_IN;
 	 // BRIDGE[33] = SCL; //SCL
 		 
   
-	   //Controller I2C	 
-		pmod_color_sensor daColorSensor(.clk(CLOCK_50), .reset_n(PI[7]), .scl(BRIDGE[33]), .sda(BRIDGE[31]), .i2c_ack_err(i2c_ack_error), .clear(clear), .red(red), .green(green), .blue(blue), .sensor_select(data_out[7:0]), .portA_output_select(ports_control[7:0]), .portB_output_select(ports_control[15:8]));
+	  //------------------Controller I2C----------------------------//	 
+		pmod_color_sensor daColorSensor(.clk(CLOCK_50), 
+                                    .reset_n(PI[7]), //Rest pin of the Raspberry Pi
+                                    .scl(BRIDGE[33]), 
+                                    .sda(BRIDGE[31]), 
+                                    .i2c_ack_err(i2c_ack_error), 
+                                    .clear(clear), 
+                                    .red(red), 
+                                    .green(green), 
+                                    .blue(blue), 
+                                    .sensor_select(data_out[7:0]), 
+                                    .portA_output_select(ports_control[7:0]), 
+                                    .portB_output_select(ports_control[15:8])
+                                    );
 		 
 
 
