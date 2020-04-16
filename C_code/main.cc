@@ -19,6 +19,7 @@
 #include <sstream>
 #include "IO/COM/TCS3472_I2C/TCS3472_I2C.hh"
 #include <chrono>
+#include <Dynamixel/MyDynamixel.h>
 
 using namespace std;
 
@@ -55,12 +56,20 @@ int main()
 
 	//********  Début du comportement du robot **********
 
+	Byte dyn_error = 0x00;
+	Byte ID = 0x06;
+	Byte Length = 0x06; 
+	Byte Address = 0x19;
+	Byte Parameter = 0x01;
+
 	while (true)
 	{
 		delay(10000);
 		//	myCtrlStruct->theCtrlIn->r_wheel_ref = -10;
 		//	myCtrlStruct->theCtrlIn->l_wheel_ref = -10;
 		printf("wallah je suis la boucle du main !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\r\n");
+		dyn_error = Set_Parameter(ID, Length, Address, Parameter); 
+		if(dyn_error!=)
 		delay(10000);
 		//myCtrlStruct->theCtrlIn->r_wheel_ref = omega_ref_now_r;
 		//myCtrlStruct->theCtrlIn->l_wheel_ref = omega_ref_now_l;
