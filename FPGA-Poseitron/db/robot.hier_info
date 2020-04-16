@@ -56,11 +56,11 @@ BRIDGE[14] <> <UNC>
 BRIDGE[16] <> <UNC>
 BRIDGE[17] <> <UNC>
 BRIDGE[18] <> <UNC>
-BRIDGE[19] <> <UNC>
+BRIDGE[19] <> UART_Dynamixel:myDyna.port7
 BRIDGE[20] <> <UNC>
-BRIDGE[21] <> <UNC>
+BRIDGE[21] <> UART_Dynamixel:myDyna.port8
 BRIDGE[22] <> <UNC>
-BRIDGE[23] <> <UNC>
+BRIDGE[23] <> UART_Dynamixel:myDyna.port9
 BRIDGE[24] <> <UNC>
 BRIDGE[25] <> <UNC>
 BRIDGE[26] <> <UNC>
