@@ -27,13 +27,13 @@ enum
     AVOID_STATE
 };
 
-enum{
+enum
+{
     CALIB_1,
     CALIB_2,
     CALIB_3,
     CALIB_4
 };
-
 
 //Structure for the odometry
 typedef struct RobotPosition
@@ -46,6 +46,13 @@ typedef struct RobotPosition
     double t_used;
 
 } RobotPosition;
+
+typedef struct RobotPinchers
+{
+    bool stateL[3]; //true = open, false = closed
+    bool stateR[3]; //true = open, false = closed
+
+} RobotPinchers;
 
 typedef struct RobotParameters
 {
@@ -91,6 +98,7 @@ typedef struct CtrlStruct
     CtrlOut *theCtrlOut;       ///< controller outputs
     RobotPosition *rob_pos;
     RobotParameters *robot;
+    RobotPinchers *pinchers;
     int main_states;
     int calib_states;
     int avoid150_states;
@@ -99,6 +107,5 @@ typedef struct CtrlStruct
 
 int size_UserStruct();
 void init_ctrlStruc(CtrlStruct *ctrl);
-
 
 #endif

@@ -47,11 +47,13 @@ typedef struct CtrlIn
 	double sens_array_front[5]; // [0] left side [1-3] front [5] right side
 	double sens_array_back[5];	// [0] left side [1-3] front [5] right side
 	int sens_flag;
-
-	//array for the color sensors
-	double color_array_right[3];
-	double color_array_left[3];
-
+    //                                      Front
+	//array for the color sensors     L  -----------  R
+	double color_array_right[3];//    0  |         |  0
+	double color_array_left[3];//     1  |         |  1
+	//                                2  |         |  2
+	//                                   ----------- 	
+    //                                       Back
 #ifdef SIMU_PROJECT
 		/*! brief tower for the fixed beacon
 	 *

@@ -14,5 +14,6 @@ void init_ctrlStruc(CtrlStruct *ctrl)
     ctrl->theUserStruct->theMotRight = new MotStruct;
     ctrl->rob_pos = new RobotPosition;
     ctrl->robot = new RobotParameters;
+    ctrl->pinchers = new RobotPinchers;
 
 }

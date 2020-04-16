@@ -69,7 +69,7 @@ int main()
 		sensorSelect(0);
 		getRawData(&r, &g, &b, &c);
 
-		printf("red = %d green = %d blue = %d \r\n", r, g, b);
+		printf("red = %d green = %d blue = %d \r\n", r, g, b); // tésté pour verifier que les senseurs de couleur focntionnent 
 
 		switch (myCtrlStruct->main_states)
 		{

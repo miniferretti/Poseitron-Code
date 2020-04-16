@@ -40,8 +40,8 @@ ENTITY pmod_color_sensor IS
     green         : OUT   STD_LOGIC_VECTOR(15 DOWNTO 0);   --green color value obtained
     blue          : OUT   STD_LOGIC_VECTOR(15 DOWNTO 0);   --blue color value obtained
     sensor_select : IN    STD_LOGIC_VECTOR(7 DOWNTO 0);
-    portA_output_select : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
-    portB_output_select : IN STD_LOGIC_VECTOR(7 DOWNTO 0));
+    portA_output_select : IN STD_LOGIC_VECTOR(7 DOWNTO 0);  --left side of the robotś pinchers
+    portB_output_select : IN STD_LOGIC_VECTOR(7 DOWNTO 0)); --right side of the robotś pinchers
 END pmod_color_sensor;
 
 ARCHITECTURE behavior OF pmod_color_sensor IS
