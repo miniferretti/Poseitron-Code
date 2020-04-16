@@ -38,7 +38,7 @@ ENTITY pmod_color_sensor IS
     clear         : OUT   STD_LOGIC_VECTOR(15 DOWNTO 0);   --clear color value obtained
     red           : OUT   STD_LOGIC_VECTOR(15 DOWNTO 0);   --red color value obtained
     green         : OUT   STD_LOGIC_VECTOR(15 DOWNTO 0);   --green color value obtained
-    blue          : OUT   STD_LOGIC_VECTOR(15 DOWNTO 0);  --blue color value obtained
+    blue          : OUT   STD_LOGIC_VECTOR(15 DOWNTO 0);   --blue color value obtained
     sensor_select : IN    STD_LOGIC_VECTOR(7 DOWNTO 0);
     portA_output_select : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
     portB_output_select : IN STD_LOGIC_VECTOR(7 DOWNTO 0));
@@ -48,7 +48,7 @@ ARCHITECTURE behavior OF pmod_color_sensor IS
   CONSTANT color_sensor_addr   : STD_LOGIC_VECTOR(6 DOWNTO 0) := "0101001"; --I2C address of the color sensor pmod
   CONSTANT I2C_multiplexer_addr: STD_LOGIC_VECTOR(6 DOWNTO 0) := "1110000"; --I2C address of the I2C multiplexer
   CONSTANT I2C_expander_addr   : STD_LOGIC_VECTOR(6 DOWNTO 0) := "0100000"; --I2C address of the I2C GPIO expander
-  CONSTANT sensor_num          : INTEGER := 2;                              --Number of sensors to read and write from (Change if needed)
+  CONSTANT sensor_num          : INTEGER := 2;                              --Number of color sensors to read and write from (Change if needed)
   CONSTANT bit_shift           : STD_LOGIC_VECTOR(7 DOWNTO 0) := "00000001";--Base value for the selection of the sensor
   TYPE machine IS(start, set_gain, set_atime, set_pon_aen, pause, read_data, output_result, change_sensor, ports_to_output, ports_control); --needed states
   SIGNAL state       : machine;                       --state machine
