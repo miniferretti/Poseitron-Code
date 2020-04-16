@@ -1,5 +1,5 @@
 Analysis & Synthesis report for robot
-Thu Apr 16 00:40:14 2020
+Thu Apr 16 17:41:00 2020
 Quartus Prime Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
 
 
@@ -13,29 +13,32 @@ Quartus Prime Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
   5. Analysis & Synthesis Source Files Read
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
-  8. State Machine - |robot|pmod_color_sensor:daColorSensor|state
-  9. State Machine - |robot|pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|state
- 10. State Machine - |robot|spi_slave_mu:spi_slave_instance|state
- 11. Registers Removed During Synthesis
- 12. Removed Registers Triggering Further Register Optimizations
- 13. General Register Statistics
- 14. Inverted Register Statistics
- 15. Multiplexer Restructuring Statistics (Restructuring Performed)
- 16. Parameter Settings for User Entity Instance: my_pll:pll_clock|altpll:altpll_component
- 17. Parameter Settings for User Entity Instance: pmod_color_sensor:daColorSensor
- 18. Parameter Settings for User Entity Instance: pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0
- 19. altpll Parameter Settings by Entity Instance
- 20. Port Connectivity Checks: "pmod_color_sensor:daColorSensor"
- 21. Port Connectivity Checks: "spi_slave_mu:spi_slave_instance"
- 22. Port Connectivity Checks: "quad:odometerL"
- 23. Port Connectivity Checks: "quad:odometerR"
- 24. Port Connectivity Checks: "quad:encoder_RL"
- 25. Port Connectivity Checks: "quad:encoder_FL"
- 26. Port Connectivity Checks: "my_pll:pll_clock"
- 27. Post-Synthesis Netlist Statistics for Top Partition
- 28. Elapsed Time Per Partition
- 29. Analysis & Synthesis Messages
- 30. Analysis & Synthesis Suppressed Messages
+  8. State Machine - |robot|UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|state
+  9. State Machine - |robot|UART_Dynamixel:myDyna|UART_Dynamixel_TXD:txd|state
+ 10. State Machine - |robot|pmod_color_sensor:daColorSensor|state
+ 11. State Machine - |robot|pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|state
+ 12. State Machine - |robot|spi_slave_mu:spi_slave_instance|state
+ 13. Registers Removed During Synthesis
+ 14. Removed Registers Triggering Further Register Optimizations
+ 15. General Register Statistics
+ 16. Inverted Register Statistics
+ 17. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 18. Parameter Settings for User Entity Instance: my_pll:pll_clock|altpll:altpll_component
+ 19. Parameter Settings for User Entity Instance: pmod_color_sensor:daColorSensor
+ 20. Parameter Settings for User Entity Instance: pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0
+ 21. altpll Parameter Settings by Entity Instance
+ 22. Port Connectivity Checks: "UART_Dynamixel:myDyna"
+ 23. Port Connectivity Checks: "pmod_color_sensor:daColorSensor"
+ 24. Port Connectivity Checks: "spi_slave_mu:spi_slave_instance"
+ 25. Port Connectivity Checks: "quad:odometerL"
+ 26. Port Connectivity Checks: "quad:odometerR"
+ 27. Port Connectivity Checks: "quad:encoder_RL"
+ 28. Port Connectivity Checks: "quad:encoder_FL"
+ 29. Port Connectivity Checks: "my_pll:pll_clock"
+ 30. Post-Synthesis Netlist Statistics for Top Partition
+ 31. Elapsed Time Per Partition
+ 32. Analysis & Synthesis Messages
+ 33. Analysis & Synthesis Suppressed Messages
 
 
 
@@ -61,15 +64,15 @@ refer to the applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Thu Apr 16 00:40:14 2020       ;
+; Analysis & Synthesis Status        ; Successful - Thu Apr 16 17:41:00 2020       ;
 ; Quartus Prime Version              ; 18.0.0 Build 614 04/24/2018 SJ Lite Edition ;
 ; Revision Name                      ; robot                                       ;
 ; Top-level Entity Name              ; robot                                       ;
 ; Family                             ; Cyclone IV E                                ;
-; Total logic elements               ; 1,015                                       ;
-;     Total combinational functions  ; 623                                         ;
-;     Dedicated logic registers      ; 670                                         ;
-; Total registers                    ; 670                                         ;
+; Total logic elements               ; 1,149                                       ;
+;     Total combinational functions  ; 731                                         ;
+;     Dedicated logic registers      ; 748                                         ;
+; Total registers                    ; 748                                         ;
 ; Total pins                         ; 83                                          ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 0                                           ;
@@ -198,6 +201,7 @@ refer to the applicable agreement for further details.
 ; encoders.sv                               ; yes             ; User SystemVerilog HDL File       ; D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/encoders.sv                               ;         ;
 ; TCS34725 read-write/pmod_color_sensor.vhd ; yes             ; User VHDL File                    ; D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/TCS34725 read-write/pmod_color_sensor.vhd ;         ;
 ; TCS34725 read-write/i2c_master.vhd        ; yes             ; User VHDL File                    ; D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/TCS34725 read-write/i2c_master.vhd        ;         ;
+; UART_Dynamixel.sv                         ; yes             ; User SystemVerilog HDL File       ; D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/UART_Dynamixel.sv                         ;         ;
 ; my_pll.v                                  ; yes             ; Auto-Found Wizard-Generated File  ; D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/my_pll.v                                  ;         ;
 ; altpll.tdf                                ; yes             ; Megafunction                      ; c:/intelfpga_lite/18.0/quartus/libraries/megafunctions/altpll.tdf                                                                                             ;         ;
 ; aglobal180.inc                            ; yes             ; Megafunction                      ; c:/intelfpga_lite/18.0/quartus/libraries/megafunctions/aglobal180.inc                                                                                         ;         ;
@@ -213,20 +217,20 @@ refer to the applicable agreement for further details.
 +---------------------------------------------+----------------+
 ; Resource                                    ; Usage          ;
 +---------------------------------------------+----------------+
-; Estimated Total logic elements              ; 1,015          ;
+; Estimated Total logic elements              ; 1,149          ;
 ;                                             ;                ;
-; Total combinational functions               ; 623            ;
+; Total combinational functions               ; 731            ;
 ; Logic element usage by number of LUT inputs ;                ;
-;     -- 4 input functions                    ; 325            ;
-;     -- 3 input functions                    ; 177            ;
-;     -- <=2 input functions                  ; 121            ;
+;     -- 4 input functions                    ; 365            ;
+;     -- 3 input functions                    ; 202            ;
+;     -- <=2 input functions                  ; 164            ;
 ;                                             ;                ;
 ; Logic elements by mode                      ;                ;
-;     -- normal mode                          ; 451            ;
-;     -- arithmetic mode                      ; 172            ;
+;     -- normal mode                          ; 523            ;
+;     -- arithmetic mode                      ; 208            ;
 ;                                             ;                ;
-; Total registers                             ; 670            ;
-;     -- Dedicated logic registers            ; 670            ;
+; Total registers                             ; 748            ;
+;     -- Dedicated logic registers            ; 748            ;
 ;     -- I/O registers                        ; 0              ;
 ;                                             ;                ;
 ; I/O pins                                    ; 83             ;
@@ -237,32 +241,65 @@ refer to the applicable agreement for further details.
 ;     -- PLLs                                 ; 1              ;
 ;                                             ;                ;
 ; Maximum fan-out node                        ; CLOCK_50~input ;
-; Maximum fan-out                             ; 607            ;
-; Total fan-out                               ; 4141           ;
-; Average fan-out                             ; 2.71           ;
+; Maximum fan-out                             ; 645            ;
+; Total fan-out                               ; 4701           ;
+; Average fan-out                             ; 2.74           ;
 +---------------------------------------------+----------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                  ;
-+-----------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------+-------------------+--------------+
-; Compilation Hierarchy Node              ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                          ; Entity Name       ; Library Name ;
-+-----------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------+-------------------+--------------+
-; |robot                                  ; 623 (0)             ; 670 (0)                   ; 0           ; 0            ; 0       ; 0         ; 83   ; 0            ; |robot                                                                       ; robot             ; work         ;
-;    |my_pll:pll_clock|                   ; 0 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |robot|my_pll:pll_clock                                                      ; my_pll            ; work         ;
-;       |altpll:altpll_component|         ; 0 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |robot|my_pll:pll_clock|altpll:altpll_component                              ; altpll            ; work         ;
-;          |my_pll_altpll:auto_generated| ; 0 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |robot|my_pll:pll_clock|altpll:altpll_component|my_pll_altpll:auto_generated ; my_pll_altpll     ; work         ;
-;    |pmod_color_sensor:daColorSensor|    ; 314 (207)           ; 250 (197)                 ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |robot|pmod_color_sensor:daColorSensor                                       ; pmod_color_sensor ; work         ;
-;       |i2c_master:i2c_master_0|         ; 107 (107)           ; 53 (53)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |robot|pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0               ; i2c_master        ; work         ;
-;    |quad:encoder_FL|                    ; 18 (18)             ; 22 (22)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |robot|quad:encoder_FL                                                       ; quad              ; work         ;
-;    |quad:encoder_RL|                    ; 18 (18)             ; 22 (22)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |robot|quad:encoder_RL                                                       ; quad              ; work         ;
-;    |quad:odometerL|                     ; 34 (34)             ; 38 (38)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |robot|quad:odometerL                                                        ; quad              ; work         ;
-;    |quad:odometerR|                     ; 34 (34)             ; 38 (38)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |robot|quad:odometerR                                                        ; quad              ; work         ;
-;    |speed:speed_counter_FL|             ; 0 (0)               ; 32 (32)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |robot|speed:speed_counter_FL                                                ; speed             ; work         ;
-;    |speed:speed_counter_RL|             ; 0 (0)               ; 32 (32)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |robot|speed:speed_counter_RL                                                ; speed             ; work         ;
-;    |spi_slave_mu:spi_slave_instance|    ; 205 (205)           ; 236 (236)                 ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |robot|spi_slave_mu:spi_slave_instance                                       ; spi_slave_mu      ; work         ;
-+-----------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------+-------------------+--------------+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                   ;
++-----------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------+--------------------+--------------+
+; Compilation Hierarchy Node              ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                          ; Entity Name        ; Library Name ;
++-----------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------+--------------------+--------------+
+; |robot                                  ; 731 (0)             ; 748 (0)                   ; 0           ; 0            ; 0       ; 0         ; 83   ; 0            ; |robot                                                                       ; robot              ; work         ;
+;    |UART_Dynamixel:myDyna|              ; 99 (10)             ; 62 (12)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |robot|UART_Dynamixel:myDyna                                                 ; UART_Dynamixel     ; work         ;
+;       |Baudrate_Generator:baudgen|      ; 22 (22)             ; 11 (11)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |robot|UART_Dynamixel:myDyna|Baudrate_Generator:baudgen                      ; Baudrate_Generator ; work         ;
+;       |UART_Dynamixel_RXD:rxd|          ; 16 (16)             ; 12 (12)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |robot|UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd                          ; UART_Dynamixel_RXD ; work         ;
+;       |UART_Dynamixel_TXD:txd|          ; 51 (40)             ; 27 (21)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |robot|UART_Dynamixel:myDyna|UART_Dynamixel_TXD:txd                          ; UART_Dynamixel_TXD ; work         ;
+;          |UART_BYTE_TXD:ubyte|          ; 11 (11)             ; 6 (6)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |robot|UART_Dynamixel:myDyna|UART_Dynamixel_TXD:txd|UART_BYTE_TXD:ubyte      ; UART_BYTE_TXD      ; work         ;
+;    |my_pll:pll_clock|                   ; 0 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |robot|my_pll:pll_clock                                                      ; my_pll             ; work         ;
+;       |altpll:altpll_component|         ; 0 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |robot|my_pll:pll_clock|altpll:altpll_component                              ; altpll             ; work         ;
+;          |my_pll_altpll:auto_generated| ; 0 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |robot|my_pll:pll_clock|altpll:altpll_component|my_pll_altpll:auto_generated ; my_pll_altpll      ; work         ;
+;    |pmod_color_sensor:daColorSensor|    ; 313 (204)           ; 250 (197)                 ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |robot|pmod_color_sensor:daColorSensor                                       ; pmod_color_sensor  ; work         ;
+;       |i2c_master:i2c_master_0|         ; 109 (109)           ; 53 (53)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |robot|pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0               ; i2c_master         ; work         ;
+;    |quad:encoder_FL|                    ; 18 (18)             ; 22 (22)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |robot|quad:encoder_FL                                                       ; quad               ; work         ;
+;    |quad:encoder_RL|                    ; 18 (18)             ; 22 (22)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |robot|quad:encoder_RL                                                       ; quad               ; work         ;
+;    |quad:odometerL|                     ; 34 (34)             ; 38 (38)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |robot|quad:odometerL                                                        ; quad               ; work         ;
+;    |quad:odometerR|                     ; 34 (34)             ; 38 (38)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |robot|quad:odometerR                                                        ; quad               ; work         ;
+;    |speed:speed_counter_FL|             ; 0 (0)               ; 32 (32)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |robot|speed:speed_counter_FL                                                ; speed              ; work         ;
+;    |speed:speed_counter_RL|             ; 0 (0)               ; 32 (32)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |robot|speed:speed_counter_RL                                                ; speed              ; work         ;
+;    |spi_slave_mu:spi_slave_instance|    ; 215 (215)           ; 252 (252)                 ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |robot|spi_slave_mu:spi_slave_instance                                       ; spi_slave_mu       ; work         ;
++-----------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------+--------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
+Encoding Type:  One-Hot
++---------------------------------------------------------------------------+
+; State Machine - |robot|UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|state ;
++----------+----------+----------+----------+-------------------------------+
+; Name     ; state.S3 ; state.S2 ; state.S1 ; state.S0                      ;
++----------+----------+----------+----------+-------------------------------+
+; state.S0 ; 0        ; 0        ; 0        ; 0                             ;
+; state.S1 ; 0        ; 0        ; 1        ; 1                             ;
+; state.S2 ; 0        ; 1        ; 0        ; 1                             ;
+; state.S3 ; 1        ; 0        ; 0        ; 1                             ;
++----------+----------+----------+----------+-------------------------------+
+
+
+Encoding Type:  One-Hot
++----------------------------------------------------------------------------+
+; State Machine - |robot|UART_Dynamixel:myDyna|UART_Dynamixel_TXD:txd|state  ;
++----------+----------+----------+----------+----------+----------+----------+
+; Name     ; state.S5 ; state.S4 ; state.S3 ; state.S2 ; state.S1 ; state.S0 ;
++----------+----------+----------+----------+----------+----------+----------+
+; state.S0 ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ;
+; state.S1 ; 0        ; 0        ; 0        ; 0        ; 1        ; 1        ;
+; state.S2 ; 0        ; 0        ; 0        ; 1        ; 0        ; 1        ;
+; state.S3 ; 0        ; 0        ; 1        ; 0        ; 0        ; 1        ;
+; state.S4 ; 0        ; 1        ; 0        ; 0        ; 0        ; 1        ;
+; state.S5 ; 1        ; 0        ; 0        ; 0        ; 0        ; 1        ;
++----------+----------+----------+----------+----------+----------+----------+
 
 
 Encoding Type:  One-Hot
@@ -320,6 +357,8 @@ Encoding Type:  One-Hot
 +----------------------------------------------------------------------+--------------------------------------------------------------------------------+
 ; Register name                                                        ; Reason for Removal                                                             ;
 +----------------------------------------------------------------------+--------------------------------------------------------------------------------+
+; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|RXD_reg[0..11]          ; Stuck at GND due to stuck port data_in                                         ;
+; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|RXD_prev                ; Stuck at GND due to stuck port data_in                                         ;
 ; spi_slave_mu:spi_slave_instance|misoRAM[6][31]                       ; Stuck at GND due to stuck port data_in                                         ;
 ; spi_slave_mu:spi_slave_instance|misoRAM[6][30]                       ; Stuck at GND due to stuck port data_in                                         ;
 ; spi_slave_mu:spi_slave_instance|misoRAM[6][29]                       ; Stuck at GND due to stuck port data_in                                         ;
@@ -384,6 +423,7 @@ Encoding Type:  One-Hot
 ; spi_slave_mu:spi_slave_instance|misoRAM[3][18]                       ; Stuck at GND due to stuck port data_in                                         ;
 ; spi_slave_mu:spi_slave_instance|misoRAM[3][17]                       ; Stuck at GND due to stuck port data_in                                         ;
 ; spi_slave_mu:spi_slave_instance|misoRAM[3][16]                       ; Stuck at GND due to stuck port data_in                                         ;
+; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|cnt_byte[0..3]          ; Stuck at GND due to stuck port data_in                                         ;
 ; speed:speed_counter_RL|old_value[16]                                 ; Lost fanout                                                                    ;
 ; speed:speed_counter_RL|new_value[16]                                 ; Lost fanout                                                                    ;
 ; speed:speed_counter_RL|old_value[17]                                 ; Lost fanout                                                                    ;
@@ -448,12 +488,105 @@ Encoding Type:  One-Hot
 ; speed:speed_counter_FL|new_value[30]                                 ; Lost fanout                                                                    ;
 ; speed:speed_counter_FL|old_value[31]                                 ; Lost fanout                                                                    ;
 ; speed:speed_counter_FL|new_value[31]                                 ; Lost fanout                                                                    ;
+; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|Checksum[2,3]           ; Merged with UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|Checksum[1]           ;
+; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|P1[3]                   ; Merged with UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|Checksum[1]           ;
+; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|Length[2]               ; Merged with UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|Checksum[1]           ;
+; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|Checksum[6]             ; Merged with UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|Checksum[1]           ;
+; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|Error[2]                ; Merged with UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|Checksum[1]           ;
+; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|P1[2]                   ; Merged with UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|Checksum[1]           ;
+; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|Length[5]               ; Merged with UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|Checksum[1]           ;
+; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|Checksum[5]             ; Merged with UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|Checksum[1]           ;
+; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|P2[5]                   ; Merged with UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|Checksum[1]           ;
+; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|Error[6]                ; Merged with UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|Checksum[1]           ;
+; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|P2[3]                   ; Merged with UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|Checksum[1]           ;
+; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|ID[0]                   ; Merged with UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|Checksum[1]           ;
+; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|Length[6]               ; Merged with UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|Checksum[1]           ;
+; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|Error[7]                ; Merged with UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|Checksum[1]           ;
+; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|P1[4]                   ; Merged with UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|Checksum[1]           ;
+; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|P2[1,7]                 ; Merged with UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|Checksum[1]           ;
+; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|ID[5,6]                 ; Merged with UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|Checksum[1]           ;
+; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|P1[0]                   ; Merged with UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|Checksum[1]           ;
+; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|ID[1]                   ; Merged with UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|Checksum[1]           ;
+; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|P2[0]                   ; Merged with UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|Checksum[1]           ;
+; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|P1[6,7]                 ; Merged with UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|Checksum[1]           ;
+; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|ID[2,7]                 ; Merged with UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|Checksum[1]           ;
+; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|P1[5]                   ; Merged with UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|Checksum[1]           ;
+; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|Length[0]               ; Merged with UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|Checksum[1]           ;
+; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|Error[5]                ; Merged with UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|Checksum[1]           ;
+; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|Length[4]               ; Merged with UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|Checksum[1]           ;
+; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|Checksum[0]             ; Merged with UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|Checksum[1]           ;
+; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|Length[1,3,7]           ; Merged with UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|Checksum[1]           ;
+; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|P1[1]                   ; Merged with UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|Checksum[1]           ;
+; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|P2[6]                   ; Merged with UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|Checksum[1]           ;
+; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|Error[1,3]              ; Merged with UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|Checksum[1]           ;
+; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|Checksum[4]             ; Merged with UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|Checksum[1]           ;
+; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|P2[4]                   ; Merged with UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|Checksum[1]           ;
+; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|ID[4]                   ; Merged with UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|Checksum[1]           ;
+; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|P2[2]                   ; Merged with UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|Checksum[1]           ;
+; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|Checksum[7]             ; Merged with UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|Checksum[1]           ;
+; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|Error[0]                ; Merged with UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|Checksum[1]           ;
+; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|ID[3]                   ; Merged with UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|Checksum[1]           ;
+; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|Error[4]                ; Merged with UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|Checksum[1]           ;
+; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|data2[17..31]           ; Merged with UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|data2[16]             ;
+; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|data1[4..28]            ; Merged with UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|data2[0]              ;
+; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|data2[1]                ; Merged with UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|data2[0]              ;
+; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|data1[29,30]            ; Merged with UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|data2[0]              ;
+; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|data2[2]                ; Merged with UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|data2[0]              ;
+; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|data1[31]               ; Merged with UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|data2[0]              ;
+; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|data2[3..15]            ; Merged with UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|data2[0]              ;
+; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|data1[0..3]             ; Merged with UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|data2[0]              ;
+; UART_Dynamixel:myDyna|MyNios_ReadData[3..15]                         ; Merged with UART_Dynamixel:myDyna|MyNios_ReadData[2]                           ;
+; UART_Dynamixel:myDyna|MyNios_ReadData[17..31]                        ; Merged with UART_Dynamixel:myDyna|MyNios_ReadData[16]                          ;
+; spi_slave_mu:spi_slave_instance|misoRAM[7][16]                       ; Merged with spi_slave_mu:spi_slave_instance|misoRAM[7][31]                     ;
+; spi_slave_mu:spi_slave_instance|misoRAM[7][17]                       ; Merged with spi_slave_mu:spi_slave_instance|misoRAM[7][31]                     ;
+; spi_slave_mu:spi_slave_instance|misoRAM[7][18]                       ; Merged with spi_slave_mu:spi_slave_instance|misoRAM[7][31]                     ;
+; spi_slave_mu:spi_slave_instance|misoRAM[7][19]                       ; Merged with spi_slave_mu:spi_slave_instance|misoRAM[7][31]                     ;
+; spi_slave_mu:spi_slave_instance|misoRAM[7][20]                       ; Merged with spi_slave_mu:spi_slave_instance|misoRAM[7][31]                     ;
+; spi_slave_mu:spi_slave_instance|misoRAM[7][21]                       ; Merged with spi_slave_mu:spi_slave_instance|misoRAM[7][31]                     ;
+; spi_slave_mu:spi_slave_instance|misoRAM[7][22]                       ; Merged with spi_slave_mu:spi_slave_instance|misoRAM[7][31]                     ;
+; spi_slave_mu:spi_slave_instance|misoRAM[7][23]                       ; Merged with spi_slave_mu:spi_slave_instance|misoRAM[7][31]                     ;
+; spi_slave_mu:spi_slave_instance|misoRAM[7][24]                       ; Merged with spi_slave_mu:spi_slave_instance|misoRAM[7][31]                     ;
+; spi_slave_mu:spi_slave_instance|misoRAM[7][25]                       ; Merged with spi_slave_mu:spi_slave_instance|misoRAM[7][31]                     ;
+; spi_slave_mu:spi_slave_instance|misoRAM[7][26]                       ; Merged with spi_slave_mu:spi_slave_instance|misoRAM[7][31]                     ;
+; spi_slave_mu:spi_slave_instance|misoRAM[7][27]                       ; Merged with spi_slave_mu:spi_slave_instance|misoRAM[7][31]                     ;
+; spi_slave_mu:spi_slave_instance|misoRAM[7][28]                       ; Merged with spi_slave_mu:spi_slave_instance|misoRAM[7][31]                     ;
+; spi_slave_mu:spi_slave_instance|misoRAM[7][29]                       ; Merged with spi_slave_mu:spi_slave_instance|misoRAM[7][31]                     ;
+; spi_slave_mu:spi_slave_instance|misoRAM[7][30]                       ; Merged with spi_slave_mu:spi_slave_instance|misoRAM[7][31]                     ;
+; spi_slave_mu:spi_slave_instance|misoRAM[7][2]                        ; Merged with spi_slave_mu:spi_slave_instance|misoRAM[7][15]                     ;
+; spi_slave_mu:spi_slave_instance|misoRAM[7][7]                        ; Merged with spi_slave_mu:spi_slave_instance|misoRAM[7][15]                     ;
+; spi_slave_mu:spi_slave_instance|misoRAM[7][3]                        ; Merged with spi_slave_mu:spi_slave_instance|misoRAM[7][15]                     ;
+; spi_slave_mu:spi_slave_instance|misoRAM[7][8]                        ; Merged with spi_slave_mu:spi_slave_instance|misoRAM[7][15]                     ;
+; spi_slave_mu:spi_slave_instance|misoRAM[7][9]                        ; Merged with spi_slave_mu:spi_slave_instance|misoRAM[7][15]                     ;
+; spi_slave_mu:spi_slave_instance|misoRAM[7][4]                        ; Merged with spi_slave_mu:spi_slave_instance|misoRAM[7][15]                     ;
+; spi_slave_mu:spi_slave_instance|misoRAM[7][10]                       ; Merged with spi_slave_mu:spi_slave_instance|misoRAM[7][15]                     ;
+; spi_slave_mu:spi_slave_instance|misoRAM[7][11]                       ; Merged with spi_slave_mu:spi_slave_instance|misoRAM[7][15]                     ;
+; spi_slave_mu:spi_slave_instance|misoRAM[7][5]                        ; Merged with spi_slave_mu:spi_slave_instance|misoRAM[7][15]                     ;
+; spi_slave_mu:spi_slave_instance|misoRAM[7][12]                       ; Merged with spi_slave_mu:spi_slave_instance|misoRAM[7][15]                     ;
+; spi_slave_mu:spi_slave_instance|misoRAM[7][13]                       ; Merged with spi_slave_mu:spi_slave_instance|misoRAM[7][15]                     ;
+; spi_slave_mu:spi_slave_instance|misoRAM[7][6]                        ; Merged with spi_slave_mu:spi_slave_instance|misoRAM[7][15]                     ;
+; spi_slave_mu:spi_slave_instance|misoRAM[7][14]                       ; Merged with spi_slave_mu:spi_slave_instance|misoRAM[7][15]                     ;
+; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|cnt_bits[0]             ; Lost fanout                                                                    ;
+; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|data[0..7]              ; Lost fanout                                                                    ;
+; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|cnt_bits[1..3]          ; Lost fanout                                                                    ;
+; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|Checksum[1]             ; Stuck at GND due to stuck port data_in                                         ;
+; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|data2[0,16]             ; Stuck at GND due to stuck port data_in                                         ;
+; UART_Dynamixel:myDyna|MyNios_ReadData[2,16]                          ; Stuck at GND due to stuck port data_in                                         ;
+; spi_slave_mu:spi_slave_instance|misoRAM[7][31]                       ; Stuck at GND due to stuck port data_in                                         ;
+; spi_slave_mu:spi_slave_instance|misoRAM[7][15]                       ; Stuck at GND due to stuck port data_in                                         ;
 ; pmod_color_sensor:daColorSensor|i2c_addr[5]                          ; Stuck at VCC due to stuck port data_in                                         ;
 ; pmod_color_sensor:daColorSensor|i2c_addr[1,2]                        ; Stuck at GND due to stuck port data_in                                         ;
 ; pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|addr_rw[6]   ; Stuck at VCC due to stuck port data_in                                         ;
 ; pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|addr_rw[2,3] ; Stuck at GND due to stuck port data_in                                         ;
+; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|state.S3                ; Lost fanout                                                                    ;
+; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|state~4                 ; Lost fanout                                                                    ;
+; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|state~5                 ; Lost fanout                                                                    ;
+; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|state~6                 ; Lost fanout                                                                    ;
+; UART_Dynamixel:myDyna|UART_Dynamixel_TXD:txd|state~4                 ; Lost fanout                                                                    ;
+; UART_Dynamixel:myDyna|UART_Dynamixel_TXD:txd|state~5                 ; Lost fanout                                                                    ;
+; UART_Dynamixel:myDyna|UART_Dynamixel_TXD:txd|state~6                 ; Lost fanout                                                                    ;
 ; spi_slave_mu:spi_slave_instance|state~2                              ; Lost fanout                                                                    ;
 ; spi_slave_mu:spi_slave_instance|state~3                              ; Lost fanout                                                                    ;
+; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|state.S2                ; Lost fanout                                                                    ;
 ; pmod_color_sensor:daColorSensor|i2c_addr[6]                          ; Merged with pmod_color_sensor:daColorSensor|i2c_addr[4]                        ;
 ; pmod_color_sensor:daColorSensor|i2c_addr[3]                          ; Merged with pmod_color_sensor:daColorSensor|i2c_addr[0]                        ;
 ; pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|addr_rw[7]   ; Merged with pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|addr_rw[5] ;
@@ -461,55 +594,81 @@ Encoding Type:  One-Hot
 ; spi_slave_mu:spi_slave_instance|state.S3                             ; Lost fanout                                                                    ;
 ; quad:encoder_FL|count[16..31]                                        ; Lost fanout                                                                    ;
 ; quad:encoder_RL|count[16..31]                                        ; Lost fanout                                                                    ;
-; Total Number of Removed Registers = 173                              ;                                                                                ;
+; Total Number of Removed Registers = 382                              ;                                                                                ;
 +----------------------------------------------------------------------+--------------------------------------------------------------------------------+
 
 
-+----------------------------------------------------------------------------------------------------------------------------------------------+
-; Removed Registers Triggering Further Register Optimizations                                                                                  ;
-+---------------------------------------------+---------------------------+--------------------------------------------------------------------+
-; Register name                               ; Reason for Removal        ; Registers Removed due to This Register                             ;
-+---------------------------------------------+---------------------------+--------------------------------------------------------------------+
-; speed:speed_counter_RL|old_value[16]        ; Lost Fanouts              ; speed:speed_counter_RL|new_value[16], quad:encoder_RL|count[16]    ;
-; speed:speed_counter_RL|old_value[17]        ; Lost Fanouts              ; speed:speed_counter_RL|new_value[17], quad:encoder_RL|count[17]    ;
-; speed:speed_counter_RL|old_value[18]        ; Lost Fanouts              ; speed:speed_counter_RL|new_value[18], quad:encoder_RL|count[18]    ;
-; speed:speed_counter_RL|old_value[19]        ; Lost Fanouts              ; speed:speed_counter_RL|new_value[19], quad:encoder_RL|count[19]    ;
-; speed:speed_counter_RL|old_value[20]        ; Lost Fanouts              ; speed:speed_counter_RL|new_value[20], quad:encoder_RL|count[20]    ;
-; speed:speed_counter_RL|old_value[21]        ; Lost Fanouts              ; speed:speed_counter_RL|new_value[21], quad:encoder_RL|count[21]    ;
-; speed:speed_counter_RL|old_value[22]        ; Lost Fanouts              ; speed:speed_counter_RL|new_value[22], quad:encoder_RL|count[22]    ;
-; speed:speed_counter_RL|old_value[23]        ; Lost Fanouts              ; speed:speed_counter_RL|new_value[23], quad:encoder_RL|count[23]    ;
-; speed:speed_counter_RL|old_value[24]        ; Lost Fanouts              ; speed:speed_counter_RL|new_value[24], quad:encoder_RL|count[24]    ;
-; speed:speed_counter_RL|old_value[25]        ; Lost Fanouts              ; speed:speed_counter_RL|new_value[25], quad:encoder_RL|count[25]    ;
-; speed:speed_counter_RL|old_value[26]        ; Lost Fanouts              ; speed:speed_counter_RL|new_value[26], quad:encoder_RL|count[26]    ;
-; speed:speed_counter_RL|old_value[27]        ; Lost Fanouts              ; speed:speed_counter_RL|new_value[27], quad:encoder_RL|count[27]    ;
-; speed:speed_counter_RL|old_value[28]        ; Lost Fanouts              ; speed:speed_counter_RL|new_value[28], quad:encoder_RL|count[28]    ;
-; speed:speed_counter_RL|old_value[29]        ; Lost Fanouts              ; speed:speed_counter_RL|new_value[29], quad:encoder_RL|count[29]    ;
-; speed:speed_counter_RL|old_value[30]        ; Lost Fanouts              ; speed:speed_counter_RL|new_value[30], quad:encoder_RL|count[30]    ;
-; speed:speed_counter_RL|old_value[31]        ; Lost Fanouts              ; speed:speed_counter_RL|new_value[31], quad:encoder_RL|count[31]    ;
-; speed:speed_counter_FL|old_value[16]        ; Lost Fanouts              ; speed:speed_counter_FL|new_value[16], quad:encoder_FL|count[16]    ;
-; speed:speed_counter_FL|old_value[17]        ; Lost Fanouts              ; speed:speed_counter_FL|new_value[17], quad:encoder_FL|count[17]    ;
-; speed:speed_counter_FL|old_value[18]        ; Lost Fanouts              ; speed:speed_counter_FL|new_value[18], quad:encoder_FL|count[18]    ;
-; speed:speed_counter_FL|old_value[19]        ; Lost Fanouts              ; speed:speed_counter_FL|new_value[19], quad:encoder_FL|count[19]    ;
-; speed:speed_counter_FL|old_value[20]        ; Lost Fanouts              ; speed:speed_counter_FL|new_value[20], quad:encoder_FL|count[20]    ;
-; speed:speed_counter_FL|old_value[21]        ; Lost Fanouts              ; speed:speed_counter_FL|new_value[21], quad:encoder_FL|count[21]    ;
-; speed:speed_counter_FL|old_value[22]        ; Lost Fanouts              ; speed:speed_counter_FL|new_value[22], quad:encoder_FL|count[22]    ;
-; speed:speed_counter_FL|old_value[23]        ; Lost Fanouts              ; speed:speed_counter_FL|new_value[23], quad:encoder_FL|count[23]    ;
-; speed:speed_counter_FL|old_value[24]        ; Lost Fanouts              ; speed:speed_counter_FL|new_value[24], quad:encoder_FL|count[24]    ;
-; speed:speed_counter_FL|old_value[25]        ; Lost Fanouts              ; speed:speed_counter_FL|new_value[25], quad:encoder_FL|count[25]    ;
-; speed:speed_counter_FL|old_value[26]        ; Lost Fanouts              ; speed:speed_counter_FL|new_value[26], quad:encoder_FL|count[26]    ;
-; speed:speed_counter_FL|old_value[27]        ; Lost Fanouts              ; speed:speed_counter_FL|new_value[27], quad:encoder_FL|count[27]    ;
-; speed:speed_counter_FL|old_value[28]        ; Lost Fanouts              ; speed:speed_counter_FL|new_value[28], quad:encoder_FL|count[28]    ;
-; speed:speed_counter_FL|old_value[29]        ; Lost Fanouts              ; speed:speed_counter_FL|new_value[29], quad:encoder_FL|count[29]    ;
-; speed:speed_counter_FL|old_value[30]        ; Lost Fanouts              ; speed:speed_counter_FL|new_value[30], quad:encoder_FL|count[30]    ;
-; speed:speed_counter_FL|old_value[31]        ; Lost Fanouts              ; speed:speed_counter_FL|new_value[31], quad:encoder_FL|count[31]    ;
-; pmod_color_sensor:daColorSensor|i2c_addr[5] ; Stuck at VCC              ; pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|addr_rw[6] ;
-;                                             ; due to stuck port data_in ;                                                                    ;
-; pmod_color_sensor:daColorSensor|i2c_addr[2] ; Stuck at GND              ; pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|addr_rw[3] ;
-;                                             ; due to stuck port data_in ;                                                                    ;
-; pmod_color_sensor:daColorSensor|i2c_addr[1] ; Stuck at GND              ; pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|addr_rw[2] ;
-;                                             ; due to stuck port data_in ;                                                                    ;
-; spi_slave_mu:spi_slave_instance|state~2     ; Lost Fanouts              ; spi_slave_mu:spi_slave_instance|state.S3                           ;
-+---------------------------------------------+---------------------------+--------------------------------------------------------------------+
++----------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                                                              ;
++---------------------------------------------------------+---------------------------+--------------------------------------------------------------------+
+; Register name                                           ; Reason for Removal        ; Registers Removed due to This Register                             ;
++---------------------------------------------------------+---------------------------+--------------------------------------------------------------------+
+; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|RXD_reg[0] ; Stuck at GND              ; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|RXD_reg[1],           ;
+;                                                         ; due to stuck port data_in ; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|RXD_reg[2],           ;
+;                                                         ;                           ; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|RXD_reg[3],           ;
+;                                                         ;                           ; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|RXD_reg[4],           ;
+;                                                         ;                           ; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|RXD_reg[5],           ;
+;                                                         ;                           ; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|RXD_reg[6],           ;
+;                                                         ;                           ; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|RXD_reg[7],           ;
+;                                                         ;                           ; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|RXD_reg[8],           ;
+;                                                         ;                           ; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|RXD_reg[9],           ;
+;                                                         ;                           ; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|RXD_reg[10],          ;
+;                                                         ;                           ; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|RXD_reg[11],          ;
+;                                                         ;                           ; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|data2[16],            ;
+;                                                         ;                           ; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|data2[0],             ;
+;                                                         ;                           ; UART_Dynamixel:myDyna|MyNios_ReadData[2],                          ;
+;                                                         ;                           ; UART_Dynamixel:myDyna|MyNios_ReadData[16],                         ;
+;                                                         ;                           ; spi_slave_mu:spi_slave_instance|misoRAM[7][31],                    ;
+;                                                         ;                           ; spi_slave_mu:spi_slave_instance|misoRAM[7][15]                     ;
+; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|RXD_prev   ; Stuck at GND              ; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|cnt_byte[0],          ;
+;                                                         ; due to stuck port data_in ; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|cnt_byte[1],          ;
+;                                                         ;                           ; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|cnt_byte[2],          ;
+;                                                         ;                           ; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|cnt_byte[3],          ;
+;                                                         ;                           ; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|cnt_bits[0],          ;
+;                                                         ;                           ; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|cnt_bits[1],          ;
+;                                                         ;                           ; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|cnt_bits[2],          ;
+;                                                         ;                           ; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|cnt_bits[3]           ;
+; speed:speed_counter_RL|old_value[16]                    ; Lost Fanouts              ; speed:speed_counter_RL|new_value[16], quad:encoder_RL|count[16]    ;
+; speed:speed_counter_RL|old_value[17]                    ; Lost Fanouts              ; speed:speed_counter_RL|new_value[17], quad:encoder_RL|count[17]    ;
+; speed:speed_counter_RL|old_value[18]                    ; Lost Fanouts              ; speed:speed_counter_RL|new_value[18], quad:encoder_RL|count[18]    ;
+; speed:speed_counter_RL|old_value[19]                    ; Lost Fanouts              ; speed:speed_counter_RL|new_value[19], quad:encoder_RL|count[19]    ;
+; speed:speed_counter_RL|old_value[20]                    ; Lost Fanouts              ; speed:speed_counter_RL|new_value[20], quad:encoder_RL|count[20]    ;
+; speed:speed_counter_RL|old_value[21]                    ; Lost Fanouts              ; speed:speed_counter_RL|new_value[21], quad:encoder_RL|count[21]    ;
+; speed:speed_counter_RL|old_value[22]                    ; Lost Fanouts              ; speed:speed_counter_RL|new_value[22], quad:encoder_RL|count[22]    ;
+; speed:speed_counter_RL|old_value[23]                    ; Lost Fanouts              ; speed:speed_counter_RL|new_value[23], quad:encoder_RL|count[23]    ;
+; speed:speed_counter_RL|old_value[24]                    ; Lost Fanouts              ; speed:speed_counter_RL|new_value[24], quad:encoder_RL|count[24]    ;
+; speed:speed_counter_RL|old_value[25]                    ; Lost Fanouts              ; speed:speed_counter_RL|new_value[25], quad:encoder_RL|count[25]    ;
+; speed:speed_counter_RL|old_value[26]                    ; Lost Fanouts              ; speed:speed_counter_RL|new_value[26], quad:encoder_RL|count[26]    ;
+; speed:speed_counter_RL|old_value[27]                    ; Lost Fanouts              ; speed:speed_counter_RL|new_value[27], quad:encoder_RL|count[27]    ;
+; speed:speed_counter_RL|old_value[28]                    ; Lost Fanouts              ; speed:speed_counter_RL|new_value[28], quad:encoder_RL|count[28]    ;
+; speed:speed_counter_RL|old_value[29]                    ; Lost Fanouts              ; speed:speed_counter_RL|new_value[29], quad:encoder_RL|count[29]    ;
+; speed:speed_counter_RL|old_value[30]                    ; Lost Fanouts              ; speed:speed_counter_RL|new_value[30], quad:encoder_RL|count[30]    ;
+; speed:speed_counter_RL|old_value[31]                    ; Lost Fanouts              ; speed:speed_counter_RL|new_value[31], quad:encoder_RL|count[31]    ;
+; speed:speed_counter_FL|old_value[16]                    ; Lost Fanouts              ; speed:speed_counter_FL|new_value[16], quad:encoder_FL|count[16]    ;
+; speed:speed_counter_FL|old_value[17]                    ; Lost Fanouts              ; speed:speed_counter_FL|new_value[17], quad:encoder_FL|count[17]    ;
+; speed:speed_counter_FL|old_value[18]                    ; Lost Fanouts              ; speed:speed_counter_FL|new_value[18], quad:encoder_FL|count[18]    ;
+; speed:speed_counter_FL|old_value[19]                    ; Lost Fanouts              ; speed:speed_counter_FL|new_value[19], quad:encoder_FL|count[19]    ;
+; speed:speed_counter_FL|old_value[20]                    ; Lost Fanouts              ; speed:speed_counter_FL|new_value[20], quad:encoder_FL|count[20]    ;
+; speed:speed_counter_FL|old_value[21]                    ; Lost Fanouts              ; speed:speed_counter_FL|new_value[21], quad:encoder_FL|count[21]    ;
+; speed:speed_counter_FL|old_value[22]                    ; Lost Fanouts              ; speed:speed_counter_FL|new_value[22], quad:encoder_FL|count[22]    ;
+; speed:speed_counter_FL|old_value[23]                    ; Lost Fanouts              ; speed:speed_counter_FL|new_value[23], quad:encoder_FL|count[23]    ;
+; speed:speed_counter_FL|old_value[24]                    ; Lost Fanouts              ; speed:speed_counter_FL|new_value[24], quad:encoder_FL|count[24]    ;
+; speed:speed_counter_FL|old_value[25]                    ; Lost Fanouts              ; speed:speed_counter_FL|new_value[25], quad:encoder_FL|count[25]    ;
+; speed:speed_counter_FL|old_value[26]                    ; Lost Fanouts              ; speed:speed_counter_FL|new_value[26], quad:encoder_FL|count[26]    ;
+; speed:speed_counter_FL|old_value[27]                    ; Lost Fanouts              ; speed:speed_counter_FL|new_value[27], quad:encoder_FL|count[27]    ;
+; speed:speed_counter_FL|old_value[28]                    ; Lost Fanouts              ; speed:speed_counter_FL|new_value[28], quad:encoder_FL|count[28]    ;
+; speed:speed_counter_FL|old_value[29]                    ; Lost Fanouts              ; speed:speed_counter_FL|new_value[29], quad:encoder_FL|count[29]    ;
+; speed:speed_counter_FL|old_value[30]                    ; Lost Fanouts              ; speed:speed_counter_FL|new_value[30], quad:encoder_FL|count[30]    ;
+; speed:speed_counter_FL|old_value[31]                    ; Lost Fanouts              ; speed:speed_counter_FL|new_value[31], quad:encoder_FL|count[31]    ;
+; pmod_color_sensor:daColorSensor|i2c_addr[5]             ; Stuck at VCC              ; pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|addr_rw[6] ;
+;                                                         ; due to stuck port data_in ;                                                                    ;
+; pmod_color_sensor:daColorSensor|i2c_addr[2]             ; Stuck at GND              ; pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|addr_rw[3] ;
+;                                                         ; due to stuck port data_in ;                                                                    ;
+; pmod_color_sensor:daColorSensor|i2c_addr[1]             ; Stuck at GND              ; pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|addr_rw[2] ;
+;                                                         ; due to stuck port data_in ;                                                                    ;
+; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|state~5    ; Lost Fanouts              ; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|state.S2              ;
+; spi_slave_mu:spi_slave_instance|state~2                 ; Lost Fanouts              ; spi_slave_mu:spi_slave_instance|state.S3                           ;
++---------------------------------------------------------+---------------------------+--------------------------------------------------------------------+
 
 
 +------------------------------------------------------+
@@ -517,12 +676,12 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 670   ;
-; Number of registers using Synchronous Clear  ; 48    ;
+; Total registers                              ; 748   ;
+; Number of registers using Synchronous Clear  ; 68    ;
 ; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 134   ;
+; Number of registers using Asynchronous Clear ; 157   ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 387   ;
+; Number of registers using Clock Enable       ; 431   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -536,37 +695,42 @@ Encoding Type:  One-Hot
 ; pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|bit_cnt[2] ; 20      ;
 ; pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|bit_cnt[1] ; 29      ;
 ; pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|bit_cnt[0] ; 27      ;
-; pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|busy       ; 18      ;
+; pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|busy       ; 19      ;
 ; Total number of inverted registers = 5                             ;         ;
 +--------------------------------------------------------------------+---------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                          ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------------------+
-; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------------------+
-; 3:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |robot|pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|data_tx[0] ;
-; 3:1                ; 14 bits   ; 28 LEs        ; 14 LEs               ; 14 LEs                 ; Yes        ; |robot|spi_slave_mu:spi_slave_instance|SPI_cnt[2]                         ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |robot|pmod_color_sensor:daColorSensor|blue_data[11]                      ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |robot|pmod_color_sensor:daColorSensor|clear_data[4]                      ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |robot|pmod_color_sensor:daColorSensor|blue_data[3]                       ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |robot|pmod_color_sensor:daColorSensor|green_data[5]                      ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |robot|pmod_color_sensor:daColorSensor|red_data[5]                        ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |robot|pmod_color_sensor:daColorSensor|clear_data[14]                     ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |robot|pmod_color_sensor:daColorSensor|green_data[12]                     ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |robot|pmod_color_sensor:daColorSensor|red_data[12]                       ;
-; 19:1               ; 15 bits   ; 180 LEs       ; 45 LEs               ; 135 LEs                ; Yes        ; |robot|spi_slave_mu:spi_slave_instance|SPI_reg[32]                        ;
-; 19:1               ; 16 bits   ; 192 LEs       ; 96 LEs               ; 96 LEs                 ; Yes        ; |robot|spi_slave_mu:spi_slave_instance|SPI_reg[8]                         ;
-; 7:1                ; 4 bits    ; 16 LEs        ; 4 LEs                ; 12 LEs                 ; Yes        ; |robot|pmod_color_sensor:daColorSensor|busy_cnt[0]                        ;
-; 17:1               ; 3 bits    ; 33 LEs        ; 0 LEs                ; 33 LEs                 ; Yes        ; |robot|pmod_color_sensor:daColorSensor|i2c_addr[5]                        ;
-; 15:1               ; 4 bits    ; 40 LEs        ; 8 LEs                ; 32 LEs                 ; Yes        ; |robot|pmod_color_sensor:daColorSensor|i2c_addr[3]                        ;
-; 24:1               ; 2 bits    ; 32 LEs        ; 10 LEs               ; 22 LEs                 ; Yes        ; |robot|pmod_color_sensor:daColorSensor|i2c_data_wr[5]                     ;
-; 3:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |robot|pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|bit_cnt[0] ;
-; 9:1                ; 2 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; No         ; |robot|spi_slave_mu:spi_slave_instance|state                              ;
-; 9:1                ; 2 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; No         ; |robot|spi_slave_mu:spi_slave_instance|state                              ;
-; 13:1               ; 4 bits    ; 32 LEs        ; 12 LEs               ; 20 LEs                 ; No         ; |robot|pmod_color_sensor:daColorSensor|Selector1                          ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------------------+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                               ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                     ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------------------------+
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |robot|UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|cnt_fail[3]                ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |robot|UART_Dynamixel:myDyna|UART_Dynamixel_TXD:txd|cnt_S1[0]                  ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |robot|pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|addr_rw[3]      ;
+; 3:1                ; 14 bits   ; 28 LEs        ; 14 LEs               ; 14 LEs                 ; Yes        ; |robot|spi_slave_mu:spi_slave_instance|SPI_reg[6]                              ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |robot|UART_Dynamixel:myDyna|UART_Dynamixel_TXD:txd|cnt[7]                     ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |robot|pmod_color_sensor:daColorSensor|blue_data[8]                            ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |robot|pmod_color_sensor:daColorSensor|clear_data[0]                           ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |robot|pmod_color_sensor:daColorSensor|blue_data[1]                            ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |robot|pmod_color_sensor:daColorSensor|green_data[1]                           ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |robot|pmod_color_sensor:daColorSensor|red_data[1]                             ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |robot|pmod_color_sensor:daColorSensor|clear_data[8]                           ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |robot|pmod_color_sensor:daColorSensor|green_data[13]                          ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |robot|pmod_color_sensor:daColorSensor|red_data[15]                            ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |robot|UART_Dynamixel:myDyna|UART_Dynamixel_TXD:txd|UART_BYTE_TXD:ubyte|cnt[3] ;
+; 19:1               ; 15 bits   ; 180 LEs       ; 45 LEs               ; 135 LEs                ; Yes        ; |robot|spi_slave_mu:spi_slave_instance|SPI_reg[24]                             ;
+; 19:1               ; 14 bits   ; 168 LEs       ; 84 LEs               ; 84 LEs                 ; Yes        ; |robot|spi_slave_mu:spi_slave_instance|SPI_reg[14]                             ;
+; 19:1               ; 2 bits    ; 24 LEs        ; 14 LEs               ; 10 LEs                 ; Yes        ; |robot|spi_slave_mu:spi_slave_instance|SPI_reg[9]                              ;
+; 7:1                ; 4 bits    ; 16 LEs        ; 4 LEs                ; 12 LEs                 ; Yes        ; |robot|pmod_color_sensor:daColorSensor|busy_cnt[2]                             ;
+; 17:1               ; 3 bits    ; 33 LEs        ; 0 LEs                ; 33 LEs                 ; Yes        ; |robot|pmod_color_sensor:daColorSensor|i2c_addr[5]                             ;
+; 15:1               ; 4 bits    ; 40 LEs        ; 8 LEs                ; 32 LEs                 ; Yes        ; |robot|pmod_color_sensor:daColorSensor|i2c_addr[6]                             ;
+; 24:1               ; 2 bits    ; 32 LEs        ; 10 LEs               ; 22 LEs                 ; Yes        ; |robot|pmod_color_sensor:daColorSensor|i2c_data_wr[7]                          ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |robot|pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|bit_cnt[2]      ;
+; 9:1                ; 2 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; No         ; |robot|spi_slave_mu:spi_slave_instance|state                                   ;
+; 9:1                ; 2 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; No         ; |robot|spi_slave_mu:spi_slave_instance|state                                   ;
+; 13:1               ; 4 bits    ; 32 LEs        ; 12 LEs               ; 20 LEs                 ; No         ; |robot|pmod_color_sensor:daColorSensor|Selector0                               ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------------------------+
 
 
 +---------------------------------------------------------------------------------------+
@@ -983,6 +1147,17 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-------------------------------+------------------------------------------+
 
 
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "UART_Dynamixel:myDyna"                                                                                                                           ;
++----------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+; Port     ; Type   ; Severity ; Details                                                                                                                                      ;
++----------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+; RXD      ; Input  ; Warning  ; Declared by entity but not connected by instance. If a default value exists, it will be used.  Otherwise, the port will be connected to GND. ;
+; TXD      ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed.                                     ;
+; UART_DIR ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed.                                     ;
++----------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+
+
 +-----------------------------------------------------------------------------------------------------------------------+
 ; Port Connectivity Checks: "pmod_color_sensor:daColorSensor"                                                           ;
 +-------------+--------+----------+-------------------------------------------------------------------------------------+
@@ -999,6 +1174,8 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+--------+----------+-------------------------------------------------------------------------------------+
 ; data_out[31..8]       ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
 ; ports_control[31..16] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; reg_addr[31..10]      ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; reg_addr[7..3]        ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
 +-----------------------+--------+----------+-------------------------------------------------------------------------------------+
 
 
@@ -1053,27 +1230,28 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
 ; boundary_port         ; 83                          ;
-; cycloneiii_ff         ; 670                         ;
-;     CLR               ; 19                          ;
-;     ENA               ; 248                         ;
+; cycloneiii_ff         ; 748                         ;
+;     CLR               ; 42                          ;
+;     ENA               ; 273                         ;
 ;     ENA CLR           ; 91                          ;
 ;     ENA CLR SCLR      ; 24                          ;
-;     ENA SCLR          ; 24                          ;
-;     plain             ; 264                         ;
+;     ENA SCLR          ; 43                          ;
+;     SCLR              ; 1                           ;
+;     plain             ; 274                         ;
 ; cycloneiii_io_obuf    ; 68                          ;
-; cycloneiii_lcell_comb ; 623                         ;
-;     arith             ; 172                         ;
-;         2 data inputs ; 53                          ;
-;         3 data inputs ; 119                         ;
-;     normal            ; 451                         ;
-;         1 data inputs ; 5                           ;
-;         2 data inputs ; 63                          ;
-;         3 data inputs ; 58                          ;
-;         4 data inputs ; 325                         ;
+; cycloneiii_lcell_comb ; 731                         ;
+;     arith             ; 208                         ;
+;         2 data inputs ; 81                          ;
+;         3 data inputs ; 127                         ;
+;     normal            ; 523                         ;
+;         1 data inputs ; 9                           ;
+;         2 data inputs ; 74                          ;
+;         3 data inputs ; 75                          ;
+;         4 data inputs ; 365                         ;
 ; cycloneiii_pll        ; 1                           ;
 ;                       ;                             ;
 ; Max LUT depth         ; 7.00                        ;
-; Average LUT depth     ; 3.01                        ;
+; Average LUT depth     ; 2.93                        ;
 +-----------------------+-----------------------------+
 
 
@@ -1092,7 +1270,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
-    Info: Processing started: Thu Apr 16 00:40:00 2020
+    Info: Processing started: Thu Apr 16 17:40:47 2020
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off robot -c robot
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 16 of the 16 processors detected
@@ -1112,9 +1290,15 @@ Info (12021): Found 2 design units, including 1 entities, in source file tcs3472
 Info (12021): Found 2 design units, including 1 entities, in source file tcs34725 read-write/i2c_master.vhd
     Info (12022): Found design unit 1: i2c_master-logic File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/TCS34725 read-write/i2c_master.vhd Line: 54
     Info (12023): Found entity 1: i2c_master File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/TCS34725 read-write/i2c_master.vhd Line: 36
+Info (12021): Found 5 design units, including 5 entities, in source file uart_dynamixel.sv
+    Info (12023): Found entity 1: UART_Dynamixel File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/UART_Dynamixel.sv Line: 5
+    Info (12023): Found entity 2: UART_Dynamixel_TXD File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/UART_Dynamixel.sv Line: 51
+    Info (12023): Found entity 3: UART_BYTE_TXD File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/UART_Dynamixel.sv Line: 139
+    Info (12023): Found entity 4: UART_Dynamixel_RXD File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/UART_Dynamixel.sv Line: 185
+    Info (12023): Found entity 5: Baudrate_Generator File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/UART_Dynamixel.sv Line: 294
 Info (12127): Elaborating entity "robot" for the top level hierarchy
-Warning (10036): Verilog HDL or VHDL warning at robot.sv(119): object "spi_cs1" assigned a value but never read File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 119
-Warning (10036): Verilog HDL or VHDL warning at robot.sv(119): object "spi_miso1" assigned a value but never read File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 119
+Warning (10036): Verilog HDL or VHDL warning at robot.sv(134): object "spi_cs1" assigned a value but never read File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 134
+Warning (10036): Verilog HDL or VHDL warning at robot.sv(134): object "spi_miso1" assigned a value but never read File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 134
 Warning (12125): Using design file my_pll.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
     Info (12023): Found entity 1: my_pll File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/my_pll.v Line: 39
 Info (12128): Elaborating entity "my_pll" for hierarchy "my_pll:pll_clock" File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 80
@@ -1183,15 +1367,21 @@ Info (12021): Found 1 design units, including 1 entities, in source file db/my_p
     Info (12023): Found entity 1: my_pll_altpll File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/db/my_pll_altpll.v Line: 29
 Info (12128): Elaborating entity "my_pll_altpll" for hierarchy "my_pll:pll_clock|altpll:altpll_component|my_pll_altpll:auto_generated" File: c:/intelfpga_lite/18.0/quartus/libraries/megafunctions/altpll.tdf Line: 897
 Info (12128): Elaborating entity "quad" for hierarchy "quad:encoder_FL" File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 84
-Info (12128): Elaborating entity "speed" for hierarchy "speed:speed_counter_FL" File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 95
-Info (12128): Elaborating entity "spi_slave_mu" for hierarchy "spi_slave_mu:spi_slave_instance" File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 112
-Warning (10030): Net "misoRAM[15..7]" at MySPI.sv(35) has no driver or initial value, using a default initial value '0' File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/MySPI.sv Line: 35
-Info (12128): Elaborating entity "pmod_color_sensor" for hierarchy "pmod_color_sensor:daColorSensor" File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 136
+Info (12128): Elaborating entity "speed" for hierarchy "speed:speed_counter_FL" File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 92
+Info (12128): Elaborating entity "spi_slave_mu" for hierarchy "spi_slave_mu:spi_slave_instance" File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 127
+Warning (10030): Net "misoRAM[15..8]" at MySPI.sv(40) has no driver or initial value, using a default initial value '0' File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/MySPI.sv Line: 40
+Info (12128): Elaborating entity "pmod_color_sensor" for hierarchy "pmod_color_sensor:daColorSensor" File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 163
 Info (12128): Elaborating entity "i2c_master" for hierarchy "pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0" File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/TCS34725 read-write/pmod_color_sensor.vhd Line: 89
-Warning (12241): 1 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Info (12128): Elaborating entity "UART_Dynamixel" for hierarchy "UART_Dynamixel:myDyna" File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 176
+Info (12128): Elaborating entity "Baudrate_Generator" for hierarchy "UART_Dynamixel:myDyna|Baudrate_Generator:baudgen" File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/UART_Dynamixel.sv Line: 34
+Info (12128): Elaborating entity "UART_Dynamixel_TXD" for hierarchy "UART_Dynamixel:myDyna|UART_Dynamixel_TXD:txd" File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/UART_Dynamixel.sv Line: 35
+Info (12128): Elaborating entity "UART_BYTE_TXD" for hierarchy "UART_Dynamixel:myDyna|UART_Dynamixel_TXD:txd|UART_BYTE_TXD:ubyte" File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/UART_Dynamixel.sv Line: 75
+Info (12128): Elaborating entity "UART_Dynamixel_RXD" for hierarchy "UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd" File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/UART_Dynamixel.sv Line: 36
+Warning (12241): 2 hierarchies have connectivity warnings - see the Connectivity Checks report folder
 Warning (13034): The following nodes have both tri-state and non-tri-state drivers
     Warning (13035): Inserted always-enabled tri-state buffer between "PI[13]" and its non-tri-state driver. File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 45
 Warning (13039): The following bidirectional pins have no drivers
+    Warning (13040): bidirectional pin "PI[5]" has no driver File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 45
     Warning (13040): bidirectional pin "PI[7]" has no driver File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 45
     Warning (13040): bidirectional pin "PI[9]" has no driver File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 45
     Warning (13040): bidirectional pin "PI[11]" has no driver File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 45
@@ -1207,7 +1397,6 @@ Warning (13039): The following bidirectional pins have no drivers
     Warning (13040): bidirectional pin "PI[2]" has no driver File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 45
     Warning (13040): bidirectional pin "PI[3]" has no driver File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 45
     Warning (13040): bidirectional pin "PI[4]" has no driver File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 45
-    Warning (13040): bidirectional pin "PI[5]" has no driver File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 45
     Warning (13040): bidirectional pin "PI[6]" has no driver File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 45
     Warning (13040): bidirectional pin "PI[8]" has no driver File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 45
     Warning (13040): bidirectional pin "PI[10]" has no driver File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 45
@@ -1262,7 +1451,7 @@ Info (13003): DEV_CLRn pin will set, and not reset, register with preset signal 
 Warning (13009): TRI or OPNDRN buffers permanently enabled
     Warning (13010): Node "PI[13]~synth" File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 45
 Info (286030): Timing-Driven Synthesis is running
-Info (17049): 99 registers lost all their fanouts during netlist optimizations.
+Info (17049): 119 registers lost all their fanouts during netlist optimizations.
 Info (144001): Generated suppressed messages file D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.map.smsg
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 1 node(s), including 0 DDIO, 1 PLL, 0 transceiver and 0 LCELL
@@ -1272,16 +1461,16 @@ Warning (21074): Design contains 4 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "KEY[1]" File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 42
     Warning (15610): No output dependent on input pin "PI_IN[0]" File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 46
     Warning (15610): No output dependent on input pin "PI_IN[1]" File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 46
-Info (21057): Implemented 1104 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 1240 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 7 input pins
     Info (21059): Implemented 8 output pins
     Info (21060): Implemented 68 bidirectional pins
-    Info (21061): Implemented 1020 logic cells
+    Info (21061): Implemented 1156 logic cells
     Info (21065): Implemented 1 PLLs
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 82 warnings
-    Info: Peak virtual memory: 4868 megabytes
-    Info: Processing ended: Thu Apr 16 00:40:14 2020
-    Info: Elapsed time: 00:00:14
+    Info: Peak virtual memory: 4877 megabytes
+    Info: Processing ended: Thu Apr 16 17:41:00 2020
+    Info: Elapsed time: 00:00:13
     Info: Total CPU time (on all processors): 00:00:26
 
 

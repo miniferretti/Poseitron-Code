@@ -1,4 +1,20 @@
 
+State Machine - |robot|UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|state
+Name state.S3 state.S2 state.S1 state.S0 
+state.S0 0 0 0 0 
+state.S1 0 0 1 1 
+state.S2 0 1 0 1 
+state.S3 1 0 0 1 
+
+State Machine - |robot|UART_Dynamixel:myDyna|UART_Dynamixel_TXD:txd|state
+Name state.S5 state.S4 state.S3 state.S2 state.S1 state.S0 
+state.S0 0 0 0 0 0 0 
+state.S1 0 0 0 0 1 1 
+state.S2 0 0 0 1 0 1 
+state.S3 0 0 1 0 0 1 
+state.S4 0 1 0 0 0 1 
+state.S5 1 0 0 0 0 1 
+
 State Machine - |robot|pmod_color_sensor:daColorSensor|state
 Name state.ports_control state.ports_to_output state.change_sensor state.output_result state.read_data state.pause state.set_pon_aen state.set_atime state.set_gain state.start 
 state.start 0 0 0 0 0 0 0 0 0 0 

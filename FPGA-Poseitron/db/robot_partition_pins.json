@@ -36,6 +36,10 @@
 					"strict" : false
 				},
 				{
+					"name" : "PI[5]",
+					"strict" : false
+				},
+				{
 					"name" : "PI[7]",
 					"strict" : false
 				},

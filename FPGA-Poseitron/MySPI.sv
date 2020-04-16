@@ -12,8 +12,11 @@ module spi_slave_mu(
 
 	input  logic [31:0]	speed_FL, speed_RL, trace_R, trace_L,
 	input  logic [15:0] red, green, blue, clear,
+	input  logic [31:0] dyna_read,
 	output logic [31:0]	data_out,
-	output logic [31:0] ports_control
+	output logic [31:0] ports_control,
+	output logic [31:0] dyna_write,
+	output logic [31:0] reg_addr
 );
 
 	logic [39:0] SPI_reg;
@@ -25,6 +28,8 @@ module spi_slave_mu(
     
 	assign data_out = mosiRAM[4'h7];
 	assign ports_control = mosiRAM[4'h8];
+	assign dyna_write = mosiRAM[4'h9];
+	assign reg_addr = mosiRAM[4'hA];
 		// If needed, we have 16 RAM slots.
 
 	always_ff @(posedge clk) begin
@@ -50,13 +55,16 @@ module spi_slave_mu(
 		misoRAM[4'h3] <= {16'b0, red};
 
 		//Green color value
-		misoRAM[4'h4] <={16'b0, green};
+		misoRAM[4'h4] <= {16'b0, green};
 
 		//Blue color value
-		misoRAM[4'h5] <={16'b0, blue};
+		misoRAM[4'h5] <= {16'b0, blue};
 
 		//Clear color value
-		misoRAM[4'h6] <={16'b0, clear};
+		misoRAM[4'h6] <= {16'b0, clear};
+
+		//Dynamixel status values 
+		misoRAM[4'h7] <= dyna_read;
 
 	end
 

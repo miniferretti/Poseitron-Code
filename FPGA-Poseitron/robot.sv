@@ -100,6 +100,9 @@ input 		     [1:0]		BRIDGE_IN;
         logic                   spi_clk, spi_cs, spi_mosi, spi_miso;
         logic   [31:0]  data_write, data_read;
         logic   [3:0]   data_addr;
+        logic [31:0] dyna_read;
+        logic [31:0] reg_addr;
+        logic [31:0] dyna_write;
 
         spi_slave_mu spi_slave_instance(CLOCK_50, 
                                         spi_clk, 
@@ -115,9 +118,12 @@ input 		     [1:0]		BRIDGE_IN;
                                         green,
                                         blue,
                                         clear,
-                                        // DATA TO RECEIVE FROM RPi :
+                                        dyna_read,
+                                        // DATA TO RECIEVE FROM RPi :
                                         data_out, 
-                                        ports_control
+                                        ports_control,
+                                        dyna_write,
+                                        reg_addr
                                         );
 
         assign spi_clk                  = PI[11];   // SCLK = pin 16 = RPi_11
@@ -157,5 +163,19 @@ input 		     [1:0]		BRIDGE_IN;
                                     );
 		 
 
+  //--------------------Dynamixel Controller-------------------------//
+
+
+  UART_Dynamixel myDyna(CLOCK_50,
+                        PI[5],  // à définir...
+                        reg_addr[8],
+                        reg_addr[9],
+                        reg_addr[2:0],
+                        dyna_write,
+                        dyna_read,
+                        BRIDGE[19],
+                        BRIDGE[21],
+                        BRIDGE[23]
+                        );
 
 endmodule
