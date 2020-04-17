@@ -61,7 +61,7 @@ int Get_Status_Packet(Byte *ID, Byte *Length, Byte *Error, Byte *P1, Byte *P2, B
 Byte Set_Parameter(Byte ID, Byte Length, Byte Address, int Parameter);
 int Get_Parameters(Byte ID, Byte Address, Byte N);
 
-uint32_t read_data(char reg);
+uint32_t read_data(unsigned char reg);
 void reset_dynamixel();
 
 #endif /*MYDYNAMIXEL_H_*/

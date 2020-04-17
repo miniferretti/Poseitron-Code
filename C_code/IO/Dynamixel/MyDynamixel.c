@@ -33,6 +33,7 @@
 int Send_Instruction_Packet(Byte ID, Byte Length, Byte Instruction, Byte P1, Byte P2, Byte P3)
 {
 	char communication_available = (read_data(COMMUNICATION_STATUS_REG) & 0x00000001);
+	unsigned char buffer[5] = {0, 0, 0, 0, 0};
 
 	if (communication_available)
 	{
