@@ -104,7 +104,7 @@ BEGIN
     VARIABLE busy_cnt  : INTEGER RANGE 0 TO 9 := 0;               --counts the I2C busy signal transistions
     VARIABLE counter   : INTEGER RANGE 0 TO sys_clk_freq/10 := 0; --counts 100ms to wait before communicating
     VARIABLE pause_cnt : INTEGER RANGE 0 TO 240000 := 0;          --counter to execute wait periods
-    VARIABLE sensor    : INTEGER RANGE 0 TO sensor_num-1 := 0; 
+    VARIABLE sensor    : INTEGER RANGE 0 TO sensor_num-1 := 0;    --counter to count the number of color sensors
   BEGIN
     IF(reset_n = '0') THEN               --reset activated
       counter := 0;                        --clear wait counter
@@ -358,14 +358,14 @@ BEGIN
                 i2c_ena <= '1';
                 i2c_addr <= I2C_expander_addr;
                 i2c_rw <= '0';
-                i2c_data_wr <= "00010010";               
+                i2c_data_wr <= "00010010";               --Register address of the pins associated to Port A
               WHEN 1 =>                                  --Writes the desired states of the GPIO's of port A of the MCP23017
                 i2c_data_wr <= portA_output_select;
               WHEN 2 =>                                  --This step set the register pointer to Port B of the MCP23017
                 i2c_ena <= '1';
                 i2c_addr <= I2C_expander_addr;
                 i2c_rw <= '0';
-                i2c_data_wr <= "00010011";
+                i2c_data_wr <= "00010011";               --Rgister address of the pins associated to Port B
               WHEN 3 =>                                  --Writes the desired states of the GPIO's of port B of the MCP23017
                 i2c_data_wr <= portB_output_select;
               WHEN 4 =>

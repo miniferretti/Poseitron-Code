@@ -55,7 +55,6 @@ input 		     [1:0]		BRIDGE_IN;
 		  
 		  // logic reset = 1'b1;
 		  logic i2c_ack_error;
-		  logic transmit_ready;
 		  logic [15:0] clear,red,green,blue;
       logic [31:0] ports_control;
 		  
@@ -93,16 +92,15 @@ input 		     [1:0]		BRIDGE_IN;
         speed speed_counter_RL(PLL_CLOCK, count_RL, speed_RL);
       
 
-        // Data from RPi
-        logic   [31:0]  data_out;
-
-        //-----------------------------controller SPI ---------------------//
-        logic                   spi_clk, spi_cs, spi_mosi, spi_miso;
-        logic   [31:0]  data_write, data_read;
-        logic   [3:0]   data_addr;
+        
+        //-----------------------------SPI Controller---------------------//
+        logic        spi_clk, spi_cs, spi_mosi, spi_miso;
+        logic [31:0] data_write, data_read;
+        logic [3:0]  data_addr;
         logic [31:0] dyna_read;
         logic [31:0] reg_addr;
         logic [31:0] dyna_write;
+        logic [31:0] data_out;
 
         spi_slave_mu spi_slave_instance(CLOCK_50, 
                                         spi_clk, 
@@ -147,9 +145,9 @@ input 		     [1:0]		BRIDGE_IN;
 	 // BRIDGE[33] = SCL; //SCL
 		 
   
-	  //------------------Controller I2C----------------------------//	 
+	  //------------------I2C Controller----------------------------//	 
 		pmod_color_sensor daColorSensor(.clk(CLOCK_50), 
-                                    .reset_n(PI[7]), //Rest pin of the Raspberry Pi
+                                    .reset_n(PI[7]), //Reset pin of the Raspberry Pi
                                     .scl(BRIDGE[33]), 
                                     .sda(BRIDGE[31]), 
                                     .i2c_ack_err(i2c_ack_error), 
@@ -163,19 +161,18 @@ input 		     [1:0]		BRIDGE_IN;
                                     );
 		 
 
+
   //--------------------Dynamixel Controller-------------------------//
-
-
   UART_Dynamixel myDyna(CLOCK_50,
-                        PI[5],  // à définir...
-                        reg_addr[8],
-                        reg_addr[9],
-                        reg_addr[2:0],
-                        dyna_write,
-                        dyna_read,
-                        BRIDGE[19],
-                        BRIDGE[21],
-                        BRIDGE[23]
+                        PI[5],          // à définir... //Reset pin from the Pi, this pin corresponds to pin 22 of the Raspberry Pi
+                        reg_addr[8],    //Bit used to tel the Uart controller that we write to the Dynamixel
+                        reg_addr[9],    //Bit used to tel the Uart controller that we read from the Dynamixel
+                        reg_addr[2:0],  //Address bits to specify the register of the Uart controller
+                        dyna_write,     //Commands to send to the Dynamixel from the SPI
+                        dyna_read,      //Command from the Dynamixel to send to the SPI
+                        BRIDGE[19],     //Real outputs of the FPGA to the Dynamixel
+                        BRIDGE[21],     //Real outputs of the FPGA to the Dynamixel
+                        BRIDGE[23]      //Real outputs of the FPGA to the Dynamixel
                         );
 
 endmodule
