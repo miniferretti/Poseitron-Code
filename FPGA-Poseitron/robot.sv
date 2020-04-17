@@ -164,7 +164,7 @@ input 		     [1:0]		BRIDGE_IN;
 
   //--------------------Dynamixel Controller-------------------------//
   UART_Dynamixel myDyna(CLOCK_50,
-                        PI[5],          // à définir... //Reset pin from the Pi, this pin corresponds to pin 22 of the Raspberry Pi
+                        PI[5],          //à définir... //Reset pin from the Pi, this pin corresponds to pin 22 of the Raspberry Pi
                         reg_addr[8],    //Bit used to tel the Uart controller that we write to the Dynamixel
                         reg_addr[9],    //Bit used to tel the Uart controller that we read from the Dynamixel
                         reg_addr[2:0],  //Address bits to specify the register of the Uart controller
