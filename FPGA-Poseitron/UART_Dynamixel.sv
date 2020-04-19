@@ -40,7 +40,7 @@ UART_Dynamixel_RXD rxd(baud_clk, MyNios_Rst, start_communication, RXD, RXD_done,
 logic TXD_enable_prev, start_communication, communication_fail;
 
 assign start_communication = (~TXD_enable_prev) && TXD_enable;
-assign ID_flag = TXD_data_2[7:0];
+assign ID_flag = TXD_data_1[7:0];
 
 always @(posedge baud_clk)	
 	TXD_enable_prev <= TXD_enable;
