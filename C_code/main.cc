@@ -73,7 +73,7 @@ int main()
 
 		getRGB(&r, &g, &b);
 
-		DynLightLed(0x08);
+		Dyn_light_LED(0x08);
 		Dyn_set_position_and_speed(0x08,0,10);
 		delay(1000);
 
@@ -89,7 +89,7 @@ int main()
 				myCtrlStruct->main_states = WAIT_STATE;
 				myCtrlStruct->calib_states = CALIB_1;
 				
-				DynOffLED(0x08);
+				Dyn_off_LED(0x08);
 				Dyn_set_position_and_speed(0x08,700,10);
 				delay(1000);
 				sensorSelect(0);
