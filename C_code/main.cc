@@ -75,7 +75,7 @@ int main()
 
 		for (int i = 0; i <= 255; i++)
 		{
-			if(DynLightLed(0x0)){
+			if(DynLightLed(0x10)){
 				break;
 			}
 		}
