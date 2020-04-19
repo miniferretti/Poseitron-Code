@@ -138,7 +138,7 @@ input 		     [1:0]		BRIDGE_IN;
       wire direction_port;
 		  
 		  
-		assign BRIDGE[14] = ~direction_port;
+		assign BRIDGE[14] = direction_port;
 		  
 		  
 		  
