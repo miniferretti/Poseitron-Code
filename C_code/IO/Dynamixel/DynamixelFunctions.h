@@ -27,4 +27,5 @@ int DynLightLed(Byte ID);
 void SetMaxSpeed();
 void SetMinAngle();
 void SetMaxAngle();
+int DynOffLED(Byte ID);
 #endif
