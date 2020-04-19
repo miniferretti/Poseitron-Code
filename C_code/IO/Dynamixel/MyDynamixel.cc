@@ -229,19 +229,17 @@ int read_data(unsigned char reg)
 	buffer[3] = TRANSITION_BIT; //bit 0 is the write bit, bit 1 is the read bit. Here, we perform a reading
 	buffer[4] = reg;
 
-	wiringPiSPIDataRW(0, buffer, 5);
-	reset_buffer(buffer);
+	send_reset_buffer(buffer);
 
 	buffer[0] = ADDRESS_REG; //register containing the adresses of the dynamixel
 	buffer[3] = READ_BIT;	 //bit 0 is the write bit, bit 1 is the read bit. Here, we perform a reading
 	buffer[4] = reg;
 
-	wiringPiSPIDataRW(0, buffer, 5);
-	reset_buffer(buffer);
+	send_reset_buffer(buffer);
 
 	buffer[0] = READ_REG; //read register for the retrieving of the status of the dynamixel
 
-	wiringPiSPIDataRW(0, buffer, 5);
+	send_reset_buffer(buffer);
 
 	communication_available = (int)((uint32_t)buffer[1] << 24 | (uint32_t)buffer[2] << 16 | (uint32_t)buffer[3] << 8 | (uint32_t)buffer[4]);
 
@@ -258,10 +256,18 @@ void reset_dynamixel()
 	digitalWrite(22, 0);
 }
 
-void reset_buffer(unsigned char *buffer)
+void send_reset_buffer(unsigned char *buffer)
 {
-	for (int i = 0; i < 5; i++)
+	unsigned char add = buffer[0];
+
+	wiringPiSPIDataRW(0, buffer, 5);
+
+	if (add >> 2 == 2)
 	{
-		buffer[i] = 0;
+
+		for (int i = 0; i < 5; i++)
+		{
+			buffer[i] = 0;
+		}
 	}
 }

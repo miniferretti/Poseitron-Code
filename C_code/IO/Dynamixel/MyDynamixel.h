@@ -64,6 +64,6 @@ int Get_Parameters(Byte ID, Byte Address, Byte N);
 
 int read_data(unsigned char reg);
 void reset_dynamixel();
-void reset_buffer(unsigned char *buffer);
+void send_reset_buffer(unsigned char *buffer);
 
 #endif /*MYDYNAMIXEL_H_*/
