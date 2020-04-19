@@ -24,10 +24,6 @@
 					"strict" : false
 				},
 				{
-					"name" : "LED[5]",
-					"strict" : false
-				},
-				{
 					"name" : "LED[6]",
 					"strict" : false
 				},
@@ -72,7 +68,15 @@
 					"strict" : false
 				},
 				{
+					"name" : "BRIDGE[10]",
+					"strict" : false
+				},
+				{
 					"name" : "BRIDGE[11]",
+					"strict" : false
+				},
+				{
+					"name" : "BRIDGE[12]",
 					"strict" : false
 				},
 				{
@@ -80,19 +84,11 @@
 					"strict" : false
 				},
 				{
+					"name" : "BRIDGE[14]",
+					"strict" : false
+				},
+				{
 					"name" : "BRIDGE[15]",
-					"strict" : false
-				},
-				{
-					"name" : "BRIDGE[19]",
-					"strict" : false
-				},
-				{
-					"name" : "BRIDGE[21]",
-					"strict" : false
-				},
-				{
-					"name" : "BRIDGE[23]",
 					"strict" : false
 				},
 				{

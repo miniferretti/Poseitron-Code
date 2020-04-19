@@ -48,9 +48,10 @@ typedef unsigned char Byte; //integer of 8 bits
 *************************************************************************/
 #define DATA_REG 0x89
 #define ADDRESS_REG 0x8A
-#define READ_REG 0x07
+#define READ_REG 0x0B
 #define WRITE_BIT 0b00000001
-#define READ_BIT 0b00000010
+#define READ_BIT  0b00000010
+#define TRANSITION_BIT 0b00000000
 
 /*************************************************************************
 * Functions Prototypes				                                     *
@@ -61,7 +62,7 @@ int Get_Status_Packet(Byte *ID, Byte *Length, Byte *Error, Byte *P1, Byte *P2, B
 Byte Set_Parameter(Byte ID, Byte Length, Byte Address, int Parameter);
 int Get_Parameters(Byte ID, Byte Address, Byte N);
 
-uint32_t read_data(unsigned char reg);
+int read_data(unsigned char reg);
 void reset_dynamixel();
 
 #endif /*MYDYNAMIXEL_H_*/

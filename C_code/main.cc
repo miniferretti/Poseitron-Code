@@ -4,6 +4,8 @@
 #include "IO/COM/SPI/SPI.hh"
 #include "IO/COM/SPI/Specific/SPI_DE0.hh"
 #include "IO/COM/TCS3472_I2C/TCS3472_FPGA.hh"
+#include "IO/Dynamixel/DynamixelFunctions.h"
+#include "IO/Dynamixel/MyDynamixel.h"
 #include <iostream>
 #include <errno.h>
 #include <stdlib.h>
@@ -52,7 +54,9 @@ int main()
 	double time_taken;
 	int run = 1;
 	colorSensorReset();
-	uint16_t r, g, b, c;
+	reset_dynamixel();
+	sensorSelect(1);
+	float r, g, b, c;
 
 	printf("Welcome to the Poseitron code prototype.\r\n");
 	printf("We hope that you will be pleased with the coding and we wish you a great succes.\n\r");
@@ -66,20 +70,29 @@ int main()
 		myCtrlStruct->theCtrlIn->t = time_taken / 1000.0;
 		spdctrl->updateLowCtrl();
 		myOdometry->Odometry_update();
-		sensorSelect(0);
-		getRawData(&r, &g, &b, &c);
 
-		printf("red = %d green = %d blue = %d \r\n", r, g, b); // tésté pour verifier que les senseurs de couleur focntionnent 
+		getRGB(&r, &g, &b);
+
+		for (int i = 0; i <= 255; i++)
+		{
+			if(DynLightLed(0x08)){
+				break;
+			}
+		}
+		break;
+
+		printf("red = %f green = %f blue = %f \r\n", r, g, b); // tésté pour verifier que les senseurs de couleur focntionnent
 
 		switch (myCtrlStruct->main_states)
 		{
 		case WAIT_STATE:
 			//printf("WAIT_STATE\r\n");
 
-			if (myCtrlStruct->theCtrlIn->t > 15)
+			if (myCtrlStruct->theCtrlIn->t > 10)
 			{
 				myCtrlStruct->main_states = WAIT_STATE;
 				myCtrlStruct->calib_states = CALIB_1;
+				sensorSelect(0);
 			}
 			break;
 

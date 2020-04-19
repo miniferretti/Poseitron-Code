@@ -72,7 +72,7 @@ input 		     [1:0]		BRIDGE_IN;
         assign quadA_odoL = BRIDGE[13];
         assign quadB_odoL = BRIDGE[15];
 
-        assign LED[7:0] =data_out[7:0];//data_out[7:0];//{quadA_FL,quadB_FL,quadA_RL,quadB_RL,quadA_odoL,quadB_odoL,quadA_odoR,quadB_odoR};
+        assign LED[7:0] ={BRIDGE[14],BRIDGE[12],BRIDGE[10],1'b0,reg_addr[2:0],reg_addr[9:8]};//data_out[7:0];//{quadA_FL,quadB_FL,quadA_RL,quadB_RL,quadA_odoL,quadB_odoL,quadA_odoR,quadB_odoR};
 
         // Clocks
         logic PLL_CLOCK;
@@ -134,9 +134,11 @@ input 		     [1:0]		BRIDGE_IN;
       assign spi_miso1 = PI[1];
      // assign spi_mosi1 = PI_IN[1];
       assign spi_cs1 = PI[2];
+
+      wire direction_port;
 		  
 		  
-		
+		assign BRIDGE[14] = ~direction_port;
 		  
 		  
 		  
@@ -170,9 +172,9 @@ input 		     [1:0]		BRIDGE_IN;
                         reg_addr[2:0],  //Address bits to specify the register of the Uart controller
                         dyna_write,     //Commands to send to the Dynamixel from the SPI
                         dyna_read,      //Command from the Dynamixel to send to the SPI
-                        BRIDGE[19],     //Real outputs of the FPGA to the Dynamixel
-                        BRIDGE[21],     //Real outputs of the FPGA to the Dynamixel
-                        BRIDGE[23]      //Real outputs of the FPGA to the Dynamixel
+                        BRIDGE[10],     //Real outputs of the FPGA to the Dynamixel RX
+                        BRIDGE[12],     //Real outputs of the FPGA to the Dynamixel TX
+                        direction_port      //Real outputs of the FPGA to the Dynamixel CTRL
                         );
 
 endmodule

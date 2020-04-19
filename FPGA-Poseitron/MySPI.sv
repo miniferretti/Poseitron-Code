@@ -64,7 +64,7 @@ module spi_slave_mu(
 		misoRAM[4'h6] <= {16'b0, clear};
 
 		//Dynamixel status values 
-		misoRAM[4'h7] <= dyna_read;
+		misoRAM[4'hB] <= {dyna_read};
 
 	end
 
