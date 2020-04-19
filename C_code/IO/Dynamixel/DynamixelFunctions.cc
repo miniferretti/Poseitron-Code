@@ -9,7 +9,7 @@
   project (ndlr controlling the dynamixel along a rack and pinion). 				                                     *
 **************************************************************************/
 
-int DynLightLed(Byte ID)
+int Dyn_light_LED(Byte ID)
 {
 
   Byte Instruction = 0x03; // writes the data in the control table Write_reg
@@ -44,13 +44,36 @@ int DynLightLed(Byte ID)
   //  printf("Dynamixel available = %d\r\n", read_data(COMMUNICATION_STATUS_REG));
 }
 
-int DynOffLED(Byte ID)
+int Dyn_off_LED(Byte ID)
 {
   Byte Fail;
   Fail = Set_Parameter(ID, 4, 0x19, 0x0);
   if (!Fail)
   {
     printf("Eteignage de la LED \r\n");
+
+    return 1;
+  }
+  else
+  {
+    printf("Erreur lors de l'envois du message\r\n");
+    return 0;
+  }
+}
+
+int Dyn_set_postion_and_speed(Byte ID, int postion, int speed)
+{
+  Byte Fail;
+
+  speed = speed * 10;
+
+  Set_Parameter(ID, 5, 32, speed);
+
+  Fail = Set_Parameter(ID, 5, 30, postion); //Leght = 5 car la postion est étalée sur P2 et P3 donc 3+2 avec P1 qui contient l'adresse du registre.
+
+  if (!Fail)
+  {
+    printf("Postion enregistrée \r\n");
 
     return 1;
   }

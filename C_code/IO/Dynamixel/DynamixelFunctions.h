@@ -23,9 +23,10 @@ typedef unsigned char Byte; //integer of 8 bits
 /*************************************************************************
 * Functions list				                                     *
 **************************************************************************/
-int DynLightLed(Byte ID);
+int Dyn_light_LED(Byte ID);
 void SetMaxSpeed();
 void SetMinAngle();
 void SetMaxAngle();
-int DynOffLED(Byte ID);
+int Dyn_off_LED(Byte ID);
+int Dyn_set_position_and_speed(Byte ID, int position, int speed);
 #endif
