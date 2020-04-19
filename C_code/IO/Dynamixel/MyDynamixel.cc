@@ -226,11 +226,11 @@ int read_data(unsigned char reg)
 
 	unsigned char buffer[5] = {0x00, 0x00, 0x00, 0x00, 0x00};
 
-	buffer[0] = ADDRESS_REG;	//register containing the adresses of the dynamixel
+	/*buffer[0] = ADDRESS_REG;	//register containing the adresses of the dynamixel
 	buffer[3] = TRANSITION_BIT; //bit 0 is the write bit, bit 1 is the read bit. Here, we perform a reading
 	buffer[4] = reg;
 
-	send_reset_buffer(buffer);
+	send_reset_buffer(buffer);*/
 
 	buffer[0] = ADDRESS_REG; //register containing the adresses of the dynamixel
 	buffer[3] = READ_BIT;	 //bit 0 is the write bit, bit 1 is the read bit. Here, we perform a reading
