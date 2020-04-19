@@ -46,8 +46,9 @@ int main()
 	Odometry *myOdometry = new Odometry(myCtrlStruct);
 	sensorSelect(2);
 
-	spdctrl->init_speed_controller(0);
+	spdctrl->init_speed_controller(1);
 	spdctrl->set_speed(0, 0);
+	spdctrl->Speed_controller_stop();
 	myOdometry->Odometry_init();
 	myCtrlStruct->main_states = WAIT_STATE;
 	auto start = std::chrono::steady_clock::now();
