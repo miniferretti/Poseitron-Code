@@ -87,8 +87,9 @@ int main()
 			{
 				myCtrlStruct->main_states = WAIT_STATE;
 				myCtrlStruct->calib_states = CALIB_1;
-				delay(1000);
+				
 				DynOffLED(0x08);
+				delay(1000);
 				sensorSelect(0);
 			}
 			break;
