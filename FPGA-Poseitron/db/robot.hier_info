@@ -1,13 +1,13 @@
 |robot
 CLOCK_50 => CLOCK_50.IN8
-LED[0] <= reg_addr[8].DB_MAX_OUTPUT_PORT_TYPE
-LED[1] <= reg_addr[9].DB_MAX_OUTPUT_PORT_TYPE
-LED[2] <= reg_addr[0].DB_MAX_OUTPUT_PORT_TYPE
-LED[3] <= reg_addr[1].DB_MAX_OUTPUT_PORT_TYPE
-LED[4] <= reg_addr[2].DB_MAX_OUTPUT_PORT_TYPE
-LED[5] <= <GND>
-LED[6] <= LED[6].DB_MAX_OUTPUT_PORT_TYPE
-LED[7] <= LED[7].DB_MAX_OUTPUT_PORT_TYPE
+LED[0] << UART_Dynamixel:myDyna.port10
+LED[1] << UART_Dynamixel:myDyna.port10
+LED[2] << UART_Dynamixel:myDyna.port10
+LED[3] << UART_Dynamixel:myDyna.port10
+LED[4] << UART_Dynamixel:myDyna.port10
+LED[5] << UART_Dynamixel:myDyna.port10
+LED[6] << UART_Dynamixel:myDyna.port10
+LED[7] << UART_Dynamixel:myDyna.port10
 KEY[0] => ~NO_FANOUT~
 KEY[1] => ~NO_FANOUT~
 PI[0] <> <UNC>
@@ -2419,6 +2419,14 @@ MyNios_ReadData[31] <= MyNios_ReadData[31]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 RXD => RXD.IN1
 TXD <= UART_Dynamixel_TXD:txd.port5
 UART_DIR <= UART_Dynamixel_TXD:txd.port6
+ID_flag[0] <= TXD_data_1[0].DB_MAX_OUTPUT_PORT_TYPE
+ID_flag[1] <= TXD_data_1[1].DB_MAX_OUTPUT_PORT_TYPE
+ID_flag[2] <= TXD_data_1[2].DB_MAX_OUTPUT_PORT_TYPE
+ID_flag[3] <= TXD_data_1[3].DB_MAX_OUTPUT_PORT_TYPE
+ID_flag[4] <= TXD_data_1[4].DB_MAX_OUTPUT_PORT_TYPE
+ID_flag[5] <= TXD_data_1[5].DB_MAX_OUTPUT_PORT_TYPE
+ID_flag[6] <= TXD_data_1[6].DB_MAX_OUTPUT_PORT_TYPE
+ID_flag[7] <= TXD_data_1[7].DB_MAX_OUTPUT_PORT_TYPE
 
 
 |robot|UART_Dynamixel:myDyna|Baudrate_Generator:baudgen

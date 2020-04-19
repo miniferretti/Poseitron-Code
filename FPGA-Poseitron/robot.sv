@@ -72,7 +72,7 @@ input 		     [1:0]		BRIDGE_IN;
         assign quadA_odoL = BRIDGE[13];
         assign quadB_odoL = BRIDGE[15];
 
-        assign LED[7:0] ={BRIDGE[14],BRIDGE[12],BRIDGE[10],1'b0,reg_addr[2:0],reg_addr[9:8]};//data_out[7:0];//{quadA_FL,quadB_FL,quadA_RL,quadB_RL,quadA_odoL,quadB_odoL,quadA_odoR,quadB_odoR};
+        assign LED[7:0] =ID_flag;//data_out[7:0];//{quadA_FL,quadB_FL,quadA_RL,quadB_RL,quadA_odoL,quadB_odoL,quadA_odoR,quadB_odoR};
 
         // Clocks
         logic PLL_CLOCK;
@@ -174,7 +174,10 @@ input 		     [1:0]		BRIDGE_IN;
                         dyna_read,      //Command from the Dynamixel to send to the SPI
                         BRIDGE[10],     //Real outputs of the FPGA to the Dynamixel RX
                         BRIDGE[12],     //Real outputs of the FPGA to the Dynamixel TX
-                        direction_port      //Real outputs of the FPGA to the Dynamixel CTRL
+                        direction_port,      //Real outputs of the FPGA to the Dynamixel CTRL
+                        ID_flag
                         );
+
+  logic [7:0] ID_flag;
 
 endmodule

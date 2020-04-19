@@ -13,7 +13,8 @@ module UART_Dynamixel (
 	output [31:0]	MyNios_ReadData,
 	// exported signals
 	input				RXD,
-	output			TXD, UART_DIR
+	output			TXD, UART_DIR,
+	output    [7:0]      ID_flag
 );
 
 logic 			baud_clk, TXD_enable, TXD_done, RXD_enable, RXD_done;
@@ -39,6 +40,7 @@ UART_Dynamixel_RXD rxd(baud_clk, MyNios_Rst, start_communication, RXD, RXD_done,
 logic TXD_enable_prev, start_communication, communication_fail;
 
 assign start_communication = (~TXD_enable_prev) && TXD_enable;
+assign ID_flag = TXD_data_1[7:0];
 
 always @(posedge baud_clk)	
 	TXD_enable_prev <= TXD_enable;

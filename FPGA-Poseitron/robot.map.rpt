@@ -1,5 +1,5 @@
 Analysis & Synthesis report for robot
-Sun Apr 19 13:02:29 2020
+Sun Apr 19 14:45:59 2020
 Quartus Prime Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
 
 
@@ -63,7 +63,7 @@ refer to the applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Sun Apr 19 13:02:29 2020       ;
+; Analysis & Synthesis Status        ; Successful - Sun Apr 19 14:45:59 2020       ;
 ; Quartus Prime Version              ; 18.0.0 Build 614 04/24/2018 SJ Lite Edition ;
 ; Revision Name                      ; robot                                       ;
 ; Top-level Entity Name              ; robot                                       ;
@@ -220,9 +220,9 @@ refer to the applicable agreement for further details.
 ;                                             ;                ;
 ; Total combinational functions               ; 971            ;
 ; Logic element usage by number of LUT inputs ;                ;
-;     -- 4 input functions                    ; 421            ;
-;     -- 3 input functions                    ; 309            ;
-;     -- <=2 input functions                  ; 241            ;
+;     -- 4 input functions                    ; 424            ;
+;     -- 3 input functions                    ; 310            ;
+;     -- <=2 input functions                  ; 237            ;
 ;                                             ;                ;
 ; Logic elements by mode                      ;                ;
 ;     -- normal mode                          ; 763            ;
@@ -241,7 +241,7 @@ refer to the applicable agreement for further details.
 ;                                             ;                ;
 ; Maximum fan-out node                        ; CLOCK_50~input ;
 ; Maximum fan-out                             ; 776            ;
-; Total fan-out                               ; 6512           ;
+; Total fan-out                               ; 6520           ;
 ; Average fan-out                             ; 2.83           ;
 +---------------------------------------------+----------------+
 
@@ -504,8 +504,8 @@ Encoding Type:  One-Hot
 ; pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|addr_rw[7]   ; Merged with pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|addr_rw[5] ;
 ; pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|addr_rw[4]   ; Merged with pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|addr_rw[1] ;
 ; spi_slave_mu:spi_slave_instance|state.S3                             ; Lost fanout                                                                    ;
-; quad:encoder_RL|count[16..31]                                        ; Lost fanout                                                                    ;
 ; quad:encoder_FL|count[16..31]                                        ; Lost fanout                                                                    ;
+; quad:encoder_RL|count[16..31]                                        ; Lost fanout                                                                    ;
 ; Total Number of Removed Registers = 196                              ;                                                                                ;
 +----------------------------------------------------------------------+--------------------------------------------------------------------------------+
 
@@ -579,9 +579,9 @@ Encoding Type:  One-Hot
 +--------------------------------------------------------------------+---------+
 ; pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|sda_int    ; 3       ;
 ; pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|bit_cnt[2] ; 20      ;
-; pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|bit_cnt[1] ; 30      ;
-; pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|bit_cnt[0] ; 27      ;
-; pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|busy       ; 18      ;
+; pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|bit_cnt[1] ; 29      ;
+; pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|bit_cnt[0] ; 28      ;
+; pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|busy       ; 19      ;
 ; Total number of inverted registers = 5                             ;         ;
 +--------------------------------------------------------------------+---------+
 
@@ -591,42 +591,42 @@ Encoding Type:  One-Hot
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                        ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------------------------------+
-; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |robot|UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|cnt_fail[5]                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |robot|UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|cnt_fail[3]                   ;
 ; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |robot|UART_Dynamixel:myDyna|UART_Dynamixel_TXD:txd|cnt_S1[1]                     ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |robot|pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|data_tx[1]         ;
-; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |robot|UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|cnt_byte[3]                   ;
-; 3:1                ; 7 bits    ; 14 LEs        ; 7 LEs                ; 7 LEs                  ; Yes        ; |robot|UART_Dynamixel:myDyna|UART_Dynamixel_TXD:txd|UART_BYTE_TXD:ubyte|packet[1] ;
-; 3:1                ; 14 bits   ; 28 LEs        ; 14 LEs               ; 14 LEs                 ; Yes        ; |robot|spi_slave_mu:spi_slave_instance|SPI_reg[3]                                 ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |robot|UART_Dynamixel:myDyna|UART_Dynamixel_TXD:txd|cnt[0]                        ;
-; 3:1                ; 48 bits   ; 96 LEs        ; 48 LEs               ; 48 LEs                 ; Yes        ; |robot|UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|data1[27]                     ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |robot|UART_Dynamixel:myDyna|UART_Dynamixel_TXD:txd|byte_to_send[0]               ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |robot|UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|ID[0]                         ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |robot|UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|P1[0]                         ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |robot|UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|Checksum[3]                   ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |robot|UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|Length[0]                     ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |robot|UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|Error[0]                      ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |robot|pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|addr_rw[2]         ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |robot|UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|cnt_byte[1]                   ;
+; 3:1                ; 7 bits    ; 14 LEs        ; 7 LEs                ; 7 LEs                  ; Yes        ; |robot|UART_Dynamixel:myDyna|UART_Dynamixel_TXD:txd|UART_BYTE_TXD:ubyte|packet[6] ;
+; 3:1                ; 14 bits   ; 28 LEs        ; 14 LEs               ; 14 LEs                 ; Yes        ; |robot|spi_slave_mu:spi_slave_instance|SPI_reg[4]                                 ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |robot|UART_Dynamixel:myDyna|UART_Dynamixel_TXD:txd|cnt[6]                        ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |robot|UART_Dynamixel:myDyna|UART_Dynamixel_TXD:txd|byte_to_send[1]               ;
+; 3:1                ; 48 bits   ; 96 LEs        ; 48 LEs               ; 48 LEs                 ; Yes        ; |robot|UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|data2[12]                     ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |robot|UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|Checksum[4]                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |robot|UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|ID[4]                         ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |robot|UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|P1[5]                         ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |robot|UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|Length[1]                     ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |robot|UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|Error[4]                      ;
 ; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |robot|UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|P2[5]                         ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |robot|pmod_color_sensor:daColorSensor|blue_data[11]                              ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |robot|pmod_color_sensor:daColorSensor|clear_data[1]                              ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |robot|pmod_color_sensor:daColorSensor|blue_data[1]                               ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |robot|pmod_color_sensor:daColorSensor|green_data[3]                              ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |robot|pmod_color_sensor:daColorSensor|red_data[3]                                ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |robot|pmod_color_sensor:daColorSensor|clear_data[10]                             ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |robot|pmod_color_sensor:daColorSensor|green_data[10]                             ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |robot|pmod_color_sensor:daColorSensor|red_data[15]                               ;
-; 5:1                ; 16 bits   ; 48 LEs        ; 32 LEs               ; 16 LEs                 ; Yes        ; |robot|UART_Dynamixel:myDyna|UART_Dynamixel_TXD:txd|packet_to_send[1]             ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |robot|pmod_color_sensor:daColorSensor|blue_data[12]                              ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |robot|pmod_color_sensor:daColorSensor|clear_data[4]                              ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |robot|pmod_color_sensor:daColorSensor|blue_data[6]                               ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |robot|pmod_color_sensor:daColorSensor|green_data[4]                              ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |robot|pmod_color_sensor:daColorSensor|red_data[0]                                ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |robot|pmod_color_sensor:daColorSensor|clear_data[14]                             ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |robot|pmod_color_sensor:daColorSensor|green_data[13]                             ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |robot|pmod_color_sensor:daColorSensor|red_data[14]                               ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 32 LEs               ; 16 LEs                 ; Yes        ; |robot|UART_Dynamixel:myDyna|UART_Dynamixel_TXD:txd|packet_to_send[9]             ;
 ; 5:1                ; 40 bits   ; 120 LEs       ; 80 LEs               ; 40 LEs                 ; Yes        ; |robot|UART_Dynamixel:myDyna|UART_Dynamixel_TXD:txd|packet_to_send[49]            ;
-; 4:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |robot|UART_Dynamixel:myDyna|UART_Dynamixel_TXD:txd|UART_BYTE_TXD:ubyte|cnt[1]    ;
-; 6:1                ; 8 bits    ; 32 LEs        ; 8 LEs                ; 24 LEs                 ; Yes        ; |robot|UART_Dynamixel:myDyna|UART_Dynamixel_TXD:txd|packet_to_send[65]            ;
-; 6:1                ; 8 bits    ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |robot|UART_Dynamixel:myDyna|UART_Dynamixel_TXD:txd|packet_to_send[61]            ;
-; 6:1                ; 16 bits   ; 64 LEs        ; 16 LEs               ; 48 LEs                 ; Yes        ; |robot|UART_Dynamixel:myDyna|MyNios_ReadData[30]                                  ;
-; 6:1                ; 14 bits   ; 56 LEs        ; 28 LEs               ; 28 LEs                 ; Yes        ; |robot|UART_Dynamixel:myDyna|MyNios_ReadData[13]                                  ;
-; 19:1               ; 15 bits   ; 180 LEs       ; 60 LEs               ; 120 LEs                ; Yes        ; |robot|spi_slave_mu:spi_slave_instance|SPI_reg[36]                                ;
-; 19:1               ; 16 bits   ; 192 LEs       ; 96 LEs               ; 96 LEs                 ; Yes        ; |robot|spi_slave_mu:spi_slave_instance|SPI_reg[14]                                ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |robot|UART_Dynamixel:myDyna|UART_Dynamixel_TXD:txd|UART_BYTE_TXD:ubyte|cnt[2]    ;
+; 6:1                ; 8 bits    ; 32 LEs        ; 8 LEs                ; 24 LEs                 ; Yes        ; |robot|UART_Dynamixel:myDyna|UART_Dynamixel_TXD:txd|packet_to_send[70]            ;
+; 6:1                ; 8 bits    ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |robot|UART_Dynamixel:myDyna|UART_Dynamixel_TXD:txd|packet_to_send[62]            ;
+; 6:1                ; 16 bits   ; 64 LEs        ; 16 LEs               ; 48 LEs                 ; Yes        ; |robot|UART_Dynamixel:myDyna|MyNios_ReadData[26]                                  ;
+; 6:1                ; 14 bits   ; 56 LEs        ; 28 LEs               ; 28 LEs                 ; Yes        ; |robot|UART_Dynamixel:myDyna|MyNios_ReadData[5]                                   ;
+; 19:1               ; 15 bits   ; 180 LEs       ; 60 LEs               ; 120 LEs                ; Yes        ; |robot|spi_slave_mu:spi_slave_instance|SPI_reg[33]                                ;
+; 19:1               ; 16 bits   ; 192 LEs       ; 96 LEs               ; 96 LEs                 ; Yes        ; |robot|spi_slave_mu:spi_slave_instance|SPI_reg[15]                                ;
 ; 7:1                ; 4 bits    ; 16 LEs        ; 4 LEs                ; 12 LEs                 ; Yes        ; |robot|pmod_color_sensor:daColorSensor|busy_cnt[3]                                ;
 ; 17:1               ; 3 bits    ; 33 LEs        ; 0 LEs                ; 33 LEs                 ; Yes        ; |robot|pmod_color_sensor:daColorSensor|i2c_addr[5]                                ;
-; 15:1               ; 4 bits    ; 40 LEs        ; 8 LEs                ; 32 LEs                 ; Yes        ; |robot|pmod_color_sensor:daColorSensor|i2c_addr[3]                                ;
-; 24:1               ; 2 bits    ; 32 LEs        ; 10 LEs               ; 22 LEs                 ; Yes        ; |robot|pmod_color_sensor:daColorSensor|i2c_data_wr[5]                             ;
+; 15:1               ; 4 bits    ; 40 LEs        ; 8 LEs                ; 32 LEs                 ; Yes        ; |robot|pmod_color_sensor:daColorSensor|i2c_addr[6]                                ;
+; 24:1               ; 2 bits    ; 32 LEs        ; 10 LEs               ; 22 LEs                 ; Yes        ; |robot|pmod_color_sensor:daColorSensor|i2c_data_wr[7]                             ;
 ; 3:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |robot|pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|bit_cnt[0]         ;
 ; 9:1                ; 2 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; No         ; |robot|spi_slave_mu:spi_slave_instance|state                                      ;
 ; 9:1                ; 2 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; No         ; |robot|spi_slave_mu:spi_slave_instance|state                                      ;
@@ -1131,20 +1131,19 @@ Note: In order to hide this table in the UI and the text report file, please set
 ;     SLD               ; 1                           ;
 ;     plain             ; 319                         ;
 ; cycloneiii_io_obuf    ; 68                          ;
-; cycloneiii_lcell_comb ; 972                         ;
+; cycloneiii_lcell_comb ; 971                         ;
 ;     arith             ; 208                         ;
 ;         2 data inputs ; 81                          ;
 ;         3 data inputs ; 127                         ;
-;     normal            ; 764                         ;
-;         0 data inputs ; 1                           ;
+;     normal            ; 763                         ;
 ;         1 data inputs ; 9                           ;
-;         2 data inputs ; 151                         ;
-;         3 data inputs ; 182                         ;
-;         4 data inputs ; 421                         ;
+;         2 data inputs ; 147                         ;
+;         3 data inputs ; 183                         ;
+;         4 data inputs ; 424                         ;
 ; cycloneiii_pll        ; 1                           ;
 ;                       ;                             ;
 ; Max LUT depth         ; 7.00                        ;
-; Average LUT depth     ; 2.51                        ;
+; Average LUT depth     ; 2.52                        ;
 +-----------------------+-----------------------------+
 
 
@@ -1163,7 +1162,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
-    Info: Processing started: Sun Apr 19 13:02:16 2020
+    Info: Processing started: Sun Apr 19 14:45:45 2020
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off robot -c robot
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 16 of the 16 processors detected
@@ -1185,14 +1184,13 @@ Info (12021): Found 2 design units, including 1 entities, in source file tcs3472
     Info (12023): Found entity 1: i2c_master File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/TCS34725 read-write/i2c_master.vhd Line: 36
 Info (12021): Found 5 design units, including 5 entities, in source file uart_dynamixel.sv
     Info (12023): Found entity 1: UART_Dynamixel File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/UART_Dynamixel.sv Line: 5
-    Info (12023): Found entity 2: UART_Dynamixel_TXD File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/UART_Dynamixel.sv Line: 51
-    Info (12023): Found entity 3: UART_BYTE_TXD File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/UART_Dynamixel.sv Line: 139
-    Info (12023): Found entity 4: UART_Dynamixel_RXD File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/UART_Dynamixel.sv Line: 185
-    Info (12023): Found entity 5: Baudrate_Generator File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/UART_Dynamixel.sv Line: 294
+    Info (12023): Found entity 2: UART_Dynamixel_TXD File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/UART_Dynamixel.sv Line: 53
+    Info (12023): Found entity 3: UART_BYTE_TXD File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/UART_Dynamixel.sv Line: 141
+    Info (12023): Found entity 4: UART_Dynamixel_RXD File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/UART_Dynamixel.sv Line: 187
+    Info (12023): Found entity 5: Baudrate_Generator File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/UART_Dynamixel.sv Line: 296
 Info (12127): Elaborating entity "robot" for the top level hierarchy
 Warning (10036): Verilog HDL or VHDL warning at robot.sv(132): object "spi_cs1" assigned a value but never read File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 132
 Warning (10036): Verilog HDL or VHDL warning at robot.sv(132): object "spi_miso1" assigned a value but never read File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 132
-Warning (10230): Verilog HDL assignment warning at robot.sv(75): truncated value with size 9 to match size of target (8) File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 75
 Warning (12125): Using design file my_pll.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
     Info (12023): Found entity 1: my_pll File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/my_pll.v Line: 39
 Info (12128): Elaborating entity "my_pll" for hierarchy "my_pll:pll_clock" File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 79
@@ -1267,11 +1265,11 @@ Warning (10030): Net "misoRAM[15..12]" at MySPI.sv(40) has no driver or initial 
 Warning (10030): Net "misoRAM[10..7]" at MySPI.sv(40) has no driver or initial value, using a default initial value '0' File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/MySPI.sv Line: 40
 Info (12128): Elaborating entity "pmod_color_sensor" for hierarchy "pmod_color_sensor:daColorSensor" File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 163
 Info (12128): Elaborating entity "i2c_master" for hierarchy "pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0" File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/TCS34725 read-write/pmod_color_sensor.vhd Line: 89
-Info (12128): Elaborating entity "UART_Dynamixel" for hierarchy "UART_Dynamixel:myDyna" File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 178
-Info (12128): Elaborating entity "Baudrate_Generator" for hierarchy "UART_Dynamixel:myDyna|Baudrate_Generator:baudgen" File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/UART_Dynamixel.sv Line: 34
-Info (12128): Elaborating entity "UART_Dynamixel_TXD" for hierarchy "UART_Dynamixel:myDyna|UART_Dynamixel_TXD:txd" File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/UART_Dynamixel.sv Line: 35
-Info (12128): Elaborating entity "UART_BYTE_TXD" for hierarchy "UART_Dynamixel:myDyna|UART_Dynamixel_TXD:txd|UART_BYTE_TXD:ubyte" File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/UART_Dynamixel.sv Line: 75
-Info (12128): Elaborating entity "UART_Dynamixel_RXD" for hierarchy "UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd" File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/UART_Dynamixel.sv Line: 36
+Info (12128): Elaborating entity "UART_Dynamixel" for hierarchy "UART_Dynamixel:myDyna" File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 179
+Info (12128): Elaborating entity "Baudrate_Generator" for hierarchy "UART_Dynamixel:myDyna|Baudrate_Generator:baudgen" File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/UART_Dynamixel.sv Line: 35
+Info (12128): Elaborating entity "UART_Dynamixel_TXD" for hierarchy "UART_Dynamixel:myDyna|UART_Dynamixel_TXD:txd" File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/UART_Dynamixel.sv Line: 36
+Info (12128): Elaborating entity "UART_BYTE_TXD" for hierarchy "UART_Dynamixel:myDyna|UART_Dynamixel_TXD:txd|UART_BYTE_TXD:ubyte" File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/UART_Dynamixel.sv Line: 77
+Info (12128): Elaborating entity "UART_Dynamixel_RXD" for hierarchy "UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd" File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/UART_Dynamixel.sv Line: 37
 Warning (12241): 1 hierarchies have connectivity warnings - see the Connectivity Checks report folder
 Warning (13034): The following nodes have both tri-state and non-tri-state drivers
     Warning (13035): Inserted always-enabled tri-state buffer between "PI[13]" and its non-tri-state driver. File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 45
@@ -1341,18 +1339,13 @@ Warning (13039): The following bidirectional pins have no drivers
     Warning (13040): bidirectional pin "BRIDGE[29]" has no driver File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 49
     Warning (13040): bidirectional pin "BRIDGE[30]" has no driver File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 49
     Warning (13040): bidirectional pin "BRIDGE[32]" has no driver File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 49
-Info (13060): One or more bidirectional pins are fed by always enabled tri-state buffers
-    Info (13061): Fan-out of permanently enabled tri-state buffer feeding bidirectional pin "BRIDGE[12]" is moved to its source File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 49
 Info (13000): Registers with preset signals will power-up high File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/TCS34725 read-write/i2c_master.vhd Line: 62
 Info (13003): DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
 Warning (13009): TRI or OPNDRN buffers permanently enabled
     Warning (13010): Node "PI[13]~synth" File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 45
     Warning (13010): Node "BRIDGE[12]~synth" File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 49
     Warning (13010): Node "BRIDGE[14]~synth" File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 49
-Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "LED[5]" is stuck at GND File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 39
 Info (286030): Timing-Driven Synthesis is running
-Warning (14632): Output pin "LED[6]" driven by bidirectional pin "BRIDGE[10]" cannot be tri-stated File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 39
 Info (17049): 105 registers lost all their fanouts during netlist optimizations.
 Info (144001): Generated suppressed messages file D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.map.smsg
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
@@ -1369,9 +1362,9 @@ Info (21057): Implemented 1650 device resources after synthesis - the final reso
     Info (21060): Implemented 68 bidirectional pins
     Info (21061): Implemented 1566 logic cells
     Info (21065): Implemented 1 PLLs
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 89 warnings
-    Info: Peak virtual memory: 4866 megabytes
-    Info: Processing ended: Sun Apr 19 13:02:30 2020
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 85 warnings
+    Info: Peak virtual memory: 4869 megabytes
+    Info: Processing ended: Sun Apr 19 14:45:59 2020
     Info: Elapsed time: 00:00:14
     Info: Total CPU time (on all processors): 00:00:28
 

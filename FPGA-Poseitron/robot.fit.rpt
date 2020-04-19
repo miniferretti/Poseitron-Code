@@ -1,5 +1,5 @@
 Fitter report for robot
-Sun Apr 19 13:02:39 2020
+Sun Apr 19 14:46:08 2020
 Quartus Prime Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
 
 
@@ -70,14 +70,14 @@ refer to the applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Fitter Summary                                                                   ;
 +------------------------------------+---------------------------------------------+
-; Fitter Status                      ; Successful - Sun Apr 19 13:02:38 2020       ;
+; Fitter Status                      ; Successful - Sun Apr 19 14:46:08 2020       ;
 ; Quartus Prime Version              ; 18.0.0 Build 614 04/24/2018 SJ Lite Edition ;
 ; Revision Name                      ; robot                                       ;
 ; Top-level Entity Name              ; robot                                       ;
 ; Family                             ; Cyclone IV E                                ;
 ; Device                             ; EP4CE22F17C6                                ;
 ; Timing Models                      ; Final                                       ;
-; Total logic elements               ; 1,396 / 22,320 ( 6 % )                      ;
+; Total logic elements               ; 1,410 / 22,320 ( 6 % )                      ;
 ;     Total combinational functions  ; 971 / 22,320 ( 4 % )                        ;
 ;     Dedicated logic registers      ; 1,096 / 22,320 ( 5 % )                      ;
 ; Total registers                    ; 1096                                        ;
@@ -156,14 +156,14 @@ refer to the applicable agreement for further details.
 ; Number detected on machine ; 16          ;
 ; Maximum allowed            ; 16          ;
 ;                            ;             ;
-; Average used               ; 1.22        ;
+; Average used               ; 1.23        ;
 ; Maximum used               ; 16          ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;   1.6%      ;
+;     Processor 2            ;   1.8%      ;
 ;     Processor 3            ;   1.6%      ;
-;     Processor 4            ;   1.5%      ;
+;     Processor 4            ;   1.6%      ;
 ;     Processor 5            ;   1.5%      ;
 ;     Processor 6            ;   1.5%      ;
 ;     Processor 7            ;   1.5%      ;
@@ -218,16 +218,16 @@ The pin-out file can be found in D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Mast
 +---------------------------------------------+------------------------+
 ; Resource                                    ; Usage                  ;
 +---------------------------------------------+------------------------+
-; Total logic elements                        ; 1,396 / 22,320 ( 6 % ) ;
-;     -- Combinational with no register       ; 300                    ;
-;     -- Register only                        ; 425                    ;
-;     -- Combinational with a register        ; 671                    ;
+; Total logic elements                        ; 1,410 / 22,320 ( 6 % ) ;
+;     -- Combinational with no register       ; 314                    ;
+;     -- Register only                        ; 439                    ;
+;     -- Combinational with a register        ; 657                    ;
 ;                                             ;                        ;
 ; Logic element usage by number of LUT inputs ;                        ;
-;     -- 4 input functions                    ; 421                    ;
-;     -- 3 input functions                    ; 309                    ;
-;     -- <=2 input functions                  ; 241                    ;
-;     -- Register only                        ; 425                    ;
+;     -- 4 input functions                    ; 424                    ;
+;     -- 3 input functions                    ; 310                    ;
+;     -- <=2 input functions                  ; 237                    ;
+;     -- Register only                        ; 439                    ;
 ;                                             ;                        ;
 ; Logic elements by mode                      ;                        ;
 ;     -- normal mode                          ; 763                    ;
@@ -237,7 +237,7 @@ The pin-out file can be found in D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Mast
 ;     -- Dedicated logic registers            ; 1,096 / 22,320 ( 5 % ) ;
 ;     -- I/O registers                        ; 0 / 698 ( 0 % )        ;
 ;                                             ;                        ;
-; Total LABs:  partially or completely used   ; 107 / 1,395 ( 8 % )    ;
+; Total LABs:  partially or completely used   ; 104 / 1,395 ( 7 % )    ;
 ; Virtual pins                                ; 0                      ;
 ; I/O pins                                    ; 83 / 154 ( 54 % )      ;
 ;     -- Clock pins                           ; 4 / 7 ( 57 % )         ;
@@ -255,12 +255,12 @@ The pin-out file can be found in D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Mast
 ; ASMI blocks                                 ; 0 / 1 ( 0 % )          ;
 ; Oscillator blocks                           ; 0 / 1 ( 0 % )          ;
 ; Impedance control blocks                    ; 0 / 4 ( 0 % )          ;
-; Average interconnect usage (total/H/V)      ; 1.7% / 1.5% / 2.1%     ;
-; Peak interconnect usage (total/H/V)         ; 7.2% / 6.8% / 7.7%     ;
+; Average interconnect usage (total/H/V)      ; 2.0% / 1.8% / 2.3%     ;
+; Peak interconnect usage (total/H/V)         ; 8.2% / 8.0% / 8.5%     ;
 ; Maximum fan-out                             ; 774                    ;
 ; Highest non-global fan-out                  ; 151                    ;
-; Total fan-out                               ; 6799                   ;
-; Average fan-out                             ; 2.62                   ;
+; Total fan-out                               ; 6831                   ;
+; Average fan-out                             ; 2.61                   ;
 +---------------------------------------------+------------------------+
 *  Register count does not include registers inside RAM blocks or DSP blocks.
 
@@ -273,16 +273,16 @@ The pin-out file can be found in D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Mast
 +---------------------------------------------+----------------------+--------------------------------+
 ; Difficulty Clustering Region                ; Low                  ; Low                            ;
 ;                                             ;                      ;                                ;
-; Total logic elements                        ; 1396 / 22320 ( 6 % ) ; 0 / 22320 ( 0 % )              ;
-;     -- Combinational with no register       ; 300                  ; 0                              ;
-;     -- Register only                        ; 425                  ; 0                              ;
-;     -- Combinational with a register        ; 671                  ; 0                              ;
+; Total logic elements                        ; 1410 / 22320 ( 6 % ) ; 0 / 22320 ( 0 % )              ;
+;     -- Combinational with no register       ; 314                  ; 0                              ;
+;     -- Register only                        ; 439                  ; 0                              ;
+;     -- Combinational with a register        ; 657                  ; 0                              ;
 ;                                             ;                      ;                                ;
 ; Logic element usage by number of LUT inputs ;                      ;                                ;
-;     -- 4 input functions                    ; 421                  ; 0                              ;
-;     -- 3 input functions                    ; 309                  ; 0                              ;
-;     -- <=2 input functions                  ; 241                  ; 0                              ;
-;     -- Register only                        ; 425                  ; 0                              ;
+;     -- 4 input functions                    ; 424                  ; 0                              ;
+;     -- 3 input functions                    ; 310                  ; 0                              ;
+;     -- <=2 input functions                  ; 237                  ; 0                              ;
+;     -- Register only                        ; 439                  ; 0                              ;
 ;                                             ;                      ;                                ;
 ; Logic elements by mode                      ;                      ;                                ;
 ;     -- normal mode                          ; 763                  ; 0                              ;
@@ -292,7 +292,7 @@ The pin-out file can be found in D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Mast
 ;     -- Dedicated logic registers            ; 1096 / 22320 ( 5 % ) ; 0 / 22320 ( 0 % )              ;
 ;     -- I/O registers                        ; 0                    ; 0                              ;
 ;                                             ;                      ;                                ;
-; Total LABs:  partially or completely used   ; 107 / 1395 ( 8 % )   ; 0 / 1395 ( 0 % )               ;
+; Total LABs:  partially or completely used   ; 104 / 1395 ( 7 % )   ; 0 / 1395 ( 0 % )               ;
 ;                                             ;                      ;                                ;
 ; Virtual pins                                ; 0                    ; 0                              ;
 ; I/O pins                                    ; 83                   ; 0                              ;
@@ -309,8 +309,8 @@ The pin-out file can be found in D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Mast
 ;     -- Registered Output Connections        ; 0                    ; 0                              ;
 ;                                             ;                      ;                                ;
 ; Internal Connections                        ;                      ;                                ;
-;     -- Total Connections                    ; 6792                 ; 72                             ;
-;     -- Registered Connections               ; 2625                 ; 0                              ;
+;     -- Total Connections                    ; 6824                 ; 72                             ;
+;     -- Registered Connections               ; 2633                 ; 0                              ;
 ;                                             ;                      ;                                ;
 ; External Connections                        ;                      ;                                ;
 ;     -- Top                                  ; 136                  ; 65                             ;
@@ -374,7 +374,7 @@ The pin-out file can be found in D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Mast
 ; Name       ; Pin # ; I/O Bank ; X coordinate ; Y coordinate ; Z coordinate ; Combinational Fan-Out ; Registered Fan-Out ; Global ; Input Register ; Output Register ; Output Enable Register ; Power Up High ; Slew Rate ; PCI I/O Enabled ; Open Drain ; Bus Hold ; Weak Pull Up ; I/O Standard ; Current Strength ; Output Termination ; Termination Control Block ; Output Buffer Pre-emphasis ; Location assigned by ; Output Enable Source ; Output Enable Group                                                             ;
 +------------+-------+----------+--------------+--------------+--------------+-----------------------+--------------------+--------+----------------+-----------------+------------------------+---------------+-----------+-----------------+------------+----------+--------------+--------------+------------------+--------------------+---------------------------+----------------------------+----------------------+----------------------+---------------------------------------------------------------------------------+
 ; BRIDGE[0]  ; F13   ; 6        ; 53           ; 21           ; 21           ; 0                     ; 0                  ; no     ; no             ; no              ; no                     ; no            ; 2         ; yes             ; yes        ; no       ; Off          ; 3.3-V LVTTL  ; 8mA              ; Off                ; --                        ; no                         ; User                 ; 0 pF                 ; -                                                                               ;
-; BRIDGE[10] ; P11   ; 4        ; 38           ; 0            ; 0            ; 4                     ; 0                  ; no     ; no             ; no              ; no                     ; no            ; 2         ; yes             ; yes        ; no       ; Off          ; 3.3-V LVTTL  ; 8mA              ; Off                ; --                        ; no                         ; User                 ; 0 pF                 ; -                                                                               ;
+; BRIDGE[10] ; P11   ; 4        ; 38           ; 0            ; 0            ; 3                     ; 0                  ; no     ; no             ; no              ; no                     ; no            ; 2         ; yes             ; yes        ; no       ; Off          ; 3.3-V LVTTL  ; 8mA              ; Off                ; --                        ; no                         ; User                 ; 0 pF                 ; -                                                                               ;
 ; BRIDGE[11] ; R10   ; 4        ; 34           ; 0            ; 21           ; 1                     ; 0                  ; no     ; no             ; no              ; no                     ; no            ; 2         ; yes             ; yes        ; no       ; Off          ; 3.3-V LVTTL  ; 8mA              ; Off                ; --                        ; no                         ; User                 ; 0 pF                 ; -                                                                               ;
 ; BRIDGE[12] ; N12   ; 4        ; 47           ; 0            ; 21           ; 0                     ; 0                  ; no     ; no             ; no              ; no                     ; no            ; 2         ; yes             ; no         ; no       ; Off          ; 3.3-V LVTTL  ; 8mA              ; Off                ; --                        ; no                         ; User                 ; 0 pF                 ; -                                                                               ;
 ; BRIDGE[13] ; P9    ; 4        ; 38           ; 0            ; 7            ; 1                     ; 0                  ; no     ; no             ; no              ; no                     ; no            ; 2         ; yes             ; yes        ; no       ; Off          ; 3.3-V LVTTL  ; 8mA              ; Off                ; --                        ; no                         ; User                 ; 0 pF                 ; -                                                                               ;
@@ -910,24 +910,24 @@ Note: Pin directions (input, output or bidir) are based on device operating in u
 +-----------------------------------------+-------------+---------------------------+---------------+-------------+------+--------------+---------+-----------+------+--------------+--------------+-------------------+------------------+------------------------------------------------------------------------------+--------------------+--------------+
 ; Compilation Hierarchy Node              ; Logic Cells ; Dedicated Logic Registers ; I/O Registers ; Memory Bits ; M9Ks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; LUT-Only LCs ; Register-Only LCs ; LUT/Register LCs ; Full Hierarchy Name                                                          ; Entity Name        ; Library Name ;
 +-----------------------------------------+-------------+---------------------------+---------------+-------------+------+--------------+---------+-----------+------+--------------+--------------+-------------------+------------------+------------------------------------------------------------------------------+--------------------+--------------+
-; |robot                                  ; 1396 (0)    ; 1096 (0)                  ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 83   ; 0            ; 300 (0)      ; 425 (0)           ; 671 (0)          ; |robot                                                                       ; robot              ; work         ;
-;    |UART_Dynamixel:myDyna|              ; 450 (111)   ; 357 (90)                  ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 89 (24)      ; 108 (50)          ; 253 (36)         ; |robot|UART_Dynamixel:myDyna                                                 ; UART_Dynamixel     ; work         ;
+; |robot                                  ; 1410 (0)    ; 1096 (0)                  ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 83   ; 0            ; 314 (0)      ; 439 (0)           ; 657 (0)          ; |robot                                                                       ; robot              ; work         ;
+;    |UART_Dynamixel:myDyna|              ; 457 (114)   ; 357 (90)                  ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 94 (23)      ; 115 (53)          ; 248 (37)         ; |robot|UART_Dynamixel:myDyna                                                 ; UART_Dynamixel     ; work         ;
 ;       |Baudrate_Generator:baudgen|      ; 22 (22)     ; 11 (11)                   ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 11 (11)      ; 0 (0)             ; 11 (11)          ; |robot|UART_Dynamixel:myDyna|Baudrate_Generator:baudgen                      ; Baudrate_Generator ; work         ;
-;       |UART_Dynamixel_RXD:rxd|          ; 162 (162)   ; 138 (138)                 ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 23 (23)      ; 50 (50)           ; 89 (89)          ; |robot|UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd                          ; UART_Dynamixel_RXD ; work         ;
-;       |UART_Dynamixel_TXD:txd|          ; 156 (133)   ; 118 (102)                 ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 31 (25)      ; 8 (8)             ; 117 (100)        ; |robot|UART_Dynamixel:myDyna|UART_Dynamixel_TXD:txd                          ; UART_Dynamixel_TXD ; work         ;
-;          |UART_BYTE_TXD:ubyte|          ; 23 (23)     ; 16 (16)                   ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 6 (6)        ; 0 (0)             ; 17 (17)          ; |robot|UART_Dynamixel:myDyna|UART_Dynamixel_TXD:txd|UART_BYTE_TXD:ubyte      ; UART_BYTE_TXD      ; work         ;
+;       |UART_Dynamixel_RXD:rxd|          ; 165 (165)   ; 138 (138)                 ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 25 (25)      ; 53 (53)           ; 87 (87)          ; |robot|UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd                          ; UART_Dynamixel_RXD ; work         ;
+;       |UART_Dynamixel_TXD:txd|          ; 157 (134)   ; 118 (102)                 ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 35 (28)      ; 9 (9)             ; 113 (97)         ; |robot|UART_Dynamixel:myDyna|UART_Dynamixel_TXD:txd                          ; UART_Dynamixel_TXD ; work         ;
+;          |UART_BYTE_TXD:ubyte|          ; 23 (23)     ; 16 (16)                   ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 7 (7)        ; 0 (0)             ; 16 (16)          ; |robot|UART_Dynamixel:myDyna|UART_Dynamixel_TXD:txd|UART_BYTE_TXD:ubyte      ; UART_BYTE_TXD      ; work         ;
 ;    |my_pll:pll_clock|                   ; 0 (0)       ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 0 (0)            ; |robot|my_pll:pll_clock                                                      ; my_pll             ; work         ;
 ;       |altpll:altpll_component|         ; 0 (0)       ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 0 (0)            ; |robot|my_pll:pll_clock|altpll:altpll_component                              ; altpll             ; work         ;
 ;          |my_pll_altpll:auto_generated| ; 0 (0)       ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 0 (0)            ; |robot|my_pll:pll_clock|altpll:altpll_component|my_pll_altpll:auto_generated ; my_pll_altpll      ; work         ;
-;    |pmod_color_sensor:daColorSensor|    ; 453 (334)   ; 250 (197)                 ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 184 (118)    ; 136 (127)         ; 133 (89)         ; |robot|pmod_color_sensor:daColorSensor                                       ; pmod_color_sensor  ; work         ;
-;       |i2c_master:i2c_master_0|         ; 119 (119)   ; 53 (53)                   ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 66 (66)      ; 9 (9)             ; 44 (44)          ; |robot|pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0               ; i2c_master         ; work         ;
+;    |pmod_color_sensor:daColorSensor|    ; 456 (335)   ; 250 (197)                 ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 189 (121)    ; 140 (129)         ; 127 (85)         ; |robot|pmod_color_sensor:daColorSensor                                       ; pmod_color_sensor  ; work         ;
+;       |i2c_master:i2c_master_0|         ; 121 (121)   ; 53 (53)                   ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 68 (68)      ; 11 (11)           ; 42 (42)          ; |robot|pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0               ; i2c_master         ; work         ;
 ;    |quad:encoder_FL|                    ; 22 (22)     ; 22 (22)                   ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 0 (0)        ; 4 (4)             ; 18 (18)          ; |robot|quad:encoder_FL                                                       ; quad               ; work         ;
 ;    |quad:encoder_RL|                    ; 22 (22)     ; 22 (22)                   ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 0 (0)        ; 4 (4)             ; 18 (18)          ; |robot|quad:encoder_RL                                                       ; quad               ; work         ;
 ;    |quad:odometerL|                     ; 38 (38)     ; 38 (38)                   ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 0 (0)        ; 4 (4)             ; 34 (34)          ; |robot|quad:odometerL                                                        ; quad               ; work         ;
 ;    |quad:odometerR|                     ; 38 (38)     ; 38 (38)                   ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 0 (0)        ; 4 (4)             ; 34 (34)          ; |robot|quad:odometerR                                                        ; quad               ; work         ;
 ;    |speed:speed_counter_FL|             ; 32 (32)     ; 32 (32)                   ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 0 (0)        ; 16 (16)           ; 16 (16)          ; |robot|speed:speed_counter_FL                                                ; speed              ; work         ;
 ;    |speed:speed_counter_RL|             ; 32 (32)     ; 32 (32)                   ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 0 (0)        ; 16 (16)           ; 16 (16)          ; |robot|speed:speed_counter_RL                                                ; speed              ; work         ;
-;    |spi_slave_mu:spi_slave_instance|    ; 365 (365)   ; 305 (305)                 ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 27 (27)      ; 133 (133)         ; 205 (205)        ; |robot|spi_slave_mu:spi_slave_instance                                       ; spi_slave_mu       ; work         ;
+;    |spi_slave_mu:spi_slave_instance|    ; 368 (368)   ; 305 (305)                 ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 31 (31)      ; 136 (136)         ; 201 (201)        ; |robot|spi_slave_mu:spi_slave_instance                                       ; spi_slave_mu       ; work         ;
 +-----------------------------------------+-------------+---------------------------+---------------+-------------+------+--------------+---------+-----------+------+--------------+--------------+-------------------+------------------+------------------------------------------------------------------------------+--------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -1000,23 +1000,23 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; BRIDGE[29]   ; Bidir    ; --            ; --            ; --                    ; --  ; --   ;
 ; BRIDGE[30]   ; Bidir    ; --            ; --            ; --                    ; --  ; --   ;
 ; BRIDGE[32]   ; Bidir    ; --            ; --            ; --                    ; --  ; --   ;
-; PI[5]        ; Bidir    ; --            ; (6) 1314 ps   ; --                    ; --  ; --   ;
-; PI[7]        ; Bidir    ; --            ; (6) 1314 ps   ; --                    ; --  ; --   ;
-; PI[9]        ; Bidir    ; (6) 1314 ps   ; --            ; --                    ; --  ; --   ;
+; PI[5]        ; Bidir    ; (6) 1314 ps   ; --            ; --                    ; --  ; --   ;
+; PI[7]        ; Bidir    ; (6) 1314 ps   ; --            ; --                    ; --  ; --   ;
+; PI[9]        ; Bidir    ; --            ; (6) 1314 ps   ; --                    ; --  ; --   ;
 ; PI[11]       ; Bidir    ; (6) 1314 ps   ; --            ; --                    ; --  ; --   ;
 ; PI[13]       ; Bidir    ; --            ; --            ; --                    ; --  ; --   ;
 ; PI[15]       ; Bidir    ; (6) 1314 ps   ; --            ; --                    ; --  ; --   ;
 ; BRIDGE[2]    ; Bidir    ; (6) 1314 ps   ; --            ; --                    ; --  ; --   ;
 ; BRIDGE[4]    ; Bidir    ; (6) 1314 ps   ; --            ; --                    ; --  ; --   ;
-; BRIDGE[9]    ; Bidir    ; --            ; (6) 1314 ps   ; --                    ; --  ; --   ;
+; BRIDGE[9]    ; Bidir    ; (6) 1314 ps   ; --            ; --                    ; --  ; --   ;
 ; BRIDGE[10]   ; Bidir    ; (6) 1314 ps   ; --            ; --                    ; --  ; --   ;
-; BRIDGE[11]   ; Bidir    ; --            ; (6) 1314 ps   ; --                    ; --  ; --   ;
+; BRIDGE[11]   ; Bidir    ; (6) 1314 ps   ; --            ; --                    ; --  ; --   ;
 ; BRIDGE[12]   ; Bidir    ; --            ; --            ; --                    ; --  ; --   ;
 ; BRIDGE[13]   ; Bidir    ; (6) 1314 ps   ; --            ; --                    ; --  ; --   ;
 ; BRIDGE[14]   ; Bidir    ; --            ; --            ; --                    ; --  ; --   ;
 ; BRIDGE[15]   ; Bidir    ; --            ; (6) 1314 ps   ; --                    ; --  ; --   ;
 ; BRIDGE[31]   ; Bidir    ; --            ; (6) 1314 ps   ; --                    ; --  ; --   ;
-; BRIDGE[33]   ; Bidir    ; (6) 1314 ps   ; --            ; --                    ; --  ; --   ;
+; BRIDGE[33]   ; Bidir    ; --            ; (6) 1314 ps   ; --                    ; --  ; --   ;
 ; CLOCK_50     ; Input    ; (0) 0 ps      ; --            ; --                    ; --  ; --   ;
 ; BRIDGE_IN[0] ; Input    ; (0) 0 ps      ; --            ; --                    ; --  ; --   ;
 ; BRIDGE_IN[1] ; Input    ; (0) 0 ps      ; --            ; --                    ; --  ; --   ;
@@ -1084,206 +1084,205 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; BRIDGE[30]                                                                           ;                   ;         ;
 ; BRIDGE[32]                                                                           ;                   ;         ;
 ; PI[5]                                                                                ;                   ;         ;
-;      - UART_Dynamixel:myDyna|UART_Dynamixel_TXD:txd|UART_BYTE_TXD:ubyte|cnt[3]       ; 1                 ; 6       ;
-;      - UART_Dynamixel:myDyna|UART_Dynamixel_TXD:txd|UART_BYTE_TXD:ubyte|cnt[2]       ; 1                 ; 6       ;
-;      - UART_Dynamixel:myDyna|UART_Dynamixel_TXD:txd|UART_BYTE_TXD:ubyte|cnt[1]       ; 1                 ; 6       ;
-;      - UART_Dynamixel:myDyna|UART_Dynamixel_TXD:txd|UART_BYTE_TXD:ubyte|cnt[0]       ; 1                 ; 6       ;
-;      - UART_Dynamixel:myDyna|UART_Dynamixel_TXD:txd|UART_BYTE_TXD:ubyte|transfer_on  ; 1                 ; 6       ;
-;      - UART_Dynamixel:myDyna|UART_Dynamixel_TXD:txd|UART_BYTE_TXD:ubyte|TXD~1        ; 1                 ; 6       ;
-;      - UART_Dynamixel:myDyna|Baudrate_Generator:baudgen|baud_clk                     ; 1                 ; 6       ;
-;      - UART_Dynamixel:myDyna|UART_Dynamixel_TXD:txd|state.S2                         ; 1                 ; 6       ;
-;      - UART_Dynamixel:myDyna|UART_Dynamixel_TXD:txd|state.S1                         ; 1                 ; 6       ;
-;      - UART_Dynamixel:myDyna|UART_Dynamixel_TXD:txd|state.S5                         ; 1                 ; 6       ;
-;      - UART_Dynamixel:myDyna|UART_Dynamixel_TXD:txd|state.S3                         ; 1                 ; 6       ;
-;      - UART_Dynamixel:myDyna|UART_Dynamixel_TXD:txd|state.S0                         ; 1                 ; 6       ;
-;      - UART_Dynamixel:myDyna|Baudrate_Generator:baudgen|cnt[8]                       ; 1                 ; 6       ;
-;      - UART_Dynamixel:myDyna|Baudrate_Generator:baudgen|cnt[5]                       ; 1                 ; 6       ;
-;      - UART_Dynamixel:myDyna|Baudrate_Generator:baudgen|cnt[3]                       ; 1                 ; 6       ;
-;      - UART_Dynamixel:myDyna|Baudrate_Generator:baudgen|cnt[0]                       ; 1                 ; 6       ;
-;      - UART_Dynamixel:myDyna|Baudrate_Generator:baudgen|cnt[1]                       ; 1                 ; 6       ;
-;      - UART_Dynamixel:myDyna|Baudrate_Generator:baudgen|cnt[7]                       ; 1                 ; 6       ;
-;      - UART_Dynamixel:myDyna|Baudrate_Generator:baudgen|cnt[4]                       ; 1                 ; 6       ;
-;      - UART_Dynamixel:myDyna|Baudrate_Generator:baudgen|cnt[9]                       ; 1                 ; 6       ;
-;      - UART_Dynamixel:myDyna|Baudrate_Generator:baudgen|cnt[6]                       ; 1                 ; 6       ;
-;      - UART_Dynamixel:myDyna|Baudrate_Generator:baudgen|cnt[2]                       ; 1                 ; 6       ;
-;      - UART_Dynamixel:myDyna|UART_Dynamixel_TXD:txd|state.S4                         ; 1                 ; 6       ;
-;      - UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|state.S1                         ; 1                 ; 6       ;
-;      - UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|state.S0                         ; 1                 ; 6       ;
-;      - UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|state.S3                         ; 1                 ; 6       ;
-;      - UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|state.S2                         ; 1                 ; 6       ;
-;      - UART_Dynamixel:myDyna|UART_Dynamixel_TXD:txd|UART_BYTE_TXD:ubyte|packet[8]~12 ; 1                 ; 6       ;
+;      - UART_Dynamixel:myDyna|UART_Dynamixel_TXD:txd|UART_BYTE_TXD:ubyte|cnt[3]       ; 0                 ; 6       ;
+;      - UART_Dynamixel:myDyna|UART_Dynamixel_TXD:txd|UART_BYTE_TXD:ubyte|cnt[2]       ; 0                 ; 6       ;
+;      - UART_Dynamixel:myDyna|UART_Dynamixel_TXD:txd|UART_BYTE_TXD:ubyte|cnt[1]       ; 0                 ; 6       ;
+;      - UART_Dynamixel:myDyna|UART_Dynamixel_TXD:txd|UART_BYTE_TXD:ubyte|cnt[0]       ; 0                 ; 6       ;
+;      - UART_Dynamixel:myDyna|UART_Dynamixel_TXD:txd|UART_BYTE_TXD:ubyte|transfer_on  ; 0                 ; 6       ;
+;      - UART_Dynamixel:myDyna|UART_Dynamixel_TXD:txd|UART_BYTE_TXD:ubyte|TXD~1        ; 0                 ; 6       ;
+;      - UART_Dynamixel:myDyna|Baudrate_Generator:baudgen|baud_clk                     ; 0                 ; 6       ;
+;      - UART_Dynamixel:myDyna|UART_Dynamixel_TXD:txd|state.S1                         ; 0                 ; 6       ;
+;      - UART_Dynamixel:myDyna|UART_Dynamixel_TXD:txd|state.S0                         ; 0                 ; 6       ;
+;      - UART_Dynamixel:myDyna|UART_Dynamixel_TXD:txd|state.S2                         ; 0                 ; 6       ;
+;      - UART_Dynamixel:myDyna|UART_Dynamixel_TXD:txd|state.S5                         ; 0                 ; 6       ;
+;      - UART_Dynamixel:myDyna|UART_Dynamixel_TXD:txd|state.S3                         ; 0                 ; 6       ;
+;      - UART_Dynamixel:myDyna|Baudrate_Generator:baudgen|cnt[8]                       ; 0                 ; 6       ;
+;      - UART_Dynamixel:myDyna|Baudrate_Generator:baudgen|cnt[5]                       ; 0                 ; 6       ;
+;      - UART_Dynamixel:myDyna|Baudrate_Generator:baudgen|cnt[3]                       ; 0                 ; 6       ;
+;      - UART_Dynamixel:myDyna|Baudrate_Generator:baudgen|cnt[0]                       ; 0                 ; 6       ;
+;      - UART_Dynamixel:myDyna|Baudrate_Generator:baudgen|cnt[1]                       ; 0                 ; 6       ;
+;      - UART_Dynamixel:myDyna|Baudrate_Generator:baudgen|cnt[7]                       ; 0                 ; 6       ;
+;      - UART_Dynamixel:myDyna|Baudrate_Generator:baudgen|cnt[4]                       ; 0                 ; 6       ;
+;      - UART_Dynamixel:myDyna|Baudrate_Generator:baudgen|cnt[9]                       ; 0                 ; 6       ;
+;      - UART_Dynamixel:myDyna|Baudrate_Generator:baudgen|cnt[6]                       ; 0                 ; 6       ;
+;      - UART_Dynamixel:myDyna|Baudrate_Generator:baudgen|cnt[2]                       ; 0                 ; 6       ;
+;      - UART_Dynamixel:myDyna|UART_Dynamixel_TXD:txd|state.S4                         ; 0                 ; 6       ;
+;      - UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|state.S1                         ; 0                 ; 6       ;
+;      - UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|state.S3                         ; 0                 ; 6       ;
+;      - UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|state.S0                         ; 0                 ; 6       ;
+;      - UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|state.S2                         ; 0                 ; 6       ;
+;      - UART_Dynamixel:myDyna|UART_Dynamixel_TXD:txd|UART_BYTE_TXD:ubyte|packet[8]~12 ; 0                 ; 6       ;
 ; PI[7]                                                                                ;                   ;         ;
-;      - pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|state.stop            ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|counter[6]                                    ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|counter[7]                                    ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|counter[8]                                    ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|counter[9]                                    ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|counter[10]                                   ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|counter[11]                                   ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|counter[12]                                   ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|counter[13]                                   ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|counter[14]                                   ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|counter[15]                                   ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|counter[16]                                   ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|counter[17]                                   ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|counter[18]                                   ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|counter[19]                                   ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|counter[20]                                   ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|counter[21]                                   ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|counter[22]                                   ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|counter[5]                                    ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|counter[4]                                    ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|counter[3]                                    ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|counter[2]                                    ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|counter[1]                                    ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|counter[0]                                    ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|data_clk_prev         ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|state.start           ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|sda_int               ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|scl_ena               ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|scl_clk               ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|blue[0]                                       ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|red[0]                                        ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|green[0]                                      ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|clear[0]                                      ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|red[1]                                        ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|blue[1]                                       ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|green[1]                                      ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|clear[1]                                      ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|data_clk              ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|i2c_ena                                       ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|i2c_rw                                        ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|state.slv_ack2        ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|state.mstr_ack        ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|state.ready           ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|bit_cnt[2]            ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|bit_cnt[1]            ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|bit_cnt[0]            ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|state.rd              ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|state.command         ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|state.wr              ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|i2c_data_wr[6]                                ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|i2c_data_wr[4]                                ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|i2c_data_wr[2]                                ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|i2c_data_wr[1]                                ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|i2c_data_wr[0]                                ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|i2c_data_wr[3]                                ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|state.slv_ack1        ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|count[2]              ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|count[1]              ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|stretch               ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|count[0]              ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|count[4]              ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|count[3]              ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|count[6]              ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|count[5]              ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|state.output_result                           ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|busy                  ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|busy_cnt[0]                                   ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|busy_cnt[1]                                   ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|busy_cnt[2]                                   ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|busy_cnt[3]                                   ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|state.set_pon_aen                             ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|state.set_gain                                ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|state.set_atime                               ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|state.ports_to_output                         ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|state.ports_control                           ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|state.change_sensor                           ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|state.start                                   ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|state.pause                                   ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|state.read_data                               ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|i2c_addr[6]~3                                 ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|addr_rw[7]~2          ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|i2c_data_wr[7]~4                              ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|sensor                                        ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|data_rd[0]            ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|clear_data[0]~0                               ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|data_rd[1]            ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|busy_prev~0                                   ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|pause_cnt[17]~48                              ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|Decoder0~1            ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|red[6]                                        ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|blue[6]                                       ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|green[6]                                      ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|clear[6]                                      ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|blue[5]                                       ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|red[5]                                        ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|green[5]                                      ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|clear[5]                                      ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|red[4]                                        ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|blue[4]                                       ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|green[4]                                      ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|clear[4]                                      ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|blue[7]                                       ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|red[7]                                        ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|green[7]                                      ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|clear[7]                                      ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|red[2]                                        ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|blue[2]                                       ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|green[2]                                      ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|clear[2]                                      ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|blue[3]                                       ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|red[3]                                        ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|green[3]                                      ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|clear[3]                                      ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|data_rd[6]            ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|data_rd[5]            ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|data_rd[4]            ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|data_rd[7]            ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|data_rd[2]            ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|data_rd[3]            ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|blue[15]                                      ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|red[15]                                       ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|green[15]                                     ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|clear[15]                                     ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|red[14]                                       ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|blue[14]                                      ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|green[14]                                     ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|clear[14]                                     ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|red[8]                                        ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|blue[8]                                       ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|green[8]                                      ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|clear[8]                                      ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|blue[13]                                      ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|red[13]                                       ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|green[13]                                     ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|clear[13]                                     ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|red[9]                                        ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|blue[9]                                       ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|green[9]                                      ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|clear[9]                                      ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|blue[12]                                      ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|red[12]                                       ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|green[12]                                     ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|clear[12]                                     ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|red[10]                                       ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|blue[10]                                      ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|green[10]                                     ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|clear[10]                                     ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|blue[11]                                      ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|red[11]                                       ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|green[11]                                     ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|clear[11]                                     ; 1                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|state.stop            ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|counter[6]                                    ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|counter[7]                                    ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|counter[8]                                    ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|counter[9]                                    ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|counter[10]                                   ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|counter[11]                                   ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|counter[12]                                   ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|counter[13]                                   ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|counter[14]                                   ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|counter[15]                                   ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|counter[16]                                   ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|counter[17]                                   ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|counter[18]                                   ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|counter[19]                                   ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|counter[20]                                   ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|counter[21]                                   ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|counter[22]                                   ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|counter[5]                                    ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|counter[4]                                    ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|counter[3]                                    ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|counter[2]                                    ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|counter[1]                                    ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|counter[0]                                    ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|data_clk_prev         ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|state.start           ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|sda_int               ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|scl_ena               ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|scl_clk               ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|data_clk              ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|i2c_ena                                       ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|i2c_rw                                        ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|state.slv_ack2        ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|state.mstr_ack        ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|state.ready           ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|bit_cnt[2]            ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|bit_cnt[1]            ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|bit_cnt[0]            ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|state.rd              ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|state.command         ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|state.wr              ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|i2c_data_wr[6]                                ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|i2c_data_wr[4]                                ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|i2c_data_wr[2]                                ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|i2c_data_wr[1]                                ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|i2c_data_wr[0]                                ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|i2c_data_wr[3]                                ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|state.slv_ack1        ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|count[5]              ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|count[4]              ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|count[3]              ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|count[2]              ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|count[1]              ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|stretch               ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|count[0]              ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|count[6]              ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|blue[0]                                       ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|red[0]                                        ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|green[0]                                      ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|clear[0]                                      ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|busy_cnt[2]                                   ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|busy_cnt[3]                                   ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|busy_cnt[0]                                   ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|busy_cnt[1]                                   ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|busy                  ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|state.set_pon_aen                             ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|state.set_gain                                ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|state.set_atime                               ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|state.ports_to_output                         ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|state.ports_control                           ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|state.change_sensor                           ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|state.start                                   ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|state.pause                                   ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|state.output_result                           ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|state.read_data                               ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|i2c_addr[6]~3                                 ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|addr_rw[7]~2          ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|i2c_data_wr[7]~4                              ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|sensor                                        ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|busy_prev~0                                   ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|data_rd[0]            ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|clear_data[0]~0                               ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|pause_cnt[17]~48                              ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|blue[6]                                       ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|red[6]                                        ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|green[6]                                      ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|clear[6]                                      ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|red[5]                                        ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|blue[5]                                       ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|green[5]                                      ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|clear[5]                                      ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|blue[4]                                       ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|red[4]                                        ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|green[4]                                      ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|clear[4]                                      ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|red[7]                                        ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|blue[7]                                       ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|green[7]                                      ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|clear[7]                                      ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|blue[2]                                       ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|red[2]                                        ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|green[2]                                      ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|clear[2]                                      ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|red[1]                                        ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|blue[1]                                       ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|green[1]                                      ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|clear[1]                                      ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|red[3]                                        ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|blue[3]                                       ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|green[3]                                      ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|clear[3]                                      ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|Decoder0~1            ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|data_rd[6]            ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|data_rd[5]            ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|data_rd[4]            ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|data_rd[7]            ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|data_rd[2]            ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|data_rd[1]            ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|data_rd[3]            ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|blue[15]                                      ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|red[15]                                       ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|green[15]                                     ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|clear[15]                                     ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|red[14]                                       ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|blue[14]                                      ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|green[14]                                     ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|clear[14]                                     ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|red[13]                                       ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|blue[13]                                      ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|green[13]                                     ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|clear[13]                                     ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|blue[8]                                       ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|red[8]                                        ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|green[8]                                      ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|clear[8]                                      ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|red[12]                                       ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|blue[12]                                      ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|green[12]                                     ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|clear[12]                                     ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|blue[9]                                       ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|red[9]                                        ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|green[9]                                      ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|clear[9]                                      ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|red[11]                                       ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|blue[11]                                      ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|green[11]                                     ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|clear[11]                                     ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|blue[10]                                      ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|red[10]                                       ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|green[10]                                     ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|clear[10]                                     ; 0                 ; 6       ;
 ; PI[9]                                                                                ;                   ;         ;
-;      - spi_slave_mu:spi_slave_instance|SPI_CS_sync                                   ; 0                 ; 6       ;
+;      - spi_slave_mu:spi_slave_instance|SPI_CS_sync~feeder                            ; 1                 ; 6       ;
 ; PI[11]                                                                               ;                   ;         ;
 ;      - spi_slave_mu:spi_slave_instance|SPI_CLK_sync                                  ; 0                 ; 6       ;
 ; PI[13]                                                                               ;                   ;         ;
 ; PI[15]                                                                               ;                   ;         ;
-;      - spi_slave_mu:spi_slave_instance|SPI_reg~58                                    ; 0                 ; 6       ;
+;      - spi_slave_mu:spi_slave_instance|SPI_reg~24                                    ; 0                 ; 6       ;
 ; BRIDGE[2]                                                                            ;                   ;         ;
-;      - quad:encoder_RL|quadA_delayed[0]                                              ; 0                 ; 6       ;
+;      - quad:encoder_RL|quadA_delayed[0]~feeder                                       ; 0                 ; 6       ;
 ; BRIDGE[4]                                                                            ;                   ;         ;
-;      - quad:encoder_RL|quadB_delayed[0]~feeder                                       ; 0                 ; 6       ;
+;      - quad:encoder_RL|quadB_delayed[0]                                              ; 0                 ; 6       ;
 ; BRIDGE[9]                                                                            ;                   ;         ;
-;      - quad:odometerR|quadA_delayed[0]                                               ; 1                 ; 6       ;
+;      - quad:odometerR|quadA_delayed[0]                                               ; 0                 ; 6       ;
 ; BRIDGE[10]                                                                           ;                   ;         ;
-;      - UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|RXD_prev                         ; 0                 ; 6       ;
-;      - UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|data[7]                          ; 0                 ; 6       ;
 ;      - UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|start_byte~1                     ; 0                 ; 6       ;
-;      - LED[6]~output                                                                 ; 0                 ; 6       ;
+;      - UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|RXD_prev~feeder                  ; 0                 ; 6       ;
+;      - UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|data[7]~feeder                   ; 0                 ; 6       ;
 ; BRIDGE[11]                                                                           ;                   ;         ;
-;      - quad:odometerR|quadB_delayed[0]~feeder                                        ; 1                 ; 6       ;
+;      - quad:odometerR|quadB_delayed[0]~feeder                                        ; 0                 ; 6       ;
 ; BRIDGE[12]                                                                           ;                   ;         ;
 ; BRIDGE[13]                                                                           ;                   ;         ;
 ;      - quad:odometerL|quadA_delayed[0]~feeder                                        ; 0                 ; 6       ;
@@ -1292,15 +1291,15 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ;      - quad:odometerL|quadB_delayed[0]~feeder                                        ; 1                 ; 6       ;
 ; BRIDGE[31]                                                                           ;                   ;         ;
 ;      - pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|data_rx[0]~0          ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|data_rx[1]~1          ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|data_rx[6]~2          ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|data_rx[5]~3          ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|data_rx[4]~4          ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|data_rx[7]~5          ; 1                 ; 6       ;
-;      - pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|data_rx[2]~6          ; 1                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|data_rx[6]~1          ; 1                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|data_rx[5]~2          ; 1                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|data_rx[4]~3          ; 1                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|data_rx[7]~4          ; 1                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|data_rx[2]~5          ; 1                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|data_rx[1]~6          ; 1                 ; 6       ;
 ;      - pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|data_rx[3]~7          ; 1                 ; 6       ;
 ; BRIDGE[33]                                                                           ;                   ;         ;
-;      - pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|stretch~0             ; 0                 ; 6       ;
+;      - pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|stretch~0             ; 1                 ; 6       ;
 ; CLOCK_50                                                                             ;                   ;         ;
 ; BRIDGE_IN[0]                                                                         ;                   ;         ;
 ; BRIDGE_IN[1]                                                                         ;                   ;         ;
@@ -1316,63 +1315,63 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; CLOCK_50                                                                               ; PIN_R8             ; 3       ; Clock                                 ; no     ; --                   ; --               ; --                        ;
 ; PI[5]                                                                                  ; PIN_B4             ; 28      ; Async. clear, Clock enable            ; no     ; --                   ; --               ; --                        ;
 ; PI[7]                                                                                  ; PIN_B5             ; 151     ; Async. clear, Clock enable            ; no     ; --                   ; --               ; --                        ;
-; UART_Dynamixel:myDyna|Baudrate_Generator:baudgen|baud_clk                              ; FF_X28_Y2_N25      ; 257     ; Clock                                 ; yes    ; Global Clock         ; GCLK17           ; --                        ;
-; UART_Dynamixel:myDyna|MyNios_ReadData[30]~97                                           ; LCCOMB_X27_Y17_N4  ; 30      ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
-; UART_Dynamixel:myDyna|TXD_data_1[9]~0                                                  ; LCCOMB_X27_Y20_N26 ; 32      ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
-; UART_Dynamixel:myDyna|TXD_data_2[0]~0                                                  ; LCCOMB_X27_Y20_N22 ; 24      ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
-; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|Checksum[3]~5                             ; LCCOMB_X30_Y15_N14 ; 8       ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
-; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|Error[0]~0                                ; LCCOMB_X28_Y15_N2  ; 8       ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
-; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|ID[0]~1                                   ; LCCOMB_X29_Y15_N16 ; 8       ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
-; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|Length[0]~0                               ; LCCOMB_X28_Y15_N8  ; 8       ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
-; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|P1[0]~2                                   ; LCCOMB_X30_Y15_N18 ; 8       ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
-; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|P2[5]~1                                   ; LCCOMB_X30_Y15_N16 ; 8       ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
-; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|cnt_fail[5]~22                            ; LCCOMB_X31_Y15_N24 ; 8       ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
-; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|data1[0]~1                                ; LCCOMB_X28_Y15_N14 ; 48      ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
-; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|data[0]~0                                 ; LCCOMB_X29_Y15_N12 ; 8       ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
-; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|state.S0                                  ; FF_X27_Y15_N27     ; 22      ; Clock enable, Sync. clear, Sync. load ; no     ; --                   ; --               ; --                        ;
-; UART_Dynamixel:myDyna|UART_Dynamixel_TXD:txd|UART_BYTE_TXD:ubyte|packet[8]~12          ; LCCOMB_X14_Y20_N22 ; 9       ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
-; UART_Dynamixel:myDyna|UART_Dynamixel_TXD:txd|byte_to_send[0]~1                         ; LCCOMB_X17_Y24_N14 ; 8       ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
-; UART_Dynamixel:myDyna|UART_Dynamixel_TXD:txd|cnt[0]~24                                 ; LCCOMB_X19_Y24_N8  ; 8       ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
-; UART_Dynamixel:myDyna|UART_Dynamixel_TXD:txd|cnt_S1[1]~0                               ; LCCOMB_X21_Y22_N8  ; 4       ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
-; UART_Dynamixel:myDyna|UART_Dynamixel_TXD:txd|packet_to_send[1]~1                       ; LCCOMB_X21_Y22_N10 ; 72      ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
-; UART_Dynamixel:myDyna|UART_Dynamixel_TXD:txd|state.S0                                  ; FF_X21_Y22_N19     ; 93      ; Clock enable, Sync. clear             ; no     ; --                   ; --               ; --                        ;
-; UART_Dynamixel:myDyna|UART_Dynamixel_TXD:txd|state.S2                                  ; FF_X21_Y22_N27     ; 76      ; Sync. load                            ; no     ; --                   ; --               ; --                        ;
+; UART_Dynamixel:myDyna|Baudrate_Generator:baudgen|baud_clk                              ; FF_X26_Y1_N27      ; 257     ; Clock                                 ; yes    ; Global Clock         ; GCLK16           ; --                        ;
+; UART_Dynamixel:myDyna|MyNios_ReadData[26]~94                                           ; LCCOMB_X28_Y24_N22 ; 30      ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
+; UART_Dynamixel:myDyna|TXD_data_1[0]~0                                                  ; LCCOMB_X27_Y24_N16 ; 32      ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
+; UART_Dynamixel:myDyna|TXD_data_2[0]~0                                                  ; LCCOMB_X27_Y24_N24 ; 24      ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
+; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|Checksum[4]~5                             ; LCCOMB_X28_Y21_N20 ; 8       ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
+; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|Error[4]~0                                ; LCCOMB_X28_Y21_N4  ; 8       ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
+; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|ID[4]~0                                   ; LCCOMB_X32_Y21_N28 ; 8       ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
+; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|Length[1]~0                               ; LCCOMB_X28_Y21_N6  ; 8       ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
+; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|P1[5]~2                                   ; LCCOMB_X29_Y21_N0  ; 8       ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
+; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|P2[5]~1                                   ; LCCOMB_X29_Y21_N26 ; 8       ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
+; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|cnt_fail[3]~22                            ; LCCOMB_X30_Y20_N16 ; 8       ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
+; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|data1[27]~1                               ; LCCOMB_X26_Y24_N14 ; 48      ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
+; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|data[3]~0                                 ; LCCOMB_X26_Y24_N24 ; 8       ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
+; UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|state.S0                                  ; FF_X26_Y24_N19     ; 22      ; Clock enable, Sync. clear, Sync. load ; no     ; --                   ; --               ; --                        ;
+; UART_Dynamixel:myDyna|UART_Dynamixel_TXD:txd|UART_BYTE_TXD:ubyte|packet[8]~12          ; LCCOMB_X32_Y26_N14 ; 9       ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
+; UART_Dynamixel:myDyna|UART_Dynamixel_TXD:txd|byte_to_send[1]~1                         ; LCCOMB_X36_Y22_N18 ; 8       ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
+; UART_Dynamixel:myDyna|UART_Dynamixel_TXD:txd|cnt[6]~24                                 ; LCCOMB_X29_Y23_N8  ; 8       ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
+; UART_Dynamixel:myDyna|UART_Dynamixel_TXD:txd|cnt_S1[1]~0                               ; LCCOMB_X36_Y22_N0  ; 4       ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
+; UART_Dynamixel:myDyna|UART_Dynamixel_TXD:txd|packet_to_send[9]~1                       ; LCCOMB_X36_Y22_N28 ; 72      ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
+; UART_Dynamixel:myDyna|UART_Dynamixel_TXD:txd|state.S0                                  ; FF_X36_Y22_N5      ; 93      ; Clock enable, Sync. clear             ; no     ; --                   ; --               ; --                        ;
+; UART_Dynamixel:myDyna|UART_Dynamixel_TXD:txd|state.S2                                  ; FF_X36_Y22_N15     ; 76      ; Sync. load                            ; no     ; --                   ; --               ; --                        ;
 ; my_pll:pll_clock|altpll:altpll_component|my_pll_altpll:auto_generated|wire_pll1_clk[0] ; PLL_4              ; 64      ; Clock                                 ; yes    ; Global Clock         ; GCLK19           ; --                        ;
-; pmod_color_sensor:daColorSensor|LessThan0~5                                            ; LCCOMB_X21_Y28_N4  ; 24      ; Sync. clear                           ; no     ; --                   ; --               ; --                        ;
-; pmod_color_sensor:daColorSensor|LessThan1~3                                            ; LCCOMB_X24_Y26_N22 ; 21      ; Sync. clear                           ; no     ; --                   ; --               ; --                        ;
-; pmod_color_sensor:daColorSensor|Mux23~1                                                ; LCCOMB_X26_Y27_N24 ; 3       ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
-; pmod_color_sensor:daColorSensor|Selector5~0                                            ; LCCOMB_X25_Y27_N24 ; 13      ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
-; pmod_color_sensor:daColorSensor|blue_data[0]~0                                         ; LCCOMB_X28_Y28_N26 ; 8       ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
-; pmod_color_sensor:daColorSensor|blue_data[15]~1                                        ; LCCOMB_X27_Y24_N30 ; 8       ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
-; pmod_color_sensor:daColorSensor|clear_data[0]~1                                        ; LCCOMB_X28_Y26_N0  ; 8       ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
-; pmod_color_sensor:daColorSensor|clear_data[15]~2                                       ; LCCOMB_X27_Y24_N4  ; 8       ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
-; pmod_color_sensor:daColorSensor|green_data[0]~0                                        ; LCCOMB_X27_Y24_N28 ; 8       ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
-; pmod_color_sensor:daColorSensor|green_data[15]~1                                       ; LCCOMB_X27_Y24_N2  ; 8       ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
-; pmod_color_sensor:daColorSensor|i2c_addr[6]~3                                          ; LCCOMB_X27_Y26_N22 ; 2       ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
-; pmod_color_sensor:daColorSensor|i2c_data_wr[7]~4                                       ; LCCOMB_X25_Y28_N16 ; 2       ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
-; pmod_color_sensor:daColorSensor|i2c_ena                                                ; FF_X27_Y26_N25     ; 11      ; Sync. clear                           ; no     ; --                   ; --               ; --                        ;
-; pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|addr_rw[7]~3                   ; LCCOMB_X32_Y27_N26 ; 11      ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
-; pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|bit_cnt[2]~0                   ; LCCOMB_X27_Y27_N12 ; 3       ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
-; pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|data_rd[0]~3                   ; LCCOMB_X32_Y27_N28 ; 8       ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
-; pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|process_1~0                    ; LCCOMB_X32_Y27_N6  ; 12      ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
-; pmod_color_sensor:daColorSensor|pause_cnt[17]~48                                       ; LCCOMB_X24_Y27_N10 ; 18      ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
-; pmod_color_sensor:daColorSensor|red_data[0]~0                                          ; LCCOMB_X27_Y24_N18 ; 8       ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
-; pmod_color_sensor:daColorSensor|red_data[15]~1                                         ; LCCOMB_X27_Y24_N24 ; 8       ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
-; pmod_color_sensor:daColorSensor|state.output_result                                    ; FF_X28_Y28_N9      ; 69      ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
-; pmod_color_sensor:daColorSensor|state.start                                            ; FF_X25_Y27_N13     ; 27      ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
-; quad:encoder_FL|count_enable~1                                                         ; LCCOMB_X34_Y16_N22 ; 16      ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
-; quad:encoder_RL|count_enable~0                                                         ; LCCOMB_X39_Y8_N14  ; 16      ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
-; quad:odometerL|count_enable~0                                                          ; LCCOMB_X38_Y16_N22 ; 32      ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
-; quad:odometerR|count_enable~0                                                          ; LCCOMB_X31_Y11_N14 ; 32      ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
-; spi_slave_mu:spi_slave_instance|Decoder0~1                                             ; LCCOMB_X25_Y24_N10 ; 5       ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
-; spi_slave_mu:spi_slave_instance|Decoder0~2                                             ; LCCOMB_X25_Y24_N28 ; 32      ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
-; spi_slave_mu:spi_slave_instance|Decoder0~4                                             ; LCCOMB_X23_Y24_N30 ; 8       ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
-; spi_slave_mu:spi_slave_instance|Decoder0~5                                             ; LCCOMB_X25_Y24_N26 ; 16      ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
-; spi_slave_mu:spi_slave_instance|SPI_cnt_reset~0                                        ; LCCOMB_X24_Y24_N18 ; 10      ; Sync. clear                           ; no     ; --                   ; --               ; --                        ;
-; spi_slave_mu:spi_slave_instance|SPI_reg[14]~155                                        ; LCCOMB_X26_Y24_N4  ; 16      ; Sync. clear                           ; no     ; --                   ; --               ; --                        ;
-; spi_slave_mu:spi_slave_instance|SPI_reg[14]~156                                        ; LCCOMB_X26_Y24_N30 ; 31      ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
-; spi_slave_mu:spi_slave_instance|SPI_reg[14]~38                                         ; LCCOMB_X24_Y24_N14 ; 14      ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
-; spi_slave_mu:spi_slave_instance|state~8                                                ; LCCOMB_X26_Y24_N20 ; 34      ; Sync. load                            ; no     ; --                   ; --               ; --                        ;
+; pmod_color_sensor:daColorSensor|LessThan0~6                                            ; LCCOMB_X11_Y24_N30 ; 23      ; Sync. clear                           ; no     ; --                   ; --               ; --                        ;
+; pmod_color_sensor:daColorSensor|LessThan1~3                                            ; LCCOMB_X16_Y20_N26 ; 21      ; Sync. clear                           ; no     ; --                   ; --               ; --                        ;
+; pmod_color_sensor:daColorSensor|Mux23~1                                                ; LCCOMB_X19_Y19_N18 ; 3       ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
+; pmod_color_sensor:daColorSensor|Selector5~0                                            ; LCCOMB_X16_Y20_N20 ; 13      ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
+; pmod_color_sensor:daColorSensor|blue_data[0]~0                                         ; LCCOMB_X21_Y20_N28 ; 8       ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
+; pmod_color_sensor:daColorSensor|blue_data[15]~1                                        ; LCCOMB_X16_Y19_N24 ; 8       ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
+; pmod_color_sensor:daColorSensor|clear_data[0]~1                                        ; LCCOMB_X21_Y17_N28 ; 8       ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
+; pmod_color_sensor:daColorSensor|clear_data[15]~2                                       ; LCCOMB_X16_Y19_N28 ; 8       ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
+; pmod_color_sensor:daColorSensor|green_data[0]~0                                        ; LCCOMB_X16_Y19_N4  ; 8       ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
+; pmod_color_sensor:daColorSensor|green_data[15]~1                                       ; LCCOMB_X16_Y19_N26 ; 8       ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
+; pmod_color_sensor:daColorSensor|i2c_addr[6]~3                                          ; LCCOMB_X20_Y16_N26 ; 2       ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
+; pmod_color_sensor:daColorSensor|i2c_data_wr[7]~4                                       ; LCCOMB_X19_Y18_N18 ; 2       ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
+; pmod_color_sensor:daColorSensor|i2c_ena                                                ; FF_X21_Y15_N25     ; 11      ; Sync. clear                           ; no     ; --                   ; --               ; --                        ;
+; pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|addr_rw[7]~3                   ; LCCOMB_X21_Y15_N8  ; 11      ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
+; pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|bit_cnt[2]~0                   ; LCCOMB_X18_Y15_N2  ; 3       ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
+; pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|data_rd[0]~3                   ; LCCOMB_X21_Y15_N10 ; 8       ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
+; pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|process_1~0                    ; LCCOMB_X21_Y15_N2  ; 12      ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
+; pmod_color_sensor:daColorSensor|pause_cnt[17]~48                                       ; LCCOMB_X16_Y20_N22 ; 18      ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
+; pmod_color_sensor:daColorSensor|red_data[0]~0                                          ; LCCOMB_X16_Y19_N2  ; 8       ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
+; pmod_color_sensor:daColorSensor|red_data[15]~1                                         ; LCCOMB_X21_Y22_N28 ; 8       ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
+; pmod_color_sensor:daColorSensor|state.output_result                                    ; FF_X21_Y20_N13     ; 69      ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
+; pmod_color_sensor:daColorSensor|state.start                                            ; FF_X16_Y21_N3      ; 27      ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
+; quad:encoder_FL|count_enable~1                                                         ; LCCOMB_X9_Y7_N14   ; 16      ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
+; quad:encoder_RL|count_enable~0                                                         ; LCCOMB_X40_Y19_N22 ; 16      ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
+; quad:odometerL|count_enable~1                                                          ; LCCOMB_X43_Y20_N22 ; 32      ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
+; quad:odometerR|count_enable~1                                                          ; LCCOMB_X32_Y19_N30 ; 32      ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
+; spi_slave_mu:spi_slave_instance|Decoder0~1                                             ; LCCOMB_X32_Y23_N26 ; 32      ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
+; spi_slave_mu:spi_slave_instance|Decoder0~2                                             ; LCCOMB_X32_Y23_N20 ; 5       ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
+; spi_slave_mu:spi_slave_instance|Decoder0~3                                             ; LCCOMB_X32_Y23_N28 ; 16      ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
+; spi_slave_mu:spi_slave_instance|Decoder0~5                                             ; LCCOMB_X20_Y21_N18 ; 8       ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
+; spi_slave_mu:spi_slave_instance|SPI_cnt_reset~0                                        ; LCCOMB_X24_Y22_N2  ; 10      ; Sync. clear                           ; no     ; --                   ; --               ; --                        ;
+; spi_slave_mu:spi_slave_instance|SPI_reg[15]~156                                        ; LCCOMB_X20_Y21_N22 ; 16      ; Sync. clear                           ; no     ; --                   ; --               ; --                        ;
+; spi_slave_mu:spi_slave_instance|SPI_reg[33]~155                                        ; LCCOMB_X20_Y21_N20 ; 31      ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
+; spi_slave_mu:spi_slave_instance|SPI_reg[33]~25                                         ; LCCOMB_X20_Y21_N4  ; 14      ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
+; spi_slave_mu:spi_slave_instance|state~8                                                ; LCCOMB_X20_Y21_N30 ; 34      ; Sync. load                            ; no     ; --                   ; --               ; --                        ;
 +----------------------------------------------------------------------------------------+--------------------+---------+---------------------------------------+--------+----------------------+------------------+---------------------------+
 
 
@@ -1382,7 +1381,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; Name                                                                                   ; Location      ; Fan-Out ; Fan-Out Using Intentional Clock Skew ; Global Resource Used ; Global Line Name ; Enable Signal Source Name ;
 +----------------------------------------------------------------------------------------+---------------+---------+--------------------------------------+----------------------+------------------+---------------------------+
 ; CLOCK_50                                                                               ; PIN_R8        ; 774     ; 0                                    ; Global Clock         ; GCLK18           ; --                        ;
-; UART_Dynamixel:myDyna|Baudrate_Generator:baudgen|baud_clk                              ; FF_X28_Y2_N25 ; 257     ; 0                                    ; Global Clock         ; GCLK17           ; --                        ;
+; UART_Dynamixel:myDyna|Baudrate_Generator:baudgen|baud_clk                              ; FF_X26_Y1_N27 ; 257     ; 0                                    ; Global Clock         ; GCLK16           ; --                        ;
 ; my_pll:pll_clock|altpll:altpll_component|my_pll_altpll:auto_generated|wire_pll1_clk[0] ; PLL_4         ; 64      ; 0                                    ; Global Clock         ; GCLK19           ; --                        ;
 +----------------------------------------------------------------------------------------+---------------+---------+--------------------------------------+----------------------+------------------+---------------------------+
 
@@ -1392,158 +1391,165 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +-----------------------+------------------------+
 ; Routing Resource Type ; Usage                  ;
 +-----------------------+------------------------+
-; Block interconnects   ; 1,497 / 71,559 ( 2 % ) ;
-; C16 interconnects     ; 35 / 2,597 ( 1 % )     ;
-; C4 interconnects      ; 964 / 46,848 ( 2 % )   ;
-; Direct links          ; 297 / 71,559 ( < 1 % ) ;
+; Block interconnects   ; 1,410 / 71,559 ( 2 % ) ;
+; C16 interconnects     ; 45 / 2,597 ( 2 % )     ;
+; C4 interconnects      ; 1,048 / 46,848 ( 2 % ) ;
+; Direct links          ; 185 / 71,559 ( < 1 % ) ;
 ; Global clocks         ; 3 / 20 ( 15 % )        ;
-; Local interconnects   ; 762 / 24,624 ( 3 % )   ;
-; R24 interconnects     ; 35 / 2,496 ( 1 % )     ;
-; R4 interconnects      ; 824 / 62,424 ( 1 % )   ;
+; Local interconnects   ; 813 / 24,624 ( 3 % )   ;
+; R24 interconnects     ; 42 / 2,496 ( 2 % )     ;
+; R4 interconnects      ; 1,016 / 62,424 ( 2 % ) ;
 +-----------------------+------------------------+
 
 
 +-----------------------------------------------------------------------------+
 ; LAB Logic Elements                                                          ;
 +---------------------------------------------+-------------------------------+
-; Number of Logic Elements  (Average = 13.05) ; Number of LABs  (Total = 107) ;
+; Number of Logic Elements  (Average = 13.56) ; Number of LABs  (Total = 104) ;
 +---------------------------------------------+-------------------------------+
-; 1                                           ; 8                             ;
-; 2                                           ; 1                             ;
-; 3                                           ; 0                             ;
-; 4                                           ; 3                             ;
+; 1                                           ; 5                             ;
+; 2                                           ; 0                             ;
+; 3                                           ; 1                             ;
+; 4                                           ; 0                             ;
 ; 5                                           ; 0                             ;
-; 6                                           ; 5                             ;
-; 7                                           ; 1                             ;
-; 8                                           ; 1                             ;
+; 6                                           ; 6                             ;
+; 7                                           ; 2                             ;
+; 8                                           ; 2                             ;
 ; 9                                           ; 1                             ;
-; 10                                          ; 0                             ;
+; 10                                          ; 1                             ;
 ; 11                                          ; 1                             ;
-; 12                                          ; 8                             ;
-; 13                                          ; 3                             ;
-; 14                                          ; 6                             ;
+; 12                                          ; 3                             ;
+; 13                                          ; 4                             ;
+; 14                                          ; 8                             ;
 ; 15                                          ; 14                            ;
-; 16                                          ; 55                            ;
+; 16                                          ; 56                            ;
 +---------------------------------------------+-------------------------------+
 
 
 +--------------------------------------------------------------------+
 ; LAB-wide Signals                                                   ;
 +------------------------------------+-------------------------------+
-; LAB-wide Signals  (Average = 2.06) ; Number of LABs  (Total = 107) ;
+; LAB-wide Signals  (Average = 2.15) ; Number of LABs  (Total = 104) ;
 +------------------------------------+-------------------------------+
-; 1 Async. clear                     ; 30                            ;
-; 1 Clock                            ; 100                           ;
-; 1 Clock enable                     ; 45                            ;
-; 1 Sync. clear                      ; 9                             ;
-; 1 Sync. load                       ; 3                             ;
-; 2 Clock enables                    ; 28                            ;
-; 2 Clocks                           ; 5                             ;
+; 1 Async. clear                     ; 28                            ;
+; 1 Clock                            ; 93                            ;
+; 1 Clock enable                     ; 50                            ;
+; 1 Sync. clear                      ; 13                            ;
+; 1 Sync. load                       ; 4                             ;
+; 2 Clock enables                    ; 26                            ;
+; 2 Clocks                           ; 10                            ;
 +------------------------------------+-------------------------------+
 
 
 +------------------------------------------------------------------------------+
 ; LAB Signals Sourced                                                          ;
 +----------------------------------------------+-------------------------------+
-; Number of Signals Sourced  (Average = 21.86) ; Number of LABs  (Total = 107) ;
+; Number of Signals Sourced  (Average = 22.72) ; Number of LABs  (Total = 104) ;
 +----------------------------------------------+-------------------------------+
 ; 0                                            ; 0                             ;
-; 1                                            ; 4                             ;
+; 1                                            ; 2                             ;
 ; 2                                            ; 4                             ;
 ; 3                                            ; 0                             ;
-; 4                                            ; 1                             ;
+; 4                                            ; 0                             ;
 ; 5                                            ; 0                             ;
-; 6                                            ; 0                             ;
-; 7                                            ; 2                             ;
-; 8                                            ; 2                             ;
-; 9                                            ; 0                             ;
+; 6                                            ; 2                             ;
+; 7                                            ; 0                             ;
+; 8                                            ; 1                             ;
+; 9                                            ; 1                             ;
 ; 10                                           ; 0                             ;
-; 11                                           ; 2                             ;
-; 12                                           ; 2                             ;
+; 11                                           ; 4                             ;
+; 12                                           ; 1                             ;
 ; 13                                           ; 1                             ;
-; 14                                           ; 2                             ;
+; 14                                           ; 1                             ;
 ; 15                                           ; 1                             ;
 ; 16                                           ; 1                             ;
 ; 17                                           ; 2                             ;
-; 18                                           ; 2                             ;
-; 19                                           ; 4                             ;
-; 20                                           ; 7                             ;
-; 21                                           ; 7                             ;
-; 22                                           ; 4                             ;
-; 23                                           ; 6                             ;
-; 24                                           ; 3                             ;
-; 25                                           ; 7                             ;
-; 26                                           ; 4                             ;
+; 18                                           ; 4                             ;
+; 19                                           ; 1                             ;
+; 20                                           ; 4                             ;
+; 21                                           ; 2                             ;
+; 22                                           ; 3                             ;
+; 23                                           ; 7                             ;
+; 24                                           ; 5                             ;
+; 25                                           ; 5                             ;
+; 26                                           ; 13                            ;
 ; 27                                           ; 7                             ;
-; 28                                           ; 4                             ;
-; 29                                           ; 8                             ;
-; 30                                           ; 3                             ;
-; 31                                           ; 2                             ;
-; 32                                           ; 15                            ;
+; 28                                           ; 10                            ;
+; 29                                           ; 3                             ;
+; 30                                           ; 5                             ;
+; 31                                           ; 1                             ;
+; 32                                           ; 13                            ;
 +----------------------------------------------+-------------------------------+
 
 
 +---------------------------------------------------------------------------------+
 ; LAB Signals Sourced Out                                                         ;
 +-------------------------------------------------+-------------------------------+
-; Number of Signals Sourced Out  (Average = 7.70) ; Number of LABs  (Total = 107) ;
+; Number of Signals Sourced Out  (Average = 7.63) ; Number of LABs  (Total = 104) ;
 +-------------------------------------------------+-------------------------------+
 ; 0                                               ; 0                             ;
-; 1                                               ; 9                             ;
-; 2                                               ; 15                            ;
-; 3                                               ; 7                             ;
-; 4                                               ; 8                             ;
-; 5                                               ; 5                             ;
-; 6                                               ; 6                             ;
-; 7                                               ; 9                             ;
+; 1                                               ; 7                             ;
+; 2                                               ; 16                            ;
+; 3                                               ; 12                            ;
+; 4                                               ; 6                             ;
+; 5                                               ; 8                             ;
+; 6                                               ; 2                             ;
+; 7                                               ; 5                             ;
 ; 8                                               ; 9                             ;
-; 9                                               ; 3                             ;
-; 10                                              ; 2                             ;
-; 11                                              ; 5                             ;
-; 12                                              ; 5                             ;
-; 13                                              ; 4                             ;
-; 14                                              ; 0                             ;
-; 15                                              ; 1                             ;
-; 16                                              ; 16                            ;
-; 17                                              ; 3                             ;
+; 9                                               ; 4                             ;
+; 10                                              ; 6                             ;
+; 11                                              ; 2                             ;
+; 12                                              ; 3                             ;
+; 13                                              ; 3                             ;
+; 14                                              ; 1                             ;
+; 15                                              ; 5                             ;
+; 16                                              ; 12                            ;
+; 17                                              ; 1                             ;
+; 18                                              ; 0                             ;
+; 19                                              ; 0                             ;
+; 20                                              ; 1                             ;
+; 21                                              ; 0                             ;
+; 22                                              ; 0                             ;
+; 23                                              ; 0                             ;
+; 24                                              ; 1                             ;
 +-------------------------------------------------+-------------------------------+
 
 
 +------------------------------------------------------------------------------+
 ; LAB Distinct Inputs                                                          ;
 +----------------------------------------------+-------------------------------+
-; Number of Distinct Inputs  (Average = 12.71) ; Number of LABs  (Total = 107) ;
+; Number of Distinct Inputs  (Average = 12.60) ; Number of LABs  (Total = 104) ;
 +----------------------------------------------+-------------------------------+
 ; 0                                            ; 0                             ;
 ; 1                                            ; 0                             ;
 ; 2                                            ; 1                             ;
-; 3                                            ; 14                            ;
+; 3                                            ; 12                            ;
 ; 4                                            ; 8                             ;
-; 5                                            ; 4                             ;
-; 6                                            ; 3                             ;
-; 7                                            ; 2                             ;
+; 5                                            ; 5                             ;
+; 6                                            ; 2                             ;
+; 7                                            ; 1                             ;
 ; 8                                            ; 2                             ;
-; 9                                            ; 3                             ;
+; 9                                            ; 0                             ;
 ; 10                                           ; 3                             ;
-; 11                                           ; 7                             ;
-; 12                                           ; 1                             ;
-; 13                                           ; 5                             ;
-; 14                                           ; 2                             ;
-; 15                                           ; 6                             ;
-; 16                                           ; 4                             ;
-; 17                                           ; 10                            ;
-; 18                                           ; 7                             ;
-; 19                                           ; 8                             ;
-; 20                                           ; 5                             ;
-; 21                                           ; 5                             ;
-; 22                                           ; 3                             ;
-; 23                                           ; 1                             ;
+; 11                                           ; 6                             ;
+; 12                                           ; 4                             ;
+; 13                                           ; 2                             ;
+; 14                                           ; 10                            ;
+; 15                                           ; 5                             ;
+; 16                                           ; 9                             ;
+; 17                                           ; 15                            ;
+; 18                                           ; 5                             ;
+; 19                                           ; 5                             ;
+; 20                                           ; 3                             ;
+; 21                                           ; 2                             ;
+; 22                                           ; 0                             ;
+; 23                                           ; 0                             ;
 ; 24                                           ; 1                             ;
-; 25                                           ; 0                             ;
-; 26                                           ; 1                             ;
+; 25                                           ; 1                             ;
+; 26                                           ; 0                             ;
 ; 27                                           ; 0                             ;
 ; 28                                           ; 0                             ;
-; 29                                           ; 0                             ;
+; 29                                           ; 1                             ;
 ; 30                                           ; 0                             ;
 ; 31                                           ; 1                             ;
 +----------------------------------------------+-------------------------------+
@@ -1736,7 +1742,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +-------------------------------------------------------+----------------------+-------------------+
 ; Source Clock(s)                                       ; Destination Clock(s) ; Delay Added in ns ;
 +-------------------------------------------------------+----------------------+-------------------+
-; pll_clock|altpll_component|auto_generated|pll1|clk[0] ; CLOCK_50             ; 97.1              ;
+; pll_clock|altpll_component|auto_generated|pll1|clk[0] ; CLOCK_50             ; 85.5              ;
 +-------------------------------------------------------+----------------------+-------------------+
 Note: For more information on problematic transfers, consider running the Fitter again with the Optimize hold timing option (Settings Menu) turned off.
 This will disable optimization of problematic paths and expose them for further analysis using the Timing Analyzer.
@@ -1747,70 +1753,70 @@ This will disable optimization of problematic paths and expose them for further 
 +--------------------------------------+------------------------------------------------+-------------------+
 ; Source Register                      ; Destination Register                           ; Delay Added in ns ;
 +--------------------------------------+------------------------------------------------+-------------------+
-; speed:speed_counter_FL|old_value[15] ; spi_slave_mu:spi_slave_instance|misoRAM[0][31] ; 2.715             ;
-; speed:speed_counter_RL|old_value[12] ; spi_slave_mu:spi_slave_instance|misoRAM[0][13] ; 2.713             ;
-; speed:speed_counter_RL|old_value[13] ; spi_slave_mu:spi_slave_instance|misoRAM[0][13] ; 2.693             ;
-; speed:speed_counter_RL|old_value[9]  ; spi_slave_mu:spi_slave_instance|misoRAM[0][9]  ; 2.681             ;
-; speed:speed_counter_RL|old_value[8]  ; spi_slave_mu:spi_slave_instance|misoRAM[0][8]  ; 2.679             ;
-; speed:speed_counter_RL|old_value[2]  ; spi_slave_mu:spi_slave_instance|misoRAM[0][2]  ; 2.670             ;
-; speed:speed_counter_RL|old_value[1]  ; spi_slave_mu:spi_slave_instance|misoRAM[0][1]  ; 2.662             ;
-; speed:speed_counter_RL|old_value[0]  ; spi_slave_mu:spi_slave_instance|misoRAM[0][0]  ; 2.656             ;
-; speed:speed_counter_RL|old_value[7]  ; spi_slave_mu:spi_slave_instance|misoRAM[0][8]  ; 2.539             ;
-; speed:speed_counter_RL|old_value[10] ; spi_slave_mu:spi_slave_instance|misoRAM[0][13] ; 2.525             ;
-; speed:speed_counter_RL|old_value[11] ; spi_slave_mu:spi_slave_instance|misoRAM[0][13] ; 2.523             ;
-; speed:speed_counter_RL|old_value[6]  ; spi_slave_mu:spi_slave_instance|misoRAM[0][8]  ; 2.519             ;
-; speed:speed_counter_RL|old_value[15] ; spi_slave_mu:spi_slave_instance|misoRAM[0][15] ; 2.509             ;
-; speed:speed_counter_FL|old_value[6]  ; spi_slave_mu:spi_slave_instance|misoRAM[0][22] ; 2.507             ;
-; speed:speed_counter_RL|old_value[4]  ; spi_slave_mu:spi_slave_instance|misoRAM[0][8]  ; 2.478             ;
-; speed:speed_counter_FL|old_value[14] ; spi_slave_mu:spi_slave_instance|misoRAM[0][31] ; 2.464             ;
-; speed:speed_counter_RL|old_value[5]  ; spi_slave_mu:spi_slave_instance|misoRAM[0][8]  ; 2.464             ;
-; speed:speed_counter_FL|old_value[7]  ; spi_slave_mu:spi_slave_instance|misoRAM[0][23] ; 2.443             ;
-; speed:speed_counter_FL|old_value[5]  ; spi_slave_mu:spi_slave_instance|misoRAM[0][21] ; 2.436             ;
-; speed:speed_counter_FL|new_value[15] ; spi_slave_mu:spi_slave_instance|misoRAM[0][31] ; 2.414             ;
-; speed:speed_counter_RL|old_value[14] ; spi_slave_mu:spi_slave_instance|misoRAM[0][15] ; 2.405             ;
-; speed:speed_counter_RL|old_value[3]  ; spi_slave_mu:spi_slave_instance|misoRAM[0][8]  ; 2.401             ;
-; speed:speed_counter_FL|old_value[13] ; spi_slave_mu:spi_slave_instance|misoRAM[0][31] ; 2.391             ;
-; speed:speed_counter_FL|old_value[4]  ; spi_slave_mu:spi_slave_instance|misoRAM[0][20] ; 2.376             ;
-; speed:speed_counter_FL|old_value[1]  ; spi_slave_mu:spi_slave_instance|misoRAM[0][17] ; 2.371             ;
-; speed:speed_counter_FL|old_value[8]  ; spi_slave_mu:spi_slave_instance|misoRAM[0][24] ; 2.357             ;
-; speed:speed_counter_FL|old_value[12] ; spi_slave_mu:spi_slave_instance|misoRAM[0][31] ; 2.353             ;
-; speed:speed_counter_FL|old_value[11] ; spi_slave_mu:spi_slave_instance|misoRAM[0][31] ; 2.326             ;
-; speed:speed_counter_FL|old_value[10] ; spi_slave_mu:spi_slave_instance|misoRAM[0][31] ; 2.316             ;
-; speed:speed_counter_FL|old_value[3]  ; spi_slave_mu:spi_slave_instance|misoRAM[0][20] ; 2.315             ;
-; speed:speed_counter_FL|old_value[0]  ; spi_slave_mu:spi_slave_instance|misoRAM[0][16] ; 2.312             ;
-; speed:speed_counter_FL|old_value[2]  ; spi_slave_mu:spi_slave_instance|misoRAM[0][18] ; 2.309             ;
-; speed:speed_counter_FL|new_value[6]  ; spi_slave_mu:spi_slave_instance|misoRAM[0][22] ; 2.304             ;
-; speed:speed_counter_FL|new_value[14] ; spi_slave_mu:spi_slave_instance|misoRAM[0][31] ; 2.274             ;
-; speed:speed_counter_FL|old_value[9]  ; spi_slave_mu:spi_slave_instance|misoRAM[0][31] ; 2.269             ;
-; speed:speed_counter_FL|new_value[7]  ; spi_slave_mu:spi_slave_instance|misoRAM[0][23] ; 2.252             ;
-; speed:speed_counter_RL|new_value[12] ; spi_slave_mu:spi_slave_instance|misoRAM[0][13] ; 2.248             ;
-; speed:speed_counter_FL|new_value[5]  ; spi_slave_mu:spi_slave_instance|misoRAM[0][21] ; 2.222             ;
-; speed:speed_counter_RL|new_value[13] ; spi_slave_mu:spi_slave_instance|misoRAM[0][13] ; 2.217             ;
-; speed:speed_counter_RL|new_value[9]  ; spi_slave_mu:spi_slave_instance|misoRAM[0][9]  ; 2.215             ;
-; speed:speed_counter_RL|new_value[8]  ; spi_slave_mu:spi_slave_instance|misoRAM[0][8]  ; 2.214             ;
-; speed:speed_counter_RL|new_value[2]  ; spi_slave_mu:spi_slave_instance|misoRAM[0][2]  ; 2.206             ;
-; speed:speed_counter_RL|new_value[1]  ; spi_slave_mu:spi_slave_instance|misoRAM[0][1]  ; 2.199             ;
-; speed:speed_counter_RL|new_value[0]  ; spi_slave_mu:spi_slave_instance|misoRAM[0][0]  ; 2.193             ;
-; speed:speed_counter_FL|new_value[4]  ; spi_slave_mu:spi_slave_instance|misoRAM[0][20] ; 2.178             ;
-; speed:speed_counter_FL|new_value[13] ; spi_slave_mu:spi_slave_instance|misoRAM[0][31] ; 2.175             ;
-; speed:speed_counter_FL|new_value[1]  ; spi_slave_mu:spi_slave_instance|misoRAM[0][17] ; 2.167             ;
-; speed:speed_counter_FL|new_value[8]  ; spi_slave_mu:spi_slave_instance|misoRAM[0][24] ; 2.152             ;
-; speed:speed_counter_FL|new_value[12] ; spi_slave_mu:spi_slave_instance|misoRAM[0][31] ; 2.150             ;
-; speed:speed_counter_FL|new_value[10] ; spi_slave_mu:spi_slave_instance|misoRAM[0][31] ; 2.127             ;
-; speed:speed_counter_FL|new_value[11] ; spi_slave_mu:spi_slave_instance|misoRAM[0][31] ; 2.124             ;
-; speed:speed_counter_FL|new_value[2]  ; spi_slave_mu:spi_slave_instance|misoRAM[0][18] ; 2.117             ;
-; speed:speed_counter_FL|new_value[3]  ; spi_slave_mu:spi_slave_instance|misoRAM[0][20] ; 2.112             ;
-; speed:speed_counter_FL|new_value[0]  ; spi_slave_mu:spi_slave_instance|misoRAM[0][16] ; 2.112             ;
-; speed:speed_counter_RL|new_value[7]  ; spi_slave_mu:spi_slave_instance|misoRAM[0][8]  ; 2.072             ;
-; speed:speed_counter_FL|new_value[9]  ; spi_slave_mu:spi_slave_instance|misoRAM[0][31] ; 2.066             ;
-; speed:speed_counter_RL|new_value[11] ; spi_slave_mu:spi_slave_instance|misoRAM[0][13] ; 2.063             ;
-; speed:speed_counter_RL|new_value[10] ; spi_slave_mu:spi_slave_instance|misoRAM[0][13] ; 2.060             ;
-; speed:speed_counter_RL|new_value[6]  ; spi_slave_mu:spi_slave_instance|misoRAM[0][8]  ; 2.044             ;
-; speed:speed_counter_RL|new_value[4]  ; spi_slave_mu:spi_slave_instance|misoRAM[0][8]  ; 2.013             ;
-; speed:speed_counter_RL|new_value[5]  ; spi_slave_mu:spi_slave_instance|misoRAM[0][8]  ; 1.986             ;
-; speed:speed_counter_RL|new_value[14] ; spi_slave_mu:spi_slave_instance|misoRAM[0][15] ; 1.938             ;
-; speed:speed_counter_RL|new_value[15] ; spi_slave_mu:spi_slave_instance|misoRAM[0][15] ; 1.936             ;
-; speed:speed_counter_RL|new_value[3]  ; spi_slave_mu:spi_slave_instance|misoRAM[0][8]  ; 1.921             ;
+; speed:speed_counter_FL|old_value[4]  ; spi_slave_mu:spi_slave_instance|misoRAM[0][20] ; 2.895             ;
+; speed:speed_counter_FL|old_value[15] ; spi_slave_mu:spi_slave_instance|misoRAM[0][31] ; 2.788             ;
+; speed:speed_counter_FL|old_value[3]  ; spi_slave_mu:spi_slave_instance|misoRAM[0][20] ; 2.773             ;
+; speed:speed_counter_FL|new_value[15] ; spi_slave_mu:spi_slave_instance|misoRAM[0][31] ; 2.737             ;
+; speed:speed_counter_FL|old_value[11] ; spi_slave_mu:spi_slave_instance|misoRAM[0][27] ; 2.706             ;
+; speed:speed_counter_FL|old_value[14] ; spi_slave_mu:spi_slave_instance|misoRAM[0][31] ; 2.704             ;
+; speed:speed_counter_FL|old_value[6]  ; spi_slave_mu:spi_slave_instance|misoRAM[0][22] ; 2.697             ;
+; speed:speed_counter_FL|old_value[2]  ; spi_slave_mu:spi_slave_instance|misoRAM[0][20] ; 2.677             ;
+; speed:speed_counter_FL|old_value[9]  ; spi_slave_mu:spi_slave_instance|misoRAM[0][25] ; 2.674             ;
+; speed:speed_counter_FL|old_value[7]  ; spi_slave_mu:spi_slave_instance|misoRAM[0][23] ; 2.673             ;
+; speed:speed_counter_FL|new_value[4]  ; spi_slave_mu:spi_slave_instance|misoRAM[0][20] ; 2.633             ;
+; speed:speed_counter_FL|old_value[10] ; spi_slave_mu:spi_slave_instance|misoRAM[0][27] ; 2.619             ;
+; speed:speed_counter_FL|old_value[5]  ; spi_slave_mu:spi_slave_instance|misoRAM[0][21] ; 2.609             ;
+; speed:speed_counter_FL|old_value[8]  ; spi_slave_mu:spi_slave_instance|misoRAM[0][25] ; 2.578             ;
+; speed:speed_counter_FL|new_value[3]  ; spi_slave_mu:spi_slave_instance|misoRAM[0][20] ; 2.514             ;
+; speed:speed_counter_FL|old_value[13] ; spi_slave_mu:spi_slave_instance|misoRAM[0][31] ; 2.505             ;
+; speed:speed_counter_FL|new_value[14] ; spi_slave_mu:spi_slave_instance|misoRAM[0][31] ; 2.500             ;
+; speed:speed_counter_FL|old_value[1]  ; spi_slave_mu:spi_slave_instance|misoRAM[0][20] ; 2.490             ;
+; speed:speed_counter_FL|old_value[12] ; spi_slave_mu:spi_slave_instance|misoRAM[0][31] ; 2.487             ;
+; speed:speed_counter_FL|new_value[2]  ; spi_slave_mu:spi_slave_instance|misoRAM[0][20] ; 2.482             ;
+; speed:speed_counter_FL|new_value[6]  ; spi_slave_mu:spi_slave_instance|misoRAM[0][22] ; 2.467             ;
+; speed:speed_counter_FL|new_value[11] ; spi_slave_mu:spi_slave_instance|misoRAM[0][27] ; 2.445             ;
+; speed:speed_counter_FL|old_value[0]  ; spi_slave_mu:spi_slave_instance|misoRAM[0][20] ; 2.430             ;
+; speed:speed_counter_FL|new_value[7]  ; spi_slave_mu:spi_slave_instance|misoRAM[0][23] ; 2.424             ;
+; speed:speed_counter_FL|new_value[9]  ; spi_slave_mu:spi_slave_instance|misoRAM[0][25] ; 2.424             ;
+; speed:speed_counter_FL|new_value[10] ; spi_slave_mu:spi_slave_instance|misoRAM[0][27] ; 2.413             ;
+; speed:speed_counter_FL|new_value[5]  ; spi_slave_mu:spi_slave_instance|misoRAM[0][21] ; 2.351             ;
+; speed:speed_counter_FL|new_value[8]  ; spi_slave_mu:spi_slave_instance|misoRAM[0][25] ; 2.330             ;
+; speed:speed_counter_FL|new_value[13] ; spi_slave_mu:spi_slave_instance|misoRAM[0][31] ; 2.246             ;
+; speed:speed_counter_FL|new_value[1]  ; spi_slave_mu:spi_slave_instance|misoRAM[0][20] ; 2.245             ;
+; speed:speed_counter_FL|new_value[12] ; spi_slave_mu:spi_slave_instance|misoRAM[0][31] ; 2.241             ;
+; speed:speed_counter_FL|new_value[0]  ; spi_slave_mu:spi_slave_instance|misoRAM[0][20] ; 2.192             ;
+; speed:speed_counter_RL|new_value[15] ; spi_slave_mu:spi_slave_instance|misoRAM[0][15] ; 2.014             ;
+; speed:speed_counter_RL|old_value[15] ; spi_slave_mu:spi_slave_instance|misoRAM[0][15] ; 2.011             ;
+; speed:speed_counter_RL|old_value[14] ; spi_slave_mu:spi_slave_instance|misoRAM[0][14] ; 1.968             ;
+; speed:speed_counter_RL|old_value[11] ; spi_slave_mu:spi_slave_instance|misoRAM[0][11] ; 1.967             ;
+; speed:speed_counter_RL|old_value[5]  ; spi_slave_mu:spi_slave_instance|misoRAM[0][5]  ; 1.939             ;
+; speed:speed_counter_RL|old_value[4]  ; spi_slave_mu:spi_slave_instance|misoRAM[0][4]  ; 1.930             ;
+; speed:speed_counter_RL|old_value[3]  ; spi_slave_mu:spi_slave_instance|misoRAM[0][4]  ; 1.930             ;
+; speed:speed_counter_RL|old_value[7]  ; spi_slave_mu:spi_slave_instance|misoRAM[0][11] ; 1.917             ;
+; speed:speed_counter_RL|old_value[13] ; spi_slave_mu:spi_slave_instance|misoRAM[0][14] ; 1.907             ;
+; speed:speed_counter_RL|old_value[0]  ; spi_slave_mu:spi_slave_instance|misoRAM[0][4]  ; 1.903             ;
+; speed:speed_counter_RL|old_value[2]  ; spi_slave_mu:spi_slave_instance|misoRAM[0][4]  ; 1.901             ;
+; speed:speed_counter_RL|old_value[12] ; spi_slave_mu:spi_slave_instance|misoRAM[0][14] ; 1.899             ;
+; speed:speed_counter_RL|old_value[1]  ; spi_slave_mu:spi_slave_instance|misoRAM[0][4]  ; 1.885             ;
+; speed:speed_counter_RL|old_value[9]  ; spi_slave_mu:spi_slave_instance|misoRAM[0][11] ; 1.874             ;
+; speed:speed_counter_RL|old_value[10] ; spi_slave_mu:spi_slave_instance|misoRAM[0][11] ; 1.866             ;
+; speed:speed_counter_RL|old_value[8]  ; spi_slave_mu:spi_slave_instance|misoRAM[0][11] ; 1.838             ;
+; speed:speed_counter_RL|old_value[6]  ; spi_slave_mu:spi_slave_instance|misoRAM[0][11] ; 1.834             ;
+; speed:speed_counter_RL|new_value[14] ; spi_slave_mu:spi_slave_instance|misoRAM[0][14] ; 1.515             ;
+; speed:speed_counter_RL|new_value[4]  ; spi_slave_mu:spi_slave_instance|misoRAM[0][4]  ; 1.505             ;
+; speed:speed_counter_RL|new_value[3]  ; spi_slave_mu:spi_slave_instance|misoRAM[0][4]  ; 1.505             ;
+; speed:speed_counter_RL|new_value[2]  ; spi_slave_mu:spi_slave_instance|misoRAM[0][4]  ; 1.505             ;
+; speed:speed_counter_RL|new_value[1]  ; spi_slave_mu:spi_slave_instance|misoRAM[0][4]  ; 1.505             ;
+; speed:speed_counter_RL|new_value[0]  ; spi_slave_mu:spi_slave_instance|misoRAM[0][4]  ; 1.505             ;
+; speed:speed_counter_RL|new_value[11] ; spi_slave_mu:spi_slave_instance|misoRAM[0][11] ; 1.499             ;
+; speed:speed_counter_RL|new_value[5]  ; spi_slave_mu:spi_slave_instance|misoRAM[0][5]  ; 1.490             ;
+; speed:speed_counter_RL|new_value[7]  ; spi_slave_mu:spi_slave_instance|misoRAM[0][11] ; 1.455             ;
+; speed:speed_counter_RL|new_value[13] ; spi_slave_mu:spi_slave_instance|misoRAM[0][14] ; 1.444             ;
+; speed:speed_counter_RL|new_value[12] ; spi_slave_mu:spi_slave_instance|misoRAM[0][14] ; 1.437             ;
+; speed:speed_counter_RL|new_value[9]  ; spi_slave_mu:spi_slave_instance|misoRAM[0][11] ; 1.422             ;
+; speed:speed_counter_RL|new_value[10] ; spi_slave_mu:spi_slave_instance|misoRAM[0][11] ; 1.417             ;
+; speed:speed_counter_RL|new_value[8]  ; spi_slave_mu:spi_slave_instance|misoRAM[0][11] ; 1.391             ;
+; speed:speed_counter_RL|new_value[6]  ; spi_slave_mu:spi_slave_instance|misoRAM[0][11] ; 1.391             ;
 +--------------------------------------+------------------------------------------------+-------------------+
 Note: This table only shows the top 64 path(s) that have the largest delay added for hold.
 
@@ -1854,17 +1860,17 @@ Info (332111): Found 2 clocks
 Info (176353): Automatically promoted node CLOCK_50~input (placed in PIN R8 (CLK15, DIFFCLK_6p)) File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 36
     Info (176355): Automatically promoted destinations to use location or clock signal Global Clock CLKCTRL_G18
     Info (176356): Following destination nodes may be non-global or may not use global or regional clocks
-        Info (176357): Destination node UART_Dynamixel:myDyna|Baudrate_Generator:baudgen|baud_clk File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/UART_Dynamixel.sv Line: 294
+        Info (176357): Destination node UART_Dynamixel:myDyna|Baudrate_Generator:baudgen|baud_clk File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/UART_Dynamixel.sv Line: 296
 Info (176353): Automatically promoted node my_pll:pll_clock|altpll:altpll_component|my_pll_altpll:auto_generated|wire_pll1_clk[0] (placed in counter C1 of PLL_4) File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/db/my_pll_altpll.v Line: 77
     Info (176355): Automatically promoted destinations to use location or clock signal Global Clock CLKCTRL_G19
-Info (176353): Automatically promoted node UART_Dynamixel:myDyna|Baudrate_Generator:baudgen|baud_clk  File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/UART_Dynamixel.sv Line: 294
+Info (176353): Automatically promoted node UART_Dynamixel:myDyna|Baudrate_Generator:baudgen|baud_clk  File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/UART_Dynamixel.sv Line: 296
     Info (176355): Automatically promoted destinations to use location or clock signal Global Clock
     Info (176356): Following destination nodes may be non-global or may not use global or regional clocks
-        Info (176357): Destination node UART_Dynamixel:myDyna|Baudrate_Generator:baudgen|baud_clk~0 File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/UART_Dynamixel.sv Line: 294
+        Info (176357): Destination node UART_Dynamixel:myDyna|Baudrate_Generator:baudgen|baud_clk~0 File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/UART_Dynamixel.sv Line: 296
 Info (176233): Starting register packing
 Info (176235): Finished register packing
     Extra Info (176219): No registers were packed into other blocks
-Info (171121): Fitter preparation operations ending: elapsed time is 00:00:02
+Info (171121): Fitter preparation operations ending: elapsed time is 00:00:01
 Info (14896): Fitter has disabled Advanced Physical Optimization because it is not supported for the current family.
 Info (170189): Fitter placement preparation operations beginning
 Info (170190): Fitter placement preparation operations ending: elapsed time is 00:00:00
@@ -1873,12 +1879,12 @@ Info (170137): Fitter placement was successful
 Info (170192): Fitter placement operations ending: elapsed time is 00:00:01
 Info (170193): Fitter routing operations beginning
 Info (170195): Router estimated average interconnect usage is 1% of the available device resources
-    Info (170196): Router estimated peak interconnect usage is 6% of the available device resources in the region that extends from location X21_Y23 to location X31_Y34
+    Info (170196): Router estimated peak interconnect usage is 7% of the available device resources in the region that extends from location X21_Y23 to location X31_Y34
 Info (170199): The Fitter performed an Auto Fit compilation.  Optimizations were skipped to reduce compilation time.
     Info (170201): Optimizations that may affect the design's routability were skipped
     Info (170200): Optimizations that may affect the design's timing were skipped
 Info (170194): Fitter routing operations ending: elapsed time is 00:00:01
-Info (11888): Total time spent on timing analysis during the Fitter is 0.43 seconds.
+Info (11888): Total time spent on timing analysis during the Fitter is 0.41 seconds.
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
 Info (334003): Started post-fitting delay annotation
@@ -2029,10 +2035,10 @@ Warning (169064): Following 66 pins have no output enable or a GND or VCC output
     Info (169065): Pin BRIDGE[15] has a permanently disabled output enable File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 49
 Info (144001): Generated suppressed messages file D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.fit.smsg
 Info: Quartus Prime Fitter was successful. 0 errors, 6 warnings
-    Info: Peak virtual memory: 6535 megabytes
-    Info: Processing ended: Sun Apr 19 13:02:39 2020
-    Info: Elapsed time: 00:00:09
-    Info: Total CPU time (on all processors): 00:00:17
+    Info: Peak virtual memory: 6539 megabytes
+    Info: Processing ended: Sun Apr 19 14:46:08 2020
+    Info: Elapsed time: 00:00:08
+    Info: Total CPU time (on all processors): 00:00:14
 
 
 +----------------------------+

@@ -260,7 +260,7 @@ void send_reset_buffer(unsigned char *buffer)
 {
 	unsigned char add = buffer[0];
 
-	wiringPiSPIDataRW(0, *buffer, 5);
+	wiringPiSPIDataRW(0, buffer, 5);
 
 	if ((add & 0b10000000) >> 7)
 	{
