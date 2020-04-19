@@ -67,9 +67,9 @@ int Send_Instruction_Packet(Byte ID, Byte Length, Byte Instruction, Byte P1, Byt
 
 		/*buffer[0] = ADDRESS_REG;	//dynamixel register
 		buffer[3] = TRANSITION_BIT; //perfoming a write action to corresponding register
-		buffer[4] = TXD_BYTES_REG;*/
+		buffer[4] = TXD_BYTES_REG;
 
-		wiringPiSPIDataRW(0, buffer, 5);
+		wiringPiSPIDataRW(0, buffer, 5); */
 
 		buffer[0] = ADDRESS_REG; //dynamixel register
 		buffer[3] = WRITE_BIT;	 //perfoming a write action to corresponding register
@@ -115,9 +115,9 @@ int Send_Instruction_Packet(Byte ID, Byte Length, Byte Instruction, Byte P1, Byt
 		
 	/*	buffer[0] = ADDRESS_REG;	//dynamixel register
 		buffer[3] = TRANSITION_BIT; //perfoming a write action to corresponding register
-		buffer[4] = START_COMMUNICATION_REG; */
+		buffer[4] = START_COMMUNICATION_REG; 
 
-		wiringPiSPIDataRW(0, buffer, 5);
+		wiringPiSPIDataRW(0, buffer, 5); */
 
 		buffer[0] = ADDRESS_REG; //dynamixel register
 		buffer[3] = WRITE_BIT;	 //perfoming a write action to corresponding register
