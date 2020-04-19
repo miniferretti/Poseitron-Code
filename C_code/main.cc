@@ -91,7 +91,7 @@ int main()
 				
 				Dyn_off_LED(0x08);
 				Dyn_set_position_and_speed(0x08,700,10);
-				delay(1000);
+				delay(5000);
 				sensorSelect(0);
 			}
 			break;
