@@ -262,7 +262,7 @@ void send_reset_buffer(unsigned char *buffer)
 
 	wiringPiSPIDataRW(0, buffer, 5);
 
-	if (add >> 2 == 2)
+	if ((add & 0b10000000)>>7)
 	{
 
 		for (int i = 0; i < 5; i++)
