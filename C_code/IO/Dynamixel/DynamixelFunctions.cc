@@ -28,7 +28,7 @@ int DynLightLed(Byte ID)
     printf("ID is = %u\r\n",ID);
    // reset_dynamixel();
 
-    Fail = Set_Parameter(ID,4,0x00,0x01);
+    Fail = Set_Parameter(ID,4,0x19,0x01);
    // Send_Instruction_Packet(ID, 2, 0x05, 0, 0, 0);
 
     if (!Fail)
