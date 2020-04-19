@@ -43,12 +43,6 @@ int Send_Instruction_Packet(Byte ID, Byte Length, Byte Instruction, Byte P1, Byt
 
 		//	IOWR(UART_DYNAMIXEL_BASE, START_COMMUNICATION_REG, 0); //Reset of the start flag
 
-	//	buffer[0] = ADDRESS_REG;	//dynamixel register
-	//	buffer[3] = TRANSITION_BIT; //perfoming a write action to corresponding register
-	//	buffer[4] = START_COMMUNICATION_REG;
-
-	//	wiringPiSPIDataRW(0, buffer, 5);
-
 		buffer[0] = ADDRESS_REG; //dynamixel register
 		buffer[3] = WRITE_BIT;	 //perfoming a write action to corresponding register
 		buffer[4] = START_COMMUNICATION_REG;
@@ -64,12 +58,6 @@ int Send_Instruction_Packet(Byte ID, Byte Length, Byte Instruction, Byte P1, Byt
 		wiringPiSPIDataRW(0, buffer, 5);
 
 		//	IOWR(UART_DYNAMIXEL_BASE, TXD_BYTES_REG, (Checksum << 24 | Instruction << 16 | Length << 8 | ID)); //Write instructions into a register
-
-		/*buffer[0] = ADDRESS_REG;	//dynamixel register
-		buffer[3] = TRANSITION_BIT; //perfoming a write action to corresponding register
-		buffer[4] = TXD_BYTES_REG;
-
-		wiringPiSPIDataRW(0, buffer, 5); */
 
 		buffer[0] = ADDRESS_REG; //dynamixel register
 		buffer[3] = WRITE_BIT;	 //perfoming a write action to corresponding register
@@ -87,14 +75,6 @@ int Send_Instruction_Packet(Byte ID, Byte Length, Byte Instruction, Byte P1, Byt
 
 		wiringPiSPIDataRW(0, buffer, 5);
 
-		//IOWR(UART_DYNAMIXEL_BASE, TXD_PARAMETERS_REG, (P3 << 16 | P2 << 8 | P1));						   //Write parameters into a register
-
-	/*	buffer[0] = ADDRESS_REG;	//dynamixel register
-		buffer[3] = TRANSITION_BIT; //perfoming a write action to corresponding register
-		buffer[4] = TXD_PARAMETERS_REG;
-
-		wiringPiSPIDataRW(0, buffer, 5); */
-
 		buffer[0] = ADDRESS_REG; //dynamixel register
 		buffer[3] = WRITE_BIT;	 //perfoming a write action to corresponding register
 		buffer[4] = TXD_PARAMETERS_REG;
@@ -111,13 +91,6 @@ int Send_Instruction_Packet(Byte ID, Byte Length, Byte Instruction, Byte P1, Byt
 
 		usleep(10); // Wait for the hardware to get the data
 		//	IOWR(UART_DYNAMIXEL_BASE, START_COMMUNICATION_REG, 1); //Set start flag
-
-		
-	/*	buffer[0] = ADDRESS_REG;	//dynamixel register
-		buffer[3] = TRANSITION_BIT; //perfoming a write action to corresponding register
-		buffer[4] = START_COMMUNICATION_REG; 
-
-		wiringPiSPIDataRW(0, buffer, 5); */
 
 		buffer[0] = ADDRESS_REG; //dynamixel register
 		buffer[3] = WRITE_BIT;	 //perfoming a write action to corresponding register
@@ -225,12 +198,6 @@ int read_data(unsigned char reg)
 	int communication_available; // = (IORD(UART_DYNAMIXEL_BASE, COMMUNICATION_STATUS_REG) & 0x00000001);
 
 	unsigned char buffer[5] = {0x00, 0x00, 0x00, 0x00, 0x00};
-
-	/*buffer[0] = ADDRESS_REG;	//register containing the adresses of the dynamixel
-	buffer[3] = TRANSITION_BIT; //bit 0 is the write bit, bit 1 is the read bit. Here, we perform a reading
-	buffer[4] = reg;
-
-	send_reset_buffer(buffer);*/
 
 	buffer[0] = ADDRESS_REG; //register containing the adresses of the dynamixel
 	buffer[3] = READ_BIT;	 //bit 0 is the write bit, bit 1 is the read bit. Here, we perform a reading
