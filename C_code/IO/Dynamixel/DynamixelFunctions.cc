@@ -61,7 +61,7 @@ int Dyn_off_LED(Byte ID)
   }
 }
 
-int Dyn_set_postion_and_speed(Byte ID, int postion, int speed)
+int Dyn_set_position_and_speed(Byte ID, int postion, int speed)
 {
   Byte Fail;
 
