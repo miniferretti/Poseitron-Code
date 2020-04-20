@@ -90,7 +90,7 @@ int main()
 				myCtrlStruct->calib_states = CALIB_1;
 				
 				sensorSelect(0);
-				Dyn_set_position_and_speed(0x08,500,10);
+				Dyn_set_position_and_speed(0x08,100,10);
 				delay(5000);
 			}
 			break;
