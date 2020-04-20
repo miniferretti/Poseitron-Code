@@ -73,7 +73,7 @@ int Dyn_set_position_and_speed(Byte ID, int postion, int speed)
 
   if (!Fail)
   {
-    printf("Postion enregistrée \r\n");
+    printf("Position enregistrée \r\n");
 
     return 1;
   }
