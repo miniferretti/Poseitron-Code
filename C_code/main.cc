@@ -74,6 +74,7 @@ int main()
 
 		getRGB(&r, &g, &b);
 		Dyn_get_position(0x08);
+		Dyn_set_position_and_speed(0x08,0,10);
 		delay(100);
 
 		printf("red = %f green = %f blue = %f \r\n", r, g, b); // tésté pour verifier que les senseurs de couleur focntionnent
