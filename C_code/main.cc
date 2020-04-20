@@ -90,6 +90,7 @@ int main()
 				myCtrlStruct->calib_states = CALIB_1;
 				
 				sensorSelect(0);
+				delay(100);
 			}
 			break;
 
