@@ -29,4 +29,5 @@ void SetMinAngle();
 void SetMaxAngle();
 int Dyn_off_LED(Byte ID);
 int Dyn_set_position_and_speed(Byte ID, int position, int speed);
+int Dyn_get_position(Byte ID);
 #endif

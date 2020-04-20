@@ -84,6 +84,23 @@ int Dyn_set_position_and_speed(Byte ID, int postion, int speed) //Speed in rpm a
   }
 }
 
+int Dyn_get_position(Byte ID)
+{
+  Byte Fail;
+  Fail = Set_Parameter(ID, 3, 36, 0x0);
+  if (!Fail)
+  {
+    printf("Reception de la postion \r\n");
+
+    return 1;
+  }
+  else
+  {
+    printf("Erreur lors de l'envois du message\r\n");
+    return 0;
+  }
+}
+
 void DynSetMaxSpeed(Byte ID, int Speed)
 {
 }

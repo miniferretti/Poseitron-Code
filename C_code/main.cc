@@ -73,10 +73,8 @@ int main()
 		myOdometry->Odometry_update();
 
 		getRGB(&r, &g, &b);
-
-		Dyn_light_LED(0x08);
-		Dyn_set_position_and_speed(0x08,0,30);
-		delay(5000);
+		Dyn_get_position(0x08);
+		delay(100);
 
 		printf("red = %f green = %f blue = %f \r\n", r, g, b); // tésté pour verifier que les senseurs de couleur focntionnent
 
@@ -90,9 +88,6 @@ int main()
 				myCtrlStruct->main_states = WAIT_STATE;
 				myCtrlStruct->calib_states = CALIB_1;
 				
-				Dyn_off_LED(0x08);
-				Dyn_set_position_and_speed(0x08,700,30);
-				delay(5000);
 				sensorSelect(0);
 			}
 			break;
