@@ -61,7 +61,7 @@ int Dyn_off_LED(Byte ID)
   }
 }
 
-int Dyn_set_position_and_speed(Byte ID, int postion, int speed)
+int Dyn_set_position_and_speed(Byte ID, int postion, int speed) //Speed in rpm and position in a range from 0 to 1023
 {
   Byte Fail;
 
