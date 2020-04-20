@@ -75,7 +75,7 @@ int main()
 		getRGB(&r, &g, &b);
 		Dyn_get_position(0x08);
 		Dyn_set_position_and_speed(0x08,0,10);
-		delay(100);
+		delay(5000);
 
 		printf("red = %f green = %f blue = %f \r\n", r, g, b); // tésté pour verifier que les senseurs de couleur focntionnent
 
@@ -90,7 +90,8 @@ int main()
 				myCtrlStruct->calib_states = CALIB_1;
 				
 				sensorSelect(0);
-				delay(100);
+				Dyn_set_position_and_speed(0x08,500,10);
+				delay(5000);
 			}
 			break;
 
