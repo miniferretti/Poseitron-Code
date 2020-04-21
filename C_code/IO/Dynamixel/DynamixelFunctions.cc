@@ -90,9 +90,43 @@ int Dyn_get_position(Byte ID)
 {
   int Fail;
 
-  Fail = Get_Parameters(ID,PRESENT_POSITION_REG,2);
+  Fail = Get_Parameters(ID, PRESENT_POSITION_REG, 2);
 
   return Fail;
+}
+
+int Dyn_torque_en(Byte ID, int en)
+{
+  Byte Fail;
+  Fail = Set_Parameter(ID, 4, TORQUE_ENABLE, en);
+  if (!Fail)
+  {
+    printf("Position enregistrée \r\n");
+
+    return 1;
+  }
+  else
+  {
+    printf("Erreur lors de l'envois du message\r\n");
+    return 0;
+  }
+}
+
+int Dyn_set_torque(Byte ID, int MaxTorque)
+{
+  Byte Fail;
+  Fail = Set_Parameter(ID, 5, TORQUE_LIMIT_REG, MaxTorque);
+  if (!Fail)
+  {
+    printf("Position enregistrée \r\n");
+
+    return 1;
+  }
+  else
+  {
+    printf("Erreur lors de l'envois du message\r\n");
+    return 0;
+  }
 }
 
 void DynSetMaxSpeed(Byte ID, int Speed)

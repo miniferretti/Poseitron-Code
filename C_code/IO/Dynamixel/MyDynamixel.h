@@ -38,6 +38,7 @@ typedef unsigned char Byte; //integer of 8 bits
 #define GOAL_POSITION_REG 0x1E
 #define MOVING_SPEED_REG 0x20
 #define TORQUE_LIMIT_REG 0x22
+#define TORQUE_ENABLE 0x18
 #define PRESENT_POSITION_REG 0x24
 #define PRESENT_SPEED_REG 0x26
 #define PRESENT_LOAD_REG 0x28
