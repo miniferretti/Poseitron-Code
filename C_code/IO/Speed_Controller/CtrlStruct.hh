@@ -7,17 +7,10 @@ enum
 {
     WAIT_STATE,
     CALIB_STATE,
+    PINCHER_DEMO_STATE,
     AVOID150_STATE,
     RUN_STATE,
     STOP_STATE
-};
-
-//AVOID150 states
-enum
-{
-    AVOID150_STATE1,
-    AVOID150_STATE2,
-    AVOID150_STATE3
 };
 
 //Behavior structure (Rudimentary)
@@ -101,6 +94,7 @@ typedef struct CtrlStruct
     RobotPinchers *pinchers;
     int main_states;
     int calib_states;
+    int pinchers_demo_states;
     int avoid150_states;
     double stopvalues[2];
 } CtrlStruct;

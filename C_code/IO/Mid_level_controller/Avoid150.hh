@@ -8,5 +8,13 @@
 #include "IO/Odometry/Odometry.hh"
 #include "math.h"
 
+//AVOID150 states
+enum
+{
+    AVOID150_STATE1,
+    AVOID150_STATE2,
+    AVOID150_STATE3
+};
+
     void avoid150(CtrlStruct *cvs, SpeedController *spc, Odometry *odo);
 #endif

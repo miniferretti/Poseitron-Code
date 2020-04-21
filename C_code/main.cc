@@ -6,6 +6,7 @@
 #include "IO/COM/TCS3472_I2C/TCS3472_FPGA.hh"
 #include "IO/Dynamixel/DynamixelFunctions.h"
 #include "IO/Dynamixel/MyDynamixel.h"
+#include "IO/Pincher_Demo/Pincher_Demo.hh"
 #include <iostream>
 #include <errno.h>
 #include <stdlib.h>
@@ -44,7 +45,6 @@ int main()
 
 	SpeedController *spdctrl = new SpeedController(myCtrlStruct, can);
 	Odometry *myOdometry = new Odometry(myCtrlStruct);
-	sensorSelect(2);
 
 	spdctrl->init_speed_controller(1);
 	spdctrl->set_speed(0, 0);
@@ -61,8 +61,6 @@ int main()
 	printf("Welcome to the Poseitron code prototype.\r\n");
 	printf("We hope that you will be pleased with the coding and we wish you a great succes.\n\r");
 
-	colorSensorReset();
-
 	//********  Début du comportement du robot **********
 
 	while (run)
@@ -72,27 +70,19 @@ int main()
 		myCtrlStruct->theCtrlIn->t = time_taken / 1000.0;
 		spdctrl->updateLowCtrl();
 		myOdometry->Odometry_update();
-		sensorSelect(0);
-		getRGB(&r, &g, &b);
-		printf("La postion du dynamixel est : %d\r\n", Dyn_get_position(0x08));
-		Dyn_set_position_and_speed(0x08, 0, 10);
-		delay(5000);
-
-		printf("red = %f green = %f blue = %f \r\n", r, g, b); // tésté pour verifier que les senseurs de couleur focntionnent
 
 		switch (myCtrlStruct->main_states)
 		{
 		case WAIT_STATE:
 			//printf("WAIT_STATE\r\n");
 
-			if (myCtrlStruct->theCtrlIn->t > 2)
+			if (myCtrlStruct->theCtrlIn->t > 10)
 			{
-				myCtrlStruct->main_states = WAIT_STATE;
+				myCtrlStruct->main_states = PINCHER_DEMO_STATE;
 				myCtrlStruct->calib_states = CALIB_1;
-
-				sensorSelect(1);
-				Dyn_set_position_and_speed(0x08, 100, 10);
-				delay(5000);
+				myCtrlStruct->pinchers_demo_states = SETUP_STATE;
+				colorSensorReset();
+				reset_dynamixel();
 			}
 			break;
 
@@ -104,6 +94,10 @@ int main()
 		case AVOID150_STATE:
 			printf("AVOID150_STATE\r\n");
 			avoid150(myCtrlStruct, spdctrl, myOdometry);
+			break;
+
+		case PINCHER_DEMO_STATE:
+			pincher_demo(myCtrlStruct);
 			break;
 
 		case STOP_STATE:
