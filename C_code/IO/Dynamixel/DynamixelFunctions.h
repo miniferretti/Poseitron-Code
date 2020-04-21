@@ -32,4 +32,5 @@ int Dyn_set_position_and_speed(Byte ID, int position, int speed);
 int Dyn_get_position(Byte ID);
 int Dyn_torque_en(Byte ID, int en);
 int Dyn_set_torque(Byte ID, int MaxTorque);
+int Dyn_get_load(Byte ID);
 #endif

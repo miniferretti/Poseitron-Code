@@ -129,6 +129,13 @@ int Dyn_set_torque(Byte ID, int MaxTorque)
   }
 }
 
+int Dyn_get_load(Byte ID)
+{
+  int Fail;
+  Fail = Get_Parameters(ID, PRESENT_LOAD_REG, 2);
+  return Fail;
+}
+
 void DynSetMaxSpeed(Byte ID, int Speed)
 {
 }

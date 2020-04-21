@@ -97,6 +97,7 @@ typedef struct CtrlStruct
     int pinchers_demo_states;
     int avoid150_states;
     double stopvalues[2];
+    double t_ref;
 } CtrlStruct;
 
 int size_UserStruct();
