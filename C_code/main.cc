@@ -56,7 +56,6 @@ int main()
 	int run = 1;
 	colorSensorReset();
 	reset_dynamixel();
-	sensorSelect(0);
 	float r, g, b, c;
 
 	printf("Welcome to the Poseitron code prototype.\r\n");
@@ -73,7 +72,7 @@ int main()
 		myCtrlStruct->theCtrlIn->t = time_taken / 1000.0;
 		spdctrl->updateLowCtrl();
 		myOdometry->Odometry_update();
-
+		sensorSelect(0);
 		getRGB(&r, &g, &b);
 		printf("La postion du dynamixel est : %d\r\n", Dyn_get_position(0x08));
 		Dyn_set_position_and_speed(0x08, 0, 10);
