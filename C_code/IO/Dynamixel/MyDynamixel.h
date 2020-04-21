@@ -44,7 +44,7 @@ typedef unsigned char Byte; //integer of 8 bits
 #define LOCK_REG 0x2F
 
 /************************************************************************
- * SPI registers
+ * SPI registers                                                        *
 *************************************************************************/
 #define DATA_REG 0x89
 #define ADDRESS_REG 0x8A

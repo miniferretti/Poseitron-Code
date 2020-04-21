@@ -67,9 +67,11 @@ int Dyn_set_position_and_speed(Byte ID, int postion, int speed) //Speed in rpm a
 
   speed = speed * 10;
 
-  Set_Parameter(ID, 5, 32, speed);
+  Set_Parameter(ID, 5, MOVING_SPEED_REG, speed);
 
-  Fail = Set_Parameter(ID, 5, 30, postion); //Leght = 5 car la postion est étalée sur P2 et P3 donc 3+2 avec P1 qui contient l'adresse du registre.
+  delay(5);
+
+  Fail = Set_Parameter(ID, 5, GOAL_POSITION_REG, postion); //Leght = 5 car la postion est étalée sur P2 et P3 donc 3+2 avec P1 qui contient l'adresse du registre.
 
   if (!Fail)
   {
@@ -86,19 +88,11 @@ int Dyn_set_position_and_speed(Byte ID, int postion, int speed) //Speed in rpm a
 
 int Dyn_get_position(Byte ID)
 {
-  Byte Fail;
-  Fail = Set_Parameter(ID, 3, 36, 0x0);
-  if (!Fail)
-  {
-    printf("Reception de la postion \r\n");
+  int Fail;
 
-    return 1;
-  }
-  else
-  {
-    printf("Erreur lors de l'envois du message\r\n");
-    return 0;
-  }
+  Fail = Get_Parameters(ID,PRESENT_POSITION_REG,2);
+
+  return Fail;
 }
 
 void DynSetMaxSpeed(Byte ID, int Speed)
