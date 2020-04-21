@@ -6,6 +6,7 @@
 #include "IO/Speed_Controller/ctrl_io.h"
 #include "IO/Speed_Controller/SpeedController.hh"
 #include "IO/Odometry/Odometry.hh"
+#include "IO/Mid_level_controller/Avoid150.hh"
 #include "math.h"
 
 void calibration(CtrlStruct *cvs, SpeedController *spc, Odometry *odo);
