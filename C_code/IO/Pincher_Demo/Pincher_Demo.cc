@@ -35,7 +35,6 @@ void pincher_demo(CtrlStruct *cvs)
 
     case GRAB_STATE:
         printf("the color temperature is: %d \r\n", color_temp);
-        printf("The load is : %d", Dyn_get_load(0x08));
 
         if (Dyn_set_position_and_speed(0x08, 200, 10))
         {
@@ -45,8 +44,8 @@ void pincher_demo(CtrlStruct *cvs)
         break;
 
     case PAUSE_STATE:
-
-        if ((cvs->theCtrlIn->t - cvs->t_ref) > 5)
+        printf("The load is : %d", Dyn_get_load(0x08));
+        if ((cvs->theCtrlIn->t - cvs->t_ref) > 20)
         {
             cvs->pinchers_demo_states = SETUP_STATE;
         }
