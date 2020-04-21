@@ -38,18 +38,26 @@ void pincher_demo(CtrlStruct *cvs)
 
         if (Dyn_set_position_and_speed(0x08, 200, 10))
         {
-            cvs->pinchers_demo_states = PAUSE_STATE;
-            cvs->t_ref = cvs->theCtrlIn->t;
+            cvs->pinchers_demo_states = LOAD_STATE;
         }
         break;
 
     case PAUSE_STATE:
-        printf("The load is : %d", Dyn_get_load(0x08));
+
         if ((cvs->theCtrlIn->t - cvs->t_ref) > 20)
         {
             cvs->pinchers_demo_states = SETUP_STATE;
         }
 
+        break;
+
+    case LOAD_STATE:
+
+        printf("The load is : %d\r\n", Dyn_get_load(0x08));
+        if (Dyn_get_load(0x08) > 1100)
+        {
+            cvs->pinchers_demo_states = PAUSE_STATE;
+        }
         break;
 
     default:

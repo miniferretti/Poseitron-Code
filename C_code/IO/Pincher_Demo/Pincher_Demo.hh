@@ -18,6 +18,7 @@ enum
     SENS_STATE,
     PAUSE_STATE,
     GRAB_STATE,
+    LOAD_STATE,
     RELEASE_STATE
 };
 
