@@ -9,8 +9,6 @@ void pincher_demo(CtrlStruct *cvs)
     switch (cvs->pinchers_demo_states)
     {
     case SETUP_STATE:
-
-        sensorSelect(1);
         Dyn_set_position_and_speed(0x08, 0, 10);
 
         if (Dyn_get_position(0x08) == 0)
@@ -21,6 +19,7 @@ void pincher_demo(CtrlStruct *cvs)
         break;
 
     case SENS_STATE:
+        sensorSelect(1);
         getRawData(&r, &g, &b, &c);
         color_temp = calculateColorTemperature(r, g, b);
         printf("the color temperature is: %d \r\n", color_temp);
