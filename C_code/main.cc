@@ -84,7 +84,7 @@ int main()
 		case WAIT_STATE:
 			//printf("WAIT_STATE\r\n");
 
-			if (myCtrlStruct->theCtrlIn->t > 10)
+			if (myCtrlStruct->theCtrlIn->t > 2)
 			{
 				myCtrlStruct->main_states = WAIT_STATE;
 				myCtrlStruct->calib_states = CALIB_1;

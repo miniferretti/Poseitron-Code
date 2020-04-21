@@ -1,5 +1,5 @@
 Fitter report for robot
-Mon Apr 20 19:10:30 2020
+Tue Apr 21 14:27:44 2020
 Quartus Prime Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
 
 
@@ -70,7 +70,7 @@ refer to the applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Fitter Summary                                                                   ;
 +------------------------------------+---------------------------------------------+
-; Fitter Status                      ; Successful - Mon Apr 20 19:10:30 2020       ;
+; Fitter Status                      ; Successful - Tue Apr 21 14:27:43 2020       ;
 ; Quartus Prime Version              ; 18.0.0 Build 614 04/24/2018 SJ Lite Edition ;
 ; Revision Name                      ; robot                                       ;
 ; Top-level Entity Name              ; robot                                       ;
@@ -161,12 +161,12 @@ refer to the applicable agreement for further details.
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;   1.6%      ;
-;     Processor 3            ;   1.5%      ;
+;     Processor 2            ;   1.5%      ;
+;     Processor 3            ;   1.4%      ;
 ;     Processor 4            ;   1.4%      ;
 ;     Processor 5            ;   1.4%      ;
 ;     Processor 6            ;   1.4%      ;
-;     Processor 7            ;   1.4%      ;
+;     Processor 7            ;   1.3%      ;
 ;     Processor 8            ;   1.3%      ;
 ;     Processors 9-16        ;   1.3%      ;
 +----------------------------+-------------+
@@ -1884,7 +1884,7 @@ Info (170199): The Fitter performed an Auto Fit compilation.  Optimizations were
     Info (170201): Optimizations that may affect the design's routability were skipped
     Info (170200): Optimizations that may affect the design's timing were skipped
 Info (170194): Fitter routing operations ending: elapsed time is 00:00:01
-Info (11888): Total time spent on timing analysis during the Fitter is 0.44 seconds.
+Info (11888): Total time spent on timing analysis during the Fitter is 0.43 seconds.
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
 Info (334003): Started post-fitting delay annotation
@@ -2035,9 +2035,9 @@ Warning (169064): Following 66 pins have no output enable or a GND or VCC output
     Info (169065): Pin BRIDGE[15] has a permanently disabled output enable File: D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.sv Line: 49
 Info (144001): Generated suppressed messages file D:/CloudStation/Cursus_Ingenieur_Civil_UCL/Master_1_ELMEM/Q2/LELME2002/Poseitron Code/Poseitron-Code/FPGA-Poseitron/robot.fit.smsg
 Info: Quartus Prime Fitter was successful. 0 errors, 6 warnings
-    Info: Peak virtual memory: 6537 megabytes
-    Info: Processing ended: Mon Apr 20 19:10:30 2020
-    Info: Elapsed time: 00:00:10
+    Info: Peak virtual memory: 6533 megabytes
+    Info: Processing ended: Tue Apr 21 14:27:44 2020
+    Info: Elapsed time: 00:00:11
     Info: Total CPU time (on all processors): 00:00:16
 
 
