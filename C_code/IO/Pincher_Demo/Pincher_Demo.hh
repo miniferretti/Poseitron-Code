@@ -16,7 +16,7 @@ enum
 {
     SETUP_STATE,
     SENS_STATE,
-    WAIT_STATE,
+    PAUSE_STATE,
     GRAB_STATE,
     RELEASE_STATE
 };
