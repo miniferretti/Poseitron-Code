@@ -13,7 +13,7 @@ module UART_Dynamixel (
 	output [31:0]	MyNios_ReadData,
 	// exported signals
 	input				RXD,
-	output			TXD, UART_DIR,
+	output			TXD,UART_DIR,
 	output    [7:0]      ID_flag
 );
 
