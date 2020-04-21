@@ -62,6 +62,8 @@ int main()
 	printf("Welcome to the Poseitron code prototype.\r\n");
 	printf("We hope that you will be pleased with the coding and we wish you a great succes.\n\r");
 
+	colorSensorReset();
+
 	//********  Début du comportement du robot **********
 
 	while (run)
