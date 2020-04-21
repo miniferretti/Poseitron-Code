@@ -56,7 +56,6 @@ int main()
 	int run = 1;
 	colorSensorReset();
 	reset_dynamixel();
-	float r, g, b, c;
 
 	printf("Welcome to the Poseitron code prototype.\r\n");
 	printf("We hope that you will be pleased with the coding and we wish you a great succes.\n\r");

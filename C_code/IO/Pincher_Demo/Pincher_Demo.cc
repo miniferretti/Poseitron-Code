@@ -23,7 +23,6 @@ void pincher_demo(CtrlStruct *cvs)
     case SENS_STATE:
             getRawData(&r,&g,&b);
             color_temp = calculateColorTemperature(r,g,b);
-
             printf("the color temperature is: %d",color_temp);
         break;
 
