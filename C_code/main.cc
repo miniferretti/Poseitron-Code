@@ -73,7 +73,7 @@ int main()
 		myOdometry->Odometry_update();
 
 		getRGB(&r, &g, &b);
-		printf("La postion du dynamixel est : %d", Dyn_get_position(0x08));
+		printf("La postion du dynamixel est : %d\r\n", Dyn_get_position(0x08));
 		Dyn_set_position_and_speed(0x08, 0, 10);
 		delay(5000);
 
