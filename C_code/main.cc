@@ -96,6 +96,7 @@ int main()
 			break;
 
 		case PINCHER_DEMO_STATE:
+			printf("PINCHER_DEMO_STATE\r\n");
 			pincher_demo(myCtrlStruct);
 			break;
 
