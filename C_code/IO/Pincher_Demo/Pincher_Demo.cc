@@ -57,6 +57,7 @@ void pincher_demo(CtrlStruct *cvs)
         if (Dyn_get_load(0x08) > 1100)
         {
             cvs->pinchers_demo_states = PAUSE_STATE;
+            cvs->t_ref = cvs->theCtrlIn->t;
         }
         break;
 
