@@ -3,7 +3,7 @@
 void pincher_demo(CtrlStruct *cvs)
 {
 
-    uint16_t r, g, b; // 0 = red-dominant 1 = green-dominant 2 = blue-dominant
+    uint16_t r, g, b, c; // 0 = red-dominant 1 = green-dominant 2 = blue-dominant
     uint16_t color_temp;
 
     switch (cvs->pinchers_demo_states)
@@ -21,9 +21,9 @@ void pincher_demo(CtrlStruct *cvs)
         break;
 
     case SENS_STATE:
-            getRawData(&r,&g,&b);
-            color_temp = calculateColorTemperature(r,g,b);
-            printf("the color temperature is: %d",color_temp);
+        getRawData(&r, &g, &b, &c);
+        color_temp = calculateColorTemperature(r, g, b);
+        printf("the color temperature is: %d", color_temp);
         break;
 
     default:
