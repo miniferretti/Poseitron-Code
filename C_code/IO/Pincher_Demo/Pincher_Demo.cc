@@ -34,8 +34,9 @@ void pincher_demo(CtrlStruct *cvs)
         break;
 
     case GRAB_STATE:
-        if(Dyn_set_position_and_speed(0x08, 200, 10)){
-            
+        printf("the color temperature is: %d \r\n", color_temp);
+        if (Dyn_set_position_and_speed(0x08, 200, 10))
+        {
         }
         break;
 
