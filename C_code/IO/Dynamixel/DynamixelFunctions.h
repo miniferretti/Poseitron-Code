@@ -1,5 +1,5 @@
 /*************************************************************************
-* Header file for DynamixelFunctions                                          *
+* Header file for DynamixelFunctions                                     *
 * Version 1.00                                                           *
 **************************************************************************/
 #ifndef DYNAMIXELFUNCTIONS_H
@@ -21,7 +21,7 @@
 typedef unsigned char Byte; //integer of 8 bits
 
 /*************************************************************************
-* Functions list				                                     *
+* Functions list				                                         *
 **************************************************************************/
 int Dyn_light_LED(Byte ID);
 void SetMaxSpeed();
