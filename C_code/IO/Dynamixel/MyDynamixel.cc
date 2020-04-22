@@ -214,6 +214,8 @@ int read_data(unsigned char reg)
 	return communication_available;
 }
 
+
+/*Fonction a appeler au démarrage du robot pour reinitialiser le controlleur du Dynamixel physiquement*/
 void reset_dynamixel()
 {
 	pinMode(22, OUTPUT);
@@ -224,6 +226,8 @@ void reset_dynamixel()
 	digitalWrite(22, 0);
 }
 
+
+/*Fonction d'aide pas utilisée ici, qui envoie un buffer SPI et reset ses valeurs ou pas selon l'adresse des registres utilisé*/
 void send_reset_buffer(unsigned char *buffer)
 {
 	unsigned char add = buffer[0];

@@ -11,24 +11,11 @@
 
 int Dyn_light_LED(Byte ID)
 {
-
-  Byte Instruction = 0x03; // writes the data in the control table Write_reg
-  Byte Length = 4;         //
-  Byte P1 = 0x19;          // Starting address of the location where data is to be written here : LED address
-  Byte P2 = 0x01;          // 1st data to be written : LED is lighten up
-  Byte P3 = 0x00;
-  Byte Error;
-  Byte Checksum;
   Byte Fail;
-  Byte ID1; // 2sd data to be written : not needed here
 
-  int error;
+  printf("ID is = %u\r\n", ID);  //Print l'ID juste pour vérfier
 
-  printf("ID is = %u\r\n", ID);
-  // reset_dynamixel();
-
-  Fail = Set_Parameter(ID, 4, 0x19, 0x01);
-  // Send_Instruction_Packet(ID, 2, 0x05, 0, 0, 0);
+  Fail = Set_Parameter(ID, 4, LED_REG, 0x01); //Fonction d'evois de commande qui prend un regsitre et une consigne en arguments. Si la consigne est plus grand que un byte, passer le 4 à 5.
 
   if (!Fail)
   {
@@ -41,13 +28,12 @@ int Dyn_light_LED(Byte ID)
     printf("Erreur lors de l'envois du message\r\n");
     return 0;
   }
-  //  printf("Dynamixel available = %d\r\n", read_data(COMMUNICATION_STATUS_REG));
 }
 
-int Dyn_off_LED(Byte ID)
+int Dyn_off_LED(Byte ID) 
 {
   Byte Fail;
-  Fail = Set_Parameter(ID, 4, 0x19, 0x0);
+  Fail = Set_Parameter(ID, 4, LED_REG, 0x0);
   if (!Fail)
   {
     printf("Eteignage de la LED \r\n");
@@ -61,19 +47,17 @@ int Dyn_off_LED(Byte ID)
   }
 }
 
-int Dyn_set_position_and_speed(Byte ID, int postion, int speed) //Speed in rpm and position in a range from 0 to 1023
+int Dyn_set_position_and_speed(Byte ID, int postion, int speed) //Speed in rpm and position in a range from 0 to 1023 --> from 15 deg to 345 deg
 {
   Byte Fail;
 
   speed = speed * 10;
 
-  Set_Parameter(ID, 5, MOVING_SPEED_REG, speed);
-
-  delay(5);
+  Set_Parameter(ID, 5, MOVING_SPEED_REG, speed); //S'occupe de definir la vitesse du dynamixel. La vitesse s'etalle sur 2 bytes, donc 4 devient 5. 
 
   Fail = Set_Parameter(ID, 5, GOAL_POSITION_REG, postion); //Leght = 5 car la postion est étalée sur P2 et P3 donc 3+2 avec P1 qui contient l'adresse du registre.
 
-  if (!Fail)
+  if (!Fail) //Verification condition
   {
     printf("Position enregistrée \r\n");
 
@@ -86,22 +70,22 @@ int Dyn_set_position_and_speed(Byte ID, int postion, int speed) //Speed in rpm a
   }
 }
 
-int Dyn_get_position(Byte ID)
+int Dyn_get_position(Byte ID) // Fonction qui s'occupe de lire le registre de postion du dynamixel
 {
   int Fail;
 
-  Fail = Get_Parameters(ID, PRESENT_POSITION_REG, 2);
+  Fail = Get_Parameters(ID, PRESENT_POSITION_REG, 2); // Fonction utilisée pour lire un registre du dynamixel ici la postion max est 0x1FE donc peut s'étaller sur deux bytes d'ou le 2//
 
   return Fail;
 }
 
-int Dyn_torque_en(Byte ID, int en)
+int Dyn_torque_en(Byte ID, int en) //Fonction qui active la limite en torque du dynamixel. en = 1 ou 0
 {
   Byte Fail;
   Fail = Set_Parameter(ID, 4, TORQUE_ENABLE, en);
   if (!Fail)
   {
-    printf("Position enregistrée \r\n");
+    printf("Torque activé \r\n");
 
     return 1;
   }
@@ -112,13 +96,13 @@ int Dyn_torque_en(Byte ID, int en)
   }
 }
 
-int Dyn_set_torque(Byte ID, int MaxTorque)
+int Dyn_set_torque(Byte ID, int MaxTorque) //Fonction qui specifie le torque maximum du dynamixel
 {
   Byte Fail;
   Fail = Set_Parameter(ID, 5, TORQUE_LIMIT_REG, MaxTorque);
   if (!Fail)
   {
-    printf("Position enregistrée \r\n");
+    printf("Torque maximum enregistré \r\n");
 
     return 1;
   }
@@ -129,10 +113,10 @@ int Dyn_set_torque(Byte ID, int MaxTorque)
   }
 }
 
-int Dyn_get_load(Byte ID)
+int Dyn_get_load(Byte ID) //Fonction qui spécifie le torque actuellement appliqué sur le dynamixel
 {
   int Fail;
-  Fail = Get_Parameters(ID, PRESENT_LOAD_REG, 2);
+  Fail = Get_Parameters(ID, PRESENT_LOAD_REG, 2); // La valeur de ce torque peut s'étaller sur 2 bytes, d'ou le 2
   return Fail;
 }
 
