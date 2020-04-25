@@ -1,13 +1,13 @@
 |robot
 CLOCK_50 => CLOCK_50.IN8
-LED[0] << UART_Dynamixel:myDyna.port10
-LED[1] << UART_Dynamixel:myDyna.port10
-LED[2] << UART_Dynamixel:myDyna.port10
-LED[3] << UART_Dynamixel:myDyna.port10
-LED[4] << UART_Dynamixel:myDyna.port10
-LED[5] << UART_Dynamixel:myDyna.port10
-LED[6] << UART_Dynamixel:myDyna.port10
-LED[7] << UART_Dynamixel:myDyna.port10
+LED[0] <= UART_Dynamixel:myDyna.port10
+LED[1] <= UART_Dynamixel:myDyna.port10
+LED[2] <= UART_Dynamixel:myDyna.port10
+LED[3] <= UART_Dynamixel:myDyna.port10
+LED[4] <= UART_Dynamixel:myDyna.port10
+LED[5] <= UART_Dynamixel:myDyna.port10
+LED[6] <= UART_Dynamixel:myDyna.port10
+LED[7] <= UART_Dynamixel:myDyna.port10
 KEY[0] => ~NO_FANOUT~
 KEY[1] => ~NO_FANOUT~
 PI[0] <> <UNC>

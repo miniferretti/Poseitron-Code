@@ -1,6 +1,6 @@
 Flow report for robot
-Tue Apr 21 14:27:51 2020
-Quartus Prime Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
+Sat Apr 25 21:51:26 2020
+Quartus Prime Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
 
 
 ---------------------
@@ -21,9 +21,9 @@ Quartus Prime Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
 ----------------
 ; Legal Notice ;
 ----------------
-Copyright (C) 2018  Intel Corporation. All rights reserved.
+Copyright (C) 2019  Intel Corporation. All rights reserved.
 Your use of Intel Corporation's design tools, logic functions 
-and other software and tools, and its AMPP partner logic 
+and other software and tools, and any partner logic 
 functions, and any output files from any of the foregoing 
 (including device programming or simulation files), and any 
 associated documentation or information are expressly subject 
@@ -33,22 +33,23 @@ the Intel FPGA IP License Agreement, or other applicable license
 agreement, including, without limitation, that your use is for
 the sole purpose of programming logic devices manufactured by
 Intel and sold by Intel or its authorized distributors.  Please
-refer to the applicable agreement for further details.
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
 
 
 
 +----------------------------------------------------------------------------------+
 ; Flow Summary                                                                     ;
 +------------------------------------+---------------------------------------------+
-; Flow Status                        ; Successful - Tue Apr 21 14:27:47 2020       ;
-; Quartus Prime Version              ; 18.0.0 Build 614 04/24/2018 SJ Lite Edition ;
+; Flow Status                        ; Successful - Sat Apr 25 21:51:23 2020       ;
+; Quartus Prime Version              ; 19.1.0 Build 670 09/22/2019 SJ Lite Edition ;
 ; Revision Name                      ; robot                                       ;
 ; Top-level Entity Name              ; robot                                       ;
 ; Family                             ; Cyclone IV E                                ;
 ; Device                             ; EP4CE22F17C6                                ;
 ; Timing Models                      ; Final                                       ;
-; Total logic elements               ; 1,410 / 22,320 ( 6 % )                      ;
-;     Total combinational functions  ; 971 / 22,320 ( 4 % )                        ;
+; Total logic elements               ; 1,398 / 22,320 ( 6 % )                      ;
+;     Total combinational functions  ; 964 / 22,320 ( 4 % )                        ;
 ;     Dedicated logic registers      ; 1,096 / 22,320 ( 5 % )                      ;
 ; Total registers                    ; 1096                                        ;
 ; Total pins                         ; 83 / 154 ( 54 % )                           ;
@@ -64,7 +65,7 @@ refer to the applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 04/21/2020 14:27:16 ;
+; Start date & time ; 04/25/2020 21:50:58 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; robot               ;
 +-------------------+---------------------+
@@ -75,7 +76,7 @@ refer to the applicable agreement for further details.
 +-------------------------------------+----------------------------------------+---------------+-------------+------------+
 ; Assignment Name                     ; Value                                  ; Default Value ; Entity Name ; Section Id ;
 +-------------------------------------+----------------------------------------+---------------+-------------+------------+
-; COMPILER_SIGNATURE_ID               ; 84440852126581.158747203608032         ; --            ; --          ; --         ;
+; COMPILER_SIGNATURE_ID               ; 268883479376284.158784425846594        ; --            ; --          ; --         ;
 ; MAX_CORE_JUNCTION_TEMP              ; 85                                     ; --            ; --          ; --         ;
 ; MIN_CORE_JUNCTION_TEMP              ; 0                                      ; --            ; --          ; --         ;
 ; PARTITION_COLOR                     ; -- (Not supported for targeted family) ; --            ; --          ; Top        ;
@@ -91,24 +92,24 @@ refer to the applicable agreement for further details.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:16     ; 1.0                     ; 4867 MB             ; 00:00:29                           ;
-; Fitter               ; 00:00:10     ; 1.2                     ; 6533 MB             ; 00:00:16                           ;
-; Assembler            ; 00:00:02     ; 1.0                     ; 4684 MB             ; 00:00:01                           ;
-; Timing Analyzer      ; 00:00:03     ; 1.3                     ; 4944 MB             ; 00:00:03                           ;
-; Total                ; 00:00:31     ; --                      ; --                  ; 00:00:49                           ;
+; Analysis & Synthesis ; 00:00:10     ; 1.0                     ; 1041 MB             ; 00:00:26                           ;
+; Fitter               ; 00:00:12     ; 1.3                     ; 2530 MB             ; 00:00:23                           ;
+; Assembler            ; 00:00:01     ; 1.0                     ; 811 MB              ; 00:00:01                           ;
+; Timing Analyzer      ; 00:00:03     ; 1.3                     ; 1010 MB             ; 00:00:02                           ;
+; Total                ; 00:00:26     ; --                      ; --                  ; 00:00:52                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
-+------------------------------------------------------------------------------------+
-; Flow OS Summary                                                                    ;
-+----------------------+------------------+------------+------------+----------------+
-; Module Name          ; Machine Hostname ; OS Name    ; OS Version ; Processor type ;
-+----------------------+------------------+------------+------------+----------------+
-; Analysis & Synthesis ; PC-Matteo        ; Windows 10 ; 10.0       ; x86_64         ;
-; Fitter               ; PC-Matteo        ; Windows 10 ; 10.0       ; x86_64         ;
-; Assembler            ; PC-Matteo        ; Windows 10 ; 10.0       ; x86_64         ;
-; Timing Analyzer      ; PC-Matteo        ; Windows 10 ; 10.0       ; x86_64         ;
-+----------------------+------------------+------------+------------+----------------+
++------------------------------------------------------------------------------------------+
+; Flow OS Summary                                                                          ;
++----------------------+------------------+---------------+---------------+----------------+
+; Module Name          ; Machine Hostname ; OS Name       ; OS Version    ; Processor type ;
++----------------------+------------------+---------------+---------------+----------------+
+; Analysis & Synthesis ; matteo-ms7a37    ; Manjaro Linux ; Manjaro Linux ; x86_64         ;
+; Fitter               ; matteo-ms7a37    ; Manjaro Linux ; Manjaro Linux ; x86_64         ;
+; Assembler            ; matteo-ms7a37    ; Manjaro Linux ; Manjaro Linux ; x86_64         ;
+; Timing Analyzer      ; matteo-ms7a37    ; Manjaro Linux ; Manjaro Linux ; x86_64         ;
++----------------------+------------------+---------------+---------------+----------------+
 
 
 ------------
