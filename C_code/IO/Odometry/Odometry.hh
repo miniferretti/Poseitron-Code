@@ -20,7 +20,15 @@ public:
     void Odometry_init();
     void update_rot(unsigned char *buffer);
     void Odometry_stop();
-    void set_thetaRef(double ref);
+    void set_theta_ref();
+    void reset_theta_ref();
+    double get_dtheta();
+    double get_ddist();
+    void set_pos();
+    void reset_pos();
+    void set_ddist();
+    void reset_ddist();
+    void reset_odometry();
 
     //Thread launching function
     void Odometry_update();

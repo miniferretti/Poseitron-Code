@@ -9,6 +9,14 @@
 #include "IO/Mid_level_controller/Avoid150.hh"
 #include "math.h"
 
+enum
+{
+    CALIB_1,
+    CALIB_2,
+    CALIB_3,
+    CALIB_4
+};
+
 void calibration(CtrlStruct *cvs, SpeedController *spc, Odometry *odo);
 
 #endif

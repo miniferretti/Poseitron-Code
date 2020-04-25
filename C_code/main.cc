@@ -48,10 +48,8 @@ int main()
 
 	spdctrl->init_speed_controller(1);
 	spdctrl->set_speed(0, 0);
-	spdctrl->Speed_controller_stop();
 	myOdometry->Odometry_init();
 	myCtrlStruct->main_states = WAIT_STATE;
-	auto start = std::chrono::steady_clock::now();
 	double time_taken;
 	int run = 1;
 	colorSensorReset();
@@ -59,6 +57,8 @@ int main()
 
 	printf("Welcome to the Poseitron code prototype.\r\n");
 	printf("We hope that you will be pleased with the coding and we wish you a great succes.\n\r");
+
+	auto start = std::chrono::steady_clock::now();
 
 	//********  Début du comportement du robot **********
 
@@ -78,8 +78,6 @@ int main()
 			if (myCtrlStruct->theCtrlIn->t > 10)
 			{
 				myCtrlStruct->main_states = PINCHER_DEMO_STATE;
-				myCtrlStruct->calib_states = CALIB_1;
-				myCtrlStruct->pinchers_demo_states = SETUP_STATE;
 				colorSensorReset();
 				reset_dynamixel();
 			}

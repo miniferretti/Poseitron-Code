@@ -4,7 +4,6 @@ void calibration(CtrlStruct *cvs, SpeedController *spc, Odometry *odo)
 {
     CtrlIn *myCtrlIn = cvs->theCtrlIn;
     double limit = 30;
-    
 
     switch (cvs->calib_states)
     {
@@ -62,9 +61,9 @@ void calibration(CtrlStruct *cvs, SpeedController *spc, Odometry *odo)
 
     case CALIB_3:
         printf("CALIB_3\n\r");
-        cvs->calib_states = CALIB_1;
-        cvs->main_states = AVOID150_STATE;
-        cvs->avoid150_states = AVOID150_STATE1;
+        cvs->calib_states = CALIB_1;            // Reset previous behavior
+        cvs->main_states = AVOID150_STATE;      // Set next behavior
+        cvs->avoid150_states = AVOID150_STATE1; // Set the first state of the next behavior
         break;
 
     default:

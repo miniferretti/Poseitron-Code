@@ -2,6 +2,8 @@
 #define CTRLSTRUCT_HH
 
 #include "ctrl_io.h"
+#include <Eigen/Dense>
+#include <Eigen/Sparse>
 
 enum
 {
@@ -20,23 +22,52 @@ enum
     AVOID_STATE
 };
 
-enum
-{
-    CALIB_1,
-    CALIB_2,
-    CALIB_3,
-    CALIB_4
-};
 
 //Structure for the odometry
 typedef struct RobotPosition
 {
     double x;
+    double x_prev;
+
     double y;
+    double y_prev;
+
+    double x_ref;
+    double y_ref;
+
     double theta;
+
+    double dtheta;
     double thetaref;
+    int dtheta_flag;
+
+    double dist;
+    double dist_prev;
+
+    double ddist;
+    double ddist_flag;
+
+    double dydx;
 
     double t_used;
+
+    double kl;
+    double kr;
+
+    double dydx;
+    double dydx_prev;
+
+    int ignore;
+
+
+    //Compensation factors for correcting the non idealities of the robot anatomy
+
+
+
+    Eigen::MatrixXd Dpf;
+    Eigen::MatrixXd Drlf;
+    Eigen::MatrixXd covs;
+    Eigen::MatrixXd error;
 
 } RobotPosition;
 
@@ -71,6 +102,9 @@ typedef struct MotStruct
     double lowerCurrentLimit;
     double upperVoltageLimit;
     double lowerVoltageLimit;
+
+
+    double compensation_factor; 
 } MotStruct;
 typedef struct UserStruct
 {
