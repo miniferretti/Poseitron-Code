@@ -3,7 +3,7 @@ delimiterIn = ' ';
 headerlinesIn = 1;
 A = importdata(filename,delimiterIn,headerlinesIn);
 
-filename = 'logFileOdometry.txt';
+filename = 'LogFileOdometry.txt';
 B = importdata(filename,delimiterIn,headerlinesIn);
 
 refR=A.data(:,1);
