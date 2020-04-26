@@ -173,7 +173,7 @@ void Odometry::set_theta_ref()
     reset_theta_ref();
 
     odo_pos->dtheta_flag = 1;
-    odo_pos->theta_prev = odo_pos->theta;
+    odo_pos->thetaref = odo_pos->theta;
 }
 
 void Odometry::reset_theta_ref()
@@ -181,7 +181,7 @@ void Odometry::reset_theta_ref()
     RobotPosition *odo_pos;
     odo_pos = this->theCtrlStruct->rob_pos;
 
-    odo_pos->theta_prev = 0;
+    odo_pos->thetaref = 0;
     odo_pos->dtheta = 0;
     odo_pos->dtheta_flag = 0;
 }
