@@ -7,6 +7,7 @@
 #include "IO/Dynamixel/DynamixelFunctions.h"
 #include "IO/Dynamixel/MyDynamixel.h"
 #include "IO/Pincher_Demo/Pincher_Demo.hh"
+#include "IO/Calibration/odo_calibration.h"
 #include <iostream>
 #include <errno.h>
 #include <stdlib.h>
@@ -73,11 +74,11 @@ int main()
 		switch (myCtrlStruct->main_states)
 		{
 		case WAIT_STATE:
-			//printf("WAIT_STATE\r\n");
+			printf("WAIT_STATE\r\n");
 
 			if (myCtrlStruct->theCtrlIn->t > 10)
 			{
-				myCtrlStruct->main_states = PINCHER_DEMO_STATE;
+				myCtrlStruct->main_states = ODO_CALIB_STATE;
 				colorSensorReset();
 				reset_dynamixel();
 			}
@@ -96,6 +97,11 @@ int main()
 		case PINCHER_DEMO_STATE:
 			printf("PINCHER_DEMO_STATE\r\n");
 			pincher_demo(myCtrlStruct);
+			break;
+
+		case ODO_CALIB_STATE:
+			print("ODO_CALIB_STATE\r\n");
+			odo_calibration(myCtrlStruct,spdctrl,myOdometry);
 			break;
 
 		case STOP_STATE:

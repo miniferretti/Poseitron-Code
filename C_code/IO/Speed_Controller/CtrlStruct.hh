@@ -8,6 +8,7 @@
 enum
 {
     WAIT_STATE,
+    ODO_CALIB_STATE,
     CALIB_STATE,
     PINCHER_DEMO_STATE,
     AVOID150_STATE,
@@ -130,6 +131,7 @@ typedef struct CtrlStruct
     int calib_states;
     int pinchers_demo_states;
     int avoid150_states;
+    int odo_calibration_states;
     double stopvalues[2];
     double t_ref;
 } CtrlStruct;
