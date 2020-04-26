@@ -68,7 +68,7 @@ void SpeedController::init_speed_controller(int i)
         this->avgL[i] = 0;
         this->avgR[i] = 0;
     }
-    this->logFile = fopen("/home/pi/RobotCode/Data/logFileSpeed.txt", "w");
+    this->logFile = fopen("/home/pi/Poseitron-Code/Data/logFileSpeed.txt", "w");
     fprintf(logFile, "Rspeed Rref Lspeed Lref Time\r\n");
 }
 
