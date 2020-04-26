@@ -2,8 +2,9 @@
 #define CTRLSTRUCT_HH
 
 #include "ctrl_io.h"
-#include <Eigen/Dense>
-#include <Eigen/Sparse>
+#include <eigen3/Eigen/Dense>
+#include <eigen3/Eigen/Sparse>
+
 
 enum
 {
