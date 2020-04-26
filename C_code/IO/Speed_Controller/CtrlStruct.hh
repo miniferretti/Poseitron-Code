@@ -49,8 +49,6 @@ typedef struct RobotPosition
     double ddist;
     double ddist_flag;
 
-    double dydx;
-
     double t_used;
 
     double kl;
