@@ -76,7 +76,7 @@ int main()
 		case WAIT_STATE:
 			printf("WAIT_STATE\r\n");
 
-			if (myCtrlStruct->theCtrlIn->t > 10)
+			if (myCtrlStruct->theCtrlIn->t > 5)
 			{
 				myCtrlStruct->main_states = ODO_CALIB_STATE;
 				colorSensorReset();
