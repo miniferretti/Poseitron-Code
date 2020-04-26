@@ -94,7 +94,7 @@ void Odometry::Odometry_update()
         // Part of the code for providing a reference angle and a delta angle based on it. Usefull for counting a number of turn of the robot.
         if (this->theCtrlStruct->rob_pos->dtheta_flag)
         {
-            this->theCtrlStruct->rob_pos->dtheta = this->theCtrlStruct->rob_pos->theta - this->theCtrlStruct->rob_pos->theta_prev;
+            this->theCtrlStruct->rob_pos->dtheta = this->theCtrlStruct->rob_pos->theta - this->theCtrlStruct->rob_pos->thetaref;
         }
         if (this->theCtrlStruct->rob_pos->ddist_flag)
         {

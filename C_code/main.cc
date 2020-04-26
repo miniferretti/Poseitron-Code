@@ -100,7 +100,7 @@ int main()
 			break;
 
 		case ODO_CALIB_STATE:
-			print("ODO_CALIB_STATE\r\n");
+			printf("ODO_CALIB_STATE\r\n");
 			odo_calibration(myCtrlStruct,spdctrl,myOdometry);
 			break;
 
