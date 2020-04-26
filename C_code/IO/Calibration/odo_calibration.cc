@@ -10,8 +10,8 @@ void odo_calibration(CtrlStruct *cvs, SpeedController *spc, Odometry *myOdo)
     case GO_STRAIGHT:
 
         spc->set_speed(30, 30);
-        printf("left dist = %f right dist = %f\r\n", myCtrlIn->sens_array_front[1], myCtrlIn->sens_array_front[3]);
-        if ((((0 < myCtrlIn->sens_array_front[1]) && (myCtrlIn->sens_array_front[1] < limit)) || ((0 < myCtrlIn->sens_array_front[3]) && (myCtrlIn->sens_array_front[3] < limit))) && cvs->theCtrlIn->sens_flag == 1)
+        printf("left dist = %f right dist = %f\r\n", inputs->sens_array_front[1], inputs->sens_array_front[3]);
+        if ((((0 < inputs->sens_array_front[1]) && (inputs->sens_array_front[1] < limit)) || ((0 < inputs->sens_array_front[3]) && (inputs->sens_array_front[3] < limit))) && cvs->theCtrlIn->sens_flag == 1)
         {
             cvs->odo_calibration_states = GO_STOP;
             printf("Obstacle ptn !\r\n");
