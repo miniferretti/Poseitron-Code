@@ -61,7 +61,7 @@ void SpeedController::init_speed_controller(int i)
     this->theCtrlStruct->theUserStruct->theMotRight->lowerCurrentLimit = -Ra * Current_max;
     this->theCtrlStruct->theUserStruct->theMotRight->upperVoltageLimit = 24 * secu;
     this->theCtrlStruct->theUserStruct->theMotRight->lowerVoltageLimit = -24 * secu;
-    this->theCtrlStruct->theUserStruct->theMotRight->compensation_factor = 1;
+    this->theCtrlStruct->theUserStruct->theMotRight->compensation_factor = 0.95;
 
     for (int i = 0; i < MVG_LENG; i++)
     {
