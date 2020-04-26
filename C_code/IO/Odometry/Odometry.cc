@@ -255,7 +255,7 @@ void Odometry::reset_odometry()
     odo_pos->ddist = 0;
     odo_pos->ddist_flag = 0;
     odo_pos->theta = 0;
-    odo_pos->theta_prev = 0;
+    odo_pos->thetaref = 0;
     odo_pos->dtheta = 0;
     odo_pos->dtheta_flag = 0;
     odo_pos->t_used = inputs->t;
