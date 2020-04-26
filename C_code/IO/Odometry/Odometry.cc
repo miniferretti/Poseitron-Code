@@ -29,10 +29,10 @@ void Odometry::Odometry_init()
     this->theCtrlStruct->rob_pos->kr = 0.07;
     this->theCtrlStruct->rob_pos->kl = 0.07;
     this->theCtrlStruct->rob_pos->ignore = 2;
-    this->theCtrlStruct->rob_pos->covs = MatrixXd::Zero(2, 2);
-    this->theCtrlStruct->rob_pos->error = MatrixXd::Zero(3, 3);
-    this->theCtrlStruct->rob_pos->Dpf = MatrixXd::Zero(3, 3);
-    this->theCtrlStruct->rob_pos->Drlf = MatrixXd::Zero(3, 2);
+    this->theCtrlStruct->rob_pos->covs = Eigen::MatrixXd::Zero(2, 2);
+    this->theCtrlStruct->rob_pos->error = Eigen::MatrixXd::Zero(3, 3);
+    this->theCtrlStruct->rob_pos->Dpf = Eigen::MatrixXd::Zero(3, 3);
+    this->theCtrlStruct->rob_pos->Drlf = Eigen::MatrixXd::Zero(3, 2);
     this->theCtrlStruct->robot->odo_tics_per_rot = 2048.0;
     this->theCtrlStruct->robot->robot_width = 22.3 / 100.0; //value in meters
     this->theCtrlStruct->theUserStruct->Odo_kill = 0.0;
@@ -233,7 +233,7 @@ void Odometry::reset_pos()
     odo_pos->y_prev = 0;
 }
 
-double Odometry::get_ddist(CtrlStruct *cvs)
+double Odometry::get_ddist()
 {
     RobotPosition *odo_pos;
     odo_pos = this->theCtrlStruct->rob_pos;
