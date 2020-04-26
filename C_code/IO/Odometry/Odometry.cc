@@ -36,7 +36,7 @@ void Odometry::Odometry_init()
     this->theCtrlStruct->robot->odo_tics_per_rot = 2048.0;
     this->theCtrlStruct->robot->robot_width = 22.3 / 100.0; //value in meters
     this->theCtrlStruct->theUserStruct->Odo_kill = 0.0;
-    this->logFile = fopen("/home/pi/Poseitron-Code/LogFileOdometry.txt", "w");
+    this->logFile = fopen("/home/pi/Poseitron-Code/Data/LogFileOdometry.txt", "w");
     fprintf(this->logFile, "X Y Theta dr dl Time\r\n");
     this->update_rot(buffer);
 }
