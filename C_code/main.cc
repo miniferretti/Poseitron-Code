@@ -106,7 +106,7 @@ int main()
 
 		case STOP_STATE:
 			printf("STOP_STATE\r\n");
-			printf("Left = %f Right = %f\r\n", myCtrlStruct->stopvalues[0], myCtrlStruct->stopvalues[1]);
+		//	printf("Left = %f Right = %f\r\n", myCtrlStruct->stopvalues[0], myCtrlStruct->stopvalues[1]);
 			spdctrl->set_speed(0, 0);
 			run = 0;
 			break;
