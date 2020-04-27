@@ -40,7 +40,7 @@ int l = 6;
 
 void *gui_interface(void *u)
 {
-	char filename[] = "/home/pi/Poseitron-Code/Python_code/slider_demo.py";
+	char filename[] = "slider_demo.py";
 	FILE *fp;
 
 	Py_Initialize();
