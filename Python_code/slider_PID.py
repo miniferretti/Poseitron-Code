@@ -67,7 +67,7 @@ Vl = []
 VlRef = []
 Time = []
 
-st_results = os.stat(f)
+st_results = os.stat('/home/pi/Poseitron-Code/Data/logFileSpeed.txt')
 st_size = st_results[6]
 file.seek(st_size)
 
