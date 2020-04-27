@@ -54,7 +54,7 @@ int main()
 
 	spdctrl->init_speed_controller(1);
 	spdctrl->set_speed(0, 0);
-	spdctrl->Speed_controller_stop();
+	//spdctrl->Speed_controller_stop();
 	myOdometry->Odometry_init();
 	myCtrlStruct->main_states = WAIT_STATE;
 	double time_taken;
