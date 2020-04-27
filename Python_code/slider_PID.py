@@ -8,8 +8,8 @@ import os
 
 style.use('ggplot')
 
-#file = open(r"/home/pi/Poseitron-Code/Data/PID.txt", "w")
-file = open(r"/home/matteofdc/Documents/Poseitron_Data/Data/PID.txt", "w")
+file = open(r"/home/pi/Poseitron-Code/Data/PID.txt", "w")
+#file = open(r"/home/matteofdc/Documents/Poseitron_Data/Data/PID.txt", "w")
 
 
 def print_values_in_file():
@@ -64,7 +64,7 @@ fig, axs = plt.subplots(2, 1, figsize=(20, 20))
 
 
 def animate(i):
-    f = open('/home/matteofdc/Documents/Poseitron_Data/Data/logFileSpeed.txt', 'r')
+    f = open('/home/pi/Poseitron-Code/Data/logFileSpeed.txt', 'r')
     #next(f)
     Vr = []
     VrRef = []
