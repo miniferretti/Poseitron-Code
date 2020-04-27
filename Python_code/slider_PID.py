@@ -69,7 +69,7 @@ Time = []
 
 
 def animate(i):
-    f = open('/home/pi/Poseitron-Code/Data/logFileSpeed.txt', 'r')
+    f = open(r"/home/pi/Poseitron-Code/Data/logFileSpeed.txt", "r")
     # next(f)
 
     for line in f:
