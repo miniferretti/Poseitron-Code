@@ -5,10 +5,10 @@ def show_values():
 
 master = Tk()
 w1 = Scale(master, from_=0, to=1,length=600,digits=4,resolution=0.0001)
-w1.set(19)
+w1.set(0)
 w1.pack()
-w2 = Scale(master, from_=0, to=200, orient=HORIZONTAL)
-w2.set(23)
+w2 = Scale(master, from_=0, to=1, length=600,digits=4,resolution=0.0001)
+w2.set(0)
 w2.pack()
 Button(master, text='Show', command=show_values).pack()
 
