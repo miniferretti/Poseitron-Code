@@ -36,10 +36,6 @@ double omega_ref_now_r[6] = {0, 50, 50, -50, -50, 0};
 double omega_ref_now_l[6] = {0, 50, 50, 50, -50, 0};
 int l = 6;
 
-
-
-
-
 int main()
 {
 	wiringPiSetup();
@@ -49,10 +45,12 @@ int main()
 	deo = new SPI_DE0(0, 125e3);
 	init_ctrlStruc(myCtrlStruct);
 
+	system("python /home/pi/Poseitron-Code/Python_code/slider_PID.py &");
+
+	delay(5000); //wait for the python code to generate some files
+
 	SpeedController *spdctrl = new SpeedController(myCtrlStruct, can);
 	Odometry *myOdometry = new Odometry(myCtrlStruct);
-
-	pthread_t pyth_thread; //Thread for the graphical interface
 
 	spdctrl->init_speed_controller(1);
 	spdctrl->set_speed(0, 0);
@@ -63,8 +61,6 @@ int main()
 	int run = 1;
 	colorSensorReset();
 	reset_dynamixel();
-
-	system("python3 /home/pi/Poseitron-Code/Python_code/slider_demo.py &");
 
 	printf("Welcome to the Poseitron code prototype.\r\n");
 	printf("We hope that you will be pleased with the coding and we wish you a great succes.\n\r");
@@ -142,4 +138,3 @@ int main()
 	free(myCtrlStruct);
 	exit(0);
 }
-

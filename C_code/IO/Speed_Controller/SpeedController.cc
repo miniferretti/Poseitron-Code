@@ -49,7 +49,7 @@ void SpeedController::init_speed_controller(int i)
     this->theCtrlStruct->theUserStruct->theMotLeft->compensation_factor = 1;
 
     this->theCtrlStruct->theUserStruct->theMotRight->kp = 0.04; //Kp;
-    this->theCtrlStruct->theUserStruct->theMotRight->ki = 0.7;    //Ki;
+    this->theCtrlStruct->theUserStruct->theMotRight->ki = 0.7;  //Ki;
     this->theCtrlStruct->theUserStruct->theMotRight->kd = 0.00004;
     this->theCtrlStruct->theUserStruct->theMotRight->integral_error = 0;
     this->theCtrlStruct->theUserStruct->theMotRight->status = 0;
@@ -91,7 +91,7 @@ void SpeedController::updateLowCtrl()
 
     if (this->theCtrlStruct->theUserStruct->speed_kill == 0)
     {
-        this->update_PID();
+        //this->update_PID();
         this->updateSpeed(buffer);
         this->updateCmd();
         fprintf(logFile, "%0.1f %0.1f %0.1f %0.1f %f\r\n",
@@ -237,43 +237,11 @@ void SpeedController::Speed_controller_stop()
 void SpeedController::update_PID()
 {
 
-    char line[256];
-    int n = 0;
-    double realnumber = 0;
-    int counter = 0;
     MotStruct *leftMotor = this->theCtrlStruct->theUserStruct->theMotLeft;
     MotStruct *rightMotor = this->theCtrlStruct->theUserStruct->theMotRight;
 
-    while (fgets(line, 255, this->PIDFile) != NULL)
+    while (fscanf(this->PIDFile, "%f %f %f %f %f %f\n", leftMotor->kp, leftMotor->ki, leftMotor->kd, rightMotor->kp, rightMotor->ki, rightMotor->kd) > 0)
     {
-        n = sscanf(line, "%lf", &realnumber);
-        if (n == 0)
-        {
-            counter++;
-            switch (counter)
-            {
-            case 1:
-                leftMotor->kp = realnumber;
-                break;
-            case 2:
-                leftMotor->ki = realnumber;
-                break;
-            case 3:
-                leftMotor->kd = realnumber;
-                break;
-            case 4:
-                rightMotor->kp = realnumber;
-                break;
-            case 5:
-                rightMotor->ki = realnumber;
-                break;
-            case 6:
-                rightMotor->kd = realnumber;
-                break;
-            default:
-                break;
-            }
-        }
     }
 
     rewind(this->PIDFile);
