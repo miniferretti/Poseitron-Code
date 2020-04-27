@@ -60,13 +60,23 @@ Button(master, text='Update PID', command=print_values_in_file).pack()
 fig, axs = plt.subplots(2, 1, figsize=(20, 20))
 
 
+class L(list):
+    def append(self, item):
+        list.append(self, item)
+        if len(self) > 500:
+            del self[0]
+
+
+Vr = L()
+VrRef = L()
+Vl = L()
+VlRef = L()
+Time = L()
+
+
 def animate(i):
     f = open(r"/home/pi/Poseitron-Code/Data/logFileSpeed.txt", "r")
-    Vr = []
-    VrRef = []
-    Vl = []
-    VlRef = []
-    Time = []
+
     for line in f:
         line = line.strip()
         vr, vrref, vl, vlref, time = line.split()
