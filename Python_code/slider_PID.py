@@ -60,12 +60,15 @@ Button(master, text='Update PID', command=print_values_in_file).pack()
 
 
 fig, axs = plt.subplots(2, 1, figsize=(20, 20))
+<<<<<<< HEAD
 f = open('/home/pi/Poseitron-Code/Data/logFileSpeed.txt', 'r')
 Vr = []
 VrRef = []
 Vl = []
 VlRef = []
 Time = []
+=======
+>>>>>>> parent of 0f38045... Update slider_PID.py
 
 st_results = os.stat('/home/pi/Poseitron-Code/Data/logFileSpeed.txt')
 st_size = st_results[6]
@@ -73,12 +76,14 @@ file.seek(st_size)
 
 
 def animate(i):
-
-    where = f.tell()
-    line = f.readline()
-    if not line:
-        file.seek(where)
-    else:
+    f = open('/home/pi/Poseitron-Code/Data/logFileSpeed.txt', 'r')
+    next(f)
+    Vr = []
+    VrRef = []
+    Vl = []
+    VlRef = []
+    Time = []
+    for line in f:
         line = line.strip()
         vr, vrref, vl, vlref, time = line.split()
         Vr.append(float(vr))
@@ -122,6 +127,10 @@ def read(logfile):
 chart_type = FigureCanvasTkAgg(fig, master)
 chart_type.get_tk_widget().pack()
 
+<<<<<<< HEAD
 ani = animation.FuncAnimation(fig, animate, interval=10)
+=======
+ani = animation.FuncAnimation(fig, animate, interval=1000)
+>>>>>>> parent of 0f38045... Update slider_PID.py
 
 master.mainloop()
