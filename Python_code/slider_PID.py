@@ -75,16 +75,16 @@ Time = L()
 
 
 def animate(i):
-    f = open(r"/home/pi/Poseitron-Code/Data/logFileSpeed.txt", "r")
-
-    for line in f:
-        #line = line.strip()
-        vr, vrref, vl, vlref, time = line.split()
-        Vr.append(float(vr))
-        VrRef.append(float(vrref))
-        Vl.append(float(vl))
-        VlRef.append(float(vlref))
-        Time.append(float(time))
+    f = open(r"/home/pi/Poseitron-Code/Data/logFileSpeed.txt", "r").read()
+    dataArray = f.split('\n')
+    for line in dataArray:
+        if len(line)>1:
+            vr, vrref, vl, vlref, time = line.split()
+            Vr.append(float(vr))
+            VrRef.append(float(vrref))
+            Vl.append(float(vl))
+            VlRef.append(float(vlref))
+            Time.append(float(time))
     axs[0].clear()
     axs[0].plot(Time, Vr)
     axs[0].plot(Time, VrRef)

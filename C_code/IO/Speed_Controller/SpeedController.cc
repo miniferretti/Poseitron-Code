@@ -95,7 +95,7 @@ void SpeedController::updateLowCtrl()
         this->updateSpeed(buffer);
         this->updateCmd();
         fseek(logFile, 0, SEEK_SET);
-        fprintf(logFile, "%0.1f %0.1f %0.1f %0.1f %f\r\n",
+        fprintf(logFile, "%0.1f %0.1f %0.1f %0.1f %f\n",
                 -this->theCtrlStruct->theCtrlIn->r_wheel_speed,
                 this->theCtrlStruct->theCtrlIn->r_wheel_ref,
                 this->theCtrlStruct->theCtrlIn->l_wheel_speed,
