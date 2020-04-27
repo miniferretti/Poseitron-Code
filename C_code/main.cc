@@ -47,7 +47,7 @@ int main()
 
 	
 
-	delay(10000); //wait for the python code to generate some files
+	 
 
 	SpeedController *spdctrl = new SpeedController(myCtrlStruct, can);
 	Odometry *myOdometry = new Odometry(myCtrlStruct);
@@ -56,7 +56,7 @@ int main()
 	spdctrl->set_speed(0, 0);
 
 	system("python /home/pi/Poseitron-Code/Python_code/slider_PID.py &");
-	
+    delay(15000); //wait for the python code to generate some files
 	//spdctrl->Speed_controller_stop();
 	myOdometry->Odometry_init();
 	myCtrlStruct->main_states = WAIT_STATE;
