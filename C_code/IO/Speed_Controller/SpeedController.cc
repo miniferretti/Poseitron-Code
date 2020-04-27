@@ -68,10 +68,10 @@ void SpeedController::init_speed_controller(int i)
         this->avgL[i] = 0;
         this->avgR[i] = 0;
     }
-    this->logFile = fopen("/home/pi/Poseitron-Code/Data/logFileSpeed.txt", "w");
+   // this->logFile = fopen("/home/pi/Poseitron-Code/Data/logFileSpeed.txt", "w");
     this->PIDFile = fopen("/home/pi/Poseitron-Code/Data/PID.txt", "r");
 
-    fprintf(logFile, "Rspeed Rref Lspeed Lref Time\r\n");
+  //  fprintf(logFile, "Rspeed Rref Lspeed Lref Time\r\n");
 }
 
 void SpeedController::speed_controller_active(int i)
@@ -94,12 +94,12 @@ void SpeedController::updateLowCtrl()
         //this->update_PID();
         this->updateSpeed(buffer);
         this->updateCmd();
-        fprintf(logFile, "%0.1f %0.1f %0.1f %0.1f %f\r\n",
+      /*  fprintf(logFile, "%0.1f %0.1f %0.1f %0.1f %f\r\n",
                 -this->theCtrlStruct->theCtrlIn->r_wheel_speed,
                 this->theCtrlStruct->theCtrlIn->r_wheel_ref,
                 this->theCtrlStruct->theCtrlIn->l_wheel_speed,
                 this->theCtrlStruct->theCtrlIn->l_wheel_ref,
-                this->theCtrlStruct->theCtrlIn->t);
+                this->theCtrlStruct->theCtrlIn->t); */
     }
 }
 
