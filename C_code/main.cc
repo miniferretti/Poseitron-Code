@@ -8,6 +8,7 @@
 #include "IO/Dynamixel/MyDynamixel.h"
 #include "IO/Pincher_Demo/Pincher_Demo.hh"
 #include "IO/Calibration/odo_calibration.h"
+#include <Python.h>
 #include <iostream>
 #include <errno.h>
 #include <stdlib.h>
@@ -35,6 +36,22 @@ double omega_ref_now_r[6] = {0, 50, 50, -50, -50, 0};
 double omega_ref_now_l[6] = {0, 50, 50, 50, -50, 0};
 int l = 6;
 
+
+
+void *gui_interface(void *u)
+{
+	char filename[] = "/home/pi/Poseitron-Code/Python_code/slider_demo.py";
+	FILE *fp;
+
+	Py_Initialize();
+
+	fp = _Py_fopen(filename, "r");
+	PyRun_SimpleFile(fp, filename);
+
+	Py_Finalize();
+}
+
+
 int main()
 {
 	wiringPiSetup();
@@ -47,8 +64,12 @@ int main()
 	SpeedController *spdctrl = new SpeedController(myCtrlStruct, can);
 	Odometry *myOdometry = new Odometry(myCtrlStruct);
 
+	pthread_t pyth_thread; //Thread for the graphical interface
+	pthread_create(&pyth_thread, NULL, gui_interface, (void *)1);
+
 	spdctrl->init_speed_controller(1);
 	spdctrl->set_speed(0, 0);
+	spdctrl->Speed_controller_stop();
 	myOdometry->Odometry_init();
 	myCtrlStruct->main_states = WAIT_STATE;
 	double time_taken;
@@ -101,12 +122,12 @@ int main()
 
 		case ODO_CALIB_STATE:
 			printf("ODO_CALIB_STATE\r\n");
-			odo_calibration(myCtrlStruct,spdctrl,myOdometry);
+			odo_calibration(myCtrlStruct, spdctrl, myOdometry);
 			break;
 
 		case STOP_STATE:
 			printf("STOP_STATE\r\n");
-		//	printf("Left = %f Right = %f\r\n", myCtrlStruct->stopvalues[0], myCtrlStruct->stopvalues[1]);
+			//	printf("Left = %f Right = %f\r\n", myCtrlStruct->stopvalues[0], myCtrlStruct->stopvalues[1]);
 			spdctrl->set_speed(0, 0);
 			run = 0;
 			break;
@@ -132,3 +153,4 @@ int main()
 	free(myCtrlStruct);
 	exit(0);
 }
+
