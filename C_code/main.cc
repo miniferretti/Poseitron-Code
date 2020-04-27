@@ -47,7 +47,7 @@ int main()
 
 	system("python /home/pi/Poseitron-Code/Python_code/slider_PID.py &");
 
-	delay(5000); //wait for the python code to generate some files
+	delay(10000); //wait for the python code to generate some files
 
 	SpeedController *spdctrl = new SpeedController(myCtrlStruct, can);
 	Odometry *myOdometry = new Odometry(myCtrlStruct);
