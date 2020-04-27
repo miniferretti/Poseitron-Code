@@ -4,7 +4,7 @@ def show_values():
     print (w1.get(), w2.get())
 
 master = Tk()
-w1 = Scale(master, from_=0, to=42)
+w1 = Scale(master, from_=0, to=42,lenght=600,tickinterval=0.0001)
 w1.set(19)
 w1.pack()
 w2 = Scale(master, from_=0, to=200, orient=HORIZONTAL)
