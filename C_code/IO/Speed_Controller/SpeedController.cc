@@ -63,6 +63,8 @@ void SpeedController::init_speed_controller(int i)
     this->theCtrlStruct->theUserStruct->theMotRight->lowerVoltageLimit = -24 * secu;
     this->theCtrlStruct->theUserStruct->theMotRight->compensation_factor = 0.95;
 
+    this->counter = 0;
+
     for (int i = 0; i < MVG_LENG; i++)
     {
         this->avgL[i] = 0;
@@ -94,13 +96,18 @@ void SpeedController::updateLowCtrl()
         //this->update_PID();
         this->updateSpeed(buffer);
         this->updateCmd();
-        fseek(logFile, 0, SEEK_SET);
+        if (this->counter > 500)
+        {
+            fseek(logFile, 0, SEEK_SET);
+            this->counter = 0;
+        }
         fprintf(logFile, "%0.1f %0.1f %0.1f %0.1f %f\n",
                 -this->theCtrlStruct->theCtrlIn->r_wheel_speed,
                 this->theCtrlStruct->theCtrlIn->r_wheel_ref,
                 this->theCtrlStruct->theCtrlIn->l_wheel_speed,
                 this->theCtrlStruct->theCtrlIn->l_wheel_ref,
                 this->theCtrlStruct->theCtrlIn->t);
+        this->counter++;
     }
 }
 

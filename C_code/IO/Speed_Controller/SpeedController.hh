@@ -33,6 +33,7 @@ private:
 
     double avgR[MVG_LENG];
     double avgL[MVG_LENG];
+    int counter;
 
     FILE *logFile;
     FILE *PIDFile;
