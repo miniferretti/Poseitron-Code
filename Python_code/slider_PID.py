@@ -98,7 +98,7 @@ def animate(i):
 chart_type = FigureCanvasTkAgg(fig, master)
 chart_type.get_tk_widget().pack()
 
-ani = animation.FuncAnimation(fig, animate, interval=1000)
+ani = animation.FuncAnimation(fig, animate, interval=10)
 
 
 master.mainloop()
