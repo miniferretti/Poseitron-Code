@@ -61,16 +61,17 @@ Button(master, text='Update PID', command=print_values_in_file).pack()
 
 fig, axs = plt.subplots(2, 1, figsize=(20, 20))
 
+Vr = []
+VrRef = []
+Vl = []
+VlRef = []
+Time = []
 
 
 def animate(i):
     f = open('/home/pi/Poseitron-Code/Data/logFileSpeed.txt', 'r')
-    #next(f)
-    Vr = []
-    VrRef = []
-    Vl = []
-    VlRef = []
-    Time = []
+    # next(f)
+
     for line in f:
         line = line.strip()
         vr, vrref, vl, vlref, time = line.split()
@@ -79,15 +80,14 @@ def animate(i):
         Vl.append(float(vl))
         VlRef.append(float(vlref))
         Time.append(float(time))
-    #axs[0].clear()
+    # axs[0].clear()
     axs[0].plot(Time, Vr)
     axs[0].plot(Time, VrRef)
     axs[0].set_title("Right Motor Speed VS reference")
-    #axs[1].clear()
+    # axs[1].clear()
     axs[1].plot(Time, Vl)
     axs[1].plot(Time, VlRef)
     axs[1].set_title("Left Motor Speed VS reference")
-
 
 
 
