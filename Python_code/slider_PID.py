@@ -1,4 +1,4 @@
-from Tkinter import *
+from tkinter import *
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 from matplotlib import style
@@ -8,8 +8,8 @@ import os
 
 style.use('ggplot')
 
-file = open(r"/home/pi/Poseitron-Code/Data/PID.txt", "w")
-#file = open(r"/home/matteofdc/Documents/Poseitron_Data/Data/PID.txt", "w")
+#file = open(r"/home/pi/Poseitron-Code/Data/PID.txt", "w")
+file = open(r"/home/matteofdc/Documents/Poseitron_Data/Data/PID.txt", "w")
 
 
 def print_values_in_file():
@@ -60,24 +60,12 @@ Button(master, text='Update PID', command=print_values_in_file).pack()
 
 
 fig, axs = plt.subplots(2, 1, figsize=(20, 20))
-<<<<<<< HEAD
-f = open('/home/pi/Poseitron-Code/Data/logFileSpeed.txt', 'r')
-Vr = []
-VrRef = []
-Vl = []
-VlRef = []
-Time = []
-=======
->>>>>>> parent of 0f38045... Update slider_PID.py
 
-st_results = os.stat('/home/pi/Poseitron-Code/Data/logFileSpeed.txt')
-st_size = st_results[6]
-file.seek(st_size)
 
 
 def animate(i):
-    f = open('/home/pi/Poseitron-Code/Data/logFileSpeed.txt', 'r')
-    next(f)
+    f = open('/home/matteofdc/Documents/Poseitron_Data/Data/logFileSpeed.txt', 'r')
+    #next(f)
     Vr = []
     VrRef = []
     Vl = []
@@ -91,46 +79,22 @@ def animate(i):
         Vl.append(float(vl))
         VlRef.append(float(vlref))
         Time.append(float(time))
-    axs[0].clear()
+    #axs[0].clear()
     axs[0].plot(Time, Vr)
     axs[0].plot(Time, VrRef)
     axs[0].set_title("Right Motor Speed VS reference")
-    axs[1].clear()
+    #axs[1].clear()
     axs[1].plot(Time, Vl)
     axs[1].plot(Time, VlRef)
     axs[1].set_title("Left Motor Speed VS reference")
 
 
-def read(logfile):
-    with open(logfile) as f:
-        data = []
-        Vr = []
-        VrRef = []
-        Vl = []
-        VlRef = []
-        Time = []
-
-        while True:
-            line = f.readline()
-            time.sleep(0.1)
-            if line:
-                line = line.strip()
-                vr, vrref, vl, vlref, time = line.split()
-                Vr.append(float(vr))
-                VrRef.append(float(vrref))
-                Vl.append(float(vl))
-                VlRef.append(float(vlref))
-                Time.append(float(time))
-                yield data
 
 
 chart_type = FigureCanvasTkAgg(fig, master)
 chart_type.get_tk_widget().pack()
 
-<<<<<<< HEAD
 ani = animation.FuncAnimation(fig, animate, interval=10)
-=======
-ani = animation.FuncAnimation(fig, animate, interval=1000)
->>>>>>> parent of 0f38045... Update slider_PID.py
+
 
 master.mainloop()
