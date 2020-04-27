@@ -41,6 +41,7 @@ int l = 6;
 
 void *gui_interface(void *u)
 {
+	
 	char filename[] = "slider_demo.py";
 	FILE *fp;
 
