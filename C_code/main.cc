@@ -64,7 +64,7 @@ int main()
 	colorSensorReset();
 	reset_dynamixel();
 
-	system("python /home/pi/Poseitron-Code/Python_code/slider_demo.py &");
+	system("python3 /home/pi/Poseitron-Code/Python_code/slider_demo.py &");
 
 	printf("Welcome to the Poseitron code prototype.\r\n");
 	printf("We hope that you will be pleased with the coding and we wish you a great succes.\n\r");
