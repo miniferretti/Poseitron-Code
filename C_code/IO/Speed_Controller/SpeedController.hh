@@ -25,6 +25,7 @@ public:
     double Moving_Average(double speed, double *buff, int leng);
     void set_speed(double left, double right);
     void Speed_controller_stop();
+    void update_PID();
 
 private:
     CtrlStruct *theCtrlStruct;
@@ -34,6 +35,7 @@ private:
     double avgL[MVG_LENG];
 
     FILE *logFile;
+    FILE *PIDFile;
 };
 
 #endif
