@@ -59,17 +59,22 @@ Button(master, text='Update PID', command=print_values_in_file).pack()
 
 
 fig, axs = plt.subplots(2, 1, figsize=(20, 20))
+f = open('/home/pi/Poseitron-Code/Data/logFileSpeed.txt', 'r')
+next(f)
+Vr = []
+VrRef = []
+Vl = []
+VlRef = []
+Time = []
 
 
 def animate(i):
-    f = open('/home/pi/Poseitron-Code/Data/logFileSpeed.txt', 'r')
-    next(f)
-    Vr = []
-    VrRef = []
-    Vl = []
-    VlRef = []
-    Time = []
-    for line in f:
+
+    where = f.tell()
+    line = f.readline()
+    if not line:
+        file.seek(where)
+    else:
         line = line.strip()
         vr, vrref, vl, vlref, time = line.split()
         Vr.append(float(vr))
@@ -90,6 +95,6 @@ def animate(i):
 chart_type = FigureCanvasTkAgg(fig, master)
 chart_type.get_tk_widget().pack()
 
-ani = animation.FuncAnimation(fig, animate, interval=1000)
+ani = animation.FuncAnimation(fig, animate, interval=1)
 
 master.mainloop()
