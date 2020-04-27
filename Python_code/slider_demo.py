@@ -1,4 +1,4 @@
-import numpy as np
+import pyhton3-numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.widgets import Slider, Button, RadioButtons
 
