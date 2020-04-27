@@ -1,5 +1,6 @@
 #include <cstdio>
 #include <stdio.h>
+#include <conio.h>
 
 #include "IO/COM/SPI/SPI.hh"
 #include "IO/COM/SPI/Specific/SPI_DE0.hh"
