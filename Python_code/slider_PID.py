@@ -7,7 +7,7 @@ from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 style.use('ggplot')
 
 file = open(r"/home/pi/Poseitron-Code/Data/PID.txt", "w")
-#file = open(r"/home/matteofdc/Documents/Poseitron_Data/Data/PID.txt", "w")
+# file = open(r"/home/matteofdc/Documents/Poseitron_Data/Data/PID.txt", "w")
 
 
 def print_values_in_file():
@@ -59,17 +59,14 @@ Button(master, text='Update PID', command=print_values_in_file).pack()
 
 fig, axs = plt.subplots(2, 1, figsize=(20, 20))
 
-Vr = []
-VrRef = []
-Vl = []
-VlRef = []
-Time = []
-
 
 def animate(i):
     f = open(r"/home/pi/Poseitron-Code/Data/logFileSpeed.txt", "r")
-    # next(f)
-
+    Vr = []
+    VrRef = []
+    Vl = []
+    VlRef = []
+    Time = []
     for line in f:
         line = line.strip()
         vr, vrref, vl, vlref, time = line.split()
@@ -88,11 +85,10 @@ def animate(i):
     axs[1].set_title("Left Motor Speed VS reference")
 
 
-
 chart_type = FigureCanvasTkAgg(fig, master)
 chart_type.get_tk_widget().pack()
 
-ani = animation.FuncAnimation(fig, animate, interval=10)
+ani = animation.FuncAnimation(fig, animate, interval=1000)
 
 
 master.mainloop()
