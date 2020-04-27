@@ -4,6 +4,7 @@ import matplotlib.animation as animation
 from matplotlib import style
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 import time
+import os
 
 style.use('ggplot')
 
@@ -60,12 +61,15 @@ Button(master, text='Update PID', command=print_values_in_file).pack()
 
 fig, axs = plt.subplots(2, 1, figsize=(20, 20))
 f = open('/home/pi/Poseitron-Code/Data/logFileSpeed.txt', 'r')
-next(f)
 Vr = []
 VrRef = []
 Vl = []
 VlRef = []
 Time = []
+
+st_results = os.stat(f)
+st_size = st_results[6]
+file.seek(st_size)
 
 
 def animate(i):
