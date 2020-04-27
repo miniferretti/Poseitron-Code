@@ -96,9 +96,32 @@ def animate(i):
     axs[1].set_title("Left Motor Speed VS reference")
 
 
+def read(logfile):
+    with open(logfile) as f:
+        data = []
+        Vr = []
+        VrRef = []
+        Vl = []
+        VlRef = []
+        Time = []
+
+        while True:
+            line = f.readline()
+            time.sleep(0.1)
+            if line:
+                line = line.strip()
+                vr, vrref, vl, vlref, time = line.split()
+                Vr.append(float(vr))
+                VrRef.append(float(vrref))
+                Vl.append(float(vl))
+                VlRef.append(float(vlref))
+                Time.append(float(time))
+                yield data
+
+
 chart_type = FigureCanvasTkAgg(fig, master)
 chart_type.get_tk_widget().pack()
 
-ani = animation.FuncAnimation(fig, animate, interval=1)
+ani = animation.FuncAnimation(fig, animate, interval=10)
 
 master.mainloop()
