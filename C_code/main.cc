@@ -53,7 +53,6 @@ int main()
 	Odometry *myOdometry = new Odometry(myCtrlStruct);
 
 	pthread_t pyth_thread; //Thread for the graphical interface
-	pthread_create(&pyth_thread, NULL, gui_interface, (void *)1);
 
 	spdctrl->init_speed_controller(1);
 	spdctrl->set_speed(0, 0);
