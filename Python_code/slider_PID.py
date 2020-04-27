@@ -78,7 +78,7 @@ def animate(i):
     f = open(r"/home/pi/Poseitron-Code/Data/logFileSpeed.txt", "r")
 
     for line in f:
-        line = line.strip()
+        #line = line.strip()
         vr, vrref, vl, vlref, time = line.split()
         Vr.append(float(vr))
         VrRef.append(float(vrref))
