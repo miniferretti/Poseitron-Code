@@ -9,7 +9,7 @@
 #include "IO/Dynamixel/MyDynamixel.h"
 #include "IO/Pincher_Demo/Pincher_Demo.hh"
 #include "IO/Calibration/odo_calibration.h"
-#include <python3.7/Python.h>
+//#include <python3.7/Python.h>
 #include <iostream>
 #include <errno.h>
 #include <stdlib.h>
