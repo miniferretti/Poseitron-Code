@@ -39,19 +39,6 @@ int l = 6;
 
 
 
-void *gui_interface(void *u)
-{
-	
-	char filename[] = "slider_demo.py";
-	FILE *fp;
-
-	Py_Initialize();
-
-	fp = _Py_fopen(filename, "r");
-	PyRun_SimpleFile(fp, filename);
-
-	Py_Finalize();
-}
 
 
 int main()
@@ -78,6 +65,8 @@ int main()
 	int run = 1;
 	colorSensorReset();
 	reset_dynamixel();
+
+	system("pyhton /home/pi/Poseitron-Code/Python_code/slider_demo.py");
 
 	printf("Welcome to the Poseitron code prototype.\r\n");
 	printf("We hope that you will be pleased with the coding and we wish you a great succes.\n\r");
