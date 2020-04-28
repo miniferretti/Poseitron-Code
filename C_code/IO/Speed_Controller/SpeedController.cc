@@ -64,6 +64,7 @@ void SpeedController::init_speed_controller(int i)
     this->theCtrlStruct->theUserStruct->theMotRight->compensation_factor = 0.95;
     read_timeout.tv_sec = 0;
     read_timeout.tv_usec = 10;
+    kp_left = 0;
     fromlen = sizeof(struct sockaddr_in);
 
     for (int i = 0; i < MVG_LENG; i++)
@@ -116,7 +117,7 @@ void SpeedController::updateLowCtrl()
 
     unsigned char buffer[5];
     double speeds[5];
-    char buf[2];
+    char buf[24];
     int n;
 
     if (this->theCtrlStruct->theUserStruct->speed_kill == 0)
@@ -137,12 +138,15 @@ void SpeedController::updateLowCtrl()
         speeds[3] = this->theCtrlStruct->theCtrlIn->l_wheel_ref;
         speeds[4] = this->theCtrlStruct->theCtrlIn->t;
 
-        printf("size of the speed array = %d\r\n",sizeof(speeds));
+        printf("size of the speed array = %d\r\n", sizeof(speeds));
 
-        n = recvfrom(sock, (char *)buf, 2, MSG_DONTWAIT, (struct sockaddr *)&from, &fromlen);
+        n = recvfrom(sock, (char *)buf, 24, MSG_DONTWAIT, (struct sockaddr *)&from, &fromlen);
         if (n > -1)
         {
-            printf("Yep data recieved requested\r\n");   
+
+            kp_left = (float)((uint32_t)buf[3] >> 24 | (uint32_t)buf[2] >> 16 | (uint32_t)buf[1] >> 8 | (uint32_t)buf(0));
+
+            printf("Yep data recieved requested\r\n");
             n = sendto(sock, speeds, sizeof(speeds), 0, (struct sockaddr *)&from, fromlen);
         }
         else
