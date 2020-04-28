@@ -31,6 +31,38 @@ using namespace std;
 double omega_ref_now_r = 110;
 double omega_ref_now_l = 100;
 
+/*
+	nom provisoire
+	Inputs : r, radius of the turn in meter
+			 v, speed at wich the robot needs to take the turn in m/s or rad/s
+			 p, parameter to know what are the units of v. Must be 'm' or 'r'
+	Outputs : void
+	Bahaviour: The function calculates the speed of the two wheels and 
+		store them in myCtrlStruct
+*/
+void simple_turn(double v, double r, char p) ;
+
+void simple_turn(double v, double r, char p)  {
+	double entreAxe = 189 ; // mm
+	double wheelRadius = 30.15 ; // mm
+	double mmToM = e-3 ; // coefficient to pass from mm to m
+	double msToRads = 1/wheelRadius ;
+
+	if(p == 'm'){ // cas de m/s
+		myCtrlStruct->theCtrlIn->r_wheel_ref = msToRads * v * r /(mmToM * (ea/2 + r));
+		myCtrlStruct->theCtrlIn->l_wheel_ref = msToRads * v * (ea + r)/(mmToM * (ea/2 + r));
+	}
+	else if(p == 'r'){ // cas de rad/s
+		myCtrlStruct->theCtrlIn->r_wheel_ref = v * r /(mmToM * (ea/2 + r));
+		myCtrlStruct->theCtrlIn->l_wheel_ref = v * (ea + r)/(mmToM * (ea/2 + r));
+	}
+	else{
+		printf("Error : parameter p unvalid in fucntion simple_turn") ;
+	}
+
+}
+	
+
 int main()
 {
 	CtrlStruct *myCtrlStruct = new CtrlStruct;
