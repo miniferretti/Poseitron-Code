@@ -153,7 +153,7 @@ void SpeedController::updateLowCtrl()
         {
             printf("No data has been requested by the pyhton code\r\n");
         }
-        printf("The value send is %f",kp_left);
+        printf("The value send is %f\r\n",kp_left);
     }
 }
 
