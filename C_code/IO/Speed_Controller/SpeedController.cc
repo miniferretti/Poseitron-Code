@@ -160,6 +160,11 @@ void SpeedController::updateLowCtrl()
             memcpy(buf6, &buf[20], 4 * sizeof(*buf));
 
             memcpy(&kp_left, buf1, sizeof(kp_left));
+            memcpy(&ki_left, buf2, sizeof(kp_left));
+            memcpy(&kd_left, buf3, sizeof(kp_left));
+            memcpy(&kp_right, buf4, sizeof(kp_right));
+            memcpy(&ki_right, buf5, sizeof(ki_right));
+            memcpy(&kd_right, buf6, sizeof(kd_right));
 
             printf("Yep data recieved requested\r\n");
             n = sendto(sock, speeds, sizeof(speeds), 0, (struct sockaddr *)&from, fromlen);
