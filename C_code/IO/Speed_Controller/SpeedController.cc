@@ -64,6 +64,7 @@ void SpeedController::init_speed_controller(int i)
     this->theCtrlStruct->theUserStruct->theMotRight->compensation_factor = 0.95;
     read_timeout.tv_sec = 0;
     read_timeout.tv_usec = 10;
+    fromlen = sizeof(struct sockaddr_in);
 
     for (int i = 0; i < MVG_LENG; i++)
     {
@@ -134,12 +135,12 @@ void SpeedController::updateLowCtrl()
         speeds[1] = this->theCtrlStruct->theCtrlIn->r_wheel_ref;
         speeds[2] = this->theCtrlStruct->theCtrlIn->l_wheel_speed;
         speeds[3] = this->theCtrlStruct->theCtrlIn->l_wheel_ref;
-        speeds[4] = this->theCtrlStruct->theCtrlIn->t;
+        speeds[4] = this->theCtrlStruct->theCtrlIn->t; 
 
-        n = recvfrom(sock, (char *)buf, 3, MSG_DONTWAIT, (struct sockaddr *)&from, sizeof(struct sockaddr_in));
+        n = recvfrom(sock, (char *)buf, 3, MSG_DONTWAIT, (struct sockaddr *)&from, &fromlen);
         if (n > -1)
         {
-            n = sendto(sock, speeds, sizeof(speeds), 0, (struct sockaddr *)from, sizeof(struct sockaddr_in));
+            n = sendto(sock, speeds, sizeof(speeds), 0, (struct sockaddr *)&from, fromlen);
         }
         else
         {
