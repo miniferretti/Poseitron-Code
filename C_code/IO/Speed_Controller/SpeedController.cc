@@ -144,7 +144,7 @@ void SpeedController::updateLowCtrl()
         if (n > -1)
         {
 
-            kp_left = (float)((uint32_t)buf[3] >> 24 | (uint32_t)buf[2] >> 16 | (uint32_t)buf[1] >> 8 | (uint32_t)buf(0));
+            kp_left = (float)((uint32_t)buf[3] >> 24 | (uint32_t)buf[2] >> 16 | (uint32_t)buf[1] >> 8 | (uint32_t)buf[0]);
 
             printf("Yep data recieved requested\r\n");
             n = sendto(sock, speeds, sizeof(speeds), 0, (struct sockaddr *)&from, fromlen);
