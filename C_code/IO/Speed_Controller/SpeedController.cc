@@ -94,6 +94,10 @@ void SpeedController::init_speed_controller(int i)
         printf("Failed to bind \r\n");
         close(sock);
     }
+    else
+    {
+        printf("Bind UDP socket succes !\r\n");
+    }
 }
 
 void SpeedController::speed_controller_active(int i)
@@ -136,7 +140,9 @@ void SpeedController::updateLowCtrl()
         if (n > -1)
         {
             n = sendto(sock, speeds, sizeof(speeds), 0, (struct sockaddr *)from, sizeof(struct sockaddr_in));
-        }else{
+        }
+        else
+        {
             printf("No data has been requested by the pyhton code\r\n");
         }
     }
