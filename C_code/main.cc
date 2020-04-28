@@ -57,7 +57,7 @@ void simple_turn(double v, double r, char p)  {
 		myCtrlStruct->theCtrlIn->l_wheel_ref = v * (ea + r)/(mmToM * (ea/2 + r));
 	}
 	else{
-		printf("Error : parameter p unvalid in fucntion simple_turn") ;
+		printf("Error : parameter p invalid in fucntion simple_turn") ;
 	}
 
 }
