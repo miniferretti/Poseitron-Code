@@ -49,12 +49,12 @@ void simple_turn(double v, double r, char p)  {
 	double msToRads = 1/wheelRadius ;
 
 	if(p == 'm'){ // cas de m/s
-		myCtrlStruct->theCtrlIn->r_wheel_ref = msToRads * v * r /(mmToM * (ea/2 + r));
-		myCtrlStruct->theCtrlIn->l_wheel_ref = msToRads * v * (ea + r)/(mmToM * (ea/2 + r));
+		myCtrlStruct->theCtrlIn->r_wheel_ref = msToRads * v * r /(mmToM * (entreAxe/2 + r));
+		myCtrlStruct->theCtrlIn->l_wheel_ref = msToRads * v * (entreAxe + r)/(mmToM * (entreAxe/2 + r));
 	}
 	else if(p == 'r'){ // cas de rad/s
-		myCtrlStruct->theCtrlIn->r_wheel_ref = v * r /(mmToM * (ea/2 + r));
-		myCtrlStruct->theCtrlIn->l_wheel_ref = v * (ea + r)/(mmToM * (ea/2 + r));
+		myCtrlStruct->theCtrlIn->r_wheel_ref = v * r /(mmToM * (entreAxe/2 + r));
+		myCtrlStruct->theCtrlIn->l_wheel_ref = v * (entreAxe + r)/(mmToM * (entreAxe/2 + r));
 	}
 	else{
 		printf("Error : parameter p invalid in fucntion simple_turn") ;
