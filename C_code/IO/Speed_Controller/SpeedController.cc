@@ -62,8 +62,8 @@ void SpeedController::init_speed_controller(int i)
     this->theCtrlStruct->theUserStruct->theMotRight->upperVoltageLimit = 24 * secu;
     this->theCtrlStruct->theUserStruct->theMotRight->lowerVoltageLimit = -24 * secu;
     this->theCtrlStruct->theUserStruct->theMotRight->compensation_factor = 0.95;
-
-    this->counter = 0;
+    read_timeout.tv_sec = 0;
+    read_timeout.tv_usec = 10;
 
     for (int i = 0; i < MVG_LENG; i++)
     {
@@ -74,6 +74,26 @@ void SpeedController::init_speed_controller(int i)
     this->PIDFile = fopen("/home/pi/Poseitron-Code/Data/PID.txt", "r");
 
     fprintf(logFile, "Rspeed Rref Lspeed Lref Time\r\n");
+
+    sock = socket(AF_INET, SOCK_DGRAM, 0);
+    if (sock == -1)
+    {
+        printf("Failed to create UDP server socket\r\n");
+    }
+
+    servaddr.sin_family = AF_INET;
+    servaddr.sin_port = htons(UDP_PORT);
+    servaddr.sin_addr.s_addr = INADDR_ANY;
+
+    //  setsockopt(sock, SOL_SOCKET, SO_RCVTIMEO, &read_timeout, sizeof(read_timeout));
+
+    int rc = bind(sock, (const struct sockaddr *)&servaddr, sizeof(servaddr));
+
+    if (rc == -1)
+    {
+        printf("Failed to bind \r\n");
+        close(sock);
+    }
 }
 
 void SpeedController::speed_controller_active(int i)
@@ -90,24 +110,35 @@ void SpeedController::updateLowCtrl()
 {
 
     unsigned char buffer[5];
+    double speeds[5];
+    char buf[3];
+    int n;
 
     if (this->theCtrlStruct->theUserStruct->speed_kill == 0)
     {
         //this->update_PID();
         this->updateSpeed(buffer);
         this->updateCmd();
-        if (this->counter > 500)
-        {
-            fseek(logFile, 0, SEEK_SET);
-            this->counter = 0;
-        }
         fprintf(logFile, "%0.1f %0.1f %0.1f %0.1f %f\n",
                 -this->theCtrlStruct->theCtrlIn->r_wheel_speed,
                 this->theCtrlStruct->theCtrlIn->r_wheel_ref,
                 this->theCtrlStruct->theCtrlIn->l_wheel_speed,
                 this->theCtrlStruct->theCtrlIn->l_wheel_ref,
                 this->theCtrlStruct->theCtrlIn->t);
-        this->counter++;
+
+        speeds[0] = -this->theCtrlStruct->theCtrlIn->r_wheel_speed;
+        speeds[1] = this->theCtrlStruct->theCtrlIn->r_wheel_ref;
+        speeds[2] = this->theCtrlStruct->theCtrlIn->l_wheel_speed;
+        speeds[3] = this->theCtrlStruct->theCtrlIn->l_wheel_ref;
+        speeds[4] = this->theCtrlStruct->theCtrlIn->t;
+
+        n = recvfrom(sock, (char *)buf, 3, MSG_DONTWAIT, (struct sockaddr *)&from, sizeof(struct sockaddr_in));
+        if (n > -1)
+        {
+            n = sendto(sock, speeds, sizeof(speeds), 0, (struct sockaddr *)from, sizeof(struct sockaddr_in));
+        }else{
+            printf("No data has been requested by the pyhton code\r\n");
+        }
     }
 }
 

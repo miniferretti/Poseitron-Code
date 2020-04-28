@@ -55,7 +55,7 @@ int main()
 	spdctrl->init_speed_controller(1);
 	spdctrl->set_speed(0, 0);
 
-	system("python /home/pi/Poseitron-Code/Python_code/slider_PID.py &");
+	//system("python /home/pi/Poseitron-Code/Python_code/slider_PID.py &");
     delay(15000); //wait for the python code to generate some files
 	//spdctrl->Speed_controller_stop();
 	myOdometry->Odometry_init();

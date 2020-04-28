@@ -5,8 +5,14 @@
 #include "CtrlStruct.hh"
 #include "IO/COM/CAN/CAN_Alternate.hh"
 #include <unistd.h>
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <string.h>
+#include <netdb.h>
 
 #define MVG_LENG 1
+#define UDP_PORT 5005 // Port number for the UDP server 
 
 class SpeedController
 {
@@ -37,6 +43,14 @@ private:
 
     FILE *logFile;
     FILE *PIDFile;
+
+    int sock, length, n;
+    socklen_t fromlen;
+    char UDP_speed_msg[40];
+    struct sockaddr_in servaddr;
+    struct sockaddr_in from;
+    struct timeval read_timeout;
+
 };
 
 #endif
