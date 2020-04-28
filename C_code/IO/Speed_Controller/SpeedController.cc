@@ -142,7 +142,7 @@ void SpeedController::updateLowCtrl()
         n = recvfrom(sock, (char *)buf, 2, MSG_DONTWAIT, (struct sockaddr *)&from, &fromlen);
         if (n > -1)
         {
-            printf("Yep data recieved\r\n");   
+            printf("Yep data recieved requested\r\n");   
             n = sendto(sock, speeds, sizeof(speeds), 0, (struct sockaddr *)&from, fromlen);
         }
         else
