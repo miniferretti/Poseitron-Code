@@ -118,6 +118,12 @@ void SpeedController::updateLowCtrl()
     unsigned char buffer[5];
     double speeds[5];
     unsigned char buf[24];
+    unsigned char buf1[4];
+    unsigned char buf2[4];
+    unsigned char buf3[4];
+    unsigned char buf4[4];
+    unsigned char buf5[4];
+    unsigned char buf6[4];
     int n;
 
     if (this->theCtrlStruct->theUserStruct->speed_kill == 0)
@@ -144,7 +150,16 @@ void SpeedController::updateLowCtrl()
         if (n > -1)
         {
 
-            kp_left = (float)((uint32_t)buf[3] << 24 | (uint32_t)buf[2] << 16 | (uint32_t)buf[1] << 8 | (uint32_t)buf[0]);
+            //   kp_left = (float)((uint32_t)buf[3] << 24 | (uint32_t)buf[2] << 16 | (uint32_t)buf[1] << 8 | (uint32_t)buf[0]);
+
+            memcpy(buf1, &buf[0], 4 * sizeof(*buf));
+            memcpy(buf2, &buf[4], 4 * sizeof(*buf));
+            memcpy(buf3, &buf[8], 4 * sizeof(*buf));
+            memcpy(buf4, &buf[12], 4 * sizeof(*buf));
+            memcpy(buf5, &buf[16], 4 * sizeof(*buf));
+            memcpy(buf6, &buf[20], 4 * sizeof(*buf));
+
+            memcpy(&kp_left, buf1, sizeof(kp_left));
 
             printf("Yep data recieved requested\r\n");
             n = sendto(sock, speeds, sizeof(speeds), 0, (struct sockaddr *)&from, fromlen);
@@ -153,7 +168,7 @@ void SpeedController::updateLowCtrl()
         {
             printf("No data has been requested by the pyhton code\r\n");
         }
-        printf("The value send is %f\r\n",kp_left);
+        printf("The value send is %f\r\n", kp_left);
     }
 }
 
