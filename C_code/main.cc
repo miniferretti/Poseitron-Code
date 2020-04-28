@@ -45,7 +45,7 @@ void simple_turn(double v, double r, char p) ;
 void simple_turn(double v, double r, char p)  {
 	double entreAxe = 189 ; // mm
 	double wheelRadius = 30.15 ; // mm
-	double mmToM = e-3 ; // coefficient to pass from mm to m
+	double mmToM = 1e-3 ; // coefficient to pass from mm to m
 	double msToRads = 1/wheelRadius ;
 
 	if(p == 'm'){ // cas de m/s
