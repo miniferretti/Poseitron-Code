@@ -96,7 +96,7 @@ Time = L()
 def animate(i):
     # f = open(r"/home/pi/Poseitron-Code/Data/logFileSpeed.txt", "r").read()
     PID = [float(Ki_left),float(Kp_left),float(Kd_left),float(Ki_right),float(Kp_right),float(Kd_right)]
-    data= pack('<6f',*PID)
+    data= pack('>6f',*PID)
     sock.sendto(data, (UDP_IP, UDP_PORT))
     msg = sock.recv(40)
     data = unpack('<5d', msg)
