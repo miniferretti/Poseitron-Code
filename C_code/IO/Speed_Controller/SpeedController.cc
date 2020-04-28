@@ -166,6 +166,14 @@ void SpeedController::updateLowCtrl()
             memcpy(&ki_right, buf5, sizeof(ki_right));
             memcpy(&kd_right, buf6, sizeof(kd_right));
 
+            this->theCtrlStruct->theUserStruct->theMotLeft->kp = kp_left; //Kp;
+            this->theCtrlStruct->theUserStruct->theMotLeft->ki = ki_left; // valeur a modifier si besoins est...
+            this->theCtrlStruct->theUserStruct->theMotLeft->kd = kd_left;
+
+            this->theCtrlStruct->theUserStruct->theMotRight->kp = kp_right; //Kp;
+            this->theCtrlStruct->theUserStruct->theMotRight->ki = ki_right;  //Ki;
+            this->theCtrlStruct->theUserStruct->theMotRight->kd = kd_right;
+
             printf("Yep data recieved requested\r\n");
             n = sendto(sock, speeds, sizeof(speeds), 0, (struct sockaddr *)&from, fromlen);
         }

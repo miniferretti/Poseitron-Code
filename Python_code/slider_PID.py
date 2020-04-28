@@ -74,7 +74,18 @@ def print_values_in_file():
     Kd_right = w6.get()
 
 
+def resetPID():
+    w1.set(0.04)
+    w2.set(0.7)
+    w3.set(0.00004)
+    w4.set(0.04)
+    w5.set(0.7)
+    w6.set(0.00004)
+    print_values_in_file()
+
+
 Button(master, text='Update PID', command=print_values_in_file).pack()
+Button(master, text='Reset PID', command=resetPID).pack()
 
 
 fig, axs = plt.subplots(2, 1, figsize=(20, 20))
@@ -96,8 +107,9 @@ Time = L()
 
 def animate(i):
     # f = open(r"/home/pi/Poseitron-Code/Data/logFileSpeed.txt", "r").read()
-    PID = [float(Ki_left),float(Kp_left),float(Kd_left),float(Ki_right),float(Kp_right),float(Kd_right)]
-    data= pack('ffffff',*PID)
+    PID = [float(Ki_left), float(Kp_left), float(Kd_left),
+           float(Ki_right), float(Kp_right), float(Kd_right)]
+    data = pack('ffffff', *PID)
     print("MSG PID = {}".format(data))
     sock.sendto(data, (UDP_IP, UDP_PORT))
     msg = sock.recv(40)
