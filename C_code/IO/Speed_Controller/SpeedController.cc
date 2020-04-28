@@ -137,7 +137,7 @@ void SpeedController::updateLowCtrl()
         speeds[3] = this->theCtrlStruct->theCtrlIn->l_wheel_ref;
         speeds[4] = this->theCtrlStruct->theCtrlIn->t;
 
-        print("size of the speed array = %d\r\n",sizeof(speeds));
+        printf("size of the speed array = %d\r\n",sizeof(speeds));
 
         n = recvfrom(sock, (char *)buf, 2, MSG_DONTWAIT, (struct sockaddr *)&from, &fromlen);
         if (n > -1)

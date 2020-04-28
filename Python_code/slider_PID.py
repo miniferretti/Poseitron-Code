@@ -85,7 +85,7 @@ def animate(i):
     sock.sendto(str.encode("go"), (UDP_IP, UDP_PORT))
     msg = sock.recvfrom(40)
 
-    vr, vrref, vl, vlref, time = unpack('ccccc', msg)
+    vr, vrref, vl, vlref, time = unpack('!5d', msg)
     Vr.append(float(vr))
     VrRef.append(float(vrref))
     Vl.append(float(vl))
