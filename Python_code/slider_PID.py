@@ -1,13 +1,19 @@
-from Tkinter import *
+from tkinter import *
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 from matplotlib import style
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
+import socket
+from struct import unpack
 
 style.use('ggplot')
 
-file = open(r"/home/pi/Poseitron-Code/Data/PID.txt", "w")
-# file = open(r"/home/matteofdc/Documents/Poseitron_Data/Data/PID.txt", "w")
+#file = open(r"/home/pi/Poseitron-Code/Data/PID.txt", "w")
+file = open(r"/home/matteofdc/Documents/Poseitron_Data/Data/PID.txt", "w")
+
+UDP_IP = "192.168.1.111"
+UDP_PORT = 5005
+sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
 
 def print_values_in_file():
@@ -75,16 +81,16 @@ Time = L()
 
 
 def animate(i):
-    f = open(r"/home/pi/Poseitron-Code/Data/logFileSpeed.txt", "r").read()
-    dataArray = f.split('\n')
-    for line in dataArray:
-        if len(line) > 1:
-            vr, vrref, vl, vlref, time = line.split()
-            Vr.append(float(vr))
-            VrRef.append(float(vrref))
-            Vl.append(float(vl))
-            VlRef.append(float(vlref))
-            Time.append(float(time))
+   # f = open(r"/home/pi/Poseitron-Code/Data/logFileSpeed.txt", "r").read()
+    sock.sendto(str.encode("go"), (UDP_IP, UDP_PORT))
+    msg = sock.recvfrom(40)
+
+    vr, vrref, vl, vlref, time = unpack('ccccc', msg)
+    Vr.append(float(vr))
+    VrRef.append(float(vrref))
+    Vl.append(float(vl))
+    VlRef.append(float(vlref))
+    Time.append(float(time))
     axs[0].clear()
     axs[0].plot(Time, Vr)
     axs[0].plot(Time, VrRef)

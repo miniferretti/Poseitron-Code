@@ -116,7 +116,7 @@ void SpeedController::updateLowCtrl()
 
     unsigned char buffer[5];
     double speeds[5];
-    char buf[3];
+    char buf[2];
     int n;
 
     if (this->theCtrlStruct->theUserStruct->speed_kill == 0)
@@ -135,9 +135,11 @@ void SpeedController::updateLowCtrl()
         speeds[1] = this->theCtrlStruct->theCtrlIn->r_wheel_ref;
         speeds[2] = this->theCtrlStruct->theCtrlIn->l_wheel_speed;
         speeds[3] = this->theCtrlStruct->theCtrlIn->l_wheel_ref;
-        speeds[4] = this->theCtrlStruct->theCtrlIn->t; 
+        speeds[4] = this->theCtrlStruct->theCtrlIn->t;
 
-        n = recvfrom(sock, (char *)buf, 3, MSG_DONTWAIT, (struct sockaddr *)&from, &fromlen);
+        print("size of the speed array = %d\r\n",sizeof(speeds));
+
+        n = recvfrom(sock, (char *)buf, 2, MSG_DONTWAIT, (struct sockaddr *)&from, &fromlen);
         if (n > -1)
         {
             n = sendto(sock, speeds, sizeof(speeds), 0, (struct sockaddr *)&from, fromlen);
