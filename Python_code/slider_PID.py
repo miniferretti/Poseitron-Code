@@ -104,7 +104,7 @@ fig, axs = plt.subplots(2, 1, figsize=(30, 30))
 class L(list):
     def append(self, item):
         list.append(self, item)
-        if len(self) > 500:
+        if len(self) > 100:
             del self[0]
 
 

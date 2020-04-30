@@ -146,7 +146,7 @@ void SpeedController::updateLowCtrl()
         speeds[3] = this->theCtrlStruct->theCtrlIn->l_wheel_ref;
         speeds[4] = this->theCtrlStruct->theCtrlIn->t;
 
-        printf("size of the speed array = %d\r\n", sizeof(speeds));
+      //  printf("size of the speed array = %d\r\n", sizeof(speeds));
 
         n = recvfrom(sock, (char *)buf, 24, MSG_DONTWAIT, (struct sockaddr *)&from, &fromlen);
         if (n > -1)
@@ -192,14 +192,14 @@ void SpeedController::updateLowCtrl()
             this->theCtrlStruct->theUserStruct->theMotRight->ki = ki_right; //Ki;
             this->theCtrlStruct->theUserStruct->theMotRight->kd = kd_right;
 
-            printf("Yep data recieved requested\r\n");
+          //  printf("Yep data recieved requested\r\n");
             n = sendto(sock, speeds, sizeof(speeds), 0, (struct sockaddr *)&from, fromlen);
         }
         else
         {
-            printf("No data has been requested by the pyhton code\r\n");
+           // printf("No data has been requested by the pyhton code\r\n");
         }
-        printf("The value send is %f %f %f %f %f %f\r\n", kp_left, ki_left, kd_left, kp_right, ki_right, kd_right);
+       // printf("The value send is %f %f %f %f %f %f\r\n", kp_left, ki_left, kd_left, kp_right, ki_right, kd_right);
     }
 }
 
@@ -223,8 +223,8 @@ void SpeedController::updateSpeed(unsigned char *buffer)
     this->theCtrlStruct->theCtrlIn->l_wheel_speed = -(((double)(int16_t)((uint16_t)buffer[3] << 8 | (uint16_t)buffer[4])) * this->theCtrlStruct->theUserStruct->samplingDE0) * 2 * M_PI / (this->theCtrlStruct->theUserStruct->theMotLeft->ratio * this->theCtrlStruct->theUserStruct->tics);
     this->theCtrlStruct->theCtrlIn->r_wheel_speed = -(((double)(int16_t)((uint16_t)buffer[1] << 8 | (uint16_t)buffer[2])) * this->theCtrlStruct->theUserStruct->samplingDE0) * 2 * M_PI / (this->theCtrlStruct->theUserStruct->theMotRight->ratio * this->theCtrlStruct->theUserStruct->tics);
 
-    printf(" l_wheel_speed %f", this->theCtrlStruct->theCtrlIn->l_wheel_speed);
-    printf(" r_wheel_speed %f\r\n", -this->theCtrlStruct->theCtrlIn->r_wheel_speed);
+  //  printf(" l_wheel_speed %f", this->theCtrlStruct->theCtrlIn->l_wheel_speed);
+   // printf(" r_wheel_speed %f\r\n", -this->theCtrlStruct->theCtrlIn->r_wheel_speed);
 }
 
 void SpeedController::updateCmd()
@@ -255,7 +255,7 @@ double SpeedController::PIController(MotStruct *theMot, double V_ref, double V_w
     double dt = t - theMot->t_p;
     double u = theMot->kp * e;
 
-    // printf(" dt = %f\r\n", dt);
+     printf(" dt = %f\r\n", dt);
 
     if (!theMot->status) //The integral action is only done if there is no saturation of current.
     {
