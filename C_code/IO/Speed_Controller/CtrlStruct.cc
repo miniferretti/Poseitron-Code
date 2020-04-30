@@ -23,4 +23,5 @@ void init_ctrlStruc(CtrlStruct *ctrl)
     ctrl->pinchers_demo_states = SETUP_STATE;
     ctrl->calib_states = CALIB_1;
     ctrl->odo_calibration_states = GO_STRAIGHT;
+    ctrl->main_t_ref = 0;
 }

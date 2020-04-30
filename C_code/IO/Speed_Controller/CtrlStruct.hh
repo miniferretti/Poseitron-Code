@@ -134,6 +134,7 @@ typedef struct CtrlStruct
     int odo_calibration_states;
     double stopvalues[2];
     double t_ref;
+    double main_t_ref;
 } CtrlStruct;
 
 int size_UserStruct();
