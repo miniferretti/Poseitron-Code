@@ -79,6 +79,7 @@ int main()
 		myCtrlStruct->theCtrlIn->t = time_taken / 1000.0;
 		spdctrl->updateLowCtrl();
 		myOdometry->Odometry_update();
+		
 
 		switch (myCtrlStruct->main_states)
 		{

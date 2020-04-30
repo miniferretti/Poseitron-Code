@@ -19,7 +19,7 @@ sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
 
 master = Tk()
-master.geometry("1200x1200")
+master.geometry("1300x1300")
 master.title("Live PID tuning")
 w1 = Scale(master, from_=0, to=1, length=600, digits=4,
            resolution=0.0001, orient=HORIZONTAL, label='Kp-left')
@@ -84,11 +84,21 @@ def resetPID():
     print_values_in_file()
 
 
+def zeroPID():
+    w1.set(0)
+    w2.set(0)
+    w3.set(0)
+    w4.set(0)
+    w5.set(0)
+    w6.set(0)
+    print_values_in_file()
+
+
 Button(master, text='Update PID', command=print_values_in_file).pack()
 Button(master, text='Reset PID', command=resetPID).pack()
+Button(master, text='ZERO PID', command=zeroPID).pack()
 
-
-fig, axs = plt.subplots(2, 1, figsize=(20, 20))
+fig, axs = plt.subplots(2, 1, figsize=(30, 30))
 
 
 class L(list):
