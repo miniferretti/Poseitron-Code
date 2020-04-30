@@ -90,6 +90,7 @@ typedef struct MotStruct
     double kp; // Proportional param
     double ki; // Integral param
     double kd;
+    int ki_flag;
     double integral_error; // last integral error
     double status;         // Is or not in saturation
 

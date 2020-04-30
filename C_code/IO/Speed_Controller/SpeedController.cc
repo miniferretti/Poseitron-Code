@@ -47,6 +47,7 @@ void SpeedController::init_speed_controller(int i)
     this->theCtrlStruct->theUserStruct->theMotLeft->upperVoltageLimit = 24 * secu;
     this->theCtrlStruct->theUserStruct->theMotLeft->lowerVoltageLimit = -24 * secu;
     this->theCtrlStruct->theUserStruct->theMotLeft->compensation_factor = 1;
+    this->theCtrlStruct->theUserStruct->theMotLeft->ki_flag = 0;
 
     this->theCtrlStruct->theUserStruct->theMotRight->kp = 0.04; //Kp;
     this->theCtrlStruct->theUserStruct->theMotRight->ki = 0.7;  //Ki;
@@ -61,7 +62,8 @@ void SpeedController::init_speed_controller(int i)
     this->theCtrlStruct->theUserStruct->theMotRight->lowerCurrentLimit = -Ra * Current_max;
     this->theCtrlStruct->theUserStruct->theMotRight->upperVoltageLimit = 24 * secu;
     this->theCtrlStruct->theUserStruct->theMotRight->lowerVoltageLimit = -24 * secu;
-    this->theCtrlStruct->theUserStruct->theMotRight->compensation_factor = 0.95;
+    this->theCtrlStruct->theUserStruct->theMotRight->compensation_factor = 1;
+    this->theCtrlStruct->theUserStruct->theMotRight->ki_flag = 0;
     read_timeout.tv_sec = 0;
     read_timeout.tv_usec = 10;
     kp_left = 0;
@@ -167,11 +169,27 @@ void SpeedController::updateLowCtrl()
             memcpy(&kd_right, buf6, sizeof(kd_right));
 
             this->theCtrlStruct->theUserStruct->theMotLeft->kp = kp_left; //Kp;
+            if (float(this->theCtrlStruct->theUserStruct->theMotLeft->ki) != ki_left)
+            {
+                this->theCtrlStruct->theUserStruct->theMotLeft->ki_flag = 1;
+            }
+            else
+            {
+                this->theCtrlStruct->theUserStruct->theMotLeft->ki_flag = 0;
+            }
             this->theCtrlStruct->theUserStruct->theMotLeft->ki = ki_left; // valeur a modifier si besoins est...
             this->theCtrlStruct->theUserStruct->theMotLeft->kd = kd_left;
 
             this->theCtrlStruct->theUserStruct->theMotRight->kp = kp_right; //Kp;
-            this->theCtrlStruct->theUserStruct->theMotRight->ki = ki_right;  //Ki;
+            if (float(this->theCtrlStruct->theUserStruct->theMotRight->ki) != ki_right)
+            {
+                this->theCtrlStruct->theUserStruct->theMotRight->ki_flag = 1;
+            }
+            else
+            {
+                this->theCtrlStruct->theUserStruct->theMotRight->ki_flag = 0;
+            }
+            this->theCtrlStruct->theUserStruct->theMotRight->ki = ki_right; //Ki;
             this->theCtrlStruct->theUserStruct->theMotRight->kd = kd_right;
 
             printf("Yep data recieved requested\r\n");
@@ -242,6 +260,10 @@ double SpeedController::PIController(MotStruct *theMot, double V_ref, double V_w
     if (!theMot->status) //The integral action is only done if there is no saturation of current.
     {
         theMot->integral_error += dt * e;
+    }
+    if (theMot->ki_flag == 1)
+    {
+        theMot->integral_error = 0;
     }
     // integral action
     u += theMot->integral_error * theMot->ki;
