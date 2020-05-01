@@ -13,7 +13,7 @@
 #include <netdb.h>
 
 #define MVG_LENG 1
-#define UDP_PORT 5005 // Port number for the UDP server 
+#define UDP_PORT 5005 // Port number for the UDP server
 
 class SpeedController
 {
@@ -32,7 +32,6 @@ public:
     double Moving_Average(double speed, double *buff, int leng);
     void set_speed(double left, double right);
     void Speed_controller_stop();
-    void update_PID();
 
 private:
     CtrlStruct *theCtrlStruct;
@@ -51,8 +50,7 @@ private:
     struct sockaddr_in servaddr;
     struct sockaddr_in from;
     struct timeval read_timeout;
-    float kp_left, ki_left, kd_left, kp_right, ki_right, kd_right;
-
+    float kp_left, ki_left, kd_left, kp_right, ki_right, kd_right, correction_factor_left, correction_factor_right;
 };
 
 #endif

@@ -51,12 +51,25 @@ w6 = Scale(master, from_=0, to=0.0005, length=600, digits=5,
 w6.set(0.00004)
 w6.pack()
 
+w7 = Scale(master, from_=0, to=2, length=600, digits=4,
+           resolution=0.001, orient=HORIZONTAL, label='Left speed correction factor')
+w7.set(1)
+w7.pack()
+
+w8 = Scale(master, from_=0, to=2, length=600, digits=4,
+           resolution=0.001, orient=HORIZONTAL, label='Right speed correction factor')
+w8.set(1)
+w8.pack()
+
+
 Ki_left = w1.get()
 Kp_left = w2.get()
 Kd_left = w3.get()
 Ki_right = w4.get()
 Kp_right = w5.get()
 Kd_right = w6.get()
+Left_correction = w7.get()
+Right_correction = w8.get()
 
 
 def print_values_in_file():
@@ -72,6 +85,13 @@ def print_values_in_file():
     Kp_right = w5.get()
     global Kd_right
     Kd_right = w6.get()
+
+
+def print_correction():
+    global Left_correction
+    Left_correction = w7.get()
+    global Right_correction
+    Right_correction = w8.get()
 
 
 def resetPID():
@@ -97,6 +117,9 @@ def zeroPID():
 Button(master, text='Update PID', command=print_values_in_file).pack()
 Button(master, text='Reset PID', command=resetPID).pack()
 Button(master, text='ZERO PID', command=zeroPID).pack()
+Button(master, text='Update correction factors',
+       command=print_correction).pack()
+
 
 fig, axs = plt.subplots(2, 1, figsize=(30, 30))
 
@@ -118,8 +141,8 @@ Time = L()
 def animate(i):
     # f = open(r"/home/pi/Poseitron-Code/Data/logFileSpeed.txt", "r").read()
     PID = [float(Ki_left), float(Kp_left), float(Kd_left),
-           float(Ki_right), float(Kp_right), float(Kd_right)]
-    data = pack('ffffff', *PID)
+           float(Ki_right), float(Kp_right), float(Kd_right), float(Left_correction), float(Right_correction)]
+    data = pack('ffffffff', *PID)
     print("MSG PID = {}".format(data))
     sock.sendto(data, (UDP_IP, UDP_PORT))
     msg = sock.recv(40)
