@@ -150,7 +150,7 @@ void SpeedController::updateLowCtrl()
 
         //  printf("size of the speed array = %d\r\n", sizeof(speeds));
 
-        n = recvfrom(sock, (char *)buf, 24, MSG_DONTWAIT, (struct sockaddr *)&from, &fromlen);
+        n = recvfrom(sock, (char *)buf, 32, MSG_DONTWAIT, (struct sockaddr *)&from, &fromlen);
         if (n > -1)
         {
 
@@ -208,7 +208,7 @@ void SpeedController::updateLowCtrl()
         {
             // printf("No data has been requested by the pyhton code\r\n");
         }
-        // printf("The value send is %f %f %f %f %f %f\r\n", kp_left, ki_left, kd_left, kp_right, ki_right, kd_right);
+        printf("The value send is %f %f %f %f %f %f\r\n", kp_left, ki_left, kd_left, kp_right, ki_right, kd_right);
     }
 }
 
