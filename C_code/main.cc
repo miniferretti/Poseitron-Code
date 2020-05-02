@@ -51,9 +51,8 @@ int main()
 	spdctrl->init_speed_controller(1);
 	spdctrl->set_speed(0, 0);
 
-	
 	delay(15000); //wait for the python UDP client to turn on
-	
+
 	myOdometry->Odometry_init();
 	myCtrlStruct->main_states = WAIT_STATE;
 	double time_taken;
@@ -87,7 +86,7 @@ int main()
 
 				if (myCtrlStruct->theCtrlIn->t > 5)
 				{
-					myCtrlStruct->main_states = ODO_CALIB_STATE;
+					myCtrlStruct->main_states = SlAVE_STATE;
 					colorSensorReset();
 					reset_dynamixel();
 				}
@@ -118,6 +117,10 @@ int main()
 				//	printf("Left = %f Right = %f\r\n", myCtrlStruct->stopvalues[0], myCtrlStruct->stopvalues[1]);
 				spdctrl->set_speed(0, 0);
 				run = 0;
+				break;
+
+			case SlAVE_STATE:
+				printf("SLAVE_STATE")
 				break;
 
 			default:

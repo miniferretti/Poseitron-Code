@@ -14,6 +14,7 @@ enum
     PINCHER_DEMO_STATE,
     AVOID150_STATE,
     RUN_STATE,
+    SlAVE_STATE,
     STOP_STATE
 };
 

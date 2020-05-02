@@ -64,6 +64,8 @@ void SpeedController::init_speed_controller(int i)
     this->theCtrlStruct->theUserStruct->theMotRight->lowerVoltageLimit = -24 * secu;
     this->theCtrlStruct->theUserStruct->theMotRight->compensation_factor = 1;
     this->theCtrlStruct->theUserStruct->theMotRight->ki_flag = 0;
+    slave_speed_right = 0;
+    slave_speed_left = 0;
     read_timeout.tv_sec = 0;
     read_timeout.tv_usec = 10;
     kp_left = 0;
@@ -119,15 +121,15 @@ void SpeedController::updateLowCtrl()
 
     unsigned char buffer[5];
     double speeds[5];
-    unsigned char buf[32];
-    unsigned char buf1[4];
+    unsigned char buf[40];
+    /*   unsigned char buf1[4];
     unsigned char buf2[4];
     unsigned char buf3[4];
     unsigned char buf4[4];
     unsigned char buf5[4];
     unsigned char buf6[4];
     unsigned char buf7[4];
-    unsigned char buf8[4];
+    unsigned char buf8[4]; */
     int n;
 
     if (this->theCtrlStruct->theUserStruct->speed_kill == 0)
@@ -150,29 +152,31 @@ void SpeedController::updateLowCtrl()
 
         //  printf("size of the speed array = %d\r\n", sizeof(speeds));
 
-        n = recvfrom(sock, (char *)buf, 32, MSG_DONTWAIT, (struct sockaddr *)&from, &fromlen);
+        n = recvfrom(sock, (char *)buf, 40, MSG_DONTWAIT, (struct sockaddr *)&from, &fromlen);
         if (n > -1)
         {
 
             //   kp_left = (float)((uint32_t)buf[3] << 24 | (uint32_t)buf[2] << 16 | (uint32_t)buf[1] << 8 | (uint32_t)buf[0]);
 
-            memcpy(buf1, &buf[0], 4 * sizeof(*buf));
+            /*  memcpy(buf1, &buf[0], 4 * sizeof(*buf));
             memcpy(buf2, &buf[4], 4 * sizeof(*buf));
             memcpy(buf3, &buf[8], 4 * sizeof(*buf));
             memcpy(buf4, &buf[12], 4 * sizeof(*buf));
             memcpy(buf5, &buf[16], 4 * sizeof(*buf));
             memcpy(buf6, &buf[20], 4 * sizeof(*buf));
             memcpy(buf7, &buf[24], 4 * sizeof(*buf));
-            memcpy(buf8, &buf[28], 4 * sizeof(*buf));
+            memcpy(buf8, &buf[28], 4 * sizeof(*buf)); */
 
-            memcpy(&kp_left, buf1, sizeof(kp_left));
-            memcpy(&ki_left, buf2, sizeof(kp_left));
-            memcpy(&kd_left, buf3, sizeof(kp_left));
-            memcpy(&kp_right, buf4, sizeof(kp_right));
-            memcpy(&ki_right, buf5, sizeof(ki_right));
-            memcpy(&kd_right, buf6, sizeof(kd_right));
-            memcpy(&correction_factor_left, buf7, sizeof(correction_factor_left));
-            memcpy(&correction_factor_right, buf8, sizeof(correction_factor_right));
+            memcpy(&kp_left, &buf[0], sizeof(kp_left));
+            memcpy(&ki_left, &buf[4], sizeof(kp_left));
+            memcpy(&kd_left, &buf[8], sizeof(kp_left));
+            memcpy(&kp_right, &buf[12], sizeof(kp_right));
+            memcpy(&ki_right, &buf[16], sizeof(ki_right));
+            memcpy(&kd_right, &buf[20], sizeof(kd_right));
+            memcpy(&correction_factor_left, &buf[24], sizeof(correction_factor_left));
+            memcpy(&correction_factor_right, &buf[28], sizeof(correction_factor_right));
+            memcpy(&slave_speed_left, &buf[32], sizeof(slave_speed_left));
+            memcpy(&slave_speed_right, &buf[36], sizeof(slave_speed_right));
 
             this->theCtrlStruct->theUserStruct->theMotLeft->kp = kp_left; //Kp;
             if (float(this->theCtrlStruct->theUserStruct->theMotLeft->ki) != ki_left)
@@ -197,6 +201,11 @@ void SpeedController::updateLowCtrl()
             }
             this->theCtrlStruct->theUserStruct->theMotRight->ki = ki_right; //Ki;
             this->theCtrlStruct->theUserStruct->theMotRight->kd = kd_right;
+
+            if (this->theCtrlStruct->main_states == SlAVE_STATE)
+            {
+                set_speed(slave_speed_left, slave_speed_right);
+            }
 
             this->theCtrlStruct->theUserStruct->theMotLeft->compensation_factor = correction_factor_left;
             this->theCtrlStruct->theUserStruct->theMotRight->compensation_factor = correction_factor_right;
