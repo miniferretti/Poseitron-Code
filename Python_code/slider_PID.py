@@ -216,12 +216,16 @@ def set_slave():
         flag = 0
 
 
-Button(master, text='Update PID', command=print_values_in_file).pack()
-Button(master, text='Reset PID', command=resetPID).pack()
-Button(master, text='ZERO PID', command=zeroPID).pack()
-Button(master, text='Update correction factors',
-       command=print_correction).pack()
-Button(master, text='Do/Undo Slave mode', command=set_slave).pack()
+Button(master, text='Update PID', width=15, height=2,
+       command=print_values_in_file).place(x=0, y=0)
+Button(master, text='Reset PID', width=15,
+       height=2, command=resetPID).place(x=0, y=50)
+Button(master, text='ZERO PID', width=15,
+       height=2, command=zeroPID).place(x=0, y=100)
+Button(master, width=20, height=2, text='Update correction factors',
+       command=print_correction).place(x=0, y=150)
+Button(master, width=20, height=2, text='Do/Undo Slave mode',
+       command=set_slave).place(x=0, y=200)
 
 
 fig, axs = plt.subplots(2, 2, figsize=(30, 30))
@@ -255,13 +259,14 @@ def animate(i):
     PID = [float(Ki_left), float(Kp_left), float(Kd_left),
            float(Ki_right), float(Kp_right), float(Kd_right),
            float(Left_correction), float(Right_correction), float(speeds[0]),
-           float(speeds[1]), float(slave)]
+           float(speeds[1]), int(slave)]
     data = pack('ffffffffffi', *PID)
    # print("MSG PID = {}".format(data))
     sock.sendto(data, (UDP_IP, UDP_PORT))
     slave = 2
     msg = sock.recv(40)
     data = unpack('<5d', msg)
+    sock.close
    # print("MSG = {}".format(data))
    # print("PID = {}".format(PID))
     Vr.append(float(data[0]))

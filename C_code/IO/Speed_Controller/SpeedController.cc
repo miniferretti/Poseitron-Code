@@ -123,14 +123,6 @@ void SpeedController::updateLowCtrl()
     unsigned char buffer[5];
     double speeds[5];
     unsigned char buf[44];
-    /*   unsigned char buf1[4];
-    unsigned char buf2[4];
-    unsigned char buf3[4];
-    unsigned char buf4[4];
-    unsigned char buf5[4];
-    unsigned char buf6[4];
-    unsigned char buf7[4];
-    unsigned char buf8[4]; */
     int n;
 
     if (this->theCtrlStruct->theUserStruct->speed_kill == 0)
