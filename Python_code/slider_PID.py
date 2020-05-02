@@ -194,9 +194,13 @@ def zeroPID():
 
 
 def speed(left_x, left_y, right_x, right_y):
-    lin_speed = left_y * 50
+    zeSpeed = 150
+    lin_speed = left_y * zeSpeed
     left_speed = lin_speed * (right_x+1)/2
-    right_speed = lin_speed * (-right_x+1)/2 
+    right_speed = lin_speed * (-right_x+1)/2
+    if lin_speed == 0:
+        left_speed = zeSpeed * right_x/2
+        right_speed = zeSpeed*-right_x/2
     return [left_speed, right_speed]
 
 
@@ -205,6 +209,7 @@ Button(master, text='Reset PID', command=resetPID).pack()
 Button(master, text='ZERO PID', command=zeroPID).pack()
 Button(master, text='Update correction factors',
        command=print_correction).pack()
+# Button(master,)
 
 
 fig, axs = plt.subplots(2, 2, figsize=(30, 30))
@@ -237,31 +242,31 @@ def animate(i):
     PID = [float(Ki_left), float(Kp_left), float(Kd_left),
            float(Ki_right), float(Kp_right), float(Kd_right), float(Left_correction), float(Right_correction), float(speeds[0]), float(speeds[1])]
     data = pack('ffffffffff', *PID)
-    print("MSG PID = {}".format(data))
+   # print("MSG PID = {}".format(data))
     sock.sendto(data, (UDP_IP, UDP_PORT))
     msg = sock.recv(40)
     data = unpack('<5d', msg)
-    print("MSG = {}".format(data))
-    print("PID = {}".format(PID))
+   # print("MSG = {}".format(data))
+   # print("PID = {}".format(PID))
     Vr.append(float(data[0]))
     VrRef.append(float(data[1]))
     Vl.append(float(data[2]))
     VlRef.append(float(data[3]))
     Time.append(float(data[4]))
-    axs[0, 0].clear()
-    axs[0, 0].plot(Time, Vr)
-    axs[0, 0].plot(Time, VrRef)
-    axs[0, 0].set_title("Right Motor Speed VS reference")
     axs[0, 1].clear()
-    axs[0, 1].plot(Time, Vl)
-    axs[0, 1].plot(Time, VlRef)
-    axs[0, 1].set_title("Left Motor Speed VS reference")
+    axs[0, 1].plot(Time, Vr)
+    axs[0, 1].plot(Time, VrRef)
+    axs[0, 1].set_title("Right Motor Speed VS reference")
+    axs[0, 0].clear()
+    axs[0, 0].plot(Time, Vl)
+    axs[0, 0].plot(Time, VlRef)
+    axs[0, 0].set_title("Left Motor Speed VS reference")
     axs[1, 0].clear()
     axs[1, 0].plot([1, 1, -1, -1, ps4_left_x], [1, -1, 1, -
                                                 1, ps4_left_y], marker='o', color='r', ls='')
-    axs[1, 1].clear()
-    axs[1, 1].plot([1, 1, -1, -1, ps4_right_x], [1, -1, 1, -
-                                                 1, ps4_right_y], marker='o', color='r', ls='')
+    axs[1, 0].plot([1, 1, -1, -1, ps4_right_x], [1, -1, 1, -
+                                                 1, ps4_right_y], marker='o', color='g', ls='')
+    #axs[1, 1].clear()
 
 
 chart_type = FigureCanvasTkAgg(fig, master)
