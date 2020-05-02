@@ -196,7 +196,7 @@ def zeroPID():
 def speed(left_x, left_y, right_x, right_y):
     lin_speed = left_y * 50
     left_speed = lin_speed * (right_x+1)/2
-    right_speed = lin_speed * (-right_x+1)/2
+    right_speed = lin_speed * (-right_x+1)/2 
     return [left_speed, right_speed]
 
 
@@ -236,7 +236,7 @@ def animate(i):
     speeds = speed(ps4_left_x, ps4_left_y, ps4_right_x, ps4_right_y)
     PID = [float(Ki_left), float(Kp_left), float(Kd_left),
            float(Ki_right), float(Kp_right), float(Kd_right), float(Left_correction), float(Right_correction), float(speeds[0]), float(speeds[1])]
-    data = pack('ffffffff', *PID)
+    data = pack('ffffffffff', *PID)
     print("MSG PID = {}".format(data))
     sock.sendto(data, (UDP_IP, UDP_PORT))
     msg = sock.recv(40)

@@ -75,57 +75,54 @@ int main()
 		spdctrl->updateLowCtrl();
 		myOdometry->Odometry_update();
 
-		if (myCtrlStruct->theCtrlIn->t - myCtrlStruct->main_t_ref > 0.01)
+		myCtrlStruct->main_t_ref = myCtrlStruct->theCtrlIn->t;
+
+		switch (myCtrlStruct->main_states)
 		{
-			myCtrlStruct->main_t_ref = myCtrlStruct->theCtrlIn->t;
+		case WAIT_STATE:
+			printf("WAIT_STATE\r\n");
 
-			switch (myCtrlStruct->main_states)
+			if (myCtrlStruct->theCtrlIn->t > 5)
 			{
-			case WAIT_STATE:
-				printf("WAIT_STATE\r\n");
-
-				if (myCtrlStruct->theCtrlIn->t > 5)
-				{
-					myCtrlStruct->main_states = SlAVE_STATE;
-					colorSensorReset();
-					reset_dynamixel();
-				}
-				break;
-
-			case CALIB_STATE:
-				printf("CALIB_STATE\r\n");
-				calibration(myCtrlStruct, spdctrl, myOdometry);
-				break;
-
-			case AVOID150_STATE:
-				printf("AVOID150_STATE\r\n");
-				avoid150(myCtrlStruct, spdctrl, myOdometry);
-				break;
-
-			case PINCHER_DEMO_STATE:
-				printf("PINCHER_DEMO_STATE\r\n");
-				pincher_demo(myCtrlStruct);
-				break;
-
-			case ODO_CALIB_STATE:
-				printf("ODO_CALIB_STATE\r\n");
-				odo_calibration(myCtrlStruct, spdctrl, myOdometry);
-				break;
-
-			case STOP_STATE:
-				printf("STOP_STATE\r\n");
-				//	printf("Left = %f Right = %f\r\n", myCtrlStruct->stopvalues[0], myCtrlStruct->stopvalues[1]);
-				spdctrl->set_speed(0, 0);
-				run = 0;
-				break;
-
-			case SlAVE_STATE:
-				printf("SLAVE_STATE");
-				break;
-
-			default:
-				break;
+				myCtrlStruct->main_states = SlAVE_STATE;
+				colorSensorReset();
+				reset_dynamixel();
 			}
+			break;
+
+		case CALIB_STATE:
+			printf("CALIB_STATE\r\n");
+			calibration(myCtrlStruct, spdctrl, myOdometry);
+			break;
+
+		case AVOID150_STATE:
+			printf("AVOID150_STATE\r\n");
+			avoid150(myCtrlStruct, spdctrl, myOdometry);
+			break;
+
+		case PINCHER_DEMO_STATE:
+			printf("PINCHER_DEMO_STATE\r\n");
+			pincher_demo(myCtrlStruct);
+			break;
+
+		case ODO_CALIB_STATE:
+			printf("ODO_CALIB_STATE\r\n");
+			odo_calibration(myCtrlStruct, spdctrl, myOdometry);
+			break;
+
+		case STOP_STATE:
+			printf("STOP_STATE\r\n");
+			//	printf("Left = %f Right = %f\r\n", myCtrlStruct->stopvalues[0], myCtrlStruct->stopvalues[1]);
+			spdctrl->set_speed(0, 0);
+			run = 0;
+			break;
+
+		case SlAVE_STATE:
+			printf("SLAVE_STATE");
+			break;
+
+		default:
+			break;
 		}
 	}
 
