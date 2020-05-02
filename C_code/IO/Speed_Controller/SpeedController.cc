@@ -69,6 +69,7 @@ void SpeedController::init_speed_controller(int i)
     read_timeout.tv_sec = 0;
     read_timeout.tv_usec = 10;
     kp_left = 0;
+    slave = 0;
     fromlen = sizeof(struct sockaddr_in);
 
     for (int i = 0; i < MVG_LENG; i++)
@@ -121,7 +122,7 @@ void SpeedController::updateLowCtrl()
 
     unsigned char buffer[5];
     double speeds[5];
-    unsigned char buf[40];
+    unsigned char buf[44];
     /*   unsigned char buf1[4];
     unsigned char buf2[4];
     unsigned char buf3[4];
@@ -177,6 +178,7 @@ void SpeedController::updateLowCtrl()
             memcpy(&correction_factor_right, &buf[28], sizeof(correction_factor_right));
             memcpy(&slave_speed_left, &buf[32], sizeof(slave_speed_left));
             memcpy(&slave_speed_right, &buf[36], sizeof(slave_speed_right));
+            memcpy(&slave, &buf[40], sizeof(slave));
 
             this->theCtrlStruct->theUserStruct->theMotLeft->kp = kp_left; //Kp;
             if (float(this->theCtrlStruct->theUserStruct->theMotLeft->ki) != ki_left)
@@ -201,6 +203,19 @@ void SpeedController::updateLowCtrl()
             }
             this->theCtrlStruct->theUserStruct->theMotRight->ki = ki_right; //Ki;
             this->theCtrlStruct->theUserStruct->theMotRight->kd = kd_right;
+
+            if (slave == 1)
+            {
+                slave_previous_state = this->theCtrlStruct->main_states;
+                this->theCtrlStruct->main_states = SlAVE_STATE;
+            }
+            else if (slave == 0)
+            {
+                if (slave_previous_state != 0)
+                {
+                    this->theCtrlStruct->main_states = slave_previous_state;
+                }
+            }
 
             if (this->theCtrlStruct->main_states == SlAVE_STATE)
             {

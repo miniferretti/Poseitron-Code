@@ -15,7 +15,7 @@ import pygame
 style.use('ggplot')
 
 
-#file = open(r"/home/pi/Poseitron-Code/Data/PID.txt", "w")
+# file = open(r"/home/pi/Poseitron-Code/Data/PID.txt", "w")
 file = open(r"/home/matteofdc/Documents/Poseitron_Data/Data/PID.txt", "w")
 
 UDP_IP = "192.168.1.111"
@@ -79,6 +79,8 @@ ps4_left_y = 0
 ps4_left_x = 0
 ps4_right_y = 0
 ps4_right_x = 0
+slave = 0
+flag = 0
 
 
 class PS4Controller(object):
@@ -127,9 +129,9 @@ class PS4Controller(object):
                 # Insert your code on what you would like to happen for each event here!
                 # In the current setup, I have the state simply printing out to the screen.
 
-                os.system('clear')
-                pprint.pprint(self.button_data)
-                pprint.pprint(self.axis_data)
+               # os.system('clear')
+                # pprint.pprint(self.button_data)
+                # pprint.pprint(self.axis_data)
 
                 if 0 in self.axis_data:
                     global ps4_left_x
@@ -143,7 +145,7 @@ class PS4Controller(object):
                 if 4 in self.axis_data:
                     global ps4_right_y
                     ps4_right_y = -self.axis_data[4]
-                pprint.pprint(self.hat_data)
+                # pprint.pprint(self.hat_data)
 
 
 '''if __name__ == "__main__":'''
@@ -204,12 +206,22 @@ def speed(left_x, left_y, right_x, right_y):
     return [left_speed, right_speed]
 
 
+def set_slave():
+    global slave, flag
+    if flag == 0:
+        slave = 1
+        flag = 1
+    else:
+        slave = 0
+        flag = 0
+
+
 Button(master, text='Update PID', command=print_values_in_file).pack()
 Button(master, text='Reset PID', command=resetPID).pack()
 Button(master, text='ZERO PID', command=zeroPID).pack()
 Button(master, text='Update correction factors',
        command=print_correction).pack()
-# Button(master,)
+Button(master, text='Do/Undo Slave mode', command=set_slave).pack()
 
 
 fig, axs = plt.subplots(2, 2, figsize=(30, 30))
@@ -237,15 +249,17 @@ Time = L()
 
 def animate(i):
     # f = open(r"/home/pi/Poseitron-Code/Data/logFileSpeed.txt", "r").read()
+    global slave
     ps4.listen(True)
     speeds = speed(ps4_left_x, ps4_left_y, ps4_right_x, ps4_right_y)
     PID = [float(Ki_left), float(Kp_left), float(Kd_left),
            float(Ki_right), float(Kp_right), float(Kd_right),
            float(Left_correction), float(Right_correction), float(speeds[0]),
-           float(speeds[1])]
-    data = pack('ffffffffff', *PID)
+           float(speeds[1]), float(slave)]
+    data = pack('ffffffffffi', *PID)
    # print("MSG PID = {}".format(data))
     sock.sendto(data, (UDP_IP, UDP_PORT))
+    slave = 2
     msg = sock.recv(40)
     data = unpack('<5d', msg)
    # print("MSG = {}".format(data))
@@ -268,7 +282,7 @@ def animate(i):
                                                 1, ps4_left_y], marker='o', color='r', ls='')
     axs[1, 0].plot([1, 1, -1, -1, ps4_right_x], [1, -1, 1, -
                                                  1, ps4_right_y], marker='o', color='g', ls='')
-    #axs[1, 1].clear()
+    # axs[1, 1].clear()
 
 
 chart_type = FigureCanvasTkAgg(fig, master)

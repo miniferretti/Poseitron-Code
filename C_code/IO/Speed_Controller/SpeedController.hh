@@ -44,7 +44,7 @@ private:
     FILE *logFile;
     FILE *PIDFile;
 
-    int sock, length, n;
+    int sock, length, n, slave, slave_previous_state;
     socklen_t fromlen;
     char UDP_speed_msg[40];
     struct sockaddr_in servaddr;
