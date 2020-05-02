@@ -69,7 +69,7 @@ void SpeedController::init_speed_controller(int i)
     read_timeout.tv_sec = 0;
     read_timeout.tv_usec = 10;
     kp_left = 0;
-    slave = 0;
+    slave = 2;
     fromlen = sizeof(struct sockaddr_in);
 
     for (int i = 0; i < MVG_LENG; i++)
@@ -156,17 +156,6 @@ void SpeedController::updateLowCtrl()
         n = recvfrom(sock, (char *)buf, 44, MSG_DONTWAIT, (struct sockaddr *)&from, &fromlen);
         if (n > -1)
         {
-
-            //   kp_left = (float)((uint32_t)buf[3] << 24 | (uint32_t)buf[2] << 16 | (uint32_t)buf[1] << 8 | (uint32_t)buf[0]);
-
-            /*  memcpy(buf1, &buf[0], 4 * sizeof(*buf));
-            memcpy(buf2, &buf[4], 4 * sizeof(*buf));
-            memcpy(buf3, &buf[8], 4 * sizeof(*buf));
-            memcpy(buf4, &buf[12], 4 * sizeof(*buf));
-            memcpy(buf5, &buf[16], 4 * sizeof(*buf));
-            memcpy(buf6, &buf[20], 4 * sizeof(*buf));
-            memcpy(buf7, &buf[24], 4 * sizeof(*buf));
-            memcpy(buf8, &buf[28], 4 * sizeof(*buf)); */
 
             memcpy(&kp_left, &buf[0], sizeof(kp_left));
             memcpy(&ki_left, &buf[4], sizeof(kp_left));
