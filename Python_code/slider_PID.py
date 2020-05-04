@@ -21,7 +21,7 @@ style.use('ggplot')
 UDP_IP = "192.168.1.111"
 UDP_PORT = 5005
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-#sock.settimeout(0.0)
+# sock.settimeout(0.0)
 
 
 master = Tk()
@@ -236,7 +236,6 @@ axs[1, 0].set_ylim([-1, 1])
 
 
 
-
 class L(list):
     def append(self, item):
         list.append(self, item)
@@ -286,7 +285,7 @@ def animate(i):
                                                 1, ps4_left_y], marker='o', color='r', ls='')
     axs[1, 0].plot([1, 1, -1, -1, ps4_right_x], [1, -1, 1, -
                                                  1, ps4_right_y], marker='o', color='g', ls='')
-    axs[1,1].plot(float(data[5]),float(data[6]))
+    axs[1, 1].plot([5,5,0,0,float(data[5])], [5,0,0,5,float(data[6])],marker='o',color='r',ls='')
     # axs[1, 1].clear()
 
 
