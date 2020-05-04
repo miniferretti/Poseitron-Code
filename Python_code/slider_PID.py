@@ -285,7 +285,7 @@ def animate(i):
                                                 1, ps4_left_y], marker='o', color='r', ls='')
     axs[1, 0].plot([1, 1, -1, -1, ps4_right_x], [1, -1, 1, -
                                                  1, ps4_right_y], marker='o', color='g', ls='')
-    axs[1, 1].plot([5,5,0,0,float(data[5])], [5,0,0,5,float(data[6])],marker='o',color='r',ls='')
+    axs[1, 1].plot([5,5,-5,-5,float(data[5])], [5,-5,-5,5,float(data[6])],marker='o',color='r',ls='')
     # axs[1, 1].clear()
 
 

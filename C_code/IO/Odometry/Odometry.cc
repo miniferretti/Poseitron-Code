@@ -8,7 +8,7 @@ Odometry::Odometry(CtrlStruct *theCtrlStruct)
 void Odometry::Odometry_init()
 {
     unsigned char buffer[5];
-    this->theCtrlStruct->robot->odo_radius = 45.0 / 2000.0; //radius of the wheel in meters
+    this->theCtrlStruct->robot->odo_radius = 1.5833*45.0 / 2000.0; //radius of the wheel in meters
     this->theCtrlStruct->theCtrlIn->l_odo_dist_prev = 0.0;
     this->theCtrlStruct->theCtrlIn->r_odo_dist_prev = 0.0;
     this->theCtrlStruct->rob_pos->x = 0.0;
