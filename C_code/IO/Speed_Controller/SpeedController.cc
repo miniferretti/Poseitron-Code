@@ -122,7 +122,7 @@ void SpeedController::updateLowCtrl()
 {
 
     unsigned char buffer[5];
-    double speeds[5];
+    double speeds[7];
     unsigned char buf[44];
     int n;
 
@@ -143,6 +143,8 @@ void SpeedController::updateLowCtrl()
         speeds[2] = this->theCtrlStruct->theCtrlIn->l_wheel_speed;
         speeds[3] = this->theCtrlStruct->theCtrlIn->l_wheel_ref;
         speeds[4] = this->theCtrlStruct->theCtrlIn->t;
+        speeds[5] = this->theCtrlStruct->rob_pos->x;
+        speeds[6] = this->theCtrlStruct->rob_pos->y;
 
         //  printf("size of the speed array = %d\r\n", sizeof(speeds));
 

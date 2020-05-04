@@ -16,11 +16,12 @@ style.use('ggplot')
 
 
 # file = open(r"/home/pi/Poseitron-Code/Data/PID.txt", "w")
-file = open(r"/home/matteofdc/Documents/Poseitron_Data/Data/PID.txt", "w")
+#file = open(r"/home/matteofdc/Documents/Poseitron_Data/Data/PID.txt", "w")
 
 UDP_IP = "192.168.1.111"
 UDP_PORT = 5005
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+#sock.settimeout(0.0)
 
 
 master = Tk()
@@ -58,7 +59,7 @@ w6.pack()
 
 w7 = Scale(master, from_=0, to=2, length=600, digits=4,
            resolution=0.001, orient=HORIZONTAL, label='Left speed correction factor')
-w7.set(1)
+w7.set(1.025)
 w7.pack()
 
 w8 = Scale(master, from_=0, to=2, length=600, digits=4,
@@ -233,8 +234,7 @@ fig, axs = plt.subplots(2, 2, figsize=(30, 30))
 axs[1, 0].set_xlim([-1, 1])
 axs[1, 0].set_ylim([-1, 1])
 
-axs[1, 1].set_xlim([-1, 1])
-axs[1, 1].set_ylim([-1, 1])
+
 
 
 class L(list):
@@ -264,9 +264,8 @@ def animate(i):
    # print("MSG PID = {}".format(data))
     sock.sendto(data, (UDP_IP, UDP_PORT))
     slave = 2
-    msg = sock.recv(40)
-    data = unpack('<5d', msg)
-    sock.close
+    msg = sock.recv(56)
+    data = unpack('<7d', msg)
    # print("MSG = {}".format(data))
    # print("PID = {}".format(PID))
     Vr.append(float(data[0]))
@@ -287,6 +286,7 @@ def animate(i):
                                                 1, ps4_left_y], marker='o', color='r', ls='')
     axs[1, 0].plot([1, 1, -1, -1, ps4_right_x], [1, -1, 1, -
                                                  1, ps4_right_y], marker='o', color='g', ls='')
+    axs[1,1].plot(float(data[5]),float(data[6]))
     # axs[1, 1].clear()
 
 
