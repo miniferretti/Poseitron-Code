@@ -196,7 +196,7 @@ def zeroPID():
 
 
 def speed(left_x, left_y, right_x, right_y):
-    zeSpeed = 150
+    zeSpeed = 300
     lin_speed = left_y * zeSpeed
     left_speed = lin_speed * (right_x+1)/2
     right_speed = lin_speed * (-right_x+1)/2
