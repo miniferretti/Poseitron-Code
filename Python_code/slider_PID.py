@@ -80,7 +80,7 @@ ps4_left_x = 0
 ps4_right_y = 0
 ps4_right_x = 0
 slave = 0
-flag = 0
+flag = 1
 
 
 class PS4Controller(object):

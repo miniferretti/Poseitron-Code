@@ -64,6 +64,7 @@ void SpeedController::init_speed_controller(int i)
     this->theCtrlStruct->theUserStruct->theMotRight->lowerVoltageLimit = -24 * secu;
     this->theCtrlStruct->theUserStruct->theMotRight->compensation_factor = 1;
     this->theCtrlStruct->theUserStruct->theMotRight->ki_flag = 0;
+    slave_previous_state = WAIT_STATE;
     slave_speed_right = 0;
     slave_speed_left = 0;
     read_timeout.tv_sec = 0;
