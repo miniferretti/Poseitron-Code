@@ -1,4 +1,5 @@
 #define CAN_MOT 0x508
+#define CAN_SCAN0 0x709
 #include <sstream>
 #include <string>
 #include <iostream>

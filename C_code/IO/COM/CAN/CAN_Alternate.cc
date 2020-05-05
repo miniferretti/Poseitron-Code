@@ -46,6 +46,12 @@ void CAN0pushPropDC(int dcG, int dcD)
   printf("\r\n");
 }
 
+
+void CAN0scanRadar(){
+  system(("cansend can0 " + int_to_hex_string(CAN_SCAN0)+"#000000").c_str());
+  system("candump can0");
+}
+
 string int_to_hex(int a)
 {
   string str = "";
