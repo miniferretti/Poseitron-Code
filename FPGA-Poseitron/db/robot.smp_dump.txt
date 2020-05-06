@@ -1,0 +1,48 @@
+
+State Machine - |robot|UART_Dynamixel:myDyna|UART_Dynamixel_RXD:rxd|state
+Name state.S3 state.S2 state.S1 state.S0 
+state.S0 0 0 0 0 
+state.S1 0 0 1 1 
+state.S2 0 1 0 1 
+state.S3 1 0 0 1 
+
+State Machine - |robot|UART_Dynamixel:myDyna|UART_Dynamixel_TXD:txd|state
+Name state.S5 state.S4 state.S3 state.S2 state.S1 state.S0 
+state.S0 0 0 0 0 0 0 
+state.S1 0 0 0 0 1 1 
+state.S2 0 0 0 1 0 1 
+state.S3 0 0 1 0 0 1 
+state.S4 0 1 0 0 0 1 
+state.S5 1 0 0 0 0 1 
+
+State Machine - |robot|pmod_color_sensor:daColorSensor|state
+Name state.ports_control state.ports_to_output state.change_sensor state.output_result state.read_data state.pause state.set_pon_aen state.set_atime state.set_gain state.start 
+state.start 0 0 0 0 0 0 0 0 0 0 
+state.set_gain 0 0 0 0 0 0 0 0 1 1 
+state.set_atime 0 0 0 0 0 0 0 1 0 1 
+state.set_pon_aen 0 0 0 0 0 0 1 0 0 1 
+state.pause 0 0 0 0 0 1 0 0 0 1 
+state.read_data 0 0 0 0 1 0 0 0 0 1 
+state.output_result 0 0 0 1 0 0 0 0 0 1 
+state.change_sensor 0 0 1 0 0 0 0 0 0 1 
+state.ports_to_output 0 1 0 0 0 0 0 0 0 1 
+state.ports_control 1 0 0 0 0 0 0 0 0 1 
+
+State Machine - |robot|pmod_color_sensor:daColorSensor|i2c_master:i2c_master_0|state
+Name state.stop state.mstr_ack state.slv_ack2 state.rd state.wr state.slv_ack1 state.command state.start state.ready 
+state.ready 0 0 0 0 0 0 0 0 0 
+state.start 0 0 0 0 0 0 0 1 1 
+state.command 0 0 0 0 0 0 1 0 1 
+state.slv_ack1 0 0 0 0 0 1 0 0 1 
+state.wr 0 0 0 0 1 0 0 0 1 
+state.rd 0 0 0 1 0 0 0 0 1 
+state.slv_ack2 0 0 1 0 0 0 0 0 1 
+state.mstr_ack 0 1 0 0 0 0 0 0 1 
+state.stop 1 0 0 0 0 0 0 0 1 
+
+State Machine - |robot|spi_slave_mu:spi_slave_instance|state
+Name state.S3 state.S2 state.S1 state.S0 
+state.S0 0 0 0 0 
+state.S1 0 0 1 1 
+state.S2 0 1 0 1 
+state.S3 1 0 0 1 

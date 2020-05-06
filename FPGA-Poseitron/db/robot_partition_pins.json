@@ -1,0 +1,121 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "LED[0]",
+					"strict" : false
+				},
+				{
+					"name" : "LED[1]",
+					"strict" : false
+				},
+				{
+					"name" : "LED[2]",
+					"strict" : false
+				},
+				{
+					"name" : "LED[3]",
+					"strict" : false
+				},
+				{
+					"name" : "LED[4]",
+					"strict" : false
+				},
+				{
+					"name" : "LED[5]",
+					"strict" : false
+				},
+				{
+					"name" : "LED[6]",
+					"strict" : false
+				},
+				{
+					"name" : "LED[7]",
+					"strict" : false
+				},
+				{
+					"name" : "PI[5]",
+					"strict" : false
+				},
+				{
+					"name" : "PI[7]",
+					"strict" : false
+				},
+				{
+					"name" : "PI[9]",
+					"strict" : false
+				},
+				{
+					"name" : "PI[11]",
+					"strict" : false
+				},
+				{
+					"name" : "PI[13]",
+					"strict" : false
+				},
+				{
+					"name" : "PI[15]",
+					"strict" : false
+				},
+				{
+					"name" : "BRIDGE[2]",
+					"strict" : false
+				},
+				{
+					"name" : "BRIDGE[4]",
+					"strict" : false
+				},
+				{
+					"name" : "BRIDGE[9]",
+					"strict" : false
+				},
+				{
+					"name" : "BRIDGE[10]",
+					"strict" : false
+				},
+				{
+					"name" : "BRIDGE[11]",
+					"strict" : false
+				},
+				{
+					"name" : "BRIDGE[12]",
+					"strict" : false
+				},
+				{
+					"name" : "BRIDGE[13]",
+					"strict" : false
+				},
+				{
+					"name" : "BRIDGE[14]",
+					"strict" : false
+				},
+				{
+					"name" : "BRIDGE[15]",
+					"strict" : false
+				},
+				{
+					"name" : "BRIDGE[31]",
+					"strict" : false
+				},
+				{
+					"name" : "BRIDGE[33]",
+					"strict" : false
+				},
+				{
+					"name" : "CLOCK_50",
+					"strict" : false
+				},
+				{
+					"name" : "BRIDGE_IN[0]",
+					"strict" : false
+				},
+				{
+					"name" : "BRIDGE_IN[1]",
+					"strict" : false
+				}
+			]
+		}
+	]
+}

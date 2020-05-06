@@ -1,0 +1,19 @@
+module i2c_pass_thru
+(
+  inout SDA_m,
+  input SCL_m,
+
+  inout SDA_d,
+  output SCL_d):
+
+  wire sda_mi, sda_mo;
+  wire sda_di, sda_do;
+
+  assign sda_mi = SDA_m;
+  assign sda_mo = (~sda_di) ? 1'b0 : 1'bz;
+  assign SCL_d = SCL_m;
+
+  assign sda_di = SDA_d;
+  assign sda_do = (~sda_mi) ? 1'b0 : 1'bz;
+
+endmodule

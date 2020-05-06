@@ -1,5 +1,5 @@
-#ifndef _CAN_HH_
-#define _CAN_HH_
+#ifndef CAN_HH
+#define CAN_HH
 
 #include <stdint.h>
 #include "../SPI/Specific/SPI_CAN.hh"

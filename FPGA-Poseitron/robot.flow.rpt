@@ -1,0 +1,124 @@
+Flow report for robot
+Sat Apr 25 21:51:26 2020
+Quartus Prime Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Flow Summary
+  3. Flow Settings
+  4. Flow Non-Default Global Settings
+  5. Flow Elapsed Time
+  6. Flow OS Summary
+  7. Flow Log
+  8. Flow Messages
+  9. Flow Suppressed Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2019  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++----------------------------------------------------------------------------------+
+; Flow Summary                                                                     ;
++------------------------------------+---------------------------------------------+
+; Flow Status                        ; Successful - Sat Apr 25 21:51:23 2020       ;
+; Quartus Prime Version              ; 19.1.0 Build 670 09/22/2019 SJ Lite Edition ;
+; Revision Name                      ; robot                                       ;
+; Top-level Entity Name              ; robot                                       ;
+; Family                             ; Cyclone IV E                                ;
+; Device                             ; EP4CE22F17C6                                ;
+; Timing Models                      ; Final                                       ;
+; Total logic elements               ; 1,398 / 22,320 ( 6 % )                      ;
+;     Total combinational functions  ; 964 / 22,320 ( 4 % )                        ;
+;     Dedicated logic registers      ; 1,096 / 22,320 ( 5 % )                      ;
+; Total registers                    ; 1096                                        ;
+; Total pins                         ; 83 / 154 ( 54 % )                           ;
+; Total virtual pins                 ; 0                                           ;
+; Total memory bits                  ; 0 / 608,256 ( 0 % )                         ;
+; Embedded Multiplier 9-bit elements ; 0 / 132 ( 0 % )                             ;
+; Total PLLs                         ; 1 / 4 ( 25 % )                              ;
++------------------------------------+---------------------------------------------+
+
+
++-----------------------------------------+
+; Flow Settings                           ;
++-------------------+---------------------+
+; Option            ; Setting             ;
++-------------------+---------------------+
+; Start date & time ; 04/25/2020 21:50:58 ;
+; Main task         ; Compilation         ;
+; Revision Name     ; robot               ;
++-------------------+---------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------+
+; Flow Non-Default Global Settings                                                                                        ;
++-------------------------------------+----------------------------------------+---------------+-------------+------------+
+; Assignment Name                     ; Value                                  ; Default Value ; Entity Name ; Section Id ;
++-------------------------------------+----------------------------------------+---------------+-------------+------------+
+; COMPILER_SIGNATURE_ID               ; 268883479376284.158784425846594        ; --            ; --          ; --         ;
+; MAX_CORE_JUNCTION_TEMP              ; 85                                     ; --            ; --          ; --         ;
+; MIN_CORE_JUNCTION_TEMP              ; 0                                      ; --            ; --          ; --         ;
+; PARTITION_COLOR                     ; -- (Not supported for targeted family) ; --            ; --          ; Top        ;
+; PARTITION_FITTER_PRESERVATION_LEVEL ; -- (Not supported for targeted family) ; --            ; --          ; Top        ;
+; PARTITION_NETLIST_TYPE              ; -- (Not supported for targeted family) ; --            ; --          ; Top        ;
+; POWER_BOARD_THERMAL_MODEL           ; None (CONSERVATIVE)                    ; --            ; --          ; --         ;
+; POWER_PRESET_COOLING_SOLUTION       ; 23 MM HEAT SINK WITH 200 LFPM AIRFLOW  ; --            ; --          ; --         ;
++-------------------------------------+----------------------------------------+---------------+-------------+------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------+
+; Flow Elapsed Time                                                                                                        ;
++----------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
++----------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Analysis & Synthesis ; 00:00:10     ; 1.0                     ; 1041 MB             ; 00:00:26                           ;
+; Fitter               ; 00:00:12     ; 1.3                     ; 2530 MB             ; 00:00:23                           ;
+; Assembler            ; 00:00:01     ; 1.0                     ; 811 MB              ; 00:00:01                           ;
+; Timing Analyzer      ; 00:00:03     ; 1.3                     ; 1010 MB             ; 00:00:02                           ;
+; Total                ; 00:00:26     ; --                      ; --                  ; 00:00:52                           ;
++----------------------+--------------+-------------------------+---------------------+------------------------------------+
+
+
++------------------------------------------------------------------------------------------+
+; Flow OS Summary                                                                          ;
++----------------------+------------------+---------------+---------------+----------------+
+; Module Name          ; Machine Hostname ; OS Name       ; OS Version    ; Processor type ;
++----------------------+------------------+---------------+---------------+----------------+
+; Analysis & Synthesis ; matteo-ms7a37    ; Manjaro Linux ; Manjaro Linux ; x86_64         ;
+; Fitter               ; matteo-ms7a37    ; Manjaro Linux ; Manjaro Linux ; x86_64         ;
+; Assembler            ; matteo-ms7a37    ; Manjaro Linux ; Manjaro Linux ; x86_64         ;
+; Timing Analyzer      ; matteo-ms7a37    ; Manjaro Linux ; Manjaro Linux ; x86_64         ;
++----------------------+------------------+---------------+---------------+----------------+
+
+
+------------
+; Flow Log ;
+------------
+quartus_map --read_settings_files=on --write_settings_files=off robot -c robot
+quartus_fit --read_settings_files=off --write_settings_files=off robot -c robot
+quartus_asm --read_settings_files=off --write_settings_files=off robot -c robot
+quartus_sta robot -c robot
+
+
+

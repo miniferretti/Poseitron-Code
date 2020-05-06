@@ -3,7 +3,12 @@
         {
             "name": "Win32",
             "includePath": [
-                "${workspaceFolder}/**"
+                "C:\\Users\\ferre\\Documents\\Arduino\\libraries\\HCSR04_ultrasonic_sensor-2.0.2\\src",
+                "C:\\Users\\ferre\\AppData\\Local\\Arduino15\\packages\\arduino\\tools\\**",
+                "C:\\Users\\ferre\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.6.23\\**",
+                "${workspaceFolder}/**",
+                "C:\\Program Files (x86)\\Arduino\\hardware\\arduino\\avr\\**",
+                "C:\\Program Files (x86)\\Arduino\\tools\\**"
             ],
             "defines": [
                 "_DEBUG",
@@ -14,7 +19,11 @@
             "compilerPath": "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.23.28105/bin/Hostx64/x64/cl.exe",
             "cStandard": "c11",
             "cppStandard": "c++17",
-            "intelliSenseMode": "msvc-x64"
+            "intelliSenseMode": "msvc-x64",
+            "forcedInclude": [
+                "C:\\Users\\ferre\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.6.23\\cores\\arduino\\Arduino.h",
+                "C:\\Program Files (x86)\\Arduino\\hardware\\arduino\\avr\\cores\\arduino\\Arduino.h"
+            ]
         }
     ],
     "version": 4

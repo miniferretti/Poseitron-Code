@@ -1,13 +1,17 @@
-#ifndef _TCS34725_H_
-#define _TCS34725_H_
+#ifndef TCS34725_HH
+#define TCS34725_HH
 
-#include <wiringPiI2C.h>
-#include <wiringPi.h>
+//#include <wiringPiI2C.h>
+//#include <wiringPi.h>
+//#include <wiringPiSPI.h>
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
 #include <unistd.h>
 #include <cmath>
+#include <wiringPiSPI.h>
+#include "IO/COM/I2C_BitBang/src/i2cBitBangingBus.hh"
 
 #define TCS34725_ADDRESS (0x29)  
 #define TCA9548A_ADDRESS (0x70)       /**< I2C address **/
@@ -144,6 +148,7 @@ private:
     bool _tcs34725Initialised;
     tcs34725Gain_t _tcs34725Gain;
     tcs34725IntegrationTime_t _tcs34725IntegrationTime;
+    i2cBitBangingBus *myI2CBus;
 };
 
 #endif
