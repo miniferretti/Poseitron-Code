@@ -5,17 +5,32 @@ void pincher_demo(CtrlStruct *cvs)
 
     float r, g, b, c; // 0 = red-dominant 1 = green-dominant 2 = blue-dominant
     uint16_t color_temp;
+    RobotPinchers *pinch = cvs->pinchers;
 
     switch (cvs->pinchers_demo_states)
     {
     case SETUP_STATE:
         Dyn_set_position_and_speed(0x08, 0, 10);
+        pinch->pinch_flag = 0;
 
         if (Dyn_get_position(0x08) == 0)
         {
             if (Dyn_set_torque(0x08, 100)) //Set a maximum torque for grabing the component
             {
-                cvs->pinchers_demo_states = GRAB_STATE;
+                if (pinch->number_of_pinch == 100)
+                {
+                    cvs->main_states = STOP_STATE;
+                    cvs->pinchers_demo_states = SETUP_STATE;
+                    pinch->pinch_flag = 0;
+                    pinch->number_of_pinch = 0;
+                    pinch->number_of_succes = 0;
+                    fclose(pinch->RGBLog);
+                }
+                else
+                {
+                    cvs->pinchers_demo_states = PAUSE_STATE2;
+                    cvs->t_ref = cvs->theCtrlIn->t;
+                }
             }
         }
 
@@ -27,6 +42,10 @@ void pincher_demo(CtrlStruct *cvs)
         if (getColor(r, g, b) == 1)
         {
             printf("The cup is GREEN\r\n");
+            if (pinch->pinch_flag == 0)
+            {
+                pinch->number_of_succes++;
+            }
         }
         else if (getColor(r, g, b) == 0)
         {
@@ -37,13 +56,22 @@ void pincher_demo(CtrlStruct *cvs)
             printf("The cup is BLUE\r\n");
         }
 
+        if (pinch->pinch_flag == 0)
+        {
+            pinch->number_of_pinch++;
+            fprintf(pinch->RGBLog, "%f %f %f %d %d\r\n", r, g, b, pinch->number_of_pinch, pinch->number_of_succes);
+        }
+        pinch->pinch_flag = 1;
+
+        printf("Number of pinch: %d Number of succes: %d\r\n", pinch->number_of_pinch, pinch->number_of_succes);
+
         cvs->pinchers_demo_states = PAUSE_STATE;
         break;
 
     case GRAB_STATE:
         // printf("the color temperature is: %d \r\n", color_temp);
 
-        if (Dyn_set_position_and_speed(0x08, 200, 10))
+        if (Dyn_set_position_and_speed(0x08, 300, 10))
         {
             cvs->pinchers_demo_states = LOAD_STATE;
         }
@@ -51,7 +79,7 @@ void pincher_demo(CtrlStruct *cvs)
 
     case PAUSE_STATE:
 
-        if ((cvs->theCtrlIn->t - cvs->t_ref) > 20)
+        if ((cvs->theCtrlIn->t - cvs->t_ref) > 10)
         {
             cvs->pinchers_demo_states = SETUP_STATE;
         }
@@ -69,6 +97,13 @@ void pincher_demo(CtrlStruct *cvs)
         {
             cvs->pinchers_demo_states = SENS_STATE;
             cvs->t_ref = cvs->theCtrlIn->t;
+        }
+        break;
+
+    case PAUSE_STATE2:
+        if ((cvs->theCtrlIn->t - cvs->t_ref) > 3)
+        {
+            cvs->pinchers_demo_states = GRAB_STATE;
         }
         break;
 

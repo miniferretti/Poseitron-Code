@@ -118,7 +118,7 @@ int main()
 			break;
 
 		case SlAVE_STATE:
-			printf("SLAVE_STATE");
+			printf("SLAVE_STATE\r\n");
 			break;
 
 		default:
