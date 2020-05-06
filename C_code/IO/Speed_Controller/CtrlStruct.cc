@@ -19,7 +19,7 @@ void init_ctrlStruc(CtrlStruct *ctrl)
     ctrl->rob_pos = new RobotPosition;
     ctrl->robot = new RobotParameters;
     ctrl->pinchers = new RobotPinchers;
-    ctrl->pinchers->number_of_succes =0;
+    ctrl->pinchers->number_of_succes = 0;
     ctrl->pinchers->number_of_pinch = 0;
     ctrl->pinchers->pinch_flag = 0;
     ctrl->avoid150_states = AVOID150_STATE1;
