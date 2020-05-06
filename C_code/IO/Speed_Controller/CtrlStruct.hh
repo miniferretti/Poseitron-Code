@@ -80,6 +80,7 @@ typedef struct RobotPinchers
     int number_of_succes;
     int number_of_pinch;
     int pinch_flag;
+    FILE *RGBLog;
 
 } RobotPinchers;
 

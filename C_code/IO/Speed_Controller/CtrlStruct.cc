@@ -27,4 +27,5 @@ void init_ctrlStruc(CtrlStruct *ctrl)
     ctrl->calib_states = CALIB_1;
     ctrl->odo_calibration_states = GO_STRAIGHT;
     ctrl->main_t_ref = 0;
+    ctrl->pinchers->RGBLog = fopen("/home/pi/Poseitron-Code/Data/RGBLog.txt", "w");
 }

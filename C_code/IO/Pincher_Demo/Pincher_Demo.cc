@@ -17,8 +17,20 @@ void pincher_demo(CtrlStruct *cvs)
         {
             if (Dyn_set_torque(0x08, 100)) //Set a maximum torque for grabing the component
             {
-                cvs->pinchers_demo_states = PAUSE_STATE2;
-                cvs->t_ref = cvs->theCtrlIn->t;
+                if (pinch->number_of_pinch == 100)
+                {
+                    cvs->main_states = STOP_STATE;
+                    cvs->pinchers_demo_states = SETUP_STATE;
+                    pinch->pinch_flag = 0;
+                    pinch->number_of_pinch = 0;
+                    pinch->number_of_succes = 0;
+                    fclose(pinch->RGBLog);
+                }
+                else
+                {
+                    cvs->pinchers_demo_states = PAUSE_STATE2;
+                    cvs->t_ref = cvs->theCtrlIn->t;
+                }
             }
         }
 
@@ -47,6 +59,7 @@ void pincher_demo(CtrlStruct *cvs)
         if (pinch->pinch_flag == 0)
         {
             pinch->number_of_pinch++;
+            fprintf(pinch->RGBLog, "%f %f %f %d %d\r\n", r, g, b, pinch->number_of_pinch, pinch->number_of_succes);
         }
         pinch->pinch_flag = 1;
 
