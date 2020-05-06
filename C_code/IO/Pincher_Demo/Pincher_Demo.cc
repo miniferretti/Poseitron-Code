@@ -5,11 +5,13 @@ void pincher_demo(CtrlStruct *cvs)
 
     float r, g, b, c; // 0 = red-dominant 1 = green-dominant 2 = blue-dominant
     uint16_t color_temp;
+    RobotPinchers *pinch = cvs->pinchers;
 
     switch (cvs->pinchers_demo_states)
     {
     case SETUP_STATE:
         Dyn_set_position_and_speed(0x08, 0, 10);
+        pinch->pinch_flag = 0;
 
         if (Dyn_get_position(0x08) == 0)
         {
@@ -28,6 +30,10 @@ void pincher_demo(CtrlStruct *cvs)
         if (getColor(r, g, b) == 1)
         {
             printf("The cup is GREEN\r\n");
+            if (pinch->pinch_flag == 0)
+            {
+                pinch->number_of_succes++;
+            }
         }
         else if (getColor(r, g, b) == 0)
         {
@@ -37,6 +43,14 @@ void pincher_demo(CtrlStruct *cvs)
         {
             printf("The cup is BLUE\r\n");
         }
+
+        if (pinch->pinch_flag == 0)
+        {
+            pinch->number_of_pinch++;
+        }
+        pinch->pinch_flag = 1;
+
+        printf("Number of pinch: %d Number of succes: %d\r\n", pinch->number_of_pinch, pinch->number_of_succes);
 
         cvs->pinchers_demo_states = PAUSE_STATE;
         break;

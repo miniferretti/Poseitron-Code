@@ -77,6 +77,9 @@ typedef struct RobotPinchers
 {
     bool stateL[3]; //true = open, false = closed
     bool stateR[3]; //true = open, false = closed
+    int number_of_succes;
+    int number_of_pinch;
+    int pinch_flag;
 
 } RobotPinchers;
 
