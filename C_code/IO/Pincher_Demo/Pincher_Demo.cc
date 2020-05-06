@@ -15,7 +15,7 @@ void pincher_demo(CtrlStruct *cvs)
         {
             if (Dyn_set_torque(0x08, 100)) //Set a maximum torque for grabing the component
             {
-                cvs->pinchers_demo_states = SETUP_STATE;//GRAB_STATE;
+                cvs->pinchers_demo_states = GRAB_STATE;
             }
         }
 
