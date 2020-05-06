@@ -11,6 +11,8 @@
 #include "IO/Dynamixel/DynamixelFunctions.h"
 #include <iostream>
 #include <sstream>
+#include <initializer_list>
+#include <algorithm>
 
 enum
 {
@@ -23,5 +25,6 @@ enum
 };
 
 void pincher_demo(CtrlStruct *cvs);
+int getColor(float r,float g, float b);
 
 #endif

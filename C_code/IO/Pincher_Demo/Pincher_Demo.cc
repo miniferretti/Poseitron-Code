@@ -3,7 +3,7 @@
 void pincher_demo(CtrlStruct *cvs)
 {
 
-    uint16_t r, g, b, c; // 0 = red-dominant 1 = green-dominant 2 = blue-dominant
+    float r, g, b, c; // 0 = red-dominant 1 = green-dominant 2 = blue-dominant
     uint16_t color_temp;
 
     switch (cvs->pinchers_demo_states)
@@ -13,28 +13,35 @@ void pincher_demo(CtrlStruct *cvs)
 
         if (Dyn_get_position(0x08) == 0)
         {
-            cvs->pinchers_demo_states = SENS_STATE;
+            if (Dyn_set_torque(0x08, 100)) //Set a maximum torque for grabing the component
+            {
+                cvs->pinchers_demo_states = SETUP_STATE;//GRAB_STATE;
+            }
         }
 
         break;
 
     case SENS_STATE:
         sensorSelect(1);
-        getRawData(&r, &g, &b, &c);
-        color_temp = calculateColorTemperature(r, g, b);
-        printf("the color temperature is: %d \r\n", color_temp);
-
-        if (5000 < color_temp && color_temp < 8000) //Color detected is green
+        getRGB(&r, &g, &b);
+        if (getColor(r, g, b) == 1)
         {
-            if (Dyn_set_torque(0x08, 100)) //Set a maximum torque for grabing the component
-            {
-                cvs->pinchers_demo_states = GRAB_STATE;
-            }
+            printf("The cup is GREEN")
         }
+        else if (getColor(r, g, b) == 0)
+        {
+            printf("The cup is not RED");
+        }
+        else
+        {
+            printf("The cup is not BLUE");
+        }
+
+        cvs->pinchers_demo_states = PAUSE_STATE;
         break;
 
     case GRAB_STATE:
-        printf("the color temperature is: %d \r\n", color_temp);
+        // printf("the color temperature is: %d \r\n", color_temp);
 
         if (Dyn_set_position_and_speed(0x08, 200, 10))
         {
@@ -48,6 +55,10 @@ void pincher_demo(CtrlStruct *cvs)
         {
             cvs->pinchers_demo_states = SETUP_STATE;
         }
+        else
+        {
+            cvs->pinchers_demo_states = SENS_STATE;
+        }
 
         break;
 
@@ -56,7 +67,7 @@ void pincher_demo(CtrlStruct *cvs)
         printf("The load is : %d\r\n", Dyn_get_load(0x08));
         if (Dyn_get_load(0x08) > 1100)
         {
-            cvs->pinchers_demo_states = PAUSE_STATE;
+            cvs->pinchers_demo_states = SENS_STATE;
             cvs->t_ref = cvs->theCtrlIn->t;
         }
         break;
@@ -64,4 +75,16 @@ void pincher_demo(CtrlStruct *cvs)
     default:
         break;
     }
+}
+
+int getColor(float r, float g, float b)
+{
+
+    float result = std::max({r, g, b});
+    if (result == r)
+        return 0;
+    if (result == g)
+        return 1;
+    else
+        return 2;
 }
