@@ -17,6 +17,7 @@ enum
     CALIB_4
 };
 
-void calibration(CtrlStruct *cvs, SpeedController *spc, Odometry *odo);
+void calibration(CtrlStruct *ctrl, SpeedController *spc, Odometry *odo);
+int go_straight(CtrlStruct *ctrl, double speed, double dist);
 
 #endif
