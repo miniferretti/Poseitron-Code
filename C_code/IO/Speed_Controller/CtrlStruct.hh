@@ -8,6 +8,7 @@
 
 enum
 {
+    DUMMY_STATE,
     WAIT_STATE,
     ODO_CALIB_STATE,
     CALIB_STATE,

@@ -30,11 +30,11 @@ void pincher_demo(CtrlStruct *cvs)
         }
         else if (getColor(r, g, b) == 0)
         {
-            printf("The cup is not RED\r\n");
+            printf("The cup is RED\r\n");
         }
         else
         {
-            printf("The cup is not BLUE\r\n");
+            printf("The cup is BLUE\r\n");
         }
 
         cvs->pinchers_demo_states = PAUSE_STATE;
