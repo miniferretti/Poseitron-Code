@@ -51,7 +51,7 @@ int main()
 	spdctrl->init_speed_controller(1);
 	spdctrl->set_speed(0, 0);
 
-	delay(15000); //wait for the python UDP client to turn on
+	delay(2000); //wait for the python UDP client to turn on
 
 	myOdometry->Odometry_init();
 	myCtrlStruct->main_states = SlAVE_STATE;
