@@ -66,7 +66,7 @@ void pincher_demo(CtrlStruct *cvs)
 
     case PAUSE_STATE:
 
-        if ((cvs->theCtrlIn->t - cvs->t_ref) > 30)
+        if ((cvs->theCtrlIn->t - cvs->t_ref) > 10)
         {
             cvs->pinchers_demo_states = SETUP_STATE;
         }
@@ -88,7 +88,7 @@ void pincher_demo(CtrlStruct *cvs)
         break;
 
     case PAUSE_STATE2:
-        if ((cvs->theCtrlIn->t - cvs->t_ref) > 10)
+        if ((cvs->theCtrlIn->t - cvs->t_ref) > 3)
         {
             cvs->pinchers_demo_states = GRAB_STATE;
         }
