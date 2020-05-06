@@ -15,7 +15,8 @@ void pincher_demo(CtrlStruct *cvs)
         {
             if (Dyn_set_torque(0x08, 100)) //Set a maximum torque for grabing the component
             {
-                cvs->pinchers_demo_states = GRAB_STATE;
+                cvs->pinchers_demo_states = PAUSE_STATE2;
+                cvs->t_ref = cvs->theCtrlIn->t;
             }
         }
 
@@ -43,7 +44,7 @@ void pincher_demo(CtrlStruct *cvs)
     case GRAB_STATE:
         // printf("the color temperature is: %d \r\n", color_temp);
 
-        if (Dyn_set_position_and_speed(0x08, 200, 10))
+        if (Dyn_set_position_and_speed(0x08, 250, 10))
         {
             cvs->pinchers_demo_states = LOAD_STATE;
         }
@@ -51,7 +52,7 @@ void pincher_demo(CtrlStruct *cvs)
 
     case PAUSE_STATE:
 
-        if ((cvs->theCtrlIn->t - cvs->t_ref) > 20)
+        if ((cvs->theCtrlIn->t - cvs->t_ref) > 30)
         {
             cvs->pinchers_demo_states = SETUP_STATE;
         }
@@ -69,6 +70,13 @@ void pincher_demo(CtrlStruct *cvs)
         {
             cvs->pinchers_demo_states = SENS_STATE;
             cvs->t_ref = cvs->theCtrlIn->t;
+        }
+        break;
+
+    case PAUSE_STATE2:
+        if ((cvs->theCtrlIn->t - cvs->t_ref) > 10)
+        {
+            cvs->pinchers_demo_states = GRAB_STATE;
         }
         break;
 

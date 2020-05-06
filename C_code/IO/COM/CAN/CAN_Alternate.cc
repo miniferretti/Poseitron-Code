@@ -208,7 +208,7 @@ int CAN0_Alternate::getDistance(int dir, double *data)
 
   if ((nbytes = read(s, &msg2, sizeof(struct can_frame))) < 0)
   {
-    printf("Data not ready\r\n");
+  //  printf("Data not ready\r\n");
     return 0;
   }
   else
@@ -225,7 +225,7 @@ int CAN0_Alternate::getDistance(int dir, double *data)
       }
     }
 
-    printf("%f %f %f %f %f\r\n", data[0], data[1], data[2], data[3], data[4]);
+    //printf("%f %f %f %f %f\r\n", data[0], data[1], data[2], data[3], data[4]);
     return 1;
   }
 }
