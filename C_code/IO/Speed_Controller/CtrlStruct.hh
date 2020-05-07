@@ -214,6 +214,25 @@ typedef struct UserStruct
     int Odo_kill;
 } UserStruct;
 
+typedef struct ObstaclesStruct
+{
+    //Constant values
+    double robot_side = 28.5; 
+    double sensor_spacing = 5; 
+    double obstacle_width = 20; 
+    
+    //Sensor angles 
+    int sensor_angle[10] = {45, 90, 90, 90, 135, 45, 90, 90, 90, 135}; 
+    double sensor_signals[10]; 
+
+    //Vision vectors 
+    double vision[360]; 
+    double x_360[360]; 
+    double y_360[360]; 
+    double map[200,300];
+
+}ObstaclesStruct;
+
 typedef struct CtrlStruct
 {
     UserStruct *theUserStruct; ///< user defined CtrlStruct
@@ -223,6 +242,7 @@ typedef struct CtrlStruct
     RobotParameters *robot;
     RobotPinchers *pinchers;
 
+    ObstaclesStruct *obstacles; 
 
     //////////// NEW ADDED ////////////////////////////
 	RobotCalibration *calib;	  ///< calibration
