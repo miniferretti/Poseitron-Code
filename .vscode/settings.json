@@ -47,5 +47,7 @@
         "ctime": "cpp",
         "ratio": "cpp",
         "iomanip": "cpp"
-    }
+    },
+    "cmake.configureOnOpen": false,
+    "C_Cpp.errorSquiggles": "Disabled"
 }
