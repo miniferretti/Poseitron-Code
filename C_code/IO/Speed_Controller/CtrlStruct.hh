@@ -83,12 +83,12 @@ typedef struct PathPlanning
 {
 	int xlen;
 	int ylen;
-	MatrixXd M;
-	MatrixXd Obs;
-	MatrixXd Opp; 
-	MatrixXd minObs;
-	MatrixXd traj;
-	MatrixXd U;
+	Eigen::MatrixXd M;
+	Eigen::MatrixXd Obs;
+	Eigen::MatrixXd Opp; 
+	Eigen::MatrixXd minObs;
+	Eigen::MatrixXd traj;
+	Eigen::MatrixXd U;
 	int Obslen;
 	double k_att;
 	double k_rep;
@@ -104,7 +104,7 @@ typedef struct Strategy
 {
 	int state; ///< main state of the strategy
 	int count; 
-	MatrixXd target; 
+	Eigen::MatrixXd target; 
 	int tref; 
 	int wait_count; 
 } Strategy;
