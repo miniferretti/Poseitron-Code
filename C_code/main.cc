@@ -85,7 +85,7 @@ int main()
 
 			if (myCtrlStruct->theCtrlIn->t > 5)
 			{
-				myCtrlStruct->main_states = PNEUMA_TEST_STATE;
+				myCtrlStruct->main_states = PINCHER_DEMO_STATE;
 				colorSensorReset();
 				reset_dynamixel();
 			}
