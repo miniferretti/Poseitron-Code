@@ -7,9 +7,9 @@
 #include "IO/Pincher_Demo/Pincher_Demo.hh"
 #include "IO/Calibration/Calibration.hh"
 #include "IO/Calibration/odo_calibration.h"
-#include "IO/strategy/strategy.h"
-#include "IO/path/path_planning.h"
-#include "IO/Mid_level_controller/path_follow.h"
+//#include "IO/strategy/strategy.h"
+//#include "IO/path/path_planning.h"
+//#include "IO/Mid_level_controller/path_follow.h"
 
 int size_UserStruct()
 {
