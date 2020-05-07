@@ -126,10 +126,12 @@ int main()
 			printf("PNEUMA_TEST_STATE\r\n");
 			if (myCtrlStruct->theCtrlIn->t - myCtrlStruct->main_t_ref < 5)
 			{
+				printf("Output ON\r\n");
 				set_pinchers_output(0b00000100, 0b00000000);
 			}
 			else if (10 > myCtrlStruct->theCtrlIn->t - myCtrlStruct->main_t_ref && myCtrlStruct->theCtrlIn->t - myCtrlStruct->main_t_ref > 5)
 			{
+				printf("Output OFF\r\n");
 				set_pinchers_output(0b00000000, 0b00000000);
 			}
 			else
