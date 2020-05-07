@@ -18,6 +18,6 @@ enum
 };
 
 void calibration(CtrlStruct *ctrl, SpeedController *spc, Odometry *odo);
-int go_straight(CtrlStruct *ctrl, double speed, double dist);
+//int go_straight(CtrlStruct *ctrl, double speed, double dist);
 
 #endif

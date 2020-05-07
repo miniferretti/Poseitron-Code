@@ -70,7 +70,8 @@ void calibration(CtrlStruct *ctrl, SpeedController *spc, Odometry *odo)
         break;
     }
 }
-int go_straight(CtrlStruct *ctrl, double speed, double dist)
+
+/*int go_straight(CtrlStruct *ctrl, double speed, double dist)
 {
 	Odometry *odo_pos;
 	odo_pos = ctrl->odo_pos;
@@ -121,3 +122,4 @@ int go_straight(CtrlStruct *ctrl, double speed, double dist)
 	return 0;
 }
 
+*/
