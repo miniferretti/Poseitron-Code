@@ -90,6 +90,7 @@ void init_ctrlStruc(CtrlStruct *ctrl)
 	ctrl->follower->w_changed = 0;
     ctrl->follower->rhoLimit = 0.08; 
 }
+
 void obstacle_building(PathPlanning *path)
 {
 }
