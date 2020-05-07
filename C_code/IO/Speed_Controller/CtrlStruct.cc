@@ -50,7 +50,7 @@ void init_ctrlStruc(CtrlStruct *ctrl)
     // strategy
 	ctrl->strat = new Strategy;
 	ctrl->strat->state = STRAT_STATE_PATH;
-	ctrl->strat->target = MatrixXd::Zero(8, 4);
+	ctrl->strat->target = Eigen::MatrixXd::Zero(8, 4);
 	ctrl->strat->tref = 0;
 	ctrl->strat->count = 0; 
 	ctrl->strat->wait_count = 0; 
@@ -60,16 +60,16 @@ void init_ctrlStruc(CtrlStruct *ctrl)
 	ctrl->path = new PathPlanning;
 	ctrl->path->xlen = 201;
 	ctrl->path->ylen = 301;
-	ctrl->path->M = MatrixXd::Zero(ctrl->path->xlen, ctrl->path->ylen);
-	ctrl->path->U = MatrixXd::Zero(ctrl->path->xlen, ctrl->path->ylen);
+	ctrl->path->M = Eigen::MatrixXd::Zero(ctrl->path->xlen, ctrl->path->ylen);
+	ctrl->path->U = Eigen::MatrixXd::Zero(ctrl->path->xlen, ctrl->path->ylen);
 	obstacle_building(ctrl->path);
-	ctrl->path->minObs = MatrixXd::Zero(ctrl->path->Obs.rows(), 1);
+	ctrl->path->minObs = Eigen::MatrixXd::Zero(ctrl->path->Obs.rows(), 1);
 	ctrl->path->k_att = 10.0;
 	ctrl->path->k_rep = 5.0;
 	ctrl->path->rho_zero = 22.0;
 	ctrl->path->path_changed = 0.0;
-	ctrl->path->traj = MatrixXd::Zero(1, 2);
-	ctrl->path->Opp = MatrixXd::Zero(ctrl->path->xlen, ctrl->path->ylen);
+	ctrl->path->traj = Eigen::MatrixXd::Zero(1, 2);
+	ctrl->path->Opp = Eigen::MatrixXd::Zero(ctrl->path->xlen, ctrl->path->ylen);
 	ctrl->path->flag_repulsive = 1;
 	ctrl->path->intermediary = 0;
 
