@@ -24,6 +24,7 @@
 #include <chrono>
 #include "IO/Calibration/Calibration.hh"
 #include "IO/Mid_level_controller/Avoid150.hh"
+#include "IO/MCP23017_FPGA/Pinchers_control.hh"
 
 using namespace std;
 
@@ -75,7 +76,7 @@ int main()
 		spdctrl->updateLowCtrl();
 		myOdometry->Odometry_update();
 
-		myCtrlStruct->main_t_ref = myCtrlStruct->theCtrlIn->t;
+		//myCtrlStruct->main_t_ref = myCtrlStruct->theCtrlIn->t;
 
 		switch (myCtrlStruct->main_states)
 		{
@@ -84,7 +85,7 @@ int main()
 
 			if (myCtrlStruct->theCtrlIn->t > 5)
 			{
-				myCtrlStruct->main_states = PINCHER_DEMO_STATE;
+				myCtrlStruct->main_states = PNEUMA_TEST_STATE;
 				colorSensorReset();
 				reset_dynamixel();
 			}
@@ -119,6 +120,22 @@ int main()
 
 		case SlAVE_STATE:
 			printf("SLAVE_STATE\r\n");
+			break;
+
+		case PNEUMA_TEST_STATE:
+			printf("PNEUMA_TEST_STATE\r\n");
+			if (myCtrlStruct->theCtrlIn->t - myCtrlStruct->main_t_ref < 5)
+			{
+				set_pinchers_output(0b00000100, 0b00000000);
+			}
+			else if (10 > myCtrlStruct->theCtrlIn->t - myCtrlStruct->main_t_ref && myCtrlStruct->theCtrlIn->t - myCtrlStruct->main_t_ref > 5)
+			{
+				set_pinchers_output(0b00000000, 0b00000000);
+			}
+			else
+			{
+				myCtrlStruct->main_t_ref = myCtrlStruct->theCtrlIn->t;
+			}
 			break;
 
 		default:

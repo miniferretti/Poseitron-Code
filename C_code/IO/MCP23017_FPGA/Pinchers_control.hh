@@ -9,7 +9,8 @@
 #include <stdlib.h>
 #include <stdint.h>
 #include <unistd.h>
+#define PINCHER_REG 0x88
 
-void set_pinchers_output(CtrlStruct *cvs, uint8_t outputL,uint8_t outputR);
+void set_pinchers_output(unsigned char A, unsigned char B);
 
 #endif
