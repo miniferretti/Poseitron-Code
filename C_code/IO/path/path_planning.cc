@@ -1,8 +1,8 @@
 #include "IO/path/path_planning.h"
 
-static void *path_planning_update(void *myCtrl)
+ void *path_planning_update(void *myCtrl)
 {
-	CtrlStruct *ctrl = (CtrlStruct *) myCtrl;
+	CtrlStruct *ctrl = (CtrlStruct *)myCtrl;
 	//printf("Path planning update\n\r");
 	// Declaration of variable
 	PathPlanning *path;
@@ -48,14 +48,15 @@ static void *path_planning_update(void *myCtrl)
 	}
 */
 }
-static void *avoidance_path_update(void *myCtrl)
+
+ void *avoidance_path_update(void *myCtrl)
 {
-	CtrlStruct *ctrl = (CtrlStruct *) myCtrl;
+	CtrlStruct *ctrl = (CtrlStruct *)myCtrl;
 	int goalx, goaly;
 	goalx = (int)(ctrl->strat->target((int)ctrl->follower->target, 0) * 100);
 	goaly = (int)(ctrl->strat->target((int)ctrl->follower->target, 1) * 100);
 
-//	repulsive_opp_potential_field(ctrl);
+	//	repulsive_opp_potential_field(ctrl);
 	solve_path(ctrl, (int)(ctrl->rob_pos->x * 100), (int)(ctrl->rob_pos->y * 100), goalx, goaly);
 	printf(">>>	path computation done\n");
 }

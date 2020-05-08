@@ -10,7 +10,6 @@
 #include "IO/Speed_Controller/CtrlStruct.hh"
 #include <math.h>
 
-
 // The map without the opponent is kept in memory in order to
 // not multiply the same computation twice.
 // So at each t*, just the potential field regarding the position
