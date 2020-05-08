@@ -1,6 +1,6 @@
 #include "IO/path/path_planning.h"
 
- void *path_planning_update(void *myCtrl)
+void *path_planning_update(void *myCtrl)
 {
 	CtrlStruct *ctrl = (CtrlStruct *)myCtrl;
 	//printf("Path planning update\n\r");
@@ -49,7 +49,7 @@
 */
 }
 
- void *avoidance_path_update(void *myCtrl)
+void *avoidance_path_update(void *myCtrl)
 {
 	CtrlStruct *ctrl = (CtrlStruct *)myCtrl;
 	int goalx, goaly;
