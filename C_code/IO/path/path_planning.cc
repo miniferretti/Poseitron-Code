@@ -26,9 +26,11 @@ void *path_planning_update(void *myCtrl)
 	if (path->flag_repulsive == 1)
 	{
 		repulsive_map_potential_field(path);
+		printf(">>> repulsive map computation done\n\r");
 		ctrl->path->flag_repulsive = 0;
 	}
 	attractive_potential_field(ctrl, goalx, goaly);
+	printf(">>> attractive potential field computation done\n\r");
 	solve_path(ctrl, x, y, goalx, goaly);
 	printf(">>>	path computation done \n\r");
 	/*
@@ -73,11 +75,12 @@ void set_obstacle(PathPlanning *path)
 	double dobs, U_rep;
 	int countx = 0;
 	int county = 0;
+	int xinit = 100; int yinit = 100; 
 	//printf("Set obstacle \n\r");
-	for (xval = -100; xval < path->xlen - 100; xval++)
+	for (xval = -xinit; xval < path->xlen - xinit; xval++)
 	{
 		//printf("countx = %d\n\r", countx++);
-		for (yval = -150; yval < path->ylen - 150; yval++)
+		for (yval = -yinit; yval < path->ylen - yinit; yval++)
 		{
 			//printf("yval = %d county = %d\n\r", yval, county++);
 			dobs = distanceObs(path, xval, yval);
@@ -85,14 +88,14 @@ void set_obstacle(PathPlanning *path)
 				U_rep = path->k_rep;
 			else if (dobs < path->rho_zero)
 			{
-				U_rep = path->M(xval + 100, yval + 150) + path->k_rep * exp(-5 * dobs / path->rho_zero);
+				U_rep = path->M(xval + xinit, yval + yinit) + path->k_rep * exp(-5 * dobs / path->rho_zero);
 			}
 			else
-				U_rep = path->M(xval + 100, yval + 150);
+				U_rep = path->M(xval + xinit, yval + yinit);
 
 			//printf("Urep[%d][%d] = %f \r\n",xval, yval, U_rep);
 
-			path->M(xval + 100, yval + 150) = U_rep;
+			path->M(xval + xinit, yval + yinit) = U_rep;
 		}
 	}
 }
@@ -118,12 +121,13 @@ void attractive_potential_field(CtrlStruct *ctrl, int goalx, int goaly)
 	attractive_potential_field_reverse(ctrl);
 	path->U.setZero(path->xlen, path->ylen);
 	double rho_goal_square = 0.0;
-	for (int xval = -100; xval < path->xlen - 100; xval++)
+	int xinit = 100; int yinit = 100; 
+	for (int xval = -xinit; xval < path->xlen - xinit; xval++)
 	{
-		for (int yval = -150; yval < path->ylen - 150; yval++)
+		for (int yval = -yinit; yval < path->ylen - yinit; yval++)
 		{
 			rho_goal_square = (xval - goalx) * (xval - goalx) + (yval - goaly) * (yval - goaly);
-			path->U(xval + 100, yval + 150) = path->k_att * rho_goal_square;
+			path->U(xval + xinit, yval + yinit) = path->k_att * rho_goal_square;
 		}
 	}
 	path->U = path->k_att / path->k_rep * path->U.eval() / path->U.maxCoeff();
@@ -226,7 +230,7 @@ void solve_path(CtrlStruct *ctrl, int x, int y, int goalx, int goaly)
 		else
 		{
 			//printf("in the else \n\r");
-			U_right = path->M(x + 1 + 100, y + 150);
+			U_right = path->M(x + 1 + 100, y + 100);
 		}
 
 		if (x == -100 || isinbacktrack(path, x - 1, y))
@@ -236,27 +240,27 @@ void solve_path(CtrlStruct *ctrl, int x, int y, int goalx, int goaly)
 		else
 		{
 			//printf("in the else \n\r");
-			U_left = path->M(x - 1 + 100, y + 150);
+			U_left = path->M(x - 1 + 100, y + 100);
 		}
 
 		// scan for Y
-		if (y == 150 || isinbacktrack(path, x, y + 1))
+		if (y == 100 || isinbacktrack(path, x, y + 1))
 		{
 			U_up = path->k_rep;
 		}
 		else
 		{
 			//printf("in the else \n\r");
-			U_up = path->M(x + 100, y + 1 + 150);
+			U_up = path->M(x + 100, y + 1 + 100);
 		}
-		if (y == -150 || isinbacktrack(path, x, y - 1))
+		if (y == -100 || isinbacktrack(path, x, y - 1))
 		{
 			U_down = path->k_rep;
 		}
 		else
 		{
 			//printf("in the else \n\r");
-			U_down = path->M(x + 100, y - 1 + 150);
+			U_down = path->M(x + 100, y - 1 + 100);
 		}
 
 		U_next = fmin(fmin(U_left, U_right), fmin(U_down, U_up));
