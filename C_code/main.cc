@@ -101,7 +101,7 @@ int main()
 
 		case TEST_PATH_STATE:
 			printf("TEST_PATH_STATE\r\n");
-			main_strategy(myCtrlStruct, my_P_Struct);
+			main_strategy(myCtrlStruct, my_P_Struct, spdctrl);
 			break;
 
 		case AVOID150_STATE:

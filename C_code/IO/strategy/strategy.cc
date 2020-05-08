@@ -3,7 +3,7 @@
 #include "strategy.h"
 #include "IO/path/path_planning.h"
 
-void main_strategy(CtrlStruct *ctrl, P_Struct *my_P_Struct)
+void main_strategy(CtrlStruct *ctrl, P_Struct *my_P_Struct, SpeedController *spd)
 {
 	// variables declaration
 	Strategy *strat;
@@ -65,7 +65,7 @@ void main_strategy(CtrlStruct *ctrl, P_Struct *my_P_Struct)
 		if (redzone)
 		{
 			printf(">>>	new path for avoidance\n");
-			set_speed(0.0, 0.0);
+			spd->set_speed(0.0, 0.0);
 			strat->state = STRAT_STATE_OPPONENT_AVOIDANCE;
 		}
 		/* End of path and target position achived */
@@ -106,7 +106,7 @@ void main_strategy(CtrlStruct *ctrl, P_Struct *my_P_Struct)
 		break;
 
 	case STRAT_STATE_WAIT:
-		set_speed(0.0, 0.0);
+		spd->set_speed(0.0, 0.0);
 		if (inputs->t - strat->tref > TIME_FUN1)
 		{
 			/// HERE AN OTHER FUNCTION IS PUT.

@@ -11,7 +11,7 @@
 //#define _GNU_SOURCE
 
 // function prototype
-void main_strategy(CtrlStruct *ctrl, P_Struct *my_P_Struct);
+void main_strategy(CtrlStruct *ctrl, P_Struct *my_P_Struct,SpeedController *spd);
 
 int opponent_detection(CtrlStruct *ctrl);
 

@@ -55,7 +55,7 @@ static void *avoidance_path_update(void *myCtrl)
 	goalx = (int)(ctrl->strat->target((int)ctrl->follower->target, 0) * 100);
 	goaly = (int)(ctrl->strat->target((int)ctrl->follower->target, 1) * 100);
 
-	repulsive_opp_potential_field(ctrl);
+//	repulsive_opp_potential_field(ctrl);
 	solve_path(ctrl, (int)(ctrl->rob_pos->x * 100), (int)(ctrl->rob_pos->y * 100), goalx, goaly);
 	printf(">>>	path computation done\n");
 }
