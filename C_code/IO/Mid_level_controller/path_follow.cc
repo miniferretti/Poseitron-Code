@@ -85,7 +85,9 @@ int path_follow(CtrlStruct *ctrl)
             printf(">>> path changed : go backward (alpha = %f)\n", real_alpha * 180 / M_PI);
         }
     }
-    v = follower->v_changed * follower->Krho * follower->rho;
+
+    //  v = follower->v_changed * follower->Krho * follower->rho;
+    v = follower->v_changed * follower->speed_sat;
     omega = follower->Kalpha * follower->alpha + follower->Kbeta * follower->beta;
 
     /* Saturation des vitesses.
@@ -127,8 +129,8 @@ int path_follow(CtrlStruct *ctrl)
     /* Transformation vitesse lineaire et angulaire 
      * en vitesse de roue droite et gauche.
      * */
-    inputs->r_wheel_ref = (v + omega * robot_param->wheel_dist / 2) / robot_param->wheel_rad;
-    inputs->l_wheel_ref = (v - omega * robot_param->wheel_dist / 2) / robot_param->wheel_rad;
+    inputs->r_wheel_ref = ((v + omega * robot_param->wheel_dist / 2) / robot_param->wheel_rad) * ctrl->theUserStruct->theMotRight->compensation_factor;
+    inputs->l_wheel_ref = ((v - omega * robot_param->wheel_dist / 2) / robot_param->wheel_rad) * ctrl->theUserStruct->theMotLeft->compensation_factor;
 
     /* Choix du path suivant : 
      * si rho <= distance q du point de reference au temp t*
