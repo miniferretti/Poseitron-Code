@@ -29,6 +29,7 @@ void init_ctrlStruc(CtrlStruct *ctrl)
 	ctrl->theUserStruct->theMotRight = new MotStruct;
 	ctrl->rob_pos = new RobotPosition;
 	ctrl->robot = new RobotParameters;
+	ctrl->robot->wheel_rad = 0.03;
 	ctrl->pinchers = new RobotPinchers;
 	ctrl->pinchers->number_of_succes = 0;
 	ctrl->pinchers->number_of_pinch = 0;
@@ -79,7 +80,7 @@ void init_ctrlStruc(CtrlStruct *ctrl)
 	//Structure for the path-following algorithm
 	ctrl->follower = new PathFollow;
 	ctrl->follower->omega_sat = 1;
-	ctrl->follower->speed_sat = 0.5;
+	ctrl->follower->speed_sat = 3;
 	ctrl->follower->target = 6;
 	ctrl->follower->count = 0;
 	ctrl->follower->next = 1;
