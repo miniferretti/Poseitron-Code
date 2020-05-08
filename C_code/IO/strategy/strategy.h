@@ -1,12 +1,14 @@
 
-#ifndef _STRATEGY_GR2_H_
-#define _STRATEGY_GR2_H_
+#ifndef _STRATEGY_H_
+#define _STRATEGY_H_
 
-#include "CtrlStruct.h"
+#include "IO/Speed_Controller/CtrlStruct.hh"
 #include <math.h>
-#include "path_follow.hh"
+#include "IO/Mid_level_controller/path_follow.h"
 
-void main_strategy(CtrlStruct *ctrl);
+#define _GNU_SOURCE
+
+void main_strategy(CtrlStruct *ctrl, P_Struct *my_P_Struct);
 int opponent_detection(CtrStruct *ctrl);
 
 

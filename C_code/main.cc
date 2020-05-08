@@ -37,9 +37,12 @@ int main()
 	SPI_DE0 *deo;
 	deo = new SPI_DE0(0, 125e3);
 
+	P_Struct *my_P_Struct = new P_Struct; 
+
 	delay(100);
 
 	init_ctrlStruc(myCtrlStruct);
+	inti_P_Struct(my_P_Struct);
 
 	SpeedController *spctrl = new SpeedController(myCtrlStruct, can);
 
@@ -49,7 +52,7 @@ int main()
 	spctrl->init_speed_controller(1);
 
 	myOdometry->Odometry_init();
-	myCtrlStruct->main_states = TEST_PATH_STATE;
+	myCtrlStruct->main_states = SlAVE_STATE;
 	double time_taken;
 	int run = 1;
 	colorSensorReset();
@@ -77,7 +80,7 @@ int main()
 
 			if (myCtrlStruct->theCtrlIn->t > 5)
 			{
-				myCtrlStruct->main_states = PINCHER_DEMO_STATE;
+				myCtrlStruct->main_states = TEST_PATH_STATE;
 				colorSensorReset();
 				reset_dynamixel();
 			}
@@ -90,7 +93,7 @@ int main()
 
 		case TEST_PATH_STATE:
 			printf("TEST_PATH_STATE\r\n");
-			main_strategy(myCtrlStruct)
+			main_strategy(myCtrlStruct, my_P_Struct);
 			break;
 
 		case AVOID150_STATE:

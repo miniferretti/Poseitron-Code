@@ -1,6 +1,7 @@
 #include "ctrl_io.h"
 #include <eigen3/Eigen/Dense>
 #include <eigen3/Eigen/Sparse>
+#include <pthread.h>
 
 // State of the main
 enum
@@ -100,6 +101,7 @@ typedef struct PathPlanning
 	int intermediary; 
 
 } PathPlanning;
+
 
 /// strategy
 typedef struct Strategy
@@ -212,7 +214,20 @@ typedef struct CtrlStruct
     UserStruct *theUserStruct; ///< user defined CtrlStruct
     CtrlIn *theCtrlIn;         ///< controller inputs
     CtrlOut *theCtrlOut;       ///< controller outputs
+
+
+
 } CtrlStruct;
+
+typedef struct P_Struct
+{
+    pthread_t p_avoidance_path; 
+    pthread_t p_path_update; 
+    int p_avoidance_path_flag;
+    int p_path_update_flag;  
+} P_Struct;
+
 
 int size_UserStruct();
 void init_ctrlStruc(CtrlStruct *ctrl);
+void init_P_Struct(P_Struct *my_P_Struct);

@@ -1,20 +1,23 @@
 #include "path_planning.h"
 
-NAMESPACE_INIT(ctrlGr2);
 
-/*! \brief update the path-planning algorithm
- * 
- * \param[in,out] ctrl controller main structure
- */
-
-void path_planning_update(CtrlStruct *ctrl, int goalx, int goaly)
+static void* path_planning_update(void *myCtrl)
 {
+	CtrlStruct *ctrl = (CtrlStruct) myCtrl;
  	//printf("Path planning update\n\r");
  	// Declaration of variable
 	PathPlanning *path;
 	path = ctrl->path;
-	int x,y;
-
+	int x,y, goalx, goaly;
+	if (path->intermediary == 1){
+		goalx = 45; 
+		goaly = 0; 
+	}
+	else {
+		goalx = (int) (ctrl->strat->target((int) ctrl->follower->target,0)*100);
+		goaly = (int) (ctrl->strat->target((int) ctrl->follower->target,1)*100);
+	}
+	
 	x = (int) (ctrl->rob_pos->x*100);
 	y = (int) (ctrl->rob_pos->y*100);
 	printf(">>>	path : initial position (%d, %d) & goal position (%d, %d) \n\r", x, y, goalx, goaly);
@@ -43,7 +46,8 @@ void path_planning_update(CtrlStruct *ctrl, int goalx, int goaly)
 	}
 */
 }
-void avoidance_path_update(CtrlStruct *ctrl){
+static void* avoidance_path_update(void *myCtrl){
+	CtrlStruct *ctrl = (CtrlStruct) myCtrl;
 	int goalx, goaly; 
 	goalx = (int) (ctrl->strat->target((int) ctrl->follower->target,0)*100);
 	goaly = (int) (ctrl->strat->target((int) ctrl->follower->target,1)*100);
@@ -261,5 +265,3 @@ int isinbacktrack(PathPlanning *path, int x, int y){
 	}
 	return 0; 
 }
-
-NAMESPACE_CLOSE();

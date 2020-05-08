@@ -12,8 +12,8 @@
 // of the opponent is updated (repulsive_opp_potential_field)
 // Only if the goal changes, the attractive potential field
 // will update.
-void path_planning_update(CtrlStruct *ctrl, int goalx, int goaly); 
-void avoidance_path_update(CtrlStruct *ctrl); 
+static void * path_planning_update(void *myCtrl); // attention qu'un seul argument de type void !!!
+static void * avoidance_path_update(void *myCtrl); 
 
 void attractive_potential_field(CtrlStruct *ctrl, int goalx, int goaly);
 void attractive_potential_field_reverse(CtrlStruct *ctrl);
