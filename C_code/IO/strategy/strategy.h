@@ -1,22 +1,17 @@
-/*! 
- * \author Nicolas Van der Noot
- * \file strategy_ex.h
- * \brief strategy during the game
- */
 
-#ifndef _STRATEGY_GR2_H_
-#define _STRATEGY_GR2_H_
 
-#include "CtrlStruct.h"
+#ifndef _STRATEGY_H_
+#define _STRATEGY_H_
+
+#include "IO/Speed_Controller/CtrlStruct.hh"
 #include <math.h>
-#include "path_follow.hh"
+#include "IO/Mid_level_controller/path_follow.h"
 
-NAMESPACE_INIT(ctrlGr2);
+#define _GNU_SOURCE
 
 // function prototype
-void main_strategy(CtrlStruct *ctrl);
+void main_strategy(CtrlStruct *ctrl, P_Struct *my_P_Struct);
 
-NAMESPACE_CLOSE();
+int opponent_detection(CtrlStruct *ctrl);
 
 #endif
-

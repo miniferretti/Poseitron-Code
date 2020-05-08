@@ -25,6 +25,7 @@
 #include "IO/Calibration/Calibration.hh"
 #include "IO/Mid_level_controller/Avoid150.hh"
 #include "IO/MCP23017_FPGA/Pinchers_control.hh"
+#include "IO/strategy/strategy.h"
 
 using namespace std;
 
@@ -41,10 +42,12 @@ int main()
 {
 	wiringPiSetup();
 	CtrlStruct *myCtrlStruct = new CtrlStruct;
+	P_Struct *my_P_Struct = new P_Struct;
 	CAN0_Alternate *can = new CAN0_Alternate(CAN_BR);
 	SPI_DE0 *deo;
 	deo = new SPI_DE0(0, 125e3);
 	init_ctrlStruc(myCtrlStruct);
+	init_P_Struct(my_P_Struct);
 
 	SpeedController *spdctrl = new SpeedController(myCtrlStruct, can);
 	Odometry *myOdometry = new Odometry(myCtrlStruct);
@@ -85,7 +88,7 @@ int main()
 
 			if (myCtrlStruct->theCtrlIn->t > 5)
 			{
-				myCtrlStruct->main_states = PINCHER_DEMO_STATE;
+				myCtrlStruct->main_states = TEST_PATH_STATE;
 				colorSensorReset();
 				reset_dynamixel();
 			}
@@ -94,6 +97,11 @@ int main()
 		case CALIB_STATE:
 			printf("CALIB_STATE\r\n");
 			calibration(myCtrlStruct, spdctrl, myOdometry);
+			break;
+
+		case TEST_PATH_STATE:
+			printf("TEST_PATH_STATE\r\n");
+			main_strategy(myCtrlStruct, my_P_Struct);
 			break;
 
 		case AVOID150_STATE:
