@@ -148,8 +148,8 @@ void target_init(CtrlStruct *ctrl)
 	strat = ctrl->strat;
 
 	// target 1
-	strat->target(0, 0) = 1; // coordonnée en x en m
-	strat->target(0, 1) = 0; // coordonnée en y en m
-	strat->target(0, 2) = 1; // deja pris ou non
-	strat->target(0, 3) = 1; // nombre de points
+	strat->target(0, 0) = 0.5; // coordonnée en x en m
+	strat->target(0, 1) = 0;   // coordonnée en y en m
+	strat->target(0, 2) = 1;   // deja pris ou non
+	strat->target(0, 3) = 1;   // nombre de points
 }
