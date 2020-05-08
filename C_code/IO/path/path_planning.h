@@ -10,6 +10,7 @@
 #include "IO/Speed_Controller/CtrlStruct.hh"
 #include <math.h>
 
+
 // The map without the opponent is kept in memory in order to
 // not multiply the same computation twice.
 // So at each t*, just the potential field regarding the position
@@ -22,7 +23,7 @@ static void *avoidance_path_update(void *myCtrl);
 void attractive_potential_field(CtrlStruct *ctrl, int goalx, int goaly);
 void attractive_potential_field_reverse(CtrlStruct *ctrl);
 void repulsive_map_potential_field(PathPlanning *path);
-void repulsive_opp_potential_field(CtrlStruct *ctrl);
+//void repulsive_opp_potential_field(CtrlStruct *ctrl);
 void repulsive_opp_potential_field_reverse(CtrlStruct *ctrl);
 
 // called each time we want to put an new obstacle in the potential field

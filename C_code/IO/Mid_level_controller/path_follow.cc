@@ -24,7 +24,7 @@ int path_follow(CtrlStruct *ctrl)
         if (path->traj.rows() <= 1)
         {
             printf("\n\rERROR : Path not well defined (size %dx%d) !!!\n\r", (int)path->traj.rows(), (int)path->traj.cols());
-            ctrl->main_state = STOP_END_STATE;
+            ctrl->main_states = STOP_STATE;
         }
     }
 
@@ -127,8 +127,8 @@ int path_follow(CtrlStruct *ctrl)
     /* Transformation vitesse lineaire et angulaire 
      * en vitesse de roue droite et gauche.
      * */
-    inputs->wheel_speed_ref[R_ID] = (v + omega * robot_param->wheel_dist / 2) / robot_param->wheel_rad;
-    inputs->wheel_speed_ref[L_ID] = (v - omega * robot_param->wheel_dist / 2) / robot_param->wheel_rad;
+    inputs->r_wheel_ref = (v + omega * robot_param->wheel_dist / 2) / robot_param->wheel_rad;
+    inputs->l_wheel_ref = (v - omega * robot_param->wheel_dist / 2) / robot_param->wheel_rad;
 
     /* Choix du path suivant : 
      * si rho <= distance q du point de reference au temp t*

@@ -144,7 +144,7 @@ void obstacle_building(PathPlanning *path)
 void target_init(CtrlStruct *ctrl)
 {
 	Strategy *strat;
-	strat = cvs->strat;
+	strat = ctrl->strat;
 
 	// target 1
 	strat->target(0, 0) = 0; // coordonnée en x en m

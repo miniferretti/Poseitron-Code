@@ -2,7 +2,7 @@
 
 static void *path_planning_update(void *myCtrl)
 {
-	CtrlStruct *ctrl = (CtrlStruct)myCtrl;
+	CtrlStruct *ctrl = (CtrlStruct *) myCtrl;
 	//printf("Path planning update\n\r");
 	// Declaration of variable
 	PathPlanning *path;
@@ -50,7 +50,7 @@ static void *path_planning_update(void *myCtrl)
 }
 static void *avoidance_path_update(void *myCtrl)
 {
-	CtrlStruct *ctrl = (CtrlStruct)myCtrl;
+	CtrlStruct *ctrl = (CtrlStruct *) myCtrl;
 	int goalx, goaly;
 	goalx = (int)(ctrl->strat->target((int)ctrl->follower->target, 0) * 100);
 	goaly = (int)(ctrl->strat->target((int)ctrl->follower->target, 1) * 100);
@@ -137,7 +137,7 @@ void attractive_potential_field_reverse(CtrlStruct *ctrl)
 	path->M = path->M.eval() - path->U;
 }
 
-void repulsive_opp_potential_field(CtrlStruct *ctrl)
+/*void repulsive_opp_potential_field(CtrlStruct *ctrl)
 {
 
 	PathPlanning *path;
@@ -195,7 +195,7 @@ void repulsive_opp_potential_field(CtrlStruct *ctrl)
 	}
 	path->Opp = path->Opp.eval() / path->Opp.maxCoeff();
 	path->M = path->M.eval() + path->Opp;
-}
+} */
 
 void repulsive_opp_potential_field_reverse(CtrlStruct *ctrl)
 {
@@ -258,7 +258,7 @@ void solve_path(CtrlStruct *ctrl, int x, int y, int goalx, int goaly)
 			U_down = path->M(x + 100, y - 1 + 150);
 		}
 
-		U_next = min(min(U_left, U_right), min(U_down, U_up));
+		U_next = fmin(fmin(U_left, U_right), fmin(U_down, U_up));
 
 		if (U_next == U_right)
 		{
