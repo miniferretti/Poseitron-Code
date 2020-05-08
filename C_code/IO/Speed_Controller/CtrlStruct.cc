@@ -81,7 +81,7 @@ void init_ctrlStruc(CtrlStruct *ctrl)
 	ctrl->follower = new PathFollow;
 	ctrl->follower->omega_sat = 1;
 	ctrl->follower->speed_sat = 3;
-	ctrl->follower->target = 6;
+	ctrl->follower->target = 0;
 	ctrl->follower->count = 0;
 	ctrl->follower->next = 1;
 	ctrl->follower->alpha = 0;
