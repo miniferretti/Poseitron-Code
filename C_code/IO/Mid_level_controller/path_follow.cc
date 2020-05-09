@@ -53,7 +53,7 @@ int path_follow(CtrlStruct *ctrl)
     follower->alpha = atan(tan(-rob_pos->theta + atan2(dy, dx)));
     follower->beta = -atan(dy / dx);
 
-    printf("alpha = %f (theta = %f)\n\r",follower->alpha, rob_pos->theta);
+    //printf("alpha = %f (theta = %f)\n\r",follower->alpha, rob_pos->theta);
     /* On fait en sorte que si on part dans le sens inverse, on reste dans le sens inverse 
      * pdt toute la trajectoire courante et resp. dans le sens direct.
      * 
@@ -130,6 +130,7 @@ int path_follow(CtrlStruct *ctrl)
     /* Transformation vitesse lineaire et angulaire 
      * en vitesse de roue droite et gauche.
      * */
+    printf("omega = %f", omega);
     inputs->r_wheel_ref = ((v + omega * robot_param->wheel_dist / 2) / robot_param->wheel_rad) * ctrl->theUserStruct->theMotRight->compensation_factor;
     inputs->l_wheel_ref = ((v - omega * robot_param->wheel_dist / 2) / robot_param->wheel_rad) * ctrl->theUserStruct->theMotLeft->compensation_factor;
 
