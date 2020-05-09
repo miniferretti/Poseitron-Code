@@ -55,7 +55,7 @@ void init_ctrlStruc(CtrlStruct *ctrl)
 	// strategy
 	ctrl->strat = new Strategy;
 	ctrl->strat->state = STRAT_STATE_PATH;
-	ctrl->strat->target = Eigen::MatrixXd::Zero(5, 4);
+	ctrl->strat->target = Eigen::MatrixXd::Zero(5, 5);
 	ctrl->strat->tref = 0;
 	ctrl->strat->count = 0;
 	ctrl->strat->wait_count = 0;
