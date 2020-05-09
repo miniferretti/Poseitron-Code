@@ -118,7 +118,6 @@ void main_strategy(CtrlStruct *ctrl, P_Struct *my_P_Struct, SpeedController *spd
 
 			ctrl->main_states = STOP_STATE;
 			strat->state = STRAT_STATE_PATH;
-
 		}
 
 		if (strat->wait_count == 0)
