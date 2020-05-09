@@ -21,7 +21,7 @@ void *path_planning_update(void *myCtrl)
 
 	x = (int)(ctrl->rob_pos->x * 100);
 	y = (int)(ctrl->rob_pos->y * 100);
-	printf(">>>	path : initial position (%d, %d) & goal position (%d, %d) \n\r", x, y, goalx, goaly);
+	printf(">>> path : initial position (%d, %d) & goal position (%d, %d) \n\r", x, y, goalx, goaly);
 
 	if (path->flag_repulsive == 1)
 	{
@@ -32,7 +32,7 @@ void *path_planning_update(void *myCtrl)
 	attractive_potential_field(ctrl, goalx, goaly);
 	printf(">>> attractive potential field computation done\n\r");
 	solve_path(ctrl, x, y, goalx, goaly);
-	printf(">>>	path computation done \n\r");
+	printf(">>> path computation done \n\r");
 	/*
 	printf("Show path \n\r");
 	int n = (int) path->traj.rows();
@@ -60,7 +60,7 @@ void *avoidance_path_update(void *myCtrl)
 
 	//	repulsive_opp_potential_field(ctrl);
 	solve_path(ctrl, (int)(ctrl->rob_pos->x * 100), (int)(ctrl->rob_pos->y * 100), goalx, goaly);
-	printf(">>>	path computation done\n");
+	printf(">>> path computation done\n");
 }
 
 void repulsive_map_potential_field(PathPlanning *path)
