@@ -305,6 +305,7 @@ void solve_path(CtrlStruct *ctrl, int x, int y, int goalx, int goaly)
 		path->traj(idx, 1) = y;
 		//printf("PATH : posx(idx) = %f & posy(idx) = %f \n\r", path->traj(idx,0), path->traj(idx,1));
 	}
+	ctrl->strat->target((int)ctrl->follower->target, 2) = 0; 
 	path->path_changed = 1;
 }
 
