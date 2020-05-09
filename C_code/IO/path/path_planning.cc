@@ -51,7 +51,7 @@ void *path_planning_update(void *myCtrl)
 	}
 */
 
-	pthread_exit(NULL);
+	return NULL;
 }
 
 void *avoidance_path_update(void *myCtrl)
@@ -64,7 +64,7 @@ void *avoidance_path_update(void *myCtrl)
 	//	repulsive_opp_potential_field(ctrl);
 	solve_path(ctrl, (int)(ctrl->rob_pos->x * 100), (int)(ctrl->rob_pos->y * 100), goalx, goaly);
 	printf(">>> path computation done\n");
-	pthread_exit(NULL);
+	return NULL;
 }
 
 void repulsive_map_potential_field(PathPlanning *path)
