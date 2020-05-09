@@ -75,7 +75,8 @@ void set_obstacle(PathPlanning *path)
 	double dobs, U_rep;
 	int countx = 0;
 	int county = 0;
-	int xinit = 100; int yinit = 100; 
+	int xinit = 100;
+	int yinit = 100;
 	//printf("Set obstacle \n\r");
 	for (xval = -xinit; xval < path->xlen - xinit; xval++)
 	{
@@ -305,7 +306,7 @@ void solve_path(CtrlStruct *ctrl, int x, int y, int goalx, int goaly)
 		path->traj(idx, 1) = y;
 		//printf("PATH : posx(idx) = %f & posy(idx) = %f \n\r", path->traj(idx,0), path->traj(idx,1));
 	}
-	ctrl->strat->target((int)ctrl->follower->target, 2) = 0; 
+
 	path->path_changed = 1;
 }
 
