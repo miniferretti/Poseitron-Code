@@ -88,23 +88,26 @@ void main_strategy(CtrlStruct *ctrl, P_Struct *my_P_Struct, SpeedController *spd
 			path->intermediary = 0;
 			strat->state = STRAT_STATE_PATH;
 		}
-		else if (true)
-		{
-			// detection de qque chose
-			strat->tref = inputs->t;
-			follower->rhoLimit = 0.08; // Limit from the target reset.
-			strat->state = STRAT_STATE_WAIT;
-		}
-		else
+		
+		else if (follower->flag_rho == 1)
 		{
 			// In case where the robot is not close enough from the target.
 			// The limit is lowered in order to resume again the finished path.
-			printf(">>>	limit lowered to %f\n", follower->rhoLimit - 0.01);
+			printf(">>>	limit lowered to %f\n", 0.01);
 			follower->count = path->traj.rows() - 5 - 1;
 			follower->next = 1;
-			follower->rhoLimit -= 0.01;
+			follower->rhoLimit = 0.01;
+			follower->flag_rho = 0;
 
 			strat->state = STRAT_STATE_FOLLOW;
+		}
+		else
+		{
+			// detection de qque chose
+			strat->tref = inputs->t;
+			follower->flag_rho = 1;
+			follower->rhoLimit = 0.05; // Limit from the target reset.
+			strat->state = STRAT_STATE_WAIT;
 		}
 		break;
 
@@ -118,7 +121,7 @@ void main_strategy(CtrlStruct *ctrl, P_Struct *my_P_Struct, SpeedController *spd
 			printf("\n\r>>>	function finished \n");
 			strat->wait_count = 0;
 
-			if (follower->target == 2)
+			if (follower->target == 3)
 			{
 				ctrl->main_states = STOP_STATE;
 

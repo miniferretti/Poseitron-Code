@@ -80,6 +80,7 @@ typedef struct PathFollow
     double w_changed;
 
     double rhoLimit;
+    int flag_rho; 
 
 } PathFollow;
 

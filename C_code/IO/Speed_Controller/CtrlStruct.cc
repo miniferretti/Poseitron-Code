@@ -94,7 +94,8 @@ void init_ctrlStruc(CtrlStruct *ctrl)
 	ctrl->follower->last = 0;
 	ctrl->follower->v_changed = 0;
 	ctrl->follower->w_changed = 0;
-	ctrl->follower->rhoLimit = 0.03;
+	ctrl->follower->rhoLimit = 0.05;
+	ctrl->follower->flag_rho = 1; 
 }
 
 void obstacle_building(PathPlanning *path)
@@ -155,7 +156,7 @@ void target_init(CtrlStruct *ctrl)
 
 	// target 0
 	strat->target(1, 0) = 0.5; // coordonnée en x en m
-	strat->target(1, 1) = 0;   // coordonnée en y en m
+	strat->target(1, 1) = -0.5;   // coordonnée en y en m
 	strat->target(1, 2) = 1;   // deja pris ou non
 	strat->target(1, 3) = 1;   // nombre de points
 	// target 1
@@ -168,6 +169,11 @@ void target_init(CtrlStruct *ctrl)
 	strat->target(2, 1) = 0.5;   // coordonnée en y en m
 	strat->target(2, 2) = 1;   // deja pris ou non
 	strat->target(2, 3) = 1;   // nombre de points
+
+	strat->target(3, 0) = -0.5; // coordonnée en x en m
+	strat->target(3, 1) = 0.5;   // coordonnée en y en m
+	strat->target(3, 2) = 1;   // deja pris ou non
+	strat->target(3, 3) = 1;   // nombre de points
 }
 /*
 void repulsive_potential_field(CtrlStruct *ctrl){
