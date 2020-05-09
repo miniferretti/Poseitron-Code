@@ -75,6 +75,7 @@ int path_follow(CtrlStruct *ctrl)
             printf("\n/////////////////////////////////////\n\r");
             printf("Start of middle control : path follow\n\n");
             printf(">>> path changed : go forward (alpha = %f)\n", real_alpha * 180 / M_PI);
+            printf(">>> theta = %f\r\n", rob_pos->theta * 180 / M_PI);
         }
         else
         {
@@ -83,6 +84,7 @@ int path_follow(CtrlStruct *ctrl)
             printf("\n/////////////////////////////////////\n\r");
             printf("Start of middle control : path follow\n\n");
             printf(">>> path changed : go backward (alpha = %f)\n", real_alpha * 180 / M_PI);
+            printf(">>> theta = %f\r\n", rob_pos->theta * 180 / M_PI);
         }
     }
 
@@ -130,7 +132,7 @@ int path_follow(CtrlStruct *ctrl)
      * en vitesse de roue droite et gauche.
      * */
     // printf("omega = %f\n\r", omega);
-    printf("alpha = %f | theta = %f | omega = %f\n\r", follower->alpha * 180 / M_PI, rob_pos->theta * 180 / M_PI, omega);
+    // printf("alpha = %f | theta = %f | omega = %f\n\r", follower->alpha * 180 / M_PI, rob_pos->theta * 180 / M_PI, omega);
     inputs->r_wheel_ref = ((v + omega * robot_param->wheel_dist / 2) / robot_param->wheel_rad) * ctrl->theUserStruct->theMotRight->compensation_factor;
     inputs->l_wheel_ref = ((v - omega * robot_param->wheel_dist / 2) / robot_param->wheel_rad) * ctrl->theUserStruct->theMotLeft->compensation_factor;
 
