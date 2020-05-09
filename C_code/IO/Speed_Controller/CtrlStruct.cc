@@ -40,6 +40,7 @@ void init_ctrlStruc(CtrlStruct *ctrl)
 	ctrl->calib_states = CALIB_1;
 	ctrl->odo_calibration_states = GO_STRAIGHT;
 	ctrl->main_t_ref = 0;
+	ctrl->flag_state = 1; 
 
 	// calibration
 	ctrl->calib = new RobotCalibration;
@@ -79,8 +80,8 @@ void init_ctrlStruc(CtrlStruct *ctrl)
 
 	//Structure for the path-following algorithm
 	ctrl->follower = new PathFollow;
-	ctrl->follower->omega_sat = 1;
-	ctrl->follower->speed_sat = 3;
+	ctrl->follower->omega_sat = 1.5;
+	ctrl->follower->speed_sat = 0.3;
 	ctrl->follower->target = 0;
 	ctrl->follower->count = 0;
 	ctrl->follower->next = 1;
@@ -156,8 +157,7 @@ void target_init(CtrlStruct *ctrl)
 	strat->target(0, 1) = 0;   // coordonnée en y en m
 	strat->target(0, 2) = 1;   // deja pris ou non
 	strat->target(0, 3) = 1;   // nombre de points
-
-	// target 1 
+	// target 1
 	strat->target(1, 0) = 0.5; // coordonnée en x en m
 	strat->target(1, 1) = 0.5;   // coordonnée en y en m
 	strat->target(1, 2) = 1;   // deja pris ou non
