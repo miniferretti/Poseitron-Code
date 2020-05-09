@@ -100,7 +100,11 @@ int main()
 			break;
 
 		case TEST_PATH_STATE:
-			printf("TEST_PATH_STATE\r\n");
+			if (myCtrlStruct->flag_state == 0)
+			{
+				printf("TEST_PATH_STATE\r\n");
+				myCtrlStruct->flag_state = 1;
+			}
 			main_strategy(myCtrlStruct, my_P_Struct, spdctrl);
 			break;
 
@@ -127,7 +131,12 @@ int main()
 			break;
 
 		case SlAVE_STATE:
-			printf("SLAVE_STATE\r\n");
+			if (myCtrlStruct->flag_state == 0)
+			{
+				printf("SLAVE_STATE\r\n");
+				myCtrlStruct->flag_state = 1;
+			}
+
 			break;
 
 		case PNEUMA_TEST_STATE:

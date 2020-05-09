@@ -83,7 +83,7 @@ void SpeedController::init_speed_controller(int i)
 
     fprintf(logFile, "Rspeed Rref Lspeed Lref Time\r\n");
 
-    sock = socket(AF_INET, SOCK_DGRAM, 0);
+    sock = socket(AF_INET, SOCK_DGRAM, 0); //Protocole UDP
     if (sock == -1)
     {
         printf("Failed to create UDP server socket\r\n");
@@ -192,12 +192,14 @@ void SpeedController::updateLowCtrl()
             {
                 slave_previous_state = this->theCtrlStruct->main_states;
                 this->theCtrlStruct->main_states = SlAVE_STATE;
+                this->theCtrlStruct->flag_state = 0;
             }
             else if (slave == 0)
             {
                 if (slave_previous_state != 0)
                 {
                     this->theCtrlStruct->main_states = slave_previous_state;
+                    this->theCtrlStruct->flag_state = 0;
                 }
             }
 
@@ -272,7 +274,7 @@ double SpeedController::PIController(MotStruct *theMot, double V_ref, double V_w
     double dt = t - theMot->t_p;
     double u = theMot->kp * e;
 
-    printf(" dt = %f\r\n", dt);
+   // printf(" dt = %f\r\n", dt);
 
     if (!theMot->status) //The integral action is only done if there is no saturation of current.
     {
