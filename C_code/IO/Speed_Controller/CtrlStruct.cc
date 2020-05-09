@@ -81,7 +81,7 @@ void init_ctrlStruc(CtrlStruct *ctrl)
 
 	//Structure for the path-following algorithm
 	ctrl->follower = new PathFollow;
-	ctrl->follower->omega_sat = 2;
+	ctrl->follower->omega_sat = 3;
 	ctrl->follower->speed_sat = 1.2;
 	ctrl->follower->target = 0;
 	ctrl->follower->count = 0;
@@ -94,7 +94,7 @@ void init_ctrlStruc(CtrlStruct *ctrl)
 	ctrl->follower->last = 0;
 	ctrl->follower->v_changed = 0;
 	ctrl->follower->w_changed = 0;
-	ctrl->follower->rhoLimit = 0.05;
+	ctrl->follower->rhoLimit = 0.03;
 }
 
 void obstacle_building(PathPlanning *path)
