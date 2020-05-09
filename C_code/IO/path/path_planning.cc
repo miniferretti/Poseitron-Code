@@ -75,14 +75,15 @@ void set_obstacle(PathPlanning *path)
 	double dobs, U_rep;
 	int countx = 0;
 	int county = 0;
-	int xinit = 100; int yinit = 100; 
-	printf("Set obstacle \n\r");
+	int xinit = 100;
+	int yinit = 100;
+	//	printf("Set obstacle \n\r");
 	for (xval = -xinit; xval < path->xlen - xinit; xval++)
 	{
 		//printf("countx = %d\n\r", countx++);
 		for (yval = -yinit; yval < path->ylen - yinit; yval++)
 		{
-			printf("yval = %d county = %d\n\r", yval, county++);
+			//printf("yval = %d county = %d\n\r", yval, county++);
 			dobs = distanceObs(path, xval, yval);
 			if (dobs == 0.0)
 				U_rep = path->k_rep;
@@ -93,7 +94,7 @@ void set_obstacle(PathPlanning *path)
 			else
 				U_rep = path->M(xval + xinit, yval + yinit);
 
-			printf("Urep[%d][%d] = %f \r\n",xval, yval, U_rep);
+			//	printf("Urep[%d][%d] = %f \r\n",xval, yval, U_rep);
 
 			path->M(xval + xinit, yval + yinit) = U_rep;
 		}
@@ -102,10 +103,10 @@ void set_obstacle(PathPlanning *path)
 
 double distanceObs(PathPlanning *path, int x, int y)
 {
-	printf("distanceObs\n");
+	//	printf("distanceObs\n");
 	double dx, dy;
 	int n = path->Obs.rows();
-	printf("obs length = %d", n);
+	//	printf("obs length = %d\r\n", n);
 	for (int i = 0; i < n; i++)
 	{
 		dx = x - path->Obs(i, 0);
@@ -122,10 +123,11 @@ void attractive_potential_field(CtrlStruct *ctrl, int goalx, int goaly)
 	attractive_potential_field_reverse(ctrl);
 	path->U.setZero(path->xlen, path->ylen);
 	double rho_goal_square = 0.0;
-	int xinit = 100; int yinit = 100; 
-	for (int xval = - xinit; xval < path->xlen - xinit; xval++)
+	int xinit = 100;
+	int yinit = 100;
+	for (int xval = -xinit; xval < path->xlen - xinit; xval++)
 	{
-		for (int yval = - yinit; yval < path->ylen - yinit; yval++)
+		for (int yval = -yinit; yval < path->ylen - yinit; yval++)
 		{
 			rho_goal_square = (xval - goalx) * (xval - goalx) + (yval - goaly) * (yval - goaly);
 			path->U(xval + xinit, yval + yinit) = path->k_att * rho_goal_square;

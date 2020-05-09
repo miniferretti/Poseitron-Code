@@ -40,6 +40,7 @@ void init_ctrlStruc(CtrlStruct *ctrl)
 	ctrl->calib_states = CALIB_1;
 	ctrl->odo_calibration_states = GO_STRAIGHT;
 	ctrl->main_t_ref = 0;
+	ctrl->flag_state = 0;
 
 	// calibration
 	ctrl->calib = new RobotCalibration;
@@ -98,7 +99,7 @@ void init_ctrlStruc(CtrlStruct *ctrl)
 void obstacle_building(PathPlanning *path)
 {
 	int i, n, n_before, n_tot;
-	n_before = 0; 
+	n_before = 0;
 	n = path->xlen;
 	n_tot = n_before + n;
 	// WALL CONSTRUCTION
