@@ -30,6 +30,7 @@ void init_ctrlStruc(CtrlStruct *ctrl)
 	ctrl->rob_pos = new RobotPosition;
 	ctrl->robot = new RobotParameters;
 	ctrl->robot->wheel_rad = 0.03;
+	ctrl->wheel_dist = 0.19; // 19cm
 	ctrl->pinchers = new RobotPinchers;
 	ctrl->pinchers->number_of_succes = 0;
 	ctrl->pinchers->number_of_pinch = 0;
