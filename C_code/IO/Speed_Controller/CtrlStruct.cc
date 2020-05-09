@@ -40,7 +40,6 @@ void init_ctrlStruc(CtrlStruct *ctrl)
 	ctrl->calib_states = CALIB_1;
 	ctrl->odo_calibration_states = GO_STRAIGHT;
 	ctrl->main_t_ref = 0;
-	ctrl->flag_state = 0;
 
 	// calibration
 	ctrl->calib = new RobotCalibration;
@@ -55,7 +54,7 @@ void init_ctrlStruc(CtrlStruct *ctrl)
 	// strategy
 	ctrl->strat = new Strategy;
 	ctrl->strat->state = STRAT_STATE_PATH;
-	ctrl->strat->target = Eigen::MatrixXd::Zero(5, 4);
+	ctrl->strat->target = Eigen::MatrixXd::Zero(8, 5);
 	ctrl->strat->tref = 0;
 	ctrl->strat->count = 0;
 	ctrl->strat->wait_count = 0;
@@ -99,7 +98,7 @@ void init_ctrlStruc(CtrlStruct *ctrl)
 void obstacle_building(PathPlanning *path)
 {
 	int i, n, n_before, n_tot;
-	n_before = 0;
+	n_before = 0; 
 	n = path->xlen;
 	n_tot = n_before + n;
 	// WALL CONSTRUCTION
@@ -162,20 +161,4 @@ void target_init(CtrlStruct *ctrl)
 	strat->target(1, 1) = 0.5;   // coordonnée en y en m
 	strat->target(1, 2) = 1;   // deja pris ou non
 	strat->target(1, 3) = 1;   // nombre de points
-	// target 2
-	strat->target(2, 0) = -0.5; // coordonnée en x en m
-	strat->target(2, 1) = 0.5;   // coordonnée en y en m
-	strat->target(2, 2) = 1;   // deja pris ou non
-	strat->target(2, 3) = 1;   // nombre de points
-	// target 3
-	strat->target(3, 0) = -0.5; // coordonnée en x en m
-	strat->target(3, 1) = 0;   // coordonnée en y en m
-	strat->target(3, 2) = 1;   // deja pris ou non
-	strat->target(3, 3) = 1;   // nombre de points
-	// target 4
-	strat->target(4, 0) = 0; // coordonnée en x en m
-	strat->target(4, 1) = 0;   // coordonnée en y en m
-	strat->target(4, 2) = 1;   // deja pris ou non
-	strat->target(4, 3) = 1;   // nombre de points
-
 }

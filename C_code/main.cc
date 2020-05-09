@@ -43,6 +43,8 @@ int main()
 	wiringPiSetup();
 	CtrlStruct *myCtrlStruct = new CtrlStruct;
 	P_Struct *my_P_Struct = new P_Struct;
+	//my_P_Struct->p_avoidance_path = new pthread_t;
+	//my_P_Struct->p_path_update = new pthread_t;
 	CAN0_Alternate *can = new CAN0_Alternate(CAN_BR);
 	SPI_DE0 *deo;
 	deo = new SPI_DE0(0, 125e3);
@@ -100,11 +102,7 @@ int main()
 			break;
 
 		case TEST_PATH_STATE:
-			if (myCtrlStruct->flag_state == 0)
-			{
-				printf("TEST_PATH_STATE\r\n");
-				myCtrlStruct->flag_state = 1;
-			}
+			printf("TEST_PATH_STATE\r\n");
 			main_strategy(myCtrlStruct, my_P_Struct, spdctrl);
 			break;
 
@@ -131,12 +129,7 @@ int main()
 			break;
 
 		case SlAVE_STATE:
-			if (myCtrlStruct->flag_state == 0)
-			{
-				printf("SLAVE_STATE\r\n");
-				myCtrlStruct->flag_state = 1;
-			}
-
+			printf("SLAVE_STATE\r\n");
 			break;
 
 		case PNEUMA_TEST_STATE:

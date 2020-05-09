@@ -26,16 +26,16 @@ void main_strategy(CtrlStruct *ctrl, P_Struct *my_P_Struct, SpeedController *spd
 	switch (strat->state)
 	{
 	case STRAT_STATE_PATH:
+		printf("\nNew path\n\r");
 		// Thread creation
 		if (my_P_Struct->p_path_update_flag == 0)
 		{
-			printf("\nNew path\n\r");
 			my_P_Struct->p_path_update_flag = !pthread_create(&my_P_Struct->p_path_update, NULL, &path_planning_update, (void *)ctrl);
 		}
 		// Check that the thread has completed its computation
-		else if (!pthread_tryjoin_np(my_P_Struct->p_path_update, retval))
+
+		else if (pthread_tryjoin_np(my_P_Struct->p_path_update, retval) == 0)
 		{
-			printf("\nNew path done calculating\n\r");
 			my_P_Struct->p_path_update_flag = 0;
 			strat->state = STRAT_STATE_FOLLOW;
 		}
@@ -50,7 +50,7 @@ void main_strategy(CtrlStruct *ctrl, P_Struct *my_P_Struct, SpeedController *spd
 			my_P_Struct->p_avoidance_path_flag = !pthread_create(&my_P_Struct->p_avoidance_path, NULL, &avoidance_path_update, (void *)ctrl);
 		}
 		// Check that the thread has completed its computation
-		else if (!pthread_tryjoin_np(my_P_Struct->p_avoidance_path, retval))
+		else if (pthread_tryjoin_np(my_P_Struct->p_avoidance_path, retval) == 0)
 		{
 			my_P_Struct->p_avoidance_path_flag = 0;
 			strat->state = STRAT_STATE_FOLLOW;
@@ -112,18 +112,21 @@ void main_strategy(CtrlStruct *ctrl, P_Struct *my_P_Struct, SpeedController *spd
 		{
 			/// HERE AN OTHER FUNCTION IS PUT.
 
-			strat->target((int)follower->target, 2) = 0;
+			strat->target((int)follower->target, 3) = 0;
 			printf("\n\r>>>	function finished \n");
 			strat->wait_count = 0;
-			if ((int)follower->target == 4){
+
+			if (follower->target == 1)
+			{
 				ctrl->main_states = STOP_STATE;
-				ctrl->flag_state = 0;
+
 				strat->state = STRAT_STATE_PATH;
+				ctrl->flag_state = 0;
 			}
-			else {
+			else
+			{
 				strat->state = STRAT_STATE_GOAL;
 			}
-			
 		}
 
 		if (strat->wait_count == 0)
@@ -137,13 +140,7 @@ void main_strategy(CtrlStruct *ctrl, P_Struct *my_P_Struct, SpeedController *spd
 	case STRAT_STATE_GOAL:
 		printf("\n////////////////////////////////////////\n\r");
 		printf("\n\r>>>	search for new goal ...\n\r");
-		for (int i = 1; i < 5 ;i++){
-			if (strat->target(i, 2) == 1){
-				follower->target = i;
-				printf("\n Target chosen : %d",(int) follower->target);
-				break;
-			}
-		}
+		follower->target++;
 		// Next state
 		if (false)
 		{
