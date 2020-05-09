@@ -130,7 +130,7 @@ int path_follow(CtrlStruct *ctrl)
     /* Transformation vitesse lineaire et angulaire 
      * en vitesse de roue droite et gauche.
      * */
-    printf("omega = %f\n\r", omega);
+    //printf("omega = %f\n\r", omega);
     inputs->r_wheel_ref = ((v + omega * robot_param->wheel_dist / 2) / robot_param->wheel_rad) * ctrl->theUserStruct->theMotRight->compensation_factor;
     inputs->l_wheel_ref = ((v - omega * robot_param->wheel_dist / 2) / robot_param->wheel_rad) * ctrl->theUserStruct->theMotLeft->compensation_factor;
 
