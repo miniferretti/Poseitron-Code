@@ -26,15 +26,16 @@ void main_strategy(CtrlStruct *ctrl, P_Struct *my_P_Struct, SpeedController *spd
 	switch (strat->state)
 	{
 	case STRAT_STATE_PATH:
-		printf("\nNew path\n\r");
 		// Thread creation
 		if (my_P_Struct->p_path_update_flag == 0)
 		{
+			printf("\nNew path\n\r");
 			my_P_Struct->p_path_update_flag = !pthread_create(&my_P_Struct->p_path_update, NULL, &path_planning_update, (void *)ctrl);
 		}
 		// Check that the thread has completed its computation
 		else if (!pthread_tryjoin_np(my_P_Struct->p_path_update, retval))
 		{
+			printf("\nNew path done calculating\n\r");
 			my_P_Struct->p_path_update_flag = 0;
 			strat->state = STRAT_STATE_FOLLOW;
 		}
