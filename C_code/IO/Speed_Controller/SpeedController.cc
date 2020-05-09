@@ -46,7 +46,7 @@ void SpeedController::init_speed_controller(int i)
     this->theCtrlStruct->theUserStruct->theMotLeft->lowerCurrentLimit = -Ra * Current_max;
     this->theCtrlStruct->theUserStruct->theMotLeft->upperVoltageLimit = 24 * secu;
     this->theCtrlStruct->theUserStruct->theMotLeft->lowerVoltageLimit = -24 * secu;
-    this->theCtrlStruct->theUserStruct->theMotLeft->compensation_factor = 1;
+    this->theCtrlStruct->theUserStruct->theMotLeft->compensation_factor = 1.025;
     this->theCtrlStruct->theUserStruct->theMotLeft->ki_flag = 0;
 
     this->theCtrlStruct->theUserStruct->theMotRight->kp = 0.04; //Kp;

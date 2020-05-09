@@ -60,7 +60,7 @@ int main()
 	delay(2000); //wait for the python UDP client to turn on
 
 	myOdometry->Odometry_init();
-	myCtrlStruct->main_states = SlAVE_STATE;
+	myCtrlStruct->main_states = WAIT_STATE;
 	double time_taken;
 	int run = 1;
 	colorSensorReset();
