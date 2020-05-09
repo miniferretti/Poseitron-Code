@@ -81,20 +81,20 @@ void init_ctrlStruc(CtrlStruct *ctrl)
 
 	//Structure for the path-following algorithm
 	ctrl->follower = new PathFollow;
-	ctrl->follower->omega_sat = 1000;
-	ctrl->follower->speed_sat = 1.2;
+	ctrl->follower->omega_sat = 10;
+	ctrl->follower->speed_sat = 1.8;
 	ctrl->follower->target = 0;
 	ctrl->follower->count = 0;
 	ctrl->follower->next = 1;
 	ctrl->follower->alpha = 0;
 	ctrl->follower->beta = 0;
-	ctrl->follower->Krho = 1.5*2; //Krho > 0 otherwise unstable...
-	ctrl->follower->Kalpha = 4*2; // Kalpha > Krho otherwise unstable...
-	ctrl->follower->Kbeta = -0.75*2;
+	ctrl->follower->Krho = 1.5*2*2; //Krho > 0 otherwise unstable...
+	ctrl->follower->Kalpha = 4*2*2; // Kalpha > Krho otherwise unstable...
+	ctrl->follower->Kbeta = -0.75*2*2;
 	ctrl->follower->last = 0;
 	ctrl->follower->v_changed = 0;
 	ctrl->follower->w_changed = 0;
-	ctrl->follower->rhoLimit = 0.05;
+	ctrl->follower->rhoLimit = 0.03;
 }
 
 void obstacle_building(PathPlanning *path)
@@ -163,4 +163,9 @@ void target_init(CtrlStruct *ctrl)
 	strat->target(0, 1) = 0.5;   // coordonnée en y en m
 	strat->target(0, 2) = 1;   // deja pris ou non
 	strat->target(0, 3) = 1;   // nombre de points
+
+	strat->target(1, 0) = 0; // coordonnée en x en m
+	strat->target(1, 1) = 0.5;   // coordonnée en y en m
+	strat->target(1, 2) = 1;   // deja pris ou non
+	strat->target(1, 3) = 1;   // nombre de points
 }

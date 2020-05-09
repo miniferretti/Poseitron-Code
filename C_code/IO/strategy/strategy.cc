@@ -118,7 +118,7 @@ void main_strategy(CtrlStruct *ctrl, P_Struct *my_P_Struct, SpeedController *spd
 			printf("\n\r>>>	function finished \n");
 			strat->wait_count = 0;
 
-			if (follower->target == 1)
+			if (follower->target == 2)
 			{
 				ctrl->main_states = STOP_STATE;
 
