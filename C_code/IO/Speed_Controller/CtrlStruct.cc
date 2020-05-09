@@ -88,9 +88,9 @@ void init_ctrlStruc(CtrlStruct *ctrl)
 	ctrl->follower->next = 1;
 	ctrl->follower->alpha = 0;
 	ctrl->follower->beta = 0;
-	ctrl->follower->Krho = 1.5*2*2; //Krho > 0 otherwise unstable...
-	ctrl->follower->Kalpha = 4*2*2; // Kalpha > Krho otherwise unstable...
-	ctrl->follower->Kbeta = -0.75*2*2;
+	ctrl->follower->Krho = 1.5*2; //Krho > 0 otherwise unstable...
+	ctrl->follower->Kalpha = 4*2; // Kalpha > Krho otherwise unstable...
+	ctrl->follower->Kbeta = -0.75*2;
 	ctrl->follower->last = 0;
 	ctrl->follower->v_changed = 0;
 	ctrl->follower->w_changed = 0;
@@ -169,3 +169,11 @@ void target_init(CtrlStruct *ctrl)
 	strat->target(1, 2) = 1;   // deja pris ou non
 	strat->target(1, 3) = 1;   // nombre de points
 }
+/*
+void repulsive_potential_field(CtrlStruct *ctrl){
+	PathPlanning *path; 
+	path = ctrl->path; 
+
+	FILE 
+}
+*/
