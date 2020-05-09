@@ -82,7 +82,7 @@ void init_ctrlStruc(CtrlStruct *ctrl)
 	//Structure for the path-following algorithm
 	ctrl->follower = new PathFollow;
 	ctrl->follower->omega_sat = 3;
-	ctrl->follower->speed_sat = 1.2;
+	ctrl->follower->speed_sat = 1.8;
 	ctrl->follower->target = 0;
 	ctrl->follower->count = 0;
 	ctrl->follower->next = 1;
