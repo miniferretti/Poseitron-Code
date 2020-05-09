@@ -81,7 +81,7 @@ void init_ctrlStruc(CtrlStruct *ctrl)
 
 	//Structure for the path-following algorithm
 	ctrl->follower = new PathFollow;
-	ctrl->follower->omega_sat = 10;
+	ctrl->follower->omega_sat = 2;
 	ctrl->follower->speed_sat = 1.8;
 	ctrl->follower->target = 0;
 	ctrl->follower->count = 0;
@@ -94,7 +94,7 @@ void init_ctrlStruc(CtrlStruct *ctrl)
 	ctrl->follower->last = 0;
 	ctrl->follower->v_changed = 0;
 	ctrl->follower->w_changed = 0;
-	ctrl->follower->rhoLimit = 0.03;
+	ctrl->follower->rhoLimit = 0.05;
 }
 
 void obstacle_building(PathPlanning *path)
@@ -174,6 +174,16 @@ void repulsive_potential_field(CtrlStruct *ctrl){
 	PathPlanning *path; 
 	path = ctrl->path; 
 
-	FILE 
+	FILE *fp; 
+	double value; 
+	int i = 0; 
+	fp = fopen("records_field.txt", "r"); 
+	if (fp == NULL){
+		printf("Error opening the file \n");
+	}
+	for (int j = 0; i<=path->ylen; i++ ){
+		for (in)
+	}
+
 }
 */
