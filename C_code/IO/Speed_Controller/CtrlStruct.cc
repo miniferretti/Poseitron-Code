@@ -176,7 +176,7 @@ void repulsive_potential_field(CtrlStruct *ctrl){
 
 	FILE *fp; 
 	double value; 
-	fp = fopen("records_field.txt", "r"); 
+	fp = fopen("RecordField.txt", "r"); 
 	if (fp == NULL){
 		printf("Error opening the file \n");
 	}
