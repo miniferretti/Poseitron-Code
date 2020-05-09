@@ -102,7 +102,10 @@ int main()
 			break;
 
 		case TEST_PATH_STATE:
-			printf("TEST_PATH_STATE\r\n");
+			if (myCtrlStruct->flag_state == 1){
+				printf("TEST_PATH_STATE\r\n");
+				myCtrlStruct->flag_state = 0; 
+			}
 			main_strategy(myCtrlStruct, my_P_Struct, spdctrl);
 			break;
 

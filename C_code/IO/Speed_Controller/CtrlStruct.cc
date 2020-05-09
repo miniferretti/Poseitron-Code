@@ -40,6 +40,7 @@ void init_ctrlStruc(CtrlStruct *ctrl)
 	ctrl->calib_states = CALIB_1;
 	ctrl->odo_calibration_states = GO_STRAIGHT;
 	ctrl->main_t_ref = 0;
+	ctrl->flag_state = 1; 
 
 	// calibration
 	ctrl->calib = new RobotCalibration;
@@ -79,8 +80,8 @@ void init_ctrlStruc(CtrlStruct *ctrl)
 
 	//Structure for the path-following algorithm
 	ctrl->follower = new PathFollow;
-	ctrl->follower->omega_sat = 1;
-	ctrl->follower->speed_sat = 3;
+	ctrl->follower->omega_sat = 1.5;
+	ctrl->follower->speed_sat = 0.3;
 	ctrl->follower->target = 0;
 	ctrl->follower->count = 0;
 	ctrl->follower->next = 1;
