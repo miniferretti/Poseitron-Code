@@ -25,8 +25,8 @@ void *path_planning_update(void *myCtrl)
 
 	if (path->flag_repulsive == 1)
 	{
-		repulsive_map_potential_field(path);
-		printf(">>> repulsive map computation done\n\r");
+		//repulsive_map_potential_field(path);
+		//printf(">>> repulsive map computation done\n\r");
 		ctrl->path->flag_repulsive = 0;
 	}
 	attractive_potential_field(ctrl, goalx, goaly);
@@ -69,10 +69,10 @@ void *avoidance_path_update(void *myCtrl)
 
 void repulsive_map_potential_field(PathPlanning *path)
 {
-	path->RecordField = fopen("/home/pi/Poseitron-Code/Data/RecordField.txt", "w");
+	//path->RecordField = fopen("/home/pi/Poseitron-Code/Data/RecordField.txt", "w");
 	set_obstacle(path);
 	path->M = path->M.eval() / path->M.maxCoeff(); //normalize
-
+	/*
 	for (int i = 0; path->M.rows() > i; i++)
 	{
 		for (int j = 0; path->M.cols() > j; j++)
@@ -82,6 +82,7 @@ void repulsive_map_potential_field(PathPlanning *path)
 	}
 
 	fclose(path->RecordField);
+	*/
 }
 
 void set_obstacle(PathPlanning *path)
