@@ -82,7 +82,7 @@ void init_ctrlStruc(CtrlStruct *ctrl)
 	//Structure for the path-following algorithm
 	ctrl->follower = new PathFollow;
 	ctrl->follower->omega_sat = 2;
-	ctrl->follower->speed_sat = 1.8;
+	ctrl->follower->speed_sat = 1.2;
 	ctrl->follower->target = 0;
 	ctrl->follower->count = 0;
 	ctrl->follower->next = 1;
@@ -164,10 +164,10 @@ void target_init(CtrlStruct *ctrl)
 	strat->target(0, 2) = 1;   // deja pris ou non
 	strat->target(0, 3) = 1;   // nombre de points
 
-	strat->target(1, 0) = 0; // coordonnée en x en m
-	strat->target(1, 1) = 0.5;   // coordonnée en y en m
-	strat->target(1, 2) = 1;   // deja pris ou non
-	strat->target(1, 3) = 1;   // nombre de points
+	strat->target(2, 0) = 0; // coordonnée en x en m
+	strat->target(2, 1) = 0.5;   // coordonnée en y en m
+	strat->target(2, 2) = 1;   // deja pris ou non
+	strat->target(2, 3) = 1;   // nombre de points
 }
 /*
 void repulsive_potential_field(CtrlStruct *ctrl){
@@ -176,14 +176,17 @@ void repulsive_potential_field(CtrlStruct *ctrl){
 
 	FILE *fp; 
 	double value; 
-	int i = 0; 
 	fp = fopen("records_field.txt", "r"); 
 	if (fp == NULL){
 		printf("Error opening the file \n");
 	}
-	for (int j = 0; i<=path->ylen; i++ ){
-		for (in)
+	for (int j = 0; j<=path->ylen; j++ ){
+		for (int i = 0; i<=path->xlen; i++){
+			fscanf(fp, "%f\t", &value);
+			path->M(i,j) = value; 
+		}
+		fscanf(fp, "%\n");
 	}
-
+	fclose(fp);
 }
 */
