@@ -33,13 +33,14 @@ void *path_planning_update(void *myCtrl)
 	printf(">>> attractive potential field computation done\n\r");
 	solve_path(ctrl, x, y, goalx, goaly);
 	printf(">>> path computation done \n\r");
-	/*
+
 	printf("Show path \n\r");
-	int n = (int) path->traj.rows();
-	for (int i = 0; i < n; i++){
-		printf("%f %f\n\r",path->traj(i,0), path->traj(i,1));
+	int n = (int)path->traj.rows();
+	for (int i = 0; i < n; i++)
+	{
+		printf("%f %f\n\r", path->traj(i, 0), path->traj(i, 1));
 	}
-*/
+
 	/*	
 	printf("Show Field \n\r");
 	for (int i = 0; i < path->xlen ; i++){
