@@ -192,12 +192,14 @@ void SpeedController::updateLowCtrl()
             {
                 slave_previous_state = this->theCtrlStruct->main_states;
                 this->theCtrlStruct->main_states = SlAVE_STATE;
+                this->theCtrlStruct->flag_state = 1;
             }
             else if (slave == 0)
             {
                 if (slave_previous_state != 0)
                 {
                     this->theCtrlStruct->main_states = slave_previous_state;
+                    this->theCtrlStruct->flag_state = 1;
                 }
             }
 
