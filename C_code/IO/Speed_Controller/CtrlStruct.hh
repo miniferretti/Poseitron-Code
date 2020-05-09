@@ -238,7 +238,6 @@ typedef struct CtrlStruct
     double stopvalues[2];
     double t_ref;
     double main_t_ref;
-    int flag_state;
 } CtrlStruct;
 
 typedef struct P_Struct

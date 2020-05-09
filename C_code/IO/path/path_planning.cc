@@ -127,11 +127,10 @@ void attractive_potential_field(CtrlStruct *ctrl, int goalx, int goaly)
 	attractive_potential_field_reverse(ctrl);
 	path->U.setZero(path->xlen, path->ylen);
 	double rho_goal_square = 0.0;
-	int xinit = 100;
-	int yinit = 100;
-	for (int xval = -xinit; xval < path->xlen - xinit; xval++)
+	int xinit = 100; int yinit = 100; 
+	for (int xval = - xinit; xval < path->xlen - xinit; xval++)
 	{
-		for (int yval = -yinit; yval < path->ylen - yinit; yval++)
+		for (int yval = - yinit; yval < path->ylen - yinit; yval++)
 		{
 			rho_goal_square = (xval - goalx) * (xval - goalx) + (yval - goaly) * (yval - goaly);
 			path->U(xval + xinit, yval + yinit) = path->k_att * rho_goal_square;
