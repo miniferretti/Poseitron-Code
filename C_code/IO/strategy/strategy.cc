@@ -115,9 +115,18 @@ void main_strategy(CtrlStruct *ctrl, P_Struct *my_P_Struct, SpeedController *spd
 			strat->target((int)follower->target, 3) = 0;
 			printf("\n\r>>>	function finished \n");
 			strat->wait_count = 0;
-			ctrl->main_states = STOP_STATE;
-			strat->state = STRAT_STATE_PATH;
-			ctrl->flag_state = 0;
+
+			if (follower->target == 1)
+			{
+				ctrl->main_states = STOP_STATE;
+
+				strat->state = STRAT_STATE_PATH;
+				ctrl->flag_state = 0;
+			}
+			else
+			{
+				strat->state = STRAT_STATE_GOAL;
+			}
 		}
 
 		if (strat->wait_count == 0)
@@ -131,6 +140,7 @@ void main_strategy(CtrlStruct *ctrl, P_Struct *my_P_Struct, SpeedController *spd
 	case STRAT_STATE_GOAL:
 		printf("\n////////////////////////////////////////\n\r");
 		printf("\n\r>>>	search for new goal ...\n\r");
+		follower->target++;
 		// Next state
 		if (false)
 		{
