@@ -82,7 +82,7 @@ void set_obstacle(PathPlanning *path)
 		//printf("countx = %d\n\r", countx++);
 		for (yval = -yinit; yval < path->ylen - yinit; yval++)
 		{
-			//printf("yval = %d county = %d\n\r", yval, county++);
+			printf("yval = %d county = %d\n\r", yval, county++);
 			dobs = distanceObs(path, xval, yval);
 			if (dobs == 0.0)
 				U_rep = path->k_rep;
@@ -93,7 +93,7 @@ void set_obstacle(PathPlanning *path)
 			else
 				U_rep = path->M(xval + xinit, yval + yinit);
 
-			//printf("Urep[%d][%d] = %f \r\n",xval, yval, U_rep);
+			printf("Urep[%d][%d] = %f \r\n",xval, yval, U_rep);
 
 			path->M(xval + xinit, yval + yinit) = U_rep;
 		}
@@ -105,7 +105,7 @@ double distanceObs(PathPlanning *path, int x, int y)
 	printf("distanceObs\n");
 	double dx, dy;
 	int n = path->Obs.rows();
-
+	printf("obs length = %d", n);
 	for (int i = 0; i < n; i++)
 	{
 		dx = x - path->Obs(i, 0);
