@@ -89,7 +89,7 @@ void main_strategy(CtrlStruct *ctrl, P_Struct *my_P_Struct, SpeedController *spd
 			strat->state = STRAT_STATE_PATH;
 		}
 		
-		else if (follower->flag_rho == 1)
+		else if (false)//follower->flag_rho == 1)
 		{
 			// In case where the robot is not close enough from the target.
 			// The limit is lowered in order to resume again the finished path.
