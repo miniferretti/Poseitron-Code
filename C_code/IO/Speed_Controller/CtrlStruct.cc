@@ -98,13 +98,16 @@ void init_ctrlStruc(CtrlStruct *ctrl)
 void obstacle_building(PathPlanning *path)
 {
 	int i, n, n_before, n_tot;
+	n_before = 0; 
+	n = path->xlen;
+	n_tot = n_before + n;
 	// WALL CONSTRUCTION
 	// bottom wall
-	path->Obs.conservativeResize(path->xlen, 2);
-	for (i = 0; i < path->xlen; i++)
+	path->Obs.conservativeResize(n_tot, 2);
+	for (i = 0; i < n; i++)
 	{
-		path->Obs(i, 0) = (i - 100);
-		path->Obs(i, 1) = -100;
+		path->Obs(i + n_before, 0) = (i - 100);
+		path->Obs(i + n_before, 1) = -100;
 	}
 	n_before = path->xlen;
 

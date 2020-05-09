@@ -76,7 +76,7 @@ void set_obstacle(PathPlanning *path)
 	int countx = 0;
 	int county = 0;
 	int xinit = 100; int yinit = 100; 
-	//printf("Set obstacle \n\r");
+	printf("Set obstacle \n\r");
 	for (xval = -xinit; xval < path->xlen - xinit; xval++)
 	{
 		//printf("countx = %d\n\r", countx++);
@@ -102,6 +102,7 @@ void set_obstacle(PathPlanning *path)
 
 double distanceObs(PathPlanning *path, int x, int y)
 {
+	printf("distanceObs\n");
 	double dx, dy;
 	int n = path->Obs.rows();
 
@@ -122,9 +123,9 @@ void attractive_potential_field(CtrlStruct *ctrl, int goalx, int goaly)
 	path->U.setZero(path->xlen, path->ylen);
 	double rho_goal_square = 0.0;
 	int xinit = 100; int yinit = 100; 
-	for (int xval = -xinit; xval < path->xlen - xinit; xval++)
+	for (int xval = - xinit; xval < path->xlen - xinit; xval++)
 	{
-		for (int yval = -yinit; yval < path->ylen - yinit; yval++)
+		for (int yval = - yinit; yval < path->ylen - yinit; yval++)
 		{
 			rho_goal_square = (xval - goalx) * (xval - goalx) + (yval - goaly) * (yval - goaly);
 			path->U(xval + xinit, yval + yinit) = path->k_att * rho_goal_square;
