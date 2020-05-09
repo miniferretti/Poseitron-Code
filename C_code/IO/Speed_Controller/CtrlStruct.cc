@@ -67,6 +67,7 @@ void init_ctrlStruc(CtrlStruct *ctrl)
 	ctrl->path->ylen = 201;
 	ctrl->path->M = Eigen::MatrixXd::Zero(ctrl->path->xlen, ctrl->path->ylen);
 	ctrl->path->U = Eigen::MatrixXd::Zero(ctrl->path->xlen, ctrl->path->ylen);
+	obstacle_building(ctrl->path);
 	ctrl->path->minObs = Eigen::MatrixXd::Zero(ctrl->path->Obs.rows(), 1);
 	ctrl->path->k_att = 10.0;
 	ctrl->path->k_rep = 5.0;
@@ -76,7 +77,6 @@ void init_ctrlStruc(CtrlStruct *ctrl)
 	ctrl->path->Opp = Eigen::MatrixXd::Zero(ctrl->path->xlen, ctrl->path->ylen);
 	ctrl->path->flag_repulsive = 1;
 	ctrl->path->intermediary = 0;
-	obstacle_building(ctrl->path);
 
 	//Structure for the path-following algorithm
 	ctrl->follower = new PathFollow;
@@ -144,6 +144,7 @@ void obstacle_building(PathPlanning *path)
 		path->Obs(i + n_before, 1) = (i - 100);
 	}
 	n_before = n_tot;
+	printf("obs length = %d \n\r", path->Obs.rows());
 }
 
 void target_init(CtrlStruct *ctrl)
