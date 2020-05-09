@@ -34,7 +34,7 @@ void main_strategy(CtrlStruct *ctrl, P_Struct *my_P_Struct, SpeedController *spd
 		}
 		// Check that the thread has completed its computation
 
-		else if (pthread_tryjoin_np(my_P_Struct->p_path_update, retval) == 0)
+		else if (pthread_tryjoin_np(*my_P_Struct->p_path_update, retval) == 0)
 		{
 			printf("\nNew path done calculating\n\r");
 			my_P_Struct->p_path_update_flag = 0;
@@ -51,7 +51,7 @@ void main_strategy(CtrlStruct *ctrl, P_Struct *my_P_Struct, SpeedController *spd
 			my_P_Struct->p_avoidance_path_flag = !pthread_create(my_P_Struct->p_avoidance_path, NULL, &avoidance_path_update, (void *)ctrl);
 		}
 		// Check that the thread has completed its computation
-		else if (pthread_tryjoin_np(my_P_Struct->p_avoidance_path, retval) == 0)
+		else if (pthread_tryjoin_np(*my_P_Struct->p_avoidance_path, retval) == 0)
 		{
 			my_P_Struct->p_avoidance_path_flag = 0;
 			strat->state = STRAT_STATE_FOLLOW;
