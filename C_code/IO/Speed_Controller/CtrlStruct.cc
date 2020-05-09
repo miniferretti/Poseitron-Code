@@ -88,13 +88,13 @@ void init_ctrlStruc(CtrlStruct *ctrl)
 	ctrl->follower->next = 1;
 	ctrl->follower->alpha = 0;
 	ctrl->follower->beta = 0;
-	ctrl->follower->Krho = 1.5; //Krho > 0 otherwise unstable...
-	ctrl->follower->Kalpha = 4; // Kalpha > Krho otherwise unstable...
-	ctrl->follower->Kbeta = -0.75;
+	ctrl->follower->Krho = 1.5*2; //Krho > 0 otherwise unstable...
+	ctrl->follower->Kalpha = 4*2; // Kalpha > Krho otherwise unstable...
+	ctrl->follower->Kbeta = -0.75*2;
 	ctrl->follower->last = 0;
 	ctrl->follower->v_changed = 0;
 	ctrl->follower->w_changed = 0;
-	ctrl->follower->rhoLimit = 0.08;
+	ctrl->follower->rhoLimit = 0.05;
 }
 
 void obstacle_building(PathPlanning *path)
