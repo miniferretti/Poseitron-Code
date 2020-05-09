@@ -272,7 +272,7 @@ double SpeedController::PIController(MotStruct *theMot, double V_ref, double V_w
     double dt = t - theMot->t_p;
     double u = theMot->kp * e;
 
-    printf(" dt = %f\r\n", dt);
+   // printf(" dt = %f\r\n", dt);
 
     if (!theMot->status) //The integral action is only done if there is no saturation of current.
     {
