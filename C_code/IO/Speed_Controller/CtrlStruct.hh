@@ -101,6 +101,7 @@ typedef struct PathPlanning
     int path_changed;
     int flag_repulsive;
     int intermediary;
+    FILE *RecordField;
 
 } PathPlanning;
 

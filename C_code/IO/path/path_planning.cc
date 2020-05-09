@@ -69,8 +69,19 @@ void *avoidance_path_update(void *myCtrl)
 
 void repulsive_map_potential_field(PathPlanning *path)
 {
+	path->RecordField = fopen("/home/pi/Poseitron-Code/Data/RecordField.txt", "w");
 	set_obstacle(path);
 	path->M = path->M.eval() / path->M.maxCoeff(); //normalize
+
+	for (int i = 0; path->M.rows() > i; i++)
+	{
+		for (int j = 0; path->M.cols() > j; j++)
+		{
+			fprintf(path->RecordField, "%f\r\n", path->M(i, j));
+		}
+	}
+
+	fclose(path->RecordField);
 }
 
 void set_obstacle(PathPlanning *path)
@@ -127,10 +138,11 @@ void attractive_potential_field(CtrlStruct *ctrl, int goalx, int goaly)
 	attractive_potential_field_reverse(ctrl);
 	path->U.setZero(path->xlen, path->ylen);
 	double rho_goal_square = 0.0;
-	int xinit = 100; int yinit = 100; 
-	for (int xval = - xinit; xval < path->xlen - xinit; xval++)
+	int xinit = 100;
+	int yinit = 100;
+	for (int xval = -xinit; xval < path->xlen - xinit; xval++)
 	{
-		for (int yval = - yinit; yval < path->ylen - yinit; yval++)
+		for (int yval = -yinit; yval < path->ylen - yinit; yval++)
 		{
 			rho_goal_square = (xval - goalx) * (xval - goalx) + (yval - goaly) * (yval - goaly);
 			path->U(xval + xinit, yval + yinit) = path->k_att * rho_goal_square;
