@@ -115,21 +115,10 @@ void main_strategy(CtrlStruct *ctrl, P_Struct *my_P_Struct, SpeedController *spd
 			strat->target((int)follower->target, 2) = 0;
 			printf("\n\r>>>	function finished \n");
 			strat->wait_count = 0;
-<<<<<<< HEAD
-			if ((int)follower->target == 4)
-			{
-				ctrl->main_states = STOP_STATE;
-				ctrl->flag_state = 0;
-				strat->state = STRAT_STATE_PATH;
-			}
-			else
-			{
-				strat->state = STRAT_STATE_GOAL;
-			}
-=======
+
 			ctrl->main_states = STOP_STATE;
 			strat->state = STRAT_STATE_PATH;
->>>>>>> parent of 7cb6f11... Merge branch 'CAN_Alternate' of https://github.com/miniferretti/Poseitron-Code into CAN_Alternate
+
 		}
 
 		if (strat->wait_count == 0)
