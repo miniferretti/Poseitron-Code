@@ -72,7 +72,7 @@ void Odometry::Odometry_update()
         this->theCtrlStruct->rob_pos->theta = theta + dtheta;
         this->theCtrlStruct->rob_pos->dydx_prev = this->theCtrlStruct->rob_pos->dydx;
 
-        if (this->theCtrlStruct->rob_pos->theta < -M_PI)
+        /*   if (this->theCtrlStruct->rob_pos->theta < -M_PI)
         {
             this->theCtrlStruct->rob_pos->theta += 2 * M_PI;
         }
@@ -80,7 +80,7 @@ void Odometry::Odometry_update()
         if (this->theCtrlStruct->rob_pos->theta > M_PI)
         {
             this->theCtrlStruct->rob_pos->theta -= 2 * M_PI;
-        }
+        } */
 
         if (dx != 0.0)
         {
