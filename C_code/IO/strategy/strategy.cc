@@ -65,7 +65,7 @@ void main_strategy(CtrlStruct *ctrl, P_Struct *my_P_Struct, SpeedController *spd
 		follow = path_follow(ctrl);
 		redzone = opponent_detection(ctrl);
 		// Needed if someone says that the path needs to be updated
-		if (ctrl->opp_pos->flag == 1)//redzone)
+		if (ctrl->opp_pos->flag == 1) //redzone)
 		{
 			printf(">>>	new path for avoidance\n");
 			spd->set_speed(0.0, 0.0);
@@ -120,7 +120,7 @@ void main_strategy(CtrlStruct *ctrl, P_Struct *my_P_Struct, SpeedController *spd
 			printf("\n\r>>>	function finished \n");
 			strat->wait_count = 0;
 
-			if (false)//follower->target == 3)
+			if (false) //follower->target == 3)
 			{
 				ctrl->main_states = STOP_STATE;
 				fclose(ctrl->follower->logFile);
@@ -144,17 +144,20 @@ void main_strategy(CtrlStruct *ctrl, P_Struct *my_P_Struct, SpeedController *spd
 	case STRAT_STATE_GOAL:
 		printf("\n////////////////////////////////////////\n\r");
 		printf("\n\r>>>	search for new goal ...\n\r");
-		if (follower->target == 4){
-			follower->target = 0; 
+		if (follower->target == 1)
+		{
+			follower->target = 0;
 		}
-		else {
+		else
+		{
 			follower->target++;
 		}
-		
-		if (follower->target == 1){
+
+		/*	if (follower->target == 1)
+		{
 			ctrl->opp_pos->flag = 1;
-		}
-		
+		}*/
+
 		// Next state
 		if (false)
 		{
