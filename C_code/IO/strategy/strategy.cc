@@ -177,7 +177,7 @@ int opponent_detection(CtrlStruct *ctrl)
 	double distnew = min(ctrl->theCtrlIn->sens_array_front[1], ctrl->theCtrlIn->sens_array_front[3]);
 	double error = abs(ctrl->opp_pos->dist - distnew); 
 	double errorlim = 10; 
-	double mean = ctrl->opp_pos->dist; 
+	double mean = distnew; 
 
 	if (error < errorlim) mean = (ctrl->opp_pos->dist + distnew) /2;
 
