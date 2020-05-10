@@ -45,7 +45,7 @@ void init_ctrlStruc(CtrlStruct *ctrl)
 
 	// opponent position
 	ctrl->opp_pos = new OppPos;
-	ctrl->opp_pos->flag = 1; 
+	ctrl->opp_pos->flag = 0; 
 
 	// calibration
 	ctrl->calib = new RobotCalibration;
