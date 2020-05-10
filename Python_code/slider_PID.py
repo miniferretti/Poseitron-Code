@@ -77,9 +77,9 @@ e2.place(x=1100, y=300)
 e3.place(x=1100, y=350)
 e4.place(x=1100, y=400)
 
-e1.insert(0, "4.5")
-e2.insert(0, "1.8")
-e3.insert(0, "4.4")
+e1.insert(0, "5")
+e2.insert(0, "2.8")
+e3.insert(0, "7")
 e4.insert(0, "0.05")
 
 Label(master, text='Omega_sat').place(x=1000, y=250)
