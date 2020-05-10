@@ -194,9 +194,12 @@ void repulsive_opp_potential_field(CtrlStruct *ctrl)
 		x1 = 50;
 		y1 = 0;
 	}
-	if else (ctrl->follower->target == 1){
+	else if (ctrl->follower->target == 1){
 		x1 = 0; 
 		y1 = 0; 
+	}else {
+		x1 = 50;
+		y1 = 0;
 	}
 
 	//x2 = 0;
