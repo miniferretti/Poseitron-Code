@@ -121,7 +121,7 @@ void main_strategy(CtrlStruct *ctrl, P_Struct *my_P_Struct, SpeedController *spd
 			printf("\n\r>>>	function finished \n");
 			strat->wait_count = 0;
 
-			if (follower->target == 3)
+			if (false)//follower->target == 3)
 			{
 				ctrl->main_states = STOP_STATE;
 				fclose(ctrl->follower->logFile);
@@ -146,7 +146,12 @@ void main_strategy(CtrlStruct *ctrl, P_Struct *my_P_Struct, SpeedController *spd
 	case STRAT_STATE_GOAL:
 		printf("\n////////////////////////////////////////\n\r");
 		printf("\n\r>>>	search for new goal ...\n\r");
-		follower->target++;
+		if (follower->target == 3){
+			follower->target = 0; 
+		}
+		else {
+			follower->target++;
+		}
 		// Next state
 		if (false)
 		{

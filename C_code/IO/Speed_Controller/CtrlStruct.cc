@@ -156,24 +156,26 @@ void target_init(CtrlStruct *ctrl)
 	Strategy *strat;
 	strat = ctrl->strat;
 
-	// target 0
-	strat->target(1, 0) = 0.5; // coordonnée en x en m
-	strat->target(1, 1) = -0.5;   // coordonnée en y en m
-	strat->target(1, 2) = 1;   // deja pris ou non
-	strat->target(1, 3) = 1;   // nombre de points
 	// target 1
 	strat->target(0, 0) = 0.5; // coordonnée en x en m
 	strat->target(0, 1) = 0.5;   // coordonnée en y en m
 	strat->target(0, 2) = 1;   // deja pris ou non
 	strat->target(0, 3) = 1;   // nombre de points
 
-	strat->target(2, 0) = 0; // coordonnée en x en m
+	// target 0
+	strat->target(1, 0) = 0.5; // coordonnée en x en m
+	strat->target(1, 1) = -0.5;   // coordonnée en y en m
+	strat->target(1, 2) = 1;   // deja pris ou non
+	strat->target(1, 3) = 1;   // nombre de points
+	
+
+	strat->target(2, 0) = -0.5; // coordonnée en x en m
 	strat->target(2, 1) = 0.5;   // coordonnée en y en m
 	strat->target(2, 2) = 1;   // deja pris ou non
 	strat->target(2, 3) = 1;   // nombre de points
 
 	strat->target(3, 0) = -0.5; // coordonnée en x en m
-	strat->target(3, 1) = 0.5;   // coordonnée en y en m
+	strat->target(3, 1) = -0.5;   // coordonnée en y en m
 	strat->target(3, 2) = 1;   // deja pris ou non
 	strat->target(3, 3) = 1;   // nombre de points
 }
