@@ -144,11 +144,14 @@ void main_strategy(CtrlStruct *ctrl, P_Struct *my_P_Struct, SpeedController *spd
 	case STRAT_STATE_GOAL:
 		printf("\n////////////////////////////////////////\n\r");
 		printf("\n\r>>>	search for new goal ...\n\r");
-		if (follower->target == 3){
+		if (follower->target == 4){
 			follower->target = 0; 
 		}
 		else {
 			follower->target++;
+		}
+		if (follower->target == 0 || follower->target == 1){
+			ctrl->opp_pos->flag = 1;
 		}
 		// Next state
 		if (false)

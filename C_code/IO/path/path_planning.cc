@@ -62,11 +62,9 @@ void *avoidance_path_update(void *myCtrl)
 	int goalx, goaly;
 	goalx = (int)(ctrl->strat->target((int)ctrl->follower->target, 0) * 100);
 	goaly = (int)(ctrl->strat->target((int)ctrl->follower->target, 1) * 100);
-
-	repulsive_opp_potential_field(ctrl);
-	solve_path(ctrl, (int)(ctrl->rob_pos->x * 100), (int)(ctrl->rob_pos->y * 100), goalx, goaly);
-	printf(">>> path computation done\n");
 	
+	path->M = path->M.eval() - path->U;
+	repulsive_opp_potential_field(ctrl);
 	path->RecordField = fopen("/home/pi/Poseitron-Code/Data/RecordField.txt", "w");
 	for (int i = 0; path->M.rows() > i; i++)
 	{
@@ -78,6 +76,9 @@ void *avoidance_path_update(void *myCtrl)
 	}
 	fclose(path->RecordField);
 	printf(">>> RecordField file completed\n\r");
+	path->M = path->M.eval() + path->U;
+	solve_path(ctrl, (int)(ctrl->rob_pos->x * 100), (int)(ctrl->rob_pos->y * 100), goalx, goaly);
+	printf(">>> path computation done\n");
 	return NULL;
 }
 
@@ -189,8 +190,14 @@ void repulsive_opp_potential_field(CtrlStruct *ctrl)
 	//int x3; //= ctrl->opp_pos->x3 * 100;
 	//int y3; //= ctrl->opp_pos->y3 * 100;
 
-	x1 = 50;
-	y1 = 0;
+	if (ctrl->follower->target == 0){
+		x1 = 50;
+		y1 = 0;
+	}
+	if else (ctrl->follower->target == 1){
+		x1 = 0; 
+		y1 = 0; 
+	}
 
 	//x2 = 0;
 	//y2 = 0;
