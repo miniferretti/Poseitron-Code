@@ -77,9 +77,9 @@ e2.place(x=1100, y=300)
 e3.place(x=1100, y=350)
 e4.place(x=1100, y=400)
 
-e1.insert(0, "5")
+e1.insert(0, "6.5")
 e2.insert(0, "2.8")
-e3.insert(0, "7")
+e3.insert(0, "9")
 e4.insert(0, "0.05")
 
 Label(master, text='Omega_sat').place(x=1000, y=250)
@@ -290,7 +290,7 @@ Time = L()
 def animate(i):
     # f = open(r"/home/pi/Poseitron-Code/Data/logFileSpeed.txt", "r").read()
     global slave
-    ps4.listen(True)
+    #ps4.listen(True)
     speeds = speed(ps4_left_x, ps4_left_y, ps4_right_x, ps4_right_y)
     PID = [float(Ki_left), float(Kp_left), float(Kd_left),
            float(Ki_right), float(Kp_right), float(Kd_right),

@@ -81,14 +81,14 @@ void init_ctrlStruc(CtrlStruct *ctrl)
 
 	//Structure for the path-following algorithm
 	ctrl->follower = new PathFollow;
-	ctrl->follower->omega_sat = 3*1.5;
-	ctrl->follower->speed_sat = 1.8;
+	ctrl->follower->omega_sat = 6.5;//3*1.5;
+	ctrl->follower->speed_sat = 2.8;//1.8;
 	ctrl->follower->target = 0;
 	ctrl->follower->count = 0;
 	ctrl->follower->next = 1;
 	ctrl->follower->alpha = 0;
 	ctrl->follower->beta = 0;
-	ctrl->follower->prop_param = 4.4;
+	ctrl->follower->prop_param = 9;//4.4;
 	ctrl->follower->Krho = 1.5*2*2*1.1; //Krho > 0 otherwise unstable...
 	ctrl->follower->Kalpha = 4*2*2*1.1; // Kalpha > Krho otherwise unstable...
 	ctrl->follower->Kbeta = -0.75*2*2*1.1;
