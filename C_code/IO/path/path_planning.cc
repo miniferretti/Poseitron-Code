@@ -190,8 +190,8 @@ void repulsive_opp_potential_field(CtrlStruct *ctrl)
 	//int x3; //= ctrl->opp_pos->x3 * 100;
 	//int y3; //= ctrl->opp_pos->y3 * 100;
 
-	if (ctrl->follower->target == 0){
-		x1 = 50;
+	if (true){//ctrl->follower->target == 0){
+		x1 = 0;
 		y1 = 0;
 	}
 	else if (ctrl->follower->target == 1){

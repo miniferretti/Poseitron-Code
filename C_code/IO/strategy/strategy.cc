@@ -150,9 +150,11 @@ void main_strategy(CtrlStruct *ctrl, P_Struct *my_P_Struct, SpeedController *spd
 		else {
 			follower->target++;
 		}
-		if (follower->target == 0 || follower->target == 1){
+		
+		if (follower->target == 1){
 			ctrl->opp_pos->flag = 1;
 		}
+		
 		// Next state
 		if (false)
 		{
