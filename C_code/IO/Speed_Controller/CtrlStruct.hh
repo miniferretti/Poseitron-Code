@@ -163,7 +163,7 @@ typedef struct RobotPosition
 
 typedef struct OppPos{
     int flag; 
-}
+} OppPos;
 
 typedef struct RobotPinchers
 {
