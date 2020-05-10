@@ -49,6 +49,7 @@ void init_ctrlStruc(CtrlStruct *ctrl)
 	ctrl->opp_pos->flag = true; 
 	ctrl->opp_pos->redzone = 0.2; // en metre
 	ctrl->opp_pos->dist = 200; 
+	ctrl->opp_pos->RecordUltrason = fopen("/home/pi/Poseitron-Code/Data/RecordUltrason.txt", "w");; 
 
 	// calibration
 	ctrl->calib = new RobotCalibration;

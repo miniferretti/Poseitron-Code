@@ -282,6 +282,10 @@ void SpeedController::updateCmd()
 
     this->can0->CAN0pushPropDC(this->theCtrlStruct->theCtrlOut->wheel_commands[L_ID], this->theCtrlStruct->theCtrlOut->wheel_commands[R_ID]);
     this->theCtrlStruct->theCtrlIn->sens_flag = this->can0->getDistance(1, this->theCtrlStruct->theCtrlIn->sens_array_front);
+    
+    fprintf(path->RecordUltrason, "%f\t%f\t%f\t%f\t%f\t%f\n\r", this->theCtrlStruct->theCtrlIn->t, this->theCtrlStruct->theCtrlIn->sens_array_front[0], 
+        this->theCtrlStruct->theCtrlIn->sens_array_front[1], this->theCtrlStruct->theCtrlIn->sens_array_front[2], 
+        this->theCtrlStruct->theCtrlIn->sens_array_front[3], this->theCtrlStruct->theCtrlIn->sens_array_front[4]);
 }
 
 double SpeedController::PIController(MotStruct *theMot, double V_ref, double V_wheel_mes, double t)

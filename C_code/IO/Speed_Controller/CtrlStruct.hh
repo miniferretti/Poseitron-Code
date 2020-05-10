@@ -166,6 +166,7 @@ typedef struct OppPos{
     double redzone;
     double dist; 
     int count; 
+    FILE *RecordUltrason; 
 } OppPos;
 
 typedef struct RobotPinchers
