@@ -57,6 +57,8 @@ void *path_planning_update(void *myCtrl)
 void *avoidance_path_update(void *myCtrl)
 {
 	CtrlStruct *ctrl = (CtrlStruct *)myCtrl;
+	PathPlanning *path; 
+	path = ctrl->path; 
 	int goalx, goaly;
 	goalx = (int)(ctrl->strat->target((int)ctrl->follower->target, 0) * 100);
 	goaly = (int)(ctrl->strat->target((int)ctrl->follower->target, 1) * 100);
