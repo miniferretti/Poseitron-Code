@@ -31,6 +31,7 @@ void init_ctrlStruc(CtrlStruct *ctrl)
 	ctrl->robot = new RobotParameters;
 	ctrl->robot->wheel_rad = 0.03;
 	ctrl->robot->wheel_dist = 0.19; // 19cm
+	ctrl->robot->center_to_ultra = 0.14; //14cm
 	ctrl->pinchers = new RobotPinchers;
 	ctrl->pinchers->number_of_succes = 0;
 	ctrl->pinchers->number_of_pinch = 0;

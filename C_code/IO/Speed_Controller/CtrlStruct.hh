@@ -185,6 +185,7 @@ typedef struct RobotParameters
     double odo_tics_per_rot;
     double robot_width; //Length between the two odometers
 
+    double center_to_ultra; 
     double wheel_rad;
     double wheel_dist;
     double center_to_back_dist;
