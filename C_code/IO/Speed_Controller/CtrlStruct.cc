@@ -45,7 +45,9 @@ void init_ctrlStruc(CtrlStruct *ctrl)
 
 	// opponent position
 	ctrl->opp_pos = new OppPos;
-	ctrl->opp_pos->flag = 0; 
+	ctrl->opp_pos->flag = true; 
+	ctrl->opp_pos->redzone = 0.2; // en metre
+	ctrl->opp_pos->dist = 0; 
 
 	// calibration
 	ctrl->calib = new RobotCalibration;
@@ -100,7 +102,7 @@ void init_ctrlStruc(CtrlStruct *ctrl)
 	ctrl->follower->v_changed = 0;
 	ctrl->follower->w_changed = 0;
 	ctrl->follower->rhoLimit = 0.05;
-	ctrl->follower->flag_rho = 1;
+	ctrl->follower->flag_rho = true;
 	ctrl->follower->logFile = fopen("/home/pi/Poseitron-Code/Data/FollowerFile.txt", "w"); 
 }
 
@@ -161,13 +163,13 @@ void target_init(CtrlStruct *ctrl)
 	strat = ctrl->strat;
 
 	// target 1
-	strat->target(0, 0) = 0.5; // coordonnée en x en m
-	strat->target(0, 1) = 0.5;   // coordonnée en y en m
+	strat->target(0, 0) = 0.9; // coordonnée en x en m
+	strat->target(0, 1) = 0.0;   // coordonnée en y en m
 	strat->target(0, 2) = 1;   // deja pris ou non
 	strat->target(0, 3) = 1;   // nombre de points
 
 	// target 1
-	strat->target(1, 0) = 0.8; // coordonnée en x en m
+	strat->target(1, 0) = -0.9; // coordonnée en x en m
 	strat->target(1, 1) = 0.0;   // coordonnée en y en m
 	strat->target(1, 2) = 1;   // deja pris ou non
 	strat->target(1, 3) = 1;   // nombre de points

@@ -16,7 +16,7 @@ void main_strategy(CtrlStruct *ctrl, P_Struct *my_P_Struct, SpeedController *spd
 	int follow;
 	int redzone;
 	int goalx, goaly, x, y;
-	double TIME_FUN1 = 0.1; // in sec
+	double TIME_FUN1 = 0.001; // in sec
 
 	// variables initialization
 	inputs = ctrl->theCtrlIn;
@@ -54,7 +54,7 @@ void main_strategy(CtrlStruct *ctrl, P_Struct *my_P_Struct, SpeedController *spd
 		else if (pthread_tryjoin_np(my_P_Struct->p_avoidance_path, retval) == 0)
 		{
 			my_P_Struct->p_avoidance_path_flag = 0;
-			ctrl->opp_pos->flag = 0;
+			ctrl->opp_pos->flag = false;
 			strat->state = STRAT_STATE_FOLLOW;
 			printf("/////////////////////////////////////\n\r");
 		}
@@ -65,17 +65,14 @@ void main_strategy(CtrlStruct *ctrl, P_Struct *my_P_Struct, SpeedController *spd
 		follow = path_follow(ctrl);
 		redzone = opponent_detection(ctrl);
 		// Needed if someone says that the path needs to be updated
-		if (ctrl->opp_pos->flag == 1)//redzone)
+		if ((ctrl->opp_pos->flag == true) && redzone)
 		{
 			printf(">>>	new path for avoidance\n");
 			spd->set_speed(0.0, 0.0);
 			strat->state = STRAT_STATE_OPPONENT_AVOIDANCE;
 		}
 		/* End of path and target position achived */
-		if (follow)
-		{
-			strat->state = STRAT_STATE_PATH_END;
-		}
+		if (follow)	strat->state = STRAT_STATE_PATH_END;
 		break;
 
 	case STRAT_STATE_PATH_END:
@@ -89,7 +86,7 @@ void main_strategy(CtrlStruct *ctrl, P_Struct *my_P_Struct, SpeedController *spd
 			strat->state = STRAT_STATE_PATH;
 		}
 
-		else if (follower->flag_rho == 1)
+		else if (follower->flag_rho == true)
 		{
 			// In case where the robot is not close enough from the target.
 			// The limit is lowered in order to resume again the finished path.
@@ -97,14 +94,15 @@ void main_strategy(CtrlStruct *ctrl, P_Struct *my_P_Struct, SpeedController *spd
 			follower->count = path->traj.rows() - 5 - 1;
 			follower->next = 1;
 			follower->rhoLimit = 0.03;
-			follower->flag_rho = 0;
+			follower->flag_rho = false;
 			strat->state = STRAT_STATE_FOLLOW;
 		}
 		else
 		{
 			// detection de qque chose
 			strat->tref = inputs->t;
-			follower->flag_rho = 1;
+			follower->flag_rho = true;
+			ctrl->opp_pos->flag = true; 
 			follower->rhoLimit = 0.05; // Limit from the target reset.
 			strat->state = STRAT_STATE_WAIT;
 		}
@@ -112,7 +110,7 @@ void main_strategy(CtrlStruct *ctrl, P_Struct *my_P_Struct, SpeedController *spd
 
 	case STRAT_STATE_WAIT:
 		spd->set_speed(0.0, 0.0);
-		if (inputs->t - strat->tref > TIME_FUN1)
+		if (true)//inputs->t - strat->tref > TIME_FUN1)
 		{
 			/// HERE AN OTHER FUNCTION IS PUT.
 
@@ -144,16 +142,16 @@ void main_strategy(CtrlStruct *ctrl, P_Struct *my_P_Struct, SpeedController *spd
 	case STRAT_STATE_GOAL:
 		printf("\n////////////////////////////////////////\n\r");
 		printf("\n\r>>>	search for new goal ...\n\r");
-		if (follower->target == 4){
+		if (follower->target == 1){
 			follower->target = 0; 
 		}
 		else {
 			follower->target++;
 		}
 		
-		if (follower->target == 1){
+		/*if (follower->target == 1){
 			ctrl->opp_pos->flag = 1;
-		}
+		}*/
 		
 		// Next state
 		if (false)
@@ -175,5 +173,20 @@ void main_strategy(CtrlStruct *ctrl, P_Struct *my_P_Struct, SpeedController *spd
 
 int opponent_detection(CtrlStruct *ctrl)
 {
-	return 0;
+	double distnew = min(ctrl->theCtrlIn->sens_array_front[1], ctrl->theCtrlIn->sens_array_front[3]);
+	double error = abs(ctrl->opp_pos->dist - distnew); 
+	double errorlim = 10; 
+	double mean = ctrl->opp_pos->dist; 
+
+	if (error < errorlim) mean = (ctrl->opp_pos->dist + distnew) /2;
+
+	ctrl->opp_pos->dist = mean; 
+	
+	ctrl->opp_pos->count++; 
+
+	if (ctrl->opp_pos->count == 3) {
+		if (ctrl->opp_pos->redzone > ctrl->opp_pos->dist) return 1; 
+		else return 0;
+	}
+	else return 0; 
 }

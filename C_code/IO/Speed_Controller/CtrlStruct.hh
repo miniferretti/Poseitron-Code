@@ -80,7 +80,7 @@ typedef struct PathFollow
     double w_changed;
 
     double rhoLimit;
-    int flag_rho;
+    bool flag_rho;
     FILE *logFile;
     double prop_param;
 
@@ -162,7 +162,10 @@ typedef struct RobotPosition
 } RobotPosition;
 
 typedef struct OppPos{
-    int flag; 
+    bool flag; 
+    double redzone;
+    double dist; 
+    int count; 
 } OppPos;
 
 typedef struct RobotPinchers
