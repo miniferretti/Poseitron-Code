@@ -73,10 +73,10 @@ void SpeedController::init_speed_controller(int i)
     slave = 2;
 
     //Live tuning path-follow
-    omega_sat = 4.5;
-    speed_sat = 1.8;
-    prop_param = 4.4;
-    rho_limit = 0.05;
+    omega_sat = 6.5;  //4.5
+    speed_sat = 2.8;  //1.8;
+    prop_param = 9;   //4.4;
+    rho_limit = 0.05; //0.05;
 
     fromlen = sizeof(struct sockaddr_in);
 
