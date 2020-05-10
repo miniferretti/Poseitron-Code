@@ -41,7 +41,7 @@ void init_ctrlStruc(CtrlStruct *ctrl)
 	ctrl->calib_states = CALIB_1;
 	ctrl->odo_calibration_states = GO_STRAIGHT;
 	ctrl->main_t_ref = 0;
-	ctrl->flag_state = 1; 
+	ctrl->flag_state = 1;
 
 	// opponent position
 	ctrl->opp_pos = new OppPos;
@@ -87,17 +87,17 @@ void init_ctrlStruc(CtrlStruct *ctrl)
 
 	//Structure for the path-following algorithm
 	ctrl->follower = new PathFollow;
-	ctrl->follower->omega_sat = 6.5;//3*1.5;
-	ctrl->follower->speed_sat = 2.8;//1.8;
+	ctrl->follower->omega_sat = 6.5; //3*1.5;
+	ctrl->follower->speed_sat = 2.8; //1.8;
 	ctrl->follower->target = 0;
 	ctrl->follower->count = 0;
 	ctrl->follower->next = 1;
 	ctrl->follower->alpha = 0;
 	ctrl->follower->beta = 0;
-	ctrl->follower->prop_param = 9;//4.4;
-	ctrl->follower->Krho = 1.5*2*2*1.1; //Krho > 0 otherwise unstable...
-	ctrl->follower->Kalpha = 4*2*2*1.1; // Kalpha > Krho otherwise unstable...
-	ctrl->follower->Kbeta = -0.75*2*2*1.1;
+	ctrl->follower->prop_param = 9;			  //4.4;
+	ctrl->follower->Krho = 1.5 * 2 * 2 * 1.1; //Krho > 0 otherwise unstable...
+	ctrl->follower->Kalpha = 4 * 2 * 2 * 1.1; // Kalpha > Krho otherwise unstable...
+	ctrl->follower->Kbeta = -0.75 * 2 * 2 * 1.1;
 	ctrl->follower->last = 0;
 	ctrl->follower->v_changed = 0;
 	ctrl->follower->w_changed = 0;
@@ -109,7 +109,7 @@ void init_ctrlStruc(CtrlStruct *ctrl)
 void obstacle_building(PathPlanning *path)
 {
 	int i, n, n_before, n_tot;
-	n_before = 0; 
+	n_before = 0;
 	n = path->xlen;
 	n_tot = n_before + n;
 	// WALL CONSTRUCTION
@@ -162,25 +162,25 @@ void target_init(CtrlStruct *ctrl)
 	Strategy *strat;
 	strat = ctrl->strat;
 
-	// target 1
+	// target 0
 	strat->target(0, 0) = 0.9; // coordonnée en x en m
 	strat->target(0, 1) = 0.0;   // coordonnée en y en m
 	strat->target(0, 2) = 1;   // deja pris ou non
 	strat->target(0, 3) = 1;   // nombre de points
 
 	// target 1
-	strat->target(1, 0) = -0.9; // coordonnée en x en m
-	strat->target(1, 1) = 0.0;   // coordonnée en y en m
+	strat->target(1, 0) = 0.0; // coordonnée en x en m
+	strat->target(1, 1) = -0.5;   // coordonnée en y en m
 	strat->target(1, 2) = 1;   // deja pris ou non
 	strat->target(1, 3) = 1;   // nombre de points
 
-	// target 0
-	strat->target(2, 0) = 0.5; // coordonnée en x en m
-	strat->target(2, 1) = -0.5;   // coordonnée en y en m
+	// target 2
+	strat->target(2, 0) = -0.9; // coordonnée en x en m
+	strat->target(2, 1) = 0.0;   // coordonnée en y en m
 	strat->target(2, 2) = 1;   // deja pris ou non
 	strat->target(2, 3) = 1;   // nombre de points
 	
-
+/*
 	strat->target(3, 0) = -0.5; // coordonnée en x en m
 	strat->target(3, 1) = 0.5;   // coordonnée en y en m
 	strat->target(3, 2) = 1;   // deja pris ou non
@@ -189,7 +189,7 @@ void target_init(CtrlStruct *ctrl)
 	strat->target(4, 0) = -0.5; // coordonnée en x en m
 	strat->target(4, 1) = -0.5;   // coordonnée en y en m
 	strat->target(4, 2) = 1;   // deja pris ou non
-	strat->target(4, 3) = 1;   // nombre de points
+	strat->target(4, 3) = 1;   // nombre de points */
 }
 /*
 void repulsive_potential_field(CtrlStruct *ctrl){
