@@ -42,6 +42,7 @@ int path_follow(CtrlStruct *ctrl)
         else
             follower->next = 0;
     }
+
     dx = path->traj(follower->count, 0) / 100 - rob_pos->x; // attention le path est en cm.
     dy = path->traj(follower->count, 1) / 100 - rob_pos->y;
 
@@ -89,6 +90,11 @@ int path_follow(CtrlStruct *ctrl)
     }
 
     //  v = follower->v_changed * follower->Krho * follower->rho;
+
+    ctrl->follower->Kalpha = 4 * ctrl->follower->prop_param; // Kalpha > Krho otherwise unstable...
+    ctrl->follower->Kbeta = -0.75 * ctrl->follower->prop_param;
+    ctrl->follower->Krho = 1.5 * ctrl->follower->prop_param;
+
     v = follower->v_changed * follower->speed_sat;
     omega = follower->Kalpha * follower->alpha + follower->Kbeta * follower->beta;
 
@@ -136,6 +142,7 @@ int path_follow(CtrlStruct *ctrl)
     inputs->r_wheel_ref = ((v + omega * robot_param->wheel_dist / 2) / robot_param->wheel_rad) * ctrl->theUserStruct->theMotRight->compensation_factor;
     inputs->l_wheel_ref = ((v - omega * robot_param->wheel_dist / 2) / robot_param->wheel_rad) * ctrl->theUserStruct->theMotLeft->compensation_factor;
 
+    fprintf(follower->logFile, "%f %f %f %f %f\r\n", path->traj(follower->count, 0) / 100, path->traj(follower->count, 1) / 100, v, omega, follower->alpha);
     /* Choix du path suivant : 
      * si rho <= distance q du point de reference au temp t*
      * on change de point de reference 

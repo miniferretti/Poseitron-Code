@@ -88,15 +88,15 @@ void main_strategy(CtrlStruct *ctrl, P_Struct *my_P_Struct, SpeedController *spd
 			path->intermediary = 0;
 			strat->state = STRAT_STATE_PATH;
 		}
-		
-		else if (false)//follower->flag_rho == 1)
+
+		else if (follower->flag_rho == 1)
 		{
 			// In case where the robot is not close enough from the target.
 			// The limit is lowered in order to resume again the finished path.
-			printf(">>>	limit lowered to %f\n", 0.01);
+			printf(">>>	limit lowered to %f\n", 0.03);
 			follower->count = path->traj.rows() - 5 - 1;
 			follower->next = 1;
-			follower->rhoLimit = 0.01;
+			follower->rhoLimit = 0.03;
 			follower->flag_rho = 0;
 
 			strat->state = STRAT_STATE_FOLLOW;
@@ -124,6 +124,7 @@ void main_strategy(CtrlStruct *ctrl, P_Struct *my_P_Struct, SpeedController *spd
 			if (follower->target == 3)
 			{
 				ctrl->main_states = STOP_STATE;
+				fclose(ctrl->follower->logFile);
 
 				strat->state = STRAT_STATE_PATH;
 				ctrl->flag_state = 0;

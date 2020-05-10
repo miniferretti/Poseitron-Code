@@ -80,7 +80,9 @@ typedef struct PathFollow
     double w_changed;
 
     double rhoLimit;
-    int flag_rho; 
+    int flag_rho;
+    FILE *logFile;
+    double prop_param;
 
 } PathFollow;
 

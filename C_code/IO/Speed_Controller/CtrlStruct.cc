@@ -88,6 +88,7 @@ void init_ctrlStruc(CtrlStruct *ctrl)
 	ctrl->follower->next = 1;
 	ctrl->follower->alpha = 0;
 	ctrl->follower->beta = 0;
+	ctrl->follower->prop_param = 4.4;
 	ctrl->follower->Krho = 1.5*2*2*1.1; //Krho > 0 otherwise unstable...
 	ctrl->follower->Kalpha = 4*2*2*1.1; // Kalpha > Krho otherwise unstable...
 	ctrl->follower->Kbeta = -0.75*2*2*1.1;
@@ -95,7 +96,8 @@ void init_ctrlStruc(CtrlStruct *ctrl)
 	ctrl->follower->v_changed = 0;
 	ctrl->follower->w_changed = 0;
 	ctrl->follower->rhoLimit = 0.05;
-	ctrl->follower->flag_rho = 1; 
+	ctrl->follower->flag_rho = 1;
+	ctrl->follower->logFile = fopen("/home/pi/Poseitron-Code/Data/FollowerFile.txt", "w"); 
 }
 
 void obstacle_building(PathPlanning *path)

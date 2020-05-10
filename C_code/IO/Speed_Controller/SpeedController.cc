@@ -71,6 +71,13 @@ void SpeedController::init_speed_controller(int i)
     read_timeout.tv_usec = 10;
     kp_left = 0;
     slave = 2;
+
+    //Live tuning path-follow
+    omega_sat = 4.5;
+    speed_sat = 1.8;
+    prop_param = 4.4;
+    rho_limit = 0.05;
+
     fromlen = sizeof(struct sockaddr_in);
 
     for (int i = 0; i < MVG_LENG; i++)
@@ -123,7 +130,7 @@ void SpeedController::updateLowCtrl()
 
     unsigned char buffer[5];
     double speeds[7];
-    unsigned char buf[44];
+    unsigned char buf[60];
     int n;
 
     if (this->theCtrlStruct->theUserStruct->speed_kill == 0)
@@ -163,6 +170,10 @@ void SpeedController::updateLowCtrl()
             memcpy(&slave_speed_left, &buf[32], sizeof(slave_speed_left));
             memcpy(&slave_speed_right, &buf[36], sizeof(slave_speed_right));
             memcpy(&slave, &buf[40], sizeof(slave));
+            memcpy(&omega_sat, &buf[44], sizeof(omega_sat));
+            memcpy(&speed_sat, &buf[48], sizeof(speed_sat));
+            memcpy(&prop_param, &buf[52], sizeof(prop_param));
+            memcpy(&rho_limit, &buf[56], sizeof(rho_limit));
 
             this->theCtrlStruct->theUserStruct->theMotLeft->kp = kp_left; //Kp;
             if (float(this->theCtrlStruct->theUserStruct->theMotLeft->ki) != ki_left)
@@ -211,6 +222,11 @@ void SpeedController::updateLowCtrl()
             this->theCtrlStruct->theUserStruct->theMotLeft->compensation_factor = correction_factor_left;
             this->theCtrlStruct->theUserStruct->theMotRight->compensation_factor = correction_factor_right;
 
+            this->theCtrlStruct->follower->speed_sat = speed_sat;
+            this->theCtrlStruct->follower->omega_sat = omega_sat;
+            this->theCtrlStruct->follower->prop_param = prop_param;
+            this->theCtrlStruct->follower->rhoLimit = rho_limit;
+
             //  printf("Yep data recieved requested\r\n");
             n = sendto(sock, speeds, sizeof(speeds), 0, (struct sockaddr *)&from, fromlen);
         }
@@ -218,7 +234,7 @@ void SpeedController::updateLowCtrl()
         {
             // printf("No data has been requested by the pyhton code\r\n");
         }
-      //  printf("The value send is %f %f %f %f %f %f\r\n", kp_left, ki_left, kd_left, kp_right, ki_right, kd_right);
+        //  printf("The value send is %f %f %f %f %f %f\r\n", kp_left, ki_left, kd_left, kp_right, ki_right, kd_right);
     }
 }
 
@@ -274,7 +290,7 @@ double SpeedController::PIController(MotStruct *theMot, double V_ref, double V_w
     double dt = t - theMot->t_p;
     double u = theMot->kp * e;
 
-   // printf(" dt = %f\r\n", dt);
+    // printf(" dt = %f\r\n", dt);
 
     if (!theMot->status) //The integral action is only done if there is no saturation of current.
     {
