@@ -174,20 +174,7 @@ void main_strategy(CtrlStruct *ctrl, P_Struct *my_P_Struct, SpeedController *spd
 
 int opponent_detection(CtrlStruct *ctrl)
 {
-	double distnew = min(ctrl->theCtrlIn->sens_array_front[1], ctrl->theCtrlIn->sens_array_front[3]);
-	double error = abs(ctrl->opp_pos->dist - distnew); 
-	double errorlim = 10; 
-	double mean = distnew; 
-
-	if (error < errorlim) mean = (ctrl->opp_pos->dist + distnew) /2;
-
-	ctrl->opp_pos->dist = mean; 
-
-	ctrl->opp_pos->count++; 
-
-	if (ctrl->opp_pos->count == 3) {
-		if (ctrl->opp_pos->redzone > ctrl->opp_pos->dist) return 1; 
-		else return 0;
-	}
-	else return 0; 
+	ctrl->opp_pos->dist = ctrl->theCtrlIn->sens_array_front[1];
+	if (ctrl->opp_pos->redzone > ctrl->opp_pos->dist) return 1; 
+	else return 0;
 }
