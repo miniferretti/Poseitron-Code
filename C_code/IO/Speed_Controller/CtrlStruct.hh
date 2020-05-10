@@ -236,7 +236,7 @@ typedef struct CtrlStruct
     PathPlanning *path;      ///< path-planning
     PathFollow *follower;    ///< Follow path given by path planning
     Strategy *strat;         ///< strategy
-    OppPos *OppPos; 
+    OppPos *opp_pos; 
     ///////////////////////////////////////////////////
 
     int main_states;

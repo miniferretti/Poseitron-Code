@@ -54,7 +54,7 @@ void main_strategy(CtrlStruct *ctrl, P_Struct *my_P_Struct, SpeedController *spd
 		else if (pthread_tryjoin_np(my_P_Struct->p_avoidance_path, retval) == 0)
 		{
 			my_P_Struct->p_avoidance_path_flag = 0;
-			ctrl->OppPos->flag = 1;
+			ctrl->opp_pos->flag = 0;
 			strat->state = STRAT_STATE_FOLLOW;
 			printf("/////////////////////////////////////\n\r");
 		}
@@ -65,7 +65,7 @@ void main_strategy(CtrlStruct *ctrl, P_Struct *my_P_Struct, SpeedController *spd
 		follow = path_follow(ctrl);
 		redzone = opponent_detection(ctrl);
 		// Needed if someone says that the path needs to be updated
-		if (ctrl->OppPos->flag == 1)//redzone)
+		if (ctrl->opp_pos->flag == 1)//redzone)
 		{
 			printf(">>>	new path for avoidance\n");
 			spd->set_speed(0.0, 0.0);
