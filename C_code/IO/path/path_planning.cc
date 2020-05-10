@@ -189,7 +189,7 @@ void repulsive_opp_potential_field(CtrlStruct *ctrl)
 	//double y2; //= ctrl->opp_pos->y2 * 100;
 	//double x3; //= ctrl->opp_pos->x3 * 100;
 	//double y3; //= ctrl->opp_pos->y3 * 100;
-
+	/*
 	if (false){//ctrl->follower->target == 0){
 		x1 = 0;
 		y1 = 0;
@@ -198,10 +198,11 @@ void repulsive_opp_potential_field(CtrlStruct *ctrl)
 		x1 = 50; 
 		y1 = 0; 
 	}
+	*/
 
 	x1 = ctrl->rob_pos->x*100 + cos(ctrl->rob_pos->theta) * (ctrl->opp_pos->dist + ctrl->robot->center_to_ultra*100); 	
 	y1 = ctrl->rob_pos->y*100 + sin(ctrl->rob_pos->theta) * (ctrl->opp_pos->dist + ctrl->robot->center_to_ultra*100); 
-	printf(">>> opponent postion (%f, %f)", x1, y1); 
+	printf(">>> opponent postion (%f, %f)\n\r", x1, y1); 
 
 	double dobs1, dobs2, dobs3, U_rep1;
 	
@@ -216,8 +217,8 @@ void repulsive_opp_potential_field(CtrlStruct *ctrl)
 
 			if (dobs1 == 0.0)
 				U_rep1 = path->k_rep;
-			else if (dobs1 < 2 * path->rho_zero)
-				U_rep1 = path->k_rep * exp(-5 * dobs1 / (3 * path->rho_zero));
+			else if (dobs1 < 2.5 * path->rho_zero)
+				U_rep1 = path->k_rep * exp(-5 * dobs1 / (2.5 * path->rho_zero));
 			else
 				U_rep1 = 0;
 			path->Opp(xval + xinit, yval + yinit) = U_rep1; 

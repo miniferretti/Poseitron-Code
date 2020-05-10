@@ -48,7 +48,7 @@ void init_ctrlStruc(CtrlStruct *ctrl)
 	ctrl->opp_pos = new OppPos;
 	ctrl->opp_pos->flag = true; 
 	ctrl->opp_pos->redzone = 0.2; // en metre
-	ctrl->opp_pos->dist = 0; 
+	ctrl->opp_pos->dist = 200; 
 
 	// calibration
 	ctrl->calib = new RobotCalibration;
