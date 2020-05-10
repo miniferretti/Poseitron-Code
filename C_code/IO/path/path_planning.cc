@@ -61,28 +61,39 @@ void *avoidance_path_update(void *myCtrl)
 	goalx = (int)(ctrl->strat->target((int)ctrl->follower->target, 0) * 100);
 	goaly = (int)(ctrl->strat->target((int)ctrl->follower->target, 1) * 100);
 
-	//	repulsive_opp_potential_field(ctrl);
+	repulsive_opp_potential_field(ctrl);
 	solve_path(ctrl, (int)(ctrl->rob_pos->x * 100), (int)(ctrl->rob_pos->y * 100), goalx, goaly);
 	printf(">>> path computation done\n");
+	
+	path->RecordField = fopen("/home/pi/Poseitron-Code/Data/RecordField.txt", "w");
+	for (int i = 0; path->M.rows() > i; i++)
+	{
+		for (int j = 0; path->M.cols() > j; j++)
+		{
+			fprintf(path->RecordField, "%f\t", path->M(i, j));
+		}
+		fprintf(path->RecordField,"\n");
+	}
+	fclose(path->RecordField);
+	printf(">>> RecordField file completed\n\r");
 	return NULL;
 }
 
 void repulsive_map_potential_field(PathPlanning *path)
 {
-	//path->RecordField = fopen("/home/pi/Poseitron-Code/Data/RecordField.txt", "w");
+	path->RecordField = fopen("/home/pi/Poseitron-Code/Data/RecordField.txt", "w");
 	set_obstacle(path);
 	path->M = path->M.eval() / path->M.maxCoeff(); //normalize
-	/*
 	for (int i = 0; path->M.rows() > i; i++)
 	{
 		for (int j = 0; path->M.cols() > j; j++)
 		{
-			fprintf(path->RecordField, "%f\r\n", path->M(i, j));
+			fprintf(path->RecordField, "%f\t", path->M(i, j));
 		}
+		fprintf(path->RecordField,"\n");
 	}
 
 	fclose(path->RecordField);
-	*/
 }
 
 void set_obstacle(PathPlanning *path)
@@ -161,7 +172,7 @@ void attractive_potential_field_reverse(CtrlStruct *ctrl)
 	path->M = path->M.eval() - path->U;
 }
 
-/*void repulsive_opp_potential_field(CtrlStruct *ctrl)
+void repulsive_opp_potential_field(CtrlStruct *ctrl)
 {
 
 	PathPlanning *path;
@@ -169,29 +180,32 @@ void attractive_potential_field_reverse(CtrlStruct *ctrl)
 	repulsive_opp_potential_field_reverse(ctrl);
 	int yval, xval;
 
-	int x1 = ctrl->opp_pos->x1 * 100;
-	int y1 = ctrl->opp_pos->y1 * 100;
-	int x2 = ctrl->opp_pos->x2 * 100;
-	int y2 = ctrl->opp_pos->y2 * 100;
-	int x3 = ctrl->opp_pos->x3 * 100;
-	int y3 = ctrl->opp_pos->y3 * 100;
+	int x1; //= ctrl->opp_pos->x1 * 100;
+	int y1; //= ctrl->opp_pos->y1 * 100;
+	//int x2 = ctrl->opp_pos->x2 * 100;
+	//int y2; //= ctrl->opp_pos->y2 * 100;
+	//int x3; //= ctrl->opp_pos->x3 * 100;
+	//int y3; //= ctrl->opp_pos->y3 * 100;
 
-	x1 = 0;
+	x1 = 50;
 	y1 = 0;
-	x2 = 0;
-	y2 = 0;
-	x3 = 0;
-	y3 = 0;
 
-	double dobs1, dobs2, dobs3, U_rep1, U_rep2, U_rep3;
-	for (xval = -100; xval < path->xlen - 100; xval++)
+	//x2 = 0;
+	//y2 = 0;
+	//x3 = 0;
+	//y3 = 0;
+
+	double dobs1, dobs2, dobs3, U_rep1;
+	
+	int xinit = 100;
+	int yinit = 100;
+
+	for (xval = -xinit; xval < path->xlen - xinit; xval++)
 	{
-		for (yval = -150; yval < path->ylen - 150; yval++)
+		for (yval = -yinit; yval < path->ylen - yinit; yval++)
 		{
 
 			dobs1 = sqrt((xval - x1) * (xval - x1) + (yval - y1) * (yval - y1));
-			dobs2 = sqrt((xval - x2) * (xval - x2) + (yval - y2) * (yval - y2));
-			dobs3 = sqrt((xval - x3) * (xval - x3) + (yval - y3) * (yval - y3));
 
 			if (dobs1 == 0.0)
 				U_rep1 = path->k_rep;
@@ -200,26 +214,12 @@ void attractive_potential_field_reverse(CtrlStruct *ctrl)
 			else
 				U_rep1 = 0;
 
-			if (dobs2 == 0.0)
-				U_rep2 = 2 * path->k_rep;
-			else if (dobs2 < 2 * path->rho_zero)
-				U_rep2 = path->k_rep * 2 * exp(-5 * dobs2 / (2 * path->rho_zero));
-			else
-				U_rep2 = 0;
-
-			if (dobs3 == 0.0)
-				U_rep3 = 2 * path->k_rep;
-			else if (dobs3 < 2 * path->rho_zero)
-				U_rep3 = path->k_rep * 2 * exp(-5 * dobs3 / (2 * path->rho_zero));
-			else
-				U_rep3 = 0;
-
-			path->Opp(xval + 100, yval + 150) = U_rep1; //+ U_rep2 + U_rep3;
+			path->Opp(xval + xinit, yval + yinit) = U_rep1; 
 		}
 	}
 	path->Opp = path->Opp.eval() / path->Opp.maxCoeff();
 	path->M = path->M.eval() + path->Opp;
-} */
+}
 
 void repulsive_opp_potential_field_reverse(CtrlStruct *ctrl)
 {

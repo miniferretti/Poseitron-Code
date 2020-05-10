@@ -161,6 +161,10 @@ typedef struct RobotPosition
 
 } RobotPosition;
 
+typedef struct OppPos{
+    int flag; 
+}
+
 typedef struct RobotPinchers
 {
     bool stateL[3]; //true = open, false = closed
@@ -232,6 +236,7 @@ typedef struct CtrlStruct
     PathPlanning *path;      ///< path-planning
     PathFollow *follower;    ///< Follow path given by path planning
     Strategy *strat;         ///< strategy
+    OppPos *OppPos; 
     ///////////////////////////////////////////////////
 
     int main_states;

@@ -16,7 +16,7 @@ void main_strategy(CtrlStruct *ctrl, P_Struct *my_P_Struct, SpeedController *spd
 	int follow;
 	int redzone;
 	int goalx, goaly, x, y;
-	double TIME_FUN1 = 2.0; // in sec
+	double TIME_FUN1 = 0.1; // in sec
 
 	// variables initialization
 	inputs = ctrl->theCtrlIn;
@@ -43,7 +43,6 @@ void main_strategy(CtrlStruct *ctrl, P_Struct *my_P_Struct, SpeedController *spd
 		break;
 
 	case STRAT_STATE_OPPONENT_AVOIDANCE:
-
 		// Thread creation
 		if (my_P_Struct->p_avoidance_path_flag == 0)
 		{
@@ -55,6 +54,7 @@ void main_strategy(CtrlStruct *ctrl, P_Struct *my_P_Struct, SpeedController *spd
 		else if (pthread_tryjoin_np(my_P_Struct->p_avoidance_path, retval) == 0)
 		{
 			my_P_Struct->p_avoidance_path_flag = 0;
+			ctrl->OppPos->flag = 1;
 			strat->state = STRAT_STATE_FOLLOW;
 			printf("/////////////////////////////////////\n\r");
 		}
@@ -65,7 +65,7 @@ void main_strategy(CtrlStruct *ctrl, P_Struct *my_P_Struct, SpeedController *spd
 		follow = path_follow(ctrl);
 		redzone = opponent_detection(ctrl);
 		// Needed if someone says that the path needs to be updated
-		if (redzone)
+		if (ctrl->OppPos->flag == 1)//redzone)
 		{
 			printf(">>>	new path for avoidance\n");
 			spd->set_speed(0.0, 0.0);
@@ -98,7 +98,6 @@ void main_strategy(CtrlStruct *ctrl, P_Struct *my_P_Struct, SpeedController *spd
 			follower->next = 1;
 			follower->rhoLimit = 0.03;
 			follower->flag_rho = 0;
-
 			strat->state = STRAT_STATE_FOLLOW;
 		}
 		else
@@ -134,7 +133,6 @@ void main_strategy(CtrlStruct *ctrl, P_Struct *my_P_Struct, SpeedController *spd
 				strat->state = STRAT_STATE_GOAL;
 			}
 		}
-
 		if (strat->wait_count == 0)
 		{
 			printf("\n\r>>>	waiting for function to be finished ...\n\r");
