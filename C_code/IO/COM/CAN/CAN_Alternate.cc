@@ -73,7 +73,7 @@ CAN0_Alternate::CAN0_Alternate(int baud)
     perror("bind");
   }
 
-  //fd_set_blocking(s, 0);
+  //fd_set_blocking(s, 1);
 }
 
 void CAN0_Alternate::CAN0pushPropDC(double dcG, double dcD)
@@ -210,11 +210,11 @@ int CAN0_Alternate::getDistance(int dir, double *data)
     //  usleep(DELAY);
   }
 
-  for (int i = 0; i < 100; i++)
+  while (nbytes < 0)
   {
     nbytes = read(s, &msg2, sizeof(msg2));
   }
-  nbytes = 1;
+
   if (nbytes < 0)
   {
     //  printf("Data not ready\r\n");
