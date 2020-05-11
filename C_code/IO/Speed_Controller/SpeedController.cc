@@ -71,6 +71,7 @@ void SpeedController::init_speed_controller(int i)
     read_timeout.tv_usec = 10;
     kp_left = 0;
     slave = 2;
+    t_ref = 0;
 
     //Live tuning path-follow
     omega_sat = 6.5;  //4.5
@@ -281,7 +282,12 @@ void SpeedController::updateCmd()
     // printf(" r_wheel_command %f\n", -this->theCtrlStruct->theCtrlOut->wheel_commands[R_ID]);
 
     this->can0->CAN0pushPropDC(this->theCtrlStruct->theCtrlOut->wheel_commands[L_ID], this->theCtrlStruct->theCtrlOut->wheel_commands[R_ID]);
-    this->theCtrlStruct->theCtrlIn->sens_flag = this->can0->getDistance(1, this->theCtrlStruct->theCtrlIn->sens_array_front);
+
+    if (this->theCtrlStruct->theCtrlIn->t - t_ref > 0.5)
+    {
+        this->theCtrlStruct->theCtrlIn->sens_flag = this->can0->getDistance(1, this->theCtrlStruct->theCtrlIn->sens_array_front);
+        t_ref = this->theCtrlStruct->theCtrlIn->t;
+    }
 
     fprintf(this->theCtrlStruct->opp_pos->RecordUltrason, "%f %f %f %f %f %f\n", this->theCtrlStruct->theCtrlIn->t, this->theCtrlStruct->theCtrlIn->sens_array_front[0],
             this->theCtrlStruct->theCtrlIn->sens_array_front[1], this->theCtrlStruct->theCtrlIn->sens_array_front[2],

@@ -8,7 +8,9 @@
                 "C:\\Users\\ferre\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.6.23\\**",
                 "${workspaceFolder}/**",
                 "C:\\Program Files (x86)\\Arduino\\hardware\\arduino\\avr\\**",
-                "C:\\Program Files (x86)\\Arduino\\tools\\**"
+                "C:\\Program Files (x86)\\Arduino\\tools\\**",
+                "/home/matteofdc/.arduino15/packages/arduino/hardware/avr/1.8.2/**",
+                "/home/matteofdc/.arduino15/packages/arduino/tools/**"
             ],
             "defines": [
                 "_DEBUG",
@@ -22,7 +24,19 @@
             "intelliSenseMode": "msvc-x64",
             "forcedInclude": [
                 "C:\\Users\\ferre\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.6.23\\cores\\arduino\\Arduino.h",
-                "C:\\Program Files (x86)\\Arduino\\hardware\\arduino\\avr\\cores\\arduino\\Arduino.h"
+                "C:\\Program Files (x86)\\Arduino\\hardware\\arduino\\avr\\cores\\arduino\\Arduino.h",
+                "/home/matteofdc/.arduino15/packages/arduino/hardware/avr/1.8.2/cores/arduino/Arduino.h"
+            ]
+        },
+        {
+            "name": "Linux",
+            "includePath": [
+                "/home/matteofdc/.arduino15/packages/arduino/tools/**",
+                "/home/matteofdc/.arduino15/packages/arduino/hardware/avr/1.8.2/**",
+                "/home/matteofdc/Arduino/libraries/CAN/src"
+            ],
+            "forcedInclude": [
+                "/home/matteofdc/.arduino15/packages/arduino/hardware/avr/1.8.2/cores/arduino/Arduino.h"
             ]
         }
     ],
