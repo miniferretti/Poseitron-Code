@@ -60,7 +60,9 @@ void MCP2515_ISR()
     {
       CAN0.readMsgBuf(&len, buf);
     }
-    sndStat = CAN0.sendMsgBuf(CAN_ID_RASP, 0, 5, data);
+    CAN0.checkClearTxStatus(&sndStat);
+    CAN0.clearBufferTransmitIfFlags();
+    CAN0.sendMsgBuf(CAN_ID_RASP, 0,5, data);
     Serial.println("Envois du Message");
   
 }
