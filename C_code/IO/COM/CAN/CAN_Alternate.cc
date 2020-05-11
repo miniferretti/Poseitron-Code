@@ -215,28 +215,28 @@ int CAN0_Alternate::getDistance(int dir, double *data)
     nbytes = read(s, &msg2, sizeof(struct can_frame));
   }
 
-  /* if (nbytes < 0)
+  if (nbytes < 0)
   {
     //  printf("Data not ready\r\n");
     return 0;
   }
   else
-  { */
-  for (int i = 0; i < msg2.can_dlc; i++)
   {
-    if (msg2.data[i] == 0)
+    for (int i = 0; i < msg2.can_dlc; i++)
     {
-      data[i] = 255;
+      if (msg2.data[i] == 0)
+      {
+        data[i] = 255;
+      }
+      else
+      {
+        data[i] = (double)msg2.data[i];
+      }
     }
-    else
-    {
-      data[i] = (double)msg2.data[i];
-    }
-  }
 
-  printf("%f %f %f %f %f\r\n", data[0], data[1], data[2], data[3], data[4]);
-  return 1;
-  // }
+    printf("%f %f %f %f %f\r\n", data[0], data[1], data[2], data[3], data[4]);
+    return 1;
+  }
 }
 
 // For fruther info on the routines visit: https://github.com/rhyttr/SocketCAN/blob/master/test/tst-raw.c
