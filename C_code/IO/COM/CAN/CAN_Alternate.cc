@@ -183,7 +183,7 @@ int CAN0_Alternate::getDistance(int dir, double *data)
 {
   struct can_frame msg;
   struct can_frame msg2;
-  int nbytes;
+  int nbytes = -1;
 
   if (dir)
   {
