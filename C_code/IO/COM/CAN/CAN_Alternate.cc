@@ -53,7 +53,11 @@ CAN0_Alternate::CAN0_Alternate(int baud)
   rfilter.can_id = 0x700;
   rfilter.can_mask = 0x1FFFF000;
 
+  tv.tv_sec = 0.003;
+  tv.tv_usec = 0;
+
   setsockopt(s, SOL_CAN_RAW, CAN_RAW_FILTER, &rfilter, sizeof(rfilter));
+  setsockopt(s, SOL_CAN_RAW, SO_RCVTIMEO, (const char *)&tv, sizeof(tv));
 
   addr.can_family = AF_CAN;
 
@@ -69,7 +73,7 @@ CAN0_Alternate::CAN0_Alternate(int baud)
     perror("bind");
   }
 
-  fd_set_blocking(s, 0);
+ // fd_set_blocking(s, 0);
 }
 
 void CAN0_Alternate::CAN0pushPropDC(double dcG, double dcD)
@@ -206,9 +210,11 @@ int CAN0_Alternate::getDistance(int dir, double *data)
     //  usleep(DELAY);
   }
 
-  if ((nbytes = read(s, &msg2, sizeof(struct can_frame))) < 0)
+  nbytes = read(s, &msg2, sizeof(struct can_frame));
+
+  if (nbytes < 0)
   {
-  //  printf("Data not ready\r\n");
+    //  printf("Data not ready\r\n");
     return 0;
   }
   else
@@ -217,7 +223,7 @@ int CAN0_Alternate::getDistance(int dir, double *data)
     {
       if (msg2.data[i] == 0)
       {
-        data[i] = 250;
+        data[i] = 255;
       }
       else
       {
@@ -225,7 +231,7 @@ int CAN0_Alternate::getDistance(int dir, double *data)
       }
     }
 
-   // printf("%f %f %f %f %f\r\n", data[0], data[1], data[2], data[3], data[4]);
+    // printf("%f %f %f %f %f\r\n", data[0], data[1], data[2], data[3], data[4]);
     return 1;
   }
 }

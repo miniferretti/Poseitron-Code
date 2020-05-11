@@ -48,6 +48,7 @@ private:
     struct can_filter rfilter;
     struct can_frame frame;
     struct ifreq ifr;
+    struct timeval tv;
     int BR;
 };
 
