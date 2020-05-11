@@ -210,7 +210,7 @@ int CAN0_Alternate::getDistance(int dir, double *data)
     //  usleep(DELAY);
   }
 
-  for (int i = 0; i < 20; i++)
+  for (int i = 0; i < 1; i++)
   {
     nbytes = read(s, &msg2, sizeof(msg2));
   }
