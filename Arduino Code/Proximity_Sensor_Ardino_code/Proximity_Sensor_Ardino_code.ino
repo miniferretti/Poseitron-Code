@@ -54,14 +54,15 @@ void setup()
 void MCP2515_ISR()
 {
   byte sndStat = 0;
-  Flag_Recv = 1;
-  // Flag_Recv_Ctr = Flag_Recv_Ctr + 1; // debugging only
-  while (CAN_MSGAVAIL == CAN0.checkReceive())
-  {
-    CAN0.readMsgBuf(&len, buf);
-  }
-  sndStat = CAN0.sendMsgBuf(CAN_ID_RASP, 0, 5, data);
-  Serial.println("Envois du Message");
+  
+    // Flag_Recv_Ctr = Flag_Recv_Ctr + 1; // debugging only
+    while (CAN_MSGAVAIL == CAN0.checkReceive())
+    {
+      CAN0.readMsgBuf(&len, buf);
+    }
+    sndStat = CAN0.sendMsgBuf(CAN_ID_RASP, 0, 5, data);
+    Serial.println("Envois du Message");
+  
 }
 
 void loop()

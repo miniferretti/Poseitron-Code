@@ -57,7 +57,7 @@ CAN0_Alternate::CAN0_Alternate(int baud)
   tv.tv_usec = 80000;
 
   setsockopt(s, SOL_CAN_RAW, CAN_RAW_FILTER, &rfilter, sizeof(rfilter));
-   setsockopt(s, SOL_CAN_RAW, SO_RCVTIMEO, (const char *)&tv, sizeof(tv));
+  setsockopt(s, SOL_CAN_RAW, SO_RCVTIMEO, (const char *)&tv, sizeof(tv));
 
   addr.can_family = AF_CAN;
 
@@ -210,7 +210,7 @@ int CAN0_Alternate::getDistance(int dir, double *data)
     //  usleep(DELAY);
   }
 
-  for (int i = 0; i < 20; i++)
+  for (int i = 0; i < 100; i++)
   {
     nbytes = read(s, &msg2, sizeof(msg2));
   }
