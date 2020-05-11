@@ -67,6 +67,7 @@ void MCP2515_ISR()
 void loop()
 {
 
+  noInterrupts();
   for (int i = 0; i < 5; i++)
   {
     data[i] = mesure(pin[i]);
@@ -74,6 +75,7 @@ void loop()
     Serial.print(" ");
   }
   Serial.println("");
+  interrupts();
 }
 
 byte mesure(int pina)
