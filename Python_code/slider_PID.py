@@ -21,7 +21,7 @@ style.use('ggplot')
 UDP_IP = "192.168.1.111"
 UDP_PORT = 5005
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-# sock.settimeout(0.0)
+sock.settimeout(1)
 
 
 master = Tk()

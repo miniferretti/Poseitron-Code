@@ -64,7 +64,7 @@ void loop()
   if (!digitalRead(2))
   {
     Flag_Recv = 0;
-    CAN0.readMsgBuf(id, &len, buf);
+    //CAN0.readMsgBuf(id, &len, buf);
     sndStat = CAN0.sendMsgBuf(CAN_ID_RASP, 0, 5, data);
     Serial.println("Envois du Message");
   }

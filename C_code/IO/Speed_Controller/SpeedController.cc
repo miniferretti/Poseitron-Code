@@ -283,7 +283,7 @@ void SpeedController::updateCmd()
 
     this->can0->CAN0pushPropDC(this->theCtrlStruct->theCtrlOut->wheel_commands[L_ID], this->theCtrlStruct->theCtrlOut->wheel_commands[R_ID]);
 
-    if (this->theCtrlStruct->theCtrlIn->t - t_ref > 0.5)
+    if (this->theCtrlStruct->theCtrlIn->t - t_ref > 1)
     {
         this->theCtrlStruct->theCtrlIn->sens_flag = this->can0->getDistance(1, this->theCtrlStruct->theCtrlIn->sens_array_front);
         t_ref = this->theCtrlStruct->theCtrlIn->t;
