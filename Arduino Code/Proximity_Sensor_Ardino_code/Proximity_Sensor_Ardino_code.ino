@@ -19,6 +19,11 @@ byte dataprev[5] = {255, 255, 255, 255, 255};
 int num = 5;
 int Flag_Recv = 0;
 
+INT32U *id;
+INT8U *ext;
+byte len;
+byte buf[3];
+
 void setup()
 {
   Serial.begin(115200);
@@ -35,7 +40,7 @@ void setup()
   CAN0.init_Filt(0, 0, 0x00000600);
   CAN0.setMode(MCP_NORMAL);
 
-  attachInterrupt(0, MCP2515_ISR, FALLING);
+  //attachInterrupt(0, MCP2515_ISR, FALLING);
 
   pinMode(TRIGGER_PIN, OUTPUT);
   digitalWrite(TRIGGER_PIN, LOW); // La broche TRIGGER doit être à LOW au repos
@@ -56,16 +61,19 @@ void loop()
 {
 
   byte sndStat = 0;
-  if (Flag_Recv == 1)
+  if (!digitalRead(2))
   {
     Flag_Recv = 0;
+    CAN0.readMsgBuf(id, &len, buf);
     sndStat = CAN0.sendMsgBuf(CAN_ID_RASP, 0, 5, data);
+    Serial.println("Envois du Message");
   }
   else
   {
     for (int i = 0; i < 5; i++)
     {
       data[i] = mesure(pin[i]);
+      Serial.println(data[i]);
     }
   }
 }
