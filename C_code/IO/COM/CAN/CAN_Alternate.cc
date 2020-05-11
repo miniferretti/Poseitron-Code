@@ -210,9 +210,9 @@ int CAN0_Alternate::getDistance(int dir, double *data)
     //  usleep(DELAY);
   }
 
-  for (int i = 0; i < 10; i++)
+  for (int i = 0; i < 100; i++)
   {
-    nbytes = read(s, &msg2, sizeof(struct can_frame));
+    nbytes = read(s, &msg2, sizeof(msg2));
   }
 
   if (nbytes < 0)
