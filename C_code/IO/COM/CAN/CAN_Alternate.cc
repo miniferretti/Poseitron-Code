@@ -210,11 +210,11 @@ int CAN0_Alternate::getDistance(int dir, double *data)
     //  usleep(DELAY);
   }
 
-  for (int i = 0; i < 100; i++)
+  for (int i = 0; i < 20; i++)
   {
     nbytes = read(s, &msg2, sizeof(msg2));
   }
-
+  nbytes = 1;
   if (nbytes < 0)
   {
     //  printf("Data not ready\r\n");
