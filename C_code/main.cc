@@ -88,7 +88,7 @@ int main()
 		case WAIT_STATE:
 			printf("WAIT_STATE\r\n");
 
-			if (myCtrlStruct->theCtrlIn->t > 30)
+			if (myCtrlStruct->theCtrlIn->t > 15)
 			{
 				myCtrlStruct->main_states = TEST_PATH_STATE;
 				colorSensorReset();

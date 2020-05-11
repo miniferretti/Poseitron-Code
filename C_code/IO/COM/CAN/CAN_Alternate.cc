@@ -73,7 +73,7 @@ CAN0_Alternate::CAN0_Alternate(int baud)
     perror("bind");
   }
 
-   fd_set_blocking(s, 1);
+  fd_set_blocking(s, 1);
 }
 
 void CAN0_Alternate::CAN0pushPropDC(double dcG, double dcD)
@@ -212,13 +212,13 @@ int CAN0_Alternate::getDistance(int dir, double *data)
 
   nbytes = read(s, &msg2, sizeof(struct can_frame));
 
-  if (nbytes < 0)
+ /* if (nbytes < 0)
   {
     //  printf("Data not ready\r\n");
     return 0;
   }
   else
-  {
+  { */
     for (int i = 0; i < msg2.can_dlc; i++)
     {
       if (msg2.data[i] == 0)
@@ -233,7 +233,7 @@ int CAN0_Alternate::getDistance(int dir, double *data)
 
     printf("%f %f %f %f %f\r\n", data[0], data[1], data[2], data[3], data[4]);
     return 1;
-  }
+ // }
 }
 
 // For fruther info on the routines visit: https://github.com/rhyttr/SocketCAN/blob/master/test/tst-raw.c
