@@ -6,6 +6,7 @@ void pincher_demo(CtrlStruct *cvs)
     float r, g, b, c; // 0 = red-dominant 1 = green-dominant 2 = blue-dominant
     uint16_t color_temp;
     RobotPinchers *pinch = cvs->pinchers;
+    int dyn_position, dyn_load;
 
     switch (cvs->pinchers_demo_states)
     {
@@ -13,7 +14,9 @@ void pincher_demo(CtrlStruct *cvs)
         Dyn_set_position_and_speed(0x08, 0, 10);
         pinch->pinch_flag = 0;
 
-        if (Dyn_get_position(0x08) == 0)
+        dyn_position = Dyn_get_position(0x08);
+        fprintf(pinch->DynaStates, "%f %f\n", dyn_position, dyn_load);
+        if (dyn_position == 0)
         {
             if (Dyn_set_torque(0x08, 100)) //Set a maximum torque for grabing the component
             {
@@ -25,6 +28,7 @@ void pincher_demo(CtrlStruct *cvs)
                     pinch->number_of_pinch = 0;
                     pinch->number_of_succes = 0;
                     fclose(pinch->RGBLog);
+                    fclose(pinch->DynaStates);
                 }
                 else
                 {
@@ -92,8 +96,12 @@ void pincher_demo(CtrlStruct *cvs)
 
     case LOAD_STATE:
 
-        printf("The load is : %d\r\n", Dyn_get_load(0x08));
-        if (Dyn_get_load(0x08) > 1100)
+        dyn_position = Dyn_get_position(0x08);
+        dyn_load = Dyn_get_load(0x08);
+        fprintf(cvs->pinchers->DynaStates, "%f %f\n", dyn_position, dyn_load);
+
+        printf("The load is : %d\r\n", dyn_load);
+        if (dyn_load > 1100)
         {
             cvs->pinchers_demo_states = SENS_STATE;
             cvs->t_ref = cvs->theCtrlIn->t;

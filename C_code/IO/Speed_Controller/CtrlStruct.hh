@@ -177,6 +177,7 @@ typedef struct RobotPinchers
     int number_of_pinch;
     int pinch_flag;
     FILE *RGBLog;
+    FILE *DynaStates;
 
 } RobotPinchers;
 

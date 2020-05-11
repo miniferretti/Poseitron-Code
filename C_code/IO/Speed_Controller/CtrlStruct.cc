@@ -30,13 +30,14 @@ void init_ctrlStruc(CtrlStruct *ctrl)
 	ctrl->rob_pos = new RobotPosition;
 	ctrl->robot = new RobotParameters;
 	ctrl->robot->wheel_rad = 0.03;
-	ctrl->robot->wheel_dist = 0.19; // 19cm
+	ctrl->robot->wheel_dist = 0.19;		 // 19cm
 	ctrl->robot->center_to_ultra = 0.14; //14cm
 	ctrl->pinchers = new RobotPinchers;
 	ctrl->pinchers->number_of_succes = 0;
 	ctrl->pinchers->number_of_pinch = 0;
 	ctrl->pinchers->pinch_flag = 0;
 	ctrl->pinchers->RGBLog = fopen("/home/pi/Poseitron-Code/Data/RGBLog.txt", "w");
+	ctrl->pinchers->DynaStates = fopen("/home/pi/Poseitron-Code/Data/DynaStats.txt", "w");
 	ctrl->avoid150_states = AVOID150_STATE1;
 	ctrl->pinchers_demo_states = SETUP_STATE;
 	ctrl->calib_states = CALIB_1;
@@ -46,10 +47,11 @@ void init_ctrlStruc(CtrlStruct *ctrl)
 
 	// opponent position
 	ctrl->opp_pos = new OppPos;
-	ctrl->opp_pos->flag = true; 
+	ctrl->opp_pos->flag = true;
 	ctrl->opp_pos->redzone = 0.2; // en metre
-	ctrl->opp_pos->dist = 200; 
-	ctrl->opp_pos->RecordUltrason = fopen("/home/pi/Poseitron-Code/Data/RecordUltrason.txt", "w");; 
+	ctrl->opp_pos->dist = 200;
+	ctrl->opp_pos->RecordUltrason = fopen("/home/pi/Poseitron-Code/Data/RecordUltrason.txt", "w");
+	;
 
 	// calibration
 	ctrl->calib = new RobotCalibration;
@@ -105,7 +107,7 @@ void init_ctrlStruc(CtrlStruct *ctrl)
 	ctrl->follower->w_changed = 0;
 	ctrl->follower->rhoLimit = 0.05;
 	ctrl->follower->flag_rho = true;
-	ctrl->follower->logFile = fopen("/home/pi/Poseitron-Code/Data/FollowerFile.txt", "w"); 
+	ctrl->follower->logFile = fopen("/home/pi/Poseitron-Code/Data/FollowerFile.txt", "w");
 }
 
 void obstacle_building(PathPlanning *path)
@@ -166,23 +168,23 @@ void target_init(CtrlStruct *ctrl)
 
 	// target 0
 	strat->target(0, 0) = 0.9; // coordonnée en x en m
-	strat->target(0, 1) = 0.0;   // coordonnée en y en m
+	strat->target(0, 1) = 0.0; // coordonnée en y en m
 	strat->target(0, 2) = 1;   // deja pris ou non
 	strat->target(0, 3) = 1;   // nombre de points
 
 	// target 1
-	strat->target(1, 0) = 0.0; // coordonnée en x en m
-	strat->target(1, 1) = -0.5;   // coordonnée en y en m
-	strat->target(1, 2) = 1;   // deja pris ou non
-	strat->target(1, 3) = 1;   // nombre de points
+	strat->target(1, 0) = 0.0;	// coordonnée en x en m
+	strat->target(1, 1) = -0.5; // coordonnée en y en m
+	strat->target(1, 2) = 1;	// deja pris ou non
+	strat->target(1, 3) = 1;	// nombre de points
 
 	// target 2
 	strat->target(2, 0) = -0.9; // coordonnée en x en m
-	strat->target(2, 1) = 0.0;   // coordonnée en y en m
-	strat->target(2, 2) = 1;   // deja pris ou non
-	strat->target(2, 3) = 1;   // nombre de points
-	
-/*
+	strat->target(2, 1) = 0.0;	// coordonnée en y en m
+	strat->target(2, 2) = 1;	// deja pris ou non
+	strat->target(2, 3) = 1;	// nombre de points
+
+	/*
 	strat->target(3, 0) = -0.5; // coordonnée en x en m
 	strat->target(3, 1) = 0.5;   // coordonnée en y en m
 	strat->target(3, 2) = 1;   // deja pris ou non

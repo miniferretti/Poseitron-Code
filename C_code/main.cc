@@ -90,7 +90,7 @@ int main()
 
 			if (myCtrlStruct->theCtrlIn->t > 30)
 			{
-				myCtrlStruct->main_states = TEST_PATH_STATE;
+				myCtrlStruct->main_states = PINCHER_DEMO_STATE;
 				colorSensorReset();
 				reset_dynamixel();
 			}
@@ -116,7 +116,11 @@ int main()
 			break;
 
 		case PINCHER_DEMO_STATE:
-			printf("PINCHER_DEMO_STATE\r\n");
+			if (myCtrlStruct->flag_state == 1)
+			{
+				printf("PINCHER_DEMO_STATE\r\n");
+				myCtrlStruct->flag_state = 0;
+			}
 			pincher_demo(myCtrlStruct);
 			break;
 
