@@ -15,7 +15,7 @@ void pincher_demo(CtrlStruct *cvs)
         pinch->pinch_flag = 0;
 
         dyn_position = Dyn_get_position(0x08);
-        fprintf(pinch->DynaStates, "%f %f\n", dyn_position, dyn_load);
+        fprintf(pinch->DynaStates, "%d %d\n", dyn_position, dyn_load);
         if (dyn_position == 0)
         {
             if (Dyn_set_torque(0x08, 100)) //Set a maximum torque for grabing the component
@@ -98,7 +98,7 @@ void pincher_demo(CtrlStruct *cvs)
 
         dyn_position = Dyn_get_position(0x08);
         dyn_load = Dyn_get_load(0x08);
-        fprintf(cvs->pinchers->DynaStates, "%f %f\n", dyn_position, dyn_load);
+        fprintf(cvs->pinchers->DynaStates, "%d %d\n", dyn_position, dyn_load);
 
         printf("The load is : %d\r\n", dyn_load);
         if (dyn_load > 1100)
