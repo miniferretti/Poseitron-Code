@@ -53,11 +53,11 @@ CAN0_Alternate::CAN0_Alternate(int baud)
   rfilter.can_id = 0x700;
   rfilter.can_mask = 0x1FFFF000;
 
-  tv.tv_sec = 0.003; // 3 milliseconds timout for recieving a message
-  tv.tv_usec = 0;
+  tv.tv_sec = 0; // 3 milliseconds timout for recieving a message
+  tv.tv_usec = 8000;
 
   setsockopt(s, SOL_CAN_RAW, CAN_RAW_FILTER, &rfilter, sizeof(rfilter));
- // setsockopt(s, SOL_CAN_RAW, SO_RCVTIMEO, (const char *)&tv, sizeof(tv));
+  setsockopt(s, SOL_CAN_RAW, SO_RCVTIMEO, (const char *)&tv, sizeof(tv));
 
   addr.can_family = AF_CAN;
 
@@ -73,7 +73,7 @@ CAN0_Alternate::CAN0_Alternate(int baud)
     perror("bind");
   }
 
-   fd_set_blocking(s, 0);
+  // fd_set_blocking(s, 0);
 }
 
 void CAN0_Alternate::CAN0pushPropDC(double dcG, double dcD)
