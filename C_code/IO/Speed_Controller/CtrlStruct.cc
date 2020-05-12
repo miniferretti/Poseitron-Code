@@ -66,7 +66,7 @@ void init_ctrlStruc(CtrlStruct *ctrl)
 	// strategy
 	ctrl->strat = new Strategy;
 	ctrl->strat->state = STRAT_STATE_PATH;
-	ctrl->strat->target = Eigen::MatrixXd::Zero(8, 5);
+	ctrl->strat->target = Eigen::MatrixXd::Zero(10, 5);
 	ctrl->strat->tref = 0;
 	ctrl->strat->count = 0;
 	ctrl->strat->wait_count = 0;
@@ -167,33 +167,74 @@ void target_init(CtrlStruct *ctrl)
 	strat = ctrl->strat;
 
 	// target 0
-	strat->target(0, 0) = 0.9; // coordonnée en x en m
-	strat->target(0, 1) = 0.0; // coordonnée en y en m
-	strat->target(0, 2) = 1;   // deja pris ou non
-	strat->target(0, 3) = 1;   // nombre de points
-
+	int i = 0; 
+	strat->target(i, 0) = 0.2; // coordonnée en x en m
+	strat->target(i, 1) = 0.0; // coordonnée en y en m
+	strat->target(i, 2) = 1;   // deja pris ou non
+	strat->target(i, 3) = 1;   // nombre de points
+	
 	// target 1
-	strat->target(1, 0) = 0.0;	// coordonnée en x en m
-	strat->target(1, 1) = -0.5; // coordonnée en y en m
-	strat->target(1, 2) = 1;	// deja pris ou non
-	strat->target(1, 3) = 1;	// nombre de points
-
+	i++;
+	strat->target(i, 0) = 0.4;	// coordonnée en x en m
+	strat->target(i, 1) = -0.3; // coordonnée en y en m
+	strat->target(i, 2) = 1;	// deja pris ou non
+	strat->target(i, 3) = 1;	// nombre de points
+	
 	// target 2
-	strat->target(2, 0) = -0.9; // coordonnée en x en m
-	strat->target(2, 1) = 0.0;	// coordonnée en y en m
-	strat->target(2, 2) = 1;	// deja pris ou non
-	strat->target(2, 3) = 1;	// nombre de points
+	i++; 
+	strat->target(i, 0) = 0.0; // coordonnée en x en m
+	strat->target(i, 1) = -0.6;   // coordonnée en y en m
+	strat->target(i, 2) = 1;   // deja pris ou non
+	strat->target(i, 3) = 1;   // nombre de points
 
-	/*
-	strat->target(3, 0) = -0.5; // coordonnée en x en m
-	strat->target(3, 1) = 0.5;   // coordonnée en y en m
-	strat->target(3, 2) = 1;   // deja pris ou non
-	strat->target(3, 3) = 1;   // nombre de points
+	// target 3
+	i++; 
+	strat->target(i, 0) = -0.4; // coordonnée en x en m
+	strat->target(i, 1) = -0.3;   // coordonnée en y en m
+	strat->target(i, 2) = 1;   // deja pris ou non
+	strat->target(i, 3) = 1;   // nombre de points 
 
-	strat->target(4, 0) = -0.5; // coordonnée en x en m
-	strat->target(4, 1) = -0.5;   // coordonnée en y en m
-	strat->target(4, 2) = 1;   // deja pris ou non
-	strat->target(4, 3) = 1;   // nombre de points */
+	// target 4
+	i++; 
+	strat->target(i, 0) = -0.8; // coordonnée en x en m
+	strat->target(i, 1) = 0.0;   // coordonnée en y en m
+	strat->target(i, 2) = 1;   // deja pris ou non
+	strat->target(i, 3) = 1;   // nombre de points 
+
+	// target 5
+	i++; 
+	strat->target(i, 0) = -0.4; // coordonnée en x en m
+	strat->target(i, 1) = 0.3;   // coordonnée en y en m
+	strat->target(i, 2) = 1;   // deja pris ou non
+	strat->target(i, 3) = 1;   // nombre de points 
+
+	// target 6
+	i++; 
+	strat->target(i, 0) = 0.0; // coordonnée en x en m
+	strat->target(i, 1) = 0.6;   // coordonnée en y en m
+	strat->target(i, 2) = 1;   // deja pris ou non
+	strat->target(i, 3) = 1;   // nombre de points 
+
+	// target 7
+	i++; 
+	strat->target(i, 0) = 0.4; // coordonnée en x en m
+	strat->target(i, 1) = 0.3;   // coordonnée en y en m
+	strat->target(i, 2) = 1;   // deja pris ou non
+	strat->target(i, 3) = 1;   // nombre de points 
+
+	// target 8
+	i++; 
+	strat->target(i, 0) = 0.2; // coordonnée en x en m
+	strat->target(i, 1) = 0.0;   // coordonnée en y en m
+	strat->target(i, 2) = 1;   // deja pris ou non
+	strat->target(i, 3) = 1;   // nombre de points 
+
+	// target 9
+	i++; 
+	strat->target(i, 0) = 0.0; // coordonnée en x en m
+	strat->target(i, 1) = 0.0;   // coordonnée en y en m
+	strat->target(i, 2) = 1;   // deja pris ou non
+	strat->target(i, 3) = 1;   // nombre de points 
 }
 /*
 void repulsive_potential_field(CtrlStruct *ctrl){
