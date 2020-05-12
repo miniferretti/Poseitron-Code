@@ -231,7 +231,7 @@ int CAN0_Alternate::getDistance(int dir, double *data)
       }
     }
 
-    printf("%f %f %f %f %f\r\n", data[0], data[1], data[2], data[3], data[4]);
+   // printf("%f %f %f %f %f\r\n", data[0], data[1], data[2], data[3], data[4]);
     return 1;
   }
 }
