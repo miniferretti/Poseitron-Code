@@ -11,6 +11,7 @@ from inputs import devices
 import os
 import pprint
 import pygame
+import select
 
 style.use('ggplot')
 
@@ -21,7 +22,7 @@ style.use('ggplot')
 UDP_IP = "192.168.1.111"
 UDP_PORT = 5005
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-sock.settimeout(1)
+sock.setblocking(0)
 
 
 master = Tk()
@@ -292,7 +293,7 @@ ID_type = 0
 def animate(i):
     # f = open(r"/home/pi/Poseitron-Code/Data/logFileSpeed.txt", "r").read()
     global slave
-    # ps4.listen(True)
+    ps4.listen(True)
     speeds = speed(ps4_left_x, ps4_left_y, ps4_right_x, ps4_right_y)
     PID = [float(Ki_left), float(Kp_left), float(Kd_left),
            float(Ki_right), float(Kp_right), float(Kd_right),
@@ -304,15 +305,17 @@ def animate(i):
    # print("MSG PID = {}".format(data))
     sock.sendto(data, (UDP_IP, UDP_PORT))
     slave = 2
-    msg = sock.recv(56)
-    data = unpack('<7d', msg)
-   # print("MSG = {}".format(data))
-   # print("PID = {}".format(PID))
-    Vr.append(float(data[0]))
-    VrRef.append(float(data[1]))
-    Vl.append(float(data[2]))
-    VlRef.append(float(data[3]))
-    Time.append(float(data[4]))
+    ready = select.select([sock], [], [], 0.1)
+    if ready[0]:
+        msg = sock.recv(56)
+        data = unpack('<7d', msg)
+    # print("MSG = {}".format(data))
+    # print("PID = {}".format(PID))
+        Vr.append(float(data[0]))
+        VrRef.append(float(data[1]))
+        Vl.append(float(data[2]))
+        VlRef.append(float(data[3]))
+        Time.append(float(data[4]))
     axs[0, 1].clear()
     axs[0, 1].plot(Time, Vr)
     axs[0, 1].plot(Time, VrRef)
