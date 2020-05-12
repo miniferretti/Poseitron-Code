@@ -72,6 +72,7 @@ void SpeedController::init_speed_controller(int i)
     kp_left = 0;
     slave = 2;
     t_ref = 0;
+    ID_type = 1;
 
     //Live tuning path-follow
     omega_sat = 6.5;  //4.5
@@ -131,7 +132,7 @@ void SpeedController::updateLowCtrl()
 
     unsigned char buffer[5];
     double speeds[7];
-    unsigned char buf[60];
+    unsigned char buf[64];
     int n;
 
     if (this->theCtrlStruct->theUserStruct->speed_kill == 0)
@@ -156,7 +157,7 @@ void SpeedController::updateLowCtrl()
 
         //  printf("size of the speed array = %d\r\n", sizeof(speeds));
 
-        n = recvfrom(sock, (char *)buf, 60, MSG_DONTWAIT, (struct sockaddr *)&from, &fromlen);
+        n = recvfrom(sock, (char *)buf, 64, MSG_DONTWAIT, (struct sockaddr *)&from, &fromlen);
         if (n > -1)
         {
 
@@ -175,58 +176,63 @@ void SpeedController::updateLowCtrl()
             memcpy(&speed_sat, &buf[48], sizeof(speed_sat));
             memcpy(&prop_param, &buf[52], sizeof(prop_param));
             memcpy(&rho_limit, &buf[56], sizeof(rho_limit));
+            memcpy(&ID_type, &buf[60], sizeof(ID_type));
 
-            this->theCtrlStruct->theUserStruct->theMotLeft->kp = kp_left; //Kp;
-            if (float(this->theCtrlStruct->theUserStruct->theMotLeft->ki) != ki_left)
+            if (ID_type == 0)
             {
-                this->theCtrlStruct->theUserStruct->theMotLeft->ki_flag = 1;
-            }
-            else
-            {
-                this->theCtrlStruct->theUserStruct->theMotLeft->ki_flag = 0;
-            }
-            this->theCtrlStruct->theUserStruct->theMotLeft->ki = ki_left; // valeur a modifier si besoins est...
-            this->theCtrlStruct->theUserStruct->theMotLeft->kd = kd_left;
 
-            this->theCtrlStruct->theUserStruct->theMotRight->kp = kp_right; //Kp;
-            if (float(this->theCtrlStruct->theUserStruct->theMotRight->ki) != ki_right)
-            {
-                this->theCtrlStruct->theUserStruct->theMotRight->ki_flag = 1;
-            }
-            else
-            {
-                this->theCtrlStruct->theUserStruct->theMotRight->ki_flag = 0;
-            }
-            this->theCtrlStruct->theUserStruct->theMotRight->ki = ki_right; //Ki;
-            this->theCtrlStruct->theUserStruct->theMotRight->kd = kd_right;
-
-            if (slave == 1)
-            {
-                slave_previous_state = this->theCtrlStruct->main_states;
-                this->theCtrlStruct->main_states = SlAVE_STATE;
-                this->theCtrlStruct->flag_state = 1;
-            }
-            else if (slave == 0)
-            {
-                if (slave_previous_state != 0)
+                this->theCtrlStruct->theUserStruct->theMotLeft->kp = kp_left; //Kp;
+                if (float(this->theCtrlStruct->theUserStruct->theMotLeft->ki) != ki_left)
                 {
-                    this->theCtrlStruct->main_states = slave_previous_state;
+                    this->theCtrlStruct->theUserStruct->theMotLeft->ki_flag = 1;
+                }
+                else
+                {
+                    this->theCtrlStruct->theUserStruct->theMotLeft->ki_flag = 0;
+                }
+                this->theCtrlStruct->theUserStruct->theMotLeft->ki = ki_left; // valeur a modifier si besoins est...
+                this->theCtrlStruct->theUserStruct->theMotLeft->kd = kd_left;
+
+                this->theCtrlStruct->theUserStruct->theMotRight->kp = kp_right; //Kp;
+                if (float(this->theCtrlStruct->theUserStruct->theMotRight->ki) != ki_right)
+                {
+                    this->theCtrlStruct->theUserStruct->theMotRight->ki_flag = 1;
+                }
+                else
+                {
+                    this->theCtrlStruct->theUserStruct->theMotRight->ki_flag = 0;
+                }
+                this->theCtrlStruct->theUserStruct->theMotRight->ki = ki_right; //Ki;
+                this->theCtrlStruct->theUserStruct->theMotRight->kd = kd_right;
+
+                if (slave == 1)
+                {
+                    slave_previous_state = this->theCtrlStruct->main_states;
+                    this->theCtrlStruct->main_states = SlAVE_STATE;
                     this->theCtrlStruct->flag_state = 1;
                 }
+                else if (slave == 0)
+                {
+                    if (slave_previous_state != 0)
+                    {
+                        this->theCtrlStruct->main_states = slave_previous_state;
+                        this->theCtrlStruct->flag_state = 1;
+                    }
+                }
+
+                if (this->theCtrlStruct->main_states == SlAVE_STATE)
+                {
+                    set_speed(slave_speed_left, slave_speed_right);
+                }
+
+                this->theCtrlStruct->theUserStruct->theMotLeft->compensation_factor = correction_factor_left;
+                this->theCtrlStruct->theUserStruct->theMotRight->compensation_factor = correction_factor_right;
+
+                this->theCtrlStruct->follower->speed_sat = speed_sat;
+                this->theCtrlStruct->follower->omega_sat = omega_sat;
+                this->theCtrlStruct->follower->prop_param = prop_param;
+                this->theCtrlStruct->follower->rhoLimit = rho_limit;
             }
-
-            if (this->theCtrlStruct->main_states == SlAVE_STATE)
-            {
-                set_speed(slave_speed_left, slave_speed_right);
-            }
-
-            this->theCtrlStruct->theUserStruct->theMotLeft->compensation_factor = correction_factor_left;
-            this->theCtrlStruct->theUserStruct->theMotRight->compensation_factor = correction_factor_right;
-
-            this->theCtrlStruct->follower->speed_sat = speed_sat;
-            this->theCtrlStruct->follower->omega_sat = omega_sat;
-            this->theCtrlStruct->follower->prop_param = prop_param;
-            this->theCtrlStruct->follower->rhoLimit = rho_limit;
 
             //  printf("Yep data recieved requested\r\n");
             n = sendto(sock, speeds, sizeof(speeds), 0, (struct sockaddr *)&from, fromlen);
