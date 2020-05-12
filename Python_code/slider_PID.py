@@ -286,17 +286,21 @@ Vl = L()
 VlRef = L()
 Time = L()
 
+ID_type = 0
+
 
 def animate(i):
     # f = open(r"/home/pi/Poseitron-Code/Data/logFileSpeed.txt", "r").read()
     global slave
-    #ps4.listen(True)
+    # ps4.listen(True)
     speeds = speed(ps4_left_x, ps4_left_y, ps4_right_x, ps4_right_y)
     PID = [float(Ki_left), float(Kp_left), float(Kd_left),
            float(Ki_right), float(Kp_right), float(Kd_right),
            float(Left_correction), float(Right_correction), float(speeds[0]),
-           float(speeds[1]), int(slave), float(omega_sat), float(speed_sat), float(prop_param), float(rho_limit)]
-    data = pack('ffffffffffiffff', *PID)
+           float(speeds[1]), int(slave), float(omega_sat),
+           float(speed_sat), float(prop_param), float(rho_limit),
+           int(ID_type)]
+    data = pack('ffffffffffiffffi', *PID)
    # print("MSG PID = {}".format(data))
     sock.sendto(data, (UDP_IP, UDP_PORT))
     slave = 2
