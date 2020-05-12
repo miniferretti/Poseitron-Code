@@ -24,6 +24,8 @@
 #include <chrono>
 #include "IO/Calibration/Calibration.hh"
 #include "IO/Mid_level_controller/Avoid150.hh"
+#include "IO/MCP23017_FPGA/Pinchers_control.hh"
+#include "IO/strategy/strategy.h"
 
 using namespace std;
 
@@ -40,10 +42,14 @@ int main()
 {
 	wiringPiSetup();
 	CtrlStruct *myCtrlStruct = new CtrlStruct;
+	P_Struct *my_P_Struct = new P_Struct;
+	//my_P_Struct->p_avoidance_path = new pthread_t;
+	//my_P_Struct->p_path_update = new pthread_t;
 	CAN0_Alternate *can = new CAN0_Alternate(CAN_BR);
 	SPI_DE0 *deo;
 	deo = new SPI_DE0(0, 125e3);
 	init_ctrlStruc(myCtrlStruct);
+	init_P_Struct(my_P_Struct);
 
 	SpeedController *spdctrl = new SpeedController(myCtrlStruct, can);
 	Odometry *myOdometry = new Odometry(myCtrlStruct);
@@ -51,10 +57,10 @@ int main()
 	spdctrl->init_speed_controller(1);
 	spdctrl->set_speed(0, 0);
 
-	delay(15000); //wait for the python UDP client to turn on
+	delay(2000); //wait for the python UDP client to turn on
 
 	myOdometry->Odometry_init();
-	myCtrlStruct->main_states = SlAVE_STATE;
+	myCtrlStruct->main_states = WAIT_STATE;
 	double time_taken;
 	int run = 1;
 	colorSensorReset();
@@ -75,16 +81,16 @@ int main()
 		spdctrl->updateLowCtrl();
 		myOdometry->Odometry_update();
 
-		myCtrlStruct->main_t_ref = myCtrlStruct->theCtrlIn->t;
+		//myCtrlStruct->main_t_ref = myCtrlStruct->theCtrlIn->t;
 
 		switch (myCtrlStruct->main_states)
 		{
 		case WAIT_STATE:
 			printf("WAIT_STATE\r\n");
 
-			if (myCtrlStruct->theCtrlIn->t > 5)
+			if (myCtrlStruct->theCtrlIn->t > 15)
 			{
-				myCtrlStruct->main_states = ODO_CALIB_STATE;
+				myCtrlStruct->main_states = TEST_PATH_STATE;
 				colorSensorReset();
 				reset_dynamixel();
 			}
@@ -95,13 +101,26 @@ int main()
 			calibration(myCtrlStruct, spdctrl, myOdometry);
 			break;
 
+		case TEST_PATH_STATE:
+			if (myCtrlStruct->flag_state == 1)
+			{
+				printf("TEST_PATH_STATE\r\n");
+				myCtrlStruct->flag_state = 0;
+			}
+			main_strategy(myCtrlStruct, my_P_Struct, spdctrl);
+			break;
+
 		case AVOID150_STATE:
 			printf("AVOID150_STATE\r\n");
 			avoid150(myCtrlStruct, spdctrl, myOdometry);
 			break;
 
 		case PINCHER_DEMO_STATE:
-			printf("PINCHER_DEMO_STATE\r\n");
+			if (myCtrlStruct->flag_state == 1)
+			{
+				printf("PINCHER_DEMO_STATE\r\n");
+				myCtrlStruct->flag_state = 0;
+			}
 			pincher_demo(myCtrlStruct);
 			break;
 
@@ -118,7 +137,29 @@ int main()
 			break;
 
 		case SlAVE_STATE:
-			printf("SLAVE_STATE");
+			if (myCtrlStruct->flag_state == 1)
+			{
+				printf("SLAVE_STATE\r\n");
+				myCtrlStruct->flag_state = 0;
+			}
+			break;
+
+		case PNEUMA_TEST_STATE:
+			printf("PNEUMA_TEST_STATE\r\n");
+			if (myCtrlStruct->theCtrlIn->t - myCtrlStruct->main_t_ref < 5)
+			{
+				printf("Output ON\r\n");
+				set_pinchers_output(0b11111111, 0b11111111);
+			}
+			else if (10 > myCtrlStruct->theCtrlIn->t - myCtrlStruct->main_t_ref && myCtrlStruct->theCtrlIn->t - myCtrlStruct->main_t_ref > 5)
+			{
+				printf("Output OFF\r\n");
+				set_pinchers_output(0b00000000, 0b00000000);
+			}
+			else
+			{
+				myCtrlStruct->main_t_ref = myCtrlStruct->theCtrlIn->t;
+			}
 			break;
 
 		default:

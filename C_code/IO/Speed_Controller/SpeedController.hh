@@ -50,7 +50,8 @@ private:
     struct sockaddr_in servaddr;
     struct sockaddr_in from;
     struct timeval read_timeout;
-    float kp_left, ki_left, kd_left, kp_right, ki_right, kd_right, correction_factor_left, correction_factor_right, slave_speed_left, slave_speed_right;
+    double t_ref;
+    float kp_left, ki_left, kd_left, kp_right, ki_right, kd_right, correction_factor_left, correction_factor_right, slave_speed_left, slave_speed_right, omega_sat, speed_sat, prop_param, rho_limit;
 };
 
 #endif

@@ -53,7 +53,11 @@ CAN0_Alternate::CAN0_Alternate(int baud)
   rfilter.can_id = 0x700;
   rfilter.can_mask = 0x1FFFF000;
 
+  tv.tv_sec = 0; // 3 milliseconds timout for recieving a message
+  tv.tv_usec = 80000;
+
   setsockopt(s, SOL_CAN_RAW, CAN_RAW_FILTER, &rfilter, sizeof(rfilter));
+  //setsockopt(s, SOL_CAN_RAW, SO_RCVTIMEO, (const char *)&tv, sizeof(tv));
 
   addr.can_family = AF_CAN;
 
@@ -179,7 +183,7 @@ int CAN0_Alternate::getDistance(int dir, double *data)
 {
   struct can_frame msg;
   struct can_frame msg2;
-  int nbytes;
+  int nbytes = -1;
 
   if (dir)
   {
@@ -206,9 +210,14 @@ int CAN0_Alternate::getDistance(int dir, double *data)
     //  usleep(DELAY);
   }
 
-  if ((nbytes = read(s, &msg2, sizeof(struct can_frame))) < 0)
+  while (nbytes < 0)
   {
-    printf("Data not ready\r\n");
+    nbytes = read(s, &msg2, sizeof(msg2));
+  }
+
+  if (nbytes < 0)
+  {
+    //  printf("Data not ready\r\n");
     return 0;
   }
   else
@@ -217,7 +226,7 @@ int CAN0_Alternate::getDistance(int dir, double *data)
     {
       if (msg2.data[i] == 0)
       {
-        data[i] = 250;
+        data[i] = 255;
       }
       else
       {

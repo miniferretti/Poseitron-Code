@@ -16,12 +16,12 @@ style.use('ggplot')
 
 
 # file = open(r"/home/pi/Poseitron-Code/Data/PID.txt", "w")
-#file = open(r"/home/matteofdc/Documents/Poseitron_Data/Data/PID.txt", "w")
+# file = open(r"/home/matteofdc/Documents/Poseitron_Data/Data/PID.txt", "w")
 
 UDP_IP = "192.168.1.111"
 UDP_PORT = 5005
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-# sock.settimeout(0.0)
+sock.settimeout(1)
 
 
 master = Tk()
@@ -67,6 +67,25 @@ w8 = Scale(master, from_=0, to=2, length=600, digits=4,
 w8.set(1)
 w8.pack()
 
+e1 = Entry(master)
+e2 = Entry(master)
+e3 = Entry(master)
+e4 = Entry(master)
+
+e1.place(x=1100, y=250)
+e2.place(x=1100, y=300)
+e3.place(x=1100, y=350)
+e4.place(x=1100, y=400)
+
+e1.insert(0, "6.5")
+e2.insert(0, "2.8")
+e3.insert(0, "9")
+e4.insert(0, "0.05")
+
+Label(master, text='Omega_sat').place(x=1000, y=250)
+Label(master, text='Speed_sat').place(x=1000, y=300)
+Label(master, text='prop_param').place(x=1000, y=350)
+Label(master, text='Rho_limit').place(x=1000, y=400)
 
 Ki_left = w1.get()
 Kp_left = w2.get()
@@ -81,7 +100,12 @@ ps4_left_x = 0
 ps4_right_y = 0
 ps4_right_x = 0
 slave = 0
-flag = 1
+flag = 0
+
+omega_sat = e1.get()
+speed_sat = e2.get()
+prop_param = e3.get()
+rho_limit = e4.get()
 
 
 class PS4Controller(object):
@@ -169,6 +193,17 @@ def print_values_in_file():
     Kd_right = w6.get()
 
 
+def update_path_follow():
+    global omega_sat
+    omega_sat = e1.get()
+    global speed_sat
+    speed_sat = e2.get()
+    global prop_param
+    prop_param = e3.get()
+    global rho_limit
+    rho_limit = e4.get()
+
+
 def print_correction():
     global Left_correction
     Left_correction = w7.get()
@@ -228,12 +263,14 @@ Button(master, width=20, height=2, text='Update correction factors',
 Button(master, width=20, height=2, text='Do/Undo Slave mode',
        command=set_slave).place(x=0, y=200)
 
+Button(master, width=20, height=2, text='Update path follow',
+       command=update_path_follow).place(x=1100, y=200)
+
 
 fig, axs = plt.subplots(2, 2, figsize=(30, 30))
 
 axs[1, 0].set_xlim([-1, 1])
 axs[1, 0].set_ylim([-1, 1])
-
 
 
 class L(list):
@@ -253,13 +290,13 @@ Time = L()
 def animate(i):
     # f = open(r"/home/pi/Poseitron-Code/Data/logFileSpeed.txt", "r").read()
     global slave
-    ps4.listen(True)
+    #ps4.listen(True)
     speeds = speed(ps4_left_x, ps4_left_y, ps4_right_x, ps4_right_y)
     PID = [float(Ki_left), float(Kp_left), float(Kd_left),
            float(Ki_right), float(Kp_right), float(Kd_right),
            float(Left_correction), float(Right_correction), float(speeds[0]),
-           float(speeds[1]), int(slave)]
-    data = pack('ffffffffffi', *PID)
+           float(speeds[1]), int(slave), float(omega_sat), float(speed_sat), float(prop_param), float(rho_limit)]
+    data = pack('ffffffffffiffff', *PID)
    # print("MSG PID = {}".format(data))
     sock.sendto(data, (UDP_IP, UDP_PORT))
     slave = 2
@@ -285,7 +322,8 @@ def animate(i):
                                                 1, ps4_left_y], marker='o', color='r', ls='')
     axs[1, 0].plot([1, 1, -1, -1, ps4_right_x], [1, -1, 1, -
                                                  1, ps4_right_y], marker='o', color='g', ls='')
-    axs[1, 1].plot([5,5,-5,-5,float(data[5])], [5,-5,-5,5,float(data[6])],marker='o',color='r',ls='')
+    axs[1, 1].plot([5, 5, -5, -5, float(data[5])], [5, -5, -5, 5,
+                                                    float(data[6])], marker='o', color='r', ls='')
     # axs[1, 1].clear()
 
 

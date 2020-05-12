@@ -46,7 +46,7 @@ void SpeedController::init_speed_controller(int i)
     this->theCtrlStruct->theUserStruct->theMotLeft->lowerCurrentLimit = -Ra * Current_max;
     this->theCtrlStruct->theUserStruct->theMotLeft->upperVoltageLimit = 24 * secu;
     this->theCtrlStruct->theUserStruct->theMotLeft->lowerVoltageLimit = -24 * secu;
-    this->theCtrlStruct->theUserStruct->theMotLeft->compensation_factor = 1;
+    this->theCtrlStruct->theUserStruct->theMotLeft->compensation_factor = 1.025;
     this->theCtrlStruct->theUserStruct->theMotLeft->ki_flag = 0;
 
     this->theCtrlStruct->theUserStruct->theMotRight->kp = 0.04; //Kp;
@@ -71,6 +71,14 @@ void SpeedController::init_speed_controller(int i)
     read_timeout.tv_usec = 10;
     kp_left = 0;
     slave = 2;
+    t_ref = 0;
+
+    //Live tuning path-follow
+    omega_sat = 6.5;  //4.5
+    speed_sat = 2.8;  //1.8;
+    prop_param = 9;   //4.4;
+    rho_limit = 0.05; //0.05;
+
     fromlen = sizeof(struct sockaddr_in);
 
     for (int i = 0; i < MVG_LENG; i++)
@@ -123,7 +131,7 @@ void SpeedController::updateLowCtrl()
 
     unsigned char buffer[5];
     double speeds[7];
-    unsigned char buf[44];
+    unsigned char buf[60];
     int n;
 
     if (this->theCtrlStruct->theUserStruct->speed_kill == 0)
@@ -148,7 +156,7 @@ void SpeedController::updateLowCtrl()
 
         //  printf("size of the speed array = %d\r\n", sizeof(speeds));
 
-        n = recvfrom(sock, (char *)buf, 44, MSG_DONTWAIT, (struct sockaddr *)&from, &fromlen);
+        n = recvfrom(sock, (char *)buf, 60, MSG_DONTWAIT, (struct sockaddr *)&from, &fromlen);
         if (n > -1)
         {
 
@@ -163,6 +171,10 @@ void SpeedController::updateLowCtrl()
             memcpy(&slave_speed_left, &buf[32], sizeof(slave_speed_left));
             memcpy(&slave_speed_right, &buf[36], sizeof(slave_speed_right));
             memcpy(&slave, &buf[40], sizeof(slave));
+            memcpy(&omega_sat, &buf[44], sizeof(omega_sat));
+            memcpy(&speed_sat, &buf[48], sizeof(speed_sat));
+            memcpy(&prop_param, &buf[52], sizeof(prop_param));
+            memcpy(&rho_limit, &buf[56], sizeof(rho_limit));
 
             this->theCtrlStruct->theUserStruct->theMotLeft->kp = kp_left; //Kp;
             if (float(this->theCtrlStruct->theUserStruct->theMotLeft->ki) != ki_left)
@@ -192,12 +204,14 @@ void SpeedController::updateLowCtrl()
             {
                 slave_previous_state = this->theCtrlStruct->main_states;
                 this->theCtrlStruct->main_states = SlAVE_STATE;
+                this->theCtrlStruct->flag_state = 1;
             }
             else if (slave == 0)
             {
                 if (slave_previous_state != 0)
                 {
                     this->theCtrlStruct->main_states = slave_previous_state;
+                    this->theCtrlStruct->flag_state = 1;
                 }
             }
 
@@ -209,6 +223,11 @@ void SpeedController::updateLowCtrl()
             this->theCtrlStruct->theUserStruct->theMotLeft->compensation_factor = correction_factor_left;
             this->theCtrlStruct->theUserStruct->theMotRight->compensation_factor = correction_factor_right;
 
+            this->theCtrlStruct->follower->speed_sat = speed_sat;
+            this->theCtrlStruct->follower->omega_sat = omega_sat;
+            this->theCtrlStruct->follower->prop_param = prop_param;
+            this->theCtrlStruct->follower->rhoLimit = rho_limit;
+
             //  printf("Yep data recieved requested\r\n");
             n = sendto(sock, speeds, sizeof(speeds), 0, (struct sockaddr *)&from, fromlen);
         }
@@ -216,7 +235,7 @@ void SpeedController::updateLowCtrl()
         {
             // printf("No data has been requested by the pyhton code\r\n");
         }
-        printf("The value send is %f %f %f %f %f %f\r\n", kp_left, ki_left, kd_left, kp_right, ki_right, kd_right);
+        //  printf("The value send is %f %f %f %f %f %f\r\n", kp_left, ki_left, kd_left, kp_right, ki_right, kd_right);
     }
 }
 
@@ -263,7 +282,16 @@ void SpeedController::updateCmd()
     // printf(" r_wheel_command %f\n", -this->theCtrlStruct->theCtrlOut->wheel_commands[R_ID]);
 
     this->can0->CAN0pushPropDC(this->theCtrlStruct->theCtrlOut->wheel_commands[L_ID], this->theCtrlStruct->theCtrlOut->wheel_commands[R_ID]);
-    this->theCtrlStruct->theCtrlIn->sens_flag = this->can0->getDistance(1, this->theCtrlStruct->theCtrlIn->sens_array_front);
+
+    if (this->theCtrlStruct->theCtrlIn->t - t_ref > 1)
+    {
+        this->theCtrlStruct->theCtrlIn->sens_flag = this->can0->getDistance(1, this->theCtrlStruct->theCtrlIn->sens_array_front);
+        t_ref = this->theCtrlStruct->theCtrlIn->t;
+    }
+
+    fprintf(this->theCtrlStruct->opp_pos->RecordUltrason, "%f %f %f %f %f %f\n", this->theCtrlStruct->theCtrlIn->t, this->theCtrlStruct->theCtrlIn->sens_array_front[0],
+            this->theCtrlStruct->theCtrlIn->sens_array_front[1], this->theCtrlStruct->theCtrlIn->sens_array_front[2],
+            this->theCtrlStruct->theCtrlIn->sens_array_front[3], this->theCtrlStruct->theCtrlIn->sens_array_front[4]);
 }
 
 double SpeedController::PIController(MotStruct *theMot, double V_ref, double V_wheel_mes, double t)
@@ -272,7 +300,7 @@ double SpeedController::PIController(MotStruct *theMot, double V_ref, double V_w
     double dt = t - theMot->t_p;
     double u = theMot->kp * e;
 
-    printf(" dt = %f\r\n", dt);
+    // printf(" dt = %f\r\n", dt);
 
     if (!theMot->status) //The integral action is only done if there is no saturation of current.
     {

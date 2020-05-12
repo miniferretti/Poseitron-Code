@@ -8,7 +8,7 @@ Odometry::Odometry(CtrlStruct *theCtrlStruct)
 void Odometry::Odometry_init()
 {
     unsigned char buffer[5];
-    this->theCtrlStruct->robot->odo_radius = 1.5833*45.0 / 2000.0; //radius of the wheel in meters
+    this->theCtrlStruct->robot->odo_radius = 1.5833 * 45.0 / 2000.0; //radius of the wheel in meters
     this->theCtrlStruct->theCtrlIn->l_odo_dist_prev = 0.0;
     this->theCtrlStruct->theCtrlIn->r_odo_dist_prev = 0.0;
     this->theCtrlStruct->rob_pos->x = 0.0;
@@ -34,7 +34,7 @@ void Odometry::Odometry_init()
     this->theCtrlStruct->rob_pos->Dpf = Eigen::MatrixXd::Zero(3, 3);
     this->theCtrlStruct->rob_pos->Drlf = Eigen::MatrixXd::Zero(3, 2);
     this->theCtrlStruct->robot->odo_tics_per_rot = 2048.0;
-    this->theCtrlStruct->robot->robot_width = 22.3 / 100.0; //value in meters
+    this->theCtrlStruct->robot->robot_width = 22.4 / 100.0; //value in meters
     this->theCtrlStruct->theUserStruct->Odo_kill = 0.0;
     this->logFile = fopen("/home/pi/Poseitron-Code/Data/LogFileOdometry.txt", "w");
     fprintf(this->logFile, "X Y Theta dr dl Time\r\n");
@@ -72,7 +72,7 @@ void Odometry::Odometry_update()
         this->theCtrlStruct->rob_pos->theta = theta + dtheta;
         this->theCtrlStruct->rob_pos->dydx_prev = this->theCtrlStruct->rob_pos->dydx;
 
-      /*  if (this->theCtrlStruct->rob_pos->theta < -M_PI)
+        if (this->theCtrlStruct->rob_pos->theta < -M_PI)
         {
             this->theCtrlStruct->rob_pos->theta += 2 * M_PI;
         }
@@ -80,7 +80,7 @@ void Odometry::Odometry_update()
         if (this->theCtrlStruct->rob_pos->theta > M_PI)
         {
             this->theCtrlStruct->rob_pos->theta -= 2 * M_PI;
-        }*/
+        }
 
         if (dx != 0.0)
         {

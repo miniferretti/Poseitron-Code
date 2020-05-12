@@ -11,17 +11,21 @@
 #include "IO/Dynamixel/DynamixelFunctions.h"
 #include <iostream>
 #include <sstream>
+#include <initializer_list>
+#include <algorithm>
 
 enum
 {
     SETUP_STATE,
     SENS_STATE,
     PAUSE_STATE,
+    PAUSE_STATE2,
     GRAB_STATE,
     LOAD_STATE,
     RELEASE_STATE
 };
 
 void pincher_demo(CtrlStruct *cvs);
+int getColor(float r,float g, float b);
 
 #endif
