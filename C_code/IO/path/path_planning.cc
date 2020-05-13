@@ -105,8 +105,8 @@ void set_obstacle(PathPlanning *path)
 	double dobs, U_rep;
 	int countx = 0;
 	int county = 0;
-	int xinit = 100;
-	int yinit = 100;
+	int xinit = 200;
+	int yinit = 200;
 	//printf("Set obstacle \n\r");
 	for (xval = -xinit; xval < path->xlen - xinit; xval++)
 	{
@@ -153,8 +153,8 @@ void attractive_potential_field(CtrlStruct *ctrl, int goalx, int goaly)
 	attractive_potential_field_reverse(ctrl);
 	path->U.setZero(path->xlen, path->ylen);
 	double rho_goal_square = 0.0;
-	int xinit = 100;
-	int yinit = 100;
+	int xinit = 200;
+	int yinit = 200;
 	for (int xval = -xinit; xval < path->xlen - xinit; xval++)
 	{
 		for (int yval = -yinit; yval < path->ylen - yinit; yval++)
@@ -206,8 +206,8 @@ void repulsive_opp_potential_field(CtrlStruct *ctrl)
 
 	double dobs1, dobs2, dobs3, U_rep1;
 	
-	int xinit = 100;
-	int yinit = 100;
+	int xinit = 200;
+	int yinit = 200;
 
 	for (xval = -xinit; xval < path->xlen - xinit; xval++)
 	{
@@ -249,44 +249,44 @@ void solve_path(CtrlStruct *ctrl, int x, int y, int goalx, int goaly)
 	{
 		// scan of the next position regarding the potential in the position
 		// scan for X
-		if (x == 100 || isinbacktrack(path, x + 1, y))
+		if (x == 200 || isinbacktrack(path, x + 1, y))
 		{
 			U_right = path->k_rep;
 		}
 		else
 		{
 			//printf("in the else \n\r");
-			U_right = path->M(x + 1 + 100, y + 100);
+			U_right = path->M(x + 1 + 200, y + 200);
 		}
 
-		if (x == -100 || isinbacktrack(path, x - 1, y))
+		if (x == -200 || isinbacktrack(path, x - 1, y))
 		{
 			U_left = path->k_rep;
 		}
 		else
 		{
 			//printf("in the else \n\r");
-			U_left = path->M(x - 1 + 100, y + 100);
+			U_left = path->M(x - 1 + 200, y + 200);
 		}
 
 		// scan for Y
-		if (y == 100 || isinbacktrack(path, x, y + 1))
+		if (y == 200 || isinbacktrack(path, x, y + 1))
 		{
 			U_up = path->k_rep;
 		}
 		else
 		{
 			//printf("in the else \n\r");
-			U_up = path->M(x + 100, y + 1 + 100);
+			U_up = path->M(x + 200, y + 1 + 200);
 		}
-		if (y == -100 || isinbacktrack(path, x, y - 1))
+		if (y == -200 || isinbacktrack(path, x, y - 1))
 		{
 			U_down = path->k_rep;
 		}
 		else
 		{
 			//printf("in the else \n\r");
-			U_down = path->M(x + 100, y - 1 + 100);
+			U_down = path->M(x + 200, y - 1 + 200);
 		}
 
 		U_next = fmin(fmin(U_left, U_right), fmin(U_down, U_up));
