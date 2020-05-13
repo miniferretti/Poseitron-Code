@@ -7,7 +7,7 @@
 * 	Dynamixels. They've been tested on AX-12 with a baudrate of 57600    *
 * 	bps with a NIOS/e and a NIOS/f.	                                     *
 **************************************************************************
-* Written by Benjamin Delhaye, adapted by Matteo Ferretti						 					 *
+* Written by Benjamin Delhaye, adapted by Matteo Ferretti di Castelferretto						 					 *
 * Version : 2.00 - 11 Aug 2015                                           *
 **************************************************************************/
 #include "MyDynamixel.h"
@@ -41,8 +41,6 @@ int Send_Instruction_Packet(Byte ID, Byte Length, Byte Instruction, Byte P1, Byt
 
 		printf("On envoie l'instru\r\n");
 
-		//	IOWR(UART_DYNAMIXEL_BASE, START_COMMUNICATION_REG, 0); //Reset of the start flag
-
 		buffer[0] = ADDRESS_REG; //dynamixel register
 		buffer[3] = WRITE_BIT;	 //perfoming a write action to corresponding register
 		buffer[4] = START_COMMUNICATION_REG;
@@ -56,8 +54,6 @@ int Send_Instruction_Packet(Byte ID, Byte Length, Byte Instruction, Byte P1, Byt
 		buffer[4] = 0;
 
 		wiringPiSPIDataRW(0, buffer, 5);
-
-		//	IOWR(UART_DYNAMIXEL_BASE, TXD_BYTES_REG, (Checksum << 24 | Instruction << 16 | Length << 8 | ID)); //Write instructions into a register
 
 		buffer[0] = ADDRESS_REG; //dynamixel register
 		buffer[3] = WRITE_BIT;	 //perfoming a write action to corresponding register
@@ -90,7 +86,6 @@ int Send_Instruction_Packet(Byte ID, Byte Length, Byte Instruction, Byte P1, Byt
 		wiringPiSPIDataRW(0, buffer, 5);
 
 		usleep(10); // Wait for the hardware to get the data
-		//	IOWR(UART_DYNAMIXEL_BASE, START_COMMUNICATION_REG, 1); //Set start flag
 
 		buffer[0] = ADDRESS_REG; //dynamixel register
 		buffer[3] = WRITE_BIT;	 //perfoming a write action to corresponding register
@@ -214,7 +209,6 @@ int read_data(unsigned char reg)
 	return communication_available;
 }
 
-
 /*Fonction a appeler au démarrage du robot pour reinitialiser le controlleur du Dynamixel physiquement*/
 void reset_dynamixel()
 {
@@ -225,7 +219,6 @@ void reset_dynamixel()
 	delay(100);
 	digitalWrite(22, 0);
 }
-
 
 /*Fonction d'aide pas utilisée ici, qui envoie un buffer SPI et reset ses valeurs ou pas selon l'adresse des registres utilisé*/
 void send_reset_buffer(unsigned char *buffer)
