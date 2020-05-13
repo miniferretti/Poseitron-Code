@@ -305,7 +305,7 @@ def animate(i):
    # print("MSG PID = {}".format(data))
     sock.sendto(data, (UDP_IP, UDP_PORT))
     slave = 2
-    ready = select.select([sock], [], [], 0.1)
+    ready = select.select([sock], [], [], 0.01)
     if ready[0]:
         msg = sock.recv(56)
         data = unpack('<7d', msg)
@@ -329,9 +329,11 @@ def animate(i):
                                                 1, ps4_left_y], marker='o', color='r', ls='')
     axs[1, 0].plot([1, 1, -1, -1, ps4_right_x], [1, -1, 1, -
                                                  1, ps4_right_y], marker='o', color='g', ls='')
+    axs[1, 0].set_title("PS4 Control input")
     axs[1, 1].clear()
     axs[1, 1].plot([5, 5, -5, -5, float(data[5])], [5, -5, -5, 5,
                                                     float(data[6])], marker='o', color='r', ls='')
+    axs[1, 1].set_title("Real time position")
     # axs[1, 1].clear()
 
 

@@ -24,6 +24,8 @@ int Flag_Recv = 0;
 byte len;
 byte buf[3];
 
+int counter = 0;
+
 void setup()
 {
   Serial.begin(115200);
@@ -77,6 +79,8 @@ void loop()
     Serial.print(data[i]);
     Serial.print(" ");
   }
+  counter++;
+  Serial.print(counter);
   Serial.println("");
   interrupts();
 }

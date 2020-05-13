@@ -1,6 +1,6 @@
 {
     "board": "arduino:avr:nano",
-    "configuration": "cpu=atmega328",
+    "configuration": "cpu=atmega328old",
     "programmer": "AVRISP mkII",
     "sketch": "Arduino Code/Proximity_Sensor_Ardino_code/Proximity_Sensor_Ardino_code.ino",
     "port": "/dev/ttyUSB0"
