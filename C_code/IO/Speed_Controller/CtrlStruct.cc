@@ -74,8 +74,8 @@ void init_ctrlStruc(CtrlStruct *ctrl)
 
 	// path-planning
 	ctrl->path = new PathPlanning;
-	ctrl->path->xlen = 201;
-	ctrl->path->ylen = 201;
+	ctrl->path->xlen = 401;
+	ctrl->path->ylen = 401;
 	ctrl->path->M = Eigen::MatrixXd::Zero(ctrl->path->xlen, ctrl->path->ylen);
 	ctrl->path->U = Eigen::MatrixXd::Zero(ctrl->path->xlen, ctrl->path->ylen);
 	obstacle_building(ctrl->path);
@@ -121,8 +121,8 @@ void obstacle_building(PathPlanning *path)
 	path->Obs.conservativeResize(n_tot, 2);
 	for (i = 0; i < n; i++)
 	{
-		path->Obs(i + n_before, 0) = (i - 100);
-		path->Obs(i + n_before, 1) = -100;
+		path->Obs(i + n_before, 0) = (i - 200);
+		path->Obs(i + n_before, 1) = -200;
 	}
 	n_before = path->xlen;
 
@@ -132,8 +132,8 @@ void obstacle_building(PathPlanning *path)
 	path->Obs.conservativeResize(n_tot, 2);
 	for (i = 0; i < n; i++)
 	{
-		path->Obs(i + n_before, 0) = (i - 100);
-		path->Obs(i + n_before, 1) = 100;
+		path->Obs(i + n_before, 0) = (i - 200);
+		path->Obs(i + n_before, 1) = 200;
 	}
 	n_before = n_tot;
 
@@ -143,8 +143,8 @@ void obstacle_building(PathPlanning *path)
 	path->Obs.conservativeResize(n_tot, 2);
 	for (i = 0; i < n; i++)
 	{
-		path->Obs(i + n_before, 0) = -100;
-		path->Obs(i + n_before, 1) = (i - 100);
+		path->Obs(i + n_before, 0) = -200;
+		path->Obs(i + n_before, 1) = (i - 200);
 	}
 	n_before = n_tot;
 
@@ -154,8 +154,8 @@ void obstacle_building(PathPlanning *path)
 	path->Obs.conservativeResize(n_tot, 2);
 	for (i = 0; i < n; i++)
 	{
-		path->Obs(i + n_before, 0) = 100;
-		path->Obs(i + n_before, 1) = (i - 100);
+		path->Obs(i + n_before, 0) = 200;
+		path->Obs(i + n_before, 1) = (i - 200);
 	}
 	n_before = n_tot;
 	printf("obs length = %d \n\r", path->Obs.rows());
