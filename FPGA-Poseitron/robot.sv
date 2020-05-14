@@ -83,8 +83,18 @@ input 		     [1:0]		BRIDGE_IN;
         quad encoder_FL(CLOCK_50, 1'b0, quadA_FL, quadB_FL, count_FL);
         quad encoder_RL(CLOCK_50, 1'b0, quadA_RL, quadB_RL, count_RL);
         quad odometerR(CLOCK_50,1'b0,quadA_odoR,quadB_odoR,count_odoR);
+
+
+
+
+
+
         quad odometerL(CLOCK_50,1'b0,quadA_odoL,quadB_odoL,count_odoL);
     
+
+
+
+
         logic [31:0] speed_FL, speed_RL, speed_FR, speed_RR;
       
 
@@ -149,17 +159,17 @@ input 		     [1:0]		BRIDGE_IN;
   
 	  //------------------I2C Controller----------------------------//	 
 		pmod_color_sensor daColorSensor(.clk(CLOCK_50), 
-                                    .reset_n(PI[7]), //Reset pin of the Raspberry Pi
-                                    .scl(BRIDGE[33]), 
-                                    .sda(BRIDGE[31]), 
-                                    .i2c_ack_err(i2c_ack_error), 
-                                    .clear(clear), 
-                                    .red(red), 
-                                    .green(green), 
-                                    .blue(blue), 
-                                    .sensor_select(data_out[7:0]), 
-                                    .portA_output_select(ports_control[7:0]), 
-                                    .portB_output_select(ports_control[15:8])
+                                    .reset_n(PI[7]),                            //Reset pin of the Raspberry Pi
+                                    .scl(BRIDGE[33]),                           //Real scl line of the i2c line 
+                                    .sda(BRIDGE[31]),                           //Real sda line of the i2c line
+                                    .i2c_ack_err(i2c_ack_error),                //Bit used to notify any transmission error
+                                    .clear(clear),                              //Luminance register of the selected color sensor 
+                                    .red(red),                                  //Red amplitude of the selected color sensor
+                                    .green(green),                              //Green amplitude of the selected color sensor 
+                                    .blue(blue),                                //Blue amplitude of the selected color sensor 
+                                    .sensor_select(data_out[7:0]),              //8 bit register used to select the corresponding color sensor
+                                    .portA_output_select(ports_control[7:0]),   //8 bit register to control the A section of the outputs of the MCP23017
+                                    .portB_output_select(ports_control[15:8])   //8 bit register to control the B section of the outputs of the MCP23017
                                     );
 		 
 
