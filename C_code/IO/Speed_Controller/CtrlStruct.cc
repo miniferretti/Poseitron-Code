@@ -168,18 +168,18 @@ void target_init(CtrlStruct *ctrl)
 
 	// target 0
 	int i = 0; 
-	strat->target(i, 0) = 0.2; // coordonnée en x en m
+	strat->target(i, 0) = -1; // coordonnée en x en m
 	strat->target(i, 1) = 0.0; // coordonnée en y en m
 	strat->target(i, 2) = 1;   // deja pris ou non
 	strat->target(i, 3) = 1;   // nombre de points
 	
 	// target 1
 	i++;
-	strat->target(i, 0) = 0.4;	// coordonnée en x en m
-	strat->target(i, 1) = -0.3; // coordonnée en y en m
+	strat->target(i, 0) = 1;	// coordonnée en x en m
+	strat->target(i, 1) = 0.0; // coordonnée en y en m
 	strat->target(i, 2) = 1;	// deja pris ou non
 	strat->target(i, 3) = 1;	// nombre de points
-	
+	/*
 	// target 2
 	i++; 
 	strat->target(i, 0) = 0.0; // coordonnée en x en m
@@ -235,6 +235,7 @@ void target_init(CtrlStruct *ctrl)
 	strat->target(i, 1) = 0.0;   // coordonnée en y en m
 	strat->target(i, 2) = 1;   // deja pris ou non
 	strat->target(i, 3) = 1;   // nombre de points 
+	*/
 }
 /*
 void repulsive_potential_field(CtrlStruct *ctrl){
