@@ -1,10 +1,9 @@
 ///////////////////////////////////////////////////////////////////////
 //
 // Written by: Matteo Ferretti di Castelferretto and Donatien Doumont
-// 
+//
 //
 ///////////////////////////////////////////////////////////////////////
-
 
 #include <cstdio>
 #include <stdio.h>
@@ -51,11 +50,10 @@ int main()
 	wiringPiSetup();
 	CtrlStruct *myCtrlStruct = new CtrlStruct;
 	P_Struct *my_P_Struct = new P_Struct;
-	//my_P_Struct->p_avoidance_path = new pthread_t;
-	//my_P_Struct->p_path_update = new pthread_t;
 	CAN0_Alternate *can = new CAN0_Alternate(CAN_BR);
 	SPI_DE0 *deo;
 	deo = new SPI_DE0(0, 125e3);
+
 	init_ctrlStruc(myCtrlStruct);
 	init_P_Struct(my_P_Struct);
 
@@ -86,15 +84,14 @@ int main()
 		auto elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now() - start);
 		time_taken = (elapsed.count());
 		myCtrlStruct->theCtrlIn->t = time_taken / 1000.0;
+
 		spdctrl->updateLowCtrl();
 		myOdometry->Odometry_update();
 
-		//myCtrlStruct->main_t_ref = myCtrlStruct->theCtrlIn->t;
-
 		switch (myCtrlStruct->main_states)
 		{
-		case WAIT_STATE:
-			printf("WAIT_STATE\r\n");
+		case WAIT_STATE:                                 // State to let the user some time before the robot starts.
+			printf("WAIT_STATE\r\n");                    // Time useful to ensure that the speed controller works as expected.
 
 			if (myCtrlStruct->theCtrlIn->t > 15)
 			{
@@ -104,12 +101,7 @@ int main()
 			}
 			break;
 
-		case CALIB_STATE:
-			printf("CALIB_STATE\r\n");
-			calibration(myCtrlStruct, spdctrl, myOdometry);
-			break;
-
-		case TEST_PATH_STATE:
+		case TEST_PATH_STATE:                            // State corresponding to the path planning algorithm.
 			if (myCtrlStruct->flag_state == 1)
 			{
 				printf("TEST_PATH_STATE\r\n");
@@ -118,13 +110,8 @@ int main()
 			main_strategy(myCtrlStruct, my_P_Struct, spdctrl);
 			break;
 
-		case AVOID150_STATE:
-			printf("AVOID150_STATE\r\n");
-			avoid150(myCtrlStruct, spdctrl, myOdometry);
-			break;
-
-		case PINCHER_DEMO_STATE:
-			if (myCtrlStruct->flag_state == 1)
+		case PINCHER_DEMO_STATE:                         // State used to validate the good working principle of the pliers and the 
+			if (myCtrlStruct->flag_state == 1)           // color sensors.
 			{
 				printf("PINCHER_DEMO_STATE\r\n");
 				myCtrlStruct->flag_state = 0;
@@ -132,41 +119,17 @@ int main()
 			pincher_demo(myCtrlStruct);
 			break;
 
-		case ODO_CALIB_STATE:
-			printf("ODO_CALIB_STATE\r\n");
-			odo_calibration(myCtrlStruct, spdctrl, myOdometry);
-			break;
-
-		case STOP_STATE:
+		case STOP_STATE:                                 // State used to completely stop the motor control card and exit the main loop.
 			printf("STOP_STATE\r\n");
-			//	printf("Left = %f Right = %f\r\n", myCtrlStruct->stopvalues[0], myCtrlStruct->stopvalues[1]);
 			spdctrl->set_speed(0, 0);
 			run = 0;
 			break;
 
-		case SlAVE_STATE:
-			if (myCtrlStruct->flag_state == 1)
+		case SlAVE_STATE:                                // State used to enter the Slave mode behaviour. It lets Poseitron to be controller by 
+			if (myCtrlStruct->flag_state == 1)           // an UDP client.
 			{
 				printf("SLAVE_STATE\r\n");
 				myCtrlStruct->flag_state = 0;
-			}
-			break;
-
-		case PNEUMA_TEST_STATE:
-			printf("PNEUMA_TEST_STATE\r\n");
-			if (myCtrlStruct->theCtrlIn->t - myCtrlStruct->main_t_ref < 5)
-			{
-				printf("Output ON\r\n");
-				set_pinchers_output(0b11111111, 0b11111111);
-			}
-			else if (10 > myCtrlStruct->theCtrlIn->t - myCtrlStruct->main_t_ref && myCtrlStruct->theCtrlIn->t - myCtrlStruct->main_t_ref > 5)
-			{
-				printf("Output OFF\r\n");
-				set_pinchers_output(0b00000000, 0b00000000);
-			}
-			else
-			{
-				myCtrlStruct->main_t_ref = myCtrlStruct->theCtrlIn->t;
 			}
 			break;
 
@@ -174,8 +137,6 @@ int main()
 			break;
 		}
 	}
-
-	spdctrl->set_speed(0, 0);
 
 	//********** Liberation de la mémoire  **************
 
@@ -185,9 +146,10 @@ int main()
 	free(myCtrlStruct->theUserStruct->theMotLeft);
 	free(myCtrlStruct->theCtrlIn);
 	free(myCtrlStruct->theCtrlOut);
-	free(myCtrlStruct->theUserStruct);
 	free(myCtrlStruct->rob_pos);
 	free(myCtrlStruct->robot);
+	free(myCtrlStruct->theUserStruct);
 	free(myCtrlStruct);
+
 	exit(0);
 }

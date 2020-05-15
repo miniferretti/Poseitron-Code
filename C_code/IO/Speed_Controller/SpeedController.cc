@@ -1,12 +1,12 @@
 ///////////////////////////////////////////////////////////////////////
 //
 // Written by: Matteo Ferretti di Castelferretto and Donatien Doumont
-// 
+//
 //
 ///////////////////////////////////////////////////////////////////////
 
 //
-// Speed controller class countaining the PID loop for the 
+// Speed controller class countaining the PID loop for the
 // speed feedback controll
 //
 
@@ -97,6 +97,7 @@ void SpeedController::init_speed_controller(int i)
         this->avgL[i] = 0;
         this->avgR[i] = 0;
     }
+
     this->logFile = fopen("/home/pi/Poseitron-Code/Data/logFileSpeed.txt", "w");
     this->PIDFile = fopen("/home/pi/Poseitron-Code/Data/PID.txt", "r");
 
@@ -165,7 +166,7 @@ void SpeedController::updateLowCtrl()
         speeds[5] = this->theCtrlStruct->rob_pos->x;
         speeds[6] = this->theCtrlStruct->rob_pos->y;
 
-        //  printf("size of the speed array = %d\r\n", sizeof(speeds));
+        // UDP communication routine
 
         n = recvfrom(sock, (char *)buf, 64, MSG_DONTWAIT, (struct sockaddr *)&from, &fromlen);
         if (n > -1)
@@ -244,7 +245,7 @@ void SpeedController::updateLowCtrl()
                 this->theCtrlStruct->follower->rhoLimit = rho_limit;
             }
 
-            //  printf("Yep data recieved requested\r\n");
+            //  UDP response to client routine
             n = sendto(sock, speeds, sizeof(speeds), 0, (struct sockaddr *)&from, fromlen);
         }
         else
@@ -266,11 +267,8 @@ void SpeedController::updateSpeed(unsigned char *buffer)
 
     wiringPiSPIDataRW(0, buffer, 5);
 
-    /*  double speedL = -(((double)(int16_t)((uint16_t)buffer[3] << 8 | (uint16_t)buffer[4])) * this->theCtrlStruct->theUserStruct->samplingDE0) * 2 * M_PI / (this->theCtrlStruct->theUserStruct->theMotLeft->ratio * this->theCtrlStruct->theUserStruct->tics);
-    double speedR = -(((double)(int16_t)((uint16_t)buffer[1] << 8 | (uint16_t)buffer[2])) * this->theCtrlStruct->theUserStruct->samplingDE0) * 2 * M_PI / (this->theCtrlStruct->theUserStruct->theMotRight->ratio * this->theCtrlStruct->theUserStruct->tics);
-
-    this->theCtrlStruct->theCtrlIn->l_wheel_speed = this->Moving_Average(speedL, this->avgL, MVG_LENG);
-    this->theCtrlStruct->theCtrlIn->r_wheel_speed = this->Moving_Average(speedR, this->avgR, MVG_LENG);*/
+    /* this->theCtrlStruct->theCtrlIn->l_wheel_speed = this->Moving_Average(speedL, this->avgL, MVG_LENG);
+    this->theCtrlStruct->theCtrlIn->r_wheel_speed = this->Moving_Average(speedR, this->avgR, MVG_LENG); */
 
     this->theCtrlStruct->theCtrlIn->l_wheel_speed = -(((double)(int16_t)((uint16_t)buffer[3] << 8 | (uint16_t)buffer[4])) * this->theCtrlStruct->theUserStruct->samplingDE0) * 2 * M_PI / (this->theCtrlStruct->theUserStruct->theMotLeft->ratio * this->theCtrlStruct->theUserStruct->tics);
     this->theCtrlStruct->theCtrlIn->r_wheel_speed = -(((double)(int16_t)((uint16_t)buffer[1] << 8 | (uint16_t)buffer[2])) * this->theCtrlStruct->theUserStruct->samplingDE0) * 2 * M_PI / (this->theCtrlStruct->theUserStruct->theMotRight->ratio * this->theCtrlStruct->theUserStruct->tics);
@@ -301,6 +299,8 @@ void SpeedController::updateCmd()
 
     if (this->theCtrlStruct->theCtrlIn->t - t_ref > 1)
     {
+        //Part of the code responsible for the collection of the data from the proximity sensors
+
         this->theCtrlStruct->theCtrlIn->sens_flag = this->can0->getDistance(1, this->theCtrlStruct->theCtrlIn->sens_array_front);
         t_ref = this->theCtrlStruct->theCtrlIn->t;
     }
@@ -354,7 +354,7 @@ int SpeedController::saturation(double upperLimit, double lowerLimit, double *u)
         return 0;
 }
 
-double SpeedController::Moving_Average(double speed, double *buff, int leng)
+double SpeedController::Moving_Average(double speed, double *buff, int leng) //Not used
 {
 
     int count = 0;
