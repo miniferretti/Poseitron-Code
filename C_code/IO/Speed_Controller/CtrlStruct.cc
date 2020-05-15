@@ -38,7 +38,9 @@ void init_ctrlStruc(CtrlStruct *ctrl)
 	ctrl->theUserStruct = new UserStruct;
 	ctrl->theCtrlOut = new CtrlOut;
 	ctrl->theUserStruct->theMotLeft = new MotStruct;
+	ctrl->theUserStruct->theMotLeft->dt = 0;
 	ctrl->theUserStruct->theMotRight = new MotStruct;
+	ctrl->theUserStruct->theMotRight->dt = 0;
 	ctrl->rob_pos = new RobotPosition;
 	ctrl->robot = new RobotParameters;
 	ctrl->robot->wheel_rad = 0.03;

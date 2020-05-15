@@ -226,6 +226,7 @@ typedef struct MotStruct
     double lowerCurrentLimit;
     double upperVoltageLimit;
     double lowerVoltageLimit;
+    double dt;
 
     double compensation_factor;
 } MotStruct;

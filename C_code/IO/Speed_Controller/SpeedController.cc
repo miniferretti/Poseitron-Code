@@ -151,12 +151,13 @@ void SpeedController::updateLowCtrl()
         //this->update_PID();
         this->updateSpeed(buffer);
         this->updateCmd();
-        fprintf(logFile, "%0.1f %0.1f %0.1f %0.1f %f\n",
+        fprintf(logFile, "%0.1f %0.1f %0.1f %0.1f %f %f %f\n",
                 -this->theCtrlStruct->theCtrlIn->r_wheel_speed,
                 this->theCtrlStruct->theCtrlIn->r_wheel_ref,
                 this->theCtrlStruct->theCtrlIn->l_wheel_speed,
                 this->theCtrlStruct->theCtrlIn->l_wheel_ref,
-                this->theCtrlStruct->theCtrlIn->t);
+                this->theCtrlStruct->theCtrlIn->t,
+                this->theCtrlStruct->theMotLeft->dt);
 
         speeds[0] = -this->theCtrlStruct->theCtrlIn->r_wheel_speed;
         speeds[1] = this->theCtrlStruct->theCtrlIn->r_wheel_ref;
@@ -315,6 +316,7 @@ double SpeedController::PIController(MotStruct *theMot, double V_ref, double V_w
     double e = V_ref - V_wheel_mes;
     double dt = t - theMot->t_p;
     double u = theMot->kp * e;
+    theMot->dt = dt;
 
     // printf(" dt = %f\r\n", dt);
 
