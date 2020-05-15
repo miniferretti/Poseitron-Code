@@ -157,7 +157,7 @@ void SpeedController::updateLowCtrl()
                 this->theCtrlStruct->theCtrlIn->l_wheel_speed,
                 this->theCtrlStruct->theCtrlIn->l_wheel_ref,
                 this->theCtrlStruct->theCtrlIn->t,
-                this->theCtrlStruct->theMotLeft->dt);
+                this->theCtrlStruct->theUserStruct->theMotLeft->dt);
 
         speeds[0] = -this->theCtrlStruct->theCtrlIn->r_wheel_speed;
         speeds[1] = this->theCtrlStruct->theCtrlIn->r_wheel_ref;
