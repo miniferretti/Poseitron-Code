@@ -36,7 +36,7 @@ sock.setblocking(0)
 
 master = Tk()
 master.geometry("1300x1300")
-master.title("Live PID tuning")
+master.title("Poseitron Live Control Center")
 w1 = Scale(master, from_=0, to=1, length=600, digits=4,
            resolution=0.0001, orient=HORIZONTAL, label='Kp-left')
 w1.set(0.04)
@@ -340,7 +340,7 @@ def animate(i):
                                                  1, ps4_right_y], marker='o', color='g', ls='')
     axs[1, 0].set_title("PS4 Control input")
     axs[1, 1].clear()
-    axs[1, 1].plot([5, 5, -5, -5, float(data[5])], [5, -5, -5, 5,
+    axs[1, 1].plot([2, 2, -2, -2, float(data[5])], [2, -2, -2, 2,
                                                     float(data[6])], marker='o', color='r', ls='')
     axs[1, 1].set_title("Real time position")
     # axs[1, 1].clear()
