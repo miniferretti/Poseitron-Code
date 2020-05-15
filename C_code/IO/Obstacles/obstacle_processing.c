@@ -1,3 +1,17 @@
+///////////////////////////////////////////////////////////////////////
+//
+// Written by: Eleonore Masarweh
+// 
+//
+///////////////////////////////////////////////////////////////////////
+
+
+//
+// Library used to process the different proximity sensors data 
+// in order to locate the oponnnent
+//
+
+
 #include <math.h>
 #include "obstacle_processing.h"
 #include "CtrlStruct.hh"
