@@ -9,6 +9,13 @@
   project (ndlr controlling the dynamixel along a rack and pinion). 				                                     *
 **************************************************************************/
 
+
+//////////////////////////////////////////////////////////////////////////
+//
+// Written by: Matteo Ferretti di Castelferretto and Eleonore Masarweh
+// 
+//////////////////////////////////////////////////////////////////////////
+
 int Dyn_light_LED(Byte ID)
 {
   Byte Fail;

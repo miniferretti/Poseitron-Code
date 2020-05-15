@@ -1,3 +1,18 @@
+///////////////////////////////////////////////////////////////////////
+//
+// Written by: Matteo Ferretti di Castelferretto, Donatien Doumont
+//             Aurele Corillon, Eleonore Masarweh and Nicolas Sturam
+// 
+//
+///////////////////////////////////////////////////////////////////////
+
+
+//
+// Main structure used to send all the control signals from one 
+// library to another associated with a set of initialisation functions.  
+//
+
+
 #ifndef CTRLSTRUCT_HH
 #define CTRLSTRUCT_HH
 

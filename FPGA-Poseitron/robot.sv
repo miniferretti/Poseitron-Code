@@ -49,6 +49,14 @@ input 		     [1:0]		PI_IN;
 inout 		    [33:0]		BRIDGE;
 input 		     [1:0]		BRIDGE_IN;
 
+////////////////////////////////////////////////////////////////
+//
+//   Written by: Matteo Ferretti di CastelFerretto
+//
+//   Credits to: Louis Devillez for the quadartics counters
+//
+////////////////////////////////////////////////////////////////
+
       // F - front | R - rear
       // L - left  | R - Right
       logic quadA_FL, quadB_FL, quadA_RL, quadB_RL, quadA_odoR, quadB_odoR, quadA_odoL, quadB_odoL;
@@ -113,25 +121,25 @@ input 		     [1:0]		BRIDGE_IN;
         logic [31:0] data_out;
 
         spi_slave_mu spi_slave_instance(CLOCK_50, 
-                                        spi_clk, 
-                                        spi_cs, 
-                                        spi_mosi, 
-                                        spi_miso, 
+                                        spi_clk,        //Clock signal comming from the Raspberry pi 
+                                        spi_cs,         //Chip select signal from the Raspberry Pi
+                                        spi_mosi,       //Master output, Slave input signal from the Raspberry Pi
+                                        spi_miso,       //Master input, Slave output signal from the Raspberry Pi
                                         // DATA TO SEND TO RPi :
-                                        speed_FL, 
-                                        speed_RL, 
-                                        count_odoR, 
-                                        count_odoL,
-                                        red,
-                                        green,
-                                        blue,
-                                        clear,
-                                        dyna_read,
+                                        speed_FL,       //Left speed value input register
+                                        speed_RL,       //Right speed value input register
+                                        count_odoR,     //Right odometric counter input register
+                                        count_odoL,     //Left odometric counter input register
+                                        red,            //Red color amplitude input register
+                                        green,          //Green color amplitude input register
+                                        blue,           //Blue color amplitude input register 
+                                        clear,          //Luminance amplitude input register
+                                        dyna_read,      //Dynamixel status packet input register
                                         // DATA TO RECIEVE FROM RPi :
-                                        data_out, 
-                                        ports_control,
-                                        dyna_write,
-                                        reg_addr
+                                        data_out,       //Color sensor selection output register
+                                        ports_control,  //Ports control output register of the MCP23017
+                                        dyna_write,     //Command packet output register for the Dynamixel
+                                        reg_addr        //Action output register for the UART controller module
                                         );
 
         assign spi_clk                  = PI[11];   // SCLK = pin 16 = RPi_11

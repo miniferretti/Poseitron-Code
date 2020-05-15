@@ -1,3 +1,14 @@
+///////////////////////////////////////////////////////////////////////
+//
+// Written by: Matteo Ferretti di Castelferretto
+// 
+//
+///////////////////////////////////////////////////////////////////////
+
+// This behavior is only used to validate the working principle of the 
+// 3D printed Dynamixel based plier. It uses the color sensors and the 
+// Dynamixel libraries. 
+
 #include "Pincher_Demo.hh"
 
 void pincher_demo(CtrlStruct *cvs)

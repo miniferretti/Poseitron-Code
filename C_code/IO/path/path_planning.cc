@@ -1,3 +1,16 @@
+///////////////////////////////////////////////////////////////////////
+//
+// Written by: Donatient Doumon
+// 
+//
+///////////////////////////////////////////////////////////////////////
+
+
+//
+// Powerfull library used to calculate all the fields that Poseitron uses 
+// to navigate on the map
+//
+
 #include "IO/path/path_planning.h"
 
 void *path_planning_update(void *myCtrl)

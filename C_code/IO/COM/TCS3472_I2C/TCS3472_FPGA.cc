@@ -1,3 +1,16 @@
+
+///////////////////////////////////////////////////////////////////////
+//
+// Written by: Matteo Ferretti di Castelferretto
+// 
+//
+///////////////////////////////////////////////////////////////////////
+
+//
+// Color sensor library
+//
+
+
 #include "IO/COM/TCS3472_I2C/TCS3472_FPGA.hh"
 
 void getRawData(uint16_t *r, uint16_t *g, uint16_t *b,
@@ -111,7 +124,8 @@ uint16_t calculateLux(uint16_t r, uint16_t g, uint16_t b)
 }
 
 void sensorSelect(int bus)
-{
+{ 
+    // Select the right color sensor to read the value from
     unsigned char buffer[5] = {0x00, 0x00, 0x00, 0x00, 0x00};
 
     buffer[0] = 0x87;

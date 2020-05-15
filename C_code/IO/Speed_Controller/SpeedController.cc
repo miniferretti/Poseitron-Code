@@ -1,4 +1,14 @@
+///////////////////////////////////////////////////////////////////////
+//
+// Written by: Matteo Ferretti di Castelferretto and Donatien Doumont
+// 
+//
+///////////////////////////////////////////////////////////////////////
 
+//
+// Speed controller class countaining the PID loop for the 
+// speed feedback controll
+//
 
 #include "SpeedController.hh"
 #include <chrono>

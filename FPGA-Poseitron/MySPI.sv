@@ -1,7 +1,11 @@
 //-------------------------------------------------------------
 //
 // SPI Module
+//
+// Modified by: Matteo Ferretti di CastelFerretto
 // 
+//-------------------------------------------------------------
+
 
 module spi_slave_mu(
 	input  logic		clk,

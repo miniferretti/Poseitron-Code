@@ -1,3 +1,12 @@
+########################################################
+#
+#
+#  Written by: Matteo Ferretti di Castelferretto
+#
+#
+########################################################
+
+
 from tkinter import *
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation

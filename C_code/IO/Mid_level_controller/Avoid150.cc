@@ -1,3 +1,15 @@
+///////////////////////////////////////////////////////////////////////
+//
+// Written by: Matteo Ferretti di Castelferretto
+// 
+//
+///////////////////////////////////////////////////////////////////////
+
+//
+//  Dummy behavior used to validate the efficiency of the odometry and
+//  the proximity sensors
+//
+
 #include "Avoid150.hh"
 
 void avoid150(CtrlStruct *cvs, SpeedController *spc, Odometry *odo)
