@@ -83,6 +83,9 @@ input 		     [1:0]		BRIDGE_IN;
         assign LED[7:0] =ID_flag;//data_out[7:0];//{quadA_FL,quadB_FL,quadA_RL,quadB_RL,quadA_odoL,quadB_odoL,quadA_odoR,quadB_odoR};
 
         // Clocks
+
+
+        //---------------------------Quadratic Counters-----------------------//
         logic PLL_CLOCK;
         my_pll pll_clock(CLOCK_50, PLL_CLOCK);
 
@@ -91,12 +94,6 @@ input 		     [1:0]		BRIDGE_IN;
         quad encoder_FL(CLOCK_50, 1'b0, quadA_FL, quadB_FL, count_FL);
         quad encoder_RL(CLOCK_50, 1'b0, quadA_RL, quadB_RL, count_RL);
         quad odometerR(CLOCK_50,1'b0,quadA_odoR,quadB_odoR,count_odoR);
-
-
-
-
-
-
         quad odometerL(CLOCK_50,1'b0,quadA_odoL,quadB_odoL,count_odoL);
     
 
