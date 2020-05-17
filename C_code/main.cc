@@ -151,6 +151,7 @@ int main()
 			else
 			{
 				myCtrlStruct->main_t_ref = myCtrlStruct->theCtrlIn->t;
+				colorSensorReset();
 			}
 			break;
 
