@@ -1,13 +1,13 @@
 |robot
 CLOCK_50 => CLOCK_50.IN8
-LED[0] <= UART_Dynamixel:myDyna.port10
-LED[1] <= UART_Dynamixel:myDyna.port10
-LED[2] <= UART_Dynamixel:myDyna.port10
-LED[3] <= UART_Dynamixel:myDyna.port10
-LED[4] <= UART_Dynamixel:myDyna.port10
-LED[5] <= UART_Dynamixel:myDyna.port10
-LED[6] <= UART_Dynamixel:myDyna.port10
-LED[7] <= UART_Dynamixel:myDyna.port10
+LED[0] <= ports_control[0].DB_MAX_OUTPUT_PORT_TYPE
+LED[1] <= ports_control[1].DB_MAX_OUTPUT_PORT_TYPE
+LED[2] <= ports_control[2].DB_MAX_OUTPUT_PORT_TYPE
+LED[3] <= ports_control[3].DB_MAX_OUTPUT_PORT_TYPE
+LED[4] <= ports_control[4].DB_MAX_OUTPUT_PORT_TYPE
+LED[5] <= ports_control[5].DB_MAX_OUTPUT_PORT_TYPE
+LED[6] <= ports_control[6].DB_MAX_OUTPUT_PORT_TYPE
+LED[7] <= ports_control[7].DB_MAX_OUTPUT_PORT_TYPE
 KEY[0] => ~NO_FANOUT~
 KEY[1] => ~NO_FANOUT~
 PI[0] <> <UNC>

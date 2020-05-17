@@ -80,7 +80,7 @@ input 		     [1:0]		BRIDGE_IN;
         assign quadA_odoL = BRIDGE[13];
         assign quadB_odoL = BRIDGE[15];
 
-        assign LED[7:0] =ID_flag;//data_out[7:0];//{quadA_FL,quadB_FL,quadA_RL,quadB_RL,quadA_odoL,quadB_odoL,quadA_odoR,quadB_odoR};
+        assign LED[7:0] =ports_control[7:0];//data_out[7:0];//{quadA_FL,quadB_FL,quadA_RL,quadB_RL,quadA_odoL,quadB_odoL,quadA_odoR,quadB_odoR};
 
         // Clocks
 

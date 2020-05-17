@@ -2,108 +2,72 @@
 Timing Analyzer Summary
 ------------------------------------------------------------
 
-Type  : Slow 1200mV 85C Model Setup 'UART_Dynamixel:myDyna|Baudrate_Generator:baudgen|baud_clk'
-Slack : -2.173
-TNS   : -352.020
-
 Type  : Slow 1200mV 85C Model Setup 'CLOCK_50'
-Slack : -1.224
-TNS   : -16.275
+Slack : 13.250
+TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Setup 'pll_clock|altpll_component|auto_generated|pll1|clk[0]'
-Slack : 16.602
+Slack : 16.034
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Hold 'CLOCK_50'
-Slack : 0.347
-TNS   : 0.000
-
-Type  : Slow 1200mV 85C Model Hold 'UART_Dynamixel:myDyna|Baudrate_Generator:baudgen|baud_clk'
 Slack : 0.357
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Hold 'pll_clock|altpll_component|auto_generated|pll1|clk[0]'
-Slack : 0.933
+Slack : 1.042
 TNS   : 0.000
 
-Type  : Slow 1200mV 85C Model Minimum Pulse Width 'UART_Dynamixel:myDyna|Baudrate_Generator:baudgen|baud_clk'
-Slack : -1.000
-TNS   : -257.000
-
 Type  : Slow 1200mV 85C Model Minimum Pulse Width 'CLOCK_50'
-Slack : 9.577
+Slack : 9.569
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Minimum Pulse Width 'pll_clock|altpll_component|auto_generated|pll1|clk[0]'
-Slack : 249999.747
+Slack : 249999.746
 TNS   : 0.000
 
-Type  : Slow 1200mV 0C Model Setup 'UART_Dynamixel:myDyna|Baudrate_Generator:baudgen|baud_clk'
-Slack : -1.884
-TNS   : -293.981
-
 Type  : Slow 1200mV 0C Model Setup 'CLOCK_50'
-Slack : -0.974
-TNS   : -10.672
+Slack : 13.947
+TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Setup 'pll_clock|altpll_component|auto_generated|pll1|clk[0]'
-Slack : 17.009
+Slack : 16.504
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Hold 'CLOCK_50'
 Slack : 0.311
 TNS   : 0.000
 
-Type  : Slow 1200mV 0C Model Hold 'UART_Dynamixel:myDyna|Baudrate_Generator:baudgen|baud_clk'
-Slack : 0.312
-TNS   : 0.000
-
 Type  : Slow 1200mV 0C Model Hold 'pll_clock|altpll_component|auto_generated|pll1|clk[0]'
-Slack : 0.851
+Slack : 0.960
 TNS   : 0.000
-
-Type  : Slow 1200mV 0C Model Minimum Pulse Width 'UART_Dynamixel:myDyna|Baudrate_Generator:baudgen|baud_clk'
-Slack : -1.000
-TNS   : -257.000
 
 Type  : Slow 1200mV 0C Model Minimum Pulse Width 'CLOCK_50'
-Slack : 9.585
+Slack : 9.563
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Minimum Pulse Width 'pll_clock|altpll_component|auto_generated|pll1|clk[0]'
 Slack : 249999.743
 TNS   : 0.000
 
-Type  : Fast 1200mV 0C Model Setup 'UART_Dynamixel:myDyna|Baudrate_Generator:baudgen|baud_clk'
-Slack : -0.737
-TNS   : -95.695
-
 Type  : Fast 1200mV 0C Model Setup 'CLOCK_50'
-Slack : -0.386
-TNS   : -0.797
-
-Type  : Fast 1200mV 0C Model Setup 'pll_clock|altpll_component|auto_generated|pll1|clk[0]'
-Slack : 17.982
+Slack : 16.078
 TNS   : 0.000
 
-Type  : Fast 1200mV 0C Model Hold 'UART_Dynamixel:myDyna|Baudrate_Generator:baudgen|baud_clk'
-Slack : 0.143
+Type  : Fast 1200mV 0C Model Setup 'pll_clock|altpll_component|auto_generated|pll1|clk[0]'
+Slack : 17.641
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Hold 'CLOCK_50'
-Slack : 0.175
+Slack : 0.186
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Hold 'pll_clock|altpll_component|auto_generated|pll1|clk[0]'
-Slack : 0.491
+Slack : 0.541
 TNS   : 0.000
 
-Type  : Fast 1200mV 0C Model Minimum Pulse Width 'UART_Dynamixel:myDyna|Baudrate_Generator:baudgen|baud_clk'
-Slack : -1.000
-TNS   : -257.000
-
 Type  : Fast 1200mV 0C Model Minimum Pulse Width 'CLOCK_50'
-Slack : 9.244
+Slack : 9.271
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Minimum Pulse Width 'pll_clock|altpll_component|auto_generated|pll1|clk[0]'
