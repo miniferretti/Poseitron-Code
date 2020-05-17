@@ -153,6 +153,7 @@ int main()
 			{
 				myCtrlStruct->main_t_ref = myCtrlStruct->theCtrlIn->t;
 				colorSensorReset();
+				sensorSelect(1);
 			}
 			break;
 
