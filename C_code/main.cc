@@ -96,7 +96,7 @@ int main()
 
 			if (myCtrlStruct->theCtrlIn->t > 15)
 			{
-				myCtrlStruct->main_states = TEST_PATH_STATE;
+				myCtrlStruct->main_states = PNEUMA_TEST_STATE;
 				colorSensorReset();
 				reset_dynamixel();
 			}
