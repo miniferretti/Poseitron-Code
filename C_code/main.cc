@@ -99,6 +99,7 @@ int main()
 				myCtrlStruct->main_states = PNEUMA_TEST_STATE;
 				colorSensorReset();
 				reset_dynamixel();
+				sensorSelect(1);
 			}
 			break;
 
