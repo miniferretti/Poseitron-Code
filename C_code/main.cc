@@ -138,7 +138,7 @@ int main()
 			printf("PNEUMA_TEST_STATE\r\n");
 			if (myCtrlStruct->theCtrlIn->t - myCtrlStruct->main_t_ref < 5)
 			{
-				printf("Output ON\r\n");
+			//	printf("Output ON\r\n");
 				set_pinchers_output(0b11111111, 0b11111111);
 				getRGB(&r, &g, &b);
 				printf("R = %f G = %f B = %f\r\n", r, g, b);
