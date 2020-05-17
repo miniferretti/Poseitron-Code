@@ -76,6 +76,7 @@ int main()
 	printf("We hope that you will be pleased with the coding and we wish you a great succes.\n\r");
 
 	auto start = std::chrono::steady_clock::now();
+	float r, g, b;
 
 	//********  Début du comportement du robot **********
 
@@ -90,8 +91,8 @@ int main()
 
 		switch (myCtrlStruct->main_states)
 		{
-		case WAIT_STATE:                                 // State to let the user some time before the robot starts.
-			printf("WAIT_STATE\r\n");                    // Time useful to ensure that the speed controller works as expected.
+		case WAIT_STATE:			  // State to let the user some time before the robot starts.
+			printf("WAIT_STATE\r\n"); // Time useful to ensure that the speed controller works as expected.
 
 			if (myCtrlStruct->theCtrlIn->t > 15)
 			{
@@ -101,7 +102,7 @@ int main()
 			}
 			break;
 
-		case TEST_PATH_STATE:                            // State corresponding to the path planning algorithm.
+		case TEST_PATH_STATE: // State corresponding to the path planning algorithm.
 			if (myCtrlStruct->flag_state == 1)
 			{
 				printf("TEST_PATH_STATE\r\n");
@@ -110,8 +111,8 @@ int main()
 			main_strategy(myCtrlStruct, my_P_Struct, spdctrl);
 			break;
 
-		case PINCHER_DEMO_STATE:                         // State used to validate the good working principle of the pliers and the 
-			if (myCtrlStruct->flag_state == 1)           // color sensors.
+		case PINCHER_DEMO_STATE:			   // State used to validate the good working principle of the pliers and the
+			if (myCtrlStruct->flag_state == 1) // color sensors.
 			{
 				printf("PINCHER_DEMO_STATE\r\n");
 				myCtrlStruct->flag_state = 0;
@@ -119,17 +120,37 @@ int main()
 			pincher_demo(myCtrlStruct);
 			break;
 
-		case STOP_STATE:                                 // State used to completely stop the motor control card and exit the main loop.
+		case STOP_STATE: // State used to completely stop the motor control card and exit the main loop.
 			printf("STOP_STATE\r\n");
 			spdctrl->set_speed(0, 0);
 			run = 0;
 			break;
 
-		case SlAVE_STATE:                                // State used to enter the Slave mode behaviour. It lets Poseitron to be controller by 
-			if (myCtrlStruct->flag_state == 1)           // an UDP client.
+		case SlAVE_STATE:					   // State used to enter the Slave mode behaviour. It lets Poseitron to be controller by
+			if (myCtrlStruct->flag_state == 1) // an UDP client.
 			{
 				printf("SLAVE_STATE\r\n");
 				myCtrlStruct->flag_state = 0;
+			}
+			break;
+
+		case PNEUMA_TEST_STATE:
+			printf("PNEUMA_TEST_STATE\r\n");
+			if (myCtrlStruct->theCtrlIn->t - myCtrlStruct->main_t_ref < 5)
+			{
+				printf("Output ON\r\n");
+				set_pinchers_output(0b11111111, 0b11111111);
+				getRGB(&r, &g, &b);
+				printf("R = %f G = %f B = %f\r\n", r, g, b);
+			}
+			else if (10 > myCtrlStruct->theCtrlIn->t - myCtrlStruct->main_t_ref && myCtrlStruct->theCtrlIn->t - myCtrlStruct->main_t_ref > 5)
+			{
+				printf("Output OFF\r\n");
+				set_pinchers_output(0b00000000, 0b00000000);
+			}
+			else
+			{
+				myCtrlStruct->main_t_ref = myCtrlStruct->theCtrlIn->t;
 			}
 			break;
 
