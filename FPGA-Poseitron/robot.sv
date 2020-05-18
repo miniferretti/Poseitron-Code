@@ -56,6 +56,8 @@ input 		     [1:0]		BRIDGE_IN;
 //   Credits to: Louis Devillez for the quadartics counters
 //
 ////////////////////////////////////////////////////////////////
+			reg myDevider,locked;
+			speed_pll50 mapll(CLOCK_50,myDevider);
 
       // F - front | R - rear
       // L - left  | R - Right
