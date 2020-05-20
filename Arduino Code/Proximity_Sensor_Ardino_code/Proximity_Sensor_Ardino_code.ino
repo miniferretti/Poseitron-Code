@@ -3,7 +3,7 @@
 #include <mcp_can.h>
 
 #define CAN_ID 0x600      // CAN id of the board
-#define CAN_ID_RASP 0x701 //CAN id of the ras-pi
+#define CAN_ID_RASP 0x100 //CAN id of the ras-pi
 #define TRIGGER_PIN 9
 const unsigned long MEASURE_TIMEOUT = 25000UL; //25 ms 8m
 const float SOUND_SPEED = 340.0 / 1000;
@@ -56,17 +56,16 @@ void setup()
 void MCP2515_ISR()
 {
   byte sndStat = 0;
-  
-    // Flag_Recv_Ctr = Flag_Recv_Ctr + 1; // debugging only
-    while (CAN_MSGAVAIL == CAN0.checkReceive())
-    {
-      CAN0.readMsgBuf(&len, buf);
-    }
-    CAN0.checkClearTxStatus(&sndStat);
-    CAN0.clearBufferTransmitIfFlags();
-    CAN0.sendMsgBuf(CAN_ID_RASP, 0,5, data);
-    Serial.println("Envois du Message");
-  
+
+  // Flag_Recv_Ctr = Flag_Recv_Ctr + 1; // debugging only
+  while (CAN_MSGAVAIL == CAN0.checkReceive())
+  {
+    CAN0.readMsgBuf(&len, buf);
+  }
+  CAN0.checkClearTxStatus(&sndStat);
+  CAN0.clearBufferTransmitIfFlags();
+  CAN0.sendMsgBuf(CAN_ID_RASP, 0, 5, data);
+  Serial.println("Envois du Message");
 }
 
 void loop()

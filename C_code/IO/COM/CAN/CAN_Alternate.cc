@@ -2,12 +2,12 @@
 ///////////////////////////////////////////////////////////////////////
 //
 // Written by: Matteo Ferretti di Castelferretto
-// 
+//
 //
 ///////////////////////////////////////////////////////////////////////
 
 //
-// Redesigned CAN library for the speed controller class. 
+// Redesigned CAN library for the speed controller class.
 //
 
 #include "IO/COM/CAN/CAN_Alternate.hh"
@@ -62,7 +62,7 @@ CAN0_Alternate::CAN0_Alternate(int baud)
     perror("socket");
   }
 
-  rfilter.can_id = 0x700;
+  rfilter.can_id = 0x00000100;
   rfilter.can_mask = 0x1FFFF000;
 
   tv.tv_sec = 0; // 3 milliseconds timout for recieving a message
@@ -243,7 +243,7 @@ int CAN0_Alternate::getDistance(int dir, double *data)
       }
     }
 
-   // printf("%f %f %f %f %f\r\n", data[0], data[1], data[2], data[3], data[4]);
+    // printf("%f %f %f %f %f\r\n", data[0], data[1], data[2], data[3], data[4]);
     return 1;
   }
 }

@@ -13,6 +13,7 @@
 #define CAN_MOT 0x508
 #define CAN_SENS_ARRAY_FRONT 0x600
 #define CAN_SENS_ARRAY_BACK 0x601
+#define CAN_ID 0x100
 #define DELAY 50
 #include <sstream>
 #include <string>
