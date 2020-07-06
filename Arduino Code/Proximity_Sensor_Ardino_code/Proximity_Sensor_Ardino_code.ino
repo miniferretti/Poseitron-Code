@@ -40,7 +40,7 @@ void setup()
 
   CAN0.init_Mask(0, 0, 0x1FFFFFFF);
   CAN0.init_Filt(0, 0, 0x00000600);
-  // CAN0.setMode(MCP_NORMAL);
+ // CAN0.setMode(MCP_NORMAL);
 
   attachInterrupt(0, MCP2515_ISR, FALLING);
 
@@ -62,8 +62,8 @@ void MCP2515_ISR()
   {
     CAN0.readMsgBuf(&len, buf);
   }
-  CAN0.checkClearTxStatus(&sndStat);
-  CAN0.clearBufferTransmitIfFlags();
+ // CAN0.checkClearTxStatus(&sndStat);
+ // CAN0.clearBufferTransmitIfFlags();
   CAN0.sendMsgBuf(CAN_ID_RASP, 0, 5, data);
   Serial.println("Envois du Message");
 }
